@@ -30,6 +30,20 @@ Partial Class frmMain
         Me.InventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CommisionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VersionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectDivisionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MiscSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TaxCodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CategoriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RouteMasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.PurgeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FindCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AreaSearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GeneralSearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,12 +58,14 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectDivisionToolStripMenuItem, Me.PrintSetupToolStripMenuItem, Me.MiscSetupToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'CustomerToolStripMenuItem
         '
+        Me.CustomerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindCustomerToolStripMenuItem, Me.ViewCustomerToolStripMenuItem, Me.AreaSearchToolStripMenuItem, Me.GeneralSearchToolStripMenuItem})
         Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
         Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
         Me.CustomerToolStripMenuItem.Text = "&Customer"
@@ -81,8 +97,91 @@ Partial Class frmMain
         'VersionToolStripMenuItem
         '
         Me.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem"
-        Me.VersionToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.VersionToolStripMenuItem.Size = New System.Drawing.Size(58, 20)
         Me.VersionToolStripMenuItem.Text = "&Version"
+        '
+        'SelectDivisionToolStripMenuItem
+        '
+        Me.SelectDivisionToolStripMenuItem.Name = "SelectDivisionToolStripMenuItem"
+        Me.SelectDivisionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SelectDivisionToolStripMenuItem.Text = "Select Division"
+        '
+        'PrintSetupToolStripMenuItem
+        '
+        Me.PrintSetupToolStripMenuItem.Name = "PrintSetupToolStripMenuItem"
+        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PrintSetupToolStripMenuItem.Text = "Print Setup"
+        '
+        'MiscSetupToolStripMenuItem
+        '
+        Me.MiscSetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TaxCodeToolStripMenuItem, Me.CategoriesToolStripMenuItem, Me.RouteMasterToolStripMenuItem, Me.ToolStripSeparator2, Me.PurgeToolStripMenuItem})
+        Me.MiscSetupToolStripMenuItem.Name = "MiscSetupToolStripMenuItem"
+        Me.MiscSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MiscSetupToolStripMenuItem.Text = "Misc Setup"
+        '
+        'TaxCodeToolStripMenuItem
+        '
+        Me.TaxCodeToolStripMenuItem.Name = "TaxCodeToolStripMenuItem"
+        Me.TaxCodeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TaxCodeToolStripMenuItem.Text = "Tax Code"
+        '
+        'CategoriesToolStripMenuItem
+        '
+        Me.CategoriesToolStripMenuItem.Name = "CategoriesToolStripMenuItem"
+        Me.CategoriesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CategoriesToolStripMenuItem.Text = "Categories"
+        '
+        'RouteMasterToolStripMenuItem
+        '
+        Me.RouteMasterToolStripMenuItem.Name = "RouteMasterToolStripMenuItem"
+        Me.RouteMasterToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RouteMasterToolStripMenuItem.Text = "Route Master"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        '
+        'PurgeToolStripMenuItem
+        '
+        Me.PurgeToolStripMenuItem.Name = "PurgeToolStripMenuItem"
+        Me.PurgeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PurgeToolStripMenuItem.Text = "Purge"
+        '
+        'FindCustomerToolStripMenuItem
+        '
+        Me.FindCustomerToolStripMenuItem.Name = "FindCustomerToolStripMenuItem"
+        Me.FindCustomerToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.FindCustomerToolStripMenuItem.Text = "Find Customer"
+        '
+        'ViewCustomerToolStripMenuItem
+        '
+        Me.ViewCustomerToolStripMenuItem.Name = "ViewCustomerToolStripMenuItem"
+        Me.ViewCustomerToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.ViewCustomerToolStripMenuItem.Text = "&View Customer          Ctrl-V"
+        '
+        'AreaSearchToolStripMenuItem
+        '
+        Me.AreaSearchToolStripMenuItem.Name = "AreaSearchToolStripMenuItem"
+        Me.AreaSearchToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.AreaSearchToolStripMenuItem.Text = "Area Search"
+        '
+        'GeneralSearchToolStripMenuItem
+        '
+        Me.GeneralSearchToolStripMenuItem.Name = "GeneralSearchToolStripMenuItem"
+        Me.GeneralSearchToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.GeneralSearchToolStripMenuItem.Text = "General Search"
         '
         'frmMain
         '
@@ -109,4 +208,18 @@ Partial Class frmMain
     Friend WithEvents InventoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CommisionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VersionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectDivisionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PrintSetupToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MiscSetupToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TaxCodeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CategoriesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RouteMasterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents PurgeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FindCustomerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewCustomerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AreaSearchToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GeneralSearchToolStripMenuItem As ToolStripMenuItem
 End Class
