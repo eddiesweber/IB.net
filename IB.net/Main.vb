@@ -39,6 +39,58 @@
     Public Const APPNAME = "IB20"
     Public Const COMMPW = "BUX"
 
+    Public Sub OpenData()
+
+        Dim q As String
+        Dim temp As New ADODB.Recordset
+        Dim i As Integer
+        Dim j As Integer
+
+        'Close old Database
+        If DB.State = ConnectionState.Open Then
+            DB.Close()
+            DB = Nothing
+        End If
+
+        For Each currentForm As Form In Application.OpenForms
+            If currentForm.Name = "frmCompany" Or currentForm.Name = "frmMain" Then
+                currentForm.Close()
+            End If
+        Next
+
+        'Look up data directory
+        On Error GoTo BadCompany
+        q = "Select * From IBConfig where Location_ID='" & Company & "'"
+        Call temp.Open(q, configdb, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockBatchOptimistic)
+        If temp.EOF Then GoTo BadCompany
+        DBName = temp!DBName
+        ServerName = temp!ServerName
+        temp.Close()
+
+        'On Error GoTo NoDB
+        CS = "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
+        DB = New ADODB.Connection
+        Call DB.Open(CS, , ,)
+        DB.CursorLocation = ADODB.CursorLocationEnum.adUseClient
+        q = "Select * From Company where Company_ID='" & Company & "'"
+        Call temp.Open(q, DB, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockOptimistic)
+        CompanyName = temp!COMPANY_NM
+        temp.Close()
+        frmMain.Text = "Indoor Billboard - " & Company
+        'Rearrange CS the way Crystal likes
+        CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
+
+        Exit Sub
+
+BadCompany:
+        If Form.ActiveForm.Name = "frmCompany" Then
+            frmCompany.Show()
+        Else
+            frmCompany.ShowDialog()
+        End If
+
+    End Sub
+
     Public Sub PostInvChange(Dat As Date, Typ As String, Item As Long, Source As String, Dest As String, Qty As Single, flag As Boolean)
 
         'Handles non-sale changes to inventory

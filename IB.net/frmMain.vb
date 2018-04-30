@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 
 Public Class frmMain
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim sectionname As String
@@ -43,7 +44,7 @@ CDBOpen:
         'RPT = Report1
         'RPT.PrinterSelect
 
-        'OpenData
+        OpenData()
 
         Exit Sub
 
@@ -104,4 +105,15 @@ nocdb:
 
     End Sub
 
+    Private Sub FindCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindCustomerToolStripMenuItem.Click
+
+        frmFindCust.Show()
+
+    End Sub
+
+    Private Sub ViewCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomerToolStripMenuItem.Click
+
+        frmViewCust.Show()
+
+    End Sub
 End Class
