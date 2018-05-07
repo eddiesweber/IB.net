@@ -91,10 +91,22 @@
     <Compile Include="frmCust.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDept.Designer.vb">
+      <DependentUpon>frmDept.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDept.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmFindCust.Designer.vb">
       <DependentUpon>frmFindCust.vb</DependentUpon>
     </Compile>
     <Compile Include="frmFindCust.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindCustSrch.Designer.vb">
+      <DependentUpon>frmFindCustSrch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindCustSrch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -110,10 +122,22 @@
     <Compile Include="frmMain2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRentOrd.Designer.vb">
+      <DependentUpon>frmRentOrd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRentOrd.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmViewCust.Designer.vb">
       <DependentUpon>frmViewCust.vb</DependentUpon>
     </Compile>
     <Compile Include="frmViewCust.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmZipSearch.Designer.vb">
+      <DependentUpon>frmZipSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmZipSearch.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.vb" />
@@ -140,8 +164,14 @@
     <EmbeddedResource Include="frmCust.resx">
       <DependentUpon>frmCust.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDept.resx">
+      <DependentUpon>frmDept.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFindCust.resx">
       <DependentUpon>frmFindCust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindCustSrch.resx">
+      <DependentUpon>frmFindCustSrch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -149,8 +179,14 @@
     <EmbeddedResource Include="frmMain2.resx">
       <DependentUpon>frmMain2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRentOrd.resx">
+      <DependentUpon>frmRentOrd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmViewCust.resx">
       <DependentUpon>frmViewCust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmZipSearch.resx">
+      <DependentUpon>frmZipSearch.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
