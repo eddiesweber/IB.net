@@ -31,9 +31,10 @@ Partial Class frmFindCust
         '
         'cmdCancel
         '
-        Me.cmdCancel.Location = New System.Drawing.Point(280, 77)
+        Me.cmdCancel.Location = New System.Drawing.Point(747, 184)
+        Me.cmdCancel.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(64, 22)
+        Me.cmdCancel.Size = New System.Drawing.Size(171, 52)
         Me.cmdCancel.TabIndex = 2
         Me.cmdCancel.Text = "Close"
         Me.cmdCancel.UseVisualStyleBackColor = True
@@ -41,42 +42,48 @@ Partial Class frmFindCust
         'lstCustName
         '
         Me.lstCustName.FormattingEnabled = True
-        Me.lstCustName.Location = New System.Drawing.Point(72, 8)
+        Me.lstCustName.ItemHeight = 31
+        Me.lstCustName.Location = New System.Drawing.Point(214, 19)
+        Me.lstCustName.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.lstCustName.Name = "lstCustName"
-        Me.lstCustName.Size = New System.Drawing.Size(193, 95)
+        Me.lstCustName.Size = New System.Drawing.Size(508, 221)
         Me.lstCustName.TabIndex = 4
         '
         'lstCustNum
         '
         Me.lstCustNum.FormattingEnabled = True
-        Me.lstCustNum.Location = New System.Drawing.Point(8, 8)
+        Me.lstCustNum.ItemHeight = 31
+        Me.lstCustNum.Location = New System.Drawing.Point(21, 19)
+        Me.lstCustNum.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.lstCustNum.Name = "lstCustNum"
-        Me.lstCustNum.Size = New System.Drawing.Size(57, 95)
+        Me.lstCustNum.Size = New System.Drawing.Size(177, 221)
         Me.lstCustNum.TabIndex = 3
         '
         'cmdRefresh
         '
-        Me.cmdRefresh.Location = New System.Drawing.Point(280, 35)
+        Me.cmdRefresh.Location = New System.Drawing.Point(747, 83)
+        Me.cmdRefresh.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.cmdRefresh.Name = "cmdRefresh"
-        Me.cmdRefresh.Size = New System.Drawing.Size(64, 22)
+        Me.cmdRefresh.Size = New System.Drawing.Size(171, 52)
         Me.cmdRefresh.TabIndex = 1
         Me.cmdRefresh.Text = "&Refresh"
         Me.cmdRefresh.UseVisualStyleBackColor = True
         '
         'cmdSelect
         '
-        Me.cmdSelect.Location = New System.Drawing.Point(280, 7)
+        Me.cmdSelect.Location = New System.Drawing.Point(747, 17)
+        Me.cmdSelect.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.cmdSelect.Name = "cmdSelect"
-        Me.cmdSelect.Size = New System.Drawing.Size(64, 22)
+        Me.cmdSelect.Size = New System.Drawing.Size(171, 52)
         Me.cmdSelect.TabIndex = 0
         Me.cmdSelect.Text = "Select"
         Me.cmdSelect.UseVisualStyleBackColor = True
         '
         'frmFindCust
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(16.0!, 31.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(350, 112)
+        Me.ClientSize = New System.Drawing.Size(933, 267)
         Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.cmdRefresh)
         Me.Controls.Add(Me.lstCustNum)
@@ -84,6 +91,7 @@ Partial Class frmFindCust
         Me.Controls.Add(Me.cmdCancel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Location = New System.Drawing.Point(85, 92)
+        Me.Margin = New System.Windows.Forms.Padding(8, 7, 8, 7)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmFindCust"

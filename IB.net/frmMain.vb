@@ -56,7 +56,7 @@ Public Class frmMain
                 Dim dataReader As SqlDataReader = command.ExecuteReader()
 
                 dataReader.Read()
-                DBName = dataReader(0)
+                DBName = dataReader(2)
                 ServerName = dataReader(1)
 
                 dataReader.Close()
