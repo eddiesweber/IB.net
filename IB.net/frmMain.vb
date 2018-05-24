@@ -91,14 +91,15 @@ Public Class frmMain
         Catch ex As Exception
             frmMain2.ShowDialog()
         End Try
+
         'Call temp.Open(q, DB, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockOptimistic)
         'CompanyName = temp!COMPANY_NM
         'temp.Close()
 
 
         'Screen Position
-        'GetWindowPos Me, 200, 200
-        'Me.Show()
+        GetWindowPos(Me, 200, 200)
+        Me.Show()
 
         'RPT = Report1
         'RPT.PrinterSelect

@@ -62,4 +62,10 @@ Public Class frmFindCust
 
     End Sub
 
+    Private Sub lstCustNum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustNum.SelectedIndexChanged
+
+        'Set alpha list to same customer
+        lstCustName.SelectedIndex = lstCustNum.SelectedIndex
+
+    End Sub
 End Class
