@@ -58,21 +58,41 @@ Partial Class frmRentOrd
         Me.cmdExit = New System.Windows.Forms.Button()
         Me.cmdUpdate = New System.Windows.Forms.Button()
         Me.fraSales = New System.Windows.Forms.GroupBox()
-        Me.optSales2 = New System.Windows.Forms.RadioButton()
-        Me.optSales1 = New System.Windows.Forms.RadioButton()
-        Me.optSales0 = New System.Windows.Forms.RadioButton()
-        Me.txtData9 = New System.Windows.Forms.TextBox()
-        Me.txtData8 = New System.Windows.Forms.TextBox()
-        Me.txtData7 = New System.Windows.Forms.TextBox()
-        Me.txtData6 = New System.Windows.Forms.TextBox()
-        Me.txtData5 = New System.Windows.Forms.TextBox()
-        Me.txtData4 = New System.Windows.Forms.TextBox()
-        Me.lstSales = New System.Windows.Forms.ListBox()
-        Me.label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.label2 = New System.Windows.Forms.Label()
+        Me.lstSales = New System.Windows.Forms.ListBox()
+        Me.txtData4 = New System.Windows.Forms.TextBox()
+        Me.txtData5 = New System.Windows.Forms.TextBox()
+        Me.txtData6 = New System.Windows.Forms.TextBox()
+        Me.txtData7 = New System.Windows.Forms.TextBox()
+        Me.txtData8 = New System.Windows.Forms.TextBox()
+        Me.txtData9 = New System.Windows.Forms.TextBox()
+        Me.optSales0 = New System.Windows.Forms.RadioButton()
+        Me.optSales1 = New System.Windows.Forms.RadioButton()
+        Me.optSales2 = New System.Windows.Forms.RadioButton()
         Me.lstItem = New System.Windows.Forms.ListBox()
         Me.lblLabel1 = New System.Windows.Forms.Label()
         Me.lblLabel5 = New System.Windows.Forms.Label()
+        Me.txtData3 = New System.Windows.Forms.TextBox()
+        Me.txtData0 = New System.Windows.Forms.TextBox()
+        Me.txtData1 = New System.Windows.Forms.TextBox()
+        Me.txtCustName = New System.Windows.Forms.TextBox()
+        Me.txtMemo = New System.Windows.Forms.TextBox()
+        Me.lstDept = New System.Windows.Forms.ListBox()
+        Me.lblLabel14 = New System.Windows.Forms.Label()
+        Me.lblLabel13 = New System.Windows.Forms.Label()
+        Me.lblLabel12 = New System.Windows.Forms.Label()
+        Me.lblLabel11 = New System.Windows.Forms.Label()
+        Me.lblLabel10 = New System.Windows.Forms.Label()
+        Me.lblLabel9 = New System.Windows.Forms.Label()
+        Me.lblLabel4 = New System.Windows.Forms.Label()
+        Me.lblLabel3 = New System.Windows.Forms.Label()
+        Me.lblCurItem = New System.Windows.Forms.Label()
+        Me.lblLabel6 = New System.Windows.Forms.Label()
+        Me.lblLabel7 = New System.Windows.Forms.Label()
+        Me.lblLabel8 = New System.Windows.Forms.Label()
+        Me.lblLabel2 = New System.Windows.Forms.Label()
+        Me.lblCurCust = New System.Windows.Forms.Label()
         Me.fraSales.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -329,8 +349,9 @@ Partial Class frmRentOrd
         Me.txtCustDept.ForeColor = System.Drawing.Color.Navy
         Me.txtCustDept.Location = New System.Drawing.Point(70, 42)
         Me.txtCustDept.Name = "txtCustDept"
-        Me.txtCustDept.Size = New System.Drawing.Size(176, 13)
+        Me.txtCustDept.Size = New System.Drawing.Size(232, 13)
         Me.txtCustDept.TabIndex = 51
+        Me.txtCustDept.TabStop = False
         '
         'txtItemDesc
         '
@@ -349,7 +370,7 @@ Partial Class frmRentOrd
         Me.txtData2.Location = New System.Drawing.Point(49, 70)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.Size = New System.Drawing.Size(78, 20)
-        Me.txtData2.TabIndex = 3
+        Me.txtData2.TabIndex = 6
         Me.txtData2.Visible = False
         '
         'cmdDelete
@@ -418,25 +439,86 @@ Partial Class frmRentOrd
         Me.fraSales.TabStop = False
         Me.fraSales.Text = "&Salesperson (s)"
         '
-        'optSales2
+        'Label1
         '
-        Me.optSales2.AutoSize = True
-        Me.optSales2.Location = New System.Drawing.Point(210, 63)
-        Me.optSales2.Name = "optSales2"
-        Me.optSales2.Size = New System.Drawing.Size(14, 13)
-        Me.optSales2.TabIndex = 74
-        Me.optSales2.TabStop = True
-        Me.optSales2.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(231, 7)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(35, 13)
+        Me.Label1.TabIndex = 48
+        Me.Label1.Text = "Code:"
         '
-        'optSales1
+        'label2
         '
-        Me.optSales1.AutoSize = True
-        Me.optSales1.Location = New System.Drawing.Point(210, 42)
-        Me.optSales1.Name = "optSales1"
-        Me.optSales1.Size = New System.Drawing.Size(14, 13)
-        Me.optSales1.TabIndex = 73
-        Me.optSales1.TabStop = True
-        Me.optSales1.UseVisualStyleBackColor = True
+        Me.label2.AutoSize = True
+        Me.label2.Location = New System.Drawing.Point(294, 7)
+        Me.label2.Name = "label2"
+        Me.label2.Size = New System.Drawing.Size(47, 13)
+        Me.label2.TabIndex = 49
+        Me.label2.Text = "Percent:"
+        '
+        'lstSales
+        '
+        Me.lstSales.BackColor = System.Drawing.Color.Silver
+        Me.lstSales.FormattingEnabled = True
+        Me.lstSales.Location = New System.Drawing.Point(3, 16)
+        Me.lstSales.Name = "lstSales"
+        Me.lstSales.Size = New System.Drawing.Size(183, 56)
+        Me.lstSales.TabIndex = 71
+        '
+        'txtData4
+        '
+        Me.txtData4.ForeColor = System.Drawing.Color.Navy
+        Me.txtData4.Location = New System.Drawing.Point(231, 21)
+        Me.txtData4.Multiline = True
+        Me.txtData4.Name = "txtData4"
+        Me.txtData4.Size = New System.Drawing.Size(50, 19)
+        Me.txtData4.TabIndex = 35
+        '
+        'txtData5
+        '
+        Me.txtData5.ForeColor = System.Drawing.Color.Navy
+        Me.txtData5.Location = New System.Drawing.Point(231, 42)
+        Me.txtData5.Multiline = True
+        Me.txtData5.Name = "txtData5"
+        Me.txtData5.Size = New System.Drawing.Size(50, 19)
+        Me.txtData5.TabIndex = 38
+        '
+        'txtData6
+        '
+        Me.txtData6.ForeColor = System.Drawing.Color.Navy
+        Me.txtData6.Location = New System.Drawing.Point(231, 63)
+        Me.txtData6.Multiline = True
+        Me.txtData6.Name = "txtData6"
+        Me.txtData6.Size = New System.Drawing.Size(50, 19)
+        Me.txtData6.TabIndex = 41
+        '
+        'txtData7
+        '
+        Me.txtData7.ForeColor = System.Drawing.Color.Navy
+        Me.txtData7.Location = New System.Drawing.Point(294, 21)
+        Me.txtData7.Multiline = True
+        Me.txtData7.Name = "txtData7"
+        Me.txtData7.Size = New System.Drawing.Size(50, 19)
+        Me.txtData7.TabIndex = 36
+        '
+        'txtData8
+        '
+        Me.txtData8.ForeColor = System.Drawing.Color.Navy
+        Me.txtData8.Location = New System.Drawing.Point(294, 42)
+        Me.txtData8.Multiline = True
+        Me.txtData8.Name = "txtData8"
+        Me.txtData8.Size = New System.Drawing.Size(50, 20)
+        Me.txtData8.TabIndex = 39
+        '
+        'txtData9
+        '
+        Me.txtData9.ForeColor = System.Drawing.Color.Navy
+        Me.txtData9.Location = New System.Drawing.Point(294, 63)
+        Me.txtData9.Multiline = True
+        Me.txtData9.Name = "txtData9"
+        Me.txtData9.Size = New System.Drawing.Size(50, 19)
+        Me.txtData9.TabIndex = 42
         '
         'optSales0
         '
@@ -448,86 +530,25 @@ Partial Class frmRentOrd
         Me.optSales0.TabStop = True
         Me.optSales0.UseVisualStyleBackColor = True
         '
-        'txtData9
+        'optSales1
         '
-        Me.txtData9.ForeColor = System.Drawing.Color.Navy
-        Me.txtData9.Location = New System.Drawing.Point(294, 63)
-        Me.txtData9.Multiline = True
-        Me.txtData9.Name = "txtData9"
-        Me.txtData9.Size = New System.Drawing.Size(50, 19)
-        Me.txtData9.TabIndex = 42
+        Me.optSales1.AutoSize = True
+        Me.optSales1.Location = New System.Drawing.Point(210, 42)
+        Me.optSales1.Name = "optSales1"
+        Me.optSales1.Size = New System.Drawing.Size(14, 13)
+        Me.optSales1.TabIndex = 73
+        Me.optSales1.TabStop = True
+        Me.optSales1.UseVisualStyleBackColor = True
         '
-        'txtData8
+        'optSales2
         '
-        Me.txtData8.ForeColor = System.Drawing.Color.Navy
-        Me.txtData8.Location = New System.Drawing.Point(294, 42)
-        Me.txtData8.Multiline = True
-        Me.txtData8.Name = "txtData8"
-        Me.txtData8.Size = New System.Drawing.Size(50, 20)
-        Me.txtData8.TabIndex = 39
-        '
-        'txtData7
-        '
-        Me.txtData7.ForeColor = System.Drawing.Color.Navy
-        Me.txtData7.Location = New System.Drawing.Point(294, 21)
-        Me.txtData7.Multiline = True
-        Me.txtData7.Name = "txtData7"
-        Me.txtData7.Size = New System.Drawing.Size(50, 19)
-        Me.txtData7.TabIndex = 36
-        '
-        'txtData6
-        '
-        Me.txtData6.ForeColor = System.Drawing.Color.Navy
-        Me.txtData6.Location = New System.Drawing.Point(231, 63)
-        Me.txtData6.Multiline = True
-        Me.txtData6.Name = "txtData6"
-        Me.txtData6.Size = New System.Drawing.Size(50, 19)
-        Me.txtData6.TabIndex = 41
-        '
-        'txtData5
-        '
-        Me.txtData5.ForeColor = System.Drawing.Color.Navy
-        Me.txtData5.Location = New System.Drawing.Point(231, 42)
-        Me.txtData5.Multiline = True
-        Me.txtData5.Name = "txtData5"
-        Me.txtData5.Size = New System.Drawing.Size(50, 19)
-        Me.txtData5.TabIndex = 38
-        '
-        'txtData4
-        '
-        Me.txtData4.ForeColor = System.Drawing.Color.Navy
-        Me.txtData4.Location = New System.Drawing.Point(231, 21)
-        Me.txtData4.Multiline = True
-        Me.txtData4.Name = "txtData4"
-        Me.txtData4.Size = New System.Drawing.Size(50, 19)
-        Me.txtData4.TabIndex = 35
-        '
-        'lstSales
-        '
-        Me.lstSales.BackColor = System.Drawing.Color.Silver
-        Me.lstSales.FormattingEnabled = True
-        Me.lstSales.Location = New System.Drawing.Point(3, 16)
-        Me.lstSales.Name = "lstSales"
-        Me.lstSales.Size = New System.Drawing.Size(183, 56)
-        Me.lstSales.TabIndex = 71
-        '
-        'label2
-        '
-        Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(294, 7)
-        Me.label2.Name = "label2"
-        Me.label2.Size = New System.Drawing.Size(47, 13)
-        Me.label2.TabIndex = 49
-        Me.label2.Text = "Percent:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(231, 7)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
-        Me.Label1.TabIndex = 48
-        Me.Label1.Text = "Code:"
+        Me.optSales2.AutoSize = True
+        Me.optSales2.Location = New System.Drawing.Point(210, 63)
+        Me.optSales2.Name = "optSales2"
+        Me.optSales2.Size = New System.Drawing.Size(14, 13)
+        Me.optSales2.TabIndex = 74
+        Me.optSales2.TabStop = True
+        Me.optSales2.UseVisualStyleBackColor = True
         '
         'lstItem
         '
@@ -555,11 +576,215 @@ Partial Class frmRentOrd
         Me.lblLabel5.TabIndex = 40
         Me.lblLabel5.Text = "Change &Memo:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
+        'txtData3
+        '
+        Me.txtData3.Enabled = False
+        Me.txtData3.ForeColor = System.Drawing.Color.Navy
+        Me.txtData3.Location = New System.Drawing.Point(21, 112)
+        Me.txtData3.Name = "txtData3"
+        Me.txtData3.Size = New System.Drawing.Size(15, 20)
+        Me.txtData3.TabIndex = 10
+        Me.txtData3.Visible = False
+        '
+        'txtData0
+        '
+        Me.txtData0.Enabled = False
+        Me.txtData0.ForeColor = System.Drawing.Color.Navy
+        Me.txtData0.Location = New System.Drawing.Point(70, 7)
+        Me.txtData0.Name = "txtData0"
+        Me.txtData0.Size = New System.Drawing.Size(78, 20)
+        Me.txtData0.TabIndex = 1
+        '
+        'txtData1
+        '
+        Me.txtData1.Enabled = False
+        Me.txtData1.ForeColor = System.Drawing.Color.Navy
+        Me.txtData1.Location = New System.Drawing.Point(315, 7)
+        Me.txtData1.Name = "txtData1"
+        Me.txtData1.Size = New System.Drawing.Size(43, 20)
+        Me.txtData1.TabIndex = 4
+        Me.txtData1.Visible = False
+        '
+        'txtCustName
+        '
+        Me.txtCustName.BackColor = System.Drawing.Color.Silver
+        Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtCustName.ForeColor = System.Drawing.Color.Navy
+        Me.txtCustName.Location = New System.Drawing.Point(70, 28)
+        Me.txtCustName.Name = "txtCustName"
+        Me.txtCustName.Size = New System.Drawing.Size(232, 13)
+        Me.txtCustName.TabIndex = 52
+        Me.txtCustName.TabStop = False
+        '
+        'txtMemo
+        '
+        Me.txtMemo.ForeColor = System.Drawing.Color.Navy
+        Me.txtMemo.Location = New System.Drawing.Point(98, 371)
+        Me.txtMemo.Name = "txtMemo"
+        Me.txtMemo.Size = New System.Drawing.Size(260, 20)
+        Me.txtMemo.TabIndex = 44
+        '
+        'lstDept
+        '
+        Me.lstDept.FormattingEnabled = True
+        Me.lstDept.Location = New System.Drawing.Point(315, 7)
+        Me.lstDept.Name = "lstDept"
+        Me.lstDept.Size = New System.Drawing.Size(43, 56)
+        Me.lstDept.TabIndex = 66
+        '
+        'lblLabel14
+        '
+        Me.lblLabel14.AutoSize = True
+        Me.lblLabel14.Location = New System.Drawing.Point(133, 91)
+        Me.lblLabel14.Name = "lblLabel14"
+        Me.lblLabel14.Size = New System.Drawing.Size(34, 13)
+        Me.lblLabel14.TabIndex = 8
+        Me.lblLabel14.Text = "L&oan:"
+        '
+        'lblLabel13
+        '
+        Me.lblLabel13.AutoSize = True
+        Me.lblLabel13.Location = New System.Drawing.Point(7, 210)
+        Me.lblLabel13.Name = "lblLabel13"
+        Me.lblLabel13.Size = New System.Drawing.Size(67, 13)
+        Me.lblLabel13.TabIndex = 25
+        Me.lblLabel13.Text = "Deliver&y Qty:"
+        '
+        'lblLabel12
+        '
+        Me.lblLabel12.AutoSize = True
+        Me.lblLabel12.Location = New System.Drawing.Point(7, 189)
+        Me.lblLabel12.Name = "lblLabel12"
+        Me.lblLabel12.Size = New System.Drawing.Size(67, 13)
+        Me.lblLabel12.TabIndex = 21
+        Me.lblLabel12.Text = "Minimum &Bill:"
+        '
+        'lblLabel11
+        '
+        Me.lblLabel11.AutoSize = True
+        Me.lblLabel11.Location = New System.Drawing.Point(12, 168)
+        Me.lblLabel11.Name = "lblLabel11"
+        Me.lblLabel11.Size = New System.Drawing.Size(54, 13)
+        Me.lblLabel11.TabIndex = 17
+        Me.lblLabel11.Text = "In&ventory:"
+        '
+        'lblLabel10
+        '
+        Me.lblLabel10.AutoSize = True
+        Me.lblLabel10.Location = New System.Drawing.Point(7, 147)
+        Me.lblLabel10.Name = "lblLabel10"
+        Me.lblLabel10.Size = New System.Drawing.Size(65, 13)
+        Me.lblLabel10.TabIndex = 13
+        Me.lblLabel10.Text = "&Loaned Qty:"
+        '
+        'lblLabel9
+        '
+        Me.lblLabel9.AutoSize = True
+        Me.lblLabel9.Location = New System.Drawing.Point(217, 133)
+        Me.lblLabel9.Name = "lblLabel9"
+        Me.lblLabel9.Size = New System.Drawing.Size(51, 13)
+        Me.lblLabel9.TabIndex = 37
+        Me.lblLabel9.Text = "New Qty:"
+        '
+        'lblLabel4
+        '
+        Me.lblLabel4.AutoSize = True
+        Me.lblLabel4.Location = New System.Drawing.Point(140, 133)
+        Me.lblLabel4.Name = "lblLabel4"
+        Me.lblLabel4.Size = New System.Drawing.Size(47, 13)
+        Me.lblLabel4.TabIndex = 40
+        Me.lblLabel4.Text = "Change:"
+        '
+        'lblLabel3
+        '
+        Me.lblLabel3.AutoSize = True
+        Me.lblLabel3.Location = New System.Drawing.Point(77, 133)
+        Me.lblLabel3.Name = "lblLabel3"
+        Me.lblLabel3.Size = New System.Drawing.Size(44, 13)
+        Me.lblLabel3.TabIndex = 65
+        Me.lblLabel3.Text = "Current:"
+        '
+        'lblCurItem
+        '
+        Me.lblCurItem.AutoSize = True
+        Me.lblCurItem.Location = New System.Drawing.Point(7, 91)
+        Me.lblCurItem.Name = "lblCurItem"
+        Me.lblCurItem.Size = New System.Drawing.Size(39, 13)
+        Me.lblCurItem.TabIndex = 56
+        Me.lblCurItem.Text = "Label3"
+        Me.lblCurItem.Visible = False
+        '
+        'lblLabel6
+        '
+        Me.lblLabel6.AutoSize = True
+        Me.lblLabel6.Location = New System.Drawing.Point(154, 231)
+        Me.lblLabel6.Name = "lblLabel6"
+        Me.lblLabel6.Size = New System.Drawing.Size(56, 13)
+        Me.lblLabel6.TabIndex = 29
+        Me.lblLabel6.Text = "Unit &Price:"
+        '
+        'lblLabel7
+        '
+        Me.lblLabel7.AutoSize = True
+        Me.lblLabel7.Location = New System.Drawing.Point(7, 245)
+        Me.lblLabel7.Name = "lblLabel7"
+        Me.lblLabel7.Size = New System.Drawing.Size(48, 13)
+        Me.lblLabel7.TabIndex = 31
+        Me.lblLabel7.Text = "&Taxable:"
+        '
+        'lblLabel8
+        '
+        Me.lblLabel8.AutoSize = True
+        Me.lblLabel8.Location = New System.Drawing.Point(217, 91)
+        Me.lblLabel8.Name = "lblLabel8"
+        Me.lblLabel8.Size = New System.Drawing.Size(44, 13)
+        Me.lblLabel8.TabIndex = 11
+        Me.lblLabel8.Text = "&Identity:"
+        '
+        'lblLabel2
+        '
+        Me.lblLabel2.AutoSize = True
+        Me.lblLabel2.Location = New System.Drawing.Point(7, 70)
+        Me.lblLabel2.Name = "lblLabel2"
+        Me.lblLabel2.Size = New System.Drawing.Size(30, 13)
+        Me.lblLabel2.TabIndex = 5
+        Me.lblLabel2.Text = "&Item:"
+        '
+        'lblCurCust
+        '
+        Me.lblCurCust.AutoSize = True
+        Me.lblCurCust.Location = New System.Drawing.Point(242, 7)
+        Me.lblCurCust.Name = "lblCurCust"
+        Me.lblCurCust.Size = New System.Drawing.Size(39, 13)
+        Me.lblCurCust.TabIndex = 53
+        Me.lblCurCust.Text = "Label3"
+        Me.lblCurCust.Visible = False
+        '
         'frmRentOrd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(466, 398)
+        Me.Controls.Add(Me.lblCurCust)
+        Me.Controls.Add(Me.lblLabel2)
+        Me.Controls.Add(Me.lblLabel8)
+        Me.Controls.Add(Me.lblLabel7)
+        Me.Controls.Add(Me.lblLabel6)
+        Me.Controls.Add(Me.lblCurItem)
+        Me.Controls.Add(Me.lblLabel3)
+        Me.Controls.Add(Me.lblLabel4)
+        Me.Controls.Add(Me.lblLabel9)
+        Me.Controls.Add(Me.lblLabel10)
+        Me.Controls.Add(Me.lblLabel11)
+        Me.Controls.Add(Me.lblLabel12)
+        Me.Controls.Add(Me.lblLabel13)
+        Me.Controls.Add(Me.lblLabel14)
+        Me.Controls.Add(Me.lstDept)
+        Me.Controls.Add(Me.txtMemo)
+        Me.Controls.Add(Me.txtCustName)
+        Me.Controls.Add(Me.txtData1)
+        Me.Controls.Add(Me.txtData0)
+        Me.Controls.Add(Me.txtData3)
         Me.Controls.Add(Me.lblLabel5)
         Me.Controls.Add(Me.lblLabel1)
         Me.Controls.Add(Me.lstItem)
@@ -663,4 +888,24 @@ Partial Class frmRentOrd
     Friend WithEvents lstItem As ListBox
     Friend WithEvents lblLabel1 As Label
     Friend WithEvents lblLabel5 As Label
+    Friend WithEvents txtData3 As TextBox
+    Friend WithEvents txtData0 As TextBox
+    Friend WithEvents txtData1 As TextBox
+    Friend WithEvents txtCustName As TextBox
+    Friend WithEvents txtMemo As TextBox
+    Friend WithEvents lstDept As ListBox
+    Friend WithEvents lblLabel14 As Label
+    Friend WithEvents lblLabel13 As Label
+    Friend WithEvents lblLabel12 As Label
+    Friend WithEvents lblLabel11 As Label
+    Friend WithEvents lblLabel10 As Label
+    Friend WithEvents lblLabel9 As Label
+    Friend WithEvents lblLabel4 As Label
+    Friend WithEvents lblLabel3 As Label
+    Friend WithEvents lblCurItem As Label
+    Friend WithEvents lblLabel6 As Label
+    Friend WithEvents lblLabel7 As Label
+    Friend WithEvents lblLabel8 As Label
+    Friend WithEvents lblLabel2 As Label
+    Friend WithEvents lblCurCust As Label
 End Class

@@ -92,6 +92,18 @@
     <Compile Include="frmCust.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCustSurcharge.Designer.vb">
+      <DependentUpon>frmCustSurcharge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustSurcharge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelQty.Designer.vb">
+      <DependentUpon>frmDelQty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelQty.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDept.Designer.vb">
       <DependentUpon>frmDept.vb</DependentUpon>
     </Compile>
@@ -108,6 +120,12 @@
       <DependentUpon>frmFindCustSrch.vb</DependentUpon>
     </Compile>
     <Compile Include="frmFindCustSrch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvHist.Designer.vb">
+      <DependentUpon>frmInvHist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvHist.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -127,6 +145,18 @@
       <DependentUpon>frmRentOrd.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRentOrd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmROHist.Designer.vb">
+      <DependentUpon>frmROHist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmROHist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSOHist.Designer.vb">
+      <DependentUpon>frmSOHist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSOHist.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmViewCust.Designer.vb">
@@ -175,6 +205,12 @@
     <EmbeddedResource Include="frmCust.resx">
       <DependentUpon>frmCust.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCustSurcharge.resx">
+      <DependentUpon>frmCustSurcharge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelQty.resx">
+      <DependentUpon>frmDelQty.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDept.resx">
       <DependentUpon>frmDept.vb</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +220,9 @@
     <EmbeddedResource Include="frmFindCustSrch.resx">
       <DependentUpon>frmFindCustSrch.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInvHist.resx">
+      <DependentUpon>frmInvHist.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRentOrd.resx">
       <DependentUpon>frmRentOrd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmROHist.resx">
+      <DependentUpon>frmROHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSOHist.resx">
+      <DependentUpon>frmSOHist.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewCust.resx">
       <DependentUpon>frmViewCust.vb</DependentUpon>
