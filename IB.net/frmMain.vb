@@ -171,4 +171,5 @@ Public Class frmMain
         frmViewCust.Show()
 
     End Sub
+
 End Class

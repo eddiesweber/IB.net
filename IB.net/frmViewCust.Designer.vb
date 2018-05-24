@@ -22,7 +22,12 @@ Partial Class frmViewCust
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmViewCust))
         Me.fraEdit = New System.Windows.Forms.GroupBox()
+        Me.cmdEditDept = New System.Windows.Forms.Button()
+        Me.cmdEditCust = New System.Windows.Forms.Button()
+        Me.cmdEditItem = New System.Windows.Forms.Button()
         Me.txtAverage2 = New System.Windows.Forms.TextBox()
         Me.txtData12 = New System.Windows.Forms.TextBox()
         Me.txtAverage = New System.Windows.Forms.TextBox()
@@ -30,10 +35,9 @@ Partial Class frmViewCust
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.cmdRefresh = New System.Windows.Forms.Button()
         Me.cmdFind = New System.Windows.Forms.Button()
-        Me.cmdEditItem = New System.Windows.Forms.Button()
-        Me.cmdEditCust = New System.Windows.Forms.Button()
-        Me.cmdEditDept = New System.Windows.Forms.Button()
         Me.txtData11 = New System.Windows.Forms.TextBox()
+        Me.SpGetCustBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IBPortlandDataSet = New IB.net.IBPortlandDataSet()
         Me.txtData10 = New System.Windows.Forms.TextBox()
         Me.txtData9 = New System.Windows.Forms.TextBox()
         Me.txtData8 = New System.Windows.Forms.TextBox()
@@ -56,7 +60,25 @@ Partial Class frmViewCust
         Me.lblLabel1 = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lblCurCust = New System.Windows.Forms.Label()
+        Me.SpGetCustTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.spGetCustTableAdapter()
+        Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.SpGetCustDeptBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetCustDeptTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter()
+        Me.C1TrueDBGrid2 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.SpGetCustRouteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetCustRouteTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter()
+        Me.C1TrueDBGrid3 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.SpGetCustItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetCustItemTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter()
         Me.fraEdit.SuspendLayout()
+        CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IBPortlandDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1TrueDBGrid2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'fraEdit
@@ -70,6 +92,33 @@ Partial Class frmViewCust
         Me.fraEdit.TabIndex = 0
         Me.fraEdit.TabStop = False
         Me.fraEdit.Text = "Add/Edit"
+        '
+        'cmdEditDept
+        '
+        Me.cmdEditDept.Location = New System.Drawing.Point(7, 49)
+        Me.cmdEditDept.Name = "cmdEditDept"
+        Me.cmdEditDept.Size = New System.Drawing.Size(78, 22)
+        Me.cmdEditDept.TabIndex = 28
+        Me.cmdEditDept.Text = "&Depts/Routes"
+        Me.cmdEditDept.UseVisualStyleBackColor = True
+        '
+        'cmdEditCust
+        '
+        Me.cmdEditCust.Location = New System.Drawing.Point(9, 21)
+        Me.cmdEditCust.Name = "cmdEditCust"
+        Me.cmdEditCust.Size = New System.Drawing.Size(78, 22)
+        Me.cmdEditCust.TabIndex = 29
+        Me.cmdEditCust.Text = "&Customer"
+        Me.cmdEditCust.UseVisualStyleBackColor = True
+        '
+        'cmdEditItem
+        '
+        Me.cmdEditItem.Location = New System.Drawing.Point(7, 77)
+        Me.cmdEditItem.Name = "cmdEditItem"
+        Me.cmdEditItem.Size = New System.Drawing.Size(78, 22)
+        Me.cmdEditItem.TabIndex = 30
+        Me.cmdEditItem.Text = "&Item"
+        Me.cmdEditItem.UseVisualStyleBackColor = True
         '
         'txtAverage2
         '
@@ -142,47 +191,32 @@ Partial Class frmViewCust
         Me.cmdFind.Text = "&Find"
         Me.cmdFind.UseVisualStyleBackColor = True
         '
-        'cmdEditItem
-        '
-        Me.cmdEditItem.Location = New System.Drawing.Point(7, 77)
-        Me.cmdEditItem.Name = "cmdEditItem"
-        Me.cmdEditItem.Size = New System.Drawing.Size(78, 22)
-        Me.cmdEditItem.TabIndex = 30
-        Me.cmdEditItem.Text = "&Item"
-        Me.cmdEditItem.UseVisualStyleBackColor = True
-        '
-        'cmdEditCust
-        '
-        Me.cmdEditCust.Location = New System.Drawing.Point(9, 21)
-        Me.cmdEditCust.Name = "cmdEditCust"
-        Me.cmdEditCust.Size = New System.Drawing.Size(78, 22)
-        Me.cmdEditCust.TabIndex = 29
-        Me.cmdEditCust.Text = "&Customer"
-        Me.cmdEditCust.UseVisualStyleBackColor = True
-        '
-        'cmdEditDept
-        '
-        Me.cmdEditDept.Location = New System.Drawing.Point(7, 49)
-        Me.cmdEditDept.Name = "cmdEditDept"
-        Me.cmdEditDept.Size = New System.Drawing.Size(78, 22)
-        Me.cmdEditDept.TabIndex = 28
-        Me.cmdEditDept.Text = "&Depts/Routes"
-        Me.cmdEditDept.UseVisualStyleBackColor = True
-        '
         'txtData11
         '
         Me.txtData11.BackColor = System.Drawing.Color.Silver
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CARE_OF", True))
         Me.txtData11.ForeColor = System.Drawing.Color.Navy
         Me.txtData11.Location = New System.Drawing.Point(56, 49)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.Size = New System.Drawing.Size(162, 13)
         Me.txtData11.TabIndex = 26
         '
+        'SpGetCustBindingSource
+        '
+        Me.SpGetCustBindingSource.DataMember = "spGetCust"
+        Me.SpGetCustBindingSource.DataSource = Me.IBPortlandDataSet
+        '
+        'IBPortlandDataSet
+        '
+        Me.IBPortlandDataSet.DataSetName = "IBPortlandDataSet"
+        Me.IBPortlandDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtData10
         '
         Me.txtData10.BackColor = System.Drawing.Color.Silver
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "URL", True))
         Me.txtData10.ForeColor = System.Drawing.Color.Navy
         Me.txtData10.Location = New System.Drawing.Point(287, 63)
         Me.txtData10.Name = "txtData10"
@@ -193,6 +227,7 @@ Partial Class frmViewCust
         '
         Me.txtData9.BackColor = System.Drawing.Color.Silver
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "EMAIL", True))
         Me.txtData9.ForeColor = System.Drawing.Color.Navy
         Me.txtData9.Location = New System.Drawing.Point(287, 49)
         Me.txtData9.Name = "txtData9"
@@ -203,6 +238,7 @@ Partial Class frmViewCust
         '
         Me.txtData8.BackColor = System.Drawing.Color.Silver
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "FAX_NO", True))
         Me.txtData8.ForeColor = System.Drawing.Color.Navy
         Me.txtData8.Location = New System.Drawing.Point(287, 35)
         Me.txtData8.Name = "txtData8"
@@ -213,6 +249,7 @@ Partial Class frmViewCust
         '
         Me.txtData7.BackColor = System.Drawing.Color.Silver
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "PHONE", True))
         Me.txtData7.ForeColor = System.Drawing.Color.Navy
         Me.txtData7.Location = New System.Drawing.Point(287, 21)
         Me.txtData7.Name = "txtData7"
@@ -223,6 +260,7 @@ Partial Class frmViewCust
         '
         Me.txtData6.BackColor = System.Drawing.Color.Silver
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CONTACT", True))
         Me.txtData6.ForeColor = System.Drawing.Color.Navy
         Me.txtData6.Location = New System.Drawing.Point(287, 7)
         Me.txtData6.Name = "txtData6"
@@ -233,6 +271,7 @@ Partial Class frmViewCust
         '
         Me.txtData5.BackColor = System.Drawing.Color.Silver
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "COUNTY", True))
         Me.txtData5.ForeColor = System.Drawing.Color.Navy
         Me.txtData5.Location = New System.Drawing.Point(161, 63)
         Me.txtData5.Name = "txtData5"
@@ -243,6 +282,7 @@ Partial Class frmViewCust
         '
         Me.txtData4.BackColor = System.Drawing.Color.Silver
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "PAYBY", True))
         Me.txtData4.ForeColor = System.Drawing.Color.Navy
         Me.txtData4.Location = New System.Drawing.Point(56, 63)
         Me.txtData4.Name = "txtData4"
@@ -253,6 +293,7 @@ Partial Class frmViewCust
         '
         Me.txtdata3.BackColor = System.Drawing.Color.Silver
         Me.txtdata3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtdata3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CSZ", True))
         Me.txtdata3.ForeColor = System.Drawing.Color.Navy
         Me.txtdata3.Location = New System.Drawing.Point(56, 35)
         Me.txtdata3.Name = "txtdata3"
@@ -263,6 +304,7 @@ Partial Class frmViewCust
         '
         Me.txtData2.BackColor = System.Drawing.Color.Silver
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "BILL_STR", True))
         Me.txtData2.ForeColor = System.Drawing.Color.Navy
         Me.txtData2.Location = New System.Drawing.Point(56, 21)
         Me.txtData2.Name = "txtData2"
@@ -273,6 +315,7 @@ Partial Class frmViewCust
         '
         Me.txtData1.BackColor = System.Drawing.Color.Silver
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "BILL_NAME", True))
         Me.txtData1.ForeColor = System.Drawing.Color.Navy
         Me.txtData1.Location = New System.Drawing.Point(56, 7)
         Me.txtData1.Name = "txtData1"
@@ -283,6 +326,7 @@ Partial Class frmViewCust
         '
         Me.txtData0.BackColor = System.Drawing.Color.Silver
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CUST_NUM", True))
         Me.txtData0.ForeColor = System.Drawing.Color.Navy
         Me.txtData0.Location = New System.Drawing.Point(7, 7)
         Me.txtData0.Name = "txtData0"
@@ -382,17 +426,99 @@ Partial Class frmViewCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(0, 28)
+        Me.lblCurCust.Location = New System.Drawing.Point(12, 23)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(0, 13)
         Me.lblCurCust.TabIndex = 0
         Me.lblCurCust.Visible = False
+        '
+        'SpGetCustTableAdapter
+        '
+        Me.SpGetCustTableAdapter.ClearBeforeFill = True
+        '
+        'C1TrueDBGrid1
+        '
+        Me.C1TrueDBGrid1.AllowUpdate = False
+        Me.C1TrueDBGrid1.DataSource = Me.SpGetCustDeptBindingSource
+        Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
+        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(10, 98)
+        Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
+        Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
+        Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
+        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(425, 80)
+        Me.C1TrueDBGrid1.TabIndex = 37
+        Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
+        '
+        'SpGetCustDeptBindingSource
+        '
+        Me.SpGetCustDeptBindingSource.DataMember = "SpGetCustDept"
+        Me.SpGetCustDeptBindingSource.DataSource = Me.IBPortlandDataSet
+        '
+        'SpGetCustDeptTableAdapter
+        '
+        Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
+        '
+        'C1TrueDBGrid2
+        '
+        Me.C1TrueDBGrid2.AllowUpdate = False
+        Me.C1TrueDBGrid2.DataSource = Me.SpGetCustRouteBindingSource
+        Me.C1TrueDBGrid2.GroupByCaption = "Drag a column header here to group by that column"
+        Me.C1TrueDBGrid2.Location = New System.Drawing.Point(10, 184)
+        Me.C1TrueDBGrid2.Name = "C1TrueDBGrid2"
+        Me.C1TrueDBGrid2.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.C1TrueDBGrid2.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.C1TrueDBGrid2.PreviewInfo.ZoomFactor = 75.0R
+        Me.C1TrueDBGrid2.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid2.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.C1TrueDBGrid2.PropBag = resources.GetString("C1TrueDBGrid2.PropBag")
+        Me.C1TrueDBGrid2.Size = New System.Drawing.Size(425, 81)
+        Me.C1TrueDBGrid2.TabIndex = 38
+        Me.C1TrueDBGrid2.UseCompatibleTextRendering = False
+        '
+        'SpGetCustRouteBindingSource
+        '
+        Me.SpGetCustRouteBindingSource.DataMember = "SpGetCustRoute"
+        Me.SpGetCustRouteBindingSource.DataSource = Me.IBPortlandDataSet
+        '
+        'SpGetCustRouteTableAdapter
+        '
+        Me.SpGetCustRouteTableAdapter.ClearBeforeFill = True
+        '
+        'C1TrueDBGrid3
+        '
+        Me.C1TrueDBGrid3.AllowUpdate = False
+        Me.C1TrueDBGrid3.DataSource = Me.SpGetCustItemBindingSource
+        Me.C1TrueDBGrid3.GroupByCaption = "Drag a column header here to group by that column"
+        Me.C1TrueDBGrid3.Location = New System.Drawing.Point(10, 271)
+        Me.C1TrueDBGrid3.Name = "C1TrueDBGrid3"
+        Me.C1TrueDBGrid3.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.C1TrueDBGrid3.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.C1TrueDBGrid3.PreviewInfo.ZoomFactor = 75.0R
+        Me.C1TrueDBGrid3.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid3.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.C1TrueDBGrid3.PropBag = resources.GetString("C1TrueDBGrid3.PropBag")
+        Me.C1TrueDBGrid3.Size = New System.Drawing.Size(537, 101)
+        Me.C1TrueDBGrid3.TabIndex = 39
+        Me.C1TrueDBGrid3.UseCompatibleTextRendering = False
+        '
+        'SpGetCustItemBindingSource
+        '
+        Me.SpGetCustItemBindingSource.DataMember = "SpGetCustItem"
+        Me.SpGetCustItemBindingSource.DataSource = Me.IBPortlandDataSet
+        '
+        'SpGetCustItemTableAdapter
+        '
+        Me.SpGetCustItemTableAdapter.ClearBeforeFill = True
         '
         'frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(560, 415)
+        Me.Controls.Add(Me.C1TrueDBGrid3)
+        Me.Controls.Add(Me.C1TrueDBGrid2)
+        Me.Controls.Add(Me.C1TrueDBGrid1)
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblLabel1)
@@ -428,6 +554,14 @@ Partial Class frmViewCust
         Me.Name = "frmViewCust"
         Me.Text = "Customer View"
         Me.fraEdit.ResumeLayout(False)
+        CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IBPortlandDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1TrueDBGrid2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -467,4 +601,16 @@ Partial Class frmViewCust
     Friend WithEvents lblLabel1 As Label
     Friend WithEvents lblLabel0 As Label
     Friend WithEvents lblCurCust As Label
+    Friend WithEvents SpGetCustBindingSource As BindingSource
+    Friend WithEvents IBPortlandDataSet As IBPortlandDataSet
+    Friend WithEvents SpGetCustTableAdapter As IBPortlandDataSetTableAdapters.spGetCustTableAdapter
+    Friend WithEvents C1TrueDBGrid1 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents SpGetCustDeptBindingSource As BindingSource
+    Friend WithEvents SpGetCustDeptTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter
+    Friend WithEvents C1TrueDBGrid2 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents SpGetCustRouteBindingSource As BindingSource
+    Friend WithEvents SpGetCustRouteTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter
+    Friend WithEvents C1TrueDBGrid3 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents SpGetCustItemBindingSource As BindingSource
+    Friend WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
 End Class

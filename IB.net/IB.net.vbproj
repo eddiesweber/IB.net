@@ -47,6 +47,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -140,6 +141,11 @@
     <Compile Include="frmZipSearch.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="IBPortlandDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="masterDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -193,6 +199,7 @@
     <EmbeddedResource Include="frmZipSearch.resx">
       <DependentUpon>frmZipSearch.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -201,6 +208,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="IBPortlandDataSet.xsc">
+      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IBPortlandDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IBPortlandDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IBPortlandDataSet.xss">
+      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+    </None>
     <None Include="masterDataSet.xsc">
       <DependentUpon>masterDataSet.xsd</DependentUpon>
     </None>
