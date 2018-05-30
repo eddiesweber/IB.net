@@ -38,9 +38,8 @@ Module Main
     Public CurVend As String
     Public CurPO As Integer
 
-    Public Const APPNAME = "IB20"
+    Public Const APPNAME = "IB.net"
     Public Const COMMPW = "BUX"
-
 
     Public Sub PostInvChange(Dat As Date, Typ As String, Item As Long, Source As String, Dest As String, Qty As Single, flag As Boolean)
 
@@ -81,6 +80,32 @@ Module Main
         End If
 
         fm.WindowState = WS
+
+    End Sub
+
+    Public Sub SaveWindowPos(ByVal fm As Form)
+
+        Dim e As Integer, Sizable As Boolean, sectionname As String
+
+        'Is form sizable?
+        e = fm.FormBorderStyle
+        Sizable = (e = 2) Or (e = 5)
+
+        'Save Screen Position Info
+        sectionname = "Form " & fm.Name
+        e = fm.WindowState
+        If e = 1 Then
+            e = 0
+        End If
+
+        SaveSetting(APPNAME, sectionname, "WindowState", e)
+        fm.WindowState = 0
+        SaveSetting(APPNAME, sectionname, "Top", fm.Top)
+        SaveSetting(APPNAME, sectionname, "Left", fm.Left)
+        If Sizable Then
+            SaveSetting(APPNAME, sectionname, "Height", fm.Height)
+            SaveSetting(APPNAME, sectionname, "Width", fm.Width)
+        End If
 
     End Sub
 

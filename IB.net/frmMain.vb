@@ -2,7 +2,6 @@
 
 Imports System.Data.SqlClient
 
-
 Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -98,7 +97,7 @@ Public Class frmMain
 
 
         'Screen Position
-        GetWindowPos(Me, 200, 200)
+        GetWindowPos(Me, 15, 15)
         Me.Show()
 
         'RPT = Report1
