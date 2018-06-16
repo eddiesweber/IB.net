@@ -80,6 +80,12 @@
     <Compile Include="frmCat.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCommedit.Designer.vb">
+      <DependentUpon>frmCommedit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCommedit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCompany.Designer.vb">
       <DependentUpon>frmCompany.vb</DependentUpon>
     </Compile>
@@ -96,6 +102,12 @@
       <DependentUpon>frmCustSurcharge.vb</DependentUpon>
     </Compile>
     <Compile Include="frmCustSurcharge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDayCalc.Designer.vb">
+      <DependentUpon>frmDayCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDayCalc.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDelQty.Designer.vb">
@@ -122,10 +134,22 @@
     <Compile Include="frmFindCustSrch.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFindInvoice.Designer.vb">
+      <DependentUpon>frmFindInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInvHist.Designer.vb">
       <DependentUpon>frmInvHist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInvHist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvRebill.Designer.vb">
+      <DependentUpon>frmInvRebill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvRebill.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.vb">
@@ -157,6 +181,12 @@
       <DependentUpon>frmSOHist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSOHist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUndo.Designer.vb">
+      <DependentUpon>frmUndo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUndo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmViewCust.Designer.vb">
@@ -199,6 +229,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCommedit.resx">
+      <DependentUpon>frmCommedit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCompany.resx">
       <DependentUpon>frmCompany.vb</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustSurcharge.resx">
       <DependentUpon>frmCustSurcharge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDayCalc.resx">
+      <DependentUpon>frmDayCalc.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDelQty.resx">
       <DependentUpon>frmDelQty.vb</DependentUpon>
@@ -220,8 +256,14 @@
     <EmbeddedResource Include="frmFindCustSrch.resx">
       <DependentUpon>frmFindCustSrch.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFindInvoice.resx">
+      <DependentUpon>frmFindInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInvHist.resx">
       <DependentUpon>frmInvHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvRebill.resx">
+      <DependentUpon>frmInvRebill.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -237,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSOHist.resx">
       <DependentUpon>frmSOHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUndo.resx">
+      <DependentUpon>frmUndo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewCust.resx">
       <DependentUpon>frmViewCust.vb</DependentUpon>
