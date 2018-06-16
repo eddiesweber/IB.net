@@ -67,7 +67,7 @@ Public Class frmViewCust
 
     Private Sub GetData1()
         'Get customer departments
-        Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, 1008)
+        Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, CurCust)
         'data1(1).RecordSource = "spGetCustDept(" & CurCust & ")"
         'data1(1).Refresh
         'If data1(1).Recordset.RecordCount > 0 Then
@@ -81,7 +81,7 @@ Public Class frmViewCust
 
     Private Sub GetData2()
         'Get routes and items for dept
-        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, 1008, 1)
+        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, 1)
         Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, 1008, 1)
         'If buserchange Then
         'If data1(1).Recordset.EOF And data1(1).Recordset.BOF Then

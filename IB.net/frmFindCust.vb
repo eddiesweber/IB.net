@@ -105,7 +105,7 @@ Public Class frmFindCust
 
     Private Sub lstCustName_DoubleClick(sender As Object, e As EventArgs) Handles lstCustName.DoubleClick
 
-        'cmdSelect_Click()
+        cmdSelect_Click(sender, e)
 
     End Sub
 
@@ -114,7 +114,7 @@ Public Class frmFindCust
         Dim frm As Form
 
         CurCust = CLng(lstCustNum.SelectedValue)
-        CurCust = 1008
+        'CurCust = 1008
 
         For Each frm In My.Application.OpenForms
             If frm.Name = "frmCust" Then
