@@ -835,8 +835,6 @@ Partial Public Class IBPortlandDataSet
     Partial Public Class SpGetCustDeptDataTable
         Inherits Global.System.Data.TypedTableBase(Of SpGetCustDeptRow)
         
-        Private columnCUST_NUM As Global.System.Data.DataColumn
-        
         Private columnDEPT As Global.System.Data.DataColumn
         
         Private columnNAME As Global.System.Data.DataColumn
@@ -846,8 +844,6 @@ Partial Public Class IBPortlandDataSet
         Private columnPHONE As Global.System.Data.DataColumn
         
         Private columnSTART As Global.System.Data.DataColumn
-        
-        Private columnTAX As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -883,14 +879,6 @@ Partial Public Class IBPortlandDataSet
             MyBase.New(info, context)
             Me.InitVars
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property CUST_NUMColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCUST_NUM
-            End Get
-        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -933,14 +921,6 @@ Partial Public Class IBPortlandDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property TAXColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTAX
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -977,9 +957,9 @@ Partial Public Class IBPortlandDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddSpGetCustDeptRow(ByVal CUST_NUM As Integer, ByVal DEPT As Short, ByVal NAME As String, ByVal CITY As String, ByVal PHONE As String, ByVal START As Date, ByVal TAX As Integer) As SpGetCustDeptRow
+        Public Overloads Function AddSpGetCustDeptRow(ByVal DEPT As Short, ByVal NAME As String, ByVal CITY As String, ByVal PHONE As String, ByVal START As Date) As SpGetCustDeptRow
             Dim rowSpGetCustDeptRow As SpGetCustDeptRow = CType(Me.NewRow,SpGetCustDeptRow)
-            Dim columnValuesArray() As Object = New Object() {CUST_NUM, DEPT, NAME, CITY, PHONE, START, TAX}
+            Dim columnValuesArray() As Object = New Object() {DEPT, NAME, CITY, PHONE, START}
             rowSpGetCustDeptRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSpGetCustDeptRow)
             Return rowSpGetCustDeptRow
@@ -987,8 +967,8 @@ Partial Public Class IBPortlandDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindByCUST_NUMDEPT(ByVal CUST_NUM As Integer, ByVal DEPT As Short) As SpGetCustDeptRow
-            Return CType(Me.Rows.Find(New Object() {CUST_NUM, DEPT}),SpGetCustDeptRow)
+        Public Function FindByDEPT(ByVal DEPT As Short) As SpGetCustDeptRow
+            Return CType(Me.Rows.Find(New Object() {DEPT}),SpGetCustDeptRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1008,20 +988,16 @@ Partial Public Class IBPortlandDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnCUST_NUM = MyBase.Columns("CUST_NUM")
             Me.columnDEPT = MyBase.Columns("DEPT")
             Me.columnNAME = MyBase.Columns("NAME")
             Me.columnCITY = MyBase.Columns("CITY")
             Me.columnPHONE = MyBase.Columns("PHONE")
             Me.columnSTART = MyBase.Columns("START")
-            Me.columnTAX = MyBase.Columns("TAX")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnCUST_NUM = New Global.System.Data.DataColumn("CUST_NUM", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCUST_NUM)
             Me.columnDEPT = New Global.System.Data.DataColumn("DEPT", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDEPT)
             Me.columnNAME = New Global.System.Data.DataColumn("NAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -1032,16 +1008,13 @@ Partial Public Class IBPortlandDataSet
             MyBase.Columns.Add(Me.columnPHONE)
             Me.columnSTART = New Global.System.Data.DataColumn("START", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSTART)
-            Me.columnTAX = New Global.System.Data.DataColumn("TAX", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTAX)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCUST_NUM, Me.columnDEPT}, true))
-            Me.columnCUST_NUM.AllowDBNull = false
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnDEPT}, true))
             Me.columnDEPT.AllowDBNull = false
+            Me.columnDEPT.Unique = true
             Me.columnNAME.MaxLength = 28
             Me.columnCITY.ReadOnly = true
             Me.columnCITY.MaxLength = 17
             Me.columnPHONE.MaxLength = 13
-            Me.columnTAX.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2455,17 +2428,6 @@ Partial Public Class IBPortlandDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property CUST_NUM() As Integer
-            Get
-                Return CType(Me(Me.tableSpGetCustDept.CUST_NUMColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableSpGetCustDept.CUST_NUMColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property DEPT() As Short
             Get
                 Return CType(Me(Me.tableSpGetCustDept.DEPTColumn),Short)
@@ -2537,21 +2499,6 @@ Partial Public Class IBPortlandDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property TAX() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableSpGetCustDept.TAXColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'TAX' in table 'SpGetCustDept' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableSpGetCustDept.TAXColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNAMENull() As Boolean
             Return Me.IsNull(Me.tableSpGetCustDept.NAMEColumn)
         End Function
@@ -2596,18 +2543,6 @@ Partial Public Class IBPortlandDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSTARTNull()
             Me(Me.tableSpGetCustDept.STARTColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsTAXNull() As Boolean
-            Return Me.IsNull(Me.tableSpGetCustDept.TAXColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetTAXNull()
-            Me(Me.tableSpGetCustDept.TAXColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3770,13 +3705,11 @@ Namespace IBPortlandDataSetTableAdapters
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "SpGetCustDept"
-            tableMapping.ColumnMappings.Add("CUST_NUM", "CUST_NUM")
             tableMapping.ColumnMappings.Add("DEPT", "DEPT")
             tableMapping.ColumnMappings.Add("NAME", "NAME")
             tableMapping.ColumnMappings.Add("CITY", "CITY")
             tableMapping.ColumnMappings.Add("PHONE", "PHONE")
             tableMapping.ColumnMappings.Add("START", "START")
-            tableMapping.ColumnMappings.Add("TAX", "TAX")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

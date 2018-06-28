@@ -9,6 +9,9 @@ Public Class frmFindCust
 
     Private Sub frmFindCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        GetWindowPos(Me, 333, 66)
+        Me.Show()
+
         GetData()
 
     End Sub
@@ -113,8 +116,7 @@ Public Class frmFindCust
 
         Dim frm As Form
 
-        CurCust = CLng(lstCustNum.SelectedValue)
-        'CurCust = 1008
+        CurCust = CLng(lstCustNum.SelectedItem)
 
         For Each frm In My.Application.OpenForms
             If frm.Name = "frmCust" Then
@@ -124,6 +126,24 @@ Public Class frmFindCust
                 frmViewCust.lblCurCust.Text = CurCust
             End If
         Next
+
+    End Sub
+
+    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+
+        GetData()
+
+    End Sub
+
+    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+
+        Me.Hide()
+
+    End Sub
+
+    Private Sub frmFindCust_Leave(sender As Object, e As EventArgs) Handles Me.Leave
+
+        SaveWindowPos(Me)
 
     End Sub
 

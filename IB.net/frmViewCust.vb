@@ -7,7 +7,7 @@ Public Class frmViewCust
     Private Sub frmViewCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim i As Integer
-        'GetWindowPos Me, 0, 0
+        GetWindowPos(Me, 0, 0)
         'GetColWidths Me, grdDept
         'GetColWidths Me, grdRoute
         'GetColWidths Me, grdItem
@@ -81,8 +81,8 @@ Public Class frmViewCust
 
     Private Sub GetData2()
         'Get routes and items for dept
-        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, 1)
-        Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, 1008, 1)
+        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
+        Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
         'If buserchange Then
         'If data1(1).Recordset.EOF And data1(1).Recordset.BOF Then
         'CurDept = 1

@@ -61,23 +61,23 @@ Partial Class frmViewCust
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lblCurCust = New System.Windows.Forms.Label()
         Me.SpGetCustTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.spGetCustTableAdapter()
-        Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdDept = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustDeptBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetCustDeptTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter()
-        Me.C1TrueDBGrid2 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdRoute = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustRouteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetCustRouteTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter()
-        Me.C1TrueDBGrid3 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdItem = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetCustItemTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter()
         Me.fraEdit.SuspendLayout()
         CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IBPortlandDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDept, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRoute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -436,21 +436,22 @@ Partial Class frmViewCust
         '
         Me.SpGetCustTableAdapter.ClearBeforeFill = True
         '
-        'C1TrueDBGrid1
+        'grdDept
         '
-        Me.C1TrueDBGrid1.AllowUpdate = False
-        Me.C1TrueDBGrid1.DataSource = Me.SpGetCustDeptBindingSource
-        Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(10, 98)
-        Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
-        Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
-        Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
-        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(425, 80)
-        Me.C1TrueDBGrid1.TabIndex = 37
-        Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
+        Me.grdDept.AllowUpdate = False
+        Me.grdDept.DataSource = Me.SpGetCustDeptBindingSource
+        Me.grdDept.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdDept.Images.Add(CType(resources.GetObject("grdDept.Images"), System.Drawing.Image))
+        Me.grdDept.Location = New System.Drawing.Point(10, 98)
+        Me.grdDept.Name = "grdDept"
+        Me.grdDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
+        Me.grdDept.Size = New System.Drawing.Size(425, 80)
+        Me.grdDept.TabIndex = 37
+        Me.grdDept.UseCompatibleTextRendering = False
         '
         'SpGetCustDeptBindingSource
         '
@@ -461,21 +462,22 @@ Partial Class frmViewCust
         '
         Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
         '
-        'C1TrueDBGrid2
+        'grdRoute
         '
-        Me.C1TrueDBGrid2.AllowUpdate = False
-        Me.C1TrueDBGrid2.DataSource = Me.SpGetCustRouteBindingSource
-        Me.C1TrueDBGrid2.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid2.Location = New System.Drawing.Point(10, 184)
-        Me.C1TrueDBGrid2.Name = "C1TrueDBGrid2"
-        Me.C1TrueDBGrid2.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid2.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid2.PreviewInfo.ZoomFactor = 75.0R
-        Me.C1TrueDBGrid2.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid2.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid2.PropBag = resources.GetString("C1TrueDBGrid2.PropBag")
-        Me.C1TrueDBGrid2.Size = New System.Drawing.Size(425, 81)
-        Me.C1TrueDBGrid2.TabIndex = 38
-        Me.C1TrueDBGrid2.UseCompatibleTextRendering = False
+        Me.grdRoute.AllowUpdate = False
+        Me.grdRoute.DataSource = Me.SpGetCustRouteBindingSource
+        Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
+        Me.grdRoute.Location = New System.Drawing.Point(10, 184)
+        Me.grdRoute.Name = "grdRoute"
+        Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
+        Me.grdRoute.Size = New System.Drawing.Size(425, 81)
+        Me.grdRoute.TabIndex = 38
+        Me.grdRoute.UseCompatibleTextRendering = False
         '
         'SpGetCustRouteBindingSource
         '
@@ -486,21 +488,22 @@ Partial Class frmViewCust
         '
         Me.SpGetCustRouteTableAdapter.ClearBeforeFill = True
         '
-        'C1TrueDBGrid3
+        'grdItem
         '
-        Me.C1TrueDBGrid3.AllowUpdate = False
-        Me.C1TrueDBGrid3.DataSource = Me.SpGetCustItemBindingSource
-        Me.C1TrueDBGrid3.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid3.Location = New System.Drawing.Point(10, 271)
-        Me.C1TrueDBGrid3.Name = "C1TrueDBGrid3"
-        Me.C1TrueDBGrid3.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid3.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid3.PreviewInfo.ZoomFactor = 75.0R
-        Me.C1TrueDBGrid3.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid3.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid3.PropBag = resources.GetString("C1TrueDBGrid3.PropBag")
-        Me.C1TrueDBGrid3.Size = New System.Drawing.Size(537, 101)
-        Me.C1TrueDBGrid3.TabIndex = 39
-        Me.C1TrueDBGrid3.UseCompatibleTextRendering = False
+        Me.grdItem.AllowUpdate = False
+        Me.grdItem.DataSource = Me.SpGetCustItemBindingSource
+        Me.grdItem.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdItem.Images.Add(CType(resources.GetObject("grdItem.Images"), System.Drawing.Image))
+        Me.grdItem.Location = New System.Drawing.Point(10, 271)
+        Me.grdItem.Name = "grdItem"
+        Me.grdItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
+        Me.grdItem.Size = New System.Drawing.Size(537, 101)
+        Me.grdItem.TabIndex = 39
+        Me.grdItem.UseCompatibleTextRendering = False
         '
         'SpGetCustItemBindingSource
         '
@@ -516,9 +519,9 @@ Partial Class frmViewCust
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(560, 415)
-        Me.Controls.Add(Me.C1TrueDBGrid3)
-        Me.Controls.Add(Me.C1TrueDBGrid2)
-        Me.Controls.Add(Me.C1TrueDBGrid1)
+        Me.Controls.Add(Me.grdItem)
+        Me.Controls.Add(Me.grdRoute)
+        Me.Controls.Add(Me.grdDept)
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblLabel1)
@@ -556,11 +559,11 @@ Partial Class frmViewCust
         Me.fraEdit.ResumeLayout(False)
         CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IBPortlandDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDept, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdRoute, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdItem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -604,13 +607,13 @@ Partial Class frmViewCust
     Friend WithEvents SpGetCustBindingSource As BindingSource
     Friend WithEvents IBPortlandDataSet As IBPortlandDataSet
     Friend WithEvents SpGetCustTableAdapter As IBPortlandDataSetTableAdapters.spGetCustTableAdapter
-    Friend WithEvents C1TrueDBGrid1 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdDept As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents SpGetCustDeptBindingSource As BindingSource
     Friend WithEvents SpGetCustDeptTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter
-    Friend WithEvents C1TrueDBGrid2 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdRoute As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents SpGetCustRouteBindingSource As BindingSource
     Friend WithEvents SpGetCustRouteTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter
-    Friend WithEvents C1TrueDBGrid3 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdItem As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents SpGetCustItemBindingSource As BindingSource
     Friend WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
 End Class
