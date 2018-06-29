@@ -110,6 +110,12 @@
     <Compile Include="frmDayCalc.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDayProc.Designer.vb">
+      <DependentUpon>frmDayProc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDayProc.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDelQty.Designer.vb">
       <DependentUpon>frmDelQty.vb</DependentUpon>
     </Compile>
@@ -138,6 +144,12 @@
       <DependentUpon>frmFindInvoice.vb</DependentUpon>
     </Compile>
     <Compile Include="frmFindInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHoliday.Designer.vb">
+      <DependentUpon>frmHoliday.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHoliday.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInvHist.Designer.vb">
@@ -175,6 +187,30 @@
       <DependentUpon>frmROHist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmROHist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptCustNew.Designer.vb">
+      <DependentUpon>frmRptCustNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptCustNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptDay1.Designer.vb">
+      <DependentUpon>frmRptDay1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptDay1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptDay2.Designer.vb">
+      <DependentUpon>frmRptDay2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptDay2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptInv.Designer.vb">
+      <DependentUpon>frmRptInv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptInv.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSOHist.Designer.vb">
@@ -244,6 +280,9 @@
     <EmbeddedResource Include="frmDayCalc.resx">
       <DependentUpon>frmDayCalc.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDayProc.resx">
+      <DependentUpon>frmDayProc.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDelQty.resx">
       <DependentUpon>frmDelQty.vb</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFindInvoice.resx">
       <DependentUpon>frmFindInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHoliday.resx">
+      <DependentUpon>frmHoliday.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvHist.resx">
       <DependentUpon>frmInvHist.vb</DependentUpon>
@@ -276,6 +318,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmROHist.resx">
       <DependentUpon>frmROHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptCustNew.resx">
+      <DependentUpon>frmRptCustNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptDay1.resx">
+      <DependentUpon>frmRptDay1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptDay2.resx">
+      <DependentUpon>frmRptDay2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptInv.resx">
+      <DependentUpon>frmRptInv.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSOHist.resx">
       <DependentUpon>frmSOHist.vb</DependentUpon>
