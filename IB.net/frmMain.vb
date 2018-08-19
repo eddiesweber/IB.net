@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frmMain
@@ -95,7 +96,6 @@ Public Class frmMain
         'CompanyName = temp!COMPANY_NM
         'temp.Close()
 
-
         'Screen Position
         GetWindowPos(Me, 15, 15)
         Me.Show()
@@ -103,20 +103,32 @@ Public Class frmMain
         'RPT = Report1
         'RPT.PrinterSelect
 
-
         'OpenData()
+
+    End Sub
+
+    Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        Dim SectionName As String
+
+        'Save file info to registry
+        SectionName = "Data"
+        SaveSetting(APPNAME, SectionName, "Company", Company)
+        SaveSetting(APPNAME, SectionName, "CurCust", CurCust)
+        SaveSetting(APPNAME, SectionName, "CurItem", CurItem)
+        SaveSetting(APPNAME, SectionName, "CurType", CurType)
 
     End Sub
 
     'Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
-    '    Dim sectionname As String
+    'Dim SectionName As String
 
-    '    'Save file info to registry
-    '    sectionname = "Data"
-    '    SaveSetting(APPNAME, sectionname, "CurCust", CurCust)
-    '    SaveSetting(APPNAME, sectionname, "CurItem", CurItem)
-    '    SaveSetting(APPNAME, sectionname, "CurType", CurType)
+    'Save file info to registry
+    '   SectionName = "Data"
+    '  SaveSetting(APPNAME, sectionname, "CurCust", CurCust)
+    ' SaveSetting(APPNAME, sectionname, "CurItem", CurItem)
+    'SaveSetting(APPNAME, sectionname, "CurType", CurType)
 
     '    'Save Screen Position
     '    'SaveWindowPos Me

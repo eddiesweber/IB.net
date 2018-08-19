@@ -1,5 +1,7 @@
 ﻿Option Explicit On
 
+Imports System.Data.SqlClient
+
 Public Class frmViewCust
 
     Private buserchange As Boolean
@@ -58,7 +60,7 @@ Public Class frmViewCust
         'frmFindCust.Show()
         'Exit Sub
         'Else
-        'GetAverage()
+        GetAverage()
         GetData1()
         GetData2()
         'End If
@@ -97,25 +99,78 @@ Public Class frmViewCust
     End Sub
 
     Sub GetAverage()
+
         'Dim ARS As New ADODB.Recordset, q As String, q1 As String
+
         'q = "spGetAverageCust (" & CurCust & ")"
-        'ARS.Open q, DB, adOpenForwardOnly
-        'txtAverage = "0"
+        'ARS.Open(q, DB, ADODB.CursorTypeEnum.adOpenForwardOnly)
+        'txtAverage.Text = "0"
         'If ARS.RecordCount = 1 Then
-        'If Not IsNull(ARS!AVERAGE) Then
-        'txtAverage = RoundOff(ARS!AVERAGE)
+        'If Not IsDBNull(ARS!AVERAGE) Then
+        'txtAverage.Text = RoundOff(ARS!AVERAGE)
         'End If
         'End If
-        'ARS.Close
+        'ARS.Close()
+
+        Using sqlConn As New SqlClient.SqlConnection
+            sqlConn.ConnectionString = CS
+            sqlConn.Open()
+
+            Using sqlDA As New SqlDataAdapter()
+                Using sqlCmd As New SqlCommand
+                    sqlCmd.Connection = sqlConn
+                    sqlCmd.CommandType = CommandType.StoredProcedure
+
+                    sqlCmd.CommandText = "spGetAverageCust"
+                    sqlCmd.Parameters.Add("CustNum", SqlDbType.VarChar).Value = CurCust
+                    sqlDA.SelectCommand = sqlCmd
+
+                    Using sqlReader = sqlCmd.ExecuteReader()
+                        ' If the SqlDataReader.Read returns true then there is a customer with that ID'
+                        If sqlReader.Read() Then
+                            txtAverage.Text = "0"
+                            If Not sqlReader.IsDBNull(0) Then
+                                txtAverage.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                                'Dim dblTemp = RoundOff(sqlReader.GetDouble(0)).ToString()
+                            End If
+                        End If
+                    End Using
+                End Using
+
+                Using sqlCmd As New SqlCommand
+                    sqlCmd.Connection = sqlConn
+                    sqlCmd.CommandType = CommandType.StoredProcedure
+
+                    sqlCmd.CommandText = "spGetAvgPaper"
+                    sqlCmd.Parameters.Add("Cust", SqlDbType.Char).Value = CurCust
+                    sqlDA.SelectCommand = sqlCmd
+
+                    Using sqlReader = sqlCmd.ExecuteReader()
+                        ' If the SqlDataReader.Read returns true then there is a customer with that ID'
+                        If sqlReader.Read() Then
+                            txtAverage2.Text = "0"
+                            If Not sqlReader.IsDBNull(0) Then
+                                txtAverage2.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                            End If
+                        End If
+                    End Using
+                End Using
+            End Using
+        End Using
+
         'q = "spGetAvgPaper (" & CurCust & ")"
-        'ARS.Open q, DB, adOpenForwardOnly
-        'txtAverage2 = "0"
+        'ARS.Open(q, DB, ADODB.CursorTypeEnum.adOpenForwardOnly)
+        'txtAverage2.Text = "0"
         'If ARS.RecordCount = 1 Then
-        'If Not IsNull(ARS!AVERAGE) Then
-        'txtAverage2 = RoundOff(ARS!AVERAGE)
+        'If Not IsDBNull(ARS!AVERAGE) Then
+        'txtAverage2.Text = RoundOff(ARS!AVERAGE)
         'End If
         'End If
-        'ARS.Close
+        'ARS.Close()
+
     End Sub
 
+    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+
+    End Sub
 End Class

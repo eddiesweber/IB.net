@@ -449,7 +449,7 @@ Partial Class frmViewCust
         Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
-        Me.grdDept.Size = New System.Drawing.Size(425, 80)
+        Me.grdDept.Size = New System.Drawing.Size(425, 75)
         Me.grdDept.TabIndex = 37
         Me.grdDept.UseCompatibleTextRendering = False
         '
@@ -468,14 +468,14 @@ Partial Class frmViewCust
         Me.grdRoute.DataSource = Me.SpGetCustRouteBindingSource
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
-        Me.grdRoute.Location = New System.Drawing.Point(10, 184)
+        Me.grdRoute.Location = New System.Drawing.Point(10, 177)
         Me.grdRoute.Name = "grdRoute"
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
-        Me.grdRoute.Size = New System.Drawing.Size(425, 81)
+        Me.grdRoute.Size = New System.Drawing.Size(425, 55)
         Me.grdRoute.TabIndex = 38
         Me.grdRoute.UseCompatibleTextRendering = False
         '
@@ -494,14 +494,14 @@ Partial Class frmViewCust
         Me.grdItem.DataSource = Me.SpGetCustItemBindingSource
         Me.grdItem.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdItem.Images.Add(CType(resources.GetObject("grdItem.Images"), System.Drawing.Image))
-        Me.grdItem.Location = New System.Drawing.Point(10, 271)
+        Me.grdItem.Location = New System.Drawing.Point(10, 236)
         Me.grdItem.Name = "grdItem"
         Me.grdItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
         Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
-        Me.grdItem.Size = New System.Drawing.Size(537, 101)
+        Me.grdItem.Size = New System.Drawing.Size(537, 180)
         Me.grdItem.TabIndex = 39
         Me.grdItem.UseCompatibleTextRendering = False
         '
@@ -518,7 +518,7 @@ Partial Class frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(560, 415)
+        Me.ClientSize = New System.Drawing.Size(553, 420)
         Me.Controls.Add(Me.grdItem)
         Me.Controls.Add(Me.grdRoute)
         Me.Controls.Add(Me.grdDept)

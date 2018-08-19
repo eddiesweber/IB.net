@@ -38,8 +38,14 @@ Module Main
     Public CurVend As String
     Public CurPO As Integer
 
-    Public Const APPNAME = "IB.net"
-    Public Const COMMPW = "BUX"
+    Public Const APPNAME As String = "IB.net"
+    Public Const COMMPW As String = "BUX"
+
+    Public Function RoundOff(A As Single) As Single
+
+        RoundOff = Int(Math.Abs(A) * 100 + 0.5) / 100 * Math.Sign(A)
+
+    End Function
 
     Public Sub PostInvChange(Dat As Date, Typ As String, Item As Long, Source As String, Dest As String, Qty As Single, flag As Boolean)
 

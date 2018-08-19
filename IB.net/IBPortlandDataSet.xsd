@@ -137,7 +137,7 @@
   <xs:element name="IBPortlandDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="IBPortlandDataSet" msprop:Generator_UserDSName="IBPortlandDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="spGetCust" msprop:Generator_TableClassName="spGetCustDataTable" msprop:Generator_TableVarName="tablespGetCust" msprop:Generator_RowChangedName="spGetCustRowChanged" msprop:Generator_TablePropName="spGetCust" msprop:Generator_RowDeletingName="spGetCustRowDeleting" msprop:Generator_RowChangingName="spGetCustRowChanging" msprop:Generator_RowEvHandlerName="spGetCustRowChangeEventHandler" msprop:Generator_RowDeletedName="spGetCustRowDeleted" msprop:Generator_RowClassName="spGetCustRow" msprop:Generator_UserTableName="spGetCust" msprop:Generator_RowEvArgName="spGetCustRowChangeEvent">
+        <xs:element name="spGetCust" msprop:Generator_TableClassName="spGetCustDataTable" msprop:Generator_TableVarName="tablespGetCust" msprop:Generator_TablePropName="spGetCust" msprop:Generator_RowDeletingName="spGetCustRowDeleting" msprop:Generator_RowChangingName="spGetCustRowChanging" msprop:Generator_RowEvHandlerName="spGetCustRowChangeEventHandler" msprop:Generator_RowDeletedName="spGetCustRowDeleted" msprop:Generator_UserTableName="spGetCust" msprop:Generator_RowChangedName="spGetCustRowChanged" msprop:Generator_RowEvArgName="spGetCustRowChangeEvent" msprop:Generator_RowClassName="spGetCustRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CUST_NUM" msprop:Generator_ColumnVarNameInTable="columnCUST_NUM" msprop:Generator_ColumnPropNameInRow="CUST_NUM" msprop:Generator_ColumnPropNameInTable="CUST_NUMColumn" msprop:Generator_UserColumnName="CUST_NUM" type="xs:int" />
@@ -235,7 +235,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SpGetCustDept" msprop:Generator_TableClassName="SpGetCustDeptDataTable" msprop:Generator_TableVarName="tableSpGetCustDept" msprop:Generator_RowChangedName="SpGetCustDeptRowChanged" msprop:Generator_TablePropName="SpGetCustDept" msprop:Generator_RowDeletingName="SpGetCustDeptRowDeleting" msprop:Generator_RowChangingName="SpGetCustDeptRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustDeptRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustDeptRowDeleted" msprop:Generator_RowClassName="SpGetCustDeptRow" msprop:Generator_UserTableName="SpGetCustDept" msprop:Generator_RowEvArgName="SpGetCustDeptRowChangeEvent">
+        <xs:element name="SpGetCustDept" msprop:Generator_TableClassName="SpGetCustDeptDataTable" msprop:Generator_TableVarName="tableSpGetCustDept" msprop:Generator_TablePropName="SpGetCustDept" msprop:Generator_RowDeletingName="SpGetCustDeptRowDeleting" msprop:Generator_RowChangingName="SpGetCustDeptRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustDeptRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustDeptRowDeleted" msprop:Generator_UserTableName="SpGetCustDept" msprop:Generator_RowChangedName="SpGetCustDeptRowChanged" msprop:Generator_RowEvArgName="SpGetCustDeptRowChangeEvent" msprop:Generator_RowClassName="SpGetCustDeptRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DEPT" msprop:Generator_ColumnVarNameInTable="columnDEPT" msprop:Generator_ColumnPropNameInRow="DEPT" msprop:Generator_ColumnPropNameInTable="DEPTColumn" msprop:Generator_UserColumnName="DEPT" type="xs:short" />
@@ -264,7 +264,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SpGetCustItem" msprop:Generator_TableClassName="SpGetCustItemDataTable" msprop:Generator_TableVarName="tableSpGetCustItem" msprop:Generator_RowChangedName="SpGetCustItemRowChanged" msprop:Generator_TablePropName="SpGetCustItem" msprop:Generator_RowDeletingName="SpGetCustItemRowDeleting" msprop:Generator_RowChangingName="SpGetCustItemRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustItemRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustItemRowDeleted" msprop:Generator_RowClassName="SpGetCustItemRow" msprop:Generator_UserTableName="SpGetCustItem" msprop:Generator_RowEvArgName="SpGetCustItemRowChangeEvent">
+        <xs:element name="SpGetCustItem" msprop:Generator_TableClassName="SpGetCustItemDataTable" msprop:Generator_TableVarName="tableSpGetCustItem" msprop:Generator_TablePropName="SpGetCustItem" msprop:Generator_RowDeletingName="SpGetCustItemRowDeleting" msprop:Generator_RowChangingName="SpGetCustItemRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustItemRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustItemRowDeleted" msprop:Generator_UserTableName="SpGetCustItem" msprop:Generator_RowChangedName="SpGetCustItemRowChanged" msprop:Generator_RowEvArgName="SpGetCustItemRowChangeEvent" msprop:Generator_RowClassName="SpGetCustItemRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CUST_NUM" msprop:Generator_ColumnVarNameInTable="columnCUST_NUM" msprop:Generator_ColumnPropNameInRow="CUST_NUM" msprop:Generator_ColumnPropNameInTable="CUST_NUMColumn" msprop:Generator_UserColumnName="CUST_NUM" type="xs:int" />
@@ -328,7 +328,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SpGetCustRoute" msprop:Generator_TableClassName="SpGetCustRouteDataTable" msprop:Generator_TableVarName="tableSpGetCustRoute" msprop:Generator_RowChangedName="SpGetCustRouteRowChanged" msprop:Generator_TablePropName="SpGetCustRoute" msprop:Generator_RowDeletingName="SpGetCustRouteRowDeleting" msprop:Generator_RowChangingName="SpGetCustRouteRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustRouteRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustRouteRowDeleted" msprop:Generator_RowClassName="SpGetCustRouteRow" msprop:Generator_UserTableName="SpGetCustRoute" msprop:Generator_RowEvArgName="SpGetCustRouteRowChangeEvent">
+        <xs:element name="SpGetCustRoute" msprop:Generator_TableClassName="SpGetCustRouteDataTable" msprop:Generator_TableVarName="tableSpGetCustRoute" msprop:Generator_TablePropName="SpGetCustRoute" msprop:Generator_RowDeletingName="SpGetCustRouteRowDeleting" msprop:Generator_RowChangingName="SpGetCustRouteRowChanging" msprop:Generator_RowEvHandlerName="SpGetCustRouteRowChangeEventHandler" msprop:Generator_RowDeletedName="SpGetCustRouteRowDeleted" msprop:Generator_UserTableName="SpGetCustRoute" msprop:Generator_RowChangedName="SpGetCustRouteRowChanged" msprop:Generator_RowEvArgName="SpGetCustRouteRowChangeEvent" msprop:Generator_RowClassName="SpGetCustRouteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CUST_NUM" msprop:Generator_ColumnVarNameInTable="columnCUST_NUM" msprop:Generator_ColumnPropNameInRow="CUST_NUM" msprop:Generator_ColumnPropNameInTable="CUST_NUMColumn" msprop:Generator_UserColumnName="CUST_NUM" type="xs:int" />
