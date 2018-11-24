@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frmViewCust
@@ -8,8 +9,17 @@ Public Class frmViewCust
 
     Private Sub frmViewCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim i As Integer
         GetWindowPos(Me, 0, 0)
+
+        If Dir("grdDept.xml") <> "" Then
+            grdDept.LoadLayout("grdDept.xml")
+        End If
+        If Dir("grdRoute.xml") <> "" Then
+            grdRoute.LoadLayout("grdRoute.xml")
+        End If
+        If Dir("grdItem.xml") <> "" Then
+            grdItem.LoadLayout("grdItem.xml")
+        End If
         'GetColWidths Me, grdDept
         'GetColWidths Me, grdRoute
         'GetColWidths Me, grdItem
@@ -82,6 +92,7 @@ Public Class frmViewCust
     End Sub
 
     Private Sub GetData2()
+
         'Get routes and items for dept
         Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
         Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
@@ -172,5 +183,55 @@ Public Class frmViewCust
 
     Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
 
+        buserchange = False
+        GetData()
+        buserchange = True
+
     End Sub
+
+    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+
+        Me.Close()
+
+    End Sub
+
+    Private Sub frmViewCust_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        SaveWindowPos(Me)
+
+        grdDept.SaveLayout("grdDept.xml")
+        grdRoute.SaveLayout("grdRoute.xml")
+        grdItem.SaveLayout("grdItem.xml")
+        'SaveColWidths(Me, grdDept)
+        'SaveColWidths(Me, grdRoute)
+        'SaveColWidths(Me, grdItem)
+
+    End Sub
+
+    Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
+
+        frmFindCust.Show()
+        frmFindCust.BringToFront()
+
+    End Sub
+
+    Private Sub cmdEditCust_Click(sender As Object, e As EventArgs) Handles cmdEditCust.Click
+
+        frmCust.Show()
+        frmCust.BringToFront()
+
+    End Sub
+
+    Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
+
+    End Sub
+
+    Private Sub grdDept_Click(sender As Object, e As EventArgs) Handles grdDept.Click
+
+        CurDept = grdDept.Row
+
+        GetData2()
+
+    End Sub
+
 End Class

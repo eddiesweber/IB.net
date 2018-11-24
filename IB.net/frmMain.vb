@@ -10,12 +10,15 @@ Public Class frmMain
         Dim command As New SqlCommand
 
         Dim sectionname As String
-        Dim Result As DialogResult
+        'Dim Result As DialogResult
         Dim q As String
+        Dim strSQLServer As String
 
         If PrevInstance() Then
             Exit Sub
         End If
+
+        strSQLServer = My.Computer.FileSystem.ReadAllText("\\IBSERVER2016\IBShare\SQLServer.txt")
 
         CommFlag = False
         DataPath = Application.StartupPath()
@@ -27,8 +30,8 @@ Public Class frmMain
         CurItem = GetSetting(APPNAME, sectionname, "CurItem", 0)
         CurType = GetSetting(APPNAME, sectionname, "CurType", "")
 
-        ConfigCS = "Data Source=IB2016\SQLEXPRESS;Initial Catalog=master;Integrated Security=True"
-        configdb = New SqlConnection(ConfigCS)
+        ConfigCS = "Data Source=" & strSQLServer & ";Initial Catalog=master;Integrated Security=True"
+        configDB = New SqlConnection(ConfigCS)
         configdb.ConnectionString = ConfigCS
 
         ' Open connection to master database
@@ -48,54 +51,6 @@ Public Class frmMain
         DBName = ""
         ServerName = ""
 
-        ' Get DBName and Server Name from Master/IBConfig
-        Do While DBName = "" And ServerName = ""
-            q = "Select * From IBConfig where Location_ID='" & Company & "'"
-            command = New SqlCommand(q, configdb)
-            Try
-                Dim dataReader As SqlDataReader = command.ExecuteReader()
-
-                dataReader.Read()
-                DBName = dataReader(2)
-                ServerName = dataReader(1)
-
-                dataReader.Close()
-
-            Catch ex As Exception
-                frmCompany.ShowDialog()
-            End Try
-        Loop
-
-        CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
-        DB = New SqlConnection(CS)
-        DB.ConnectionString = CS
-        q = "Select * From Company where Company_ID='" & Company & "'"
-
-        ' Create the Command and Parameter objects.
-        command = New SqlCommand(q, DB)
-
-        Try
-            DB.Open()
-
-            Dim dataReader As SqlDataReader = command.ExecuteReader()
-
-            dataReader.Read()
-
-            gCompanyName = dataReader(0)
-
-            dataReader.Close()
-            Me.Text = "Indoor Billboard - " & Company
-            'Rearrange CS the way Crystal likes
-            CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
-
-        Catch ex As Exception
-            frmMain2.ShowDialog()
-        End Try
-
-        'Call temp.Open(q, DB, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockOptimistic)
-        'CompanyName = temp!COMPANY_NM
-        'temp.Close()
-
         'Screen Position
         GetWindowPos(Me, 15, 15)
         Me.Show()
@@ -103,7 +58,7 @@ Public Class frmMain
         'RPT = Report1
         'RPT.PrinterSelect
 
-        'OpenData()
+        OpenData()
 
     End Sub
 
@@ -158,7 +113,7 @@ Public Class frmMain
 
     Private Sub SelectDivisionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectDivisionToolStripMenuItem.Click
 
-        'frmCompany.ShowDialog()
+        frmCompany.ShowDialog()
 
         If DB Is Nothing Then
             Application.Exit()

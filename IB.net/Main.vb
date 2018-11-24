@@ -2,7 +2,7 @@
 
 Module Main
 
-    Public configdb As SqlConnection
+    Public configDB As SqlConnection
     Public DB As SqlConnection
     Public CS As String
     Public CryCS As String
@@ -14,7 +14,7 @@ Module Main
     'Public Company As String * 10
     'Public CompanyName As String * 32
     Public Company As String
-    Public gCompanyName As String
+    Public CompanyName As String
 
     Public CurCust As Long
     Public CustFileChanged As Boolean
@@ -41,6 +41,73 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
+    Public Sub OpenData()
+
+        Dim strSQL As String
+
+        ' Close old Database
+        Try
+            If DB.State = ConnectionState.Open Then
+                DB.Close()
+            End If
+        Catch
+            ' DB is already closed
+        Finally
+            DB = Nothing
+        End Try
+
+        ' Close opened forms
+        For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
+            If Not (My.Application.OpenForms(count).Name = "frmCompany" Or My.Application.OpenForms(count).Name = "frmMain") Then
+                My.Application.OpenForms(count).Close()
+            End If
+        Next
+
+        ' Get DBName and Server Name from Master/IBConfig
+        DBName = ""
+        ServerName = ""
+        Do While DBName = "" And ServerName = ""
+            strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
+            Using Command As New SqlCommand(strSQL, configdb)
+                Try
+                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                    dataReader.Read()
+
+                    DBName = dataReader.Item("DBName")
+                    ServerName = dataReader.Item("ServerName")
+
+                    dataReader.Close()
+                Catch ex As Exception
+                    frmCompany.ShowDialog()
+                End Try
+            End Using
+        Loop
+
+        ' ReBuld connection string and open db
+        CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
+        DB = New SqlConnection(CS)
+        DB.ConnectionString = CS
+        DB.Open()
+
+        strSQL = "Select * From Company where Company_ID='" & Company & "'"
+        Using Command As New SqlCommand(strSQL, DB)
+            Try
+                Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                dataReader.Read()
+                CompanyName = dataReader.Item("Company_NM")
+                dataReader.Close()
+
+                frmMain.Text = "Indoor Billboard - " & CompanyName
+
+                'Rearrange CS the way Crystal likes
+                CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
+            Catch ex As Exception
+                frmMain2.ShowDialog()
+            End Try
+        End Using
+
+    End Sub
+
     Public Function RoundOff(A As Single) As Single
 
         RoundOff = Int(Math.Abs(A) * 100 + 0.5) / 100 * Math.Sign(A)
@@ -65,6 +132,7 @@ Module Main
     End Sub
 
     Public Sub GetWindowPos(ByVal fm As Form, ByVal DefL As Integer, ByVal DefT As Integer)
+
         Dim L As Integer, T As Integer, W As Integer, H As Integer
         Dim WS As Integer, sectionname As String
 
@@ -114,5 +182,52 @@ Module Main
         End If
 
     End Sub
+    Public Function CCEncrypt(strText As String) As String
+
+        Dim i As Integer
+        'Dim strChar As String * 1
+        Dim intCharValue As Integer
+        Dim intOver As Integer
+        Dim strTemp As String
+
+        strTemp = Space(Len(strText))
+        For i = 1 To Len(Trim(strText))
+            If IsNumeric(Mid(strText, i, 1)) Then
+                intCharValue = Asc(Mid(strText, i, 1))
+                intCharValue = intCharValue + 13
+                Do While intCharValue > 57
+                    intOver = intCharValue - 57
+                    intCharValue = 48 + intOver - 1
+                Loop
+                Mid(strTemp, i, 1) = Chr(intCharValue)
+            End If
+        Next
+
+        CCEncrypt = strTemp
+
+    End Function
+
+    Public Function CCDecrypt(strText As String) As String
+
+        Dim i As Integer
+        'Dim strChar As String * 1
+        Dim intCharValue As Integer
+        Dim intunder As Integer
+        Dim strTemp As String
+
+        strTemp = Space(Len(strText))
+        For i = 1 To Len(Trim(strText))
+            intCharValue = Asc(Mid(strText, i, 1))
+            intCharValue = intCharValue - 13
+            Do While intCharValue < 48
+                intunder = 48 - intCharValue
+                intCharValue = 57 - intunder + 1
+            Loop
+            Mid(strTemp, i, 1) = Chr(intCharValue)
+        Next
+
+        CCDecrypt = strTemp
+
+    End Function
 
 End Module

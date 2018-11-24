@@ -60,15 +60,15 @@ Partial Class frmViewCust
         Me.lblLabel1 = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lblCurCust = New System.Windows.Forms.Label()
-        Me.SpGetCustTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.spGetCustTableAdapter()
         Me.grdDept = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustDeptBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SpGetCustDeptTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter()
         Me.grdRoute = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustRouteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SpGetCustRouteTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter()
         Me.grdItem = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetCustItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetCustTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.spGetCustTableAdapter()
+        Me.SpGetCustDeptTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter()
+        Me.SpGetCustRouteTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter()
         Me.SpGetCustItemTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter()
         Me.fraEdit.SuspendLayout()
         CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -432,10 +432,6 @@ Partial Class frmViewCust
         Me.lblCurCust.TabIndex = 0
         Me.lblCurCust.Visible = False
         '
-        'SpGetCustTableAdapter
-        '
-        Me.SpGetCustTableAdapter.ClearBeforeFill = True
-        '
         'grdDept
         '
         Me.grdDept.AllowUpdate = False
@@ -457,10 +453,6 @@ Partial Class frmViewCust
         '
         Me.SpGetCustDeptBindingSource.DataMember = "SpGetCustDept"
         Me.SpGetCustDeptBindingSource.DataSource = Me.IBPortlandDataSet
-        '
-        'SpGetCustDeptTableAdapter
-        '
-        Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
         '
         'grdRoute
         '
@@ -484,10 +476,6 @@ Partial Class frmViewCust
         Me.SpGetCustRouteBindingSource.DataMember = "SpGetCustRoute"
         Me.SpGetCustRouteBindingSource.DataSource = Me.IBPortlandDataSet
         '
-        'SpGetCustRouteTableAdapter
-        '
-        Me.SpGetCustRouteTableAdapter.ClearBeforeFill = True
-        '
         'grdItem
         '
         Me.grdItem.AllowUpdate = False
@@ -509,6 +497,18 @@ Partial Class frmViewCust
         '
         Me.SpGetCustItemBindingSource.DataMember = "SpGetCustItem"
         Me.SpGetCustItemBindingSource.DataSource = Me.IBPortlandDataSet
+        '
+        'SpGetCustTableAdapter
+        '
+        Me.SpGetCustTableAdapter.ClearBeforeFill = True
+        '
+        'SpGetCustDeptTableAdapter
+        '
+        Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
+        '
+        'SpGetCustRouteTableAdapter
+        '
+        Me.SpGetCustRouteTableAdapter.ClearBeforeFill = True
         '
         'SpGetCustItemTableAdapter
         '

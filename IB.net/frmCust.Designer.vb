@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCust
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,12 @@ Partial Class frmCust
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.chkData = New System.Windows.Forms.CheckBox()
+        Me.CustomerMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_CustomerMaster1 = New IB.net.DS_CustomerMaster()
         Me.optData1 = New System.Windows.Forms.RadioButton()
         Me.optData0 = New System.Windows.Forms.RadioButton()
         Me.txtData12 = New System.Windows.Forms.TextBox()
@@ -63,17 +66,34 @@ Partial Class frmCust
         Me.lblLabel4 = New System.Windows.Forms.Label()
         Me.lblLabel = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
+        Me.CustomerMasterTableAdapter = New IB.net.DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter()
+        Me.C1SuperErrorProvider1 = New C1.Win.C1SuperTooltip.C1SuperErrorProvider(Me.components)
+        Me.C1SuperTooltip1 = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
+        CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkData
         '
         Me.chkData.AutoSize = True
+        Me.chkData.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CustomerMasterBindingSource, "MAIL_STATEMENT", True))
         Me.chkData.Location = New System.Drawing.Point(242, 291)
         Me.chkData.Name = "chkData"
         Me.chkData.Size = New System.Drawing.Size(72, 17)
         Me.chkData.TabIndex = 41
         Me.chkData.Text = "Mail Stmt:"
         Me.chkData.UseVisualStyleBackColor = True
+        '
+        'CustomerMasterBindingSource
+        '
+        Me.CustomerMasterBindingSource.DataMember = "CustomerMaster"
+        Me.CustomerMasterBindingSource.DataSource = Me.DS_CustomerMaster1
+        '
+        'DS_CustomerMaster1
+        '
+        Me.DS_CustomerMaster1.DataSetName = "DS_CustomerMaster"
+        Me.DS_CustomerMaster1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'optData1
         '
@@ -101,6 +121,7 @@ Partial Class frmCust
         '
         'txtData12
         '
+        Me.txtData12.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "Last_Change", True))
         Me.txtData12.ForeColor = System.Drawing.Color.Navy
         Me.txtData12.Location = New System.Drawing.Point(364, 273)
         Me.txtData12.Name = "txtData12"
@@ -110,6 +131,7 @@ Partial Class frmCust
         '
         'txtData11
         '
+        Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CC_NUM", True))
         Me.txtData11.ForeColor = System.Drawing.Color.Navy
         Me.txtData11.Location = New System.Drawing.Point(77, 315)
         Me.txtData11.Name = "txtData11"
@@ -146,6 +168,7 @@ Partial Class frmCust
         '
         'txtData10
         '
+        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "COUNTY", True))
         Me.txtData10.ForeColor = System.Drawing.Color.Navy
         Me.txtData10.Location = New System.Drawing.Point(77, 147)
         Me.txtData10.Name = "txtData10"
@@ -163,6 +186,7 @@ Partial Class frmCust
         '
         'txtOption
         '
+        Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
         Me.txtOption.Location = New System.Drawing.Point(49, 287)
         Me.txtOption.Name = "txtOption"
         Me.txtOption.Size = New System.Drawing.Size(20, 20)
@@ -171,6 +195,7 @@ Partial Class frmCust
         '
         'txtData9
         '
+        Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "URL", True))
         Me.txtData9.ForeColor = System.Drawing.Color.Navy
         Me.txtData9.Location = New System.Drawing.Point(77, 259)
         Me.txtData9.Name = "txtData9"
@@ -179,6 +204,7 @@ Partial Class frmCust
         '
         'txtData8
         '
+        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "EMAIL", True))
         Me.txtData8.ForeColor = System.Drawing.Color.Navy
         Me.txtData8.Location = New System.Drawing.Point(77, 231)
         Me.txtData8.Name = "txtData8"
@@ -187,6 +213,7 @@ Partial Class frmCust
         '
         'txtData7
         '
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CONTACT", True))
         Me.txtData7.ForeColor = System.Drawing.Color.Navy
         Me.txtData7.Location = New System.Drawing.Point(77, 175)
         Me.txtData7.Name = "txtData7"
@@ -195,6 +222,7 @@ Partial Class frmCust
         '
         'txtData6
         '
+        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CARE_OF", True))
         Me.txtData6.ForeColor = System.Drawing.Color.Navy
         Me.txtData6.Location = New System.Drawing.Point(77, 119)
         Me.txtData6.Name = "txtData6"
@@ -203,6 +231,7 @@ Partial Class frmCust
         '
         'txtData5
         '
+        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_ZIP", True))
         Me.txtData5.ForeColor = System.Drawing.Color.Navy
         Me.txtData5.Location = New System.Drawing.Point(231, 91)
         Me.txtData5.Name = "txtData5"
@@ -211,6 +240,7 @@ Partial Class frmCust
         '
         'txtData4
         '
+        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_STATE", True))
         Me.txtData4.ForeColor = System.Drawing.Color.Navy
         Me.txtData4.Location = New System.Drawing.Point(196, 91)
         Me.txtData4.Name = "txtData4"
@@ -219,6 +249,7 @@ Partial Class frmCust
         '
         'txtData3
         '
+        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_CTY", True))
         Me.txtData3.ForeColor = System.Drawing.Color.Navy
         Me.txtData3.Location = New System.Drawing.Point(77, 91)
         Me.txtData3.Name = "txtData3"
@@ -227,6 +258,7 @@ Partial Class frmCust
         '
         'txtData2
         '
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_STR", True))
         Me.txtData2.ForeColor = System.Drawing.Color.Navy
         Me.txtData2.Location = New System.Drawing.Point(77, 63)
         Me.txtData2.Name = "txtData2"
@@ -263,6 +295,7 @@ Partial Class frmCust
         '
         'txtData0
         '
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CUST_NUM", True))
         Me.txtData0.Enabled = False
         Me.txtData0.ForeColor = System.Drawing.Color.Navy
         Me.txtData0.Location = New System.Drawing.Point(112, 7)
@@ -272,6 +305,7 @@ Partial Class frmCust
         '
         'txtData1
         '
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_NAME", True))
         Me.txtData1.ForeColor = System.Drawing.Color.Navy
         Me.txtData1.Location = New System.Drawing.Point(77, 35)
         Me.txtData1.Name = "txtData1"
@@ -280,6 +314,7 @@ Partial Class frmCust
         '
         'txmData1
         '
+        Me.txmData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "FAX_NO", True))
         Me.txmData1.ForeColor = System.Drawing.Color.Navy
         Me.txmData1.Location = New System.Drawing.Point(217, 203)
         Me.txmData1.Name = "txmData1"
@@ -288,6 +323,7 @@ Partial Class frmCust
         '
         'txmData0
         '
+        Me.txmData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "PHONE", True))
         Me.txmData0.ForeColor = System.Drawing.Color.Navy
         Me.txmData0.Location = New System.Drawing.Point(77, 203)
         Me.txmData0.Name = "txmData0"
@@ -308,9 +344,9 @@ Partial Class frmCust
         Me.lblLabel12.AutoSize = True
         Me.lblLabel12.Location = New System.Drawing.Point(7, 315)
         Me.lblLabel12.Name = "lblLabel12"
-        Me.lblLabel12.Size = New System.Drawing.Size(72, 13)
+        Me.lblLabel12.Size = New System.Drawing.Size(69, 13)
         Me.lblLabel12.TabIndex = 27
-        Me.lblLabel12.Text = "C&redit Card #:"
+        Me.lblLabel12.Text = "C&redit Card #"
         '
         'lblCurCust
         '
@@ -430,6 +466,20 @@ Partial Class frmCust
         Me.lblLabel0.TabIndex = 0
         Me.lblLabel0.Text = "&Customer Number:"
         '
+        'CustomerMasterTableAdapter
+        '
+        Me.CustomerMasterTableAdapter.ClearBeforeFill = True
+        '
+        'C1SuperErrorProvider1
+        '
+        Me.C1SuperErrorProvider1.ContainerControl = Me
+        Me.C1SuperErrorProvider1.ToolTip = Me.C1SuperTooltip1
+        '
+        'C1SuperTooltip1
+        '
+        Me.C1SuperTooltip1.Font = New System.Drawing.Font("Tahoma", 8.0!)
+        Me.C1SuperTooltip1.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
+        '
         'frmCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -482,6 +532,9 @@ Partial Class frmCust
         Me.Name = "frmCust"
         Me.ShowInTaskbar = False
         Me.Text = "Add/Edit Customers"
+        CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -528,4 +581,9 @@ Partial Class frmCust
     Friend WithEvents lblLabel4 As Label
     Friend WithEvents lblLabel As Label
     Friend WithEvents lblLabel0 As Label
+    Friend WithEvents DS_CustomerMaster1 As DS_CustomerMaster
+    Friend WithEvents CustomerMasterBindingSource As BindingSource
+    Friend WithEvents CustomerMasterTableAdapter As DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter
+    Friend WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
+    Friend WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
 End Class

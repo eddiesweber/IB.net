@@ -47,6 +47,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.Win.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
+    <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -74,6 +76,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS_CustomerMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmCat.Designer.vb">
       <DependentUpon>frmCat.vb</DependentUpon>
     </Compile>
@@ -352,6 +359,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DS_CustomerMaster.xsc">
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+    </None>
+    <None Include="DS_CustomerMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CustomerMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_CustomerMaster.xss">
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+    </None>
     <None Include="IBPortlandDataSet.xsc">
       <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
     </None>
