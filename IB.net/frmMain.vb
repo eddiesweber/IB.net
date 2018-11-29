@@ -11,7 +11,6 @@ Public Class frmMain
 
         Dim sectionname As String
         'Dim Result As DialogResult
-        Dim q As String
         Dim strSQLServer As String
 
         If PrevInstance() Then

@@ -76,10 +76,232 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DS_CustomerMaster.Designer.vb">
+    <Compile Include="frmCustCanc.designer.vb">
+      <DependentUpon>frmCustCanc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustCanc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdeptlist.designer.vb">
+      <DependentUpon>frmdeptlist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmdeptlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindItem.designer.vb">
+      <DependentUpon>frmFindItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindPO.designer.vb">
+      <DependentUpon>frmFindPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindPO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindVend.designer.vb">
+      <DependentUpon>frmFindVend.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindVend.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvAdj.designer.vb">
+      <DependentUpon>frmInvAdj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvAdj.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvItem.designer.vb">
+      <DependentUpon>frmInvItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvPhys.designer.vb">
+      <DependentUpon>frmInvPhys.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvPhys.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvPhys2.designer.vb">
+      <DependentUpon>frmInvPhys2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvPhys2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvRpt.designer.vb">
+      <DependentUpon>frmInvRpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvRpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItem.designer.vb">
+      <DependentUpon>frmItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmitemreports.designer.vb">
+      <DependentUpon>frmitemreports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmitemreports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmmiscrpt.designer.vb">
+      <DependentUpon>frmmiscrpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmmiscrpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotes.designer.vb">
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPO.designer.vb">
+      <DependentUpon>frmPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOItem.designer.vb">
+      <DependentUpon>frmPOItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPONew.designer.vb">
+      <DependentUpon>frmPONew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPONew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPONew2.designer.vb">
+      <DependentUpon>frmPONew2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPONew2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPPort.designer.vb">
+      <DependentUpon>frmPPort.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPPort.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPurge.designer.vb">
+      <DependentUpon>frmPurge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPurge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPW.designer.vb">
+      <DependentUpon>frmPW.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPW.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRentComm.designer.vb">
+      <DependentUpon>frmRentComm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRentComm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRentCommEdit.designer.vb">
+      <DependentUpon>frmRentCommEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRentCommEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRoute.designer.vb">
+      <DependentUpon>frmRoute.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRoute.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRouteEdit.designer.vb">
+      <DependentUpon>frmRouteEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRouteEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRouteMast.designer.vb">
+      <DependentUpon>frmRouteMast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRouteMast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRouteRpt.designer.vb">
+      <DependentUpon>frmRouteRpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRouteRpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptAvgRev.designer.vb">
+      <DependentUpon>frmRptAvgRev.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptAvgRev.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptComm.designer.vb">
+      <DependentUpon>frmRptComm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptComm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptExcept.designer.vb">
+      <DependentUpon>frmRptExcept.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptExcept.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptItemUse.designer.vb">
+      <DependentUpon>frmRptItemUse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptItemUse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptLblCan.designer.vb">
+      <DependentUpon>frmRptLblCan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptLblCan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSales.designer.vb">
+      <DependentUpon>frmRptSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmsalestaxreports.designer.vb">
+      <DependentUpon>frmsalestaxreports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmsalestaxreports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSlsmn.designer.vb">
+      <DependentUpon>frmSlsmn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSlsmn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVend.designer.vb">
+      <DependentUpon>frmVend.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVend.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewItem.designer.vb">
+      <DependentUpon>frmViewItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IBPortlandDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmCat.Designer.vb">
       <DependentUpon>frmCat.vb</DependentUpon>
@@ -244,10 +466,10 @@
     <Compile Include="frmZipSearch.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IBPortlandDataSet.Designer.vb">
+    <Compile Include="frmMainDataSetAll.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
     </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="masterDataSet.Designer.vb">
@@ -281,6 +503,9 @@
     <EmbeddedResource Include="frmCust.resx">
       <DependentUpon>frmCust.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCustCanc.resx">
+      <DependentUpon>frmCustCanc.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCustSurcharge.resx">
       <DependentUpon>frmCustSurcharge.vb</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +521,9 @@
     <EmbeddedResource Include="frmDept.resx">
       <DependentUpon>frmDept.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmdeptlist.resx">
+      <DependentUpon>frmdeptlist.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFindCust.resx">
       <DependentUpon>frmFindCust.vb</DependentUpon>
     </EmbeddedResource>
@@ -305,14 +533,44 @@
     <EmbeddedResource Include="frmFindInvoice.resx">
       <DependentUpon>frmFindInvoice.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFindItem.resx">
+      <DependentUpon>frmFindItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindPO.resx">
+      <DependentUpon>frmFindPO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindVend.resx">
+      <DependentUpon>frmFindVend.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHoliday.resx">
       <DependentUpon>frmHoliday.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvAdj.resx">
+      <DependentUpon>frmInvAdj.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvHist.resx">
       <DependentUpon>frmInvHist.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInvItem.resx">
+      <DependentUpon>frmInvItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvPhys.resx">
+      <DependentUpon>frmInvPhys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvPhys2.resx">
+      <DependentUpon>frmInvPhys2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInvRebill.resx">
       <DependentUpon>frmInvRebill.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvRpt.resx">
+      <DependentUpon>frmInvRpt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItem.resx">
+      <DependentUpon>frmItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmitemreports.resx">
+      <DependentUpon>frmitemreports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -320,11 +578,62 @@
     <EmbeddedResource Include="frmMain2.resx">
       <DependentUpon>frmMain2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmmiscrpt.resx">
+      <DependentUpon>frmmiscrpt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotes.resx">
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPO.resx">
+      <DependentUpon>frmPO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOItem.resx">
+      <DependentUpon>frmPOItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPONew.resx">
+      <DependentUpon>frmPONew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPONew2.resx">
+      <DependentUpon>frmPONew2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPPort.resx">
+      <DependentUpon>frmPPort.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPurge.resx">
+      <DependentUpon>frmPurge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPW.resx">
+      <DependentUpon>frmPW.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRentComm.resx">
+      <DependentUpon>frmRentComm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRentCommEdit.resx">
+      <DependentUpon>frmRentCommEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRentOrd.resx">
       <DependentUpon>frmRentOrd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmROHist.resx">
       <DependentUpon>frmROHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRoute.resx">
+      <DependentUpon>frmRoute.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRouteEdit.resx">
+      <DependentUpon>frmRouteEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRouteMast.resx">
+      <DependentUpon>frmRouteMast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRouteRpt.resx">
+      <DependentUpon>frmRouteRpt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptAvgRev.resx">
+      <DependentUpon>frmRptAvgRev.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptComm.resx">
+      <DependentUpon>frmRptComm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRptCustNew.resx">
       <DependentUpon>frmRptCustNew.vb</DependentUpon>
@@ -335,8 +644,26 @@
     <EmbeddedResource Include="frmRptDay2.resx">
       <DependentUpon>frmRptDay2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRptExcept.resx">
+      <DependentUpon>frmRptExcept.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRptInv.resx">
       <DependentUpon>frmRptInv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptItemUse.resx">
+      <DependentUpon>frmRptItemUse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptLblCan.resx">
+      <DependentUpon>frmRptLblCan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSales.resx">
+      <DependentUpon>frmRptSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmsalestaxreports.resx">
+      <DependentUpon>frmsalestaxreports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSlsmn.resx">
+      <DependentUpon>frmSlsmn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSOHist.resx">
       <DependentUpon>frmSOHist.vb</DependentUpon>
@@ -344,8 +671,14 @@
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVend.resx">
+      <DependentUpon>frmVend.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmViewCust.resx">
       <DependentUpon>frmViewCust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewItem.resx">
+      <DependentUpon>frmViewItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmZipSearch.resx">
       <DependentUpon>frmZipSearch.vb</DependentUpon>
@@ -359,17 +692,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DS_CustomerMaster.xsc">
-      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
-    </None>
-    <None Include="DS_CustomerMaster.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_CustomerMaster.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DS_CustomerMaster.xss">
-      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
-    </None>
     <None Include="IBPortlandDataSet.xsc">
       <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
     </None>
@@ -380,6 +702,17 @@
     </None>
     <None Include="IBPortlandDataSet.xss">
       <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="frmMainDataSetAll.xsc">
+      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
+    </None>
+    <None Include="frmMainDataSetAll.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>frmMainDataSetAll.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="frmMainDataSetAll.xss">
+      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
     </None>
     <None Include="masterDataSet.xsc">
       <DependentUpon>masterDataSet.xsd</DependentUpon>

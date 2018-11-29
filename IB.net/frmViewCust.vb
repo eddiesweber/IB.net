@@ -60,6 +60,8 @@ Public Class frmViewCust
     End Sub
 
     Private Sub GetData()
+
+
         'Get customer record
         Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
         'data1(0).RecordSource = "spGetCust(" & CurCust & ")"
