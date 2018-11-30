@@ -17,7 +17,7 @@ Public Class frmMain
             Exit Sub
         End If
 
-        strSQLServer = My.Computer.FileSystem.ReadAllText("\\IBSERVER2016b\IBShare\SQLServer.txt")
+        strSQLServer = My.Computer.FileSystem.ReadAllText("\\IBSERVER2016\IBShare\SQLServer.txt")
 
         CommFlag = False
         DataPath = Application.StartupPath()
