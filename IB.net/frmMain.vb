@@ -2,6 +2,7 @@
 
 Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports System.Configuration
 
 Public Class frmMain
 
@@ -17,8 +18,6 @@ Public Class frmMain
             Exit Sub
         End If
 
-        strSQLServer = My.Computer.FileSystem.ReadAllText("\\IBSERVER2016\IBShare\SQLServer.txt")
-
         CommFlag = False
         DataPath = Application.StartupPath()
         RptPath = Application.StartupPath() '& "\reports"
@@ -29,9 +28,11 @@ Public Class frmMain
         CurItem = GetSetting(APPNAME, sectionname, "CurItem", 0)
         CurType = GetSetting(APPNAME, sectionname, "CurType", "")
 
-        ConfigCS = "Data Source=" & strSQLServer & ";Initial Catalog=master;Integrated Security=True"
+        ' Uses app.config - must import System.Configuration 
+        ConfigCS = ConfigurationManager.ConnectionStrings("CS").ConnectionString
+
         configDB = New SqlConnection(ConfigCS)
-        configdb.ConnectionString = ConfigCS
+        configDB.ConnectionString = ConfigCS
 
         ' Open connection to master database
         Do While configdb.State = ConnectionState.Closed
