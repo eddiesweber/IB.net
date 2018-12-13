@@ -12,7 +12,6 @@ Public Class frmMain
 
         Dim sectionname As String
         'Dim Result As DialogResult
-        Dim strSQLServer As String
 
         If PrevInstance() Then
             Exit Sub
