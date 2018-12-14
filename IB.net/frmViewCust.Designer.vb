@@ -70,6 +70,11 @@ Partial Class frmViewCust
         Me.SpGetCustDeptTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter()
         Me.SpGetCustRouteTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter()
         Me.SpGetCustItemTableAdapter = New IB.net.IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.SALESHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ITEMHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ARHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NOTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.fraEdit.SuspendLayout()
         CType(Me.SpGetCustBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IBPortlandDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,6 +84,7 @@ Partial Class frmViewCust
         CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'fraEdit
@@ -86,7 +92,7 @@ Partial Class frmViewCust
         Me.fraEdit.Controls.Add(Me.cmdEditDept)
         Me.fraEdit.Controls.Add(Me.cmdEditCust)
         Me.fraEdit.Controls.Add(Me.cmdEditItem)
-        Me.fraEdit.Location = New System.Drawing.Point(452, 91)
+        Me.fraEdit.Location = New System.Drawing.Point(460, 121)
         Me.fraEdit.Name = "fraEdit"
         Me.fraEdit.Size = New System.Drawing.Size(92, 106)
         Me.fraEdit.TabIndex = 0
@@ -95,7 +101,7 @@ Partial Class frmViewCust
         '
         'cmdEditDept
         '
-        Me.cmdEditDept.Location = New System.Drawing.Point(7, 49)
+        Me.cmdEditDept.Location = New System.Drawing.Point(7, 46)
         Me.cmdEditDept.Name = "cmdEditDept"
         Me.cmdEditDept.Size = New System.Drawing.Size(78, 22)
         Me.cmdEditDept.TabIndex = 28
@@ -104,7 +110,7 @@ Partial Class frmViewCust
         '
         'cmdEditCust
         '
-        Me.cmdEditCust.Location = New System.Drawing.Point(9, 21)
+        Me.cmdEditCust.Location = New System.Drawing.Point(9, 18)
         Me.cmdEditCust.Name = "cmdEditCust"
         Me.cmdEditCust.Size = New System.Drawing.Size(78, 22)
         Me.cmdEditCust.TabIndex = 29
@@ -113,7 +119,7 @@ Partial Class frmViewCust
         '
         'cmdEditItem
         '
-        Me.cmdEditItem.Location = New System.Drawing.Point(7, 77)
+        Me.cmdEditItem.Location = New System.Drawing.Point(7, 74)
         Me.cmdEditItem.Name = "cmdEditItem"
         Me.cmdEditItem.Size = New System.Drawing.Size(78, 22)
         Me.cmdEditItem.TabIndex = 30
@@ -125,7 +131,7 @@ Partial Class frmViewCust
         Me.txtAverage2.BackColor = System.Drawing.Color.Silver
         Me.txtAverage2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAverage2.ForeColor = System.Drawing.Color.Navy
-        Me.txtAverage2.Location = New System.Drawing.Point(161, 77)
+        Me.txtAverage2.Location = New System.Drawing.Point(161, 100)
         Me.txtAverage2.Multiline = True
         Me.txtAverage2.Name = "txtAverage2"
         Me.txtAverage2.Size = New System.Drawing.Size(57, 15)
@@ -137,7 +143,7 @@ Partial Class frmViewCust
         Me.txtData12.BackColor = System.Drawing.Color.Silver
         Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData12.ForeColor = System.Drawing.Color.Navy
-        Me.txtData12.Location = New System.Drawing.Point(224, 378)
+        Me.txtData12.Location = New System.Drawing.Point(224, 401)
         Me.txtData12.Name = "txtData12"
         Me.txtData12.Size = New System.Drawing.Size(169, 13)
         Me.txtData12.TabIndex = 34
@@ -148,7 +154,7 @@ Partial Class frmViewCust
         Me.txtAverage.BackColor = System.Drawing.Color.Silver
         Me.txtAverage.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAverage.ForeColor = System.Drawing.Color.Navy
-        Me.txtAverage.Location = New System.Drawing.Point(371, 77)
+        Me.txtAverage.Location = New System.Drawing.Point(371, 100)
         Me.txtAverage.Multiline = True
         Me.txtAverage.Name = "txtAverage"
         Me.txtAverage.Size = New System.Drawing.Size(64, 15)
@@ -157,7 +163,7 @@ Partial Class frmViewCust
         '
         'cmdPrint
         '
-        Me.cmdPrint.Location = New System.Drawing.Point(459, 210)
+        Me.cmdPrint.Location = New System.Drawing.Point(467, 233)
         Me.cmdPrint.Name = "cmdPrint"
         Me.cmdPrint.Size = New System.Drawing.Size(78, 23)
         Me.cmdPrint.TabIndex = 31
@@ -166,7 +172,7 @@ Partial Class frmViewCust
         '
         'cmdClose
         '
-        Me.cmdClose.Location = New System.Drawing.Point(459, 63)
+        Me.cmdClose.Location = New System.Drawing.Point(467, 86)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(78, 22)
         Me.cmdClose.TabIndex = 2
@@ -175,7 +181,7 @@ Partial Class frmViewCust
         '
         'cmdRefresh
         '
-        Me.cmdRefresh.Location = New System.Drawing.Point(459, 35)
+        Me.cmdRefresh.Location = New System.Drawing.Point(467, 58)
         Me.cmdRefresh.Name = "cmdRefresh"
         Me.cmdRefresh.Size = New System.Drawing.Size(78, 22)
         Me.cmdRefresh.TabIndex = 14
@@ -184,7 +190,7 @@ Partial Class frmViewCust
         '
         'cmdFind
         '
-        Me.cmdFind.Location = New System.Drawing.Point(459, 7)
+        Me.cmdFind.Location = New System.Drawing.Point(467, 30)
         Me.cmdFind.Name = "cmdFind"
         Me.cmdFind.Size = New System.Drawing.Size(78, 22)
         Me.cmdFind.TabIndex = 1
@@ -197,7 +203,7 @@ Partial Class frmViewCust
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CARE_OF", True))
         Me.txtData11.ForeColor = System.Drawing.Color.Navy
-        Me.txtData11.Location = New System.Drawing.Point(56, 49)
+        Me.txtData11.Location = New System.Drawing.Point(56, 72)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.Size = New System.Drawing.Size(162, 13)
         Me.txtData11.TabIndex = 26
@@ -218,7 +224,7 @@ Partial Class frmViewCust
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "URL", True))
         Me.txtData10.ForeColor = System.Drawing.Color.Navy
-        Me.txtData10.Location = New System.Drawing.Point(287, 63)
+        Me.txtData10.Location = New System.Drawing.Point(287, 86)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Size = New System.Drawing.Size(148, 13)
         Me.txtData10.TabIndex = 25
@@ -229,7 +235,7 @@ Partial Class frmViewCust
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "EMAIL", True))
         Me.txtData9.ForeColor = System.Drawing.Color.Navy
-        Me.txtData9.Location = New System.Drawing.Point(287, 49)
+        Me.txtData9.Location = New System.Drawing.Point(287, 72)
         Me.txtData9.Name = "txtData9"
         Me.txtData9.Size = New System.Drawing.Size(148, 13)
         Me.txtData9.TabIndex = 24
@@ -240,7 +246,7 @@ Partial Class frmViewCust
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "FAX_NO", True))
         Me.txtData8.ForeColor = System.Drawing.Color.Navy
-        Me.txtData8.Location = New System.Drawing.Point(287, 35)
+        Me.txtData8.Location = New System.Drawing.Point(287, 58)
         Me.txtData8.Name = "txtData8"
         Me.txtData8.Size = New System.Drawing.Size(148, 13)
         Me.txtData8.TabIndex = 23
@@ -251,7 +257,7 @@ Partial Class frmViewCust
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "PHONE", True))
         Me.txtData7.ForeColor = System.Drawing.Color.Navy
-        Me.txtData7.Location = New System.Drawing.Point(287, 21)
+        Me.txtData7.Location = New System.Drawing.Point(287, 44)
         Me.txtData7.Name = "txtData7"
         Me.txtData7.Size = New System.Drawing.Size(148, 13)
         Me.txtData7.TabIndex = 22
@@ -262,7 +268,7 @@ Partial Class frmViewCust
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CONTACT", True))
         Me.txtData6.ForeColor = System.Drawing.Color.Navy
-        Me.txtData6.Location = New System.Drawing.Point(287, 7)
+        Me.txtData6.Location = New System.Drawing.Point(287, 30)
         Me.txtData6.Name = "txtData6"
         Me.txtData6.Size = New System.Drawing.Size(148, 13)
         Me.txtData6.TabIndex = 21
@@ -273,7 +279,7 @@ Partial Class frmViewCust
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "COUNTY", True))
         Me.txtData5.ForeColor = System.Drawing.Color.Navy
-        Me.txtData5.Location = New System.Drawing.Point(161, 63)
+        Me.txtData5.Location = New System.Drawing.Point(161, 86)
         Me.txtData5.Name = "txtData5"
         Me.txtData5.Size = New System.Drawing.Size(57, 13)
         Me.txtData5.TabIndex = 20
@@ -284,7 +290,7 @@ Partial Class frmViewCust
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "PAYBY", True))
         Me.txtData4.ForeColor = System.Drawing.Color.Navy
-        Me.txtData4.Location = New System.Drawing.Point(56, 63)
+        Me.txtData4.Location = New System.Drawing.Point(56, 86)
         Me.txtData4.Name = "txtData4"
         Me.txtData4.Size = New System.Drawing.Size(57, 13)
         Me.txtData4.TabIndex = 19
@@ -295,7 +301,7 @@ Partial Class frmViewCust
         Me.txtdata3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtdata3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CSZ", True))
         Me.txtdata3.ForeColor = System.Drawing.Color.Navy
-        Me.txtdata3.Location = New System.Drawing.Point(56, 35)
+        Me.txtdata3.Location = New System.Drawing.Point(56, 58)
         Me.txtdata3.Name = "txtdata3"
         Me.txtdata3.Size = New System.Drawing.Size(162, 13)
         Me.txtdata3.TabIndex = 18
@@ -306,7 +312,7 @@ Partial Class frmViewCust
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "BILL_STR", True))
         Me.txtData2.ForeColor = System.Drawing.Color.Navy
-        Me.txtData2.Location = New System.Drawing.Point(56, 21)
+        Me.txtData2.Location = New System.Drawing.Point(56, 44)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.Size = New System.Drawing.Size(162, 13)
         Me.txtData2.TabIndex = 17
@@ -317,7 +323,7 @@ Partial Class frmViewCust
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "BILL_NAME", True))
         Me.txtData1.ForeColor = System.Drawing.Color.Navy
-        Me.txtData1.Location = New System.Drawing.Point(56, 7)
+        Me.txtData1.Location = New System.Drawing.Point(56, 30)
         Me.txtData1.Name = "txtData1"
         Me.txtData1.Size = New System.Drawing.Size(162, 13)
         Me.txtData1.TabIndex = 16
@@ -328,7 +334,7 @@ Partial Class frmViewCust
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetCustBindingSource, "CUST_NUM", True))
         Me.txtData0.ForeColor = System.Drawing.Color.Navy
-        Me.txtData0.Location = New System.Drawing.Point(7, 7)
+        Me.txtData0.Location = New System.Drawing.Point(7, 30)
         Me.txtData0.Name = "txtData0"
         Me.txtData0.Size = New System.Drawing.Size(43, 13)
         Me.txtData0.TabIndex = 15
@@ -336,7 +342,7 @@ Partial Class frmViewCust
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
-        Me.lblLabel9.Location = New System.Drawing.Point(4, 77)
+        Me.lblLabel9.Location = New System.Drawing.Point(4, 100)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(150, 13)
         Me.lblLabel9.TabIndex = 35
@@ -345,7 +351,7 @@ Partial Class frmViewCust
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(235, 77)
+        Me.lblLabel8.Location = New System.Drawing.Point(235, 100)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(136, 13)
         Me.lblLabel8.TabIndex = 32
@@ -354,7 +360,7 @@ Partial Class frmViewCust
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(116, 63)
+        Me.lblLabel7.Location = New System.Drawing.Point(116, 86)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel7.TabIndex = 13
@@ -363,7 +369,7 @@ Partial Class frmViewCust
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(235, 63)
+        Me.lblLabel6.Location = New System.Drawing.Point(235, 86)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(32, 13)
         Me.lblLabel6.TabIndex = 9
@@ -372,7 +378,7 @@ Partial Class frmViewCust
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
-        Me.lblLabel5.Location = New System.Drawing.Point(235, 49)
+        Me.lblLabel5.Location = New System.Drawing.Point(235, 72)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(38, 13)
         Me.lblLabel5.TabIndex = 8
@@ -381,7 +387,7 @@ Partial Class frmViewCust
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(235, 35)
+        Me.lblLabel4.Location = New System.Drawing.Point(235, 58)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(27, 13)
         Me.lblLabel4.TabIndex = 7
@@ -390,7 +396,7 @@ Partial Class frmViewCust
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(235, 21)
+        Me.lblLabel3.Location = New System.Drawing.Point(235, 44)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(41, 13)
         Me.lblLabel3.TabIndex = 6
@@ -399,7 +405,7 @@ Partial Class frmViewCust
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(235, 8)
+        Me.lblLabel2.Location = New System.Drawing.Point(235, 31)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(47, 13)
         Me.lblLabel2.TabIndex = 5
@@ -408,7 +414,7 @@ Partial Class frmViewCust
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(4, 63)
+        Me.lblLabel1.Location = New System.Drawing.Point(4, 86)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel1.TabIndex = 4
@@ -417,7 +423,7 @@ Partial Class frmViewCust
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(4, 49)
+        Me.lblLabel0.Location = New System.Drawing.Point(4, 72)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(30, 13)
         Me.lblLabel0.TabIndex = 3
@@ -426,7 +432,7 @@ Partial Class frmViewCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(9, 23)
+        Me.lblCurCust.Location = New System.Drawing.Point(9, 46)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(0, 13)
         Me.lblCurCust.TabIndex = 0
@@ -440,14 +446,14 @@ Partial Class frmViewCust
         Me.grdDept.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Standard
         Me.grdDept.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDept.Images.Add(CType(resources.GetObject("grdDept.Images"), System.Drawing.Image))
-        Me.grdDept.Location = New System.Drawing.Point(7, 98)
+        Me.grdDept.Location = New System.Drawing.Point(7, 121)
         Me.grdDept.Name = "grdDept"
         Me.grdDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
-        Me.grdDept.Size = New System.Drawing.Size(428, 73)
+        Me.grdDept.Size = New System.Drawing.Size(445, 85)
         Me.grdDept.TabIndex = 37
         Me.grdDept.UseCompatibleTextRendering = False
         Me.grdDept.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -464,14 +470,14 @@ Partial Class frmViewCust
         Me.grdRoute.DataSource = Me.SpGetCustRouteBindingSource
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
-        Me.grdRoute.Location = New System.Drawing.Point(7, 177)
+        Me.grdRoute.Location = New System.Drawing.Point(7, 212)
         Me.grdRoute.Name = "grdRoute"
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
-        Me.grdRoute.Size = New System.Drawing.Size(428, 72)
+        Me.grdRoute.Size = New System.Drawing.Size(445, 70)
         Me.grdRoute.TabIndex = 38
         Me.grdRoute.UseCompatibleTextRendering = False
         Me.grdRoute.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -488,14 +494,14 @@ Partial Class frmViewCust
         Me.grdItem.DataSource = Me.SpGetCustItemBindingSource
         Me.grdItem.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdItem.Images.Add(CType(resources.GetObject("grdItem.Images"), System.Drawing.Image))
-        Me.grdItem.Location = New System.Drawing.Point(7, 255)
+        Me.grdItem.Location = New System.Drawing.Point(7, 288)
         Me.grdItem.Name = "grdItem"
         Me.grdItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
         Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
-        Me.grdItem.Size = New System.Drawing.Size(537, 161)
+        Me.grdItem.Size = New System.Drawing.Size(545, 161)
         Me.grdItem.TabIndex = 39
         Me.grdItem.UseCompatibleTextRendering = False
         Me.grdItem.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -521,11 +527,44 @@ Partial Class frmViewCust
         '
         Me.SpGetCustItemTableAdapter.ClearBeforeFill = True
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SALESHISTORYToolStripMenuItem, Me.ITEMHISTORYToolStripMenuItem, Me.ARHISTORYToolStripMenuItem, Me.NOTESToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(559, 24)
+        Me.MenuStrip1.TabIndex = 40
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'SALESHISTORYToolStripMenuItem
+        '
+        Me.SALESHISTORYToolStripMenuItem.Name = "SALESHISTORYToolStripMenuItem"
+        Me.SALESHISTORYToolStripMenuItem.Size = New System.Drawing.Size(101, 20)
+        Me.SALESHISTORYToolStripMenuItem.Text = "&SALES HISTORY"
+        '
+        'ITEMHISTORYToolStripMenuItem
+        '
+        Me.ITEMHISTORYToolStripMenuItem.Name = "ITEMHISTORYToolStripMenuItem"
+        Me.ITEMHISTORYToolStripMenuItem.Size = New System.Drawing.Size(96, 20)
+        Me.ITEMHISTORYToolStripMenuItem.Text = "ITEM &HISTORY"
+        '
+        'ARHISTORYToolStripMenuItem
+        '
+        Me.ARHISTORYToolStripMenuItem.Name = "ARHISTORYToolStripMenuItem"
+        Me.ARHISTORYToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
+        Me.ARHISTORYToolStripMenuItem.Text = "&AR HISTORY"
+        '
+        'NOTESToolStripMenuItem
+        '
+        Me.NOTESToolStripMenuItem.Name = "NOTESToolStripMenuItem"
+        Me.NOTESToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
+        Me.NOTESToolStripMenuItem.Text = "&NOTES"
+        '
         'frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(553, 420)
+        Me.ClientSize = New System.Drawing.Size(559, 461)
         Me.Controls.Add(Me.grdItem)
         Me.Controls.Add(Me.grdRoute)
         Me.Controls.Add(Me.grdDept)
@@ -560,7 +599,9 @@ Partial Class frmViewCust
         Me.Controls.Add(Me.txtData12)
         Me.Controls.Add(Me.txtAverage2)
         Me.Controls.Add(Me.fraEdit)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Location = New System.Drawing.Point(62, 101)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmViewCust"
         Me.Text = "Customer View"
         Me.fraEdit.ResumeLayout(False)
@@ -572,6 +613,8 @@ Partial Class frmViewCust
         CType(Me.SpGetCustRouteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdItem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetCustItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -623,4 +666,9 @@ Partial Class frmViewCust
     Friend WithEvents grdItem As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents SpGetCustItemBindingSource As BindingSource
     Friend WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents SALESHISTORYToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ITEMHISTORYToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ARHISTORYToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NOTESToolStripMenuItem As ToolStripMenuItem
 End Class

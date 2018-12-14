@@ -195,10 +195,15 @@ Public Class frmViewCust
 
     Private Sub grdDept_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdDept.RowColChange
 
-        CurDept = grdDept.Columns(0).CellValue(Me.grdDept.Row)
+        If IsNumeric(grdDept.Columns(0).CellValue(Me.grdDept.Row)) Then
+            CurDept = CInt(grdDept.Columns(0).CellValue(Me.grdDept.Row))
+        End If
 
         GetData2()
 
     End Sub
 
+    Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
+
+    End Sub
 End Class
