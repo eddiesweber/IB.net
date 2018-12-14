@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmViewCust
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmViewCust
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmViewCust))
@@ -86,7 +86,7 @@ Partial Class frmViewCust
         Me.fraEdit.Controls.Add(Me.cmdEditDept)
         Me.fraEdit.Controls.Add(Me.cmdEditCust)
         Me.fraEdit.Controls.Add(Me.cmdEditItem)
-        Me.fraEdit.Location = New System.Drawing.Point(455, 91)
+        Me.fraEdit.Location = New System.Drawing.Point(452, 91)
         Me.fraEdit.Name = "fraEdit"
         Me.fraEdit.Size = New System.Drawing.Size(92, 106)
         Me.fraEdit.TabIndex = 0
@@ -157,7 +157,7 @@ Partial Class frmViewCust
         '
         'cmdPrint
         '
-        Me.cmdPrint.Location = New System.Drawing.Point(462, 210)
+        Me.cmdPrint.Location = New System.Drawing.Point(459, 210)
         Me.cmdPrint.Name = "cmdPrint"
         Me.cmdPrint.Size = New System.Drawing.Size(78, 23)
         Me.cmdPrint.TabIndex = 31
@@ -166,7 +166,7 @@ Partial Class frmViewCust
         '
         'cmdClose
         '
-        Me.cmdClose.Location = New System.Drawing.Point(462, 63)
+        Me.cmdClose.Location = New System.Drawing.Point(459, 63)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(78, 22)
         Me.cmdClose.TabIndex = 2
@@ -175,7 +175,7 @@ Partial Class frmViewCust
         '
         'cmdRefresh
         '
-        Me.cmdRefresh.Location = New System.Drawing.Point(462, 35)
+        Me.cmdRefresh.Location = New System.Drawing.Point(459, 35)
         Me.cmdRefresh.Name = "cmdRefresh"
         Me.cmdRefresh.Size = New System.Drawing.Size(78, 22)
         Me.cmdRefresh.TabIndex = 14
@@ -184,7 +184,7 @@ Partial Class frmViewCust
         '
         'cmdFind
         '
-        Me.cmdFind.Location = New System.Drawing.Point(462, 7)
+        Me.cmdFind.Location = New System.Drawing.Point(459, 7)
         Me.cmdFind.Name = "cmdFind"
         Me.cmdFind.Size = New System.Drawing.Size(78, 22)
         Me.cmdFind.TabIndex = 1
@@ -336,7 +336,7 @@ Partial Class frmViewCust
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
-        Me.lblLabel9.Location = New System.Drawing.Point(7, 77)
+        Me.lblLabel9.Location = New System.Drawing.Point(4, 77)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(150, 13)
         Me.lblLabel9.TabIndex = 35
@@ -345,7 +345,7 @@ Partial Class frmViewCust
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(238, 77)
+        Me.lblLabel8.Location = New System.Drawing.Point(235, 77)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(136, 13)
         Me.lblLabel8.TabIndex = 32
@@ -354,7 +354,7 @@ Partial Class frmViewCust
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(119, 63)
+        Me.lblLabel7.Location = New System.Drawing.Point(116, 63)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel7.TabIndex = 13
@@ -363,7 +363,7 @@ Partial Class frmViewCust
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(238, 63)
+        Me.lblLabel6.Location = New System.Drawing.Point(235, 63)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(32, 13)
         Me.lblLabel6.TabIndex = 9
@@ -372,7 +372,7 @@ Partial Class frmViewCust
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
-        Me.lblLabel5.Location = New System.Drawing.Point(238, 49)
+        Me.lblLabel5.Location = New System.Drawing.Point(235, 49)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(38, 13)
         Me.lblLabel5.TabIndex = 8
@@ -381,7 +381,7 @@ Partial Class frmViewCust
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(238, 35)
+        Me.lblLabel4.Location = New System.Drawing.Point(235, 35)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(27, 13)
         Me.lblLabel4.TabIndex = 7
@@ -390,7 +390,7 @@ Partial Class frmViewCust
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(238, 21)
+        Me.lblLabel3.Location = New System.Drawing.Point(235, 21)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(41, 13)
         Me.lblLabel3.TabIndex = 6
@@ -399,7 +399,7 @@ Partial Class frmViewCust
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(238, 7)
+        Me.lblLabel2.Location = New System.Drawing.Point(235, 8)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(47, 13)
         Me.lblLabel2.TabIndex = 5
@@ -408,7 +408,7 @@ Partial Class frmViewCust
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(7, 63)
+        Me.lblLabel1.Location = New System.Drawing.Point(4, 63)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel1.TabIndex = 4
@@ -417,7 +417,7 @@ Partial Class frmViewCust
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(7, 49)
+        Me.lblLabel0.Location = New System.Drawing.Point(4, 49)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(30, 13)
         Me.lblLabel0.TabIndex = 3
@@ -426,7 +426,7 @@ Partial Class frmViewCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(12, 23)
+        Me.lblCurCust.Location = New System.Drawing.Point(9, 23)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(0, 13)
         Me.lblCurCust.TabIndex = 0
@@ -435,19 +435,22 @@ Partial Class frmViewCust
         'grdDept
         '
         Me.grdDept.AllowUpdate = False
+        Me.grdDept.Caption = "DEPARTMENTS"
         Me.grdDept.DataSource = Me.SpGetCustDeptBindingSource
+        Me.grdDept.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Standard
         Me.grdDept.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDept.Images.Add(CType(resources.GetObject("grdDept.Images"), System.Drawing.Image))
-        Me.grdDept.Location = New System.Drawing.Point(10, 98)
+        Me.grdDept.Location = New System.Drawing.Point(7, 98)
         Me.grdDept.Name = "grdDept"
         Me.grdDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
-        Me.grdDept.Size = New System.Drawing.Size(425, 75)
+        Me.grdDept.Size = New System.Drawing.Size(428, 73)
         Me.grdDept.TabIndex = 37
         Me.grdDept.UseCompatibleTextRendering = False
+        Me.grdDept.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         '
         'SpGetCustDeptBindingSource
         '
@@ -457,19 +460,21 @@ Partial Class frmViewCust
         'grdRoute
         '
         Me.grdRoute.AllowUpdate = False
+        Me.grdRoute.Caption = "ROUTES"
         Me.grdRoute.DataSource = Me.SpGetCustRouteBindingSource
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
-        Me.grdRoute.Location = New System.Drawing.Point(10, 177)
+        Me.grdRoute.Location = New System.Drawing.Point(7, 177)
         Me.grdRoute.Name = "grdRoute"
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
-        Me.grdRoute.Size = New System.Drawing.Size(425, 55)
+        Me.grdRoute.Size = New System.Drawing.Size(428, 72)
         Me.grdRoute.TabIndex = 38
         Me.grdRoute.UseCompatibleTextRendering = False
+        Me.grdRoute.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         '
         'SpGetCustRouteBindingSource
         '
@@ -479,19 +484,21 @@ Partial Class frmViewCust
         'grdItem
         '
         Me.grdItem.AllowUpdate = False
+        Me.grdItem.Caption = "ITEMS (STANDING ORDERS)"
         Me.grdItem.DataSource = Me.SpGetCustItemBindingSource
         Me.grdItem.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdItem.Images.Add(CType(resources.GetObject("grdItem.Images"), System.Drawing.Image))
-        Me.grdItem.Location = New System.Drawing.Point(10, 236)
+        Me.grdItem.Location = New System.Drawing.Point(7, 255)
         Me.grdItem.Name = "grdItem"
         Me.grdItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
         Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
-        Me.grdItem.Size = New System.Drawing.Size(537, 180)
+        Me.grdItem.Size = New System.Drawing.Size(537, 161)
         Me.grdItem.TabIndex = 39
         Me.grdItem.UseCompatibleTextRendering = False
+        Me.grdItem.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         '
         'SpGetCustItemBindingSource
         '
