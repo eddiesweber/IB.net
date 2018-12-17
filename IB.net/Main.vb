@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports CRDESIGNERLib
+
 
 Module Main
 
@@ -28,7 +30,7 @@ Module Main
 
     Public CurDate As Date
     Public CurInvoice As Long
-    'Public RPT As CrystalReport
+    'Public RPT As CrystalReports
     Public RptPath As String
     Public DateSpin As Integer
     Public CommFlag As Boolean

@@ -48,6 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="C1.Win.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
+    <Reference Include="C1.Win.C1Command.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=e808566f358766d8" />
+    <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1List.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -299,10 +302,10 @@
     <Compile Include="frmViewItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IBPortlandDataSet.Designer.vb">
+    <Compile Include="DS_CustomerMaster.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmCat.Designer.vb">
       <DependentUpon>frmCat.vb</DependentUpon>
@@ -467,10 +470,10 @@
     <Compile Include="frmZipSearch.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMainDataSetAll.Designer.vb">
+    <Compile Include="IBPortlandDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
+      <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Main.vb" />
     <Compile Include="masterDataSet.Designer.vb">
@@ -693,6 +696,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DS_CustomerMaster.xsc">
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+    </None>
+    <None Include="DS_CustomerMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CustomerMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_CustomerMaster.xss">
+      <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
+    </None>
     <None Include="IBPortlandDataSet.xsc">
       <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
     </None>
@@ -703,17 +717,6 @@
     </None>
     <None Include="IBPortlandDataSet.xss">
       <DependentUpon>IBPortlandDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="frmMainDataSetAll.xsc">
-      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
-    </None>
-    <None Include="frmMainDataSetAll.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>frmMainDataSetAll.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="frmMainDataSetAll.xss">
-      <DependentUpon>frmMainDataSetAll.xsd</DependentUpon>
     </None>
     <None Include="masterDataSet.xsc">
       <DependentUpon>masterDataSet.xsd</DependentUpon>
@@ -744,6 +747,15 @@
       <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
       <VersionMajor>6</VersionMajor>
       <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CRDESIGNERLib">
+      <Guid>{C0AA5023-C763-4A4B-AFED-ADCF78D6C08B}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>

@@ -22,6 +22,9 @@ Public Class frmViewCust
             grdItem.LoadLayout("grdItem.xml")
         End If
 
+        cmdFind.Select()
+
+
     End Sub
 
     Private Sub frmViewCust_Activated(sender As Object, e As EventArgs) Handles Me.Activated
@@ -124,10 +127,12 @@ Public Class frmViewCust
                     Using sqlReader = sqlCmd.ExecuteReader()
                         ' If the SqlDataReader.Read returns true then there is a customer with that ID'
                         If sqlReader.Read() Then
+                            txtAverage.ReadOnly = False
                             txtAverage.Text = "0"
                             If Not sqlReader.IsDBNull(0) Then
                                 txtAverage.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
                             End If
+                            txtAverage.ReadOnly = True
                         End If
                     End Using
                 End Using
@@ -143,43 +148,17 @@ Public Class frmViewCust
                     Using sqlReader = sqlCmd.ExecuteReader()
                         ' If the SqlDataReader.Read returns true then there is a customer with that ID'
                         If sqlReader.Read() Then
+                            txtAverage2.ReadOnly = False
                             txtAverage2.Text = "0"
                             If Not sqlReader.IsDBNull(0) Then
                                 txtAverage2.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
                             End If
+                            txtAverage2.ReadOnly = True
                         End If
                     End Using
                 End Using
             End Using
         End Using
-
-    End Sub
-
-    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
-
-        buserchange = False
-        GetData()
-        buserchange = True
-
-    End Sub
-
-    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
-
-        Me.Close()
-
-    End Sub
-
-    Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
-
-        frmFindCust.Show()
-        frmFindCust.BringToFront()
-
-    End Sub
-
-    Private Sub cmdEditCust_Click(sender As Object, e As EventArgs) Handles cmdEditCust.Click
-
-        frmCust.Show()
-        frmCust.BringToFront()
 
     End Sub
 
@@ -203,7 +182,64 @@ Public Class frmViewCust
 
     End Sub
 
-    Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
+    Private Sub SALESHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SALESHISTORYToolStripMenuItem.Click
+
+        frmSOHist.Show()
 
     End Sub
+
+    Private Sub ITEMHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ITEMHISTORYToolStripMenuItem.Click
+
+        frmROHist.Show()
+
+    End Sub
+
+    Private Sub ARHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARHISTORYToolStripMenuItem.Click
+
+
+        'With RPT
+        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
+        '    .Connect = CryCS
+        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
+        '    .Action = 1
+        '    .Destination = 0
+        '    ' .Formulas(0) = ""
+        '    ' .Formulas(1) = ""
+        '    .ReportFileName = ""
+        'End With
+
+    End Sub
+
+    Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
+
+        frmFindCust.Show()
+        frmFindCust.BringToFront()
+
+    End Sub
+
+    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+
+        buserchange = False
+        GetData()
+        buserchange = True
+
+    End Sub
+
+    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+
+        Me.Close()
+
+    End Sub
+
+    Private Sub cmdEditCust_Click(sender As Object, e As EventArgs) Handles cmdEditCust.Click
+
+        frmCust.Show()
+        frmCust.BringToFront()
+
+    End Sub
+
 End Class

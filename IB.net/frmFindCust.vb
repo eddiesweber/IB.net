@@ -112,6 +112,12 @@ Public Class frmFindCust
 
     End Sub
 
+    Private Sub frmFindCust_Leave(sender As Object, e As EventArgs) Handles Me.Leave
+
+        SaveWindowPos(Me)
+
+    End Sub
+
     Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
 
         Dim frm As Form
@@ -140,11 +146,4 @@ Public Class frmFindCust
         Me.Hide()
 
     End Sub
-
-    Private Sub frmFindCust_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-
-        SaveWindowPos(Me)
-
-    End Sub
-
 End Class
