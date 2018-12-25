@@ -12,18 +12,27 @@ Public Class frmViewCust
 
         GetWindowPos(Me, 0, 0)
 
-        If Dir("grdDept.xml") <> "" Then
-            grdDept.LoadLayout("grdDept.xml")
+        If Dir("frmViewCustgrdDept.xml") <> "" Then
+            grdDept.LoadLayout("frmViewCust.xml")
         End If
-        If Dir("grdRoute.xml") <> "" Then
-            grdRoute.LoadLayout("grdRoute.xml")
+        If Dir("frmViewCustgrdRoute.xml") <> "" Then
+            grdRoute.LoadLayout("frmViewCustgrdRoute.xml")
         End If
-        If Dir("grdItem.xml") <> "" Then
-            grdItem.LoadLayout("grdItem.xml")
+        If Dir("frmViewCustgrdItem.xml") <> "" Then
+            grdItem.LoadLayout("frmViewCustgrdItem.xml")
         End If
 
         cmdFind.Select()
 
+    End Sub
+
+    Private Sub frmViewCust_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
+
+        SaveWindowPos(Me)
+
+        grdDept.SaveLayout("frmViewCustgrdDept.xml")
+        grdRoute.SaveLayout("frmViewCustgrdRoute.xml")
+        grdItem.SaveLayout("frmViewCustgrdItem.xml")
 
     End Sub
 
@@ -162,16 +171,6 @@ Public Class frmViewCust
 
     End Sub
 
-    Private Sub frmViewCust_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
-
-        SaveWindowPos(Me)
-
-        grdDept.SaveLayout("grdDept.xml")
-        grdRoute.SaveLayout("grdRoute.xml")
-        grdItem.SaveLayout("grdItem.xml")
-
-    End Sub
-
     Private Sub grdDept_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdDept.RowColChange
 
         If IsNumeric(grdDept.Columns(0).CellValue(Me.grdDept.Row)) Then
@@ -182,37 +181,39 @@ Public Class frmViewCust
 
     End Sub
 
-    Private Sub SALESHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SALESHISTORYToolStripMenuItem.Click
+    Private Sub ShowSalesHistory()
 
         frmSOHist.Show()
 
     End Sub
 
-    Private Sub ITEMHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ITEMHISTORYToolStripMenuItem.Click
+    'Private Sub ITEMHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ITEMHISTORYToolStripMenuItem.Click
 
-        frmROHist.Show()
+    '    frmROHist.Show()
 
-    End Sub
+    'End Sub
 
-    Private Sub ARHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARHISTORYToolStripMenuItem.Click
+    'Private Sub ARHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARHISTORYToolStripMenuItem.Click
 
 
-        'With RPT
-        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
-        '    .Connect = CryCS
-        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
-        '    .Action = 1
-        '    .Destination = 0
-        '    ' .Formulas(0) = ""
-        '    ' .Formulas(1) = ""
-        '    .ReportFileName = ""
-        'End With
+    '    'With RPT
+    '    '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
+    '    '    .Connect = CryCS
+    '    '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+    '    '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
+    '    '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
+    '    '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
+    '    '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
+    '    '    .Action = 1
+    '    '    .Destination = 0
+    '    '    ' .Formulas(0) = ""
+    '    '    ' .Formulas(1) = ""
+    '    '    .ReportFileName = ""
+    '    'End With
 
-    End Sub
+    'End Sub
+
+
 
     Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
 

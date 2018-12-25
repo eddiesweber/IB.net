@@ -47,11 +47,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.C1Zip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="C1.Win.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1Command.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=e808566f358766d8" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1List.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Themes.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -80,6 +82,21 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dsCategoryMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsRouteMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRouteMaster.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsTaxMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTaxMaster.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmCustCanc.designer.vb">
       <DependentUpon>frmCustCanc.vb</DependentUpon>
     </Compile>
@@ -290,6 +307,12 @@
     <Compile Include="frmSlsmn.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTax.Designer.vb">
+      <DependentUpon>frmTax.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTax.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmVend.designer.vb">
       <DependentUpon>frmVend.vb</DependentUpon>
     </Compile>
@@ -496,8 +519,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Test.Designer.vb">
+      <DependentUpon>Test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Test.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCat.resx">
+      <DependentUpon>frmCat.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCommedit.resx">
       <DependentUpon>frmCommedit.vb</DependentUpon>
     </EmbeddedResource>
@@ -672,6 +704,9 @@
     <EmbeddedResource Include="frmSOHist.resx">
       <DependentUpon>frmSOHist.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTax.resx">
+      <DependentUpon>frmTax.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
     </EmbeddedResource>
@@ -694,8 +729,44 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="dsCategoryMaster.xsc">
+      <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsCategoryMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCategoryMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCategoryMaster.xss">
+      <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsRouteMaster.xsc">
+      <DependentUpon>dsRouteMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsRouteMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRouteMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsRouteMaster.xss">
+      <DependentUpon>dsRouteMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsTaxMaster.xsc">
+      <DependentUpon>dsTaxMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsTaxMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTaxMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsTaxMaster.xss">
+      <DependentUpon>dsTaxMaster.xsd</DependentUpon>
+    </None>
     <None Include="DS_CustomerMaster.xsc">
       <DependentUpon>DS_CustomerMaster.xsd</DependentUpon>
     </None>

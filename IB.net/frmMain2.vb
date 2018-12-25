@@ -5,7 +5,8 @@
 
     Private Sub frmMain2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        txtServer.Text = "IB2016\SQLEXPRESS"
+        txtServer.Text = "IBSERVER2016\SQLEXPRESS"
+        'txtServer.Text = "SQLIB"
         txtDB.Text = "master"
 
     End Sub
@@ -14,8 +15,8 @@
 
         altServer = txtServer.Text
         altDB = txtDB.Text
-        ConfigCS = "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=" & altDB & ";Data Source=" & altServer
-
+        'ConfigCS = "Data Source=SQLIB;Initial Catalog=" & altDB & ";Integrated Security=True"
+        ConfigCS = "Data Source=" & altServer & ";Initial Catalog=" & altDB & ";Integrated Security=True"
         Me.Close()
 
     End Sub

@@ -29,6 +29,7 @@ Public Class frmMain
 
         ' Uses app.config - must import System.Configuration 
         ConfigCS = ConfigurationManager.ConnectionStrings("CS").ConnectionString
+        'ConfigCS = "Data Source=SQLIB;Initial Catalog=master;Integrated Security=True"
 
         configDB = New SqlConnection(ConfigCS)
         configDB.ConnectionString = ConfigCS
@@ -36,10 +37,13 @@ Public Class frmMain
         ' Open connection to master database
         Do While configdb.State = ConnectionState.Closed
             Try
-                configdb.Open()
+                Me.Cursor = Cursors.WaitCursor
+                configDB.Open()
             Catch ex As Exception
                 frmMain2.ShowDialog() ' Gives user a chance to change config location
-                configdb.ConnectionString = ConfigCS
+                configDB.ConnectionString = ConfigCS
+            Finally
+                Me.Cursor = Cursors.Default
             End Try
         Loop
 
@@ -138,4 +142,21 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub TaxCodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TaxCodeToolStripMenuItem.Click
+
+        frmTax.Show()
+
+    End Sub
+
+    Private Sub CategoriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriesToolStripMenuItem.Click
+
+        frmCat.Show()
+
+    End Sub
+
+    Private Sub RouteMasterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RouteMasterToolStripMenuItem.Click
+
+        frmRouteMast.Show()
+
+    End Sub
 End Class

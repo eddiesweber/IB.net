@@ -66,60 +66,60 @@ Partial Class frmMain
         'SelectDivisionToolStripMenuItem
         '
         Me.SelectDivisionToolStripMenuItem.Name = "SelectDivisionToolStripMenuItem"
-        Me.SelectDivisionToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.SelectDivisionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SelectDivisionToolStripMenuItem.Text = "Select Division"
         '
         'PrintSetupToolStripMenuItem
         '
         Me.PrintSetupToolStripMenuItem.Name = "PrintSetupToolStripMenuItem"
-        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PrintSetupToolStripMenuItem.Text = "Print Setup"
         '
         'MiscSetupToolStripMenuItem
         '
         Me.MiscSetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TaxCodeToolStripMenuItem, Me.CategoriesToolStripMenuItem, Me.RouteMasterToolStripMenuItem, Me.ToolStripSeparator2, Me.PurgeToolStripMenuItem})
         Me.MiscSetupToolStripMenuItem.Name = "MiscSetupToolStripMenuItem"
-        Me.MiscSetupToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.MiscSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MiscSetupToolStripMenuItem.Text = "Misc Setup"
         '
         'TaxCodeToolStripMenuItem
         '
         Me.TaxCodeToolStripMenuItem.Name = "TaxCodeToolStripMenuItem"
-        Me.TaxCodeToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.TaxCodeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TaxCodeToolStripMenuItem.Text = "Tax Code"
         '
         'CategoriesToolStripMenuItem
         '
         Me.CategoriesToolStripMenuItem.Name = "CategoriesToolStripMenuItem"
-        Me.CategoriesToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CategoriesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CategoriesToolStripMenuItem.Text = "Categories"
         '
         'RouteMasterToolStripMenuItem
         '
         Me.RouteMasterToolStripMenuItem.Name = "RouteMasterToolStripMenuItem"
-        Me.RouteMasterToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.RouteMasterToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.RouteMasterToolStripMenuItem.Text = "Route Master"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(141, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
         '
         'PurgeToolStripMenuItem
         '
         Me.PurgeToolStripMenuItem.Name = "PurgeToolStripMenuItem"
-        Me.PurgeToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.PurgeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PurgeToolStripMenuItem.Text = "Purge"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(147, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'CustomerToolStripMenuItem
@@ -180,7 +180,7 @@ Partial Class frmMain
         'VersionToolStripMenuItem
         '
         Me.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem"
-        Me.VersionToolStripMenuItem.Size = New System.Drawing.Size(58, 20)
+        Me.VersionToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.VersionToolStripMenuItem.Text = "&Version"
         '
         'frmMain

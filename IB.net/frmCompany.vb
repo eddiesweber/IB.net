@@ -27,12 +27,6 @@ Public Class frmCompany
 
     End Sub
 
-    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
-
-        Application.Exit()
-
-    End Sub
-
     Private Sub cmdOpen_Click(sender As Object, e As EventArgs) Handles cmdOpen.Click
 
         Dim NewCo As String
@@ -63,4 +57,9 @@ Public Class frmCompany
 
     End Sub
 
+    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+
+        Application.Exit()
+
+    End Sub
 End Class

@@ -70,11 +70,10 @@ Partial Class frmViewCust
         Me.txtAverage = New C1.Win.C1Input.C1TextBox()
         Me.txtData8 = New C1.Win.C1Input.C1TextBox()
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
-        Me.SALESHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ITEMHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ARHISTORYToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NOTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
+        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdSalesHistory = New C1.Win.C1Command.C1Command()
         Me.fraEdit.SuspendLayout()
         CType(Me.cmdEditItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,14 +104,16 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'fraEdit
         '
+        Me.fraEdit.BackColor = System.Drawing.SystemColors.Control
         Me.fraEdit.Controls.Add(Me.cmdEditItem)
         Me.fraEdit.Controls.Add(Me.cmdEditDept)
         Me.fraEdit.Controls.Add(Me.cmdEditCust)
+        Me.fraEdit.ForeColor = System.Drawing.Color.Black
         Me.fraEdit.Location = New System.Drawing.Point(470, 128)
         Me.fraEdit.Name = "fraEdit"
         Me.fraEdit.Size = New System.Drawing.Size(105, 115)
@@ -128,8 +129,7 @@ Partial Class frmViewCust
         Me.cmdEditItem.TabIndex = 6
         Me.cmdEditItem.Text = "&Item"
         Me.cmdEditItem.UseVisualStyleBackColor = True
-        Me.cmdEditItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdEditItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdEditItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'cmdEditDept
         '
@@ -139,8 +139,7 @@ Partial Class frmViewCust
         Me.cmdEditDept.TabIndex = 5
         Me.cmdEditDept.Text = "&Depts/Routes"
         Me.cmdEditDept.UseVisualStyleBackColor = True
-        Me.cmdEditDept.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdEditDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdEditDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'cmdEditCust
         '
@@ -150,14 +149,13 @@ Partial Class frmViewCust
         Me.cmdEditCust.TabIndex = 4
         Me.cmdEditCust.Text = "&Customer"
         Me.cmdEditCust.UseVisualStyleBackColor = True
-        Me.cmdEditCust.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdEditCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdEditCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'txtData12
         '
-        Me.txtData12.BackColor = System.Drawing.Color.Silver
+        Me.txtData12.BackColor = System.Drawing.Color.White
         Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtData12.ForeColor = System.Drawing.Color.Navy
+        Me.txtData12.ForeColor = System.Drawing.Color.Black
         Me.txtData12.Location = New System.Drawing.Point(224, 402)
         Me.txtData12.Name = "txtData12"
         Me.txtData12.Size = New System.Drawing.Size(169, 13)
@@ -177,6 +175,8 @@ Partial Class frmViewCust
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
+        Me.lblLabel9.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel9.ForeColor = System.Drawing.Color.Black
         Me.lblLabel9.Location = New System.Drawing.Point(10, 108)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(150, 13)
@@ -186,6 +186,8 @@ Partial Class frmViewCust
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
+        Me.lblLabel8.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel8.ForeColor = System.Drawing.Color.Black
         Me.lblLabel8.Location = New System.Drawing.Point(240, 108)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(136, 13)
@@ -195,7 +197,9 @@ Partial Class frmViewCust
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(116, 92)
+        Me.lblLabel7.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel7.ForeColor = System.Drawing.Color.Black
+        Me.lblLabel7.Location = New System.Drawing.Point(116, 93)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel7.TabIndex = 13
@@ -204,6 +208,8 @@ Partial Class frmViewCust
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
+        Me.lblLabel6.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel6.ForeColor = System.Drawing.Color.Black
         Me.lblLabel6.Location = New System.Drawing.Point(240, 93)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(32, 13)
@@ -213,6 +219,8 @@ Partial Class frmViewCust
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
+        Me.lblLabel5.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel5.ForeColor = System.Drawing.Color.Black
         Me.lblLabel5.Location = New System.Drawing.Point(240, 78)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(38, 13)
@@ -222,6 +230,8 @@ Partial Class frmViewCust
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
+        Me.lblLabel4.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel4.ForeColor = System.Drawing.Color.Black
         Me.lblLabel4.Location = New System.Drawing.Point(240, 63)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(27, 13)
@@ -231,6 +241,8 @@ Partial Class frmViewCust
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
+        Me.lblLabel3.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel3.ForeColor = System.Drawing.Color.Black
         Me.lblLabel3.Location = New System.Drawing.Point(240, 48)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(41, 13)
@@ -240,6 +252,8 @@ Partial Class frmViewCust
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
+        Me.lblLabel2.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel2.ForeColor = System.Drawing.Color.Black
         Me.lblLabel2.Location = New System.Drawing.Point(240, 33)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(47, 13)
@@ -249,6 +263,8 @@ Partial Class frmViewCust
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
+        Me.lblLabel1.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel1.ForeColor = System.Drawing.Color.Black
         Me.lblLabel1.Location = New System.Drawing.Point(10, 93)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(43, 13)
@@ -258,6 +274,8 @@ Partial Class frmViewCust
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
+        Me.lblLabel0.BackColor = System.Drawing.SystemColors.Control
+        Me.lblLabel0.ForeColor = System.Drawing.Color.Black
         Me.lblLabel0.Location = New System.Drawing.Point(10, 78)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(30, 13)
@@ -267,6 +285,8 @@ Partial Class frmViewCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
+        Me.lblCurCust.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.lblCurCust.ForeColor = System.Drawing.Color.Black
         Me.lblCurCust.Location = New System.Drawing.Point(9, 47)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(0, 13)
@@ -276,10 +296,13 @@ Partial Class frmViewCust
         'grdDept
         '
         Me.grdDept.AllowUpdate = False
+        Me.grdDept.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.grdDept.BorderColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
         Me.grdDept.Caption = "DEPARTMENTS"
         Me.grdDept.DataSource = Me.SpGetCustDeptBindingSource
         Me.grdDept.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Standard
-        Me.grdDept.ForeColor = System.Drawing.Color.Navy
+        Me.grdDept.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDept.ForeColor = System.Drawing.Color.Black
         Me.grdDept.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDept.Images.Add(CType(resources.GetObject("grdDept.Images"), System.Drawing.Image))
         Me.grdDept.Location = New System.Drawing.Point(10, 130)
@@ -289,6 +312,9 @@ Partial Class frmViewCust
         Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
+        Me.grdDept.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.grdDept.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
+        Me.grdDept.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdDept.Size = New System.Drawing.Size(450, 85)
         Me.grdDept.TabIndex = 37
         Me.grdDept.UseCompatibleTextRendering = False
@@ -302,8 +328,12 @@ Partial Class frmViewCust
         'grdRoute
         '
         Me.grdRoute.AllowUpdate = False
+        Me.grdRoute.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.grdRoute.BorderColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
         Me.grdRoute.Caption = "ROUTES"
         Me.grdRoute.DataSource = Me.SpGetCustRouteBindingSource
+        Me.grdRoute.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdRoute.ForeColor = System.Drawing.Color.Black
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
         Me.grdRoute.Location = New System.Drawing.Point(10, 220)
@@ -313,6 +343,9 @@ Partial Class frmViewCust
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
+        Me.grdRoute.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.grdRoute.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
+        Me.grdRoute.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdRoute.Size = New System.Drawing.Size(450, 70)
         Me.grdRoute.TabIndex = 38
         Me.grdRoute.UseCompatibleTextRendering = False
@@ -326,8 +359,12 @@ Partial Class frmViewCust
         'grdItem
         '
         Me.grdItem.AllowUpdate = False
+        Me.grdItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.grdItem.BorderColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
         Me.grdItem.Caption = "ITEMS (STANDING ORDERS)"
         Me.grdItem.DataSource = Me.SpGetCustItemBindingSource
+        Me.grdItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdItem.ForeColor = System.Drawing.Color.Black
         Me.grdItem.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdItem.Images.Add(CType(resources.GetObject("grdItem.Images"), System.Drawing.Image))
         Me.grdItem.Location = New System.Drawing.Point(10, 295)
@@ -337,6 +374,9 @@ Partial Class frmViewCust
         Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
         Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
+        Me.grdItem.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.grdItem.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
+        Me.grdItem.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdItem.Size = New System.Drawing.Size(565, 180)
         Me.grdItem.TabIndex = 39
         Me.grdItem.UseCompatibleTextRendering = False
@@ -371,8 +411,7 @@ Partial Class frmViewCust
         Me.cmdFind.TabIndex = 1
         Me.cmdFind.Text = "&Find"
         Me.cmdFind.UseVisualStyleBackColor = True
-        Me.cmdFind.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdFind.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdFind.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'cmdRefresh
         '
@@ -382,8 +421,7 @@ Partial Class frmViewCust
         Me.cmdRefresh.TabIndex = 2
         Me.cmdRefresh.Text = "Refresh"
         Me.cmdRefresh.UseVisualStyleBackColor = True
-        Me.cmdRefresh.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'cmdClose
         '
@@ -393,8 +431,7 @@ Partial Class frmViewCust
         Me.cmdClose.TabIndex = 3
         Me.cmdClose.Text = "Close"
         Me.cmdClose.UseVisualStyleBackColor = True
-        Me.cmdClose.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'cmdPrint
         '
@@ -404,14 +441,15 @@ Partial Class frmViewCust
         Me.cmdPrint.TabIndex = 7
         Me.cmdPrint.Text = "&Print"
         Me.cmdPrint.UseVisualStyleBackColor = True
-        Me.cmdPrint.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue
         '
         'txtData1
         '
         Me.txtData1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData1.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "BILL_NAME", True))
+        Me.txtData1.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData1.Location = New System.Drawing.Point(60, 31)
         Me.txtData1.Name = "txtData1"
@@ -427,8 +465,9 @@ Partial Class frmViewCust
         Me.txtData2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "BILL_STR", True))
+        Me.txtData2.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData2.Location = New System.Drawing.Point(59, 46)
+        Me.txtData2.Location = New System.Drawing.Point(60, 46)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.ReadOnly = True
         Me.txtData2.Size = New System.Drawing.Size(175, 14)
@@ -442,6 +481,7 @@ Partial Class frmViewCust
         Me.txtData11.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CARE_OF", True))
+        Me.txtData11.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData11.Location = New System.Drawing.Point(60, 76)
         Me.txtData11.Name = "txtData11"
@@ -457,6 +497,7 @@ Partial Class frmViewCust
         Me.txtData4.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PAYBY", True))
+        Me.txtData4.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData4.Location = New System.Drawing.Point(60, 91)
         Me.txtData4.Name = "txtData4"
@@ -468,9 +509,10 @@ Partial Class frmViewCust
         '
         'txtAverage2
         '
-        Me.txtAverage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtAverage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer))
         Me.txtAverage2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtAverage2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtAverage2.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtAverage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAverage2.Location = New System.Drawing.Point(160, 106)
         Me.txtAverage2.Name = "txtAverage2"
@@ -487,6 +529,7 @@ Partial Class frmViewCust
         Me.txtData9.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "EMAIL", True))
+        Me.txtData9.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData9.Location = New System.Drawing.Point(285, 76)
         Me.txtData9.Name = "txtData9"
@@ -502,6 +545,7 @@ Partial Class frmViewCust
         Me.txtData7.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PHONE", True))
+        Me.txtData7.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData7.Location = New System.Drawing.Point(285, 46)
         Me.txtData7.Name = "txtData7"
@@ -517,6 +561,7 @@ Partial Class frmViewCust
         Me.txtData6.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CONTACT", True))
+        Me.txtData6.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData6.Location = New System.Drawing.Point(285, 31)
         Me.txtData6.Name = "txtData6"
@@ -532,6 +577,7 @@ Partial Class frmViewCust
         Me.txtData3.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CSZ", True))
+        Me.txtData3.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData3.Location = New System.Drawing.Point(60, 61)
         Me.txtData3.Name = "txtData3"
@@ -548,6 +594,7 @@ Partial Class frmViewCust
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData0.Location = New System.Drawing.Point(10, 33)
         Me.txtData0.Name = "txtData0"
         Me.txtData0.Size = New System.Drawing.Size(45, 13)
@@ -561,6 +608,7 @@ Partial Class frmViewCust
         Me.txtData5.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "COUNTY", True))
+        Me.txtData5.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData5.Location = New System.Drawing.Point(160, 91)
         Me.txtData5.Name = "txtData5"
@@ -575,6 +623,7 @@ Partial Class frmViewCust
         Me.txtAverage.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
         Me.txtAverage.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtAverage.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtAverage.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtAverage.Location = New System.Drawing.Point(385, 106)
         Me.txtAverage.Name = "txtAverage"
         Me.txtAverage.ReadOnly = True
@@ -590,6 +639,7 @@ Partial Class frmViewCust
         Me.txtData8.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "FAX_NO", True))
+        Me.txtData8.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData8.Location = New System.Drawing.Point(285, 61)
         Me.txtData8.Name = "txtData8"
@@ -605,6 +655,7 @@ Partial Class frmViewCust
         Me.txtData10.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "URL", True))
+        Me.txtData10.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData10.Location = New System.Drawing.Point(285, 91)
         Me.txtData10.Name = "txtData10"
@@ -614,44 +665,38 @@ Partial Class frmViewCust
         Me.txtData10.Tag = Nothing
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'SALESHISTORYToolStripMenuItem
+        'C1MainMenu1
         '
-        Me.SALESHISTORYToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.SALESHISTORYToolStripMenuItem.Name = "SALESHISTORYToolStripMenuItem"
-        Me.SALESHISTORYToolStripMenuItem.Size = New System.Drawing.Size(101, 20)
-        Me.SALESHISTORYToolStripMenuItem.Text = "&SALES HISTORY"
+        Me.C1MainMenu1.AccessibleName = "Menu Bar"
+        Me.C1MainMenu1.CommandHolder = Nothing
+        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1})
+        Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
+        Me.C1MainMenu1.Name = "C1MainMenu1"
+        Me.C1MainMenu1.Size = New System.Drawing.Size(584, 27)
+        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         '
-        'ITEMHISTORYToolStripMenuItem
+        'C1CommandHolder1
         '
-        Me.ITEMHISTORYToolStripMenuItem.Name = "ITEMHISTORYToolStripMenuItem"
-        Me.ITEMHISTORYToolStripMenuItem.Size = New System.Drawing.Size(96, 20)
-        Me.ITEMHISTORYToolStripMenuItem.Text = "ITEM &HISTORY"
+        Me.C1CommandHolder1.Commands.Add(Me.cmdSalesHistory)
+        Me.C1CommandHolder1.Owner = Me
         '
-        'ARHISTORYToolStripMenuItem
+        'C1CommandLink1
         '
-        Me.ARHISTORYToolStripMenuItem.Name = "ARHISTORYToolStripMenuItem"
-        Me.ARHISTORYToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
-        Me.ARHISTORYToolStripMenuItem.Text = "&AR HISTORY"
+        Me.C1CommandLink1.Command = Me.cmdSalesHistory
         '
-        'NOTESToolStripMenuItem
+        'cmdSalesHistory
         '
-        Me.NOTESToolStripMenuItem.Name = "NOTESToolStripMenuItem"
-        Me.NOTESToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
-        Me.NOTESToolStripMenuItem.Text = "&NOTES"
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SALESHISTORYToolStripMenuItem, Me.ITEMHISTORYToolStripMenuItem, Me.ARHISTORYToolStripMenuItem, Me.NOTESToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(584, 24)
-        Me.MenuStrip1.TabIndex = 40
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.cmdSalesHistory.Name = "cmdSalesHistory"
+        Me.cmdSalesHistory.ShortcutText = ""
+        Me.cmdSalesHistory.Text = "&Sales History"
+        Me.cmdSalesHistory.UserData = "ShowSalesHistory"
         '
         'frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(584, 483)
         Me.Controls.Add(Me.txtData10)
         Me.Controls.Add(Me.txtData1)
@@ -687,9 +732,9 @@ Partial Class frmViewCust
         Me.Controls.Add(Me.lblLabel9)
         Me.Controls.Add(Me.txtData12)
         Me.Controls.Add(Me.fraEdit)
-        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.C1MainMenu1)
+        Me.ForeColor = System.Drawing.Color.Black
         Me.Location = New System.Drawing.Point(62, 101)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmViewCust"
         Me.Text = "Customer View"
         Me.fraEdit.ResumeLayout(False)
@@ -722,8 +767,7 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -742,18 +786,9 @@ Partial Class frmViewCust
     Friend WithEvents lblLabel1 As Label
     Friend WithEvents lblLabel0 As Label
     Friend WithEvents lblCurCust As Label
-    Friend WithEvents SpGetCustBindingSource As BindingSource
-    Friend WithEvents IBPortlandDataSet As IBPortlandDataSet
-    Friend WithEvents SpGetCustTableAdapter As IBPortlandDataSetTableAdapters.spGetCustTableAdapter
     Friend WithEvents grdDept As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents SpGetCustDeptBindingSource As BindingSource
-    Friend WithEvents SpGetCustDeptTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter
     Friend WithEvents grdRoute As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents SpGetCustRouteBindingSource As BindingSource
-    Friend WithEvents SpGetCustRouteTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter
     Friend WithEvents grdItem As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents SpGetCustItemBindingSource As BindingSource
-    Friend WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
     Friend WithEvents cmdEditItem As C1.Win.C1Input.C1Button
     Friend WithEvents cmdEditDept As C1.Win.C1Input.C1Button
     Friend WithEvents cmdEditCust As C1.Win.C1Input.C1Button
@@ -775,9 +810,17 @@ Partial Class frmViewCust
     Friend WithEvents txtAverage As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData8 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents SALESHISTORYToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ITEMHISTORYToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ARHISTORYToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents NOTESToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents C1MainMenu1 As C1.Win.C1Command.C1MainMenu
+    Private WithEvents SpGetCustBindingSource As BindingSource
+    Private WithEvents IBPortlandDataSet As IBPortlandDataSet
+    Private WithEvents SpGetCustTableAdapter As IBPortlandDataSetTableAdapters.spGetCustTableAdapter
+    Private WithEvents SpGetCustDeptTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustDeptTableAdapter
+    Private WithEvents SpGetCustRouteBindingSource As BindingSource
+    Private WithEvents SpGetCustRouteTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter
+    Private WithEvents SpGetCustItemBindingSource As BindingSource
+    Private WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
+    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
+    Private WithEvents SpGetCustDeptBindingSource As BindingSource
+    Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdSalesHistory As C1.Win.C1Command.C1Command
 End Class

@@ -38,7 +38,7 @@ Partial Class frmFindCust
         Me.lstCustName.Location = New System.Drawing.Point(90, 10)
         Me.lstCustName.Name = "lstCustName"
         Me.lstCustName.Size = New System.Drawing.Size(200, 95)
-        Me.lstCustName.TabIndex = 4
+        Me.lstCustName.TabIndex = 5
         '
         'lstCustNum
         '
@@ -46,14 +46,14 @@ Partial Class frmFindCust
         Me.lstCustNum.Location = New System.Drawing.Point(10, 10)
         Me.lstCustNum.Name = "lstCustNum"
         Me.lstCustNum.Size = New System.Drawing.Size(75, 95)
-        Me.lstCustNum.TabIndex = 3
+        Me.lstCustNum.TabIndex = 4
         '
         'cmdSelect
         '
         Me.cmdSelect.Location = New System.Drawing.Point(300, 10)
         Me.cmdSelect.Name = "cmdSelect"
         Me.cmdSelect.Size = New System.Drawing.Size(75, 25)
-        Me.cmdSelect.TabIndex = 5
+        Me.cmdSelect.TabIndex = 1
         Me.cmdSelect.Text = "Select"
         Me.cmdSelect.UseVisualStyleBackColor = True
         Me.cmdSelect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -64,7 +64,7 @@ Partial Class frmFindCust
         Me.cmdRefresh.Location = New System.Drawing.Point(300, 40)
         Me.cmdRefresh.Name = "cmdRefresh"
         Me.cmdRefresh.Size = New System.Drawing.Size(75, 25)
-        Me.cmdRefresh.TabIndex = 6
+        Me.cmdRefresh.TabIndex = 2
         Me.cmdRefresh.Text = "&Refresh"
         Me.cmdRefresh.UseVisualStyleBackColor = True
         Me.cmdRefresh.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -75,7 +75,7 @@ Partial Class frmFindCust
         Me.cmdCancel.Location = New System.Drawing.Point(300, 80)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(75, 25)
-        Me.cmdCancel.TabIndex = 7
+        Me.cmdCancel.TabIndex = 3
         Me.cmdCancel.Text = "Close"
         Me.cmdCancel.UseVisualStyleBackColor = True
         Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue

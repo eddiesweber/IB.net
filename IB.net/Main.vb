@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports CRDESIGNERLib
 
-
 Module Main
 
     Public configDB As SqlConnection
@@ -165,7 +164,7 @@ Module Main
 
         'Is form sizable?
         e = fm.FormBorderStyle
-        Sizable = (e = 2) Or (e = 5)
+        Sizable = (e = 4) Or (e = 6)
 
         'Save Screen Position Info
         sectionname = "Form " & fm.Name
