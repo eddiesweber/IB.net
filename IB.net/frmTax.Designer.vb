@@ -25,18 +25,19 @@ Partial Class frmTax
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTax))
         Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.DsTaxMaster = New IB.net.dsTaxMaster()
         Me.TaxMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsTaxMaster = New IB.net.dsTaxMaster()
         Me.TaxMasterTableAdapter = New IB.net.dsTaxMasterTableAdapters.TaxMasterTableAdapter()
         CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsTaxMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TaxMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsTaxMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'C1TrueDBGrid1
         '
         Me.C1TrueDBGrid1.AllowAddNew = True
         Me.C1TrueDBGrid1.AllowDelete = True
+        Me.C1TrueDBGrid1.AlternatingRows = True
         Me.C1TrueDBGrid1.DataSource = Me.TaxMasterBindingSource
         Me.C1TrueDBGrid1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
@@ -53,15 +54,15 @@ Partial Class frmTax
         Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
         Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         '
-        'DsTaxMaster
-        '
-        Me.DsTaxMaster.DataSetName = "dsTaxMaster"
-        Me.DsTaxMaster.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'TaxMasterBindingSource
         '
         Me.TaxMasterBindingSource.DataMember = "TaxMaster"
         Me.TaxMasterBindingSource.DataSource = Me.DsTaxMaster
+        '
+        'DsTaxMaster
+        '
+        Me.DsTaxMaster.DataSetName = "dsTaxMaster"
+        Me.DsTaxMaster.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TaxMasterTableAdapter
         '
@@ -76,8 +77,8 @@ Partial Class frmTax
         Me.Name = "frmTax"
         Me.Text = "Add/Edit Tax Codes"
         CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsTaxMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TaxMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsTaxMaster, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

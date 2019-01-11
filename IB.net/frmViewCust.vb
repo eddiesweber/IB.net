@@ -3,6 +3,8 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports C1.Win.C1TrueDBGrid
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 
 Public Class frmViewCust
 
@@ -13,7 +15,7 @@ Public Class frmViewCust
         GetWindowPos(Me, 0, 0)
 
         If Dir("frmViewCustgrdDept.xml") <> "" Then
-            grdDept.LoadLayout("frmViewCust.xml")
+            grdDept.LoadLayout("frmViewCustgrdDept.xml")
         End If
         If Dir("frmViewCustgrdRoute.xml") <> "" Then
             grdRoute.LoadLayout("frmViewCustgrdRoute.xml")
@@ -240,6 +242,116 @@ Public Class frmViewCust
 
         frmCust.Show()
         frmCust.BringToFront()
+
+    End Sub
+
+    'Private Sub SalesHistoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesHistoryToolStripMenuItem.Click
+
+    '    frmSOHist.Show()
+
+    'End Sub
+
+    Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
+
+        frmDept.Show()
+
+    End Sub
+
+    Private Sub cmdEditItem_Click(sender As Object, e As EventArgs) Handles cmdEditItem.Click
+
+        frmRentOrd.Show()
+
+    End Sub
+
+    Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
+
+        Dim ConnInfo As CrystalDecisions.Shared.ConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
+
+        ConnInfo.IntegratedSecurity = True
+        ConnInfo.ServerName = "IBSERVER2016\SQLEXPRESS"
+        'ConnInfo.UserID = ""
+        'ConnInfo.Password = ""
+        ConnInfo.DatabaseName = "IBSEA"
+
+        'RPT.Load(DataPath & "\Custinfo.rpt")
+        RPT.Load("C:\IB\IB_DEV\Custinfo.rpt")
+
+        If RPT.DataDefinition.ParameterFields.Count > 0 Then
+            MessageBox.Show("RPT.DataDefinition.ParameterFields.Count" & RPT.DataDefinition.ParameterFields.Count)
+        Else
+            MessageBox.Show("0")
+        End If
+
+        'If (RPT.DataDefinition.ParameterFields.Count > 0) Then
+        '    For Each rptParam As ParameterFieldDefinition In RPT.DataDefinition.ParameterFields
+        '        ' check the reportname is empty - this ensures we set parameters in the main report only
+        '        If (rptParam.ReportName = "") Then
+        '            ' get the parameter name
+        '            Dim strName As String = rptParam.ParameterFieldName
+        '            ' check name and set value if correct
+        '            If (strName = "Correct Name") Then
+        '                Dim objVal As Object = "My Value"
+        '                RPT.SetParameterValue(rptParam.ParameterFieldName, objVal)
+        '            End If
+        '        End If
+        '    Next
+        'End If
+
+        'RPT.SetDataSource(ds)
+        'RPT.RecordSelectionFormula = "{CustomerMaster.CUST_NUM}=" & CStr(CurCust)
+        'RPT.SetParameterValue("COMPANY", CompanyName)
+        '        RPT.SetParameterValue("CustomerMaster.CUST_NUM", CStr(CurCust))
+        RPT.PrintToPrinter(1, True, 0, 0)
+
+        ' Examples
+        ' crReport.RecordSelectionFormula = "{SALESORDER.SALESORDERID} = '" + salesOrder.Id.ToString() + "'"
+        ' crReport.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath(filename));
+
+        '//Define New connection for Crystal Report
+        'CrystalDecisions.Shared.ConnectionInfo connectionInfo = New CrystalDecisions.Shared.ConnectionInfo();
+        'connectionInfo.DatabaseName = initialCatalog;
+        'connectionInfo.UserID = username;
+        'connectionInfo.Password = password;
+        'connectionInfo.ServerName = dataSource;
+
+        'oRpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter;
+        'oRpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
+        'oRpt.DataDefinition.FormulaFields["RazSoc"].Text = "'" + ((Entidades.Sesion)Session["Sesion"]).Cuit.RazonSocial + "'";
+
+        'With RPT
+        '    .ReportFileName = DataPath & "\Custinfo.rpt"
+        '    .Connect = CryCS
+        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{CustomerMaster.CUST_NUM}=" & CStr(CurCust)
+        '    .Destination = 1
+        '    .Action = 1
+        '    .Formulas(0) = ""
+        '    .SelectionFormula = ""
+        '    .ReportFileName = ""
+        'End With
+    End Sub
+
+    Private Sub mnuSalesHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuSalesHistory.Click
+
+        MessageBox.Show("Sales History")
+
+    End Sub
+
+    Private Sub mnuItemHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuItemHistory.Click
+
+        MessageBox.Show("Item History")
+
+    End Sub
+
+    Private Sub mnuNotes_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuNotes.Click
+
+        MessageBox.Show("Notes")
+
+    End Sub
+
+    Private Sub mnuArHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuArHistory.Click
+
+        MessageBox.Show("AR History")
 
     End Sub
 

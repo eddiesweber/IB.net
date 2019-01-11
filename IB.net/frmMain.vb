@@ -60,6 +60,8 @@ Public Class frmMain
 
         'RPT = Report1
         'RPT.PrinterSelect
+        Dim pPrint As Boolean = pDialog.ShowDialog()
+        'MessageBox.Show(pDialog.PrinterSettings.PrinterName)
 
         OpenData()
 
@@ -76,37 +78,15 @@ Public Class frmMain
         SaveSetting(APPNAME, SectionName, "CurItem", CurItem)
         SaveSetting(APPNAME, SectionName, "CurType", CurType)
 
+        SaveWindowPos(Me)
+
+        Application.Exit()
+
     End Sub
-
-    'Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-    'Dim SectionName As String
-
-    'Save file info to registry
-    '   SectionName = "Data"
-    '  SaveSetting(APPNAME, sectionname, "CurCust", CurCust)
-    ' SaveSetting(APPNAME, sectionname, "CurItem", CurItem)
-    'SaveSetting(APPNAME, sectionname, "CurType", CurType)
-
-    '    'Save Screen Position
-    '    'SaveWindowPos Me
-
-    '    'unload all forms
-    '    My.Application.OpenForms.Cast(Of Form)() _
-    '          .Except({Me}) _
-    '          .ToList() _
-    '          .ForEach(Sub(form) form.Close())
-
-    '    ' Exit application
-    '    Application.Exit()
-
-    'End Sub
 
     Function PrevInstance() As Boolean
 
-        If UBound(Diagnostics.Process.GetProcessesByName _
-           (Diagnostics.Process.GetCurrentProcess.ProcessName)) _
-           > 0 Then
+        If UBound(Diagnostics.Process.GetProcessesByName(Diagnostics.Process.GetCurrentProcess.ProcessName)) > 0 Then
             Return True
         Else
             Return False
@@ -114,7 +94,7 @@ Public Class frmMain
 
     End Function
 
-    Private Sub SelectDivisionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectDivisionToolStripMenuItem.Click
+    Private Sub cmdSelectDivision_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdSelectDivision.Click
 
         frmCompany.ShowDialog()
 
@@ -124,39 +104,47 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+    Private Sub cmdPrintSetup_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdPrintSetup.Click
 
-        Application.Exit()
+        Dim pPrint As Boolean = pDialog.ShowDialog()
+        'MessageBox.Show(pDialog.PrinterSettings.PrinterName)
 
     End Sub
 
-    Private Sub FindCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FindCustomerToolStripMenuItem.Click
+    Private Sub cmdFindCustomer_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdFindCustomer.Click
 
         frmFindCust.Show()
 
     End Sub
 
-    Private Sub ViewCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewCustomerToolStripMenuItem.Click
+    Private Sub cmdViewCustomer_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdViewCustomer.Click
 
         frmViewCust.Show()
 
     End Sub
 
-    Private Sub TaxCodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TaxCodeToolStripMenuItem.Click
+    Private Sub cmdTaxCode_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdTaxCode.Click
 
         frmTax.Show()
 
     End Sub
 
-    Private Sub CategoriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoriesToolStripMenuItem.Click
+    Private Sub cmdCategories_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdCategories.Click
 
         frmCat.Show()
 
     End Sub
 
-    Private Sub RouteMasterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RouteMasterToolStripMenuItem.Click
+    Private Sub cmdRouteMaster_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRouteMaster.Click
 
         frmRouteMast.Show()
 
     End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdExit.Click
+
+        Application.Exit()
+
+    End Sub
+
 End Class

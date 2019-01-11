@@ -22,204 +22,317 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SelectDivisionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MiscSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TaxCodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CategoriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RouteMasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.PurgeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FindCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AreaSearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GeneralSearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CommisionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VersionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuStrip1.SuspendLayout()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
+        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.mnuFile = New C1.Win.C1Command.C1CommandMenu()
+        Me.clSelectDivision = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
+        Me.clPrintSetup = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdPrintSetup = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
+        Me.mnuMiscSetup = New C1.Win.C1Command.C1CommandMenu()
+        Me.clTaxCode = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdTaxCode = New C1.Win.C1Command.C1Command()
+        Me.clCategories = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdCategories = New C1.Win.C1Command.C1Command()
+        Me.clRouteMaster = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdRouteMaster = New C1.Win.C1Command.C1Command()
+        Me.clPurge = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdPurge = New C1.Win.C1Command.C1Command()
+        Me.clExit = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdExit = New C1.Win.C1Command.C1Command()
+        Me.C1Command1 = New C1.Win.C1Command.C1Command()
+        Me.mnuCustomer = New C1.Win.C1Command.C1CommandMenu()
+        Me.C1CommandLink9 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdFindCustomer = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink10 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdViewCustomer = New C1.Win.C1Command.C1Command()
+        Me.cmdAreaSearch = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink15 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdGeneralSearch = New C1.Win.C1Command.C1Command()
+        Me.mnuDaily = New C1.Win.C1Command.C1CommandMenu()
+        Me.C1CommandLink8 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'C1MainMenu1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.CustomerToolStripMenuItem, Me.DailyToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.InventoryToolStripMenuItem, Me.CommisionToolStripMenuItem, Me.VersionToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(429, 24)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.C1MainMenu1.AccessibleName = "Menu Bar"
+        Me.C1MainMenu1.BackColor = System.Drawing.Color.White
+        Me.C1MainMenu1.CommandHolder = Me.C1CommandHolder1
+        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink6, Me.C1CommandLink7})
+        Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
+        Me.C1MainMenu1.Name = "C1MainMenu1"
+        Me.C1MainMenu1.Size = New System.Drawing.Size(429, 27)
+        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.C1MainMenu1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
-        'FileToolStripMenuItem
+        'C1CommandHolder1
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectDivisionToolStripMenuItem, Me.PrintSetupToolStripMenuItem, Me.MiscSetupToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.FileToolStripMenuItem.Text = "&File"
+        Me.C1CommandHolder1.Commands.Add(Me.mnuFile)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdSelectDivision)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdPrintSetup)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuMiscSetup)
+        Me.C1CommandHolder1.Commands.Add(Me.C1Command1)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuCustomer)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuDaily)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdFindCustomer)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdViewCustomer)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdTaxCode)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdCategories)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdRouteMaster)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdExit)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdPurge)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdGeneralSearch)
+        Me.C1CommandHolder1.Owner = Me
         '
-        'SelectDivisionToolStripMenuItem
+        'mnuFile
         '
-        Me.SelectDivisionToolStripMenuItem.Name = "SelectDivisionToolStripMenuItem"
-        Me.SelectDivisionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.SelectDivisionToolStripMenuItem.Text = "Select Division"
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.clSelectDivision, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
+        Me.mnuFile.HideNonRecentLinks = False
+        Me.mnuFile.Name = "mnuFile"
+        Me.mnuFile.ShortcutText = ""
+        Me.mnuFile.Text = "&File"
+        Me.mnuFile.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.mnuFile.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
-        'PrintSetupToolStripMenuItem
+        'clSelectDivision
         '
-        Me.PrintSetupToolStripMenuItem.Name = "PrintSetupToolStripMenuItem"
-        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PrintSetupToolStripMenuItem.Text = "Print Setup"
+        Me.clSelectDivision.Command = Me.cmdSelectDivision
         '
-        'MiscSetupToolStripMenuItem
+        'cmdSelectDivision
         '
-        Me.MiscSetupToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TaxCodeToolStripMenuItem, Me.CategoriesToolStripMenuItem, Me.RouteMasterToolStripMenuItem, Me.ToolStripSeparator2, Me.PurgeToolStripMenuItem})
-        Me.MiscSetupToolStripMenuItem.Name = "MiscSetupToolStripMenuItem"
-        Me.MiscSetupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.MiscSetupToolStripMenuItem.Text = "Misc Setup"
+        Me.cmdSelectDivision.Name = "cmdSelectDivision"
+        Me.cmdSelectDivision.ShortcutText = ""
+        Me.cmdSelectDivision.Text = "Select &Division"
         '
-        'TaxCodeToolStripMenuItem
+        'clPrintSetup
         '
-        Me.TaxCodeToolStripMenuItem.Name = "TaxCodeToolStripMenuItem"
-        Me.TaxCodeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.TaxCodeToolStripMenuItem.Text = "Tax Code"
+        Me.clPrintSetup.Command = Me.cmdPrintSetup
+        Me.clPrintSetup.SortOrder = 1
         '
-        'CategoriesToolStripMenuItem
+        'cmdPrintSetup
         '
-        Me.CategoriesToolStripMenuItem.Name = "CategoriesToolStripMenuItem"
-        Me.CategoriesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.CategoriesToolStripMenuItem.Text = "Categories"
+        Me.cmdPrintSetup.Name = "cmdPrintSetup"
+        Me.cmdPrintSetup.ShortcutText = ""
+        Me.cmdPrintSetup.Text = "&Print Setup"
         '
-        'RouteMasterToolStripMenuItem
+        'C1CommandLink4
         '
-        Me.RouteMasterToolStripMenuItem.Name = "RouteMasterToolStripMenuItem"
-        Me.RouteMasterToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.RouteMasterToolStripMenuItem.Text = "Route Master"
+        Me.C1CommandLink4.Command = Me.mnuMiscSetup
+        Me.C1CommandLink4.SortOrder = 2
+        Me.C1CommandLink4.Text = "&Misc Setup"
         '
-        'ToolStripSeparator2
+        'mnuMiscSetup
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        Me.mnuMiscSetup.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.clTaxCode, Me.clCategories, Me.clRouteMaster, Me.clPurge})
+        Me.mnuMiscSetup.HideNonRecentLinks = False
+        Me.mnuMiscSetup.Name = "mnuMiscSetup"
+        Me.mnuMiscSetup.ShortcutText = ""
+        Me.mnuMiscSetup.Text = "Misc Setup"
         '
-        'PurgeToolStripMenuItem
+        'clTaxCode
         '
-        Me.PurgeToolStripMenuItem.Name = "PurgeToolStripMenuItem"
-        Me.PurgeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PurgeToolStripMenuItem.Text = "Purge"
+        Me.clTaxCode.Command = Me.cmdTaxCode
+        Me.clTaxCode.Text = "Tax Code"
         '
-        'ToolStripSeparator1
+        'cmdTaxCode
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.cmdTaxCode.Name = "cmdTaxCode"
+        Me.cmdTaxCode.ShortcutText = ""
+        Me.cmdTaxCode.Text = "&Tax Code"
         '
-        'ExitToolStripMenuItem
+        'clCategories
         '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
+        Me.clCategories.Command = Me.cmdCategories
+        Me.clCategories.SortOrder = 1
         '
-        'CustomerToolStripMenuItem
+        'cmdCategories
         '
-        Me.CustomerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindCustomerToolStripMenuItem, Me.ViewCustomerToolStripMenuItem, Me.AreaSearchToolStripMenuItem, Me.GeneralSearchToolStripMenuItem})
-        Me.CustomerToolStripMenuItem.Name = "CustomerToolStripMenuItem"
-        Me.CustomerToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
-        Me.CustomerToolStripMenuItem.Text = "&Customer"
+        Me.cmdCategories.Name = "cmdCategories"
+        Me.cmdCategories.ShortcutText = ""
+        Me.cmdCategories.Text = "&Categories"
         '
-        'FindCustomerToolStripMenuItem
+        'clRouteMaster
         '
-        Me.FindCustomerToolStripMenuItem.Name = "FindCustomerToolStripMenuItem"
-        Me.FindCustomerToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.FindCustomerToolStripMenuItem.Text = "Find Customer"
+        Me.clRouteMaster.Command = Me.cmdRouteMaster
+        Me.clRouteMaster.SortOrder = 2
         '
-        'ViewCustomerToolStripMenuItem
+        'cmdRouteMaster
         '
-        Me.ViewCustomerToolStripMenuItem.Name = "ViewCustomerToolStripMenuItem"
-        Me.ViewCustomerToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.ViewCustomerToolStripMenuItem.Text = "&View Customer          Ctrl-V"
+        Me.cmdRouteMaster.Name = "cmdRouteMaster"
+        Me.cmdRouteMaster.ShortcutText = ""
+        Me.cmdRouteMaster.Text = "&RouteMaster"
         '
-        'AreaSearchToolStripMenuItem
+        'clPurge
         '
-        Me.AreaSearchToolStripMenuItem.Name = "AreaSearchToolStripMenuItem"
-        Me.AreaSearchToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.AreaSearchToolStripMenuItem.Text = "Area Search"
+        Me.clPurge.Command = Me.cmdPurge
+        Me.clPurge.Delimiter = True
+        Me.clPurge.SortOrder = 3
         '
-        'GeneralSearchToolStripMenuItem
+        'cmdPurge
         '
-        Me.GeneralSearchToolStripMenuItem.Name = "GeneralSearchToolStripMenuItem"
-        Me.GeneralSearchToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
-        Me.GeneralSearchToolStripMenuItem.Text = "General Search"
+        Me.cmdPurge.Name = "cmdPurge"
+        Me.cmdPurge.ShortcutText = ""
+        Me.cmdPurge.Text = "&Purge"
         '
-        'DailyToolStripMenuItem
+        'clExit
         '
-        Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
-        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
-        Me.DailyToolStripMenuItem.Text = "&Daily"
+        Me.clExit.Command = Me.cmdExit
+        Me.clExit.Delimiter = True
+        Me.clExit.SortOrder = 3
+        Me.clExit.Text = "E&xit"
         '
-        'ReportsToolStripMenuItem
+        'cmdExit
         '
-        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
-        Me.ReportsToolStripMenuItem.Text = "&Reports"
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.ShortcutText = ""
+        Me.cmdExit.Text = "&Exit"
         '
-        'InventoryToolStripMenuItem
+        'C1Command1
         '
-        Me.InventoryToolStripMenuItem.Name = "InventoryToolStripMenuItem"
-        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.InventoryToolStripMenuItem.Text = "&Inventory"
+        Me.C1Command1.Name = "C1Command1"
+        Me.C1Command1.ShortcutText = ""
+        Me.C1Command1.Text = "&Tax Code"
         '
-        'CommisionToolStripMenuItem
+        'mnuCustomer
         '
-        Me.CommisionToolStripMenuItem.Name = "CommisionToolStripMenuItem"
-        Me.CommisionToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
-        Me.CommisionToolStripMenuItem.Text = "Co&mmision"
+        Me.mnuCustomer.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink9, Me.C1CommandLink10, Me.cmdAreaSearch, Me.C1CommandLink15})
+        Me.mnuCustomer.HideNonRecentLinks = False
+        Me.mnuCustomer.Name = "mnuCustomer"
+        Me.mnuCustomer.ShortcutText = ""
+        Me.mnuCustomer.Text = "&Customer"
+        Me.mnuCustomer.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.mnuCustomer.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
-        'VersionToolStripMenuItem
+        'C1CommandLink9
         '
-        Me.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem"
-        Me.VersionToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
-        Me.VersionToolStripMenuItem.Text = "&Version"
+        Me.C1CommandLink9.Command = Me.cmdFindCustomer
+        '
+        'cmdFindCustomer
+        '
+        Me.cmdFindCustomer.Name = "cmdFindCustomer"
+        Me.cmdFindCustomer.ShortcutText = ""
+        Me.cmdFindCustomer.Text = "&Find Customer"
+        '
+        'C1CommandLink10
+        '
+        Me.C1CommandLink10.Command = Me.cmdViewCustomer
+        Me.C1CommandLink10.SortOrder = 1
+        '
+        'cmdViewCustomer
+        '
+        Me.cmdViewCustomer.Name = "cmdViewCustomer"
+        Me.cmdViewCustomer.ShortcutText = ""
+        Me.cmdViewCustomer.Text = "&View Customer"
+        '
+        'cmdAreaSearch
+        '
+        Me.cmdAreaSearch.SortOrder = 2
+        Me.cmdAreaSearch.Text = "Area Search"
+        '
+        'C1CommandLink15
+        '
+        Me.C1CommandLink15.Command = Me.cmdGeneralSearch
+        Me.C1CommandLink15.SortOrder = 3
+        '
+        'cmdGeneralSearch
+        '
+        Me.cmdGeneralSearch.Name = "cmdGeneralSearch"
+        Me.cmdGeneralSearch.ShortcutText = ""
+        Me.cmdGeneralSearch.Text = "General Search"
+        '
+        'mnuDaily
+        '
+        Me.mnuDaily.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink8})
+        Me.mnuDaily.HideNonRecentLinks = False
+        Me.mnuDaily.Name = "mnuDaily"
+        Me.mnuDaily.ShortcutText = ""
+        Me.mnuDaily.Text = "&Daily"
+        Me.mnuDaily.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.mnuDaily.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
+        '
+        'C1CommandLink8
+        '
+        Me.C1CommandLink8.Text = "New Command"
+        '
+        'C1CommandLink1
+        '
+        Me.C1CommandLink1.Command = Me.mnuFile
+        '
+        'C1CommandLink6
+        '
+        Me.C1CommandLink6.Command = Me.mnuCustomer
+        Me.C1CommandLink6.SortOrder = 1
+        '
+        'C1CommandLink7
+        '
+        Me.C1CommandLink7.Command = Me.mnuDaily
+        Me.C1CommandLink7.SortOrder = 2
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(429, 1)
+        Me.Panel1.TabIndex = 1
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(429, 111)
-        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.C1MainMenu1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMain"
         Me.Text = "Indoor Billboard"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DailyToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InventoryToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CommisionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents VersionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SelectDivisionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PrintSetupToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MiscSetupToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TaxCodeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CategoriesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RouteMasterToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents PurgeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FindCustomerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewCustomerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AreaSearchToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GeneralSearchToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents C1MainMenu1 As C1.Win.C1Command.C1MainMenu
+    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
+    Friend WithEvents mnuFile As C1.Win.C1Command.C1CommandMenu
+    Friend WithEvents clSelectDivision As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdSelectDivision As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents clPrintSetup As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdPrintSetup As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents mnuMiscSetup As C1.Win.C1Command.C1CommandMenu
+    Friend WithEvents C1Command1 As C1.Win.C1Command.C1Command
+    Friend WithEvents mnuCustomer As C1.Win.C1Command.C1CommandMenu
+    Friend WithEvents C1CommandLink9 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdFindCustomer As C1.Win.C1Command.C1Command
+    Friend WithEvents mnuDaily As C1.Win.C1Command.C1CommandMenu
+    Friend WithEvents C1CommandLink8 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink6 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink7 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink10 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdViewCustomer As C1.Win.C1Command.C1Command
+    Friend WithEvents clTaxCode As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdTaxCode As C1.Win.C1Command.C1Command
+    Friend WithEvents clCategories As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdCategories As C1.Win.C1Command.C1Command
+    Friend WithEvents clRouteMaster As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdRouteMaster As C1.Win.C1Command.C1Command
+    Friend WithEvents clExit As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdExit As C1.Win.C1Command.C1Command
+    Friend WithEvents clPurge As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdPurge As C1.Win.C1Command.C1Command
+    Friend WithEvents cmdAreaSearch As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink15 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdGeneralSearch As C1.Win.C1Command.C1Command
+    Friend WithEvents Panel1 As Panel
 End Class

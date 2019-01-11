@@ -72,8 +72,14 @@ Partial Class frmViewCust
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
         Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.mnuSalesHistory = New C1.Win.C1Command.C1Command()
+        Me.mnuItemHistory = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdSalesHistory = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink3 = New C1.Win.C1Command.C1CommandLink()
+        Me.mnuArHistory = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
+        Me.mnuNotes = New C1.Win.C1Command.C1Command()
         Me.fraEdit.SuspendLayout()
         CType(Me.cmdEditItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -668,29 +674,65 @@ Partial Class frmViewCust
         'C1MainMenu1
         '
         Me.C1MainMenu1.AccessibleName = "Menu Bar"
-        Me.C1MainMenu1.CommandHolder = Nothing
-        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1})
+        Me.C1MainMenu1.CommandHolder = Me.C1CommandHolder1
+        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4})
         Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
         Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.C1MainMenu1.Name = "C1MainMenu1"
         Me.C1MainMenu1.Size = New System.Drawing.Size(584, 27)
-        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
+        Me.C1MainMenu1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
         'C1CommandHolder1
         '
-        Me.C1CommandHolder1.Commands.Add(Me.cmdSalesHistory)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuSalesHistory)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuItemHistory)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuArHistory)
+        Me.C1CommandHolder1.Commands.Add(Me.mnuNotes)
         Me.C1CommandHolder1.Owner = Me
+        '
+        'mnuSalesHistory
+        '
+        Me.mnuSalesHistory.Name = "mnuSalesHistory"
+        Me.mnuSalesHistory.ShortcutText = ""
+        Me.mnuSalesHistory.Text = "&Sales History"
+        '
+        'mnuItemHistory
+        '
+        Me.mnuItemHistory.Name = "mnuItemHistory"
+        Me.mnuItemHistory.ShortcutText = ""
+        Me.mnuItemHistory.Text = "Item &History"
         '
         'C1CommandLink1
         '
-        Me.C1CommandLink1.Command = Me.cmdSalesHistory
+        Me.C1CommandLink1.Command = Me.mnuSalesHistory
         '
-        'cmdSalesHistory
+        'C1CommandLink2
         '
-        Me.cmdSalesHistory.Name = "cmdSalesHistory"
-        Me.cmdSalesHistory.ShortcutText = ""
-        Me.cmdSalesHistory.Text = "&Sales History"
-        Me.cmdSalesHistory.UserData = "ShowSalesHistory"
+        Me.C1CommandLink2.Command = Me.mnuItemHistory
+        Me.C1CommandLink2.SortOrder = 1
+        '
+        'C1CommandLink3
+        '
+        Me.C1CommandLink3.Command = Me.mnuArHistory
+        Me.C1CommandLink3.SortOrder = 2
+        '
+        'mnuArHistory
+        '
+        Me.mnuArHistory.Name = "mnuArHistory"
+        Me.mnuArHistory.ShortcutText = ""
+        Me.mnuArHistory.Text = "&AR History"
+        '
+        'C1CommandLink4
+        '
+        Me.C1CommandLink4.Command = Me.mnuNotes
+        Me.C1CommandLink4.SortOrder = 3
+        '
+        'mnuNotes
+        '
+        Me.mnuNotes.Name = "mnuNotes"
+        Me.mnuNotes.ShortcutText = ""
+        Me.mnuNotes.Text = "&Notes"
         '
         'frmViewCust
         '
@@ -810,7 +852,6 @@ Partial Class frmViewCust
     Friend WithEvents txtAverage As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData8 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1MainMenu1 As C1.Win.C1Command.C1MainMenu
     Private WithEvents SpGetCustBindingSource As BindingSource
     Private WithEvents IBPortlandDataSet As IBPortlandDataSet
     Private WithEvents SpGetCustTableAdapter As IBPortlandDataSetTableAdapters.spGetCustTableAdapter
@@ -819,8 +860,15 @@ Partial Class frmViewCust
     Private WithEvents SpGetCustRouteTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustRouteTableAdapter
     Private WithEvents SpGetCustItemBindingSource As BindingSource
     Private WithEvents SpGetCustItemTableAdapter As IBPortlandDataSetTableAdapters.SpGetCustItemTableAdapter
-    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
     Private WithEvents SpGetCustDeptBindingSource As BindingSource
+    Friend WithEvents C1MainMenu1 As C1.Win.C1Command.C1MainMenu
+    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
+    Friend WithEvents mnuSalesHistory As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
-    Friend WithEvents cmdSalesHistory As C1.Win.C1Command.C1Command
+    Friend WithEvents mnuItemHistory As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink2 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents mnuArHistory As C1.Win.C1Command.C1Command
+    Friend WithEvents mnuNotes As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink3 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
 End Class

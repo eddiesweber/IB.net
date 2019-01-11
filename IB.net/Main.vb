@@ -29,7 +29,12 @@ Module Main
 
     Public CurDate As Date
     Public CurInvoice As Long
+
     'Public RPT As CrystalReports
+    Public rptConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
+    Public RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+    Public pDialog As New PrintDialog()
+
     Public RptPath As String
     Public DateSpin As Integer
     Public CommFlag As Boolean

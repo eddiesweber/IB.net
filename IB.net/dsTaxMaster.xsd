@@ -42,7 +42,7 @@ SELECT TAX_STATE, LOCAL_CODE, COUNTY, COMMUNITY, LOCAL_RATE, TOTAL_RATE FROM Tax
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT TAX_STATE, LOCAL_CODE, COUNTY, COMMUNITY, LOCAL_RATE, TOTAL_RATE FROM dbo.TaxMaster</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -91,7 +91,7 @@ SELECT TAX_STATE, LOCAL_CODE, COUNTY, COMMUNITY, LOCAL_RATE, TOTAL_RATE FROM Tax
   <xs:element name="dsTaxMaster" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsTaxMaster" msprop:Generator_UserDSName="dsTaxMaster">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TaxMaster" msprop:Generator_TableClassName="TaxMasterDataTable" msprop:Generator_TableVarName="tableTaxMaster" msprop:Generator_TablePropName="TaxMaster" msprop:Generator_RowDeletingName="TaxMasterRowDeleting" msprop:Generator_RowChangingName="TaxMasterRowChanging" msprop:Generator_RowEvHandlerName="TaxMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="TaxMasterRowDeleted" msprop:Generator_UserTableName="TaxMaster" msprop:Generator_RowChangedName="TaxMasterRowChanged" msprop:Generator_RowEvArgName="TaxMasterRowChangeEvent" msprop:Generator_RowClassName="TaxMasterRow">
+        <xs:element name="TaxMaster" msprop:Generator_TableClassName="TaxMasterDataTable" msprop:Generator_TableVarName="tableTaxMaster" msprop:Generator_RowChangedName="TaxMasterRowChanged" msprop:Generator_TablePropName="TaxMaster" msprop:Generator_RowDeletingName="TaxMasterRowDeleting" msprop:Generator_RowChangingName="TaxMasterRowChanging" msprop:Generator_RowEvHandlerName="TaxMasterRowChangeEventHandler" msprop:Generator_RowDeletedName="TaxMasterRowDeleted" msprop:Generator_RowClassName="TaxMasterRow" msprop:Generator_UserTableName="TaxMaster" msprop:Generator_RowEvArgName="TaxMasterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TAX_STATE" msprop:Generator_ColumnVarNameInTable="columnTAX_STATE" msprop:Generator_ColumnPropNameInRow="TAX_STATE" msprop:Generator_ColumnPropNameInTable="TAX_STATEColumn" msprop:Generator_UserColumnName="TAX_STATE">
