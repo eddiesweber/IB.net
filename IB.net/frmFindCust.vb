@@ -125,12 +125,15 @@ Public Class frmFindCust
         CurCust = CLng(lstCustNum.SelectedItem)
 
         For Each frm In My.Application.OpenForms
-            If frm.Name = "frmCust" Then
-                frmCust.lblCurCust.Text = CurCust
-            End If
-            If frm.Name = "frmViewCust" Then
-                frmViewCust.lblCurCust.Text = CurCust
-            End If
+            ' Alternate way to get "textbox" control list
+            ' Dim ctrls() As Control = frm.Controls.Find("TextBox1", True)
+            For Each ctl As Control In frm.Controls
+                If TypeOf ctl Is Label Then
+                    If ctl.Name = "lblCurCust" Then
+                        ctl.Text = CurCust
+                    End If
+                End If
+            Next
         Next
 
     End Sub

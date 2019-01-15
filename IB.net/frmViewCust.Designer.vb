@@ -74,12 +74,15 @@ Partial Class frmViewCust
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
         Me.mnuSalesHistory = New C1.Win.C1Command.C1Command()
         Me.mnuItemHistory = New C1.Win.C1Command.C1Command()
+        Me.mnuArHistory = New C1.Win.C1Command.C1Command()
+        Me.mnuNotes = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink3 = New C1.Win.C1Command.C1CommandLink()
-        Me.mnuArHistory = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
-        Me.mnuNotes = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandControl2 = New C1.Win.C1Command.C1CommandControl()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.fraEdit.SuspendLayout()
         CType(Me.cmdEditItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +113,7 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.C1MainMenu1.SuspendLayout()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -674,13 +678,15 @@ Partial Class frmViewCust
         'C1MainMenu1
         '
         Me.C1MainMenu1.AccessibleName = "Menu Bar"
+        Me.C1MainMenu1.BackColor = System.Drawing.SystemColors.Control
         Me.C1MainMenu1.CommandHolder = Me.C1CommandHolder1
-        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4})
+        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4, Me.C1CommandLink6})
+        Me.C1MainMenu1.Controls.Add(Me.txtData7)
         Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
         Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.C1MainMenu1.Name = "C1MainMenu1"
         Me.C1MainMenu1.Size = New System.Drawing.Size(584, 27)
-        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
+        Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.C1MainMenu1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
         'C1CommandHolder1
@@ -689,6 +695,7 @@ Partial Class frmViewCust
         Me.C1CommandHolder1.Commands.Add(Me.mnuItemHistory)
         Me.C1CommandHolder1.Commands.Add(Me.mnuArHistory)
         Me.C1CommandHolder1.Commands.Add(Me.mnuNotes)
+        Me.C1CommandHolder1.Commands.Add(Me.C1CommandControl2)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuSalesHistory
@@ -702,6 +709,18 @@ Partial Class frmViewCust
         Me.mnuItemHistory.Name = "mnuItemHistory"
         Me.mnuItemHistory.ShortcutText = ""
         Me.mnuItemHistory.Text = "Item &History"
+        '
+        'mnuArHistory
+        '
+        Me.mnuArHistory.Name = "mnuArHistory"
+        Me.mnuArHistory.ShortcutText = ""
+        Me.mnuArHistory.Text = "&AR History"
+        '
+        'mnuNotes
+        '
+        Me.mnuNotes.Name = "mnuNotes"
+        Me.mnuNotes.ShortcutText = ""
+        Me.mnuNotes.Text = "&Notes"
         '
         'C1CommandLink1
         '
@@ -717,22 +736,30 @@ Partial Class frmViewCust
         Me.C1CommandLink3.Command = Me.mnuArHistory
         Me.C1CommandLink3.SortOrder = 2
         '
-        'mnuArHistory
-        '
-        Me.mnuArHistory.Name = "mnuArHistory"
-        Me.mnuArHistory.ShortcutText = ""
-        Me.mnuArHistory.Text = "&AR History"
-        '
         'C1CommandLink4
         '
         Me.C1CommandLink4.Command = Me.mnuNotes
         Me.C1CommandLink4.SortOrder = 3
         '
-        'mnuNotes
+        'C1CommandLink6
         '
-        Me.mnuNotes.Name = "mnuNotes"
-        Me.mnuNotes.ShortcutText = ""
-        Me.mnuNotes.Text = "&Notes"
+        Me.C1CommandLink6.Command = Me.C1CommandControl2
+        Me.C1CommandLink6.SortOrder = 4
+        '
+        'C1CommandControl2
+        '
+        Me.C1CommandControl2.Control = Me.txtData7
+        Me.C1CommandControl2.Name = "C1CommandControl2"
+        Me.C1CommandControl2.ShortcutText = ""
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(584, 1)
+        Me.Panel1.TabIndex = 68
         '
         'frmViewCust
         '
@@ -740,6 +767,7 @@ Partial Class frmViewCust
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(584, 483)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtData10)
         Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtData2)
@@ -759,7 +787,6 @@ Partial Class frmViewCust
         Me.Controls.Add(Me.txtData9)
         Me.Controls.Add(Me.grdRoute)
         Me.Controls.Add(Me.grdDept)
-        Me.Controls.Add(Me.txtData7)
         Me.Controls.Add(Me.txtData6)
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel0)
@@ -809,6 +836,7 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.C1MainMenu1.ResumeLayout(False)
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -871,4 +899,7 @@ Partial Class frmViewCust
     Friend WithEvents mnuNotes As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink3 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandControl2 As C1.Win.C1Command.C1CommandControl
+    Friend WithEvents C1CommandLink6 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents Panel1 As Panel
 End Class

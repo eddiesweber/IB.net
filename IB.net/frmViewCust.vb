@@ -265,58 +265,7 @@ Public Class frmViewCust
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
-        Dim ConnInfo As CrystalDecisions.Shared.ConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
-
-        ConnInfo.IntegratedSecurity = True
-        ConnInfo.ServerName = "IBSERVER2016\SQLEXPRESS"
-        'ConnInfo.UserID = ""
-        'ConnInfo.Password = ""
-        ConnInfo.DatabaseName = "IBSEA"
-
-        'RPT.Load(DataPath & "\Custinfo.rpt")
-        RPT.Load("C:\IB\IB_DEV\Custinfo.rpt")
-
-        If RPT.DataDefinition.ParameterFields.Count > 0 Then
-            MessageBox.Show("RPT.DataDefinition.ParameterFields.Count" & RPT.DataDefinition.ParameterFields.Count)
-        Else
-            MessageBox.Show("0")
-        End If
-
-        'If (RPT.DataDefinition.ParameterFields.Count > 0) Then
-        '    For Each rptParam As ParameterFieldDefinition In RPT.DataDefinition.ParameterFields
-        '        ' check the reportname is empty - this ensures we set parameters in the main report only
-        '        If (rptParam.ReportName = "") Then
-        '            ' get the parameter name
-        '            Dim strName As String = rptParam.ParameterFieldName
-        '            ' check name and set value if correct
-        '            If (strName = "Correct Name") Then
-        '                Dim objVal As Object = "My Value"
-        '                RPT.SetParameterValue(rptParam.ParameterFieldName, objVal)
-        '            End If
-        '        End If
-        '    Next
-        'End If
-
-        'RPT.SetDataSource(ds)
-        'RPT.RecordSelectionFormula = "{CustomerMaster.CUST_NUM}=" & CStr(CurCust)
-        'RPT.SetParameterValue("COMPANY", CompanyName)
-        '        RPT.SetParameterValue("CustomerMaster.CUST_NUM", CStr(CurCust))
-        RPT.PrintToPrinter(1, True, 0, 0)
-
-        ' Examples
-        ' crReport.RecordSelectionFormula = "{SALESORDER.SALESORDERID} = '" + salesOrder.Id.ToString() + "'"
-        ' crReport.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Server.MapPath(filename));
-
-        '//Define New connection for Crystal Report
-        'CrystalDecisions.Shared.ConnectionInfo connectionInfo = New CrystalDecisions.Shared.ConnectionInfo();
-        'connectionInfo.DatabaseName = initialCatalog;
-        'connectionInfo.UserID = username;
-        'connectionInfo.Password = password;
-        'connectionInfo.ServerName = dataSource;
-
-        'oRpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter;
-        'oRpt.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
-        'oRpt.DataDefinition.FormulaFields["RazSoc"].Text = "'" + ((Entidades.Sesion)Session["Sesion"]).Cuit.RazonSocial + "'";
+        frmTestCrystal.Show()
 
         'With RPT
         '    .ReportFileName = DataPath & "\Custinfo.rpt"
@@ -329,29 +278,42 @@ Public Class frmViewCust
         '    .SelectionFormula = ""
         '    .ReportFileName = ""
         'End With
+
     End Sub
 
     Private Sub mnuSalesHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuSalesHistory.Click
 
-        MessageBox.Show("Sales History")
+        frmSOHist.Show()
 
     End Sub
 
     Private Sub mnuItemHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuItemHistory.Click
 
-        MessageBox.Show("Item History")
+        frmROHist.Show()
 
     End Sub
 
     Private Sub mnuNotes_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuNotes.Click
 
-        MessageBox.Show("Notes")
+        frmNotes.Show()
 
     End Sub
 
     Private Sub mnuArHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuArHistory.Click
 
-        MessageBox.Show("AR History")
+        'With RPT
+        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
+        '    .Connect = CryCS
+        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
+        '    .Action = 1
+        '    .Destination = 0
+        '    ' .Formulas(0) = ""
+        '    ' .Formulas(1) = ""
+        '    .ReportF
 
     End Sub
 

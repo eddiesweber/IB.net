@@ -70,6 +70,7 @@ Partial Class frmCat
         '
         Me.C1TrueDBGrid1.AllowAddNew = True
         Me.C1TrueDBGrid1.AllowDelete = True
+        Me.C1TrueDBGrid1.AlternatingRows = True
         Me.C1TrueDBGrid1.DataSource = Me.CategoryMasterBindingSource
         Me.C1TrueDBGrid1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"

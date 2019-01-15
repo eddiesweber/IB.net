@@ -236,4 +236,29 @@ Module Main
 
     End Function
 
+    Public Function GetCustName()
+
+        Dim rstemp As New ADODB.Recordset
+        Dim q As String
+
+        q = "SELECT BILL_NAME FROM CustomerMaster WHERE CUST_NUM=" & CurCust
+        GetCustName = "Not Found"
+
+        Using Command As New SqlCommand(q, DB)
+            Try
+                Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                dataReader.Read()
+
+                If dataReader.HasRows Then
+                    GetCustName = dataReader.Item("BILL_NAME")
+                End If
+
+                dataReader.Close()
+            Catch ex As Exception
+                frmCompany.ShowDialog()
+            End Try
+        End Using
+
+    End Function
+
 End Module
