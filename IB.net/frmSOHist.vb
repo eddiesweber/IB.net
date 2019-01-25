@@ -17,7 +17,6 @@ Public Class frmSOHist
         Me.SpGetInvoiceHistTableAdapter.Connection.ConnectionString = CS
 
         Startdate = DateAdd("yyyy", -1, Now())
-        'datSince.Value = Format(Startdate, "MM/DD/YYYY")
         datSince.Value = Startdate
 
         lblCurCust.Text = CurCust
@@ -90,6 +89,12 @@ Public Class frmSOHist
     End Sub
 
     Private Sub CmdPrint_Click(sender As Object, e As EventArgs) Handles CmdPrint.Click
+
+        Dim MyReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+        'MyReport.PrintOptions.PaperOrientation = CrystalDecisions.[Shared].PaperOrientation.Landscape
+        'MyReport.PrintOptions.PrinterName = �HP LaserJet510�
+        MyReport.FileName = RptPath & "\sohist.rpt"
+        MyReport.PrintToPrinter(1, False, 0, 0)
 
         '    'Dim SF As String
         '    'SF = "{InvoiceHistory.Cust_NUM}=" & CurCust & "and {InvoiceHistory.Money}<>" & 0 & "and {CategoryMaster.SOHist} =true"

@@ -23,34 +23,10 @@ Partial Class frmCust
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.chkData = New System.Windows.Forms.CheckBox()
         Me.CustomerMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_CustomerMaster1 = New IB.net.DS_CustomerMaster()
         Me.optData1 = New System.Windows.Forms.RadioButton()
         Me.optData0 = New System.Windows.Forms.RadioButton()
-        Me.txtData12 = New System.Windows.Forms.TextBox()
-        Me.txtData11 = New System.Windows.Forms.TextBox()
-        Me.cmdExit = New System.Windows.Forms.Button()
-        Me.cmdUpdate = New System.Windows.Forms.Button()
-        Me.cmdFind = New System.Windows.Forms.Button()
-        Me.txtData10 = New System.Windows.Forms.TextBox()
-        Me.cmdEditDept = New System.Windows.Forms.Button()
-        Me.txtOption = New System.Windows.Forms.TextBox()
-        Me.txtData9 = New System.Windows.Forms.TextBox()
-        Me.txtData8 = New System.Windows.Forms.TextBox()
-        Me.txtData7 = New System.Windows.Forms.TextBox()
-        Me.txtData6 = New System.Windows.Forms.TextBox()
-        Me.txtData5 = New System.Windows.Forms.TextBox()
-        Me.txtData4 = New System.Windows.Forms.TextBox()
-        Me.txtData3 = New System.Windows.Forms.TextBox()
-        Me.txtData2 = New System.Windows.Forms.TextBox()
-        Me.cmdNew = New System.Windows.Forms.Button()
-        Me.cmdReset = New System.Windows.Forms.Button()
-        Me.cmdDelete = New System.Windows.Forms.Button()
-        Me.txtData0 = New System.Windows.Forms.TextBox()
-        Me.txtData1 = New System.Windows.Forms.TextBox()
-        Me.txmData1 = New System.Windows.Forms.MaskedTextBox()
-        Me.txmData0 = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblLabel12 = New System.Windows.Forms.Label()
         Me.lblCurCust = New System.Windows.Forms.Label()
@@ -69,21 +45,58 @@ Partial Class frmCust
         Me.CustomerMasterTableAdapter = New IB.net.DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter()
         Me.C1SuperErrorProvider1 = New C1.Win.C1SuperTooltip.C1SuperErrorProvider(Me.components)
         Me.C1SuperTooltip1 = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
+        Me.cmdFind = New C1.Win.C1Input.C1Button()
+        Me.cmdNew = New C1.Win.C1Input.C1Button()
+        Me.cmdDelete = New C1.Win.C1Input.C1Button()
+        Me.cmdReset = New C1.Win.C1Input.C1Button()
+        Me.cmdUpdate = New C1.Win.C1Input.C1Button()
+        Me.cmdExit = New C1.Win.C1Input.C1Button()
+        Me.cmdEditDept = New C1.Win.C1Input.C1Button()
+        Me.txtData0 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData1 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData2 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData3 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData4 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData5 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData6 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData10 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData7 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData8 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData9 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData11 = New C1.Win.C1Input.C1TextBox()
+        Me.txmData0 = New C1.Win.C1Input.C1TextBox()
+        Me.txmData1 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData12 = New C1.Win.C1Input.C1TextBox()
+        Me.txtOption = New C1.Win.C1Input.C1TextBox()
+        Me.chkData = New C1.Win.C1Input.C1CheckBox()
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txmData0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txmData1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtOption, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'chkData
-        '
-        Me.chkData.AutoSize = True
-        Me.chkData.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CustomerMasterBindingSource, "MAIL_STATEMENT", True))
-        Me.chkData.Location = New System.Drawing.Point(242, 291)
-        Me.chkData.Name = "chkData"
-        Me.chkData.Size = New System.Drawing.Size(72, 17)
-        Me.chkData.TabIndex = 41
-        Me.chkData.Text = "Mail Stmt:"
-        Me.chkData.UseVisualStyleBackColor = True
         '
         'CustomerMasterBindingSource
         '
@@ -98,7 +111,7 @@ Partial Class frmCust
         'optData1
         '
         Me.optData1.AutoSize = True
-        Me.optData1.Location = New System.Drawing.Point(135, 291)
+        Me.optData1.Location = New System.Drawing.Point(141, 265)
         Me.optData1.Name = "optData1"
         Me.optData1.Size = New System.Drawing.Size(86, 17)
         Me.optData1.TabIndex = 40
@@ -110,7 +123,7 @@ Partial Class frmCust
         'optData0
         '
         Me.optData0.AutoSize = True
-        Me.optData0.Location = New System.Drawing.Point(78, 291)
+        Me.optData0.Location = New System.Drawing.Point(82, 265)
         Me.optData0.Name = "optData0"
         Me.optData0.Size = New System.Drawing.Size(52, 17)
         Me.optData0.TabIndex = 39
@@ -118,217 +131,6 @@ Partial Class frmCust
         Me.optData0.Tag = "A"
         Me.optData0.Text = "Credit"
         Me.optData0.UseVisualStyleBackColor = True
-        '
-        'txtData12
-        '
-        Me.txtData12.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "Last_Change", True))
-        Me.txtData12.ForeColor = System.Drawing.Color.Navy
-        Me.txtData12.Location = New System.Drawing.Point(364, 273)
-        Me.txtData12.Name = "txtData12"
-        Me.txtData12.Size = New System.Drawing.Size(57, 20)
-        Me.txtData12.TabIndex = 38
-        Me.txtData12.Visible = False
-        '
-        'txtData11
-        '
-        Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CC_NUM", True))
-        Me.txtData11.ForeColor = System.Drawing.Color.Navy
-        Me.txtData11.Location = New System.Drawing.Point(77, 315)
-        Me.txtData11.Name = "txtData11"
-        Me.txtData11.Size = New System.Drawing.Size(162, 20)
-        Me.txtData11.TabIndex = 28
-        '
-        'cmdExit
-        '
-        Me.cmdExit.Location = New System.Drawing.Point(503, 119)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(71, 22)
-        Me.cmdExit.TabIndex = 37
-        Me.cmdExit.Text = "E&xit"
-        Me.cmdExit.UseVisualStyleBackColor = True
-        '
-        'cmdUpdate
-        '
-        Me.cmdUpdate.Enabled = False
-        Me.cmdUpdate.Location = New System.Drawing.Point(503, 91)
-        Me.cmdUpdate.Name = "cmdUpdate"
-        Me.cmdUpdate.Size = New System.Drawing.Size(71, 22)
-        Me.cmdUpdate.TabIndex = 36
-        Me.cmdUpdate.Text = "Update"
-        Me.cmdUpdate.UseVisualStyleBackColor = True
-        '
-        'cmdFind
-        '
-        Me.cmdFind.Location = New System.Drawing.Point(238, 7)
-        Me.cmdFind.Name = "cmdFind"
-        Me.cmdFind.Size = New System.Drawing.Size(71, 22)
-        Me.cmdFind.TabIndex = 34
-        Me.cmdFind.Text = "&Find"
-        Me.cmdFind.UseVisualStyleBackColor = True
-        '
-        'txtData10
-        '
-        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "COUNTY", True))
-        Me.txtData10.ForeColor = System.Drawing.Color.Navy
-        Me.txtData10.Location = New System.Drawing.Point(77, 147)
-        Me.txtData10.Name = "txtData10"
-        Me.txtData10.Size = New System.Drawing.Size(113, 20)
-        Me.txtData10.TabIndex = 13
-        '
-        'cmdEditDept
-        '
-        Me.cmdEditDept.Location = New System.Drawing.Point(77, 350)
-        Me.cmdEditDept.Name = "cmdEditDept"
-        Me.cmdEditDept.Size = New System.Drawing.Size(176, 22)
-        Me.cmdEditDept.TabIndex = 33
-        Me.cmdEditDept.Text = "&Departments/Routes"
-        Me.cmdEditDept.UseVisualStyleBackColor = True
-        '
-        'txtOption
-        '
-        Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
-        Me.txtOption.Location = New System.Drawing.Point(49, 287)
-        Me.txtOption.Name = "txtOption"
-        Me.txtOption.Size = New System.Drawing.Size(20, 20)
-        Me.txtOption.TabIndex = 29
-        Me.txtOption.Visible = False
-        '
-        'txtData9
-        '
-        Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "URL", True))
-        Me.txtData9.ForeColor = System.Drawing.Color.Navy
-        Me.txtData9.Location = New System.Drawing.Point(77, 259)
-        Me.txtData9.Name = "txtData9"
-        Me.txtData9.Size = New System.Drawing.Size(162, 20)
-        Me.txtData9.TabIndex = 23
-        '
-        'txtData8
-        '
-        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "EMAIL", True))
-        Me.txtData8.ForeColor = System.Drawing.Color.Navy
-        Me.txtData8.Location = New System.Drawing.Point(77, 231)
-        Me.txtData8.Name = "txtData8"
-        Me.txtData8.Size = New System.Drawing.Size(162, 20)
-        Me.txtData8.TabIndex = 21
-        '
-        'txtData7
-        '
-        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CONTACT", True))
-        Me.txtData7.ForeColor = System.Drawing.Color.Navy
-        Me.txtData7.Location = New System.Drawing.Point(77, 175)
-        Me.txtData7.Name = "txtData7"
-        Me.txtData7.Size = New System.Drawing.Size(162, 20)
-        Me.txtData7.TabIndex = 15
-        '
-        'txtData6
-        '
-        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CARE_OF", True))
-        Me.txtData6.ForeColor = System.Drawing.Color.Navy
-        Me.txtData6.Location = New System.Drawing.Point(77, 119)
-        Me.txtData6.Name = "txtData6"
-        Me.txtData6.Size = New System.Drawing.Size(162, 20)
-        Me.txtData6.TabIndex = 11
-        '
-        'txtData5
-        '
-        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_ZIP", True))
-        Me.txtData5.ForeColor = System.Drawing.Color.Navy
-        Me.txtData5.Location = New System.Drawing.Point(231, 91)
-        Me.txtData5.Name = "txtData5"
-        Me.txtData5.Size = New System.Drawing.Size(78, 20)
-        Me.txtData5.TabIndex = 9
-        '
-        'txtData4
-        '
-        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_STATE", True))
-        Me.txtData4.ForeColor = System.Drawing.Color.Navy
-        Me.txtData4.Location = New System.Drawing.Point(196, 91)
-        Me.txtData4.Name = "txtData4"
-        Me.txtData4.Size = New System.Drawing.Size(29, 20)
-        Me.txtData4.TabIndex = 8
-        '
-        'txtData3
-        '
-        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_CTY", True))
-        Me.txtData3.ForeColor = System.Drawing.Color.Navy
-        Me.txtData3.Location = New System.Drawing.Point(77, 91)
-        Me.txtData3.Name = "txtData3"
-        Me.txtData3.Size = New System.Drawing.Size(92, 20)
-        Me.txtData3.TabIndex = 3
-        '
-        'txtData2
-        '
-        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_STR", True))
-        Me.txtData2.ForeColor = System.Drawing.Color.Navy
-        Me.txtData2.Location = New System.Drawing.Point(77, 63)
-        Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(232, 20)
-        Me.txtData2.TabIndex = 5
-        '
-        'cmdNew
-        '
-        Me.cmdNew.Location = New System.Drawing.Point(503, 7)
-        Me.cmdNew.Name = "cmdNew"
-        Me.cmdNew.Size = New System.Drawing.Size(71, 22)
-        Me.cmdNew.TabIndex = 30
-        Me.cmdNew.Text = "&New"
-        Me.cmdNew.UseVisualStyleBackColor = True
-        '
-        'cmdReset
-        '
-        Me.cmdReset.Enabled = False
-        Me.cmdReset.Location = New System.Drawing.Point(503, 63)
-        Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(71, 22)
-        Me.cmdReset.TabIndex = 42
-        Me.cmdReset.Text = "Reset"
-        Me.cmdReset.UseVisualStyleBackColor = True
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.Location = New System.Drawing.Point(503, 35)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(71, 22)
-        Me.cmdDelete.TabIndex = 31
-        Me.cmdDelete.Text = "&Delete"
-        Me.cmdDelete.UseVisualStyleBackColor = True
-        '
-        'txtData0
-        '
-        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "CUST_NUM", True))
-        Me.txtData0.Enabled = False
-        Me.txtData0.ForeColor = System.Drawing.Color.Navy
-        Me.txtData0.Location = New System.Drawing.Point(112, 7)
-        Me.txtData0.Name = "txtData0"
-        Me.txtData0.Size = New System.Drawing.Size(78, 20)
-        Me.txtData0.TabIndex = 1
-        '
-        'txtData1
-        '
-        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "BILL_NAME", True))
-        Me.txtData1.ForeColor = System.Drawing.Color.Navy
-        Me.txtData1.Location = New System.Drawing.Point(77, 35)
-        Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(232, 20)
-        Me.txtData1.TabIndex = 3
-        '
-        'txmData1
-        '
-        Me.txmData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "FAX_NO", True))
-        Me.txmData1.ForeColor = System.Drawing.Color.Navy
-        Me.txmData1.Location = New System.Drawing.Point(217, 203)
-        Me.txmData1.Name = "txmData1"
-        Me.txmData1.Size = New System.Drawing.Size(92, 20)
-        Me.txmData1.TabIndex = 19
-        '
-        'txmData0
-        '
-        Me.txmData0.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerMasterBindingSource, "PHONE", True))
-        Me.txmData0.ForeColor = System.Drawing.Color.Navy
-        Me.txmData0.Location = New System.Drawing.Point(77, 203)
-        Me.txmData0.Name = "txmData0"
-        Me.txmData0.Size = New System.Drawing.Size(92, 20)
-        Me.txmData0.TabIndex = 17
         '
         'Label1
         '
@@ -342,7 +144,7 @@ Partial Class frmCust
         'lblLabel12
         '
         Me.lblLabel12.AutoSize = True
-        Me.lblLabel12.Location = New System.Drawing.Point(7, 315)
+        Me.lblLabel12.Location = New System.Drawing.Point(7, 292)
         Me.lblLabel12.Name = "lblLabel12"
         Me.lblLabel12.Size = New System.Drawing.Size(69, 13)
         Me.lblLabel12.TabIndex = 27
@@ -351,17 +153,17 @@ Partial Class frmCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(203, 7)
+        Me.lblCurCust.Location = New System.Drawing.Point(181, 16)
         Me.lblCurCust.Name = "lblCurCust"
-        Me.lblCurCust.Size = New System.Drawing.Size(39, 13)
+        Me.lblCurCust.Size = New System.Drawing.Size(44, 13)
         Me.lblCurCust.TabIndex = 35
-        Me.lblCurCust.Text = "Label2"
+        Me.lblCurCust.Text = "CurCust"
         Me.lblCurCust.Visible = False
         '
         'lblLabel11
         '
         Me.lblLabel11.AutoSize = True
-        Me.lblLabel11.Location = New System.Drawing.Point(7, 147)
+        Me.lblLabel11.Location = New System.Drawing.Point(7, 142)
         Me.lblLabel11.Name = "lblLabel11"
         Me.lblLabel11.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel11.TabIndex = 12
@@ -370,7 +172,7 @@ Partial Class frmCust
         'lblLabel10
         '
         Me.lblLabel10.AutoSize = True
-        Me.lblLabel10.Location = New System.Drawing.Point(7, 231)
+        Me.lblLabel10.Location = New System.Drawing.Point(7, 217)
         Me.lblLabel10.Name = "lblLabel10"
         Me.lblLabel10.Size = New System.Drawing.Size(38, 13)
         Me.lblLabel10.TabIndex = 20
@@ -379,7 +181,7 @@ Partial Class frmCust
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
-        Me.lblLabel9.Location = New System.Drawing.Point(7, 259)
+        Me.lblLabel9.Location = New System.Drawing.Point(7, 242)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(32, 13)
         Me.lblLabel9.TabIndex = 22
@@ -388,7 +190,7 @@ Partial Class frmCust
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(7, 287)
+        Me.lblLabel8.Location = New System.Drawing.Point(7, 267)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel8.TabIndex = 24
@@ -397,7 +199,7 @@ Partial Class frmCust
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(182, 203)
+        Me.lblLabel7.Location = New System.Drawing.Point(185, 192)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(27, 13)
         Me.lblLabel7.TabIndex = 18
@@ -406,7 +208,7 @@ Partial Class frmCust
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(7, 175)
+        Me.lblLabel6.Location = New System.Drawing.Point(7, 167)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(47, 13)
         Me.lblLabel6.TabIndex = 14
@@ -415,7 +217,7 @@ Partial Class frmCust
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(7, 91)
+        Me.lblLabel3.Location = New System.Drawing.Point(7, 92)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(65, 13)
         Me.lblLabel3.TabIndex = 6
@@ -424,7 +226,7 @@ Partial Class frmCust
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(7, 63)
+        Me.lblLabel2.Location = New System.Drawing.Point(7, 67)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(48, 13)
         Me.lblLabel2.TabIndex = 4
@@ -433,7 +235,7 @@ Partial Class frmCust
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
-        Me.lblLabel5.Location = New System.Drawing.Point(7, 119)
+        Me.lblLabel5.Location = New System.Drawing.Point(7, 117)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(48, 13)
         Me.lblLabel5.TabIndex = 10
@@ -442,7 +244,7 @@ Partial Class frmCust
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(7, 203)
+        Me.lblLabel4.Location = New System.Drawing.Point(7, 192)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(41, 13)
         Me.lblLabel4.TabIndex = 16
@@ -451,7 +253,7 @@ Partial Class frmCust
         'lblLabel
         '
         Me.lblLabel.AutoSize = True
-        Me.lblLabel.Location = New System.Drawing.Point(7, 35)
+        Me.lblLabel.Location = New System.Drawing.Point(7, 42)
         Me.lblLabel.Name = "lblLabel"
         Me.lblLabel.Size = New System.Drawing.Size(38, 13)
         Me.lblLabel.TabIndex = 2
@@ -460,7 +262,7 @@ Partial Class frmCust
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(7, 7)
+        Me.lblLabel0.Location = New System.Drawing.Point(7, 16)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(94, 13)
         Me.lblLabel0.TabIndex = 0
@@ -480,11 +282,341 @@ Partial Class frmCust
         Me.C1SuperTooltip1.Font = New System.Drawing.Font("Tahoma", 8.0!)
         Me.C1SuperTooltip1.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
         '
+        'cmdFind
+        '
+        Me.cmdFind.Location = New System.Drawing.Point(225, 10)
+        Me.cmdFind.Name = "cmdFind"
+        Me.cmdFind.Size = New System.Drawing.Size(85, 25)
+        Me.cmdFind.TabIndex = 43
+        Me.cmdFind.Text = "&Find"
+        Me.cmdFind.UseVisualStyleBackColor = True
+        Me.cmdFind.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdFind.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdNew
+        '
+        Me.cmdNew.Location = New System.Drawing.Point(480, 10)
+        Me.cmdNew.Name = "cmdNew"
+        Me.cmdNew.Size = New System.Drawing.Size(85, 25)
+        Me.cmdNew.TabIndex = 44
+        Me.cmdNew.Text = "&New"
+        Me.cmdNew.UseVisualStyleBackColor = True
+        Me.cmdNew.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.Location = New System.Drawing.Point(480, 40)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
+        Me.cmdDelete.TabIndex = 45
+        Me.cmdDelete.Text = "&Delete"
+        Me.cmdDelete.UseVisualStyleBackColor = True
+        Me.cmdDelete.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdDelete.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdReset
+        '
+        Me.cmdReset.Location = New System.Drawing.Point(480, 70)
+        Me.cmdReset.Name = "cmdReset"
+        Me.cmdReset.Size = New System.Drawing.Size(85, 25)
+        Me.cmdReset.TabIndex = 46
+        Me.cmdReset.Text = "Reset"
+        Me.cmdReset.UseVisualStyleBackColor = True
+        Me.cmdReset.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdReset.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdUpdate
+        '
+        Me.cmdUpdate.Location = New System.Drawing.Point(480, 100)
+        Me.cmdUpdate.Name = "cmdUpdate"
+        Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
+        Me.cmdUpdate.TabIndex = 47
+        Me.cmdUpdate.Text = "Update"
+        Me.cmdUpdate.UseVisualStyleBackColor = True
+        Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdUpdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdExit
+        '
+        Me.cmdExit.Location = New System.Drawing.Point(480, 130)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(85, 25)
+        Me.cmdExit.TabIndex = 48
+        Me.cmdExit.Text = "E&xit"
+        Me.cmdExit.UseVisualStyleBackColor = True
+        Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdExit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdEditDept
+        '
+        Me.cmdEditDept.Location = New System.Drawing.Point(80, 315)
+        Me.cmdEditDept.Name = "cmdEditDept"
+        Me.cmdEditDept.Size = New System.Drawing.Size(230, 25)
+        Me.cmdEditDept.TabIndex = 49
+        Me.cmdEditDept.Text = "&Departments/Routes"
+        Me.cmdEditDept.UseVisualStyleBackColor = True
+        Me.cmdEditDept.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdEditDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData0
+        '
+        Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CUST_NUM", True))
+        Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData0.Location = New System.Drawing.Point(105, 14)
+        Me.txtData0.Name = "txtData0"
+        Me.txtData0.Size = New System.Drawing.Size(75, 18)
+        Me.txtData0.TabIndex = 50
+        Me.txtData0.Tag = Nothing
+        Me.txtData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData1
+        '
+        Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_NAME", True))
+        Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData1.Location = New System.Drawing.Point(80, 40)
+        Me.txtData1.Name = "txtData1"
+        Me.txtData1.Size = New System.Drawing.Size(230, 18)
+        Me.txtData1.TabIndex = 51
+        Me.txtData1.Tag = Nothing
+        Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData2
+        '
+        Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_STR", True))
+        Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData2.Location = New System.Drawing.Point(80, 65)
+        Me.txtData2.Name = "txtData2"
+        Me.txtData2.Size = New System.Drawing.Size(230, 18)
+        Me.txtData2.TabIndex = 52
+        Me.txtData2.Tag = Nothing
+        Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData3
+        '
+        Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_CTY", True))
+        Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData3.Location = New System.Drawing.Point(80, 90)
+        Me.txtData3.Name = "txtData3"
+        Me.txtData3.Size = New System.Drawing.Size(100, 18)
+        Me.txtData3.TabIndex = 53
+        Me.txtData3.Tag = Nothing
+        Me.txtData3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData4
+        '
+        Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_STATE", True))
+        Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData4.Location = New System.Drawing.Point(190, 90)
+        Me.txtData4.Name = "txtData4"
+        Me.txtData4.Size = New System.Drawing.Size(30, 18)
+        Me.txtData4.TabIndex = 54
+        Me.txtData4.Tag = Nothing
+        Me.txtData4.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData5
+        '
+        Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_ZIP", True))
+        Me.txtData5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData5.Location = New System.Drawing.Point(230, 90)
+        Me.txtData5.Name = "txtData5"
+        Me.txtData5.Size = New System.Drawing.Size(80, 18)
+        Me.txtData5.TabIndex = 55
+        Me.txtData5.Tag = Nothing
+        Me.txtData5.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData6
+        '
+        Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CARE_OF", True))
+        Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData6.Location = New System.Drawing.Point(80, 115)
+        Me.txtData6.Name = "txtData6"
+        Me.txtData6.Size = New System.Drawing.Size(160, 18)
+        Me.txtData6.TabIndex = 56
+        Me.txtData6.Tag = Nothing
+        Me.txtData6.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData10
+        '
+        Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "COUNTY", True))
+        Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData10.Location = New System.Drawing.Point(80, 140)
+        Me.txtData10.Name = "txtData10"
+        Me.txtData10.Size = New System.Drawing.Size(100, 18)
+        Me.txtData10.TabIndex = 57
+        Me.txtData10.Tag = Nothing
+        Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData7
+        '
+        Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CONTACT", True))
+        Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData7.Location = New System.Drawing.Point(80, 165)
+        Me.txtData7.Name = "txtData7"
+        Me.txtData7.Size = New System.Drawing.Size(160, 18)
+        Me.txtData7.TabIndex = 58
+        Me.txtData7.Tag = Nothing
+        Me.txtData7.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData8
+        '
+        Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "EMAIL", True))
+        Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData8.Location = New System.Drawing.Point(80, 215)
+        Me.txtData8.Name = "txtData8"
+        Me.txtData8.Size = New System.Drawing.Size(230, 18)
+        Me.txtData8.TabIndex = 59
+        Me.txtData8.Tag = Nothing
+        Me.txtData8.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData9
+        '
+        Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "URL", True))
+        Me.txtData9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData9.Location = New System.Drawing.Point(80, 240)
+        Me.txtData9.Name = "txtData9"
+        Me.txtData9.Size = New System.Drawing.Size(230, 18)
+        Me.txtData9.TabIndex = 60
+        Me.txtData9.Tag = Nothing
+        Me.txtData9.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData11
+        '
+        Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CC_NUM", True))
+        Me.txtData11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData11.Location = New System.Drawing.Point(80, 290)
+        Me.txtData11.Name = "txtData11"
+        Me.txtData11.Size = New System.Drawing.Size(160, 18)
+        Me.txtData11.TabIndex = 61
+        Me.txtData11.Tag = Nothing
+        Me.txtData11.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txmData0
+        '
+        Me.txmData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txmData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PHONE", True))
+        Me.txmData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txmData0.Location = New System.Drawing.Point(80, 190)
+        Me.txmData0.Name = "txmData0"
+        Me.txmData0.Size = New System.Drawing.Size(100, 18)
+        Me.txmData0.TabIndex = 62
+        Me.txmData0.Tag = Nothing
+        Me.txmData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txmData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txmData1
+        '
+        Me.txmData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txmData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "FAX_NO", True))
+        Me.txmData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txmData1.Location = New System.Drawing.Point(210, 190)
+        Me.txmData1.Name = "txmData1"
+        Me.txmData1.Size = New System.Drawing.Size(100, 18)
+        Me.txmData1.TabIndex = 63
+        Me.txmData1.Tag = Nothing
+        Me.txmData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txmData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData12
+        '
+        Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData12.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "Last_Change", True))
+        Me.txtData12.DataType = GetType(Date)
+        Me.txtData12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData12.Location = New System.Drawing.Point(253, 290)
+        Me.txtData12.Name = "txtData12"
+        Me.txtData12.Size = New System.Drawing.Size(57, 18)
+        Me.txtData12.TabIndex = 64
+        Me.txtData12.Tag = Nothing
+        Me.txtData12.Visible = False
+        Me.txtData12.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtOption
+        '
+        Me.txtOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
+        Me.txtOption.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOption.Location = New System.Drawing.Point(50, 265)
+        Me.txtOption.Name = "txtOption"
+        Me.txtOption.Size = New System.Drawing.Size(20, 18)
+        Me.txtOption.TabIndex = 65
+        Me.txtOption.Tag = Nothing
+        Me.txtOption.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtOption.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'chkData
+        '
+        Me.chkData.BackColor = System.Drawing.Color.Transparent
+        Me.chkData.BorderColor = System.Drawing.Color.Transparent
+        Me.chkData.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkData.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "MAIL_STATEMENT", True))
+        Me.chkData.ForeColor = System.Drawing.Color.Black
+        Me.chkData.Location = New System.Drawing.Point(241, 263)
+        Me.chkData.Name = "chkData"
+        Me.chkData.Padding = New System.Windows.Forms.Padding(1)
+        Me.chkData.Size = New System.Drawing.Size(104, 24)
+        Me.chkData.TabIndex = 66
+        Me.chkData.Text = "Mail Stmt"
+        Me.chkData.UseVisualStyleBackColor = True
+        Me.chkData.Value = Nothing
+        Me.chkData.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.chkData.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(579, 378)
+        Me.ClientSize = New System.Drawing.Size(574, 351)
+        Me.Controls.Add(Me.chkData)
+        Me.Controls.Add(Me.txtOption)
+        Me.Controls.Add(Me.txtData12)
+        Me.Controls.Add(Me.txmData1)
+        Me.Controls.Add(Me.txmData0)
+        Me.Controls.Add(Me.txtData11)
+        Me.Controls.Add(Me.txtData9)
+        Me.Controls.Add(Me.txtData8)
+        Me.Controls.Add(Me.txtData7)
+        Me.Controls.Add(Me.txtData10)
+        Me.Controls.Add(Me.txtData6)
+        Me.Controls.Add(Me.txtData5)
+        Me.Controls.Add(Me.txtData4)
+        Me.Controls.Add(Me.txtData3)
+        Me.Controls.Add(Me.txtData2)
+        Me.Controls.Add(Me.txtData1)
+        Me.Controls.Add(Me.txtData0)
+        Me.Controls.Add(Me.cmdEditDept)
+        Me.Controls.Add(Me.cmdExit)
+        Me.Controls.Add(Me.cmdUpdate)
+        Me.Controls.Add(Me.cmdReset)
+        Me.Controls.Add(Me.cmdDelete)
+        Me.Controls.Add(Me.cmdNew)
+        Me.Controls.Add(Me.cmdFind)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblLabel)
         Me.Controls.Add(Me.lblLabel4)
@@ -500,32 +632,8 @@ Partial Class frmCust
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel12)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.txmData0)
-        Me.Controls.Add(Me.txmData1)
-        Me.Controls.Add(Me.txtData1)
-        Me.Controls.Add(Me.txtData0)
-        Me.Controls.Add(Me.cmdDelete)
-        Me.Controls.Add(Me.cmdReset)
-        Me.Controls.Add(Me.cmdNew)
-        Me.Controls.Add(Me.txtData2)
-        Me.Controls.Add(Me.txtData3)
-        Me.Controls.Add(Me.txtData4)
-        Me.Controls.Add(Me.txtData5)
-        Me.Controls.Add(Me.txtData6)
-        Me.Controls.Add(Me.txtData7)
-        Me.Controls.Add(Me.txtData8)
-        Me.Controls.Add(Me.txtData9)
-        Me.Controls.Add(Me.txtOption)
-        Me.Controls.Add(Me.cmdEditDept)
-        Me.Controls.Add(Me.txtData10)
-        Me.Controls.Add(Me.cmdFind)
-        Me.Controls.Add(Me.cmdUpdate)
-        Me.Controls.Add(Me.cmdExit)
-        Me.Controls.Add(Me.txtData11)
-        Me.Controls.Add(Me.txtData12)
         Me.Controls.Add(Me.optData0)
         Me.Controls.Add(Me.optData1)
-        Me.Controls.Add(Me.chkData)
         Me.Location = New System.Drawing.Point(134, 111)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -535,37 +643,36 @@ Partial Class frmCust
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txmData0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txmData1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtOption, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents chkData As CheckBox
     Friend WithEvents optData1 As RadioButton
     Friend WithEvents optData0 As RadioButton
-    Friend WithEvents txtData12 As TextBox
-    Friend WithEvents txtData11 As TextBox
-    Friend WithEvents cmdExit As Button
-    Friend WithEvents cmdUpdate As Button
-    Friend WithEvents cmdFind As Button
-    Friend WithEvents txtData10 As TextBox
-    Friend WithEvents cmdEditDept As Button
-    Friend WithEvents txtOption As TextBox
-    Friend WithEvents txtData9 As TextBox
-    Friend WithEvents txtData8 As TextBox
-    Friend WithEvents txtData7 As TextBox
-    Friend WithEvents txtData6 As TextBox
-    Friend WithEvents txtData5 As TextBox
-    Friend WithEvents txtData4 As TextBox
-    Friend WithEvents txtData3 As TextBox
-    Friend WithEvents txtData2 As TextBox
-    Friend WithEvents cmdNew As Button
-    Friend WithEvents cmdReset As Button
-    Friend WithEvents cmdDelete As Button
-    Friend WithEvents txtData0 As TextBox
-    Friend WithEvents txtData1 As TextBox
-    Friend WithEvents txmData1 As MaskedTextBox
-    Friend WithEvents txmData0 As MaskedTextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblLabel12 As Label
     Friend WithEvents lblCurCust As Label
@@ -586,4 +693,28 @@ Partial Class frmCust
     Friend WithEvents CustomerMasterTableAdapter As DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter
     Friend WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
     Friend WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
+    Friend WithEvents cmdEditDept As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdExit As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdReset As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdDelete As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdNew As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdFind As C1.Win.C1Input.C1Button
+    Friend WithEvents txtData0 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData2 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData5 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData4 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData3 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData6 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData11 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData9 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData8 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txmData1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txmData0 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents chkData As C1.Win.C1Input.C1CheckBox
+    Friend WithEvents txtOption As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData12 As C1.Win.C1Input.C1TextBox
 End Class

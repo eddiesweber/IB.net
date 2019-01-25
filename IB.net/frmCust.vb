@@ -58,7 +58,8 @@
         GetData()
 
         Me.Enabled = True
-        'Screen.MousePointer = 1
+
+        Me.Cursor = Cursors.Arrow
 
     End Sub
 

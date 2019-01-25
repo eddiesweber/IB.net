@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmNotes
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,33 +20,38 @@ Partial Class frmNotes
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblName = New System.Windows.Forms.Label()
-        Me.lbl1 = New System.Windows.Forms.Label()
+        Me.lblNotes = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblName
         '
-        Me.lblName.Location = New System.Drawing.Point(18, 24)
+        Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblName.Location = New System.Drawing.Point(20, 20)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(191, 13)
         Me.lblName.TabIndex = 1
+        Me.lblName.Text = "name"
         '
-        'lbl1
+        'lblNotes
         '
-        Me.lbl1.Location = New System.Drawing.Point(56, 70)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(209, 13)
-        Me.lbl1.TabIndex = 0
-        Me.lbl1.Text = "Label1"
+        Me.lblNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblNotes.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotes.Location = New System.Drawing.Point(20, 40)
+        Me.lblNotes.Name = "lblNotes"
+        Me.lblNotes.Padding = New System.Windows.Forms.Padding(10)
+        Me.lblNotes.Size = New System.Drawing.Size(250, 186)
+        Me.lblNotes.TabIndex = 2
+        Me.lblNotes.Text = "Label1"
         '
         'frmNotes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(317, 263)
-        Me.Controls.Add(Me.lbl1)
+        Me.ClientSize = New System.Drawing.Size(285, 260)
+        Me.Controls.Add(Me.lblNotes)
         Me.Controls.Add(Me.lblName)
         Me.Location = New System.Drawing.Point(196, 241)
         Me.Name = "frmNotes"
@@ -56,5 +61,5 @@ Partial Class frmNotes
     End Sub
 
     Friend WithEvents lblName As Label
-    Friend WithEvents lbl1 As Label
+    Friend WithEvents lblNotes As Label
 End Class

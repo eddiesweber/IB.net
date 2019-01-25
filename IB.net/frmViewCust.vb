@@ -24,8 +24,6 @@ Public Class frmViewCust
             grdItem.LoadLayout("frmViewCustgrdItem.xml")
         End If
 
-        cmdFind.Select()
-
     End Sub
 
     Private Sub frmViewCust_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
@@ -64,60 +62,56 @@ Public Class frmViewCust
 
     Private Sub GetData()
 
-
         'Get customer record
         Me.SpGetCustTableAdapter.Connection.ConnectionString = CS
         Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
-        'data1(0).RecordSource = "spGetCust(" & CurCust & ")"
-        'data1(0).Refresh
 
-        'If data1(0).Recordset.BOF Or data1(0).Recordset.EOF Then
-        'CurCust = 0
-        'frmFindCust.Show()
-        'Exit Sub
-        'Else
-        GetAverage()
-        GetData1()
-        GetData2()
-        'End If
+        If IBPortlandDataSet.Tables("spGetCust").Rows.Count = 0 Then
+            CurCust = 0
+            frmFindCust.Show()
+            Exit Sub
+        Else
+            GetAverage()
+            GetData1()
+            GetData2()
+        End If
 
     End Sub
 
     Private Sub GetData1()
+
         'Get customer departments
         Me.SpGetCustDeptTableAdapter.Connection.ConnectionString = CS
         Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, CurCust)
-        'data1(1).RecordSource = "spGetCustDept(" & CurCust & ")"
-        'data1(1).Refresh
-        'If data1(1).Recordset.RecordCount > 0 Then
-        'data1(1).Recordset.MoveFirst
-        'If CurDept > 0 Then
-        'data1(1).Recordset.Find "DEPT=" & CStr(CurDept)
-        'If data1(1).Recordset.EOF Then data1(1).Recordset.MoveFirst
-        'End If
-        'End If
+
+        If IBPortlandDataSet.Tables("spGetCust").Rows.Count > 0 Then
+            'data1(1).Recordset.MoveFirst
+            If CurDept > 0 Then
+                '   data1(1).Recordset.Find "DEPT=" & CStr(CurDept)
+                '   If data1(1).Recordset.EOF Then data1(1).Recordset.MoveFirst
+            End If
+        End If
+
     End Sub
 
     Private Sub GetData2()
 
         'Get routes and items for dept
-        Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
-
-        Me.SpGetCustItemTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
+        If IBPortlandDataSet.Tables("SpGetCustDept").Rows.Count = 0 Then
+            CurDept = 1
+        Else
+            CurDept = CInt(grdDept.Columns("Dept").CellValue(Me.grdDept.Row))
+        End If
 
         'If buserchange Then
-        'If data1(1).Recordset.EOF And data1(1).Recordset.BOF Then
-        'CurDept = 1
-        'Else
-        'CurDept = data1(1).Recordset!DEPT
+        Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
+
+            Me.SpGetCustItemTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
         'End If
-        'End If
-        'data1(2).RecordSource = "spGetCustRoute(" & CurCust & "," & CurDept & ")"
-        'data1(2).Refresh
-        'data1(3).RecordSource = "spGetCustItem(" & CurCust & "," & CurDept & ")"
-        'data1(3).Refresh
+
+
     End Sub
 
     Sub GetAverage()
@@ -175,11 +169,13 @@ Public Class frmViewCust
 
     Private Sub grdDept_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdDept.RowColChange
 
-        If IsNumeric(grdDept.Columns(0).CellValue(Me.grdDept.Row)) Then
-            CurDept = CInt(grdDept.Columns(0).CellValue(Me.grdDept.Row))
-        End If
+        If buserchange Then
+            If IsNumeric(grdDept.Columns("Dept").CellValue(Me.grdDept.Row)) Then
+                CurDept = CInt(grdDept.Columns("Dept").CellValue(Me.grdDept.Row))
+            End If
 
-        GetData2()
+            GetData2()
+        End If
 
     End Sub
 
@@ -244,12 +240,6 @@ Public Class frmViewCust
         frmCust.BringToFront()
 
     End Sub
-
-    'Private Sub SalesHistoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesHistoryToolStripMenuItem.Click
-
-    '    frmSOHist.Show()
-
-    'End Sub
 
     Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
 
