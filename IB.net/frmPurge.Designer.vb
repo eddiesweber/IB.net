@@ -22,6 +22,7 @@ Partial Class frmPurge
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPurge))
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.lblCount0 = New System.Windows.Forms.Label()
@@ -121,6 +122,7 @@ Partial Class frmPurge
         Me.Controls.Add(Me.lblCount0)
         Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.cmdCancel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(97, 106)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

@@ -74,6 +74,7 @@ Partial Class frmTax
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(553, 160)
         Me.Controls.Add(Me.C1TrueDBGrid1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTax"
         Me.Text = "Add/Edit Tax Codes"
         CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()

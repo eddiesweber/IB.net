@@ -23,6 +23,7 @@ Partial Class frmCompany
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompany))
         Me.TableAdapterManager = New IB.net.masterDataSetTableAdapters.TableAdapterManager()
         Me.lstCompany = New System.Windows.Forms.ListBox()
         Me.IBconfigBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
@@ -80,6 +81,7 @@ Partial Class frmCompany
         Me.Controls.Add(Me.cmdOpen)
         Me.Controls.Add(Me.lstCompany)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(76, 73)
         Me.Name = "frmCompany"
         Me.Text = "Select Division"

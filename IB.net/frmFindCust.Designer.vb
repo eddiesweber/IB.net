@@ -22,6 +22,7 @@ Partial Class frmFindCust
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindCust))
         Me.lstCustName = New System.Windows.Forms.ListBox()
         Me.lstCustNum = New System.Windows.Forms.ListBox()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
@@ -92,6 +93,7 @@ Partial Class frmFindCust
         Me.Controls.Add(Me.lstCustNum)
         Me.Controls.Add(Me.lstCustName)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(85, 92)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

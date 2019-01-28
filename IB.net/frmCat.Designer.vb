@@ -93,6 +93,7 @@ Partial Class frmCat
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(861, 211)
         Me.Controls.Add(Me.C1TrueDBGrid1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmCat"
         Me.Text = "frmCat"
         CType(Me.DsCategoryMaster, System.ComponentModel.ISupportInitialize).EndInit()

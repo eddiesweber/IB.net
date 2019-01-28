@@ -74,6 +74,7 @@ Partial Class frmRouteMast
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(334, 98)
         Me.Controls.Add(Me.C1TrueDBGrid1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(147, 165)
         Me.Name = "frmRouteMast"
         Me.Text = "Route Master"

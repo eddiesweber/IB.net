@@ -192,6 +192,7 @@ Partial Class frmROHist
         Me.Controls.Add(Me.lblLabel4)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblCurCust)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(62, 145)
         Me.Name = "frmROHist"
         Me.Text = "Customer Item History"

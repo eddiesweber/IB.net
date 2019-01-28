@@ -46,6 +46,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\IB.net.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="C1.C1Zip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="C1.Win.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
@@ -898,6 +901,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IB.net.ico" />
+    <Content Include="IBnet.ico" />
+    <Content Include="imageedit_1_3798369172.ico" />
+    <Content Include="picture1_0ns_icon.ico" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\BackgroundIBnet.png" />
+    <None Include="Resources\IB.net.ico" />
+    <None Include="Resources\Icon.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

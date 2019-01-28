@@ -90,5 +90,69 @@
 
     End Sub
 
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        'CustomerMasterTableAdapter.Insert()
+
+    End Sub
+
+    Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
+
+        frmFindCust.Show()
+        frmFindCust.BringToFront()
+
+    End Sub
+
+    Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
+
+        frmDept.Show()
+
+    End Sub
+
+    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
+
+        'If Not cmdReset.Enabled Then
+        buserchange = False
+            GetData()
+            buserchange = True
+        'End If
+
+    End Sub
+
+
+    Public Sub SetModeChange()
+
+        'cmdNew.Enabled = False
+        'cmdDelete.Enabled = False
+        'cmdReset.Enabled = True
+        'cmdReset.Cancel = True
+        'cmdUpdate.Enabled = True
+        'cmdUpdate.Default = True
+        'cmdFind.Enabled = False
+        'cmdExit.Enabled = False
+        'cmdEditDept.Enabled = False
+
+    End Sub
+
+    Public Sub SetModeAdd()
+
+        'txtData0.Text = "(new)"
+        'txtData0.DataChanged = False
+        'SetModeChange()
+        'txtData1.SetFocus
+
+    End Sub
+
+    Public Sub SetModeReg()
+
+        'cmdNew.Enabled = True
+        'cmdDelete.Enabled = True
+        'cmdReset.Enabled = False
+        'cmdUpdate.Enabled = False
+        'cmdExit.Enabled = True
+        'cmdFind.Enabled = True
+        'cmdEditDept.Enabled = True
+
+    End Sub
 
 End Class

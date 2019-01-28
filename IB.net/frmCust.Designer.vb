@@ -23,6 +23,7 @@ Partial Class frmCust
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCust))
         Me.CustomerMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_CustomerMaster1 = New IB.net.DS_CustomerMaster()
         Me.optData1 = New System.Windows.Forms.RadioButton()
@@ -69,6 +70,7 @@ Partial Class frmCust
         Me.txtData12 = New C1.Win.C1Input.C1TextBox()
         Me.txtOption = New C1.Win.C1Input.C1TextBox()
         Me.chkData = New C1.Win.C1Input.C1CheckBox()
+        Me.txtData17 = New C1.Win.C1Input.C1TextBox()
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,6 +98,7 @@ Partial Class frmCust
         CType(Me.txtData12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtOption, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkData, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CustomerMasterBindingSource
@@ -114,7 +117,7 @@ Partial Class frmCust
         Me.optData1.Location = New System.Drawing.Point(141, 265)
         Me.optData1.Name = "optData1"
         Me.optData1.Size = New System.Drawing.Size(86, 17)
-        Me.optData1.TabIndex = 40
+        Me.optData1.TabIndex = 13
         Me.optData1.TabStop = True
         Me.optData1.Tag = "I"
         Me.optData1.Text = "Cash or Card"
@@ -126,7 +129,7 @@ Partial Class frmCust
         Me.optData0.Location = New System.Drawing.Point(82, 265)
         Me.optData0.Name = "optData0"
         Me.optData0.Size = New System.Drawing.Size(52, 17)
-        Me.optData0.TabIndex = 39
+        Me.optData0.TabIndex = 12
         Me.optData0.TabStop = True
         Me.optData0.Tag = "A"
         Me.optData0.Text = "Credit"
@@ -135,7 +138,7 @@ Partial Class frmCust
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(360, 8)
+        Me.Label1.Location = New System.Drawing.Point(327, 16)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 13)
         Me.Label1.TabIndex = 25
@@ -287,7 +290,7 @@ Partial Class frmCust
         Me.cmdFind.Location = New System.Drawing.Point(225, 10)
         Me.cmdFind.Name = "cmdFind"
         Me.cmdFind.Size = New System.Drawing.Size(85, 25)
-        Me.cmdFind.TabIndex = 43
+        Me.cmdFind.TabIndex = 23
         Me.cmdFind.Text = "&Find"
         Me.cmdFind.UseVisualStyleBackColor = True
         Me.cmdFind.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -298,7 +301,7 @@ Partial Class frmCust
         Me.cmdNew.Location = New System.Drawing.Point(480, 10)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
-        Me.cmdNew.TabIndex = 44
+        Me.cmdNew.TabIndex = 17
         Me.cmdNew.Text = "&New"
         Me.cmdNew.UseVisualStyleBackColor = True
         Me.cmdNew.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -309,7 +312,7 @@ Partial Class frmCust
         Me.cmdDelete.Location = New System.Drawing.Point(480, 40)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
-        Me.cmdDelete.TabIndex = 45
+        Me.cmdDelete.TabIndex = 18
         Me.cmdDelete.Text = "&Delete"
         Me.cmdDelete.UseVisualStyleBackColor = True
         Me.cmdDelete.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -320,7 +323,7 @@ Partial Class frmCust
         Me.cmdReset.Location = New System.Drawing.Point(480, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
-        Me.cmdReset.TabIndex = 46
+        Me.cmdReset.TabIndex = 19
         Me.cmdReset.Text = "Reset"
         Me.cmdReset.UseVisualStyleBackColor = True
         Me.cmdReset.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -331,7 +334,7 @@ Partial Class frmCust
         Me.cmdUpdate.Location = New System.Drawing.Point(480, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
-        Me.cmdUpdate.TabIndex = 47
+        Me.cmdUpdate.TabIndex = 20
         Me.cmdUpdate.Text = "Update"
         Me.cmdUpdate.UseVisualStyleBackColor = True
         Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -342,7 +345,7 @@ Partial Class frmCust
         Me.cmdExit.Location = New System.Drawing.Point(480, 130)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
-        Me.cmdExit.TabIndex = 48
+        Me.cmdExit.TabIndex = 21
         Me.cmdExit.Text = "E&xit"
         Me.cmdExit.UseVisualStyleBackColor = True
         Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -353,7 +356,7 @@ Partial Class frmCust
         Me.cmdEditDept.Location = New System.Drawing.Point(80, 315)
         Me.cmdEditDept.Name = "cmdEditDept"
         Me.cmdEditDept.Size = New System.Drawing.Size(230, 25)
-        Me.cmdEditDept.TabIndex = 49
+        Me.cmdEditDept.TabIndex = 22
         Me.cmdEditDept.Text = "&Departments/Routes"
         Me.cmdEditDept.UseVisualStyleBackColor = True
         Me.cmdEditDept.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -381,7 +384,7 @@ Partial Class frmCust
         Me.txtData1.Location = New System.Drawing.Point(80, 40)
         Me.txtData1.Name = "txtData1"
         Me.txtData1.Size = New System.Drawing.Size(230, 18)
-        Me.txtData1.TabIndex = 51
+        Me.txtData1.TabIndex = 0
         Me.txtData1.Tag = Nothing
         Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -394,7 +397,7 @@ Partial Class frmCust
         Me.txtData2.Location = New System.Drawing.Point(80, 65)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.Size = New System.Drawing.Size(230, 18)
-        Me.txtData2.TabIndex = 52
+        Me.txtData2.TabIndex = 1
         Me.txtData2.Tag = Nothing
         Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -407,7 +410,7 @@ Partial Class frmCust
         Me.txtData3.Location = New System.Drawing.Point(80, 90)
         Me.txtData3.Name = "txtData3"
         Me.txtData3.Size = New System.Drawing.Size(100, 18)
-        Me.txtData3.TabIndex = 53
+        Me.txtData3.TabIndex = 2
         Me.txtData3.Tag = Nothing
         Me.txtData3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -420,7 +423,7 @@ Partial Class frmCust
         Me.txtData4.Location = New System.Drawing.Point(190, 90)
         Me.txtData4.Name = "txtData4"
         Me.txtData4.Size = New System.Drawing.Size(30, 18)
-        Me.txtData4.TabIndex = 54
+        Me.txtData4.TabIndex = 3
         Me.txtData4.Tag = Nothing
         Me.txtData4.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -433,7 +436,7 @@ Partial Class frmCust
         Me.txtData5.Location = New System.Drawing.Point(230, 90)
         Me.txtData5.Name = "txtData5"
         Me.txtData5.Size = New System.Drawing.Size(80, 18)
-        Me.txtData5.TabIndex = 55
+        Me.txtData5.TabIndex = 4
         Me.txtData5.Tag = Nothing
         Me.txtData5.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -446,7 +449,7 @@ Partial Class frmCust
         Me.txtData6.Location = New System.Drawing.Point(80, 115)
         Me.txtData6.Name = "txtData6"
         Me.txtData6.Size = New System.Drawing.Size(160, 18)
-        Me.txtData6.TabIndex = 56
+        Me.txtData6.TabIndex = 5
         Me.txtData6.Tag = Nothing
         Me.txtData6.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -459,7 +462,7 @@ Partial Class frmCust
         Me.txtData10.Location = New System.Drawing.Point(80, 140)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Size = New System.Drawing.Size(100, 18)
-        Me.txtData10.TabIndex = 57
+        Me.txtData10.TabIndex = 6
         Me.txtData10.Tag = Nothing
         Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -472,7 +475,7 @@ Partial Class frmCust
         Me.txtData7.Location = New System.Drawing.Point(80, 165)
         Me.txtData7.Name = "txtData7"
         Me.txtData7.Size = New System.Drawing.Size(160, 18)
-        Me.txtData7.TabIndex = 58
+        Me.txtData7.TabIndex = 7
         Me.txtData7.Tag = Nothing
         Me.txtData7.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -485,7 +488,7 @@ Partial Class frmCust
         Me.txtData8.Location = New System.Drawing.Point(80, 215)
         Me.txtData8.Name = "txtData8"
         Me.txtData8.Size = New System.Drawing.Size(230, 18)
-        Me.txtData8.TabIndex = 59
+        Me.txtData8.TabIndex = 10
         Me.txtData8.Tag = Nothing
         Me.txtData8.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -498,7 +501,7 @@ Partial Class frmCust
         Me.txtData9.Location = New System.Drawing.Point(80, 240)
         Me.txtData9.Name = "txtData9"
         Me.txtData9.Size = New System.Drawing.Size(230, 18)
-        Me.txtData9.TabIndex = 60
+        Me.txtData9.TabIndex = 11
         Me.txtData9.Tag = Nothing
         Me.txtData9.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -511,7 +514,7 @@ Partial Class frmCust
         Me.txtData11.Location = New System.Drawing.Point(80, 290)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.Size = New System.Drawing.Size(160, 18)
-        Me.txtData11.TabIndex = 61
+        Me.txtData11.TabIndex = 15
         Me.txtData11.Tag = Nothing
         Me.txtData11.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -524,7 +527,7 @@ Partial Class frmCust
         Me.txmData0.Location = New System.Drawing.Point(80, 190)
         Me.txmData0.Name = "txmData0"
         Me.txmData0.Size = New System.Drawing.Size(100, 18)
-        Me.txmData0.TabIndex = 62
+        Me.txmData0.TabIndex = 8
         Me.txmData0.Tag = Nothing
         Me.txmData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txmData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -537,7 +540,7 @@ Partial Class frmCust
         Me.txmData1.Location = New System.Drawing.Point(210, 190)
         Me.txmData1.Name = "txmData1"
         Me.txmData1.Size = New System.Drawing.Size(100, 18)
-        Me.txmData1.TabIndex = 63
+        Me.txmData1.TabIndex = 9
         Me.txmData1.Tag = Nothing
         Me.txmData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txmData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -581,18 +584,34 @@ Partial Class frmCust
         Me.chkData.Name = "chkData"
         Me.chkData.Padding = New System.Windows.Forms.Padding(1)
         Me.chkData.Size = New System.Drawing.Size(104, 24)
-        Me.chkData.TabIndex = 66
+        Me.chkData.TabIndex = 14
         Me.chkData.Text = "Mail Stmt"
         Me.chkData.UseVisualStyleBackColor = True
         Me.chkData.Value = Nothing
         Me.chkData.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.chkData.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'txtData17
+        '
+        Me.txtData17.AutoSize = False
+        Me.txtData17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData17.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "COMMENTS", True))
+        Me.txtData17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData17.Location = New System.Drawing.Point(325, 40)
+        Me.txtData17.Multiline = True
+        Me.txtData17.Name = "txtData17"
+        Me.txtData17.Size = New System.Drawing.Size(140, 115)
+        Me.txtData17.TabIndex = 16
+        Me.txtData17.Tag = Nothing
+        Me.txtData17.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData17.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(574, 351)
+        Me.Controls.Add(Me.txtData17)
         Me.Controls.Add(Me.chkData)
         Me.Controls.Add(Me.txtOption)
         Me.Controls.Add(Me.txtData12)
@@ -634,6 +653,7 @@ Partial Class frmCust
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.optData0)
         Me.Controls.Add(Me.optData1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(134, 111)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -667,6 +687,7 @@ Partial Class frmCust
         CType(Me.txtData12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtOption, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkData, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData17, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -717,4 +738,5 @@ Partial Class frmCust
     Friend WithEvents chkData As C1.Win.C1Input.C1CheckBox
     Friend WithEvents txtOption As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData12 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData17 As C1.Win.C1Input.C1TextBox
 End Class

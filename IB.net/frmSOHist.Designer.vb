@@ -28,7 +28,6 @@ Partial Class frmSOHist
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lblLabel4 = New System.Windows.Forms.Label()
         Me.datSince = New C1.Win.Calendar.C1DateEdit()
-        Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetInvoiceHistBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsSOHist = New IB.net.dsSOHist()
         Me.SpGetInvoiceHistTableAdapter = New IB.net.dsSOHistTableAdapters.spGetInvoiceHistTableAdapter()
@@ -37,8 +36,8 @@ Partial Class frmSOHist
         Me.cmdFind = New C1.Win.C1Input.C1Button()
         Me.CmdPrint = New C1.Win.C1Input.C1Button()
         Me.cmdClose = New C1.Win.C1Input.C1Button()
+        Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         CType(Me.datSince, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetInvoiceHistBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSOHist, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCust, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,6 +45,7 @@ Partial Class frmSOHist
         CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CmdPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdClose, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCurCust
@@ -102,25 +102,6 @@ Partial Class frmSOHist
         Me.datSince.Tag = Nothing
         Me.datSince.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.datSince.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'C1TrueDBGrid1
-        '
-        Me.C1TrueDBGrid1.AllowUpdate = False
-        Me.C1TrueDBGrid1.DataSource = Me.SpGetInvoiceHistBindingSource
-        Me.C1TrueDBGrid1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid1.Images.Add(CType(resources.GetObject("C1TrueDBGrid1.Images"), System.Drawing.Image))
-        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(0, 71)
-        Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
-        Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
-        Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
-        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(604, 285)
-        Me.C1TrueDBGrid1.TabIndex = 11
-        Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
-        Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         '
         'SpGetInvoiceHistBindingSource
         '
@@ -191,6 +172,25 @@ Partial Class frmSOHist
         Me.cmdClose.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'C1TrueDBGrid1
+        '
+        Me.C1TrueDBGrid1.AllowUpdate = False
+        Me.C1TrueDBGrid1.DataSource = Me.SpGetInvoiceHistBindingSource
+        Me.C1TrueDBGrid1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
+        Me.C1TrueDBGrid1.Images.Add(CType(resources.GetObject("C1TrueDBGrid1.Images"), System.Drawing.Image))
+        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(0, 71)
+        Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
+        Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
+        Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
+        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(604, 285)
+        Me.C1TrueDBGrid1.TabIndex = 11
+        Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
+        Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        '
         'frmSOHist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -206,11 +206,11 @@ Partial Class frmSOHist
         Me.Controls.Add(Me.lblLabel4)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblCurCust)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(53, 233)
         Me.Name = "frmSOHist"
         Me.Text = "Customer Sales History"
         CType(Me.datSince, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetInvoiceHistBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsSOHist, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCust, System.ComponentModel.ISupportInitialize).EndInit()
@@ -218,6 +218,7 @@ Partial Class frmSOHist
         CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CmdPrint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdClose, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
