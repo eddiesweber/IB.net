@@ -105,6 +105,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsCustomerDepartment.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCustomerDepartment.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsCustomerRoute.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCustomerRoute.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsROHist.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -789,6 +799,28 @@
     <None Include="dsCategoryMaster.xss">
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
     </None>
+    <None Include="dsCustomerDepartment.xsc">
+      <DependentUpon>dsCustomerDepartment.xsd</DependentUpon>
+    </None>
+    <None Include="dsCustomerDepartment.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustomerDepartment.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCustomerDepartment.xss">
+      <DependentUpon>dsCustomerDepartment.xsd</DependentUpon>
+    </None>
+    <None Include="dsCustomerRoute.xsc">
+      <DependentUpon>dsCustomerRoute.xsd</DependentUpon>
+    </None>
+    <None Include="dsCustomerRoute.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustomerRoute.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCustomerRoute.xss">
+      <DependentUpon>dsCustomerRoute.xsd</DependentUpon>
+    </None>
     <None Include="dsROHist.xsc">
       <DependentUpon>dsROHist.xsd</DependentUpon>
     </None>
@@ -907,6 +939,7 @@
     <Content Include="IBnet.ico" />
     <Content Include="imageedit_1_3798369172.ico" />
     <Content Include="picture1_0ns_icon.ico" />
+    <None Include="Resources\BackgroundNet.bmp" />
     <None Include="Resources\Background.png" />
     <None Include="Resources\BackgroundIBnet.png" />
     <None Include="Resources\IB.net.ico" />

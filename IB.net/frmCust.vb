@@ -1,10 +1,10 @@
-﻿Public Class frmCust
+﻿Option Explicit On
 
-    'Dim CoRS As ADODB.Recordset
+Public Class frmCust
+
     Dim buserchange As Boolean
     Dim bInit As Boolean
     Dim bCancel As Boolean
-    'Dim rs As ADODB.Recordset
 
     Private Sub frmCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -18,12 +18,8 @@
 
         Me.Cursor = Cursors.WaitCursor
 
-        'data1.ConnectionString = CS
         Me.CustomerMasterTableAdapter.Connection.ConnectionString = CS
 
-        'data1.RecordSource = "Select * From CustomerMaster Where 1=0"
-        'data1.Enabled = True
-        'data1.Refresh
         If CurCust > 0 Then
             Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
         End If
@@ -65,19 +61,13 @@
 
     Sub GetData()
 
-        'Dim q As String
-        If CurCust > 0 Then
-            'q = "Select * from CustomerMaster Where CUST_NUM=" & CurCust
-            Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
+        If CurCust = 0 Then
+            frmFindCust.Show()
         Else
-            'q = "Select * from CustomerMaster"
+            Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
         End If
-        'data1.RecordSource = q
-        'data1.Enabled = True
-        'data1.Refresh
 
         If Me.DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.ToString = "" Then
-            'If Trim(data1.Recordset.Fields("CC_NUM")) <> "" Then
             txtData11.Text = CCDecrypt(Me.DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.ToString)
         End If
 
@@ -113,12 +103,11 @@
 
         'If Not cmdReset.Enabled Then
         buserchange = False
-            GetData()
-            buserchange = True
+        GetData()
+        buserchange = True
         'End If
 
     End Sub
-
 
     Public Sub SetModeChange()
 

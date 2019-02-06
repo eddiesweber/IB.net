@@ -188,6 +188,7 @@ Module Main
         End If
 
     End Sub
+
     Public Function CCEncrypt(strText As String) As String
 
         Dim i As Integer

@@ -62,7 +62,6 @@ Partial Class frmViewCust
         Me.txtData4 = New C1.Win.C1Input.C1TextBox()
         Me.txtAverage2 = New C1.Win.C1Input.C1TextBox()
         Me.txtData9 = New C1.Win.C1Input.C1TextBox()
-        Me.txtData7 = New C1.Win.C1Input.C1TextBox()
         Me.txtData6 = New C1.Win.C1Input.C1TextBox()
         Me.txtData3 = New C1.Win.C1Input.C1TextBox()
         Me.txtData0 = New C1.Win.C1Input.C1TextBox()
@@ -80,9 +79,8 @@ Partial Class frmViewCust
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink3 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandControl2 = New C1.Win.C1Command.C1CommandControl()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtData7 = New C1.Win.C1Input.C1TextBox()
         Me.fraEdit.SuspendLayout()
         CType(Me.cmdEditItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,7 +103,6 @@ Partial Class frmViewCust
         CType(Me.txtData4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAverage2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,8 +110,8 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.C1MainMenu1.SuspendLayout()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'fraEdit
@@ -549,22 +546,6 @@ Partial Class frmViewCust
         Me.txtData9.Tag = Nothing
         Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'txtData7
-        '
-        Me.txtData7.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
-        Me.txtData7.BorderColor = System.Drawing.SystemColors.WindowFrame
-        Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PHONE", True))
-        Me.txtData7.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
-        Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData7.Location = New System.Drawing.Point(285, 46)
-        Me.txtData7.Name = "txtData7"
-        Me.txtData7.ReadOnly = True
-        Me.txtData7.Size = New System.Drawing.Size(175, 14)
-        Me.txtData7.TabIndex = 57
-        Me.txtData7.Tag = Nothing
-        Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'txtData6
         '
         Me.txtData6.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
@@ -680,8 +661,7 @@ Partial Class frmViewCust
         Me.C1MainMenu1.AccessibleName = "Menu Bar"
         Me.C1MainMenu1.BackColor = System.Drawing.SystemColors.Control
         Me.C1MainMenu1.CommandHolder = Me.C1CommandHolder1
-        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4, Me.C1CommandLink6})
-        Me.C1MainMenu1.Controls.Add(Me.txtData7)
+        Me.C1MainMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4})
         Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
         Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.C1MainMenu1.Name = "C1MainMenu1"
@@ -695,7 +675,6 @@ Partial Class frmViewCust
         Me.C1CommandHolder1.Commands.Add(Me.mnuItemHistory)
         Me.C1CommandHolder1.Commands.Add(Me.mnuArHistory)
         Me.C1CommandHolder1.Commands.Add(Me.mnuNotes)
-        Me.C1CommandHolder1.Commands.Add(Me.C1CommandControl2)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuSalesHistory
@@ -741,17 +720,6 @@ Partial Class frmViewCust
         Me.C1CommandLink4.Command = Me.mnuNotes
         Me.C1CommandLink4.SortOrder = 3
         '
-        'C1CommandLink6
-        '
-        Me.C1CommandLink6.Command = Me.C1CommandControl2
-        Me.C1CommandLink6.SortOrder = 4
-        '
-        'C1CommandControl2
-        '
-        Me.C1CommandControl2.Control = Me.txtData7
-        Me.C1CommandControl2.Name = "C1CommandControl2"
-        Me.C1CommandControl2.ShortcutText = ""
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
@@ -761,12 +729,29 @@ Partial Class frmViewCust
         Me.Panel1.Size = New System.Drawing.Size(584, 1)
         Me.Panel1.TabIndex = 68
         '
+        'txtData7
+        '
+        Me.txtData7.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData7.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PHONE", True))
+        Me.txtData7.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
+        Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData7.Location = New System.Drawing.Point(285, 46)
+        Me.txtData7.Name = "txtData7"
+        Me.txtData7.ReadOnly = True
+        Me.txtData7.Size = New System.Drawing.Size(175, 14)
+        Me.txtData7.TabIndex = 70
+        Me.txtData7.Tag = Nothing
+        Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(584, 483)
+        Me.Controls.Add(Me.txtData7)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtData10)
         Me.Controls.Add(Me.txtData1)
@@ -828,7 +813,6 @@ Partial Class frmViewCust
         CType(Me.txtData4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAverage2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
@@ -836,8 +820,8 @@ Partial Class frmViewCust
         CType(Me.txtAverage, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.C1MainMenu1.ResumeLayout(False)
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -872,7 +856,6 @@ Partial Class frmViewCust
     Friend WithEvents txtData4 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtAverage2 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData9 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData6 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData3 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData0 As C1.Win.C1Input.C1TextBox
@@ -899,7 +882,6 @@ Partial Class frmViewCust
     Friend WithEvents mnuNotes As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink3 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
-    Friend WithEvents C1CommandControl2 As C1.Win.C1Command.C1CommandControl
-    Friend WithEvents C1CommandLink6 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
 End Class

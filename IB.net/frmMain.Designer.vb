@@ -107,21 +107,6 @@ Partial Class frmMain
         Me.cmdExceptions = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink36 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdAverageRevenue = New C1.Win.C1Command.C1Command()
-        Me.mnuInventory = New C1.Win.C1Command.C1CommandMenu()
-        Me.C1CommandLink38 = New C1.Win.C1Command.C1CommandLink()
-        Me.mnuCommission = New C1.Win.C1Command.C1CommandMenu()
-        Me.C1CommandLink40 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink33 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink37 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink39 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink41 = New C1.Win.C1Command.C1CommandLink()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdVersion = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink43 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdMiscReports = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink44 = New C1.Win.C1Command.C1CommandLink()
@@ -136,6 +121,8 @@ Partial Class frmMain
         Me.cmdDeptList = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink49 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdRouting = New C1.Win.C1Command.C1Command()
+        Me.mnuInventory = New C1.Win.C1Command.C1CommandMenu()
+        Me.C1CommandLink38 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdFindItem = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink50 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdViewItem = New C1.Win.C1Command.C1Command()
@@ -151,6 +138,8 @@ Partial Class frmMain
         Me.cmdInventoryAdjustments = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink56 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdReports = New C1.Win.C1Command.C1Command()
+        Me.mnuCommission = New C1.Win.C1Command.C1CommandMenu()
+        Me.C1CommandLink40 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdSalesPeople = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink57 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdRates = New C1.Win.C1Command.C1Command()
@@ -162,6 +151,17 @@ Partial Class frmMain
         Me.cmdRevenueReports = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink61 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdCommissionReports = New C1.Win.C1Command.C1Command()
+        Me.cmdVersion = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink33 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink37 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink39 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink41 = New C1.Win.C1Command.C1CommandLink()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -726,91 +726,6 @@ Partial Class frmMain
         Me.cmdAverageRevenue.ShortcutText = ""
         Me.cmdAverageRevenue.Text = "Average Revenue"
         '
-        'mnuInventory
-        '
-        Me.mnuInventory.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink38, Me.C1CommandLink50, Me.C1CommandLink51, Me.C1CommandLink52, Me.C1CommandLink53, Me.C1CommandLink54, Me.C1CommandLink55, Me.C1CommandLink56})
-        Me.mnuInventory.HideNonRecentLinks = False
-        Me.mnuInventory.Name = "mnuInventory"
-        Me.mnuInventory.ShortcutText = ""
-        Me.mnuInventory.Text = "&Inventory"
-        Me.mnuInventory.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
-        Me.mnuInventory.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
-        '
-        'C1CommandLink38
-        '
-        Me.C1CommandLink38.Command = Me.cmdFindItem
-        '
-        'mnuCommission
-        '
-        Me.mnuCommission.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink40, Me.C1CommandLink57, Me.C1CommandLink58, Me.C1CommandLink59, Me.C1CommandLink60, Me.C1CommandLink61})
-        Me.mnuCommission.HideNonRecentLinks = False
-        Me.mnuCommission.Name = "mnuCommission"
-        Me.mnuCommission.ShortcutText = ""
-        Me.mnuCommission.Text = "Co&mmission"
-        Me.mnuCommission.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
-        Me.mnuCommission.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
-        '
-        'C1CommandLink40
-        '
-        Me.C1CommandLink40.Command = Me.cmdSalesPeople
-        '
-        'C1CommandLink1
-        '
-        Me.C1CommandLink1.Command = Me.mnuFile
-        '
-        'C1CommandLink6
-        '
-        Me.C1CommandLink6.Command = Me.mnuCustomer
-        Me.C1CommandLink6.SortOrder = 1
-        '
-        'C1CommandLink7
-        '
-        Me.C1CommandLink7.Command = Me.mnuDaily
-        Me.C1CommandLink7.SortOrder = 2
-        '
-        'C1CommandLink33
-        '
-        Me.C1CommandLink33.Command = Me.mnuReports
-        Me.C1CommandLink33.SortOrder = 3
-        '
-        'C1CommandLink37
-        '
-        Me.C1CommandLink37.Command = Me.mnuInventory
-        Me.C1CommandLink37.SortOrder = 4
-        '
-        'C1CommandLink39
-        '
-        Me.C1CommandLink39.Command = Me.mnuCommission
-        Me.C1CommandLink39.SortOrder = 5
-        '
-        'C1CommandLink41
-        '
-        Me.C1CommandLink41.Command = Me.cmdVersion
-        Me.C1CommandLink41.SortOrder = 6
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 27)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(472, 1)
-        Me.Panel1.TabIndex = 1
-        '
-        'C1CommandLink18
-        '
-        Me.C1CommandLink18.Text = "New Command"
-        '
-        'C1CommandLink42
-        '
-        Me.C1CommandLink42.Text = "New Command"
-        '
-        'cmdVersion
-        '
-        Me.cmdVersion.Name = "cmdVersion"
-        Me.cmdVersion.ShortcutText = ""
-        Me.cmdVersion.Text = "&Version"
-        '
         'C1CommandLink43
         '
         Me.C1CommandLink43.Command = Me.cmdMiscReports
@@ -890,6 +805,20 @@ Partial Class frmMain
         Me.cmdRouting.Name = "cmdRouting"
         Me.cmdRouting.ShortcutText = ""
         Me.cmdRouting.Text = "Routing"
+        '
+        'mnuInventory
+        '
+        Me.mnuInventory.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink38, Me.C1CommandLink50, Me.C1CommandLink51, Me.C1CommandLink52, Me.C1CommandLink53, Me.C1CommandLink54, Me.C1CommandLink55, Me.C1CommandLink56})
+        Me.mnuInventory.HideNonRecentLinks = False
+        Me.mnuInventory.Name = "mnuInventory"
+        Me.mnuInventory.ShortcutText = ""
+        Me.mnuInventory.Text = "&Inventory"
+        Me.mnuInventory.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.mnuInventory.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
+        '
+        'C1CommandLink38
+        '
+        Me.C1CommandLink38.Command = Me.cmdFindItem
         '
         'cmdFindItem
         '
@@ -976,6 +905,20 @@ Partial Class frmMain
         Me.cmdReports.ShortcutText = ""
         Me.cmdReports.Text = "&Reports"
         '
+        'mnuCommission
+        '
+        Me.mnuCommission.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink40, Me.C1CommandLink57, Me.C1CommandLink58, Me.C1CommandLink59, Me.C1CommandLink60, Me.C1CommandLink61})
+        Me.mnuCommission.HideNonRecentLinks = False
+        Me.mnuCommission.Name = "mnuCommission"
+        Me.mnuCommission.ShortcutText = ""
+        Me.mnuCommission.Text = "Co&mmission"
+        Me.mnuCommission.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
+        Me.mnuCommission.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
+        '
+        'C1CommandLink40
+        '
+        Me.C1CommandLink40.Command = Me.cmdSalesPeople
+        '
         'cmdSalesPeople
         '
         Me.cmdSalesPeople.Name = "cmdSalesPeople"
@@ -1039,11 +982,68 @@ Partial Class frmMain
         Me.cmdCommissionReports.ShortcutText = ""
         Me.cmdCommissionReports.Text = "&Commission Reports"
         '
+        'cmdVersion
+        '
+        Me.cmdVersion.Name = "cmdVersion"
+        Me.cmdVersion.ShortcutText = ""
+        Me.cmdVersion.Text = "&Version"
+        '
+        'C1CommandLink1
+        '
+        Me.C1CommandLink1.Command = Me.mnuFile
+        '
+        'C1CommandLink6
+        '
+        Me.C1CommandLink6.Command = Me.mnuCustomer
+        Me.C1CommandLink6.SortOrder = 1
+        '
+        'C1CommandLink7
+        '
+        Me.C1CommandLink7.Command = Me.mnuDaily
+        Me.C1CommandLink7.SortOrder = 2
+        '
+        'C1CommandLink33
+        '
+        Me.C1CommandLink33.Command = Me.mnuReports
+        Me.C1CommandLink33.SortOrder = 3
+        '
+        'C1CommandLink37
+        '
+        Me.C1CommandLink37.Command = Me.mnuInventory
+        Me.C1CommandLink37.SortOrder = 4
+        '
+        'C1CommandLink39
+        '
+        Me.C1CommandLink39.Command = Me.mnuCommission
+        Me.C1CommandLink39.SortOrder = 5
+        '
+        'C1CommandLink41
+        '
+        Me.C1CommandLink41.Command = Me.cmdVersion
+        Me.C1CommandLink41.SortOrder = 6
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(472, 1)
+        Me.Panel1.TabIndex = 1
+        '
+        'C1CommandLink18
+        '
+        Me.C1CommandLink18.Text = "New Command"
+        '
+        'C1CommandLink42
+        '
+        Me.C1CommandLink42.Text = "New Command"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImage = Global.IB.net.My.Resources.Resources.BackgroundNet
         Me.ClientSize = New System.Drawing.Size(472, 157)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.C1MainMenu1)

@@ -267,9 +267,9 @@ Partial Class frmCust
         Me.lblLabel0.AutoSize = True
         Me.lblLabel0.Location = New System.Drawing.Point(7, 16)
         Me.lblLabel0.Name = "lblLabel0"
-        Me.lblLabel0.Size = New System.Drawing.Size(94, 13)
+        Me.lblLabel0.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel0.TabIndex = 0
-        Me.lblLabel0.Text = "&Customer Number:"
+        Me.lblLabel0.Text = "&Customer:"
         '
         'CustomerMasterTableAdapter
         '
@@ -368,7 +368,7 @@ Partial Class frmCust
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
         Me.txtData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData0.Location = New System.Drawing.Point(105, 14)
+        Me.txtData0.Location = New System.Drawing.Point(80, 14)
         Me.txtData0.Name = "txtData0"
         Me.txtData0.Size = New System.Drawing.Size(75, 18)
         Me.txtData0.TabIndex = 50
