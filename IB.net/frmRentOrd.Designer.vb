@@ -149,7 +149,7 @@ Partial Class frmRentOrd
         '
         'scrChange3
         '
-        Me.scrChange3.Location = New System.Drawing.Point(192, 208)
+        Me.scrChange3.Location = New System.Drawing.Point(192, 210)
         Me.scrChange3.Minimum = -32000
         Me.scrChange3.Name = "scrChange3"
         Me.scrChange3.Size = New System.Drawing.Size(15, 19)
@@ -157,7 +157,7 @@ Partial Class frmRentOrd
         '
         'scrChange2
         '
-        Me.scrChange2.Location = New System.Drawing.Point(192, 188)
+        Me.scrChange2.Location = New System.Drawing.Point(192, 190)
         Me.scrChange2.Minimum = -32000
         Me.scrChange2.Name = "scrChange2"
         Me.scrChange2.Size = New System.Drawing.Size(15, 19)
@@ -165,7 +165,7 @@ Partial Class frmRentOrd
         '
         'scrChange1
         '
-        Me.scrChange1.Location = New System.Drawing.Point(192, 168)
+        Me.scrChange1.Location = New System.Drawing.Point(192, 170)
         Me.scrChange1.Minimum = -32000
         Me.scrChange1.Name = "scrChange1"
         Me.scrChange1.Size = New System.Drawing.Size(15, 19)
@@ -173,7 +173,7 @@ Partial Class frmRentOrd
         '
         'scrChange0
         '
-        Me.scrChange0.Location = New System.Drawing.Point(192, 148)
+        Me.scrChange0.Location = New System.Drawing.Point(192, 150)
         Me.scrChange0.Minimum = -32000
         Me.scrChange0.Name = "scrChange0"
         Me.scrChange0.Size = New System.Drawing.Size(15, 19)
@@ -181,7 +181,7 @@ Partial Class frmRentOrd
         '
         'scrQty13
         '
-        Me.scrQty13.Location = New System.Drawing.Point(270, 208)
+        Me.scrQty13.Location = New System.Drawing.Point(270, 210)
         Me.scrQty13.Minimum = -32000
         Me.scrQty13.Name = "scrQty13"
         Me.scrQty13.Size = New System.Drawing.Size(15, 19)
@@ -189,7 +189,7 @@ Partial Class frmRentOrd
         '
         'scrQty12
         '
-        Me.scrQty12.Location = New System.Drawing.Point(270, 188)
+        Me.scrQty12.Location = New System.Drawing.Point(270, 190)
         Me.scrQty12.Minimum = -32000
         Me.scrQty12.Name = "scrQty12"
         Me.scrQty12.Size = New System.Drawing.Size(15, 19)
@@ -197,7 +197,7 @@ Partial Class frmRentOrd
         '
         'scrQty11
         '
-        Me.scrQty11.Location = New System.Drawing.Point(270, 168)
+        Me.scrQty11.Location = New System.Drawing.Point(270, 170)
         Me.scrQty11.Minimum = -32000
         Me.scrQty11.Name = "scrQty11"
         Me.scrQty11.Size = New System.Drawing.Size(15, 19)
@@ -205,7 +205,7 @@ Partial Class frmRentOrd
         '
         'scrQty10
         '
-        Me.scrQty10.Location = New System.Drawing.Point(270, 148)
+        Me.scrQty10.Location = New System.Drawing.Point(270, 150)
         Me.scrQty10.Minimum = -32000
         Me.scrQty10.Name = "scrQty10"
         Me.scrQty10.Size = New System.Drawing.Size(15, 19)
@@ -389,7 +389,7 @@ Partial Class frmRentOrd
         'lblLabel14
         '
         Me.lblLabel14.AutoSize = True
-        Me.lblLabel14.Location = New System.Drawing.Point(139, 97)
+        Me.lblLabel14.Location = New System.Drawing.Point(139, 101)
         Me.lblLabel14.Name = "lblLabel14"
         Me.lblLabel14.Size = New System.Drawing.Size(34, 13)
         Me.lblLabel14.TabIndex = 8
@@ -398,7 +398,7 @@ Partial Class frmRentOrd
         'lblLabel13
         '
         Me.lblLabel13.AutoSize = True
-        Me.lblLabel13.Location = New System.Drawing.Point(12, 213)
+        Me.lblLabel13.Location = New System.Drawing.Point(12, 215)
         Me.lblLabel13.Name = "lblLabel13"
         Me.lblLabel13.Size = New System.Drawing.Size(67, 13)
         Me.lblLabel13.TabIndex = 25
@@ -407,7 +407,7 @@ Partial Class frmRentOrd
         'lblLabel12
         '
         Me.lblLabel12.AutoSize = True
-        Me.lblLabel12.Location = New System.Drawing.Point(12, 193)
+        Me.lblLabel12.Location = New System.Drawing.Point(12, 195)
         Me.lblLabel12.Name = "lblLabel12"
         Me.lblLabel12.Size = New System.Drawing.Size(67, 13)
         Me.lblLabel12.TabIndex = 21
@@ -416,7 +416,7 @@ Partial Class frmRentOrd
         'lblLabel11
         '
         Me.lblLabel11.AutoSize = True
-        Me.lblLabel11.Location = New System.Drawing.Point(12, 173)
+        Me.lblLabel11.Location = New System.Drawing.Point(12, 175)
         Me.lblLabel11.Name = "lblLabel11"
         Me.lblLabel11.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel11.TabIndex = 17
@@ -425,7 +425,7 @@ Partial Class frmRentOrd
         'lblLabel10
         '
         Me.lblLabel10.AutoSize = True
-        Me.lblLabel10.Location = New System.Drawing.Point(12, 153)
+        Me.lblLabel10.Location = New System.Drawing.Point(12, 155)
         Me.lblLabel10.Name = "lblLabel10"
         Me.lblLabel10.Size = New System.Drawing.Size(65, 13)
         Me.lblLabel10.TabIndex = 13
@@ -434,7 +434,7 @@ Partial Class frmRentOrd
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
-        Me.lblLabel9.Location = New System.Drawing.Point(220, 137)
+        Me.lblLabel9.Location = New System.Drawing.Point(220, 139)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(51, 13)
         Me.lblLabel9.TabIndex = 37
@@ -443,7 +443,7 @@ Partial Class frmRentOrd
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(147, 137)
+        Me.lblLabel4.Location = New System.Drawing.Point(147, 139)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(47, 13)
         Me.lblLabel4.TabIndex = 40
@@ -452,7 +452,7 @@ Partial Class frmRentOrd
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(78, 137)
+        Me.lblLabel3.Location = New System.Drawing.Point(78, 139)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(44, 13)
         Me.lblLabel3.TabIndex = 65
@@ -461,7 +461,7 @@ Partial Class frmRentOrd
         'lblCurItem
         '
         Me.lblCurItem.AutoSize = True
-        Me.lblCurItem.Location = New System.Drawing.Point(406, 191)
+        Me.lblCurItem.Location = New System.Drawing.Point(421, 191)
         Me.lblCurItem.Name = "lblCurItem"
         Me.lblCurItem.Size = New System.Drawing.Size(53, 13)
         Me.lblCurItem.TabIndex = 56
@@ -471,7 +471,7 @@ Partial Class frmRentOrd
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(160, 233)
+        Me.lblLabel6.Location = New System.Drawing.Point(160, 235)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(56, 13)
         Me.lblLabel6.TabIndex = 29
@@ -480,7 +480,7 @@ Partial Class frmRentOrd
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(12, 251)
+        Me.lblLabel7.Location = New System.Drawing.Point(12, 253)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(48, 13)
         Me.lblLabel7.TabIndex = 31
@@ -489,7 +489,7 @@ Partial Class frmRentOrd
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(216, 97)
+        Me.lblLabel8.Location = New System.Drawing.Point(216, 101)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(44, 13)
         Me.lblLabel8.TabIndex = 11
@@ -498,7 +498,7 @@ Partial Class frmRentOrd
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(10, 75)
+        Me.lblLabel2.Location = New System.Drawing.Point(10, 79)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(30, 13)
         Me.lblLabel2.TabIndex = 5
@@ -507,7 +507,7 @@ Partial Class frmRentOrd
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(406, 171)
+        Me.lblCurCust.Location = New System.Drawing.Point(421, 171)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(54, 13)
         Me.lblCurCust.TabIndex = 53
@@ -516,7 +516,7 @@ Partial Class frmRentOrd
         '
         'cmdExit
         '
-        Me.cmdExit.Location = New System.Drawing.Point(385, 130)
+        Me.cmdExit.Location = New System.Drawing.Point(395, 130)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
         Me.cmdExit.TabIndex = 75
@@ -527,7 +527,7 @@ Partial Class frmRentOrd
         '
         'cmdUpdate
         '
-        Me.cmdUpdate.Location = New System.Drawing.Point(385, 100)
+        Me.cmdUpdate.Location = New System.Drawing.Point(395, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
         Me.cmdUpdate.TabIndex = 74
@@ -538,7 +538,7 @@ Partial Class frmRentOrd
         '
         'cmdReset
         '
-        Me.cmdReset.Location = New System.Drawing.Point(385, 70)
+        Me.cmdReset.Location = New System.Drawing.Point(395, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
         Me.cmdReset.TabIndex = 73
@@ -549,7 +549,7 @@ Partial Class frmRentOrd
         '
         'cmdDelete
         '
-        Me.cmdDelete.Location = New System.Drawing.Point(385, 40)
+        Me.cmdDelete.Location = New System.Drawing.Point(395, 40)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
         Me.cmdDelete.TabIndex = 72
@@ -560,7 +560,7 @@ Partial Class frmRentOrd
         '
         'cmdNew
         '
-        Me.cmdNew.Location = New System.Drawing.Point(385, 10)
+        Me.cmdNew.Location = New System.Drawing.Point(395, 10)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
         Me.cmdNew.TabIndex = 71
@@ -582,7 +582,7 @@ Partial Class frmRentOrd
         '
         'cmdFindItem
         '
-        Me.cmdFindItem.Location = New System.Drawing.Point(388, 266)
+        Me.cmdFindItem.Location = New System.Drawing.Point(398, 266)
         Me.cmdFindItem.Name = "cmdFindItem"
         Me.cmdFindItem.Size = New System.Drawing.Size(85, 25)
         Me.cmdFindItem.TabIndex = 77
@@ -672,7 +672,7 @@ Partial Class frmRentOrd
         Me.txtItemDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtItemDesc.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtItemDesc.Location = New System.Drawing.Point(130, 75)
+        Me.txtItemDesc.Location = New System.Drawing.Point(130, 79)
         Me.txtItemDesc.Name = "txtItemDesc"
         Me.txtItemDesc.Padding = New System.Windows.Forms.Padding(1)
         Me.txtItemDesc.Size = New System.Drawing.Size(230, 15)
@@ -686,7 +686,7 @@ Partial Class frmRentOrd
         Me.lstItem.ColumnHeaders = False
         Me.lstItem.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
         Me.lstItem.Images.Add(CType(resources.GetObject("lstItem.Images"), System.Drawing.Image))
-        Me.lstItem.Location = New System.Drawing.Point(47, 75)
+        Me.lstItem.Location = New System.Drawing.Point(47, 79)
         Me.lstItem.MatchEntryTimeout = CType(2000, Long)
         Me.lstItem.Name = "lstItem"
         Me.lstItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -705,7 +705,7 @@ Partial Class frmRentOrd
         'txtData2
         '
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData2.Location = New System.Drawing.Point(47, 73)
+        Me.txtData2.Location = New System.Drawing.Point(47, 77)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.Size = New System.Drawing.Size(80, 18)
         Me.txtData2.TabIndex = 84
@@ -736,7 +736,7 @@ Partial Class frmRentOrd
         'txtData20
         '
         Me.txtData20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData20.Location = New System.Drawing.Point(260, 95)
+        Me.txtData20.Location = New System.Drawing.Point(260, 99)
         Me.txtData20.Name = "txtData20"
         Me.txtData20.Size = New System.Drawing.Size(100, 18)
         Me.txtData20.TabIndex = 87
@@ -750,7 +750,7 @@ Partial Class frmRentOrd
         Me.chkLoan.BorderColor = System.Drawing.Color.Transparent
         Me.chkLoan.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.chkLoan.ForeColor = System.Drawing.Color.Black
-        Me.chkLoan.Location = New System.Drawing.Point(175, 93)
+        Me.chkLoan.Location = New System.Drawing.Point(175, 97)
         Me.chkLoan.Name = "chkLoan"
         Me.chkLoan.Padding = New System.Windows.Forms.Padding(1)
         Me.chkLoan.Size = New System.Drawing.Size(22, 25)
@@ -763,7 +763,7 @@ Partial Class frmRentOrd
         'txtData14
         '
         Me.txtData14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData14.Location = New System.Drawing.Point(407, 212)
+        Me.txtData14.Location = New System.Drawing.Point(422, 212)
         Me.txtData14.Name = "txtData14"
         Me.txtData14.Size = New System.Drawing.Size(60, 18)
         Me.txtData14.TabIndex = 89
@@ -775,7 +775,7 @@ Partial Class frmRentOrd
         'txtData3
         '
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData3.Location = New System.Drawing.Point(407, 231)
+        Me.txtData3.Location = New System.Drawing.Point(422, 231)
         Me.txtData3.Name = "txtData3"
         Me.txtData3.Size = New System.Drawing.Size(60, 18)
         Me.txtData3.TabIndex = 90
@@ -800,7 +800,7 @@ Partial Class frmRentOrd
         Me.txtCurrent3.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCurrent3.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCurrent3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCurrent3.Location = New System.Drawing.Point(77, 211)
+        Me.txtCurrent3.Location = New System.Drawing.Point(77, 213)
         Me.txtCurrent3.Name = "txtCurrent3"
         Me.txtCurrent3.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent3.TabIndex = 92
@@ -812,7 +812,7 @@ Partial Class frmRentOrd
         Me.txtCurrent2.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCurrent2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCurrent2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCurrent2.Location = New System.Drawing.Point(77, 191)
+        Me.txtCurrent2.Location = New System.Drawing.Point(77, 193)
         Me.txtCurrent2.Name = "txtCurrent2"
         Me.txtCurrent2.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent2.TabIndex = 93
@@ -824,7 +824,7 @@ Partial Class frmRentOrd
         Me.txtCurrent1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCurrent1.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCurrent1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCurrent1.Location = New System.Drawing.Point(77, 171)
+        Me.txtCurrent1.Location = New System.Drawing.Point(77, 173)
         Me.txtCurrent1.Name = "txtCurrent1"
         Me.txtCurrent1.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent1.TabIndex = 94
@@ -836,7 +836,7 @@ Partial Class frmRentOrd
         Me.txtCurrent0.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCurrent0.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCurrent0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCurrent0.Location = New System.Drawing.Point(77, 151)
+        Me.txtCurrent0.Location = New System.Drawing.Point(77, 153)
         Me.txtCurrent0.Name = "txtCurrent0"
         Me.txtCurrent0.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent0.TabIndex = 95
@@ -846,7 +846,7 @@ Partial Class frmRentOrd
         'txtChange0
         '
         Me.txtChange0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtChange0.Location = New System.Drawing.Point(144, 151)
+        Me.txtChange0.Location = New System.Drawing.Point(144, 153)
         Me.txtChange0.Name = "txtChange0"
         Me.txtChange0.Size = New System.Drawing.Size(50, 18)
         Me.txtChange0.TabIndex = 96
@@ -857,7 +857,7 @@ Partial Class frmRentOrd
         'txtChange1
         '
         Me.txtChange1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtChange1.Location = New System.Drawing.Point(144, 171)
+        Me.txtChange1.Location = New System.Drawing.Point(144, 173)
         Me.txtChange1.Name = "txtChange1"
         Me.txtChange1.Size = New System.Drawing.Size(50, 18)
         Me.txtChange1.TabIndex = 99
@@ -868,7 +868,7 @@ Partial Class frmRentOrd
         'txtChange2
         '
         Me.txtChange2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtChange2.Location = New System.Drawing.Point(144, 191)
+        Me.txtChange2.Location = New System.Drawing.Point(144, 193)
         Me.txtChange2.Name = "txtChange2"
         Me.txtChange2.Size = New System.Drawing.Size(50, 18)
         Me.txtChange2.TabIndex = 98
@@ -879,7 +879,7 @@ Partial Class frmRentOrd
         'txtChange3
         '
         Me.txtChange3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtChange3.Location = New System.Drawing.Point(144, 211)
+        Me.txtChange3.Location = New System.Drawing.Point(144, 213)
         Me.txtChange3.Name = "txtChange3"
         Me.txtChange3.Size = New System.Drawing.Size(50, 18)
         Me.txtChange3.TabIndex = 97
@@ -890,7 +890,7 @@ Partial Class frmRentOrd
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData10.Location = New System.Drawing.Point(222, 171)
+        Me.txtData10.Location = New System.Drawing.Point(222, 173)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Size = New System.Drawing.Size(50, 18)
         Me.txtData10.TabIndex = 103
@@ -901,7 +901,7 @@ Partial Class frmRentOrd
         'txtData11
         '
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData11.Location = New System.Drawing.Point(222, 191)
+        Me.txtData11.Location = New System.Drawing.Point(222, 193)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.Size = New System.Drawing.Size(50, 18)
         Me.txtData11.TabIndex = 102
@@ -912,7 +912,7 @@ Partial Class frmRentOrd
         'txtData12
         '
         Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData12.Location = New System.Drawing.Point(222, 211)
+        Me.txtData12.Location = New System.Drawing.Point(222, 213)
         Me.txtData12.Name = "txtData12"
         Me.txtData12.Size = New System.Drawing.Size(50, 18)
         Me.txtData12.TabIndex = 101
@@ -923,7 +923,7 @@ Partial Class frmRentOrd
         'txtData13
         '
         Me.txtData13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData13.Location = New System.Drawing.Point(222, 151)
+        Me.txtData13.Location = New System.Drawing.Point(222, 153)
         Me.txtData13.Name = "txtData13"
         Me.txtData13.Size = New System.Drawing.Size(50, 18)
         Me.txtData13.TabIndex = 100
@@ -934,7 +934,7 @@ Partial Class frmRentOrd
         'txtData19
         '
         Me.txtData19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData19.Location = New System.Drawing.Point(222, 231)
+        Me.txtData19.Location = New System.Drawing.Point(222, 233)
         Me.txtData19.Name = "txtData19"
         Me.txtData19.Size = New System.Drawing.Size(50, 18)
         Me.txtData19.TabIndex = 104
@@ -947,7 +947,7 @@ Partial Class frmRentOrd
         Me.txtTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtTotal.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtTotal.Location = New System.Drawing.Point(207, 256)
+        Me.txtTotal.Location = New System.Drawing.Point(207, 258)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(65, 18)
         Me.txtTotal.TabIndex = 105
@@ -960,7 +960,7 @@ Partial Class frmRentOrd
         Me.chkData0.BorderColor = System.Drawing.Color.Transparent
         Me.chkData0.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.chkData0.ForeColor = System.Drawing.Color.Black
-        Me.chkData0.Location = New System.Drawing.Point(77, 246)
+        Me.chkData0.Location = New System.Drawing.Point(77, 248)
         Me.chkData0.Name = "chkData0"
         Me.chkData0.Padding = New System.Windows.Forms.Padding(1)
         Me.chkData0.Size = New System.Drawing.Size(22, 24)
@@ -972,7 +972,7 @@ Partial Class frmRentOrd
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(375, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(380, 0)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(2, 400)
         Me.GroupBox1.TabIndex = 116
@@ -982,7 +982,7 @@ Partial Class frmRentOrd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(484, 401)
+        Me.ClientSize = New System.Drawing.Size(494, 401)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkData0)
         Me.Controls.Add(Me.txtTotal)

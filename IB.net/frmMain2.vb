@@ -15,8 +15,10 @@
 
         altServer = txtServer.Text
         altDB = txtDB.Text
+
         'ConfigCS = "Data Source=SQLIB;Initial Catalog=" & altDB & ";Integrated Security=True"
         ConfigCS = "Data Source=" & altServer & ";Initial Catalog=" & altDB & ";Integrated Security=True"
+
         Me.Close()
 
     End Sub

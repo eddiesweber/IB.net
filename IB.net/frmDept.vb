@@ -80,6 +80,68 @@ Public Class frmDept
 
     End Sub
 
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        Dim D As Integer
+        Dim q As String
+        Dim Result As DialogResult
+
+        buserchange = False
+
+        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
+            D = 1
+        Else
+            CustomerDepartmentBindingSource.MoveFirst()
+            D = txtData1.Text + 1
+        End If
+
+        CustomerDepartmentBindingSource.AddNew()
+
+        SetModeAdd()
+
+        txtData1.Text = D
+        txtData0.Text = CurCust
+
+        'Defaults from CustomerMaster
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT * FROM CustomerMaster WHERE CUST_NUM=" & CurCust, connection)
+
+            Try
+                connection.Open()
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+
+                If dataReader.HasRows = True Then
+                    dataReader.Read()
+
+                    txtData2.Text = dataReader("BILL_NAME")
+
+                    If D = 1 Then
+                        txtData3.Text = dataReader("BILL_STR")
+                        txtData4.Text = dataReader("BILL_CITY")
+                        txtData5.Text = dataReader("BILL_STATE")
+                        txtData6.Text = dataReader("BILL_ZIP")
+                        txtData7.Text = dataReader("CONTACT")
+                        txmData0.Text = dataReader("phone")
+
+                        GetTaxCodes()
+                    End If
+                End If
+                dataReader.Close()
+            Catch ex As Exception
+                Result = MessageBox.Show(Me, "Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", vbOKCancel)
+                If Result = vbCancel Then
+                    Exit Sub
+                Else
+                    Exit Try
+                End If
+            End Try
+
+        End Using
+
+        buserchange = True
+
+    End Sub
+
     Sub GetData()
 
         Dim q As String, q1 As String

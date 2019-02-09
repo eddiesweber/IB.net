@@ -449,4 +449,15 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub cmdGeneralSearch_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdGeneralSearch.Click
+
+        frmFindCustSrch.Show()
+
+    End Sub
+
+    Private Sub cmdAreaSearch_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdAreaSearch.Click
+
+        frmZipSearch.Show()
+
+    End Sub
 End Class

@@ -35,12 +35,12 @@ Public Class frmFindCust
                 lstCustNum.ClearSelected()
 
                 Do While dataReader.Read()
-                    lstCustNum.Items.Add(dataReader(0))
+                    lstCustNum.Items.Add(dataReader("CUST_NUM"))
 
                     ' Also load array for lookups when lists are clicked
                     intCustomers = intCustomers + 1
-                    intCustNum(intCustomers) = dataReader(0)
-                    strCustName(intCustomers) = dataReader(1)
+                    intCustNum(intCustomers) = dataReader("CUST_NUM")
+                    strCustName(intCustomers) = dataReader("BILL_NAME")
 
                 Loop
                 dataReader.Close()
@@ -67,7 +67,7 @@ Public Class frmFindCust
                 lstCustName.ClearSelected()
 
                 Do While dataReader.Read()
-                    lstCustName.Items.Add(dataReader(1))
+                    lstCustName.Items.Add(dataReader("BILL_NAME"))
                 Loop
                 dataReader.Close()
 

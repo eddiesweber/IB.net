@@ -266,6 +266,7 @@ Partial Class frmDept
         '
         'cmdReset
         '
+        Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(390, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
@@ -277,6 +278,7 @@ Partial Class frmDept
         '
         'cmdUpdate
         '
+        Me.cmdUpdate.Enabled = False
         Me.cmdUpdate.Location = New System.Drawing.Point(390, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)

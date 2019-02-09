@@ -48,7 +48,7 @@ Partial Class frmMain
         Me.cmdFindCustomer = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink10 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdViewCustomer = New C1.Win.C1Command.C1Command()
-        Me.cmdAreaSearch = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink15 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdGeneralSearch = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
@@ -162,6 +162,7 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdAreaSearch = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -247,6 +248,7 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdEditCommissions)
         Me.C1CommandHolder1.Commands.Add(Me.cmdRevenueReports)
         Me.C1CommandHolder1.Commands.Add(Me.cmdCommissionReports)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdAreaSearch)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
@@ -360,7 +362,7 @@ Partial Class frmMain
         '
         'mnuCustomer
         '
-        Me.mnuCustomer.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink9, Me.C1CommandLink10, Me.cmdAreaSearch, Me.C1CommandLink15, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink5, Me.C1CommandLink11, Me.C1CommandLink12, Me.C1CommandLink13, Me.C1CommandLink14, Me.C1CommandLink16})
+        Me.mnuCustomer.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink9, Me.C1CommandLink10, Me.C1CommandLink, Me.C1CommandLink15, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink5, Me.C1CommandLink11, Me.C1CommandLink12, Me.C1CommandLink13, Me.C1CommandLink14, Me.C1CommandLink16})
         Me.mnuCustomer.HideNonRecentLinks = False
         Me.mnuCustomer.Name = "mnuCustomer"
         Me.mnuCustomer.ShortcutText = ""
@@ -389,10 +391,11 @@ Partial Class frmMain
         Me.cmdViewCustomer.ShortcutText = ""
         Me.cmdViewCustomer.Text = "&View Customer"
         '
-        'cmdAreaSearch
+        'C1CommandLink
         '
-        Me.cmdAreaSearch.SortOrder = 2
-        Me.cmdAreaSearch.Text = "Area Search"
+        Me.C1CommandLink.Command = Me.cmdAreaSearch
+        Me.C1CommandLink.SortOrder = 2
+        Me.C1CommandLink.Text = "Area Search"
         '
         'C1CommandLink15
         '
@@ -1039,6 +1042,12 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
+        'cmdAreaSearch
+        '
+        Me.cmdAreaSearch.Name = "cmdAreaSearch"
+        Me.cmdAreaSearch.ShortcutText = ""
+        Me.cmdAreaSearch.Text = "Area Search"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1086,7 +1095,7 @@ Partial Class frmMain
     Friend WithEvents cmdExit As C1.Win.C1Command.C1Command
     Friend WithEvents clPurge As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdPurge As C1.Win.C1Command.C1Command
-    Friend WithEvents cmdAreaSearch As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink15 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdGeneralSearch As C1.Win.C1Command.C1Command
     Friend WithEvents Panel1 As Panel
@@ -1195,4 +1204,5 @@ Partial Class frmMain
     Friend WithEvents cmdRevenueReports As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink61 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdCommissionReports As C1.Win.C1Command.C1Command
+    Friend WithEvents cmdAreaSearch As C1.Win.C1Command.C1Command
 End Class

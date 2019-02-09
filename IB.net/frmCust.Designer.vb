@@ -320,6 +320,7 @@ Partial Class frmCust
         '
         'cmdReset
         '
+        Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(480, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
@@ -331,6 +332,7 @@ Partial Class frmCust
         '
         'cmdUpdate
         '
+        Me.cmdUpdate.Enabled = False
         Me.cmdUpdate.Location = New System.Drawing.Point(480, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
@@ -367,6 +369,7 @@ Partial Class frmCust
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.Enabled = False
         Me.txtData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData0.Location = New System.Drawing.Point(80, 14)
         Me.txtData0.Name = "txtData0"
