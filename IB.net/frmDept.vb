@@ -5,8 +5,6 @@ Imports System.Data.SqlClient
 
 Public Class frmDept
 
-    Dim rs As ADODB.Recordset
-    Dim RS2 As ADODB.Recordset
     Dim buserchange As Boolean
     Dim bInit As Boolean
     Dim CurState As String
@@ -27,9 +25,11 @@ Public Class frmDept
 
         buserchange = False
         bInit = True
-        'If cmdReset.Enabled = False Then
-        GetData()
-        'End If
+
+        If cmdReset.Enabled = False Then
+            GetData()
+        End If
+
         buserchange = True
         bInit = False
 
@@ -48,6 +48,7 @@ Public Class frmDept
 
         CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
         CustomerRouteTableAdapter.Connection.ConnectionString = CS
+        SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
 
         'data3.ConnectionString = CS
         'data3.Enabled = True
@@ -117,7 +118,7 @@ Public Class frmDept
 
                     If D = 1 Then
                         txtData3.Text = dataReader("BILL_STR")
-                        txtData4.Text = dataReader("BILL_CITY")
+                        txtData4.Text = dataReader("BILL_CTY")
                         txtData5.Text = dataReader("BILL_STATE")
                         txtData6.Text = dataReader("BILL_ZIP")
                         txtData7.Text = dataReader("CONTACT")
@@ -142,9 +143,49 @@ Public Class frmDept
 
     End Sub
 
-    Sub GetData()
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
-        Dim q As String, q1 As String
+        Dim intResult As Integer
+        Dim q As String
+        Dim ADOCmd As New ADODB.Command
+        ADOCmd.ActiveConnection = DB
+
+        CurDept = txtData1.Text
+        If ChkInvoiceExists() Then Exit Sub
+        intResult = MsgBox("This will delete the dept., its routes and items." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
+        If intResult = vbCancel Then
+            Exit Sub
+        Else
+            'q = "DELETE CustomerRoute WHERE CUST_NUM=" & CStr(CurCust) & " AND DEPT=" & CStr(CurDept)
+            'ADOCmd.CommandText = q
+            'ADOCmd.Execute()
+            Dim customersDeptartmentRow As dsCustomerDepartment.CustomerDepartmentRow
+            customersDeptartmentRow = DsCustomerDepartment.CustomerDepartment.FindByCUST_NUMDEPT(CurCust, CurDept)
+
+            customersDeptartmentRow.Delete()
+
+            CustomerDepartmentTableAdapter.Update(DsCustomerDepartment.CustomerDepartment)
+
+            'q = "DELETE CustomerInventory WHERE CUST_NUM=" & CStr(CurCust) & " AND DEPT=" & CStr(CurDept)
+            'ADOCmd.CommandText = q
+            'ADOCmd.Execute()
+
+            'rs.Delete()
+        End If
+
+
+        If Not bCancel Then
+            'Data1.Refresh
+            'lblCurCust_Change
+            buserchange = False
+            GetData()
+            buserchange = True
+        End If
+        bCancel = False
+
+    End Sub
+
+    Sub GetData()
 
         'Get customer departments
         txtCustName.Text = GetCustName()
@@ -152,20 +193,17 @@ Public Class frmDept
         If CurCust = 0 Then
             frmFindCust.Show()
         Else
+            'data1.RecordSource = "Select * from CustomerDepartment Where Cust_Num=" & CurCust
             Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
         End If
 
-
-        'data1.RecordSource = "Select * from CustomerDepartment Where Cust_Num=" & CurCust
-        'data1.Refresh
-
         'Set rs = data1.Recordset
-
         'If rs.BOF And rs.EOF Then
-        'cmdNew_Click
-        'Else
-        GetData2()
-        'End If
+        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
+            cmdNew.PerformClick()
+        Else
+            GetData2()
+        End If
 
     End Sub
 
@@ -196,8 +234,6 @@ Public Class frmDept
 
     Private Sub GetDataRoute()
 
-        Dim D As Integer
-
         If Me.Visible Then
             SetModeReg()
         End If
@@ -208,15 +244,9 @@ Public Class frmDept
 
         'Get routes for dept
         If IsNumeric(txtData1.Text) Then
-            D = txtData1.Text
-        Else
-            D = 1
+            CustomerRouteTableAdapter.Fill(DsCustomerRoute.CustomerRoute, CurCust, txtData1.Text)
+            'Set RS2 = data2.Recordset
         End If
-
-
-        'data2.RecordSource = q
-        'data2.Refresh
-        'Set RS2 = data2.Recordset
 
     End Sub
 
@@ -224,30 +254,15 @@ Public Class frmDept
 
         If txtData5.Text <> txtTaxState.Text Then
 
-            Dim Result As DialogResult
-
             CurState = txtData5.Text
 
-            ' Fill customer numbers listbox
-            Using connection As New SqlConnection(CS)
-                Dim cmd As SqlCommand = New SqlCommand("spGetTaxCodes", connection)
-                cmd.CommandType = CommandType.StoredProcedure
-                cmd.Parameters.Add("Taxstate", SqlDbType.VarChar).Value = CurState
+            ' data3.RecordSource = "spGetTaxCodes '" & CurState & "'"
+            SpGetTaxCodesTableAdapter.Fill(DsspGetTaxCodes.spGetTaxCodes, CurState)
+            If DsspGetTaxCodes.spGetTaxCodes.Rows.Count = 0 Then
+                cmbTax.Text = ""
+            End If
 
-                Try
-                    connection.Open()
-                    txtTaxState.Text = Convert.ToInt32(cmd.ExecuteScalar())
-
-                Catch ex As Exception
-                    Result = MessageBox.Show(Me, "Error getting the tax codes" & vbNewLine & "Error : " & ex.Message, "Getting Tax Codes", vbOKCancel)
-                    If Result = vbCancel Then
-                        Exit Sub
-                    Else
-                        Exit Try
-                    End If
-                End Try
-
-            End Using
+            txtTaxState.Text = CurState
 
         End If
 
@@ -314,6 +329,33 @@ Public Class frmDept
         SaveWindowPos(Me)
 
         grdRoute.SaveLayout("frmViewCustgrdRoute.xml")
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        Dim M As Integer
+
+        buserchange = False
+        bCancel = False
+
+        'M = rs.EditMode
+        ''If RS.EditMode = dbEditNone Then RS.Edit
+
+        'CurDept = rs!DEPT
+
+        'rs.Update()
+
+        'If Not bCancel Then
+        '    'update succeeded
+        '    GetData()
+        '    CurCust = txtData0.Text
+        '    CurDept = txtData1.Text
+        '    SetModeReg()
+        '    If M = adEditAdd Then grdRoute.SetFocus
+        'End If
+
+        buserchange = True
 
     End Sub
 End Class

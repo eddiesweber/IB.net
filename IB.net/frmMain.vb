@@ -168,6 +168,8 @@ Public Class frmMain
     Private Sub cmdDepartmentsRoutes_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdDepartmentsRoutes.Click
 
         frmDept.Show()
+        'frmDeptTest.Show()
+
 
     End Sub
 

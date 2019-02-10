@@ -73,20 +73,31 @@ Module Main
         DBName = ""
         ServerName = ""
         Do While DBName = "" And ServerName = ""
-            strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
-            Using Command As New SqlCommand(strSQL, configdb)
+            '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            '''CHANGE TO GO LIVE
+            'strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
+            strSQL = "Select * From TESTIBConfig where Location_ID='" & Company & "'"
+            Using Command As New SqlCommand(strSQL, configDB)
                 Try
                     Dim dataReader As SqlDataReader = Command.ExecuteReader()
                     dataReader.Read()
 
-                    DBName = dataReader.Item("DBName")
-                    ServerName = dataReader.Item("ServerName")
+                    If dataReader.HasRows Then
+                        DBName = dataReader.Item("DBName")
+                        ServerName = dataReader.Item("ServerName")
+                    Else
+                        Company = "none"
+                    End If
 
                     dataReader.Close()
                 Catch ex As Exception
-                    frmCompany.ShowDialog()
+                    Company = "none"
                 End Try
             End Using
+
+            If Company = "none" Then
+                frmCompany.ShowDialog()
+            End If
         Loop
 
         ' ReBuld connection string and open db
@@ -260,6 +271,52 @@ Module Main
             End Try
         End Using
 
+    End Function
+
+    Public Function ChkInvoiceExists() As Boolean
+
+        'Warn if invoice exists for current cust/dept
+        Static LastCust As Long
+        Dim LastDept As Long
+        Dim q As String
+        Dim rstemp As New ADODB.Recordset
+        Dim Result As DialogResult
+
+        q = "SELECT CUST_NUM, DEPT FROM InvoiceHeader"
+        q = q & " WHERE CUST_NUM=" & CStr(CurCust)
+        q = q & " AND DEPT=" & CStr(CurDept)
+
+        ChkInvoiceExists = False
+
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand(q, connection)
+
+            Try
+                connection.Open()
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+
+                If dataReader.HasRows = True Then
+                    dataReader.Read()
+
+                    If CurCust <> LastCust Or CurDept <> LastDept Then
+                        MsgBox("Changes made here do not affect existing invoices.", vbOKOnly + vbInformation, "Invoices Exist")
+                    End If
+                    ChkInvoiceExists = True
+                End If
+
+                dataReader.Close()
+            Catch ex As Exception
+                Result = MessageBox.Show("Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", MessageBoxButtons.OKCancel)
+                If Result = vbCancel Then
+                    Exit Function
+                Else
+                    Exit Try
+                End If
+            End Try
+        End Using
+
+        LastCust = CurCust
+        LastDept = CurDept
     End Function
 
 End Module

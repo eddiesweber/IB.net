@@ -62,8 +62,6 @@ Partial Class frmDept
         Me.txtData11 = New C1.Win.C1Input.C1TextBox()
         Me.txtCustName = New C1.Win.C1Input.C1TextBox()
         Me.txtData1 = New C1.Win.C1Input.C1TextBox()
-        Me.lstDept = New C1.Win.C1List.C1List()
-        Me.cmbTax = New C1.Win.C1Input.C1ComboBox()
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
         Me.txtTaxState = New C1.Win.C1Input.C1TextBox()
         Me.CustomerDepartmentTableAdapter = New IB.net.dsCustomerDepartmentTableAdapters.CustomerDepartmentTableAdapter()
@@ -71,6 +69,12 @@ Partial Class frmDept
         Me.CustomerRouteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCustomerRoute = New IB.net.dsCustomerRoute()
         Me.CustomerRouteTableAdapter = New IB.net.dsCustomerRouteTableAdapters.CustomerRouteTableAdapter()
+        Me.lstDept = New C1.Win.C1List.C1List()
+        Me.DsspGetTaxCodes = New IB.net.dsspGetTaxCodes()
+        Me.SpGetTaxCodesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetTaxCodesTableAdapter = New IB.net.dsspGetTaxCodesTableAdapters.spGetTaxCodesTableAdapter()
+        Me.TableAdapterManager = New IB.net.dsspGetTaxCodesTableAdapters.TableAdapterManager()
+        Me.cmbTax = New C1.Win.C1List.C1Combo()
         CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,13 +99,15 @@ Partial Class frmDept
         CType(Me.txtData11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTaxState, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdRoute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CustomerRouteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCustomerRoute, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetTaxCodesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblLabel12
@@ -508,73 +514,35 @@ Partial Class frmDept
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerDepartmentBindingSource, "DEPT", True))
         Me.txtData1.DataType = GetType(Short)
         Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData1.Location = New System.Drawing.Point(323, 15)
+        Me.txtData1.Location = New System.Drawing.Point(400, 191)
         Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(50, 18)
+        Me.txtData1.Size = New System.Drawing.Size(67, 18)
         Me.txtData1.TabIndex = 65
         Me.txtData1.Tag = Nothing
         Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'lstDept
-        '
-        Me.lstDept.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.lstDept.DataBindings.Add(New System.Windows.Forms.Binding("DataSource", Me.CustomerDepartmentBindingSource, "DEPT", True))
-        Me.lstDept.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstDept.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstDept.Images.Add(CType(resources.GetObject("lstDept.Images"), System.Drawing.Image))
-        Me.lstDept.Location = New System.Drawing.Point(320, 16)
-        Me.lstDept.MatchEntryTimeout = CType(2000, Long)
-        Me.lstDept.Name = "lstDept"
-        Me.lstDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.lstDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.lstDept.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstDept.PrintInfo.PageSettings = CType(resources.GetObject("lstDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstDept.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.lstDept.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.lstDept.ScrollTrack = False
-        Me.lstDept.ShowHeaderCheckBox = False
-        Me.lstDept.Size = New System.Drawing.Size(45, 70)
-        Me.lstDept.TabIndex = 66
-        Me.lstDept.Text = "C1List1"
-        Me.lstDept.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
-        '
-        'cmbTax
-        '
-        Me.cmbTax.AllowSpinLoop = False
-        Me.cmbTax.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTax.GapHeight = 0
-        Me.cmbTax.ImagePadding = New System.Windows.Forms.Padding(0)
-        Me.cmbTax.ItemsDisplayMember = ""
-        Me.cmbTax.ItemsValueMember = ""
-        Me.cmbTax.Location = New System.Drawing.Point(75, 210)
-        Me.cmbTax.Name = "cmbTax"
-        Me.cmbTax.Size = New System.Drawing.Size(81, 18)
-        Me.cmbTax.TabIndex = 67
-        Me.cmbTax.Tag = Nothing
         '
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerDepartmentBindingSource, "TAX_LOCODE", True))
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData10.Location = New System.Drawing.Point(69, 210)
+        Me.txtData10.Location = New System.Drawing.Point(400, 211)
         Me.txtData10.Name = "txtData10"
-        Me.txtData10.Size = New System.Drawing.Size(22, 18)
+        Me.txtData10.Size = New System.Drawing.Size(67, 18)
         Me.txtData10.TabIndex = 68
         Me.txtData10.Tag = Nothing
-        Me.txtData10.Visible = False
         Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtTaxState
         '
         Me.txtTaxState.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTaxState.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetTaxCodesBindingSource, "LOCAL_CODE", True))
         Me.txtTaxState.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTaxState.Location = New System.Drawing.Point(422, 171)
+        Me.txtTaxState.Location = New System.Drawing.Point(400, 171)
         Me.txtTaxState.Name = "txtTaxState"
-        Me.txtTaxState.Size = New System.Drawing.Size(22, 18)
+        Me.txtTaxState.Size = New System.Drawing.Size(67, 18)
         Me.txtTaxState.TabIndex = 69
         Me.txtTaxState.Tag = Nothing
         Me.txtTaxState.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -614,16 +582,90 @@ Partial Class frmDept
         '
         Me.CustomerRouteTableAdapter.ClearBeforeFill = True
         '
+        'lstDept
+        '
+        Me.lstDept.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.lstDept.Caption = ""
+        Me.lstDept.ColumnHeaders = False
+        Me.lstDept.ColumnWidth = 55
+        Me.lstDept.DataSource = Me.CustomerDepartmentBindingSource
+        Me.lstDept.DeadAreaBackColor = System.Drawing.SystemColors.Window
+        Me.lstDept.Images.Add(CType(resources.GetObject("lstDept.Images"), System.Drawing.Image))
+        Me.lstDept.ItemHeight = 15
+        Me.lstDept.Location = New System.Drawing.Point(315, 10)
+        Me.lstDept.MatchEntryTimeout = CType(2000, Long)
+        Me.lstDept.Name = "lstDept"
+        Me.lstDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.lstDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.lstDept.PreviewInfo.ZoomFactor = 75.0R
+        Me.lstDept.PrintInfo.PageSettings = CType(resources.GetObject("C1List1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.lstDept.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.lstDept.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.lstDept.ScrollTrack = False
+        Me.lstDept.ShowHeaderCheckBox = False
+        Me.lstDept.Size = New System.Drawing.Size(60, 60)
+        Me.lstDept.TabIndex = 71
+        Me.lstDept.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
+        '
+        'DsspGetTaxCodes
+        '
+        Me.DsspGetTaxCodes.DataSetName = "dsspGetTaxCodes"
+        Me.DsspGetTaxCodes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SpGetTaxCodesBindingSource
+        '
+        Me.SpGetTaxCodesBindingSource.DataMember = "spGetTaxCodes"
+        Me.SpGetTaxCodesBindingSource.DataSource = Me.DsspGetTaxCodes
+        '
+        'SpGetTaxCodesTableAdapter
+        '
+        Me.SpGetTaxCodesTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.UpdateOrder = IB.net.dsspGetTaxCodesTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'cmbTax
+        '
+        Me.cmbTax.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbTax.AllowColSelect = True
+        Me.cmbTax.Caption = ""
+        Me.cmbTax.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbTax.ColumnHeaders = False
+        Me.cmbTax.ColumnWidth = 100
+        Me.cmbTax.DataSource = Me.SpGetTaxCodesBindingSource
+        Me.cmbTax.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbTax.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbTax.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTax.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbTax.Images.Add(CType(resources.GetObject("cmbTax.Images"), System.Drawing.Image))
+        Me.cmbTax.Location = New System.Drawing.Point(75, 209)
+        Me.cmbTax.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbTax.MaxDropDownItems = CType(5, Short)
+        Me.cmbTax.MaxLength = 32767
+        Me.cmbTax.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbTax.Name = "cmbTax"
+        Me.cmbTax.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbTax.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbTax.Size = New System.Drawing.Size(90, 21)
+        Me.cmbTax.TabIndex = 72
+        Me.cmbTax.Text = "C1Combo1"
+        Me.cmbTax.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.cmbTax.PropBag = resources.GetString("cmbTax.PropBag")
+        '
         'frmDept
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(485, 389)
+        Me.ClientSize = New System.Drawing.Size(512, 399)
+        Me.Controls.Add(Me.cmbTax)
+        Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.grdRoute)
         Me.Controls.Add(Me.txtTaxState)
         Me.Controls.Add(Me.txtData10)
-        Me.Controls.Add(Me.cmbTax)
-        Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtCustName)
         Me.Controls.Add(Me.txtData11)
@@ -690,13 +732,15 @@ Partial Class frmDept
         CType(Me.txtData11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTaxState, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdRoute, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CustomerRouteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsCustomerRoute, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetTaxCodesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -737,8 +781,6 @@ Partial Class frmDept
     Friend WithEvents txtData11 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtCustName As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents lstDept As C1.Win.C1List.C1List
-    Friend WithEvents cmbTax As C1.Win.C1Input.C1ComboBox
     Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtTaxState As C1.Win.C1Input.C1TextBox
     Friend WithEvents CustomerDepartmentBindingSource As BindingSource
@@ -748,4 +790,10 @@ Partial Class frmDept
     Friend WithEvents CustomerRouteBindingSource As BindingSource
     Friend WithEvents DsCustomerRoute As dsCustomerRoute
     Friend WithEvents CustomerRouteTableAdapter As dsCustomerRouteTableAdapters.CustomerRouteTableAdapter
+    Friend WithEvents lstDept As C1.Win.C1List.C1List
+    Friend WithEvents SpGetTaxCodesBindingSource As BindingSource
+    Friend WithEvents DsspGetTaxCodes As dsspGetTaxCodes
+    Friend WithEvents SpGetTaxCodesTableAdapter As dsspGetTaxCodesTableAdapters.spGetTaxCodesTableAdapter
+    Friend WithEvents TableAdapterManager As dsspGetTaxCodesTableAdapters.TableAdapterManager
+    Friend WithEvents cmbTax As C1.Win.C1List.C1Combo
 End Class

@@ -130,6 +130,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSOHist.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetTaxCodes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsTaxMaster.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +153,12 @@
       <DependentUpon>frmdeptlist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmdeptlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeptTest.Designer.vb">
+      <DependentUpon>frmDeptTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeptTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFindItem.designer.vb">
@@ -611,6 +622,9 @@
     <EmbeddedResource Include="frmdeptlist.resx">
       <DependentUpon>frmdeptlist.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDeptTest.resx">
+      <DependentUpon>frmDeptTest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFindCust.resx">
       <DependentUpon>frmFindCust.vb</DependentUpon>
     </EmbeddedResource>
@@ -853,6 +867,17 @@
     </None>
     <None Include="dsSOHist.xss">
       <DependentUpon>dsSOHist.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetTaxCodes.xsc">
+      <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetTaxCodes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetTaxCodes.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetTaxCodes.xss">
+      <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
     </None>
     <None Include="dsTaxMaster.xsc">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>
