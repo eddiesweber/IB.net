@@ -13,6 +13,10 @@ Public Class frmDept
 
     Private Sub frmDept_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
+        CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
+        CustomerRouteTableAdapter.Connection.ConnectionString = CS
+        SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
+
         If CurCust = 0 Then
             frmFindCust.Show()
         Else

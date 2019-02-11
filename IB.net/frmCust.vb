@@ -71,6 +71,7 @@ Public Class frmCust
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
+            CustomerMasterTableAdapter.Connection.ConnectionString = CS
             Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
 
             If Me.DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.ToString = "" Then

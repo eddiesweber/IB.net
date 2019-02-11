@@ -105,7 +105,7 @@ Public Class frmViewCust
 
         'If buserchange Then
         Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
-            Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
+        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
 
             Me.SpGetCustItemTableAdapter.Connection.ConnectionString = CS
             Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
