@@ -9,8 +9,11 @@ Public Class frmCompany
         Dim strSQL As String
 
         lstCompany.Items.Clear()
-        strSQL = "Select * From IBConfig"
-        Using Command As New SqlCommand(strSQL, configdb)
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        '''CHANGE TO GO LIVE
+        'strSQL = "Select * From IBConfig"
+        strSQL = "Select * From TESTIBConfig"
+        Using Command As New SqlCommand(strSQL, configDB)
             Try
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
                 If dataReader.HasRows Then
