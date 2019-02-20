@@ -359,6 +359,12 @@
     <Compile Include="frmSlsmn.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSQLUtilities.Designer.vb">
+      <DependentUpon>frmSQLUtilities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSQLUtilities.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmTax.Designer.vb">
       <DependentUpon>frmTax.vb</DependentUpon>
     </Compile>
@@ -768,6 +774,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSOHist.resx">
       <DependentUpon>frmSOHist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSQLUtilities.resx">
+      <DependentUpon>frmSQLUtilities.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTax.resx">
       <DependentUpon>frmTax.vb</DependentUpon>

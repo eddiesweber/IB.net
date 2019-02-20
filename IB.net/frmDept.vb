@@ -43,8 +43,8 @@ Public Class frmDept
 
         GetWindowPos(Me, 66, 66)
 
-        If Dir("frmViewCustgrdRoute.xml") <> "" Then
-            grdRoute.LoadLayout("frmViewCustgrdRoute.xml")
+        If Dir("frmDeptgrdRoute.xml") <> "" Then
+            grdRoute.LoadLayout("frmDeptgrdRoute.xml")
         End If
 
         buserchange = False
@@ -197,12 +197,9 @@ Public Class frmDept
         If CurCust = 0 Then
             frmFindCust.Show()
         Else
-            'data1.RecordSource = "Select * from CustomerDepartment Where Cust_Num=" & CurCust
             Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
         End If
 
-        'Set rs = data1.Recordset
-        'If rs.BOF And rs.EOF Then
         If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
             cmdNew.PerformClick()
         Else
@@ -212,6 +209,8 @@ Public Class frmDept
     End Sub
 
     Sub GetData2()
+
+        Dim intRecord As Integer = 0
 
         'Goto current department
         If DsCustomerDepartment.Tables("CustomerDepartment").Rows.Count = 0 Then
@@ -229,10 +228,15 @@ Public Class frmDept
 
         'CurDept = rs!DEPT
 
-        'lstDept.BoundText = txtData(1).Text
-        'cmbTax.BoundText = txtData(10).Text
+        'lstDept.BoundText = txtData1.Text
+        lstDept.SelectedIndex = lstDept.Find(txtData1.Text.Trim(), C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
 
-        GetDataRoute()
+        GetTaxCodes()
+
+        'cmbTax.BoundText = txtData10.Text
+        cmbTax.SelectedIndex = cmbTax.FindString(txtData10.Text)
+
+        'GetDataRoute()
 
     End Sub
 
@@ -244,7 +248,8 @@ Public Class frmDept
 
         ForceUpdates()
 
-        GetTaxCodes()
+        ' Moved to getdata2
+        'GetTaxCodes()
 
         'Get routes for dept
         If IsNumeric(txtData1.Text) Then
@@ -332,7 +337,7 @@ Public Class frmDept
 
         SaveWindowPos(Me)
 
-        grdRoute.SaveLayout("frmViewCustgrdRoute.xml")
+        grdRoute.SaveLayout("frmDeptgrdRoute.xml")
 
     End Sub
 

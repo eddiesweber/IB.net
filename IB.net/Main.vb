@@ -96,32 +96,44 @@ Module Main
             End Using
 
             If Company = "none" Then
-                frmCompany.ShowDialog()
+                frmCompany.Show()
             End If
         Loop
 
         ' ReBuld connection string and open db
         CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
+        'CS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=" & Trim(DBName) & ";User ID=ibadmin;Password=Simple1!"
         DB = New SqlConnection(CS)
         DB.ConnectionString = CS
         DB.Open()
 
-        strSQL = "Select * From Company where Company_ID='" & Company & "'"
-        Using Command As New SqlCommand(strSQL, DB)
-            Try
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                dataReader.Read()
-                CompanyName = dataReader.Item("Company_NM")
-                dataReader.Close()
+        frmMain.Text = ""
 
-                frmMain.Text = "Indoor Billboard - " & CompanyName
+        Do While frmMain.Text = ""
+            strSQL = "Select * From Company where Company_ID='" & Company & "'"
+            Using Command As New SqlCommand(strSQL, DB)
+                Try
+                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                    dataReader.Read()
 
-                'Rearrange CS the way Crystal likes
-                CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
-            Catch ex As Exception
-                frmMain2.ShowDialog()
-            End Try
-        End Using
+                    If dataReader.HasRows Then
+                        CompanyName = dataReader.Item("Company_NM")
+                        dataReader.Close()
+
+                        frmMain.Text = "Indoor Billboard - " & CompanyName
+
+                        'Rearrange CS the way Crystal likes
+                        CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
+                    Else
+                        frmCompany.Show()
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error getting company name" & vbNewLine & ex.Message)
+
+                    Application.Exit()
+                End Try
+            End Using
+        Loop
 
     End Sub
 
@@ -267,7 +279,7 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
-                frmCompany.ShowDialog()
+                frmCompany.Show()
             End Try
         End Using
 

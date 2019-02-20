@@ -149,4 +149,11 @@ Public Class frmFindCust
         Me.Hide()
 
     End Sub
+
+    Private Sub lstCustNum_DoubleClick(sender As Object, e As EventArgs) Handles lstCustNum.DoubleClick
+
+        cmdSelect_Click(sender, e)
+
+    End Sub
+
 End Class
