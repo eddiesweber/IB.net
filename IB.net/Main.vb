@@ -102,7 +102,7 @@ Module Main
 
         ' ReBuld connection string and open db
         CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
-        'CS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=" & Trim(DBName) & ";User ID=ibadmin;Password=Simple1!"
+        'CS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=" & Trim(DBName) & ";User ID=ibadmin;Password="
         DB = New SqlConnection(CS)
         DB.ConnectionString = CS
         DB.Open()

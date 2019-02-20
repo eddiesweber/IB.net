@@ -18,7 +18,7 @@
         altDB = txtDB.Text
 
         'ConfigCS = "Data Source=SQLIB;Initial Catalog=" & altDB & ";Integrated Security=True"
-        'ConfigCS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=master;User ID=ibadmin;Password=Simple1!"
+        'ConfigCS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=master;User ID=ibadmin;Password="
         ConfigCS = "Data Source=" & altServer & ";Initial Catalog=" & altDB & ";Integrated Security=True"
 
         Me.Close()
