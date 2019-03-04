@@ -10,9 +10,7 @@ Public Class frmCompany
 
         lstCompany.Items.Clear()
         '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        '''CHANGE TO GO LIVE
-        'strSQL = "Select * From IBConfig"
-        strSQL = "Select * From TESTIBConfig"
+        strSQL = "Select * From IBConfig"
         Using Command As New SqlCommand(strSQL, configDB)
             Try
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
@@ -49,7 +47,7 @@ Public Class frmCompany
             CurItem = 0
             CurInvoice = 0
 
-            OpenData()
+            'OpenData()
         End If
 
         If Not DB Is Nothing Then

@@ -15,9 +15,10 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim command As New SqlCommand
-
-        Dim sectionname As String
-        'Dim Result As DialogResult
+        Dim blnConnected As Boolean = False
+        Dim strSectionName As String
+        Dim Result As DialogResult
+        Dim blnExit As Boolean = False
 
         If PrevInstance() Then
             Exit Sub
@@ -27,62 +28,75 @@ Public Class frmMain
         DataPath = Application.StartupPath()
         RptPath = Application.StartupPath() '& "\reports"
 
-        sectionname = "Data"
-        Company = GetSetting(APPNAME, sectionname, "Company", "None")
-        CurCust = GetSetting(APPNAME, sectionname, "CurCust", 0)
-        CurItem = GetSetting(APPNAME, sectionname, "CurItem", 0)
-        CurType = GetSetting(APPNAME, sectionname, "CurType", "")
+        strSectionName = "Data"
+        Company = GetSetting(APPNAME, strSectionName, "Company", "")
+        Server = GetSetting(APPNAME, strSectionName, "Server", "")
+        Username = GetSetting(APPNAME, strSectionName, "Username", "")
+        Password = CCDecrypt(GetSetting(APPNAME, strSectionName, "Password", ""))
+        CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
+        CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
+        CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
 
-        ' Uses app.config - must import System.Configuration 
-        ConfigCS = ConfigurationManager.ConnectionStrings("CS").ConnectionString
-        'ConfigCS = "Data Source=SQLIB;Initial Catalog=master;Integrated Security=True"
-
-        configDB = New SqlConnection(ConfigCS)
-        configDB.ConnectionString = ConfigCS
-
-        ' Open connection to master database
-        Do While configdb.State = ConnectionState.Closed
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                configDB.Open()
-            Catch ex As Exception
-                frmMain2.ShowDialog() ' Gives user a chance to change config location
-                configDB.ConnectionString = ConfigCS
-            Finally
-                Me.Cursor = Cursors.Default
-            End Try
-        Loop
-
-        If Trim(Company) = "None" Then
-            frmCompany.ShowDialog()
+        ' Check to see if we have a good connection to server
+        If Server.Trim <> "" Then
+            If InStr(1, Server, "windows.net") > 0 Then
+                If Username.Trim <> "" And Password.Trim <> "" Then
+                    ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+                End If
+            Else
+                ConfigCS = "Data Source=" & Server & ";Initial Catalog=master;Integrated Security=True"
+            End If
         End If
 
-        DBName = ""
-        ServerName = ""
+        If CheckConnectionServer() = False Then
+            frmSetConnection.ShowDialog()
+            Do While CheckConnectionServer() = False And blnExit = False
+                Result = MessageBox.Show("Cannot connect to the server, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
+                If Result = DialogResult.No Then
+                    blnExit = True
+                End If
+            Loop
 
-        'Screen Position
-        GetWindowPos(Me, 15, 15)
-        Me.Show()
+            If blnExit = True Then
+                Me.Close()
 
-        'RPT = Report1
-        'RPT.PrinterSelect
-        Dim pPrint As Boolean = pDialog.ShowDialog()
-        'MessageBox.Show(pDialog.PrinterSettings.PrinterName)
+                Exit Sub
+            End If
+        End If
 
-        OpenData()
+        If CheckConnectionDivision() = False Then
+            frmSetConnection.ShowDialog()
+            Do While CheckConnectionDivision() = False And blnExit = False
+                Result = MessageBox.Show("Cannot connect to the division db, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
+                If Result = DialogResult.No Then
+                    blnExit = True
+                End If
+            Loop
+
+            If blnExit = True Then
+                Me.Close()
+
+                Exit Sub
+            End If
+        End If
+
+        ''Screen Position
+        'GetWindowPos(Me, 15, 15)
+        'Me.Show()
+
+        ''RPT = Report1
+        ''RPT.PrinterSelect
+        'Dim pPrint As Boolean = pDialog.ShowDialog()
+        ''MessageBox.Show(pDialog.PrinterSettings.PrinterName)
+
+        'OpenData()
 
     End Sub
 
+
     Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
-        Dim SectionName As String
-
-        'Save file info to registry
-        SectionName = "Data"
-        SaveSetting(APPNAME, SectionName, "Company", Company)
-        SaveSetting(APPNAME, SectionName, "CurCust", CurCust)
-        SaveSetting(APPNAME, SectionName, "CurItem", CurItem)
-        SaveSetting(APPNAME, SectionName, "CurType", CurType)
+        SaveSettings()
 
         SaveWindowPos(Me)
 
@@ -460,6 +474,12 @@ Public Class frmMain
     Private Sub cmdAreaSearch_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdAreaSearch.Click
 
         frmZipSearch.Show()
+
+    End Sub
+
+    Private Sub cmdSetupConnectionToDB_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdSetupConnectionToDB.Click
+
+        frmSetConnection.ShowDialog()
 
     End Sub
 End Class

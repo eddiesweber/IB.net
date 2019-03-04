@@ -49,6 +49,7 @@ Partial Class frmMain
         Me.C1CommandLink10 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdViewCustomer = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdAreaSearch = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink15 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdGeneralSearch = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
@@ -162,7 +163,8 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdAreaSearch = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink62 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdSetupConnectionToDB = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -249,11 +251,12 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdRevenueReports)
         Me.C1CommandHolder1.Commands.Add(Me.cmdCommissionReports)
         Me.C1CommandHolder1.Commands.Add(Me.cmdAreaSearch)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdSetupConnectionToDB)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.clSelectDivision, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.clSelectDivision, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -274,7 +277,7 @@ Partial Class frmMain
         'clPrintSetup
         '
         Me.clPrintSetup.Command = Me.cmdPrintSetup
-        Me.clPrintSetup.SortOrder = 1
+        Me.clPrintSetup.SortOrder = 2
         '
         'cmdPrintSetup
         '
@@ -285,7 +288,7 @@ Partial Class frmMain
         'C1CommandLink4
         '
         Me.C1CommandLink4.Command = Me.mnuMiscSetup
-        Me.C1CommandLink4.SortOrder = 2
+        Me.C1CommandLink4.SortOrder = 3
         Me.C1CommandLink4.Text = "&Misc Setup"
         '
         'mnuMiscSetup
@@ -345,7 +348,7 @@ Partial Class frmMain
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 3
+        Me.clExit.SortOrder = 4
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -396,6 +399,12 @@ Partial Class frmMain
         Me.C1CommandLink.Command = Me.cmdAreaSearch
         Me.C1CommandLink.SortOrder = 2
         Me.C1CommandLink.Text = "Area Search"
+        '
+        'cmdAreaSearch
+        '
+        Me.cmdAreaSearch.Name = "cmdAreaSearch"
+        Me.cmdAreaSearch.ShortcutText = ""
+        Me.cmdAreaSearch.Text = "Area Search"
         '
         'C1CommandLink15
         '
@@ -1042,11 +1051,16 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
-        'cmdAreaSearch
+        'C1CommandLink62
         '
-        Me.cmdAreaSearch.Name = "cmdAreaSearch"
-        Me.cmdAreaSearch.ShortcutText = ""
-        Me.cmdAreaSearch.Text = "Area Search"
+        Me.C1CommandLink62.Command = Me.cmdSetupConnectionToDB
+        Me.C1CommandLink62.SortOrder = 1
+        '
+        'cmdSetupConnectionToDB
+        '
+        Me.cmdSetupConnectionToDB.Name = "cmdSetupConnectionToDB"
+        Me.cmdSetupConnectionToDB.ShortcutText = ""
+        Me.cmdSetupConnectionToDB.Text = "Setup Connection to DB"
         '
         'frmMain
         '
@@ -1205,4 +1219,6 @@ Partial Class frmMain
     Friend WithEvents C1CommandLink61 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdCommissionReports As C1.Win.C1Command.C1Command
     Friend WithEvents cmdAreaSearch As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink62 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdSetupConnectionToDB As C1.Win.C1Command.C1Command
 End Class

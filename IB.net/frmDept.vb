@@ -10,12 +10,40 @@ Public Class frmDept
     Dim CurState As String
     'Dim CurState As String * 2
     Dim bCancel As Boolean
+    ' intDept is replacing txtdata1
+    Dim intDept As Integer
+    ' strTAX_LOCODE is replacing txtdata10
+    Dim strTAX_LOCODE As String
+
+    Private Sub frmDept_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' GetWindowPos - This function fires the Form_Activated Event, moved to the bottom
+        'GetWindowPos(Me, 66, 66)
+
+        If Dir("frmDeptgrdRoute.xml") <> "" Then
+            grdRoute.LoadLayout("frmDeptgrdRoute.xml")
+        End If
+
+        buserchange = False
+        bInit = True
+
+        txtData2.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_NAMEColumn.MaxLength
+        txtData3.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ADDRColumn.MaxLength
+        txtData4.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_CITYColumn.MaxLength
+        txtData5.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_STATEColumn.MaxLength
+        txtData6.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ZIPColumn.MaxLength
+        txtData7.MaxLength = DsCustomerDepartment.CustomerDepartment.CONTACTColumn.MaxLength
+        txtData8.MaxLength = DsCustomerDepartment.CustomerDepartment.MESSAGEColumn.MaxLength
+        txtData9.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_EmailColumn.MaxLength
+        txtData11.MaxLength = DsCustomerDepartment.CustomerDepartment.SALESMANColumn.MaxLength
+        txmData0.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_PHONEColumn.MaxLength
+        txmData1.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_FaxColumn.MaxLength
+
+        GetWindowPos(Me, 66, 66)
+
+    End Sub
 
     Private Sub frmDept_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
-        CustomerRouteTableAdapter.Connection.ConnectionString = CS
-        SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
 
         If CurCust = 0 Then
             frmFindCust.Show()
@@ -39,49 +67,99 @@ Public Class frmDept
 
     End Sub
 
-    Private Sub frmDept_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Sub GetData()
 
-        GetWindowPos(Me, 66, 66)
+        'Get customer departments
+        txtCustName.Text = GetCustName()
 
-        If Dir("frmDeptgrdRoute.xml") <> "" Then
-            grdRoute.LoadLayout("frmDeptgrdRoute.xml")
+        If CurCust = 0 Then
+            frmFindCust.Show()
+        Else
+            CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
+            Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
         End If
 
-        buserchange = False
-        bInit = True
+        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
+            cmdNew.PerformClick()
+        Else
+            intDept = DsCustomerDepartment.CustomerDepartment.Rows(0)("DEPT")
 
-        CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
-        CustomerRouteTableAdapter.Connection.ConnectionString = CS
-        SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
+            GetData2()
+        End If
 
-        'data3.ConnectionString = CS
-        'data3.Enabled = True
+    End Sub
 
-        'Set text box lengths based on tabledef
-        '        Dim c As Control, fld As String
-        '        Dim R As New ADODB.Recordset
-        '        Dim ADOConn As New ADODB.Connection
-        '        R.Open "Select * from CustomerDepartment Where 1=0", DB, adOpenStatic
-        'For Each c In Me.Controls
-        '            If c.Name = "txtData" Then
-        '                fld = c.DataField
-        '                If fld > "" Then
-        '                    Select Case R.Fields(fld).Type
-        '                        Case adChar, adVarChar, adVarWChar
-        '                            c.MaxLength = R.Fields(fld).DefinedSize
-        '                        Case adTinyInt
-        '                            c.MaxLength = 1
-        '                        Case adSmallInt
-        '                            c.MaxLength = 5
-        '                        Case adInteger, adSingle
-        '                            c.MaxLength = 10
-        '                        Case Else
-        '                            c.MaxLength = 20
-        '                    End Select
-        '                End If
-        '            End If
-        '        Next c
-        '        R.Close()
+    Sub GetData2()
+
+        'Goto current department
+        If DsCustomerDepartment.Tables("CustomerDepartment").Rows.Count = 0 Then
+            CurDept = 0
+            Exit Sub
+        End If
+
+        'If CurDept > 0 Then
+        '    rs.MoveFirst()
+        '    'rs.Find "DEPT=" & CurDept
+        '    If rs.EOF Then rs.MoveFirst()
+        'Else
+        '    rs.MoveFirst()
+        'End If
+
+        'CurDept = rs!DEPT
+
+        ' Both following lines do the same, keeping to see other way of getting position
+        'lstDept.SelectedIndex = lstDept.Find(intDept.ToString, C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
+        lstDept.SelectedIndex = CustomerDepartmentBindingSource.Position
+
+        intDept = lstDept.SelectedText
+
+        GetTaxCodes()
+
+        'cmbTax.BoundText = txtData10.Text
+        cmbTax.SelectedIndex = cmbTax.FindString(strTAX_LOCODE)
+        strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")
+        'strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(CustomerDepartmentBindingSource.Position)("TAX_LOCODE")
+
+        GetDataRoute()
+
+    End Sub
+
+    Sub GetTaxCodes()
+
+        If txtData5.Text <> txtTaxState.Text Then
+
+            CurState = txtData5.Text
+
+            SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
+            SpGetTaxCodesTableAdapter.Fill(DsspGetTaxCodes.spGetTaxCodes, CurState)
+
+            If DsspGetTaxCodes.spGetTaxCodes.Rows.Count = 0 Then
+                cmbTax.Text = ""
+            End If
+
+            txtTaxState.Text = CurState
+
+        End If
+
+    End Sub
+
+    Private Sub GetDataRoute()
+
+        If Me.Visible Then
+            SetModeReg()
+        End If
+
+        ForceUpdates()
+
+        ' Moved to getdata2
+        'GetTaxCodes()
+
+        'Get routes for dept
+        If intDept > 0 Then
+            CustomerRouteTableAdapter.Connection.ConnectionString = CS
+            CustomerRouteTableAdapter.Fill(DsCustomerRoute.CustomerRoute, CurCust, intDept)
+            'Set RS2 = data2.Recordset
+        End If
 
     End Sub
 
@@ -97,14 +175,17 @@ Public Class frmDept
             D = 1
         Else
             CustomerDepartmentBindingSource.MoveFirst()
-            D = txtData1.Text + 1
+            'D = txtData1.Text + 1
+            D = intDept + 1
         End If
 
         CustomerDepartmentBindingSource.AddNew()
 
         SetModeAdd()
 
-        txtData1.Text = D
+        'txtData1.Text = D
+        intDept = D
+
         txtData0.Text = CurCust
 
         'Defaults from CustomerMaster
@@ -151,10 +232,11 @@ Public Class frmDept
 
         Dim intResult As Integer
         Dim q As String
-        Dim ADOCmd As New ADODB.Command
-        ADOCmd.ActiveConnection = DB
+        'Dim ADOCmd As New ADODB.Command
+        'ADOCmd.ActiveConnection = DB
 
-        CurDept = txtData1.Text
+        'CurDept = txtData1.Text
+        CurDept = intDept
         If ChkInvoiceExists() Then Exit Sub
         intResult = MsgBox("This will delete the dept., its routes and items." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
         If intResult = vbCancel Then
@@ -165,6 +247,9 @@ Public Class frmDept
             'ADOCmd.Execute()
             Dim customersDeptartmentRow As dsCustomerDepartment.CustomerDepartmentRow
             customersDeptartmentRow = DsCustomerDepartment.CustomerDepartment.FindByCUST_NUMDEPT(CurCust, CurDept)
+
+            'CustomerDepartmentBindingSource.MoveNext()
+            'intResult = CustomerDepartmentBindingSource.Position
 
             customersDeptartmentRow.Delete()
 
@@ -189,103 +274,6 @@ Public Class frmDept
 
     End Sub
 
-    Sub GetData()
-
-        'Get customer departments
-        txtCustName.Text = GetCustName()
-
-        If CurCust = 0 Then
-            frmFindCust.Show()
-        Else
-            Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
-        End If
-
-        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
-            cmdNew.PerformClick()
-        Else
-            GetData2()
-        End If
-
-    End Sub
-
-    Sub GetData2()
-
-        Dim intRecord As Integer = 0
-
-        'Goto current department
-        If DsCustomerDepartment.Tables("CustomerDepartment").Rows.Count = 0 Then
-            CurDept = 0
-            Exit Sub
-        End If
-
-        'If CurDept > 0 Then
-        '    rs.MoveFirst()
-        '    'rs.Find "DEPT=" & CurDept
-        '    If rs.EOF Then rs.MoveFirst()
-        'Else
-        '    rs.MoveFirst()
-        'End If
-
-        'CurDept = rs!DEPT
-
-        'lstDept.BoundText = txtData1.Text
-        lstDept.SelectedIndex = lstDept.Find(txtData1.Text.Trim(), C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
-
-        GetTaxCodes()
-
-        'cmbTax.BoundText = txtData10.Text
-        cmbTax.SelectedIndex = cmbTax.FindString(txtData10.Text)
-
-        'GetDataRoute()
-
-    End Sub
-
-    Private Sub GetDataRoute()
-
-        If Me.Visible Then
-            SetModeReg()
-        End If
-
-        ForceUpdates()
-
-        ' Moved to getdata2
-        'GetTaxCodes()
-
-        'Get routes for dept
-        If IsNumeric(txtData1.Text) Then
-            CustomerRouteTableAdapter.Fill(DsCustomerRoute.CustomerRoute, CurCust, txtData1.Text)
-            'Set RS2 = data2.Recordset
-        End If
-
-    End Sub
-
-    Sub GetTaxCodes()
-
-        If txtData5.Text <> txtTaxState.Text Then
-
-            CurState = txtData5.Text
-
-            ' data3.RecordSource = "spGetTaxCodes '" & CurState & "'"
-            SpGetTaxCodesTableAdapter.Fill(DsspGetTaxCodes.spGetTaxCodes, CurState)
-            If DsspGetTaxCodes.spGetTaxCodes.Rows.Count = 0 Then
-                cmbTax.Text = ""
-            End If
-
-            txtTaxState.Text = CurState
-
-        End If
-
-    End Sub
-
-
-    Sub ForceUpdates()
-
-        'Make sure grid data is updated by closing recordsets
-        'On Error Resume Next
-        'If RS2.EditMode > 0 Then RS2.Update()
-
-    End Sub
-
     Public Sub SetModeChange()
 
         cmdNew.Enabled = False
@@ -299,7 +287,7 @@ Public Class frmDept
         cmdItem.Enabled = False
         grdRoute.Enabled = False
         lstDept.Visible = False
-        txtData1.Visible = True
+        'txtData1.Visible = True
         'If rs.EditMode = adEditAdd Then
         '    txtData1.Enabled = True
         'Else
@@ -313,7 +301,7 @@ Public Class frmDept
         'rs!CUST_NUM = CurCust
         'txtData(0).DataChanged = False
         SetModeChange()
-        txtData1.Enabled = True
+        'txtData1.Enabled = True
         'txtData2.SetFocus
 
     End Sub
@@ -328,7 +316,7 @@ Public Class frmDept
         cmdFindCust.Enabled = True
         cmdItem.Enabled = True
         grdRoute.Enabled = True
-        txtData1.Visible = False
+        'txtData1.Visible = False
         lstDept.Visible = True
 
     End Sub
@@ -367,4 +355,66 @@ Public Class frmDept
         buserchange = True
 
     End Sub
+
+    Private Sub lstDept_Click(sender As Object, e As EventArgs) Handles lstDept.Click
+
+        intDept = lstDept.SelectedText
+        If buserchange Then
+            buserchange = False
+            CurDept = CInt(lstDept.SelectedText)
+            GetData2()
+            buserchange = True
+        End If
+
+    End Sub
+
+    Sub closedata()
+
+        'On Error Resume Next
+        'rs.Close
+        'RS2.Close
+
+    End Sub
+
+    Sub ForceUpdates()
+
+        ''Make sure grid data is updated by closing recordsets
+        'On Error Resume Next
+        'If RS2.EditMode > 0 Then RS2.Update
+
+    End Sub
+
+    Private Sub txmData0_TextChanged(sender As Object, e As EventArgs) Handles txmData0.TextChanged
+
+        If buserchange Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub txmData1_TextChanged(sender As Object, e As EventArgs) Handles txmData1.TextChanged
+
+        If buserchange Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub txtData_Change(Index As Integer)
+
+        ' This needs to be done for each text box
+        If buserchange Then
+            SetModeChange()
+        Else
+            'Handle invisible boxes
+            Select Case Index
+                Case 1
+                    'lstDept.BoundText = txtData(1).Text
+                Case 10
+                    'cmbTax.BoundText = txtData(10).Text
+            End Select
+        End If
+
+    End Sub
+
 End Class

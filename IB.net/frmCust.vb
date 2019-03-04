@@ -20,37 +20,30 @@ Public Class frmCust
 
         Me.Cursor = Cursors.WaitCursor
 
-        Me.CustomerMasterTableAdapter.Connection.ConnectionString = CS
-
         If CurCust > 0 Then
             Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
-
-            'Set rs = data1.Recordset
-            'Line1(0).Y2 = Me.ScaleHeight
-            'Line1(1).Y2 = Me.ScaleHeight
-
-            ''Set text box lengths based on rs
-            'Dim c As Control, fld As String
-            'For Each c In Me.Controls
-            '    If TypeOf c Is TextBox Then
-            '        fld = c.DataField
-            '        If fld > "" Then
-            '            Select Case data1.Recordset.Fields(fld).Type
-            '                Case adChar, adVarChar, adVarWChar
-            '                    c.MaxLength = rs.Fields(fld).DefinedSize
-            '                Case adTinyInt
-            '                    c.MaxLength = 1
-            '                Case adSmallInt
-            '                    c.MaxLength = 5
-            '                Case adInteger, adSingle
-            '                    c.MaxLength = 10
-            '                Case Else
-            '                    c.MaxLength = 20
-            '            End Select
-            '        End If
-            '    End If
-            'Next c
+            Me.CustomerMasterTableAdapter.Connection.ConnectionString = CS
         End If
+
+        'Line1(0).Y2 = Me.ScaleHeight
+        'Line1(1).Y2 = Me.ScaleHeight
+
+        txtData1.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_NAMEColumn.MaxLength
+        txtData2.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_STRColumn.MaxLength
+        txtData3.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_CTYColumn.MaxLength
+        txtData4.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_STATEColumn.MaxLength
+        txtData5.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_ZIPColumn.MaxLength
+        txtData6.MaxLength = DS_CustomerMaster1.CustomerMaster.CARE_OFColumn.MaxLength
+        txtData7.MaxLength = DS_CustomerMaster1.CustomerMaster.CONTACTColumn.MaxLength
+        txtData8.MaxLength = DS_CustomerMaster1.CustomerMaster.EMAILColumn.MaxLength
+        txtData9.MaxLength = DS_CustomerMaster1.CustomerMaster.URLColumn.MaxLength
+        txtData10.MaxLength = DS_CustomerMaster1.CustomerMaster.COUNTYColumn.MaxLength
+        txtData11.MaxLength = DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.MaxLength
+        txtData17.MaxLength = DS_CustomerMaster1.CustomerMaster.COMMENTSColumn.MaxLength
+        txtOption.MaxLength = DS_CustomerMaster1.CustomerMaster.PAY_TYPEColumn.MaxLength
+        txmData0.MaxLength = DS_CustomerMaster1.CustomerMaster.PHONEColumn.MaxLength
+        txmData1.MaxLength = DS_CustomerMaster1.CustomerMaster.FAX_NOColumn.MaxLength
+
 
         If DS_CustomerMaster1.CustomerMaster.Rows.Count > 0 Then
             Me.Show()
@@ -62,6 +55,13 @@ Public Class frmCust
 
         Me.Enabled = True
         Me.Cursor = Cursors.Arrow
+
+    End Sub
+
+    Private Sub frmCust_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+
+        buserchange = True
+        bInit = False
 
     End Sub
 
@@ -267,5 +267,4 @@ Public Class frmCust
         Me.Close()
 
     End Sub
-
 End Class

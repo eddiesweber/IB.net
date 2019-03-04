@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmDept
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmDept
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDept))
@@ -61,7 +61,6 @@ Partial Class frmDept
         Me.txtData9 = New C1.Win.C1Input.C1TextBox()
         Me.txtData11 = New C1.Win.C1Input.C1TextBox()
         Me.txtCustName = New C1.Win.C1Input.C1TextBox()
-        Me.txtData1 = New C1.Win.C1Input.C1TextBox()
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
         Me.SpGetTaxCodesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsspGetTaxCodes = New IB.net.dsspGetTaxCodes()
@@ -98,7 +97,6 @@ Partial Class frmDept
         CType(Me.txtData9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetTaxCodesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -507,20 +505,6 @@ Partial Class frmDept
         Me.txtCustName.Tag = Nothing
         Me.txtCustName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'txtData1
-        '
-        Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerDepartmentBindingSource, "DEPT", True))
-        Me.txtData1.DataType = GetType(Short)
-        Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData1.Location = New System.Drawing.Point(400, 191)
-        Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(67, 18)
-        Me.txtData1.TabIndex = 65
-        Me.txtData1.Tag = Nothing
-        Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -660,7 +644,6 @@ Partial Class frmDept
         Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.grdRoute)
         Me.Controls.Add(Me.txtData10)
-        Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtCustName)
         Me.Controls.Add(Me.txtData11)
         Me.Controls.Add(Me.txtData9)
@@ -725,7 +708,6 @@ Partial Class frmDept
         CType(Me.txtData9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetTaxCodesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).EndInit()
@@ -773,7 +755,6 @@ Partial Class frmDept
     Friend WithEvents txtData9 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData11 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtCustName As C1.Win.C1Input.C1TextBox
-    Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
     Friend WithEvents CustomerDepartmentBindingSource As BindingSource
     Friend WithEvents DsCustomerDepartment As dsCustomerDepartment

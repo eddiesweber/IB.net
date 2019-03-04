@@ -15,6 +15,9 @@ Module Main
     'Public Company As String * 10
     'Public CompanyName As String * 32
     Public Company As String
+    Public Server As String
+    Public Username As String
+    Public Password As String
     Public CompanyName As String
 
     Public CurCust As Long
@@ -47,6 +50,48 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
+    Public Sub SaveSettings()
+
+        Dim strSectionName As String
+
+        'Save file info to registry
+        strSectionName = "Data"
+        SaveSetting(APPNAME, strSectionName, "Company", Company)
+        SaveSetting(APPNAME, strSectionName, "Server", Server)
+        SaveSetting(APPNAME, strSectionName, "Username", Username)
+        SaveSetting(APPNAME, strSectionName, "Password", CCEncrypt(Password))
+        SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
+        SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
+        SaveSetting(APPNAME, strSectionName, "CurType", CurType)
+
+    End Sub
+
+    Public Function CheckConnectionServer() As Boolean
+
+        Try
+            configDB.ConnectionString = ConfigCS
+            configDB.Open()
+
+            CheckConnectionServer = True
+        Catch ex As Exception
+            CheckConnectionServer = False
+        End Try
+
+    End Function
+
+    Public Function CheckConnectionDivision() As Boolean
+
+        Try
+            DB.ConnectionString = CS
+            DB.Open()
+
+            CheckConnectionDivision = True
+        Catch ex As Exception
+            CheckConnectionDivision = False
+        End Try
+
+    End Function
+
     Public Sub OpenData()
 
         Dim strSQL As String
@@ -69,40 +114,60 @@ Module Main
             End If
         Next
 
+        If Server.Trim <> "" Then
+            If InStr(1, Server, "windows.net") > 0 Then
+                ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+            Else
+                ConfigCS = "Data Source=" & Server & ";Initial Catalog=master;Integrated Security=True"
+            End If
+        End If
+
+        configDB = New SqlConnection(ConfigCS)
+        configDB.ConnectionString = ConfigCS
+
+        Try
+            configDB.Open()
+        Catch ex As Exception
+            frmSetConnection.ShowDialog()
+        End Try
+
+        If configDB.State = ConnectionState.Closed Then
+            Exit Sub
+        End If
+
         ' Get DBName and Server Name from Master/IBConfig
         DBName = ""
         ServerName = ""
-        Do While DBName = "" And ServerName = ""
-            '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-            '''CHANGE TO GO LIVE
-            'strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
-            strSQL = "Select * From TESTIBConfig where Location_ID='" & Company & "'"
-            Using Command As New SqlCommand(strSQL, configDB)
-                Try
-                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                    dataReader.Read()
+        strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
+        Using Command As New SqlCommand(strSQL, configDB)
+            Try
+                Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                dataReader.Read()
 
-                    If dataReader.HasRows Then
-                        DBName = dataReader.Item("DBName")
-                        ServerName = dataReader.Item("ServerName")
-                    Else
-                        Company = "none"
-                    End If
+                If dataReader.HasRows Then
+                    DBName = dataReader.Item("DBName")
+                    ServerName = dataReader.Item("ServerName")
+                End If
 
-                    dataReader.Close()
-                Catch ex As Exception
-                    Company = "none"
-                End Try
-            End Using
+                dataReader.Close()
+            Catch ex As Exception
+                MessageBox.Show("Error getting the division name")
+                Exit Sub
+            End Try
+        End Using
 
-            If Company = "none" Then
-                frmCompany.Show()
-            End If
-        Loop
+        If DBName.Trim = "" Or ServerName.TrimEnd = "" Then
+            frmSetConnection.ShowDialog()
+        End If
+
+        If DBName.Trim = "" Or ServerName.TrimEnd = "" Then
+            Exit Sub
+        End If
 
         ' ReBuld connection string and open db
         CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
-        'CS = "Data Source=indoorbillboard.database.windows.net;Initial Catalog=" & Trim(DBName) & ";User ID=ibadmin;Password="
+        ConfigCS = "Data Source=" & Trim(ServerName) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
+
         DB = New SqlConnection(CS)
         DB.ConnectionString = CS
         DB.Open()
@@ -125,7 +190,7 @@ Module Main
                         'Rearrange CS the way Crystal likes
                         CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
                     Else
-                        frmCompany.Show()
+                        frmCompany.ShowDialog()
                     End If
                 Catch ex As Exception
                     MessageBox.Show("Error getting company name" & vbNewLine & ex.Message)
@@ -134,6 +199,17 @@ Module Main
                 End Try
             End Using
         Loop
+
+        ' Close master Database
+        Try
+            If DB.State = ConnectionState.Open Then
+                DB.Close()
+            End If
+        Catch
+            ' DB is already closed
+        Finally
+            DB = Nothing
+        End Try
 
     End Sub
 
@@ -163,14 +239,14 @@ Module Main
     Public Sub GetWindowPos(ByVal fm As Form, ByVal DefL As Integer, ByVal DefT As Integer)
 
         Dim L As Integer, T As Integer, W As Integer, H As Integer
-        Dim WS As Integer, sectionname As String
+        Dim WS As Integer, strSectionName As String
 
-        sectionname = "Form " & fm.Name
-        T = CInt(GetSetting(APPNAME, sectionname, "Top", DefT))
-        L = CInt(GetSetting(APPNAME, sectionname, "Left", DefL))
-        WS = CInt(GetSetting(APPNAME, sectionname, "Windowstate", 0))
-        H = CInt(GetSetting(APPNAME, sectionname, "Height", 0))
-        W = CInt(GetSetting(APPNAME, sectionname, "Width", 0))
+        strSectionName = "Form " & fm.Name
+        T = CInt(GetSetting(APPNAME, strSectionName, "Top", DefT))
+        L = CInt(GetSetting(APPNAME, strSectionName, "Left", DefL))
+        WS = CInt(GetSetting(APPNAME, strSectionName, "Windowstate", 0))
+        H = CInt(GetSetting(APPNAME, strSectionName, "Height", 0))
+        W = CInt(GetSetting(APPNAME, strSectionName, "Width", 0))
 
         If H = 0 Or W = 0 Then
             fm.Left = L
@@ -188,26 +264,26 @@ Module Main
 
     Public Sub SaveWindowPos(ByVal fm As Form)
 
-        Dim e As Integer, Sizable As Boolean, sectionname As String
+        Dim e As Integer, Sizable As Boolean, strSectionName As String
 
         'Is form sizable?
         e = fm.FormBorderStyle
         Sizable = (e = 4) Or (e = 6)
 
         'Save Screen Position Info
-        sectionname = "Form " & fm.Name
+        strSectionName = "Form " & fm.Name
         e = fm.WindowState
         If e = 1 Then
             e = 0
         End If
 
-        SaveSetting(APPNAME, sectionname, "WindowState", e)
+        SaveSetting(APPNAME, strSectionName, "WindowState", e)
         fm.WindowState = 0
-        SaveSetting(APPNAME, sectionname, "Top", fm.Top)
-        SaveSetting(APPNAME, sectionname, "Left", fm.Left)
+        SaveSetting(APPNAME, strSectionName, "Top", fm.Top)
+        SaveSetting(APPNAME, strSectionName, "Left", fm.Left)
         If Sizable Then
-            SaveSetting(APPNAME, sectionname, "Height", fm.Height)
-            SaveSetting(APPNAME, sectionname, "Width", fm.Width)
+            SaveSetting(APPNAME, strSectionName, "Height", fm.Height)
+            SaveSetting(APPNAME, strSectionName, "Width", fm.Width)
         End If
 
     End Sub

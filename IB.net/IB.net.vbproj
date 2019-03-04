@@ -353,6 +353,12 @@
     <Compile Include="frmsalestaxreports.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSetConnection.Designer.vb">
+      <DependentUpon>frmSetConnection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetConnection.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSlsmn.designer.vb">
       <DependentUpon>frmSlsmn.vb</DependentUpon>
     </Compile>
@@ -768,6 +774,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmsalestaxreports.resx">
       <DependentUpon>frmsalestaxreports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetConnection.resx">
+      <DependentUpon>frmSetConnection.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSlsmn.resx">
       <DependentUpon>frmSlsmn.vb</DependentUpon>
