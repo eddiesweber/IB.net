@@ -58,8 +58,17 @@ Module Main
         strSectionName = "Data"
         SaveSetting(APPNAME, strSectionName, "Company", Company)
         SaveSetting(APPNAME, strSectionName, "Server", Server)
+        SaveSetting(APPNAME, strSectionName, "DBName", DBName)
         SaveSetting(APPNAME, strSectionName, "Username", Username)
-        SaveSetting(APPNAME, strSectionName, "Password", CCEncrypt(Password))
+
+        Try
+            Dim wrapper As New Simple3Des("I1!n2@()")
+            SaveSetting(APPNAME, strSectionName, "Password", wrapper.EncryptData(Password))
+        Catch ex As Exception
+            SaveSetting(APPNAME, strSectionName, "Password", "")
+            MessageBox.Show("Error saving password, Password not saved (M-SS1.0)" & vbNewLine & vbNewLine & ex.Message)
+        End Try
+
         SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
         SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
         SaveSetting(APPNAME, strSectionName, "CurType", CurType)
@@ -69,7 +78,7 @@ Module Main
     Public Function CheckConnectionServer() As Boolean
 
         Try
-            configDB.ConnectionString = ConfigCS
+            configDB = New SqlConnection(ConfigCS)
             configDB.Open()
 
             CheckConnectionServer = True
@@ -82,7 +91,7 @@ Module Main
     Public Function CheckConnectionDivision() As Boolean
 
         Try
-            DB.ConnectionString = CS
+            DB = New SqlConnection(CS)
             DB.Open()
 
             CheckConnectionDivision = True

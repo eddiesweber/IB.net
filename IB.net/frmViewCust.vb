@@ -131,7 +131,10 @@ Public Class frmViewCust
 
                     Using sqlReader = sqlCmd.ExecuteReader()
                         ' If the SqlDataReader.Read returns true then there is a customer with that ID'
-                        If sqlReader.Read() Then
+                        'If sqlReader.Read() Then
+                        If sqlReader.HasRows = True Then
+                            sqlReader.Read()
+
                             txtAverage.ReadOnly = False
                             txtAverage.Text = "0"
                             If Not sqlReader.IsDBNull(0) Then
@@ -152,7 +155,10 @@ Public Class frmViewCust
 
                     Using sqlReader = sqlCmd.ExecuteReader()
                         ' If the SqlDataReader.Read returns true then there is a customer with that ID'
-                        If sqlReader.Read() Then
+                        'If sqlReader.Read() Then
+                        If sqlReader.HasRows = True Then
+                            sqlReader.Read()
+
                             txtAverage2.ReadOnly = False
                             txtAverage2.Text = "0"
                             If Not sqlReader.IsDBNull(0) Then

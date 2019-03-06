@@ -23,7 +23,6 @@ Partial Class frmSetConnection
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSetConnection))
-        Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.grpServer = New System.Windows.Forms.GroupBox()
         Me.lblServerName = New C1.Win.C1Input.C1Label()
         Me.lblUsername = New C1.Win.C1Input.C1Label()
@@ -40,7 +39,6 @@ Partial Class frmSetConnection
         Me.lstDivision = New C1.Win.C1List.C1List()
         Me.lblConnectionString = New C1.Win.C1Input.C1Label()
         Me.cmdSave = New C1.Win.C1Input.C1Button()
-        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpServer.SuspendLayout()
         CType(Me.lblServerName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblUsername, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,17 +56,6 @@ Partial Class frmSetConnection
         CType(Me.lblConnectionString, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSave, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cmdCancel
-        '
-        Me.cmdCancel.Location = New System.Drawing.Point(339, 350)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(85, 23)
-        Me.cmdCancel.TabIndex = 5
-        Me.cmdCancel.Text = "Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'grpServer
         '
@@ -295,7 +282,7 @@ Partial Class frmSetConnection
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(85, 23)
         Me.cmdSave.TabIndex = 10
-        Me.cmdSave.Text = "Save"
+        Me.cmdSave.Text = "Close"
         Me.cmdSave.UseVisualStyleBackColor = True
         Me.cmdSave.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -309,11 +296,9 @@ Partial Class frmSetConnection
         Me.Controls.Add(Me.lblConnectionString)
         Me.Controls.Add(Me.grpDivision)
         Me.Controls.Add(Me.grpServer)
-        Me.Controls.Add(Me.cmdCancel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSetConnection"
         Me.Text = "frmSetConnection"
-        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpServer.ResumeLayout(False)
         Me.grpServer.PerformLayout()
         CType(Me.lblServerName, System.ComponentModel.ISupportInitialize).EndInit()
@@ -336,7 +321,6 @@ Partial Class frmSetConnection
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
     Friend WithEvents grpServer As GroupBox
     Friend WithEvents lblUsername As C1.Win.C1Input.C1Label
     Friend WithEvents C1Label1 As C1.Win.C1Input.C1Label

@@ -19,6 +19,7 @@ Public Class frmMain
         Dim strSectionName As String
         Dim Result As DialogResult
         Dim blnExit As Boolean = False
+        Dim strSQL As String
 
         If PrevInstance() Then
             Exit Sub
@@ -31,8 +32,16 @@ Public Class frmMain
         strSectionName = "Data"
         Company = GetSetting(APPNAME, strSectionName, "Company", "")
         Server = GetSetting(APPNAME, strSectionName, "Server", "")
+        DBName = GetSetting(APPNAME, strSectionName, "DBName", "")
         Username = GetSetting(APPNAME, strSectionName, "Username", "")
-        Password = CCDecrypt(GetSetting(APPNAME, strSectionName, "Password", ""))
+
+        Try
+            Dim wrapper As New Simple3Des("I1!n2@()")
+            Password = wrapper.DecryptData(GetSetting(APPNAME, strSectionName, "Password", ""))
+        Catch ex As Exception
+            Password = ""
+        End Try
+
         CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
         CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
         CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
@@ -54,6 +63,8 @@ Public Class frmMain
                 Result = MessageBox.Show("Cannot connect to the server, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
                 If Result = DialogResult.No Then
                     blnExit = True
+                Else
+                    frmSetConnection.ShowDialog()
                 End If
             Loop
 
@@ -61,6 +72,14 @@ Public Class frmMain
                 Me.Close()
 
                 Exit Sub
+            End If
+        End If
+
+        If DBName.Trim <> "" Then
+            If InStr(1, Server, "windows.net") > 0 Then
+                CS = "Data Source=" & Trim(Server) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
+            Else
+                CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(Server)
             End If
         End If
 
@@ -70,6 +89,8 @@ Public Class frmMain
                 Result = MessageBox.Show("Cannot connect to the division db, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
                 If Result = DialogResult.No Then
                     blnExit = True
+                Else
+                    frmSetConnection.ShowDialog()
                 End If
             Loop
 
@@ -79,6 +100,32 @@ Public Class frmMain
                 Exit Sub
             End If
         End If
+
+        ' Get company (division) name
+        Me.Text = ""
+        strSQL = "Select * From Company where Company_ID='" & Company & "'"
+        Using cmdCompany As New SqlCommand(strSQL, DB)
+            Try
+                Dim dataReader As SqlDataReader = cmdCompany.ExecuteReader()
+                dataReader.Read()
+
+                If dataReader.HasRows Then
+                    Me.Text = "Indoor Billboard - " & dataReader.Item("Company_NM")
+                    dataReader.Close()
+
+                    'Rearrange CS the way Crystal likes
+                    CryCS = "DSN=" & Trim(Server) & ";DSQ=" & Trim(Company) & ";UID=<<Use Integrated Security>>"
+                Else
+                    MessageBox.Show("Company " & Company & " not found in company table", "Company Name")
+                End If
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                MessageBox.Show("Error getting company name (FM-FL1.0)" & vbNewLine & ex.Message, "Company Name")
+
+                Exit Sub
+            End Try
+        End Using
+
 
         ''Screen Position
         'GetWindowPos(Me, 15, 15)

@@ -5,13 +5,14 @@ Public Class frmSetConnection
 
     Private Sub frmSetConnection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lstServerName.AddItem("SQLIB")
-        lstServerName.AddItem("indoorbillboard.database.windows.net")
-        lstServerName.AddItem("IB2016\SQLEXPRESS")
-        lstServerName.AddItem("192.168.1.18")
+        Dim intIndex As Integer
 
-        grpServer.Text = "Not Connected"
-        grpDivision.Text = "Not Connected"
+        'lstServerName.AddItem("SQLIB")
+        lstServerName.AddItem("indoorbillboard.database.windows.net")
+        'lstServerName.AddItem("IBSERVER2016\SQLEXPRESS")
+        'lstServerName.AddItem("192.168.1.18")
+
+        Me.Show()
 
         txtUserName.Enabled = True
         txtPassword.Enabled = True
@@ -20,11 +21,27 @@ Public Class frmSetConnection
         txtUserName.Enabled = False
         txtPassword.Enabled = False
 
-    End Sub
+        If Server.Trim <> "" Then
+            intIndex = lstServerName.Find(Server.Trim, C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
+            If intIndex > 0 Then
+                lstServerName.SelectedIndex = intIndex
+            End If
+        End If
 
-    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+        If InStr(1, lstServerName.SelectedText, "windows.net") > 0 Then
+            txtUserName.Enabled = True
+            txtUserName.Text = Username
+            txtPassword.Enabled = True
+            txtPassword.Text = Password
+        Else
+            txtUserName.Text = ""
+            txtUserName.Enabled = False
+            txtPassword.Text = ""
+            txtPassword.Enabled = False
+        End If
 
-        Me.Close()
+        grpServer.Text = "Not Connected"
+        grpDivision.Text = "Not Connected"
 
     End Sub
 
@@ -33,6 +50,8 @@ Public Class frmSetConnection
         Dim strSQL As String = ""
 
         cmdConnectDivision.Enabled = False
+
+        grpServer.Text = "Not Connected"
 
         If txtOther.Text.Trim <> "" Then
             Server = txtOther.Text.Trim
@@ -69,6 +88,7 @@ Public Class frmSetConnection
             Exit Sub
         End Try
 
+        lstDivision.ClearItems()
         strSQL = "Select * From IBConfig"
         Using Command As New SqlCommand(strSQL, configDB)
             Try
@@ -144,7 +164,7 @@ Public Class frmSetConnection
             grpDivision.Text = "Division - Connected"
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            MessageBox.Show("Can't connect to Divisions DB, please try again. (FSC-CCD1.0)" & vbNewLine & vbNewLine & ex.Message, "Select Division")
+            MessageBox.Show("Can't connect to Divisions DB, please try again. (FSC-CCD3.0)" & vbNewLine & vbNewLine & ex.Message, "Select Division")
 
             Exit Sub
         End Try
@@ -191,6 +211,15 @@ Public Class frmSetConnection
             txtPassword.Text = ""
             txtPassword.Enabled = False
         End If
+
+    End Sub
+
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+
+        Main.SaveSettings()
+
+        Me.Close()
+
     End Sub
 
     Private Sub frmSetConnection_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -207,7 +236,7 @@ Public Class frmSetConnection
         End If
 
         ' Close divison Database
-        If Not IsNothing(DB) Then
+        If Not IsNothing(configDB) Then
             Try
                 If configDB.State = ConnectionState.Open Then
                     configDB.Close()
