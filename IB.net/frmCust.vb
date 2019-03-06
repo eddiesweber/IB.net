@@ -21,8 +21,8 @@ Public Class frmCust
         Me.Cursor = Cursors.WaitCursor
 
         If CurCust > 0 Then
-            Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
             Me.CustomerMasterTableAdapter.Connection.ConnectionString = CS
+            Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
         End If
 
         'Line1(0).Y2 = Me.ScaleHeight
