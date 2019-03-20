@@ -71,6 +71,7 @@ Partial Class frmCust
         Me.txtOption = New C1.Win.C1Input.C1TextBox()
         Me.chkData = New C1.Win.C1Input.C1CheckBox()
         Me.txtData17 = New C1.Win.C1Input.C1TextBox()
+        Me.txtLastChanged = New C1.Win.C1Input.C1TextBox()
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,6 +100,7 @@ Partial Class frmCust
         CType(Me.txtOption, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLastChanged, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CustomerMasterBindingSource
@@ -205,7 +207,7 @@ Partial Class frmCust
         Me.lblLabel7.Location = New System.Drawing.Point(185, 192)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(27, 13)
-        Me.lblLabel7.TabIndex = 18
+        Me.lblLabel7.TabIndex = 1
         Me.lblLabel7.Text = "&Fax:"
         '
         'lblLabel6
@@ -382,6 +384,7 @@ Partial Class frmCust
         'txtData1
         '
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_NAME", True))
         Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData1.Location = New System.Drawing.Point(80, 40)
@@ -395,6 +398,7 @@ Partial Class frmCust
         'txtData2
         '
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_STR", True))
         Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData2.Location = New System.Drawing.Point(80, 65)
@@ -408,6 +412,7 @@ Partial Class frmCust
         'txtData3
         '
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_CTY", True))
         Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData3.Location = New System.Drawing.Point(80, 90)
@@ -421,6 +426,7 @@ Partial Class frmCust
         'txtData4
         '
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "BILL_STATE", True))
         Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData4.Location = New System.Drawing.Point(190, 90)
@@ -447,6 +453,7 @@ Partial Class frmCust
         'txtData6
         '
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CARE_OF", True))
         Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData6.Location = New System.Drawing.Point(80, 115)
@@ -460,6 +467,7 @@ Partial Class frmCust
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData10.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "COUNTY", True))
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData10.Location = New System.Drawing.Point(80, 140)
@@ -473,6 +481,7 @@ Partial Class frmCust
         'txtData7
         '
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData7.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "CONTACT", True))
         Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData7.Location = New System.Drawing.Point(80, 165)
@@ -486,6 +495,7 @@ Partial Class frmCust
         'txtData8
         '
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData8.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "EMAIL", True))
         Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData8.Location = New System.Drawing.Point(80, 215)
@@ -499,6 +509,7 @@ Partial Class frmCust
         'txtData9
         '
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData9.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "URL", True))
         Me.txtData9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData9.Location = New System.Drawing.Point(80, 240)
@@ -526,6 +537,7 @@ Partial Class frmCust
         '
         Me.txmData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txmData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PHONE", True))
+        Me.txmData0.EditMask = "(999)000-0000"
         Me.txmData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txmData0.Location = New System.Drawing.Point(80, 190)
         Me.txmData0.Name = "txmData0"
@@ -539,6 +551,7 @@ Partial Class frmCust
         '
         Me.txmData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txmData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "FAX_NO", True))
+        Me.txmData1.EditMask = "(999)000-0000"
         Me.txmData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txmData1.Location = New System.Drawing.Point(210, 190)
         Me.txmData1.Name = "txmData1"
@@ -568,7 +581,7 @@ Partial Class frmCust
         Me.txtOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
         Me.txtOption.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOption.Location = New System.Drawing.Point(50, 265)
+        Me.txtOption.Location = New System.Drawing.Point(600, 332)
         Me.txtOption.Name = "txtOption"
         Me.txtOption.Size = New System.Drawing.Size(20, 18)
         Me.txtOption.TabIndex = 65
@@ -598,6 +611,7 @@ Partial Class frmCust
         '
         Me.txtData17.AutoSize = False
         Me.txtData17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData17.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtData17.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "COMMENTS", True))
         Me.txtData17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData17.Location = New System.Drawing.Point(325, 40)
@@ -609,11 +623,26 @@ Partial Class frmCust
         Me.txtData17.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData17.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'txtLastChanged
+        '
+        Me.txtLastChanged.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtLastChanged.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "Last_Change", True))
+        Me.txtLastChanged.DataType = GetType(Date)
+        Me.txtLastChanged.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLastChanged.Location = New System.Drawing.Point(600, 226)
+        Me.txtLastChanged.Name = "txtLastChanged"
+        Me.txtLastChanged.Size = New System.Drawing.Size(100, 18)
+        Me.txtLastChanged.TabIndex = 66
+        Me.txtLastChanged.Tag = Nothing
+        Me.txtLastChanged.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtLastChanged.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(574, 351)
+        Me.Controls.Add(Me.txtLastChanged)
         Me.Controls.Add(Me.txtData17)
         Me.Controls.Add(Me.chkData)
         Me.Controls.Add(Me.txtOption)
@@ -662,7 +691,6 @@ Partial Class frmCust
         Me.MinimizeBox = False
         Me.Name = "frmCust"
         Me.ShowInTaskbar = False
-        Me.Text = "Add/Edit Customers"
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -691,6 +719,7 @@ Partial Class frmCust
         CType(Me.txtOption, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkData, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLastChanged, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -715,8 +744,6 @@ Partial Class frmCust
     Friend WithEvents DS_CustomerMaster1 As DS_CustomerMaster
     Friend WithEvents CustomerMasterBindingSource As BindingSource
     Friend WithEvents CustomerMasterTableAdapter As DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter
-    Friend WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
-    Friend WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
     Friend WithEvents cmdEditDept As C1.Win.C1Input.C1Button
     Friend WithEvents cmdExit As C1.Win.C1Input.C1Button
     Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
@@ -742,4 +769,7 @@ Partial Class frmCust
     Friend WithEvents txtOption As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData12 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData17 As C1.Win.C1Input.C1TextBox
+    Private WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
+    Private WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
+    Friend WithEvents txtLastChanged As C1.Win.C1Input.C1TextBox
 End Class

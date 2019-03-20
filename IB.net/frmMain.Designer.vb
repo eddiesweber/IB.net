@@ -26,8 +26,9 @@ Partial Class frmMain
         Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
         Me.mnuFile = New C1.Win.C1Command.C1CommandMenu()
-        Me.clSelectDivision = New C1.Win.C1Command.C1CommandLink()
         Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink62 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdSetupConnectionToDB = New C1.Win.C1Command.C1Command()
         Me.clPrintSetup = New C1.Win.C1Command.C1CommandLink()
         Me.cmdPrintSetup = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
@@ -163,8 +164,6 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink62 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdSetupConnectionToDB = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -256,7 +255,7 @@ Partial Class frmMain
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.clSelectDivision, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -264,20 +263,26 @@ Partial Class frmMain
         Me.mnuFile.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.mnuFile.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
-        'clSelectDivision
-        '
-        Me.clSelectDivision.Command = Me.cmdSelectDivision
-        '
         'cmdSelectDivision
         '
         Me.cmdSelectDivision.Name = "cmdSelectDivision"
         Me.cmdSelectDivision.ShortcutText = ""
         Me.cmdSelectDivision.Text = "Select &Division"
         '
+        'C1CommandLink62
+        '
+        Me.C1CommandLink62.Command = Me.cmdSetupConnectionToDB
+        '
+        'cmdSetupConnectionToDB
+        '
+        Me.cmdSetupConnectionToDB.Name = "cmdSetupConnectionToDB"
+        Me.cmdSetupConnectionToDB.ShortcutText = ""
+        Me.cmdSetupConnectionToDB.Text = "Setup Connection to DB"
+        '
         'clPrintSetup
         '
         Me.clPrintSetup.Command = Me.cmdPrintSetup
-        Me.clPrintSetup.SortOrder = 2
+        Me.clPrintSetup.SortOrder = 1
         '
         'cmdPrintSetup
         '
@@ -288,7 +293,7 @@ Partial Class frmMain
         'C1CommandLink4
         '
         Me.C1CommandLink4.Command = Me.mnuMiscSetup
-        Me.C1CommandLink4.SortOrder = 3
+        Me.C1CommandLink4.SortOrder = 2
         Me.C1CommandLink4.Text = "&Misc Setup"
         '
         'mnuMiscSetup
@@ -348,7 +353,7 @@ Partial Class frmMain
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 4
+        Me.clExit.SortOrder = 3
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -1051,17 +1056,6 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
-        'C1CommandLink62
-        '
-        Me.C1CommandLink62.Command = Me.cmdSetupConnectionToDB
-        Me.C1CommandLink62.SortOrder = 1
-        '
-        'cmdSetupConnectionToDB
-        '
-        Me.cmdSetupConnectionToDB.Name = "cmdSetupConnectionToDB"
-        Me.cmdSetupConnectionToDB.ShortcutText = ""
-        Me.cmdSetupConnectionToDB.Text = "Setup Connection to DB"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1082,7 +1076,6 @@ Partial Class frmMain
     Friend WithEvents C1MainMenu1 As C1.Win.C1Command.C1MainMenu
     Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
     Friend WithEvents mnuFile As C1.Win.C1Command.C1CommandMenu
-    Friend WithEvents clSelectDivision As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdSelectDivision As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents clPrintSetup As C1.Win.C1Command.C1CommandLink

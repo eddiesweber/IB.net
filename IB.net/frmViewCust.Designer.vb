@@ -81,6 +81,7 @@ Partial Class frmViewCust
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtData7 = New C1.Win.C1Input.C1TextBox()
+        Me.C1FlexReport1 = New C1.Win.FlexReport.C1FlexReport()
         Me.fraEdit.SuspendLayout()
         CType(Me.cmdEditItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdEditDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -745,6 +746,11 @@ Partial Class frmViewCust
         Me.txtData7.Tag = Nothing
         Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'C1FlexReport1
+        '
+        Me.C1FlexReport1.ReportDefinition = resources.GetString("C1FlexReport1.ReportDefinition")
+        Me.C1FlexReport1.ReportName = "C1FlexReport1"
+        '
         'frmViewCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -884,4 +890,5 @@ Partial Class frmViewCust
     Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents Panel1 As Panel
     Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents C1FlexReport1 As C1.Win.FlexReport.C1FlexReport
 End Class

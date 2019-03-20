@@ -7,13 +7,16 @@ Public Class frmCust
     Dim buserchange As Boolean
     Dim bInit As Boolean
     Dim bCancel As Boolean
+    Dim bTextChanged As Boolean
+    Dim strPAY_TYPE As String
 
     Private Sub frmCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        GetWindowPos(Me, 66, 66)
-
         buserchange = False
+        bTextChanged = False
         bInit = True
+
+        GetWindowPos(Me, 66, 66)
 
         Me.Show()
         Me.Enabled = False
@@ -44,7 +47,6 @@ Public Class frmCust
         txmData0.MaxLength = DS_CustomerMaster1.CustomerMaster.PHONEColumn.MaxLength
         txmData1.MaxLength = DS_CustomerMaster1.CustomerMaster.FAX_NOColumn.MaxLength
 
-
         If DS_CustomerMaster1.CustomerMaster.Rows.Count > 0 Then
             Me.Show()
             GetData()
@@ -53,30 +55,58 @@ Public Class frmCust
             lblCurCust.Text = 0
         End If
 
+        buserchange = True
+        bInit = False
+
+        ' Create one event handler for each text box
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                AddHandler ctrl.TextChanged, AddressOf boxfocus
+            End If
+        Next
+
         Me.Enabled = True
         Me.Cursor = Cursors.Arrow
 
     End Sub
 
+    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+
+        bTextChanged = True
+        If buserchange Then
+            SetModeChange()
+        End If
+
+    End Sub
+
     Private Sub frmCust_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
-        buserchange = True
-        bInit = False
+        ' Added to form_load, activate fires at a different spot in .net
+        'buserchange = True
+        'bInit = False
 
     End Sub
 
     Sub GetData()
 
+        bTextChanged = False
+
         If CurCust = 0 Then
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
+            'txtOption.Visible = True
             CustomerMasterTableAdapter.Connection.ConnectionString = CS
             Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
+            'txtOption.Visible = False
 
-            If Me.DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.ToString = "" Then
-                txtData11.Text = CCDecrypt(Me.DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.ToString)
+            If Not IsDBNull(DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM")) Then
+                If DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM") = "" Then
+                    txtData11.Text = CCDecrypt(DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM"))
+                End If
             End If
+
+            SetModeReg()
         End If
 
         'Set rs = data1.Recordset
@@ -136,6 +166,8 @@ Public Class frmCust
 
     Public Sub SetModeReg()
 
+        bTextChanged = False
+
         cmdNew.Enabled = True
         cmdDelete.Enabled = True
         cmdReset.Enabled = False
@@ -148,49 +180,80 @@ Public Class frmCust
 
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
 
+        If bTextChanged = True Then
+            MessageBox.Show("Please click on 'save' or 'reset' before you add an new user.", "Add new user")
+            Exit Sub
+        End If
+
+        buserchange = False
+        bTextChanged = False
+
         CustomerMasterBindingSource.AddNew()
         txtData0.Text = -1
+
+        SetModeAdd()
+
+        buserchange = True
 
     End Sub
 
     Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
 
+        buserchange = False
+        bTextChanged = False
+
         CustomerMasterBindingSource.CancelEdit()
+
+        GetData()
+
+        SetModeReg()
+
+        buserchange = True
 
     End Sub
 
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
-        Dim intYesNo As Int16
-        Dim blnFindCustOpened As Boolean
-
-        intYesNo = MsgBox("Are you sure you want to delete this record?", vbYesNo, "Delete Record Confirmation")
-        If intYesNo = vbYes Then
-            Dim customersRow As DS_CustomerMaster.CustomerMasterRow
-            customersRow = DS_CustomerMaster1.CustomerMaster.FindByCUST_NUM(CurCust)
-
-            customersRow.Delete()
-
-            CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)
-
-            blnFindCustOpened = False
-            For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
-                If My.Application.OpenForms(count).Name = "frmFindCust" Then
-                    My.Application.OpenForms(count).Close()
-                End If
-            Next
-
-            CurCust = 0
-
-            frmFindCust.Show()
-            frmFindCust.BringToFront()
+        If bTextChanged = True Then
+            MessageBox.Show("Please click on 'save' or 'reset' before you cancel the user.", "Cancel user")
+            Exit Sub
         End If
+
+        bTextChanged = False
+        frmCustCanc.ShowDialog()
+        lblCurCust.Text = CurCust
+
+        'Dim intYesNo As Int16
+        'Dim blnFindCustOpened As Boolean
+
+        'intYesNo = MsgBox("Are you sure you want to delete this record?", vbYesNo, "Delete Record Confirmation")
+        'If intYesNo = vbYes Then
+        '    Dim customersRow As DS_CustomerMaster.CustomerMasterRow
+        '    customersRow = DS_CustomerMaster1.CustomerMaster.FindByCUST_NUM(CurCust)
+
+        '    customersRow.Delete()
+
+        '    CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)
+
+        '    blnFindCustOpened = False
+        '    For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
+        '        If My.Application.OpenForms(count).Name = "frmFindCust" Then
+        '            My.Application.OpenForms(count).Close()
+        '        End If
+        '    Next
+
+        '    CurCust = 0
+
+        '    frmFindCust.Show()
+        '    frmFindCust.BringToFront()
+        'End If
 
     End Sub
 
     Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
 
         Dim Result As DialogResult
+        Dim blnNew As Boolean = False
 
         buserchange = False
         bCancel = False
@@ -205,15 +268,16 @@ Public Class frmCust
         'Test for good key value
         If txtData0.Text = -1 And Not bCancel Then
             'Get default key value
+            blnNew = True
             Using connection As New SqlConnection(CS)
                 Dim cmd As SqlCommand = New SqlCommand("Select max(CUST_NUM) as CUST_NUM from CustomerMaster", connection)
 
                 Try
                     connection.Open()
-                    CurCust = Convert.ToInt32(cmd.ExecuteScalar())
+                    CurCust = Convert.ToInt32(cmd.ExecuteScalar()) + 1
 
                 Catch ex As Exception
-                    Result = MessageBox.Show(Me, "Error getting the tax codes" & vbNewLine & "Error : " & ex.Message, "Getting Tax Codes", vbOKCancel)
+                    Result = MessageBox.Show(Me, "Error getting a new customer number" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
                     If Result = vbCancel Then
                         Exit Sub
                     Else
@@ -228,23 +292,25 @@ Public Class frmCust
 
             newCustomersRow.CUST_NUM = CurCust
             newCustomersRow.BILL_NAME = txtData1.Text.ToUpper
+            newCustomersRow.PAY_TYPE = "I"
+            newCustomersRow.MAIL_STATEMENT = False
+            newCustomersRow.Last_Change = Now()
 
             DS_CustomerMaster1.CustomerMaster.Rows.Add(newCustomersRow)
+            CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)
+
+            GetData()
+            bCancel = True
         End If
 
-
         If Not bCancel Then
-            Dim customersRow As DS_CustomerMaster.CustomerMasterRow
-            customersRow = DS_CustomerMaster1.CustomerMaster.FindByCUST_NUM(CurCust)
+            'Dim customersRow As DS_CustomerMaster.CustomerMasterRow
+            'customersRow = DS_CustomerMaster1.CustomerMaster.FindByCUST_NUM(CurCust)
 
-            customersRow.Last_Change = Now()
-
-            If txtData11.Text.Length() > 0 Then
-                customersRow.CC_NUM = CCEncrypt(txtData11.Text)
-            End If
-
+            txtLastChanged.Text = Now()
             CustomerMasterBindingSource.EndEdit()
             CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)
+
             SetModeReg()
         End If
 
@@ -252,19 +318,82 @@ Public Class frmCust
 
     End Sub
 
-    Private Sub lblCurCust_Click(sender As Object, e As EventArgs) Handles lblCurCust.Click
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
 
-        If Not cmdReset.Enabled Then
-            buserchange = False
-            GetData()
-            buserchange = True
+        Dim Result As DialogResult
+
+        If bTextChanged = True Then
+            Result = MessageBox.Show(Me, "Do you want to exit the form without saving your changes?", "Exit form", vbYesNo)
+            If Result = vbYes Then
+                Exit Sub
+            End If
         End If
 
-    End Sub
-
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        SaveWindowPos(Me)
 
         Me.Close()
 
     End Sub
+
+    Private Sub chkData_CheckedChanged(sender As Object, e As EventArgs) Handles chkData.CheckedChanged
+
+        If buserchange Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub optData0_CheckedChanged(sender As Object, e As EventArgs) Handles optData0.CheckedChanged
+
+        Optionchanged(0)
+
+    End Sub
+
+    Private Sub optData1_CheckedChanged(sender As Object, e As EventArgs) Handles optData1.CheckedChanged
+
+        Optionchanged(1)
+
+    End Sub
+
+    Private Sub Optionchanged(intOption As Integer)
+
+        Dim i As Integer
+
+        If buserchange Then
+            ' Shouldn't have to do this, does it just uncheck the opposite option box
+            'optData(1 - Index).Value = Not (optData(Index).Value)
+            'txtOption.Visible = True
+            If optData0.Checked = True Then
+                txtOption.Text = optData0.Tag
+            Else
+                txtOption.Text = optData1.Tag
+            End If
+            'txtOption.Visible = False
+        End If
+
+        If intOption = 0 Then
+            txtData11.Text = ""
+            txtData11.Enabled = False
+        Else
+            txtData11.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub txtOption_TextChanged(sender As Object, e As EventArgs) Handles txtOption.TextChanged
+
+        If buserchange Then
+            SetModeChange()
+        Else
+            Dim i As Integer
+
+            If optData0.Tag = Trim(txtOption.Text) Then
+                optData0.Checked = True
+            Else
+                optData1.Checked = True
+            End If
+        End If
+
+    End Sub
+
 End Class

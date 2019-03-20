@@ -5,6 +5,7 @@ Imports System.Data.SqlClient
 Imports C1.Win.C1TrueDBGrid
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+Imports CrystalDecisions.ReportSource
 
 Public Class frmViewCust
 
@@ -261,7 +262,18 @@ Public Class frmViewCust
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
-        frmTestCrystal.Show()
+        ' ADD REFERENCES.
+        ' CrystalDecisions.CrystalReports.Engine
+        ' CrystalDecisions.ReportSource
+
+        Dim Report As CrystalDecisions.CrystalReports.Engine.ReportDocument = New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
+        ' NOW LOAD THE REPORT.
+        Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
+
+        Dim dt As New DataTable                     ' THE DATATABLE HAS THE DATA FROM THE DATABASE.
+        Report.SetDataSource(dt)                    ' SET REPORT DATA SOURCE.
+        Report.PrintToPrinter(1, True, 0, 0)        ' FINALY, PRINT IT.
 
         'With RPT
         '    .ReportFileName = DataPath & "\Custinfo.rpt"
