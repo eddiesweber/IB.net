@@ -1,35 +1,23 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frmCust
 
     Dim buserchange As Boolean
-    Dim bInit As Boolean
     Dim bCancel As Boolean
     Dim bTextChanged As Boolean
     Dim strPAY_TYPE As String
 
     Private Sub frmCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        buserchange = False
-        bTextChanged = False
-        bInit = True
-
-        GetWindowPos(Me, 66, 66)
-
-        Me.Show()
-        Me.Enabled = False
-
         Me.Cursor = Cursors.WaitCursor
 
-        If CurCust > 0 Then
-            Me.CustomerMasterTableAdapter.Connection.ConnectionString = CS
-            Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
-        End If
+        buserchange = False
+        bTextChanged = False
 
-        'Line1(0).Y2 = Me.ScaleHeight
-        'Line1(1).Y2 = Me.ScaleHeight
+        GetWindowPos(Me, 66, 66)
 
         txtData1.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_NAMEColumn.MaxLength
         txtData2.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_STRColumn.MaxLength
@@ -47,17 +35,6 @@ Public Class frmCust
         txmData0.MaxLength = DS_CustomerMaster1.CustomerMaster.PHONEColumn.MaxLength
         txmData1.MaxLength = DS_CustomerMaster1.CustomerMaster.FAX_NOColumn.MaxLength
 
-        If DS_CustomerMaster1.CustomerMaster.Rows.Count > 0 Then
-            Me.Show()
-            GetData()
-        Else
-            CurCust = 0
-            lblCurCust.Text = 0
-        End If
-
-        buserchange = True
-        bInit = False
-
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox Then
@@ -65,29 +42,46 @@ Public Class frmCust
             End If
         Next
 
-        Me.Enabled = True
+        If CurCust = 0 Then
+            frmFindCust.Show()
+            frmFindCust.BringToFront()
+        Else
+            lblCurCust.Text = CurCust
+        End If
+
+        buserchange = True
+
         Me.Cursor = Cursors.Arrow
+
+    End Sub
+
+    Private Sub frmCust_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        SaveWindowPos(Me)
 
     End Sub
 
     Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
 
         bTextChanged = True
+
         If buserchange Then
             SetModeChange()
         End If
 
     End Sub
 
-    Private Sub frmCust_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
-        ' Added to form_load, activate fires at a different spot in .net
-        'buserchange = True
-        'bInit = False
+        If cmdReset.Enabled = False Then
+            buserchange = False
+            GetData()
+            buserchange = True
+        End If
 
     End Sub
 
-    Sub GetData()
+    Private Sub GetData()
 
         bTextChanged = False
 
@@ -95,26 +89,11 @@ Public Class frmCust
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
-            'txtOption.Visible = True
             CustomerMasterTableAdapter.Connection.ConnectionString = CS
             Me.CustomerMasterTableAdapter.Fill(Me.DS_CustomerMaster1.CustomerMaster, CurCust)
-            'txtOption.Visible = False
-
-            If Not IsDBNull(DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM")) Then
-                If DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM") = "" Then
-                    txtData11.Text = CCDecrypt(DS_CustomerMaster1.CustomerMaster.Rows(0)("CC_NUM"))
-                End If
-            End If
 
             SetModeReg()
         End If
-
-        'Set rs = data1.Recordset
-        'If rs.EOF And rs.BOF Then
-        'cmdNew_Click
-        'Else
-        'If rs.RecordCount > 1 Then cmdFind_Click
-        'End If
 
     End Sub
 
@@ -128,16 +107,6 @@ Public Class frmCust
     Private Sub cmdEditDept_Click(sender As Object, e As EventArgs) Handles cmdEditDept.Click
 
         frmDept.Show()
-
-    End Sub
-
-    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
-
-        If Not cmdReset.Enabled Then
-            buserchange = False
-            GetData()
-            buserchange = True
-        End If
 
     End Sub
 

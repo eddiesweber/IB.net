@@ -6,7 +6,6 @@ Imports System.Data.SqlClient
 Public Class frmDept
 
     Dim buserchange As Boolean
-    Dim bInit As Boolean
     Dim CurState As String
     'Dim CurState As String * 2
     Dim bCancel As Boolean
@@ -14,18 +13,21 @@ Public Class frmDept
     Dim intDept As Integer
     ' strTAX_LOCODE is replacing txtdata10
     Dim strTAX_LOCODE As String
+    Dim blnNewRecord As Boolean
+    Dim bTextChanged As Boolean
 
     Private Sub frmDept_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' GetWindowPos - This function fires the Form_Activated Event, moved to the bottom
-        'GetWindowPos(Me, 66, 66)
+        Me.Cursor = Cursors.WaitCursor
+
+        buserchange = False
+        bTextChanged = False
+
+        GetWindowPos(Me, 66, 66)
 
         If Dir("frmDeptgrdRoute.xml") <> "" Then
             grdRoute.LoadLayout("frmDeptgrdRoute.xml")
         End If
-
-        buserchange = False
-        bInit = True
 
         txtData2.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_NAMEColumn.MaxLength
         txtData3.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ADDRColumn.MaxLength
@@ -39,41 +41,63 @@ Public Class frmDept
         txmData0.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_PHONEColumn.MaxLength
         txmData1.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_FaxColumn.MaxLength
 
-        GetWindowPos(Me, 66, 66)
-
-    End Sub
-
-    Private Sub frmDept_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        ' Create one event handler for each text box
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                AddHandler ctrl.TextChanged, AddressOf boxfocus
+            End If
+        Next
 
         If CurCust = 0 Then
             frmFindCust.Show()
+            frmFindCust.BringToFront()
         Else
             lblCurCust.Text = CurCust
+        End If
+
+        buserchange = True
+
+        Me.Cursor = Cursors.Arrow
+
+    End Sub
+
+    Private Sub frmDept_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        SaveWindowPos(Me)
+
+        grdRoute.SaveLayout("frmDeptgrdRoute.xml")
+
+    End Sub
+
+    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+
+        bTextChanged = True
+
+        If buserchange Then
+            SetModeChange()
         End If
 
     End Sub
 
     Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
-        buserchange = False
-        bInit = True
-
         If cmdReset.Enabled = False Then
+            buserchange = False
             GetData()
+            buserchange = True
         End If
-
-        buserchange = True
-        bInit = False
 
     End Sub
 
-    Sub GetData()
+    Private Sub GetData()
 
-        'Get customer departments
+        bTextChanged = False
+
         txtCustName.Text = GetCustName()
 
         If CurCust = 0 Then
             frmFindCust.Show()
+            frmFindCust.BringToFront()
         Else
             CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
             Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
@@ -89,7 +113,7 @@ Public Class frmDept
 
     End Sub
 
-    Sub GetData2()
+    Private Sub GetData2()
 
         'Goto current department
         If DsCustomerDepartment.Tables("CustomerDepartment").Rows.Count = 0 Then
@@ -117,7 +141,12 @@ Public Class frmDept
 
         'cmbTax.BoundText = txtData10.Text
         cmbTax.SelectedIndex = cmbTax.FindString(strTAX_LOCODE)
-        strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")
+        If Not DBNull.Value.Equals(DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")) Then
+            strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")
+        Else
+            strTAX_LOCODE = ""
+        End If
+
         'strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(CustomerDepartmentBindingSource.Position)("TAX_LOCODE")
 
         GetDataRoute()
@@ -224,6 +253,7 @@ Public Class frmDept
 
         End Using
 
+        blnNewRecord = True
         buserchange = True
 
     End Sub
@@ -232,8 +262,6 @@ Public Class frmDept
 
         Dim intResult As Integer
         Dim q As String
-        'Dim ADOCmd As New ADODB.Command
-        'ADOCmd.ActiveConnection = DB
 
         'CurDept = txtData1.Text
         CurDept = intDept
@@ -242,34 +270,22 @@ Public Class frmDept
         If intResult = vbCancel Then
             Exit Sub
         Else
-            'q = "DELETE CustomerRoute WHERE CUST_NUM=" & CStr(CurCust) & " AND DEPT=" & CStr(CurDept)
-            'ADOCmd.CommandText = q
-            'ADOCmd.Execute()
             Dim customersDeptartmentRow As dsCustomerDepartment.CustomerDepartmentRow
             customersDeptartmentRow = DsCustomerDepartment.CustomerDepartment.FindByCUST_NUMDEPT(CurCust, CurDept)
-
-            'CustomerDepartmentBindingSource.MoveNext()
-            'intResult = CustomerDepartmentBindingSource.Position
 
             customersDeptartmentRow.Delete()
 
             CustomerDepartmentTableAdapter.Update(DsCustomerDepartment.CustomerDepartment)
-
-            'q = "DELETE CustomerInventory WHERE CUST_NUM=" & CStr(CurCust) & " AND DEPT=" & CStr(CurDept)
-            'ADOCmd.CommandText = q
-            'ADOCmd.Execute()
-
-            'rs.Delete()
         End If
 
 
         If Not bCancel Then
-            'Data1.Refresh
             'lblCurCust_Change
             buserchange = False
             GetData()
             buserchange = True
         End If
+
         bCancel = False
 
     End Sub
@@ -321,37 +337,39 @@ Public Class frmDept
 
     End Sub
 
-    Private Sub frmDept_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-        SaveWindowPos(Me)
-
-        grdRoute.SaveLayout("frmDeptgrdRoute.xml")
-
-    End Sub
-
     Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
 
-        Dim M As Integer
+        Dim Result As DialogResult
 
         buserchange = False
         bCancel = False
 
-        'M = rs.EditMode
-        ''If RS.EditMode = dbEditNone Then RS.Edit
+        CurDept = intDept
 
-        'CurDept = rs!DEPT
+        Try
+            CustomerDepartmentBindingSource.EndEdit()
+            CustomerDepartmentTableAdapter.Update(DsCustomerDepartment.CustomerDepartment)
+        Catch ex As Exception
+            bCancel = True
 
-        'rs.Update()
+            Result = MessageBox.Show(Me, "Error updating department" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
+            If Result = vbCancel Then
+                Exit Sub
+            Else
+                Exit Try
+            End If
+        End Try
 
-        'If Not bCancel Then
-        '    'update succeeded
-        '    GetData()
-        '    CurCust = txtData0.Text
-        '    CurDept = txtData1.Text
-        '    SetModeReg()
-        '    If M = adEditAdd Then grdRoute.SetFocus
-        'End If
+        If Not bCancel Then
+            'update succeeded
+            GetData()
+            CurCust = txtData0.Text
+            CurDept = intDept
+            SetModeReg()
+            'If M = adEditAdd Then grdRoute.SetFocus
+        End If
 
+        blnNewRecord = False
         buserchange = True
 
     End Sub
@@ -414,6 +432,51 @@ Public Class frmDept
                     'cmbTax.BoundText = txtData(10).Text
             End Select
         End If
+
+    End Sub
+
+    Private Sub cmdFindCust_Click(sender As Object, e As EventArgs) Handles cmdFindCust.Click
+
+        frmFindCust.Show()
+        frmFindCust.BringToFront()
+
+    End Sub
+
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
+
+        buserchange = False
+
+        CustomerDepartmentBindingSource.CancelEdit()
+
+        If blnNewRecord = True Then
+            If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
+                cmdNew.PerformClick()
+            Else
+                GetData2()
+                SetModeReg()
+            End If
+        Else
+            GetData2()
+            SetModeReg()
+        End If
+
+        buserchange = True
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+
+        Dim Result As DialogResult
+
+        If bTextChanged = True Then
+            Result = MessageBox.Show(Me, "Do you want to exit the form without saving your changes?", "Exit form", vbYesNo)
+            If Result = vbYes Then
+                Exit Sub
+            End If
+        End If
+
+        SaveWindowPos(Me)
+
+        Me.Close()
 
     End Sub
 

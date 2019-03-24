@@ -536,11 +536,14 @@ Partial Class frmDept
         '
         Me.grdRoute.DataSource = Me.CustomerRouteBindingSource
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
         Me.grdRoute.Location = New System.Drawing.Point(10, 284)
         Me.grdRoute.Name = "grdRoute"
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdRoute.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.grdRoute.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
         Me.grdRoute.Size = New System.Drawing.Size(465, 64)
@@ -579,6 +582,7 @@ Partial Class frmDept
         Me.lstDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.lstDept.PreviewInfo.ZoomFactor = 75.0R
         Me.lstDept.PrintInfo.PageSettings = CType(resources.GetObject("lstDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
         Me.lstDept.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstDept.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstDept.ScrollTrack = False
@@ -586,7 +590,6 @@ Partial Class frmDept
         Me.lstDept.Size = New System.Drawing.Size(60, 60)
         Me.lstDept.TabIndex = 71
         Me.lstDept.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
         '
         'SpGetTaxCodesTableAdapter
         '
@@ -619,12 +622,12 @@ Partial Class frmDept
         Me.cmbTax.MaxLength = 32767
         Me.cmbTax.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbTax.Name = "cmbTax"
+        Me.cmbTax.PropBag = resources.GetString("cmbTax.PropBag")
         Me.cmbTax.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTax.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbTax.Size = New System.Drawing.Size(90, 21)
         Me.cmbTax.TabIndex = 72
         Me.cmbTax.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.cmbTax.PropBag = resources.GetString("cmbTax.PropBag")
         '
         'txtTaxState
         '

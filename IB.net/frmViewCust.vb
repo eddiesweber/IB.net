@@ -5,13 +5,14 @@ Imports System.Data.SqlClient
 Imports C1.Win.C1TrueDBGrid
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
-Imports CrystalDecisions.ReportSource
 
 Public Class frmViewCust
 
     Private buserchange As Boolean
 
     Private Sub frmViewCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.Cursor = Cursors.WaitCursor
 
         GetWindowPos(Me, 0, 0)
 
@@ -25,6 +26,21 @@ Public Class frmViewCust
             grdItem.LoadLayout("frmViewCustgrdItem.xml")
         End If
 
+        If CurDept = 0 Then
+            CurDept = 1
+        End If
+
+        If CurCust = 0 Then
+            frmFindCust.Show()
+            frmFindCust.BringToFront()
+        Else
+            lblCurCust.Text = CurCust
+        End If
+
+        buserchange = True
+
+        Me.Cursor = Cursors.Arrow
+
     End Sub
 
     Private Sub frmViewCust_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
@@ -34,22 +50,6 @@ Public Class frmViewCust
         grdDept.SaveLayout("frmViewCustgrdDept.xml")
         grdRoute.SaveLayout("frmViewCustgrdRoute.xml")
         grdItem.SaveLayout("frmViewCustgrdItem.xml")
-
-    End Sub
-
-    Private Sub frmViewCust_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        If CurDept = 0 Then
-            CurDept = 1
-        End If
-
-        If CurCust = 0 Then
-            frmFindCust.Show()
-        Else
-            lblCurCust.Text = CurCust
-        End If
-
-        buserchange = True
 
     End Sub
 
@@ -63,15 +63,13 @@ Public Class frmViewCust
 
     Private Sub GetData()
 
-        'Get customer record
-        Me.SpGetCustTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
-
-        If IBPortlandDataSet.Tables("spGetCust").Rows.Count = 0 Then
-            CurCust = 0
+        If CurCust = 0 Then
             frmFindCust.Show()
-            Exit Sub
+            frmFindCust.BringToFront()
         Else
+            Me.SpGetCustTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
+
             GetAverage()
             GetData1()
             GetData2()
@@ -262,18 +260,15 @@ Public Class frmViewCust
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
-        ' ADD REFERENCES.
-        ' CrystalDecisions.CrystalReports.Engine
-        ' CrystalDecisions.ReportSource
 
-        Dim Report As CrystalDecisions.CrystalReports.Engine.ReportDocument = New CrystalDecisions.CrystalReports.Engine.ReportDocument
+        '' NOW LOAD THE REPORT.
+        'frmViewReport.Show()
 
-        ' NOW LOAD THE REPORT.
-        Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
+        'Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
 
-        Dim dt As New DataTable                     ' THE DATATABLE HAS THE DATA FROM THE DATABASE.
-        Report.SetDataSource(dt)                    ' SET REPORT DATA SOURCE.
-        Report.PrintToPrinter(1, True, 0, 0)        ' FINALY, PRINT IT.
+        'Dim dt As New DataTable                     ' THE DATATABLE HAS THE DATA FROM THE DATABASE.
+        'Report.SetDataSource(dt)                    ' SET REPORT DATA SOURCE.
+        'Report.PrintToPrinter(1, True, 0, 0)        ' FINALY, PRINT IT.
 
         'With RPT
         '    .ReportFileName = DataPath & "\Custinfo.rpt"
@@ -286,6 +281,79 @@ Public Class frmViewCust
         '    .SelectionFormula = ""
         '    .ReportFileName = ""
         'End With
+
+        Dim CrxReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
+        Dim strReportName As String
+        Dim crParameterValues As CrystalDecisions.Shared.ParameterValues
+        Dim crParameterDiscreteValue As CrystalDecisions.Shared.ParameterDiscreteValue
+        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+        Dim crParameterFieldDefinition As ParameterFieldDefinition
+
+        strReportName = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\bin\Debug\rptTest.rpt"
+
+        CrxReport.Load(strReportName, CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+        'crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
+        'crParameterValues = New CrystalDecisions.Shared.ParameterValues
+        'crParameterDiscreteValue.Value = 1008
+        'crParameterValues.Add(crParameterDiscreteValue)
+
+        'CrxReport.ParameterFields.Item("CustomerNumber").DefaultValues = crParameterValues
+
+        ''''''''''''''''''''''''
+        crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
+        crParameterValues = New CrystalDecisions.Shared.ParameterValues
+
+        crParameterDiscreteValue.Value = 1008
+        crParameterFieldDefinitions = CrxReport.DataDefinition.ParameterFields
+        crParameterFieldDefinition = crParameterFieldDefinitions.Item("CustomerNumber")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+        CrxReport.ParameterFields.Item("CustomerNumber").DefaultValues = crParameterValues
+
+        ' Another way?
+        'CrxReport.SetParameterValue("CustomerNumber", 7)
+
+        'Call ResetRptDB(CrxReport)
+
+        Call DisplayReport(CrxReport, "Report Description Goes Here")
+
+    End Sub
+
+    Private Sub DisplayReport(ByVal CrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument, ByVal reportDesc As String)
+
+        Dim objfrmRptViewer As New frmRptViewer
+
+        '===== Generate report preview =====================
+
+        Cursor.Current = Cursors.WaitCursor
+
+        CrxReport.Refresh()
+
+        objfrmRptViewer.CRViewer.ReportSource = CrxReport
+        objfrmRptViewer.CRViewer.RefreshReport()
+
+        objfrmRptViewer.CRViewer.ShowExportButton = True
+        objfrmRptViewer.CRViewer.ShowPrintButton = True
+        objfrmRptViewer.CRViewer.ShowGroupTreeButton = True
+
+        objfrmRptViewer.Text = reportDesc
+        objfrmRptViewer.Show()
+        ' Maximize the window state so we can view the whole report.
+        objfrmRptViewer.WindowState = FormWindowState.Maximized
+        ' Zoom the preview window to 100%
+        objfrmRptViewer.CRViewer.Zoom(100)
+
+        'Screen.MousePointer = vbDefault
+        Cursor.Current = Cursors.Default
+
+        '===================================================
+        objfrmRptViewer = Nothing
 
     End Sub
 

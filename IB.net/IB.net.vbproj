@@ -55,7 +55,9 @@
     <Reference Include="C1.Win.BarCode.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="C1.Win.C1Chart.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=a22e16972c085838" />
     <Reference Include="C1.Win.C1Chart3D.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=a22e16972c085838" />
-    <Reference Include="C1.Win.C1Command.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=e808566f358766d8" />
+    <Reference Include="C1.Win.C1Command.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1InputPanel.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
@@ -105,18 +107,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="crtCustInfo.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>crtCustInfo.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Custinfo.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Custinfo.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="dsCategoryMaster.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -364,6 +354,12 @@
     <Compile Include="frmRptSales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRptViewer.designer.vb">
+      <DependentUpon>frmRptViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmsalestaxreports.designer.vb">
       <DependentUpon>frmsalestaxreports.vb</DependentUpon>
     </Compile>
@@ -392,12 +388,6 @@
       <DependentUpon>frmTax.vb</DependentUpon>
     </Compile>
     <Compile Include="frmTax.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTestCrystal.Designer.vb">
-      <DependentUpon>frmTestCrystal.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmTestCrystal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmVend.designer.vb">
@@ -574,6 +564,12 @@
     <Compile Include="frmViewCust.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmViewReport.Designer.vb">
+      <DependentUpon>frmViewReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmZipSearch.Designer.vb">
       <DependentUpon>frmZipSearch.vb</DependentUpon>
     </Compile>
@@ -615,14 +611,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="crtCustInfo.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crtCustInfo.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Custinfo.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Custinfo.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCat.resx">
       <DependentUpon>frmCat.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -796,6 +784,9 @@
     <EmbeddedResource Include="frmRptSales.resx">
       <DependentUpon>frmRptSales.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRptViewer.resx">
+      <DependentUpon>frmRptViewer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmsalestaxreports.resx">
       <DependentUpon>frmsalestaxreports.vb</DependentUpon>
     </EmbeddedResource>
@@ -814,9 +805,6 @@
     <EmbeddedResource Include="frmTax.resx">
       <DependentUpon>frmTax.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTestCrystal.resx">
-      <DependentUpon>frmTestCrystal.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
     </EmbeddedResource>
@@ -828,6 +816,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewItem.resx">
       <DependentUpon>frmViewItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewReport.resx">
+      <DependentUpon>frmViewReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmZipSearch.resx">
       <DependentUpon>frmZipSearch.vb</DependentUpon>
