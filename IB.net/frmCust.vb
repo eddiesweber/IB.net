@@ -247,6 +247,7 @@ Public Class frmCust
 
                 Catch ex As Exception
                     Result = MessageBox.Show(Me, "Error getting a new customer number" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
+                    LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
                     If Result = vbCancel Then
                         Exit Sub
                     Else

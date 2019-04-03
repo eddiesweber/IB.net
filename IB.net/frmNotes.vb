@@ -58,7 +58,8 @@ Public Class frmNotes
                     'dataReader.Close()
                 Catch ex As Exception
                     result = MessageBox.Show(Me, "Error getting the customer notes" & vbNewLine & "Error : " & ex.Message, "Getting Customer Notes", vbOKCancel)
-                    If Result = vbCancel Then
+                    LogError(Me.Name, "GetData", "1.0", ex.Message)
+                    If result = vbCancel Then
                         Exit Sub
                     Else
                         Exit Try

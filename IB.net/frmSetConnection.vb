@@ -83,6 +83,7 @@ Public Class frmSetConnection
             cmdConnectDivision.Enabled = True
         Catch ex As Exception
             Me.Cursor = Cursors.Default
+            LogError(Me.Name, "cmdConnect_Click", "1.0", ex.Message)
             MessageBox.Show("Can't connect to Master DB, please try again. (FSC-CC1.0)" & vbNewLine & vbNewLine & ex.Message, "Connect to Master")
 
             Exit Sub
@@ -102,6 +103,7 @@ Public Class frmSetConnection
 
             Catch ex As Exception
                 Me.Cursor = Cursors.Default
+                LogError(Me.Name, "cmdConnect_Click", "2.0", ex.Message)
                 MessageBox.Show("Error in form: frmSetConnection, error loading division names to listbox. (FSC-CC2.0)" & vbNewLine & ex.Message, "Load Division")
 
                 Exit Sub
@@ -143,7 +145,8 @@ Public Class frmSetConnection
                 dataReader.Close()
             Catch ex As Exception
                 Me.Cursor = Cursors.Default
-                MessageBox.Show("Error getting division name (FSC-CCD2.0)" & vbNewLine & ex.Message, "Division Name")
+                LogError(Me.Name, "cmdConnectDivision_Click", "1.0", ex.Message)
+                MessageBox.Show("Error getting division name (FSC-CCD1.0)" & vbNewLine & ex.Message, "Division Name")
 
                 Exit Sub
             End Try
@@ -164,7 +167,8 @@ Public Class frmSetConnection
             grpDivision.Text = "Division - Connected"
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            MessageBox.Show("Can't connect to Divisions DB, please try again. (FSC-CCD3.0)" & vbNewLine & vbNewLine & ex.Message, "Select Division")
+            LogError(Me.Name, "cmdConnectDivision_Click", "2.0", ex.Message)
+            MessageBox.Show("Can't connect to Divisions DB, please try again. (FSC-CCD2.0)" & vbNewLine & vbNewLine & ex.Message, "Select Division")
 
             Exit Sub
         End Try
@@ -188,6 +192,7 @@ Public Class frmSetConnection
                 End If
             Catch ex As Exception
                 Me.Cursor = Cursors.Default
+                LogError(Me.Name, "cmdConnectDivision", "3.0", ex.Message)
                 MessageBox.Show("Error getting company name (FSC-CCD3.0)" & vbNewLine & ex.Message, "Company Name")
 
                 Exit Sub

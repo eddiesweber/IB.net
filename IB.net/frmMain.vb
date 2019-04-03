@@ -39,6 +39,7 @@ Public Class frmMain
             Dim wrapper As New Simple3Des("I1!n2@()")
             Password = wrapper.DecryptData(GetSetting(APPNAME, strSectionName, "Password", ""))
         Catch ex As Exception
+            LogError(Me.Name, "Load", "1.0", ex.Message)
             Password = ""
         End Try
 
@@ -120,6 +121,7 @@ Public Class frmMain
                 End If
             Catch ex As Exception
                 Me.Cursor = Cursors.Default
+                LogError(Me.Name, "Loan", "2.0", ex.Message)
                 MessageBox.Show("Error getting company name (FM-FL1.0)" & vbNewLine & ex.Message, "Company Name")
 
                 Exit Sub

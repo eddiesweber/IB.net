@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmRentOrd
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,9 @@ Partial Class frmRentOrd
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRentOrd))
+        Me.components = New System.ComponentModel.Container()
         Me.scrChange3 = New System.Windows.Forms.VScrollBar()
         Me.scrChange2 = New System.Windows.Forms.VScrollBar()
         Me.scrChange1 = New System.Windows.Forms.VScrollBar()
@@ -32,10 +32,14 @@ Partial Class frmRentOrd
         Me.scrQty11 = New System.Windows.Forms.VScrollBar()
         Me.scrQty10 = New System.Windows.Forms.VScrollBar()
         Me.fraSales = New System.Windows.Forms.GroupBox()
-        Me.lstSales = New C1.Win.C1List.C1List()
-        Me.C1TextBox1 = New C1.Win.C1Input.C1TextBox()
-        Me.C1TextBox2 = New C1.Win.C1Input.C1TextBox()
-        Me.C1TextBox3 = New C1.Win.C1Input.C1TextBox()
+        Me.lstSales = New System.Windows.Forms.ListBox()
+        Me.SpGetSalesmenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetSalesmen = New IB.net.dsspGetSalesmen()
+        Me.txtData8 = New C1.Win.C1Input.C1TextBox()
+        Me.CustomerInventoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsCustomerInventory = New IB.net.dsCustomerInventory()
+        Me.txtData9 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData7 = New C1.Win.C1Input.C1TextBox()
         Me.txtData5 = New C1.Win.C1Input.C1TextBox()
         Me.txtData6 = New C1.Win.C1Input.C1TextBox()
         Me.txtData4 = New C1.Win.C1Input.C1TextBox()
@@ -67,7 +71,8 @@ Partial Class frmRentOrd
         Me.cmdNew = New C1.Win.C1Input.C1Button()
         Me.txtData0 = New C1.Win.C1Input.C1TextBox()
         Me.cmdFindItem = New C1.Win.C1Input.C1Button()
-        Me.lstDept = New C1.Win.C1List.C1List()
+        Me.SpGetCustDeptBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetCustDept = New IB.net.dsspGetCustDept()
         Me.txtData1 = New C1.Win.C1Input.C1TextBox()
         Me.C1ContextMenu1 = New C1.Win.C1Command.C1ContextMenu()
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
@@ -75,7 +80,6 @@ Partial Class frmRentOrd
         Me.txtCustName = New C1.Win.C1Input.C1TextBox()
         Me.txtCustDept = New C1.Win.C1Input.C1TextBox()
         Me.txtItemDesc = New C1.Win.C1Input.C1TextBox()
-        Me.lstItem = New C1.Win.C1List.C1List()
         Me.txtData2 = New C1.Win.C1Input.C1TextBox()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.cmdFindCust = New C1.Win.C1Input.C1Button()
@@ -101,11 +105,19 @@ Partial Class frmRentOrd
         Me.chkData0 = New C1.Win.C1Input.C1CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.C1RadialMenu1 = New C1.Win.C1Command.C1RadialMenu()
+        Me.SpGetSalesmenTableAdapter = New IB.net.dsspGetSalesmenTableAdapters.spGetSalesmenTableAdapter()
+        Me.SpGetCustDeptTableAdapter = New IB.net.dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter()
+        Me.CustomerInventoryTableAdapter = New IB.net.dsCustomerInventoryTableAdapters.CustomerInventoryTableAdapter()
+        Me.lstDept = New System.Windows.Forms.ListBox()
+        Me.lstItem = New System.Windows.Forms.ListBox()
         Me.fraSales.SuspendLayout()
-        CType(Me.lstSales, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetSalesmenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetSalesmen, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomerInventoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCustomerInventory, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,13 +128,13 @@ Partial Class frmRentOrd
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdFindItem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetCustDept, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCustDept, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lstItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData20, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -214,9 +226,9 @@ Partial Class frmRentOrd
         'fraSales
         '
         Me.fraSales.Controls.Add(Me.lstSales)
-        Me.fraSales.Controls.Add(Me.C1TextBox1)
-        Me.fraSales.Controls.Add(Me.C1TextBox2)
-        Me.fraSales.Controls.Add(Me.C1TextBox3)
+        Me.fraSales.Controls.Add(Me.txtData8)
+        Me.fraSales.Controls.Add(Me.txtData9)
+        Me.fraSales.Controls.Add(Me.txtData7)
         Me.fraSales.Controls.Add(Me.txtData5)
         Me.fraSales.Controls.Add(Me.txtData6)
         Me.fraSales.Controls.Add(Me.txtData4)
@@ -230,93 +242,116 @@ Partial Class frmRentOrd
         Me.fraSales.Size = New System.Drawing.Size(358, 85)
         Me.fraSales.TabIndex = 33
         Me.fraSales.TabStop = False
-        Me.fraSales.Text = "&Salesperson (s)"
+        Me.fraSales.Text = "&Salesperson(s)"
         '
         'lstSales
         '
-        Me.lstSales.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.lstSales.ColumnHeaders = False
-        Me.lstSales.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstSales.Images.Add(CType(resources.GetObject("lstSales.Images"), System.Drawing.Image))
-        Me.lstSales.Location = New System.Drawing.Point(10, 19)
-        Me.lstSales.MatchEntryTimeout = CType(2000, Long)
+        Me.lstSales.DataSource = Me.SpGetSalesmenBindingSource
+        Me.lstSales.DisplayMember = "Sales"
+        Me.lstSales.FormattingEnabled = True
+        Me.lstSales.Location = New System.Drawing.Point(10, 20)
         Me.lstSales.Name = "lstSales"
-        Me.lstSales.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.lstSales.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.lstSales.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstSales.PrintInfo.PageSettings = CType(resources.GetObject("lstSales.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstSales.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.lstSales.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.lstSales.ShowHeaderCheckBox = False
-        Me.lstSales.Size = New System.Drawing.Size(188, 55)
+        Me.lstSales.Size = New System.Drawing.Size(190, 56)
         Me.lstSales.TabIndex = 116
-        Me.lstSales.Text = "C1List1"
-        Me.lstSales.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.lstSales.PropBag = resources.GetString("lstSales.PropBag")
         '
-        'C1TextBox1
+        'SpGetSalesmenBindingSource
         '
-        Me.C1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox1.Location = New System.Drawing.Point(295, 41)
-        Me.C1TextBox1.Name = "C1TextBox1"
-        Me.C1TextBox1.Size = New System.Drawing.Size(50, 18)
-        Me.C1TextBox1.TabIndex = 115
-        Me.C1TextBox1.Tag = Nothing
-        Me.C1TextBox1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.SpGetSalesmenBindingSource.DataMember = "spGetSalesmen"
+        Me.SpGetSalesmenBindingSource.DataSource = Me.DsspGetSalesmen
         '
-        'C1TextBox2
+        'DsspGetSalesmen
         '
-        Me.C1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox2.Location = New System.Drawing.Point(295, 61)
-        Me.C1TextBox2.Name = "C1TextBox2"
-        Me.C1TextBox2.Size = New System.Drawing.Size(50, 18)
-        Me.C1TextBox2.TabIndex = 114
-        Me.C1TextBox2.Tag = Nothing
-        Me.C1TextBox2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.DsspGetSalesmen.DataSetName = "dsspGetSalesmen"
+        Me.DsspGetSalesmen.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'C1TextBox3
+        'txtData8
         '
-        Me.C1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox3.Location = New System.Drawing.Point(295, 21)
-        Me.C1TextBox3.Name = "C1TextBox3"
-        Me.C1TextBox3.Size = New System.Drawing.Size(50, 18)
-        Me.C1TextBox3.TabIndex = 113
-        Me.C1TextBox3.Tag = Nothing
-        Me.C1TextBox3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_2PCT", True))
+        Me.txtData8.DataType = GetType(Single)
+        Me.txtData8.Location = New System.Drawing.Point(295, 41)
+        Me.txtData8.Name = "txtData8"
+        Me.txtData8.Size = New System.Drawing.Size(50, 18)
+        Me.txtData8.TabIndex = 115
+        Me.txtData8.Tag = Nothing
+        Me.txtData8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtData8.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'CustomerInventoryBindingSource
+        '
+        Me.CustomerInventoryBindingSource.DataMember = "CustomerInventory"
+        Me.CustomerInventoryBindingSource.DataSource = Me.DsCustomerInventory
+        '
+        'DsCustomerInventory
+        '
+        Me.DsCustomerInventory.DataSetName = "dsCustomerInventory"
+        Me.DsCustomerInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'txtData9
+        '
+        Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_3PCT", True))
+        Me.txtData9.DataType = GetType(Single)
+        Me.txtData9.Location = New System.Drawing.Point(295, 61)
+        Me.txtData9.Name = "txtData9"
+        Me.txtData9.Size = New System.Drawing.Size(50, 18)
+        Me.txtData9.TabIndex = 114
+        Me.txtData9.Tag = Nothing
+        Me.txtData9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtData9.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData7
+        '
+        Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_1PCT", True))
+        Me.txtData7.DataType = GetType(Single)
+        Me.txtData7.Location = New System.Drawing.Point(295, 21)
+        Me.txtData7.Name = "txtData7"
+        Me.txtData7.Size = New System.Drawing.Size(50, 18)
+        Me.txtData7.TabIndex = 113
+        Me.txtData7.Tag = Nothing
+        Me.txtData7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtData7.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData5
         '
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_2", True))
         Me.txtData5.Location = New System.Drawing.Point(230, 41)
         Me.txtData5.Name = "txtData5"
         Me.txtData5.Size = New System.Drawing.Size(50, 18)
         Me.txtData5.TabIndex = 112
         Me.txtData5.Tag = Nothing
+        Me.txtData5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData5.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData6
         '
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_3", True))
         Me.txtData6.Location = New System.Drawing.Point(230, 61)
         Me.txtData6.Name = "txtData6"
         Me.txtData6.Size = New System.Drawing.Size(50, 18)
         Me.txtData6.TabIndex = 111
         Me.txtData6.Tag = Nothing
+        Me.txtData6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData6.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData4
         '
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "SALES_1", True))
         Me.txtData4.Location = New System.Drawing.Point(230, 22)
         Me.txtData4.Name = "txtData4"
         Me.txtData4.Size = New System.Drawing.Size(50, 18)
         Me.txtData4.TabIndex = 110
         Me.txtData4.Tag = Nothing
+        Me.txtData4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData4.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -461,12 +496,11 @@ Partial Class frmRentOrd
         'lblCurItem
         '
         Me.lblCurItem.AutoSize = True
-        Me.lblCurItem.Location = New System.Drawing.Point(421, 191)
+        Me.lblCurItem.Location = New System.Drawing.Point(411, 210)
         Me.lblCurItem.Name = "lblCurItem"
         Me.lblCurItem.Size = New System.Drawing.Size(53, 13)
         Me.lblCurItem.TabIndex = 56
         Me.lblCurItem.Text = "lblCurItem"
-        Me.lblCurItem.Visible = False
         '
         'lblLabel6
         '
@@ -507,12 +541,11 @@ Partial Class frmRentOrd
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(421, 171)
+        Me.lblCurCust.Location = New System.Drawing.Point(411, 190)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(54, 13)
         Me.lblCurCust.TabIndex = 53
         Me.lblCurCust.Text = "lblCurCust"
-        Me.lblCurCust.Visible = False
         '
         'cmdExit
         '
@@ -538,6 +571,7 @@ Partial Class frmRentOrd
         '
         'cmdReset
         '
+        Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(395, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
@@ -572,6 +606,9 @@ Partial Class frmRentOrd
         'txtData0
         '
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "CUST_NUM", True))
+        Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.Enabled = False
         Me.txtData0.Location = New System.Drawing.Point(70, 14)
         Me.txtData0.Name = "txtData0"
         Me.txtData0.Size = New System.Drawing.Size(80, 18)
@@ -592,37 +629,26 @@ Partial Class frmRentOrd
         Me.cmdFindItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdFindItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'lstDept
+        'SpGetCustDeptBindingSource
         '
-        Me.lstDept.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.lstDept.ColumnHeaders = False
-        Me.lstDept.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstDept.Images.Add(CType(resources.GetObject("lstDept.Images"), System.Drawing.Image))
-        Me.lstDept.Location = New System.Drawing.Point(315, 14)
-        Me.lstDept.MatchEntryTimeout = CType(2000, Long)
-        Me.lstDept.Name = "lstDept"
-        Me.lstDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.lstDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.lstDept.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstDept.PrintInfo.PageSettings = CType(resources.GetObject("lstDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstDept.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.lstDept.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.lstDept.ShowHeaderCheckBox = False
-        Me.lstDept.Size = New System.Drawing.Size(45, 55)
-        Me.lstDept.TabIndex = 78
-        Me.lstDept.Text = "C1List1"
-        Me.lstDept.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
+        Me.SpGetCustDeptBindingSource.DataMember = "SpGetCustDept"
+        Me.SpGetCustDeptBindingSource.DataSource = Me.DsspGetCustDept
+        '
+        'DsspGetCustDept
+        '
+        Me.DsspGetCustDept.DataSetName = "dsspGetCustDept"
+        Me.DsspGetCustDept.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtData1
         '
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData1.Location = New System.Drawing.Point(313, 14)
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "DEPT", True))
+        Me.txtData1.DataType = GetType(Short)
+        Me.txtData1.Location = New System.Drawing.Point(414, 299)
         Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(50, 18)
+        Me.txtData1.Size = New System.Drawing.Size(61, 18)
         Me.txtData1.TabIndex = 79
         Me.txtData1.Tag = Nothing
-        Me.txtData1.Visible = False
         Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -680,34 +706,14 @@ Partial Class frmRentOrd
         Me.txtItemDesc.Tag = Nothing
         Me.txtItemDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'lstItem
-        '
-        Me.lstItem.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.lstItem.ColumnHeaders = False
-        Me.lstItem.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstItem.Images.Add(CType(resources.GetObject("lstItem.Images"), System.Drawing.Image))
-        Me.lstItem.Location = New System.Drawing.Point(47, 79)
-        Me.lstItem.MatchEntryTimeout = CType(2000, Long)
-        Me.lstItem.Name = "lstItem"
-        Me.lstItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.lstItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.lstItem.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstItem.PrintInfo.PageSettings = CType(resources.GetObject("lstItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstItem.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.lstItem.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.lstItem.ShowHeaderCheckBox = False
-        Me.lstItem.Size = New System.Drawing.Size(80, 55)
-        Me.lstItem.TabIndex = 83
-        Me.lstItem.Text = "C1List1"
-        Me.lstItem.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
-        Me.lstItem.PropBag = resources.GetString("lstItem.PropBag")
-        '
         'txtData2
         '
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData2.Location = New System.Drawing.Point(47, 77)
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "ITEM_NUM", True))
+        Me.txtData2.DataType = GetType(Integer)
+        Me.txtData2.Location = New System.Drawing.Point(414, 323)
         Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(80, 18)
+        Me.txtData2.Size = New System.Drawing.Size(60, 18)
         Me.txtData2.TabIndex = 84
         Me.txtData2.Tag = Nothing
         Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -736,6 +742,7 @@ Partial Class frmRentOrd
         'txtData20
         '
         Me.txtData20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData20.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "NAME_SIZE", True))
         Me.txtData20.Location = New System.Drawing.Point(260, 99)
         Me.txtData20.Name = "txtData20"
         Me.txtData20.Size = New System.Drawing.Size(100, 18)
@@ -763,24 +770,25 @@ Partial Class frmRentOrd
         'txtData14
         '
         Me.txtData14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData14.Location = New System.Drawing.Point(422, 212)
+        Me.txtData14.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "LINE_TYPE", True))
+        Me.txtData14.DataType = GetType(Short)
+        Me.txtData14.Location = New System.Drawing.Point(414, 371)
         Me.txtData14.Name = "txtData14"
         Me.txtData14.Size = New System.Drawing.Size(60, 18)
         Me.txtData14.TabIndex = 89
         Me.txtData14.Tag = Nothing
-        Me.txtData14.Visible = False
         Me.txtData14.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData14.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData3
         '
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData3.Location = New System.Drawing.Point(422, 231)
+        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "ITEM_TYPE", True))
+        Me.txtData3.Location = New System.Drawing.Point(414, 347)
         Me.txtData3.Name = "txtData3"
         Me.txtData3.Size = New System.Drawing.Size(60, 18)
         Me.txtData3.TabIndex = 90
         Me.txtData3.Tag = Nothing
-        Me.txtData3.Visible = False
         Me.txtData3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -805,6 +813,7 @@ Partial Class frmRentOrd
         Me.txtCurrent3.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent3.TabIndex = 92
         Me.txtCurrent3.Tag = Nothing
+        Me.txtCurrent3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtCurrent3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtCurrent2
@@ -817,6 +826,7 @@ Partial Class frmRentOrd
         Me.txtCurrent2.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent2.TabIndex = 93
         Me.txtCurrent2.Tag = Nothing
+        Me.txtCurrent2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtCurrent2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtCurrent1
@@ -829,6 +839,7 @@ Partial Class frmRentOrd
         Me.txtCurrent1.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent1.TabIndex = 94
         Me.txtCurrent1.Tag = Nothing
+        Me.txtCurrent1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtCurrent1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtCurrent0
@@ -841,6 +852,7 @@ Partial Class frmRentOrd
         Me.txtCurrent0.Size = New System.Drawing.Size(50, 18)
         Me.txtCurrent0.TabIndex = 95
         Me.txtCurrent0.Tag = Nothing
+        Me.txtCurrent0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtCurrent0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtChange0
@@ -851,6 +863,7 @@ Partial Class frmRentOrd
         Me.txtChange0.Size = New System.Drawing.Size(50, 18)
         Me.txtChange0.TabIndex = 96
         Me.txtChange0.Tag = Nothing
+        Me.txtChange0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtChange0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtChange0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -862,6 +875,7 @@ Partial Class frmRentOrd
         Me.txtChange1.Size = New System.Drawing.Size(50, 18)
         Me.txtChange1.TabIndex = 99
         Me.txtChange1.Tag = Nothing
+        Me.txtChange1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtChange1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtChange1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -873,6 +887,7 @@ Partial Class frmRentOrd
         Me.txtChange2.Size = New System.Drawing.Size(50, 18)
         Me.txtChange2.TabIndex = 98
         Me.txtChange2.Tag = Nothing
+        Me.txtChange2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtChange2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtChange2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -884,61 +899,77 @@ Partial Class frmRentOrd
         Me.txtChange3.Size = New System.Drawing.Size(50, 18)
         Me.txtChange3.TabIndex = 97
         Me.txtChange3.Tag = Nothing
+        Me.txtChange3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtChange3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtChange3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData10.Location = New System.Drawing.Point(222, 173)
+        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "LOAN_QTY", True))
+        Me.txtData10.DataType = GetType(Single)
+        Me.txtData10.Location = New System.Drawing.Point(221, 153)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Size = New System.Drawing.Size(50, 18)
         Me.txtData10.TabIndex = 103
         Me.txtData10.Tag = Nothing
+        Me.txtData10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData11
         '
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData11.Location = New System.Drawing.Point(222, 193)
+        Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "INV_QTY", True))
+        Me.txtData11.DataType = GetType(Single)
+        Me.txtData11.Location = New System.Drawing.Point(221, 173)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.Size = New System.Drawing.Size(50, 18)
         Me.txtData11.TabIndex = 102
         Me.txtData11.Tag = Nothing
+        Me.txtData11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData11.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData12
         '
         Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData12.Location = New System.Drawing.Point(222, 213)
+        Me.txtData12.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "MIN_QTY", True))
+        Me.txtData12.DataType = GetType(Single)
+        Me.txtData12.Location = New System.Drawing.Point(221, 193)
         Me.txtData12.Name = "txtData12"
         Me.txtData12.Size = New System.Drawing.Size(50, 18)
         Me.txtData12.TabIndex = 101
         Me.txtData12.Tag = Nothing
+        Me.txtData12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData12.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData13
         '
         Me.txtData13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData13.Location = New System.Drawing.Point(222, 153)
+        Me.txtData13.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "DEL_QTY", True))
+        Me.txtData13.DataType = GetType(Single)
+        Me.txtData13.Location = New System.Drawing.Point(221, 213)
         Me.txtData13.Name = "txtData13"
         Me.txtData13.Size = New System.Drawing.Size(50, 18)
         Me.txtData13.TabIndex = 100
         Me.txtData13.Tag = Nothing
+        Me.txtData13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData13.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData19
         '
         Me.txtData19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData19.Location = New System.Drawing.Point(222, 233)
+        Me.txtData19.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "UNIT_PRICE", True))
+        Me.txtData19.DataType = GetType(Single)
+        Me.txtData19.Location = New System.Drawing.Point(221, 233)
         Me.txtData19.Name = "txtData19"
         Me.txtData19.Size = New System.Drawing.Size(50, 18)
         Me.txtData19.TabIndex = 104
         Me.txtData19.Tag = Nothing
+        Me.txtData19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData19.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData19.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -952,6 +983,7 @@ Partial Class frmRentOrd
         Me.txtTotal.Size = New System.Drawing.Size(65, 18)
         Me.txtTotal.TabIndex = 105
         Me.txtTotal.Tag = Nothing
+        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtTotal.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'chkData0
@@ -978,11 +1010,45 @@ Partial Class frmRentOrd
         Me.GroupBox1.TabIndex = 116
         Me.GroupBox1.TabStop = False
         '
+        'SpGetSalesmenTableAdapter
+        '
+        Me.SpGetSalesmenTableAdapter.ClearBeforeFill = True
+        '
+        'SpGetCustDeptTableAdapter
+        '
+        Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
+        '
+        'CustomerInventoryTableAdapter
+        '
+        Me.CustomerInventoryTableAdapter.ClearBeforeFill = True
+        '
+        'lstDept
+        '
+        Me.lstDept.DataSource = Me.SpGetCustDeptBindingSource
+        Me.lstDept.DisplayMember = "DEPT"
+        Me.lstDept.FormattingEnabled = True
+        Me.lstDept.Location = New System.Drawing.Point(313, 10)
+        Me.lstDept.Name = "lstDept"
+        Me.lstDept.Size = New System.Drawing.Size(47, 56)
+        Me.lstDept.TabIndex = 117
+        '
+        'lstItem
+        '
+        Me.lstItem.DataSource = Me.CustomerInventoryBindingSource
+        Me.lstItem.DisplayMember = "ITEM_NUM"
+        Me.lstItem.FormattingEnabled = True
+        Me.lstItem.Location = New System.Drawing.Point(46, 79)
+        Me.lstItem.Name = "lstItem"
+        Me.lstItem.Size = New System.Drawing.Size(76, 56)
+        Me.lstItem.TabIndex = 118
+        '
         'frmRentOrd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(494, 401)
+        Me.Controls.Add(Me.lstItem)
+        Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkData0)
         Me.Controls.Add(Me.txtTotal)
@@ -1007,12 +1073,10 @@ Partial Class frmRentOrd
         Me.Controls.Add(Me.cmdFindCust)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.txtData2)
-        Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.txtItemDesc)
         Me.Controls.Add(Me.txtCustDept)
         Me.Controls.Add(Me.txtCustName)
         Me.Controls.Add(Me.txtData1)
-        Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.cmdFindItem)
         Me.Controls.Add(Me.txtData0)
         Me.Controls.Add(Me.cmdExit)
@@ -1053,10 +1117,13 @@ Partial Class frmRentOrd
         Me.Text = "Add/Edit Customer Dialog"
         Me.fraSales.ResumeLayout(False)
         Me.fraSales.PerformLayout()
-        CType(Me.lstSales, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetSalesmenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetSalesmen, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomerInventoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCustomerInventory, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1067,13 +1134,13 @@ Partial Class frmRentOrd
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdFindItem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lstDept, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetCustDept, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCustDept, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lstItem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData20, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1137,12 +1204,10 @@ Partial Class frmRentOrd
     Friend WithEvents cmdNew As C1.Win.C1Input.C1Button
     Friend WithEvents txtData0 As C1.Win.C1Input.C1TextBox
     Friend WithEvents cmdFindItem As C1.Win.C1Input.C1Button
-    Friend WithEvents lstDept As C1.Win.C1List.C1List
     Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
     Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
     Friend WithEvents txtData2 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents lstItem As C1.Win.C1List.C1List
     Friend WithEvents txtItemDesc As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtCustDept As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtCustName As C1.Win.C1Input.C1TextBox
@@ -1169,13 +1234,24 @@ Partial Class frmRentOrd
     Friend WithEvents txtCurrent3 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtMemo As C1.Win.C1Input.C1TextBox
     Private WithEvents C1ContextMenu1 As C1.Win.C1Command.C1ContextMenu
-    Friend WithEvents C1TextBox1 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1TextBox2 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1TextBox3 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData8 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData9 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData5 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData6 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData4 As C1.Win.C1Input.C1TextBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents lstSales As C1.Win.C1List.C1List
     Friend WithEvents C1RadialMenu1 As C1.Win.C1Command.C1RadialMenu
+    Friend WithEvents SpGetSalesmenTableAdapter As dsspGetSalesmenTableAdapters.spGetSalesmenTableAdapter
+    Friend WithEvents SpGetCustDeptTableAdapter As dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter
+    Friend WithEvents CustomerInventoryTableAdapter As dsCustomerInventoryTableAdapters.CustomerInventoryTableAdapter
+    Private WithEvents DsspGetSalesmen As dsspGetSalesmen
+    Private WithEvents SpGetSalesmenBindingSource As BindingSource
+    Private WithEvents SpGetCustDeptBindingSource As BindingSource
+    Private WithEvents DsspGetCustDept As dsspGetCustDept
+    Private WithEvents DsCustomerInventory As dsCustomerInventory
+    Private WithEvents CustomerInventoryBindingSource As BindingSource
+    Friend WithEvents lstDept As ListBox
+    Friend WithEvents lstItem As ListBox
+    Friend WithEvents lstSales As ListBox
 End Class

@@ -70,6 +70,7 @@ Public Class frmPurge
 
 
             Catch ex As Exception
+                LogError(Me.Name, "LoadScreen", "1.0", ex.Message)
                 Result = MessageBox.Show(Me, "Error getting the customer numbers" & vbNewLine & "Error : " & ex.Message, "Getting Customer Numbers", vbOKCancel)
                 If Result = vbCancel Then
                     Exit Sub

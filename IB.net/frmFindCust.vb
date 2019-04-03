@@ -46,6 +46,7 @@ Public Class frmFindCust
                 dataReader.Close()
 
             Catch ex As Exception
+                LogError(Me.Name, "GetData", "1.0", ex.Message)
                 Result = MessageBox.Show(Me, "Error getting the customer numbers" & vbNewLine & "Error : " & ex.Message, "Getting Customer Numbers", vbOKCancel)
                 If Result = vbCancel Then
                     Exit Sub
@@ -72,6 +73,7 @@ Public Class frmFindCust
                 dataReader.Close()
 
             Catch ex As Exception
+                LogError(Me.Name, "GetData", "2.0", ex.Message)
                 Result = MessageBox.Show(Me, "Error getting the customer names" & vbNewLine & "Error : " & ex.Message, "Getting Customer Names", vbOKCancel)
                 If Result = vbCancel Then
                     Exit Sub

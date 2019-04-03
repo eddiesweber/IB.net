@@ -14,12 +14,15 @@ Public Class frmSOHist
             C1TrueDBGrid1.LoadLayout("frmSOHistC1TrueDBGrid1.xml")
         End If
 
-        Me.SpGetInvoiceHistTableAdapter.Connection.ConnectionString = CS
-
         Startdate = DateAdd("yyyy", -1, Now())
         datSince.Value = Startdate
 
-        lblCurCust.Text = CurCust
+        If CurCust = 0 Then
+            frmFindCust.Show()
+            frmFindCust.BringToFront()
+        Else
+            lblCurCust.Text = CurCust
+        End If
 
     End Sub
 
@@ -36,6 +39,7 @@ Public Class frmSOHist
         Dim q As String
 
         If IsDate(datSince.Value) And CurCust > 0 Then
+            Me.SpGetInvoiceHistTableAdapter.Connection.ConnectionString = CS
             Me.SpGetInvoiceHistTableAdapter.Fill(DsSOHist.spGetInvoiceHist, CurCust, datSince.Value)
         End If
 

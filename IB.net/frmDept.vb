@@ -91,14 +91,14 @@ Public Class frmDept
 
     Private Sub GetData()
 
-        bTextChanged = False
-
         txtCustName.Text = GetCustName()
 
         If CurCust = 0 Then
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
+            bTextChanged = False
+
             CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
             Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
         End If
@@ -115,29 +115,31 @@ Public Class frmDept
 
     Private Sub GetData2()
 
-        'Goto current department
-        If DsCustomerDepartment.Tables("CustomerDepartment").Rows.Count = 0 Then
+        Dim intRow As Integer
+
+        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
             CurDept = 0
             Exit Sub
         End If
 
-        'If CurDept > 0 Then
-        '    rs.MoveFirst()
-        '    'rs.Find "DEPT=" & CurDept
-        '    If rs.EOF Then rs.MoveFirst()
-        'Else
-        '    rs.MoveFirst()
-        'End If
+        ' "Select * from CustomerDepartment Where Cust_Num=" & CurCust
+        If CurDept > 0 Then
+            CustomerDepartmentBindingSource.MoveFirst()
+            intRow = CustomerDepartmentBindingSource.Find("DEPT", CurDept)
 
-        'CurDept = rs!DEPT
+            If intRow >= 0 Then
+                CustomerDepartmentBindingSource.Position = intRow
+            End If
+        End If
+
+        ' What if it doesn't find a row?
+        CurDept = DsCustomerDepartment.CustomerDepartment.Rows(intRow)("DEPT")
 
         ' Both following lines do the same, keeping to see other way of getting position
         'lstDept.SelectedIndex = lstDept.Find(intDept.ToString, C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
         lstDept.SelectedIndex = CustomerDepartmentBindingSource.Position
 
         intDept = lstDept.SelectedText
-
-        GetTaxCodes()
 
         'cmbTax.BoundText = txtData10.Text
         cmbTax.SelectedIndex = cmbTax.FindString(strTAX_LOCODE)
@@ -146,8 +148,6 @@ Public Class frmDept
         Else
             strTAX_LOCODE = ""
         End If
-
-        'strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(CustomerDepartmentBindingSource.Position)("TAX_LOCODE")
 
         GetDataRoute()
 
@@ -244,6 +244,7 @@ Public Class frmDept
                 dataReader.Close()
             Catch ex As Exception
                 Result = MessageBox.Show(Me, "Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", vbOKCancel)
+                LogError(Me.Name, "cmdNew_Click", "1.0", ex.Message)
                 If Result = vbCancel Then
                     Exit Sub
                 Else
@@ -353,6 +354,7 @@ Public Class frmDept
             bCancel = True
 
             Result = MessageBox.Show(Me, "Error updating department" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
+            LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
             If Result = vbCancel Then
                 Exit Sub
             Else
@@ -377,9 +379,10 @@ Public Class frmDept
     Private Sub lstDept_Click(sender As Object, e As EventArgs) Handles lstDept.Click
 
         intDept = lstDept.SelectedText
+
         If buserchange Then
             buserchange = False
-            CurDept = CInt(lstDept.SelectedText)
+            CurDept = lstDept.SelectedText
             GetData2()
             buserchange = True
         End If
@@ -477,6 +480,18 @@ Public Class frmDept
         SaveWindowPos(Me)
 
         Me.Close()
+
+    End Sub
+
+    Private Sub cmdItem_Click(sender As Object, e As EventArgs) Handles cmdItem.Click
+
+        frmRentOrd.Show()
+
+    End Sub
+
+    Private Sub cmdSurcharge_Click(sender As Object, e As EventArgs) Handles cmdSurcharge.Click
+
+        frmCustSurcharge.Show()
 
     End Sub
 

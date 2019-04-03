@@ -66,6 +66,7 @@ Module Main
             Dim wrapper As New Simple3Des("I1!n2@()")
             SaveSetting(APPNAME, strSectionName, "Password", wrapper.EncryptData(Password))
         Catch ex As Exception
+            LogError("main", "SaveSettings", "1.0", ex.Message)
             SaveSetting(APPNAME, strSectionName, "Password", "")
             MessageBox.Show("Error saving password, Password not saved (M-SS1.0)" & vbNewLine & vbNewLine & ex.Message)
         End Try
@@ -84,6 +85,7 @@ Module Main
 
             CheckConnectionServer = True
         Catch ex As Exception
+            LogError("Main", "CheckConnectionServer", "1.0", ex.Message)
             CheckConnectionServer = False
         End Try
 
@@ -97,6 +99,7 @@ Module Main
 
             CheckConnectionDivision = True
         Catch ex As Exception
+            LogError("Main", "CheckConnectionServer", "1.0", ex.Message)
             CheckConnectionDivision = False
         End Try
 
@@ -138,6 +141,7 @@ Module Main
         Try
             configDB.Open()
         Catch ex As Exception
+            LogError("Main", "OpenData", "1.0", ex.Message)
             frmSetConnection.ShowDialog()
         End Try
 
@@ -161,6 +165,7 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
+                LogError("Main", "OpenData", "2.0", ex.Message)
                 MessageBox.Show("Error getting the division name")
                 Exit Sub
             End Try
@@ -203,6 +208,7 @@ Module Main
                         frmCompany.ShowDialog()
                     End If
                 Catch ex As Exception
+                    LogError("Main", "OpenData", "3.0", ex.Message)
                     MessageBox.Show("Error getting company name" & vbNewLine & ex.Message)
 
                     Application.Exit()
@@ -348,7 +354,6 @@ Module Main
 
     Public Function GetCustName()
 
-        Dim rstemp As New ADODB.Recordset
         Dim q As String
 
         q = "SELECT BILL_NAME FROM CustomerMaster WHERE CUST_NUM=" & CurCust
@@ -365,9 +370,67 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
-                frmCompany.Show()
+                LogError("Main", "GetCustName", "1.0", ex.Message)
+                GetCustName = ""
             End Try
         End Using
+
+    End Function
+
+    Public Function GetItemDesc(INum As Long) As String
+
+        Dim q As String
+        Dim ITyp As String
+        Dim blnFound As Boolean = True
+
+        ITyp = "R"
+        q = "SELECT DESCR FROM ItemMasterR WHERE ITEM_NUM=" & CStr(INum)
+
+        Using Command As New SqlCommand(q, DB)
+            Try
+                Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                dataReader.Read()
+
+                If dataReader.HasRows Then
+                    GetItemDesc = dataReader(0)
+                Else
+                    blnFound = False
+                End If
+
+                dataReader.Close()
+            Catch ex As Exception
+                LogError("Main", "GetItemDesc", "1.0", ex.Message)
+                GetItemDesc = ""
+            End Try
+        End Using
+
+        If blnFound = False Then
+            ITyp = "O"
+            q = "SELECT DESCR FROM ItemMasterO WHERE ITEM_NUM=" & INum
+
+            Using Command As New SqlCommand(q, DB)
+                Try
+                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                    dataReader.Read()
+
+                    If dataReader.HasRows Then
+                        GetItemDesc = dataReader(0) ' Descr
+                    Else
+                        GetItemDesc = "error"
+                        Exit Function
+                    End If
+
+                    dataReader.Close()
+                Catch ex As Exception
+                    LogError("Main", "getItemDesc", "2.0", ex.Message)
+                    GetItemDesc = ""
+                End Try
+            End Using
+        End If
+
+        CurItem = INum
+        CurType = ITyp
+
 
     End Function
 
@@ -404,6 +467,7 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
+                LogError("Main", "ChkInvoiceExitsts", "1.0", ex.Message)
                 Result = MessageBox.Show("Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", MessageBoxButtons.OKCancel)
                 If Result = vbCancel Then
                     Exit Function

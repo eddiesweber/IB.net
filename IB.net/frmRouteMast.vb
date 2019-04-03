@@ -19,6 +19,7 @@ Public Class frmRouteMast
             Me.RouteMasterTableAdapter.Connection.ConnectionString = CS
             Me.RouteMasterTableAdapter.Fill(Me.DsRouteMaster.RouteMaster)
         Catch ex As Exception
+            LogError(Me.Name, "Load", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
             Exit Sub
         End Try
@@ -54,6 +55,7 @@ Public Class frmRouteMast
             C1TrueDBGrid1.UpdateData()
             RouteMasterTableAdapter.Update(DsRouteMaster.RouteMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
         End Try
 
@@ -65,6 +67,7 @@ Public Class frmRouteMast
             C1TrueDBGrid1.UpdateData()
             RouteMasterTableAdapter.Update(DsRouteMaster.RouteMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
             MessageBox.Show(ex.Message, "Error deleting record")
         End Try
 

@@ -19,6 +19,7 @@ Public Class frmTax
             Me.TaxMasterTableAdapter.Connection.ConnectionString = CS
             Me.TaxMasterTableAdapter.Fill(Me.DsTaxMaster.TaxMaster)
         Catch ex As Exception
+            LogError(Me.Name, "Load", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
             Exit Sub
         End Try
@@ -54,6 +55,7 @@ Public Class frmTax
             C1TrueDBGrid1.UpdateData()
             TaxMasterTableAdapter.Update(DsTaxMaster.TaxMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
         End Try
 
@@ -65,6 +67,7 @@ Public Class frmTax
             C1TrueDBGrid1.UpdateData()
             TaxMasterTableAdapter.Update(DsTaxMaster.TaxMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
             MessageBox.Show(ex.Message, "Error deleting record")
         End Try
 

@@ -22,22 +22,15 @@ Partial Class frmCustSurcharge
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtData19 = New System.Windows.Forms.TextBox()
+        Me.components = New System.ComponentModel.Container()
         Me.cmdFindItem = New System.Windows.Forms.Button()
-        Me.txtCustDept = New System.Windows.Forms.TextBox()
-        Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.txtData3 = New System.Windows.Forms.TextBox()
-        Me.txtData2 = New System.Windows.Forms.TextBox()
-        Me.txtData0 = New System.Windows.Forms.TextBox()
-        Me.cmdDelete = New System.Windows.Forms.Button()
-        Me.cmdReset = New System.Windows.Forms.Button()
-        Me.cmdNew = New System.Windows.Forms.Button()
-        Me.cmdFindCust = New System.Windows.Forms.Button()
-        Me.cmdExit = New System.Windows.Forms.Button()
-        Me.cmdUpdate = New System.Windows.Forms.Button()
+        Me.CustomerSurchargeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsCustomerSurcharge = New IB.net.dsCustomerSurcharge()
         Me.txtData1 = New System.Windows.Forms.TextBox()
-        Me.txtCustName = New System.Windows.Forms.TextBox()
         Me.lstDept = New System.Windows.Forms.ListBox()
+        Me.SpGetCustDeptBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetCustDept = New IB.net.dsspGetCustDept()
         Me.lstItem = New System.Windows.Forms.ListBox()
         Me.lblCurItem = New System.Windows.Forms.Label()
         Me.lblLabel6 = New System.Windows.Forms.Label()
@@ -45,20 +38,41 @@ Partial Class frmCustSurcharge
         Me.lblLabel1 = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lblCurCust = New System.Windows.Forms.Label()
+        Me.cmdExit = New C1.Win.C1Input.C1Button()
+        Me.cmdUpdate = New C1.Win.C1Input.C1Button()
+        Me.cmdReset = New C1.Win.C1Input.C1Button()
+        Me.cmdDelete = New C1.Win.C1Input.C1Button()
+        Me.cmdNew = New C1.Win.C1Input.C1Button()
+        Me.cmdFindCust = New C1.Win.C1Input.C1Button()
+        Me.txtData0 = New C1.Win.C1Input.C1TextBox()
+        Me.txtCustName = New C1.Win.C1Input.C1TextBox()
+        Me.txtCustDept = New C1.Win.C1Input.C1TextBox()
+        Me.txtItemDesc = New C1.Win.C1Input.C1TextBox()
+        Me.txtData19 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData2 = New C1.Win.C1Input.C1TextBox()
+        Me.SpGetCustDeptTableAdapter = New IB.net.dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter()
+        Me.CustomerSurchargeTableAdapter = New IB.net.dsCustomerSurchargeTableAdapters.CustomerSurchargeTableAdapter()
+        CType(Me.CustomerSurchargeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsCustomerSurcharge, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetCustDept, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCustDept, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txtData19
-        '
-        Me.txtData19.ForeColor = System.Drawing.Color.Navy
-        Me.txtData19.Location = New System.Drawing.Point(193, 151)
-        Me.txtData19.Multiline = True
-        Me.txtData19.Name = "txtData19"
-        Me.txtData19.Size = New System.Drawing.Size(50, 20)
-        Me.txtData19.TabIndex = 10
         '
         'cmdFindItem
         '
-        Me.cmdFindItem.Location = New System.Drawing.Point(49, 91)
+        Me.cmdFindItem.Location = New System.Drawing.Point(49, 94)
         Me.cmdFindItem.Name = "cmdFindItem"
         Me.cmdFindItem.Size = New System.Drawing.Size(71, 20)
         Me.cmdFindItem.TabIndex = 7
@@ -66,143 +80,62 @@ Partial Class frmCustSurcharge
         Me.cmdFindItem.UseVisualStyleBackColor = True
         Me.cmdFindItem.Visible = False
         '
-        'txtCustDept
-        '
-        Me.txtCustDept.BackColor = System.Drawing.Color.Silver
-        Me.txtCustDept.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtCustDept.ForeColor = System.Drawing.Color.Navy
-        Me.txtCustDept.Location = New System.Drawing.Point(70, 42)
-        Me.txtCustDept.Name = "txtCustDept"
-        Me.txtCustDept.Size = New System.Drawing.Size(232, 13)
-        Me.txtCustDept.TabIndex = 19
-        Me.txtCustDept.TabStop = False
-        '
-        'txtItemDesc
-        '
-        Me.txtItemDesc.BackColor = System.Drawing.Color.Silver
-        Me.txtItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtItemDesc.ForeColor = System.Drawing.Color.Navy
-        Me.txtItemDesc.Location = New System.Drawing.Point(140, 70)
-        Me.txtItemDesc.Name = "txtItemDesc"
-        Me.txtItemDesc.Size = New System.Drawing.Size(225, 13)
-        Me.txtItemDesc.TabIndex = 18
-        Me.txtItemDesc.TabStop = False
-        '
         'txtData3
         '
+        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerSurchargeBindingSource, "Item_Type", True))
         Me.txtData3.ForeColor = System.Drawing.Color.Navy
-        Me.txtData3.Location = New System.Drawing.Point(21, 112)
+        Me.txtData3.Location = New System.Drawing.Point(444, 161)
         Me.txtData3.Name = "txtData3"
         Me.txtData3.Size = New System.Drawing.Size(15, 20)
         Me.txtData3.TabIndex = 8
-        Me.txtData3.Visible = False
         '
-        'txtData2
+        'CustomerSurchargeBindingSource
         '
-        Me.txtData2.ForeColor = System.Drawing.Color.Navy
-        Me.txtData2.Location = New System.Drawing.Point(49, 70)
-        Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(78, 20)
-        Me.txtData2.TabIndex = 6
-        Me.txtData2.Visible = False
+        Me.CustomerSurchargeBindingSource.DataMember = "CustomerSurcharge"
+        Me.CustomerSurchargeBindingSource.DataSource = Me.DsCustomerSurcharge
         '
-        'txtData0
+        'DsCustomerSurcharge
         '
-        Me.txtData0.Enabled = False
-        Me.txtData0.ForeColor = System.Drawing.Color.Navy
-        Me.txtData0.Location = New System.Drawing.Point(70, 7)
-        Me.txtData0.Name = "txtData0"
-        Me.txtData0.Size = New System.Drawing.Size(78, 20)
-        Me.txtData0.TabIndex = 1
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.Location = New System.Drawing.Point(392, 35)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(71, 22)
-        Me.cmdDelete.TabIndex = 12
-        Me.cmdDelete.Text = "&Delete"
-        Me.cmdDelete.UseVisualStyleBackColor = True
-        '
-        'cmdReset
-        '
-        Me.cmdReset.Enabled = False
-        Me.cmdReset.Location = New System.Drawing.Point(392, 63)
-        Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(71, 22)
-        Me.cmdReset.TabIndex = 13
-        Me.cmdReset.Text = "Reset"
-        Me.cmdReset.UseVisualStyleBackColor = True
-        '
-        'cmdNew
-        '
-        Me.cmdNew.Location = New System.Drawing.Point(392, 7)
-        Me.cmdNew.Name = "cmdNew"
-        Me.cmdNew.Size = New System.Drawing.Size(71, 22)
-        Me.cmdNew.TabIndex = 11
-        Me.cmdNew.Text = "&New"
-        Me.cmdNew.UseVisualStyleBackColor = True
-        '
-        'cmdFindCust
-        '
-        Me.cmdFindCust.Location = New System.Drawing.Point(161, 7)
-        Me.cmdFindCust.Name = "cmdFindCust"
-        Me.cmdFindCust.Size = New System.Drawing.Size(71, 20)
-        Me.cmdFindCust.TabIndex = 2
-        Me.cmdFindCust.Text = "&Find"
-        Me.cmdFindCust.UseVisualStyleBackColor = True
-        '
-        'cmdExit
-        '
-        Me.cmdExit.Location = New System.Drawing.Point(392, 119)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(71, 22)
-        Me.cmdExit.TabIndex = 15
-        Me.cmdExit.Text = "E&xit"
-        Me.cmdExit.UseVisualStyleBackColor = True
-        '
-        'cmdUpdate
-        '
-        Me.cmdUpdate.Location = New System.Drawing.Point(392, 91)
-        Me.cmdUpdate.Name = "cmdUpdate"
-        Me.cmdUpdate.Size = New System.Drawing.Size(71, 22)
-        Me.cmdUpdate.TabIndex = 14
-        Me.cmdUpdate.Text = "Update"
-        Me.cmdUpdate.UseVisualStyleBackColor = True
+        Me.DsCustomerSurcharge.DataSetName = "dsCustomerSurcharge"
+        Me.DsCustomerSurcharge.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtData1
         '
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CustomerSurchargeBindingSource, "Dept", True))
         Me.txtData1.Enabled = False
         Me.txtData1.ForeColor = System.Drawing.Color.Navy
-        Me.txtData1.Location = New System.Drawing.Point(315, 7)
+        Me.txtData1.Location = New System.Drawing.Point(294, 161)
         Me.txtData1.Name = "txtData1"
         Me.txtData1.Size = New System.Drawing.Size(43, 20)
         Me.txtData1.TabIndex = 4
-        Me.txtData1.Visible = False
-        '
-        'txtCustName
-        '
-        Me.txtCustName.BackColor = System.Drawing.Color.Silver
-        Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtCustName.ForeColor = System.Drawing.Color.Navy
-        Me.txtCustName.Location = New System.Drawing.Point(70, 28)
-        Me.txtCustName.Name = "txtCustName"
-        Me.txtCustName.Size = New System.Drawing.Size(232, 13)
-        Me.txtCustName.TabIndex = 16
-        Me.txtCustName.TabStop = False
         '
         'lstDept
         '
+        Me.lstDept.DataSource = Me.SpGetCustDeptBindingSource
+        Me.lstDept.DisplayMember = "DEPT"
         Me.lstDept.FormattingEnabled = True
-        Me.lstDept.Location = New System.Drawing.Point(315, 7)
+        Me.lstDept.Location = New System.Drawing.Point(315, 13)
         Me.lstDept.Name = "lstDept"
-        Me.lstDept.Size = New System.Drawing.Size(43, 56)
+        Me.lstDept.Size = New System.Drawing.Size(45, 56)
         Me.lstDept.TabIndex = 21
+        '
+        'SpGetCustDeptBindingSource
+        '
+        Me.SpGetCustDeptBindingSource.DataMember = "SpGetCustDept"
+        Me.SpGetCustDeptBindingSource.DataSource = Me.DsspGetCustDept
+        '
+        'DsspGetCustDept
+        '
+        Me.DsspGetCustDept.DataSetName = "dsspGetCustDept"
+        Me.DsspGetCustDept.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lstItem
         '
+        Me.lstItem.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CustomerSurchargeBindingSource, "Item_Num", True))
+        Me.lstItem.DataSource = Me.CustomerSurchargeBindingSource
+        Me.lstItem.DisplayMember = "Item_Num"
         Me.lstItem.FormattingEnabled = True
-        Me.lstItem.Location = New System.Drawing.Point(49, 70)
+        Me.lstItem.Location = New System.Drawing.Point(42, 76)
         Me.lstItem.Name = "lstItem"
         Me.lstItem.Size = New System.Drawing.Size(78, 56)
         Me.lstItem.TabIndex = 22
@@ -210,17 +143,16 @@ Partial Class frmCustSurcharge
         'lblCurItem
         '
         Me.lblCurItem.AutoSize = True
-        Me.lblCurItem.Location = New System.Drawing.Point(7, 91)
+        Me.lblCurItem.Location = New System.Drawing.Point(343, 164)
         Me.lblCurItem.Name = "lblCurItem"
         Me.lblCurItem.Size = New System.Drawing.Size(39, 13)
         Me.lblCurItem.TabIndex = 20
         Me.lblCurItem.Text = "Label1"
-        Me.lblCurItem.Visible = False
         '
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(148, 151)
+        Me.lblLabel6.Location = New System.Drawing.Point(162, 137)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(33, 13)
         Me.lblLabel6.TabIndex = 9
@@ -229,7 +161,7 @@ Partial Class frmCustSurcharge
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(7, 70)
+        Me.lblLabel2.Location = New System.Drawing.Point(7, 76)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(30, 13)
         Me.lblLabel2.TabIndex = 5
@@ -238,7 +170,7 @@ Partial Class frmCustSurcharge
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(7, 7)
+        Me.lblLabel1.Location = New System.Drawing.Point(7, 13)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel1.TabIndex = 0
@@ -247,7 +179,7 @@ Partial Class frmCustSurcharge
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(273, 7)
+        Me.lblLabel0.Location = New System.Drawing.Point(276, 13)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(33, 13)
         Me.lblLabel0.TabIndex = 3
@@ -256,18 +188,180 @@ Partial Class frmCustSurcharge
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(251, 7)
+        Me.lblCurCust.Location = New System.Drawing.Point(388, 164)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(39, 13)
         Me.lblCurCust.TabIndex = 17
         Me.lblCurCust.Text = "Label1"
-        Me.lblCurCust.Visible = False
+        '
+        'cmdExit
+        '
+        Me.cmdExit.Location = New System.Drawing.Point(375, 130)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(85, 25)
+        Me.cmdExit.TabIndex = 80
+        Me.cmdExit.Text = "E&xit"
+        Me.cmdExit.UseVisualStyleBackColor = True
+        Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdExit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdUpdate
+        '
+        Me.cmdUpdate.Location = New System.Drawing.Point(375, 100)
+        Me.cmdUpdate.Name = "cmdUpdate"
+        Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
+        Me.cmdUpdate.TabIndex = 79
+        Me.cmdUpdate.Text = "Update"
+        Me.cmdUpdate.UseVisualStyleBackColor = True
+        Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdUpdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdReset
+        '
+        Me.cmdReset.Enabled = False
+        Me.cmdReset.Location = New System.Drawing.Point(375, 70)
+        Me.cmdReset.Name = "cmdReset"
+        Me.cmdReset.Size = New System.Drawing.Size(85, 25)
+        Me.cmdReset.TabIndex = 78
+        Me.cmdReset.Text = "Reset"
+        Me.cmdReset.UseVisualStyleBackColor = True
+        Me.cmdReset.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdReset.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.Location = New System.Drawing.Point(375, 40)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
+        Me.cmdDelete.TabIndex = 77
+        Me.cmdDelete.Text = "&Delete"
+        Me.cmdDelete.UseVisualStyleBackColor = True
+        Me.cmdDelete.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdDelete.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdNew
+        '
+        Me.cmdNew.Location = New System.Drawing.Point(375, 10)
+        Me.cmdNew.Name = "cmdNew"
+        Me.cmdNew.Size = New System.Drawing.Size(85, 25)
+        Me.cmdNew.TabIndex = 76
+        Me.cmdNew.Text = "&New"
+        Me.cmdNew.UseVisualStyleBackColor = True
+        Me.cmdNew.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdFindCust
+        '
+        Me.cmdFindCust.Location = New System.Drawing.Point(160, 10)
+        Me.cmdFindCust.Name = "cmdFindCust"
+        Me.cmdFindCust.Size = New System.Drawing.Size(85, 25)
+        Me.cmdFindCust.TabIndex = 87
+        Me.cmdFindCust.Text = "&Find"
+        Me.cmdFindCust.UseVisualStyleBackColor = True
+        Me.cmdFindCust.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdFindCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData0
+        '
+        Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustDeptBindingSource, "CUST_NUM", True))
+        Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.Location = New System.Drawing.Point(70, 10)
+        Me.txtData0.Name = "txtData0"
+        Me.txtData0.Size = New System.Drawing.Size(70, 18)
+        Me.txtData0.TabIndex = 88
+        Me.txtData0.Tag = Nothing
+        Me.txtData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtCustName
+        '
+        Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtCustName.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtCustName.Location = New System.Drawing.Point(70, 40)
+        Me.txtCustName.Name = "txtCustName"
+        Me.txtCustName.Size = New System.Drawing.Size(230, 13)
+        Me.txtCustName.TabIndex = 89
+        Me.txtCustName.Tag = Nothing
+        Me.txtCustName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtCustDept
+        '
+        Me.txtCustDept.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtCustDept.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtCustDept.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtCustDept.Location = New System.Drawing.Point(70, 54)
+        Me.txtCustDept.Name = "txtCustDept"
+        Me.txtCustDept.Size = New System.Drawing.Size(230, 13)
+        Me.txtCustDept.TabIndex = 90
+        Me.txtCustDept.Tag = Nothing
+        Me.txtCustDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtItemDesc
+        '
+        Me.txtItemDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtItemDesc.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtItemDesc.Location = New System.Drawing.Point(130, 75)
+        Me.txtItemDesc.Name = "txtItemDesc"
+        Me.txtItemDesc.Size = New System.Drawing.Size(230, 13)
+        Me.txtItemDesc.TabIndex = 91
+        Me.txtItemDesc.Tag = Nothing
+        Me.txtItemDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData19
+        '
+        Me.txtData19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData19.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerSurchargeBindingSource, "Rate", True))
+        Me.txtData19.DataType = GetType(Single)
+        Me.txtData19.Location = New System.Drawing.Point(195, 134)
+        Me.txtData19.Name = "txtData19"
+        Me.txtData19.Size = New System.Drawing.Size(50, 18)
+        Me.txtData19.TabIndex = 92
+        Me.txtData19.Tag = Nothing
+        Me.txtData19.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData19.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData2
+        '
+        Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerSurchargeBindingSource, "Item_Num", True))
+        Me.txtData2.DataType = GetType(Integer)
+        Me.txtData2.Location = New System.Drawing.Point(43, 77)
+        Me.txtData2.Name = "txtData2"
+        Me.txtData2.Size = New System.Drawing.Size(75, 18)
+        Me.txtData2.TabIndex = 93
+        Me.txtData2.Tag = Nothing
+        Me.txtData2.Visible = False
+        Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'SpGetCustDeptTableAdapter
+        '
+        Me.SpGetCustDeptTableAdapter.ClearBeforeFill = True
+        '
+        'CustomerSurchargeTableAdapter
+        '
+        Me.CustomerSurchargeTableAdapter.ClearBeforeFill = True
         '
         'frmCustSurcharge
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(468, 190)
+        Me.ClientSize = New System.Drawing.Size(471, 184)
+        Me.Controls.Add(Me.txtData2)
+        Me.Controls.Add(Me.txtData19)
+        Me.Controls.Add(Me.txtItemDesc)
+        Me.Controls.Add(Me.txtCustDept)
+        Me.Controls.Add(Me.txtCustName)
+        Me.Controls.Add(Me.txtData0)
+        Me.Controls.Add(Me.cmdFindCust)
+        Me.Controls.Add(Me.cmdExit)
+        Me.Controls.Add(Me.cmdUpdate)
+        Me.Controls.Add(Me.cmdReset)
+        Me.Controls.Add(Me.cmdDelete)
+        Me.Controls.Add(Me.cmdNew)
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblLabel1)
@@ -276,46 +370,37 @@ Partial Class frmCustSurcharge
         Me.Controls.Add(Me.lblCurItem)
         Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.lstDept)
-        Me.Controls.Add(Me.txtCustName)
         Me.Controls.Add(Me.txtData1)
-        Me.Controls.Add(Me.cmdUpdate)
-        Me.Controls.Add(Me.cmdExit)
-        Me.Controls.Add(Me.cmdFindCust)
-        Me.Controls.Add(Me.cmdNew)
-        Me.Controls.Add(Me.cmdReset)
-        Me.Controls.Add(Me.cmdDelete)
-        Me.Controls.Add(Me.txtData0)
-        Me.Controls.Add(Me.txtData2)
         Me.Controls.Add(Me.txtData3)
-        Me.Controls.Add(Me.txtItemDesc)
-        Me.Controls.Add(Me.txtCustDept)
         Me.Controls.Add(Me.cmdFindItem)
-        Me.Controls.Add(Me.txtData19)
         Me.Location = New System.Drawing.Point(65, 153)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmCustSurcharge"
         Me.Text = "Add/Edit Customer Surcharge/Discount"
+        CType(Me.CustomerSurchargeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsCustomerSurcharge, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetCustDept, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCustDept, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txtData19 As TextBox
     Friend WithEvents cmdFindItem As Button
-    Friend WithEvents txtCustDept As TextBox
-    Friend WithEvents txtItemDesc As TextBox
     Friend WithEvents txtData3 As TextBox
-    Friend WithEvents txtData2 As TextBox
-    Friend WithEvents txtData0 As TextBox
-    Friend WithEvents cmdDelete As Button
-    Friend WithEvents cmdReset As Button
-    Friend WithEvents cmdNew As Button
-    Friend WithEvents cmdFindCust As Button
-    Friend WithEvents cmdExit As Button
-    Friend WithEvents cmdUpdate As Button
     Friend WithEvents txtData1 As TextBox
-    Friend WithEvents txtCustName As TextBox
     Friend WithEvents lstDept As ListBox
     Friend WithEvents lstItem As ListBox
     Friend WithEvents lblCurItem As Label
@@ -324,4 +409,22 @@ Partial Class frmCustSurcharge
     Friend WithEvents lblLabel1 As Label
     Friend WithEvents lblLabel0 As Label
     Friend WithEvents lblCurCust As Label
+    Friend WithEvents cmdExit As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdReset As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdDelete As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdNew As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdFindCust As C1.Win.C1Input.C1Button
+    Friend WithEvents txtData0 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtCustName As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtCustDept As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtItemDesc As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData19 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData2 As C1.Win.C1Input.C1TextBox
+    Private WithEvents DsspGetCustDept As dsspGetCustDept
+    Friend WithEvents SpGetCustDeptTableAdapter As dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter
+    Private WithEvents SpGetCustDeptBindingSource As BindingSource
+    Friend WithEvents CustomerSurchargeBindingSource As BindingSource
+    Friend WithEvents DsCustomerSurcharge As dsCustomerSurcharge
+    Friend WithEvents CustomerSurchargeTableAdapter As dsCustomerSurchargeTableAdapters.CustomerSurchargeTableAdapter
 End Class

@@ -63,6 +63,7 @@ Public Class frmCustCanc
 
             Me.Close()
         Catch ex As Exception
+            LogError(Me.Name, "cmdOK_CLick", "1.0", ex.Message)
             Result = MessageBox.Show(Me, "Error cancelling customer" & vbNewLine & "Error : " & ex.Message, "Cancel Customer", vbOKCancel)
         Finally
             Me.Cursor = Cursors.Default

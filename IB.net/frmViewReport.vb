@@ -19,6 +19,7 @@ Public Class frmViewReport
                 CrystalReportViewer1.ReportSource = cryRpt
                 CrystalReportViewer1.Refresh()
             Catch ex As Exception
+                LogError(Me.Name, "Load", "1.0", ex.Message)
                 MessageBox.Show("Error loading report: " & ex.Message)
             End Try
         End If

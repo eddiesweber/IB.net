@@ -19,6 +19,7 @@ Public Class frmCat
             Me.CategoryMasterTableAdapter.Connection.ConnectionString = CS
             Me.CategoryMasterTableAdapter.Fill(Me.DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
+            LogError(Me.Name, "frmCat_Load", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
             Exit Sub
         End Try
@@ -62,6 +63,7 @@ Public Class frmCat
             C1TrueDBGrid1.UpdateData()
             CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
             MessageBox.Show(ex.Message)
         End Try
 
@@ -73,6 +75,7 @@ Public Class frmCat
             C1TrueDBGrid1.UpdateData()
             CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
+            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
             MessageBox.Show(ex.Message, "Error deleting record")
         End Try
 

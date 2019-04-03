@@ -22,6 +22,7 @@ Public Class frmCompany
                 dataReader.Close()
 
             Catch ex As Exception
+                LogError(Me.Name, "frmCompany_Load", "1.0", ex.Message)
                 MessageBox.Show("Error in form: frmCompany, error loading division names to listbox." & vbNewLine & ex.Message)
             End Try
         End Using

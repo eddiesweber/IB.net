@@ -149,17 +149,18 @@ Partial Class frmROHist
         'C1TrueDBGrid1
         '
         Me.C1TrueDBGrid1.DataSource = Me.SpGetRentHistBindingSource
-        Me.C1TrueDBGrid1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
         Me.C1TrueDBGrid1.Images.Add(CType(resources.GetObject("C1TrueDBGrid1.Images"), System.Drawing.Image))
-        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(0, 64)
+        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(10, 65)
         Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
         Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
+        Me.C1TrueDBGrid1.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.C1TrueDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
         Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
-        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(604, 292)
+        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(585, 261)
         Me.C1TrueDBGrid1.TabIndex = 25
         Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
         Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -182,7 +183,7 @@ Partial Class frmROHist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(604, 356)
+        Me.ClientSize = New System.Drawing.Size(604, 338)
         Me.Controls.Add(Me.C1TrueDBGrid1)
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.cmdFind)
