@@ -285,43 +285,27 @@ Public Class frmViewCust
         Dim CrxReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
 
         Dim strReportName As String
-        Dim crParameterValues As CrystalDecisions.Shared.ParameterValues
-        Dim crParameterDiscreteValue As CrystalDecisions.Shared.ParameterDiscreteValue
-        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-        Dim crParameterFieldDefinition As ParameterFieldDefinition
 
         strReportName = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\bin\Debug\rptTest.rpt"
-
+        'strReportName = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\bin\Debug\Custinfo.rpt"
         CrxReport.Load(strReportName, CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        'crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
-        'crParameterValues = New CrystalDecisions.Shared.ParameterValues
-        'crParameterDiscreteValue.Value = 1008
-        'crParameterValues.Add(crParameterDiscreteValue)
+        CrxReport.SetParameterValue("CustomerNumber", CurCust)
 
-        'CrxReport.ParameterFields.Item("CustomerNumber").DefaultValues = crParameterValues
+        Dim objfrmRptViewer As New frmRptViewer
 
-        ''''''''''''''''''''''''
-        crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
-        crParameterValues = New CrystalDecisions.Shared.ParameterValues
+        objfrmRptViewer.CRViewer.ReportSource = CrxReport
+        objfrmRptViewer.Text = "Report description goes here"
+        objfrmRptViewer.Show()
 
-        crParameterDiscreteValue.Value = 1008
-        crParameterFieldDefinitions = CrxReport.DataDefinition.ParameterFields
-        crParameterFieldDefinition = crParameterFieldDefinitions.Item("CustomerNumber")
-        crParameterValues = crParameterFieldDefinition.CurrentValues
+        '' Maximize the window state so we can view the whole report.
+        objfrmRptViewer.WindowState = FormWindowState.Maximized
+        '' Zoom the preview window to 100%
+        objfrmRptViewer.CRViewer.Zoom(100)
 
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
-        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+        objfrmRptViewer = Nothing
 
-        CrxReport.ParameterFields.Item("CustomerNumber").DefaultValues = crParameterValues
 
-        ' Another way?
-        'CrxReport.SetParameterValue("CustomerNumber", 7)
-
-        'Call ResetRptDB(CrxReport)
-
-        Call DisplayReport(CrxReport, "Report Description Goes Here")
 
     End Sub
 

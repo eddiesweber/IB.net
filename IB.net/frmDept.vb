@@ -15,6 +15,8 @@ Public Class frmDept
     Dim strTAX_LOCODE As String
     Dim blnNewRecord As Boolean
     Dim bTextChanged As Boolean
+    Dim Result As DialogResult
+
 
     Private Sub frmDept_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -192,30 +194,9 @@ Public Class frmDept
 
     End Sub
 
-    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+    Private Sub CustomerDepartmentBindingSource_AddingNew(sender As Object, e As AddingNewEventArgs) Handles CustomerDepartmentBindingSource.AddingNew
 
-        Dim D As Integer
-        Dim q As String
-        Dim Result As DialogResult
-
-        buserchange = False
-
-        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
-            D = 1
-        Else
-            CustomerDepartmentBindingSource.MoveFirst()
-            'D = txtData1.Text + 1
-            D = intDept + 1
-        End If
-
-        CustomerDepartmentBindingSource.AddNew()
-
-        SetModeAdd()
-
-        'txtData1.Text = D
-        intDept = D
-
-        txtData0.Text = CurCust
+        Dim drv As DataRowView = DirectCast(CustomerDepartmentBindingSource.List, DataView).AddNew()
 
         'Defaults from CustomerMaster
         Using connection As New SqlConnection(CS)
@@ -228,23 +209,33 @@ Public Class frmDept
                 If dataReader.HasRows = True Then
                     dataReader.Read()
 
-                    txtData2.Text = dataReader("BILL_NAME")
+                    'txtData0.Text = CurCust
+                    drv.Row.Item("CUST_NUM") = CurCust
 
-                    If D = 1 Then
-                        txtData3.Text = dataReader("BILL_STR")
-                        txtData4.Text = dataReader("BILL_CTY")
-                        txtData5.Text = dataReader("BILL_STATE")
-                        txtData6.Text = dataReader("BILL_ZIP")
-                        txtData7.Text = dataReader("CONTACT")
-                        txmData0.Text = dataReader("phone")
+                    'txtData2.Text = dataReader("BILL_NAME")
+                    drv.Row.Item("DEL_NAME") = dataReader("BILL_NAME")
+
+                    If intDept = 1 Then
+                        'txtData3.Text = dataReader("BILL_STR")
+                        drv.Row.Item("DEL_ADDR") = dataReader("BILL_STR")
+                        'txtData4.Text = dataReader("BILL_CTY")
+                        drv.Row.Item("DEL_CITY") = dataReader("BILL_CTY")
+                        'txtData5.Text = dataReader("BILL_STATE")
+                        drv.Row.Item("DEL_STATE") = dataReader("BILL_STATE")
+                        'txtData6.Text = dataReader("BILL_ZIP")
+                        drv.Row.Item("DEL_ZIP") = dataReader("BILL_ZIP")
+                        'txtData7.Text = dataReader("CONTACT")
+                        drv.Row.Item("CONTACT") = dataReader("CONTACT")
+                        'txmData0.Text = dataReader("PHONE")
+                        drv.Row.Item("DEL_PHONE") = dataReader("PHONE")
 
                         GetTaxCodes()
                     End If
                 End If
                 dataReader.Close()
             Catch ex As Exception
-                Result = MessageBox.Show(Me, "Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", vbOKCancel)
-                LogError(Me.Name, "cmdNew_Click", "1.0", ex.Message)
+                Result = MessageBox.Show(Me, "Error adding new item" & vbNewLine & "Error : " & ex.Message, "Adding new", vbOKCancel)
+                LogError(Me.Name, "CustomerDepartmentBindingSource_AddingNew", "1.0", ex.Message)
                 If Result = vbCancel Then
                     Exit Sub
                 Else
@@ -254,7 +245,72 @@ Public Class frmDept
 
         End Using
 
+        e.NewObject = drv
+
+    End Sub
+
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        Dim D As Integer
+
+        buserchange = False
+
+        If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
+            D = 1
+        Else
+            CustomerDepartmentBindingSource.MoveFirst()
+            'D = txtData1.Text + 1
+            D = intDept + 1
+        End If
+
+        CustomerDepartmentBindingSource.AddNew()
+        'Dim newRow As DataRowView = CustomerDepartmentBindingSource.AddNew()
+
+        SetModeAdd()
+
+        'txtData1.Text = D
+        intDept = D
+
         blnNewRecord = True
+        buserchange = True
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        Dim Result As DialogResult
+
+        buserchange = False
+        bCancel = False
+
+        CurDept = intDept
+
+
+        Try
+            CustomerDepartmentBindingSource.EndEdit()
+            CustomerDepartmentTableAdapter.Update(DsCustomerDepartment.CustomerDepartment)
+        Catch ex As Exception
+            bCancel = True
+
+            Result = MessageBox.Show(Me, "Error updating department" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
+            LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
+            If Result = vbCancel Then
+                Exit Sub
+            Else
+                Exit Try
+            End If
+        End Try
+
+        If Not bCancel Then
+            'update succeeded
+            GetData()
+            CurCust = txtData0.Text
+            CurDept = intDept
+            SetModeReg()
+            'If M = adEditAdd Then grdRoute.SetFocus
+        End If
+
+        blnNewRecord = False
         buserchange = True
 
     End Sub
@@ -335,44 +391,6 @@ Public Class frmDept
         grdRoute.Enabled = True
         'txtData1.Visible = False
         lstDept.Visible = True
-
-    End Sub
-
-    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
-
-        Dim Result As DialogResult
-
-        buserchange = False
-        bCancel = False
-
-        CurDept = intDept
-
-        Try
-            CustomerDepartmentBindingSource.EndEdit()
-            CustomerDepartmentTableAdapter.Update(DsCustomerDepartment.CustomerDepartment)
-        Catch ex As Exception
-            bCancel = True
-
-            Result = MessageBox.Show(Me, "Error updating department" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
-            LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
-            If Result = vbCancel Then
-                Exit Sub
-            Else
-                Exit Try
-            End If
-        End Try
-
-        If Not bCancel Then
-            'update succeeded
-            GetData()
-            CurCust = txtData0.Text
-            CurDept = intDept
-            SetModeReg()
-            'If M = adEditAdd Then grdRoute.SetFocus
-        End If
-
-        blnNewRecord = False
-        buserchange = True
 
     End Sub
 
@@ -464,6 +482,7 @@ Public Class frmDept
         End If
 
         buserchange = True
+
     End Sub
 
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click

@@ -328,12 +328,11 @@ Partial Class frmCustSurcharge
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerSurchargeBindingSource, "Item_Num", True))
         Me.txtData2.DataType = GetType(Integer)
-        Me.txtData2.Location = New System.Drawing.Point(43, 77)
+        Me.txtData2.Location = New System.Drawing.Point(209, 161)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.Size = New System.Drawing.Size(75, 18)
         Me.txtData2.TabIndex = 93
         Me.txtData2.Tag = Nothing
-        Me.txtData2.Visible = False
         Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '

@@ -13,6 +13,10 @@ Public Class frmRentOrd
     Dim bCancel As Boolean
     ' intDept is replacing txtdata1
     Dim intDept As Integer
+    Dim Result As DialogResult
+    Dim blnNewRecord As Boolean = False
+
+
 
     Private Sub frmRentOrd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -26,26 +30,23 @@ Public Class frmRentOrd
         Me.SpGetSalesmenTableAdapter.Connection.ConnectionString = CS
         Me.SpGetSalesmenTableAdapter.Fill(Me.DsspGetSalesmen.spGetSalesmen)
 
-        For Each c As Control In Me.Controls
-            If TypeOf c Is TextBox Then
-                Dim b As Binding = c.DataBindings("Text")
-                If Not b Is Nothing Then
-                    Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-                    Dim tb As TextBox = DirectCast(c, TextBox)
-                    Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-                    tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-                End If
-            ElseIf TypeOf c Is RichTextBox Then
-                Dim b As Binding = c.DataBindings("Text")
-                If Not b Is Nothing Then
-                    Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-                    Dim tb As TextBox = DirectCast(c, TextBox)
-                    Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-                    tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-                End If
-            End If
-        Next
+        'For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
 
+        'Next
+
+        'txtData2.MaxLength = txtData2.DataField.Length
+        'txtData4.MaxLength = txtData4.DataField.Length
+        'txtData5.MaxLength = txtData5.DataField.Length
+        'txtData6.MaxLength = txtData6.DataField.Length
+        'txtData7.MaxLength = txtData7.DataField.Length
+        'txtData8.MaxLength = txtData8.DataField.Length
+        'txtData9.MaxLength = txtData9.DataField.Length
+        'txtData10.MaxLength = txtData10.DataField.Length
+        'txtData11.MaxLength = txtData11.DataField.Length
+        'txtData12.MaxLength = txtData12.DataField.Length
+        'txtData13.MaxLength = txtData13.DataField.Length
+        'txtData19.MaxLength = txtData19.DataField.Length
+        'txtData20.MaxLength = txtData20.DataField.Length
         'txtData2.MaxLength = DsCustomerInventory.CustomerInventory.ITEM_NUMColumn.MaxLength
         'txtData4.MaxLength = DsCustomerInventory.CustomerInventory.SALES_1Column.MaxLength
         'txtData5.MaxLength = DsCustomerInventory.CustomerInventory.SALES_2Column.MaxLength
@@ -161,16 +162,21 @@ Public Class frmRentOrd
 
             If intRow >= 0 Then
                 SpGetCustDeptBindingSource.Position = intRow
+                CurDept = DsspGetCustDept.SpGetCustDept.Rows(intRow)("DEPT")
             End If
         Else
             SpGetCustDeptBindingSource.MoveFirst()
+            CurDept = DsspGetCustDept.SpGetCustDept.Rows(intRow)("DEPT")
         End If
 
-        CurDept = DsspGetCustDept.SpGetCustDept.Rows(intRow)("DEPT")
-
         ' rs
-        Me.CustomerInventoryTableAdapter.Connection.ConnectionString = CS
-        Me.CustomerInventoryTableAdapter.Fill(Me.DsCustomerInventory.CustomerInventory, CurCust, CurDept)
+        Try
+            Me.CustomerInventoryTableAdapter.Connection.ConnectionString = CS
+            Me.CustomerInventoryTableAdapter.Fill(Me.DsCustomerInventory.CustomerInventory, CurCust, CurDept)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in GetData2 Routine" & vbNewLine & "Error : " & ex.Message, "GetData2 frmRentOrder", vbOK)
+            LogError(Me.Name, "GetData2", "1.0", ex.Message)
+        End Try
 
         GetData3()
 
@@ -227,7 +233,7 @@ Public Class frmRentOrd
         lstDept.Visible = True
         txtData2.Visible = False
         lstItem.Visible = True
-        cmdFindItem.Visible = False
+        'cmdFindItem.Visible = False
 
     End Sub
 
@@ -250,7 +256,7 @@ Public Class frmRentOrd
 
             'If rs.EditMode = adEditAdd Then
             '    txtData2.Enabled = True
-            '    cmdFindItem.Visible = True
+            cmdFindItem.Visible = True
             'Else
             '    txtData2.Enabled = False
             '    cmdFindItem.Visible = False
@@ -424,8 +430,6 @@ ChkPct:
 
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
 
-        Dim Result As DialogResult
-
         If bTextChanged = True Then
             Result = MessageBox.Show(Me, "Do you want to exit the form without saving your changes?", "Exit form", vbYesNo)
             If Result = vbYes Then
@@ -523,7 +527,6 @@ ChkPct:
 
         'automatically adds 99999 after 1st item this customer
         Dim q As String
-        Dim Result As DialogResult
 
         q = "Insert CustomerInventory (CUST_NUM,DEPT,ITEM_NUM,ITEM_TYPE)" & " Values (" & CurCust & "," & CurDept & ",99999,'R')"
 
@@ -573,40 +576,168 @@ ChkPct:
 
     End Sub
 
+    Private Sub CustomerInventoryBindingSource_AddingNew(sender As Object, e As AddingNewEventArgs) Handles CustomerInventoryBindingSource.AddingNew
+
+        Dim drv As DataRowView = DirectCast(CustomerInventoryBindingSource.List, DataView).AddNew()
+        drv.Row.Item("CUST_NUM") = CurCust
+        drv.Row.Item("DEPT") = CurDept
+        drv.Row.Item("ITEM_NUM") = -1
+        drv.Row.Item("LINE_TYPE") = 1
+        drv.Row.Item("UNIT_PRICE") = 0
+        drv.Row.Item("Taxable") = DsspGetCustDept.SpGetCustDept.Rows(SpGetCustDeptBindingSource.Position)("Tax")
+        drv.Row.Item("INV_QTY") = 0
+        drv.Row.Item("MIN_QTY") = 0
+        drv.Row.Item("DEL_QTY") = 0
+        drv.Row.Item("LOAN_QTY") = 0
+        drv.Row.Item("SALES_1PCT") = 100
+        drv.Row.Item("SALES_2PCT") = 0
+        drv.Row.Item("SALES_3PCT") = 0
+
+        e.NewObject = drv
+
+    End Sub
+
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
 
         buserchange = False
 
         CustomerInventoryBindingSource.AddNew()
 
-        'ADO control does not set defaults from table def
-        txtData2.Text = 0
-        txtData14.Text = 1
-        txtData19.Text = 0
-        chkData0.Checked = DsspGetCustDept.SpGetCustDept.Rows(SpGetCustDeptBindingSource.Position)("Tax")
-
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("INV_QTY") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("MIN_QTY") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("DEL_QTY") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("LOAN_QTY") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("SALES_1PCT") = 100
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("SALES_2PCT") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("SALES_3PCT") = 0
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("CUST_NUM") = CurCust
-        DsCustomerInventory.CustomerInventory.Rows(CustomerInventoryBindingSource.Position)("DEPT") = CurDept
-        CustomerInventoryBindingSource.EndEdit()
-        CustomerInventoryTableAdapter.Update(DsCustomerInventory.CustomerInventory)
-
         SetModeAdd()
+
         SetControls()
 
         buserchange = True
 
     End Sub
 
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        Dim rstemp As New ADODB.Recordset
+
+        buserchange = False
+        bCancel = False
+
+        'Check required data
+        If txtData0.Text > 0 And txtData1.Text > 0 And txtData2.Text > 0 Then
+        Else
+            MessageBox.Show(Me, "Customer, Dept. and Item are required.", "Missing Data", vbOKOnly)
+            Exit Sub
+        End If
+
+        'Test for good key value
+        Dim q As String
+
+        Dim newRow As DataRowView = CustomerInventoryBindingSource.Current
+
+        'If blnNewRecord = True And txtData2.Text > 0 Then
+        '    q = "Select count(*)  CT from CustomerInventory Where CUST_NUM=" & txtData0.Text
+        '    q = q & " And DEPT='" & txtData1.Text & "'"
+        '    q = q & " And ITEM_NUM=" & txtData2.Text
+        '    q = q & " And LINE_TYPE=" & txtData4.Text
+
+        '    Using Command As New SqlCommand(q, DB)
+        '        Try
+        '            Command.ExecuteNonQuery()
+        '        Catch ex As Exception
+        '            Result = MessageBox.Show(Me, "Error in routine PostRentOrder" & vbNewLine & "Error : " & ex.Message, "Updating ItemMaster" & CurType, vbOK)
+        '            LogError(Me.Name, "PostRentOrder", "1.0", ex.Message)
+        '        End Try
+        '    End Using
+
+        '    If rstemp!ct > 0 Then
+        '        MsgBox "Item already exists", vbOKOnly, "Duplicate Index"
+        '        bCancel = True
+        '    End If
+
+        '    rstemp.Close()
+        '    Set rstemp = Nothing
+        'End If
+
+        'If bCancel Then Exit Sub
+        'rs!LAST_ACT = Now
+        'PostRentOrder False
+        'rs.Update
+        'If Not bCancel Then
+        '    'update succeeded
+        '    SurchargeRO
+        '    buserchange = False
+        '    'rs.Bookmark = rs.LastModified
+        '    'CurCust = Val(txtData(0).Text)
+        '    'CurDept = Val(txtData(1).Text)
+        '    CurItem = Val(txtData(2).Text)
+        '    CurType = txtData(3).Text
+
+        '    If rs.RecordCount = 1 Then AutoItem()
+
+        '    Data1.Refresh
+
+        '    Set rs = Data1.Recordset
+        '    GetData3()
+
+        '    SetModeReg()
+        'End If
+        CustomerInventoryBindingSource.EndEdit()
+        newRow.Row.AcceptChanges()
+
+        bCancel = False
+        buserchange = True
+
+    End Sub
+
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
+
+        buserchange = False
+        bTextChanged = False
+
+        CustomerInventoryBindingSource.CancelEdit()
+
+        If CustomerInventoryBindingSource.Position = 0 Then
+            If DsspGetCustDept.SpGetCustDept.Rows.Count = 0 Then
+                cmdNew.Select()
+            Else
+                GetData3()
+                SetModeReg()
+            End If
+        Else
+            GetData()
+            SetModeReg()
+            SetControls()
+        End If
+
+        SetModeReg()
+
+        buserchange = True
+
+        'Dim M As Integer
+        'buserchange = False
+        'M = rs.EditMode
+        'On Error Resume Next
+        'DoEvents
+        'Debug.Print rs.EditMode, rs!ITEM_NUM
+        'rs.CancelUpdate
+        'Debug.Print rs.EditMode, rs!ITEM_NUM
+        'rs.CancelUpdate
+        'Debug.Print rs.EditMode, rs!ITEM_NUM
+        'On Error GoTo 0
+        'If M = adEditAdd Then
+        '    If rs.RecordCount = 0 Then
+        '        cmdNew_Click()
+        '    Else
+        '        GetData3()
+        '        SetModeReg()
+        '    End If
+        'Else
+        '    GetData()
+        '    SetModeReg()
+        '    SetControls()
+        'End If
+        'buserchange = True
+
+    End Sub
+
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
-        Dim intResult As Integer
         Dim q As String
 
         bCancel = False
@@ -614,8 +745,8 @@ ChkPct:
         PostRentOrder(True)
 
         CurDept = intDept
-        intResult = MsgBox("This will delete the current item." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
-        If intResult = vbCancel Then
+        Result = MsgBox("This will delete the current item." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
+        If Result = vbCancel Then
             Exit Sub
         Else
             Dim customersInventoryRow As dsCustomerInventory.CustomerInventoryRow
@@ -641,8 +772,6 @@ ChkPct:
         Dim IQty As Single
         Dim LQty As Single
         Dim q As String
-        Dim Result As DialogResult
-        Dim strResult As String
 
         'Post RO Transaction
         CurItem = txtData2.Text
@@ -694,6 +823,12 @@ ChkPct:
     Private Sub chkData0_CheckedChanged(sender As Object, e As EventArgs) Handles chkData0.CheckedChanged
 
         bTextChanged = True
+
+    End Sub
+
+    Private Sub cmdFindItem_Click(sender As Object, e As EventArgs) Handles cmdFindItem.Click
+
+        frmFindItem.Show()
 
     End Sub
 End Class

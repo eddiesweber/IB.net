@@ -6,6 +6,9 @@ Public Class frmFindCust
 
     Public intCustNum(2500) As Integer
     Public strCustName(2500) As String
+    Dim Result As DialogResult
+
+
 
     Private Sub frmFindCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

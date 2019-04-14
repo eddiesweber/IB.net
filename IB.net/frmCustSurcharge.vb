@@ -120,6 +120,10 @@ Public Class frmCustSurcharge
         If DsspGetCustDept.SpGetCustDept.Rows.Count = 0 Then
             CurDept = 0
             Exit Sub
+        Else
+            If CurDept = 0 Then
+                CurDept = DsspGetCustDept.SpGetCustDept.Rows(1)("DEPT")
+            End If
         End If
 
         ' rs2 - "spGetCustDept (" & CurCust & ")"
@@ -203,8 +207,10 @@ Public Class frmCustSurcharge
 
         buserchange = False
 
-        lstDept.SelectedIndex = lstDept.FindString(DsCustomerSurcharge.CustomerSurcharge.Rows(CustomerSurchargeBindingSource.Position)("DEPT"))
-        s = GetItemDesc(DsCustomerSurcharge.CustomerSurcharge.Rows(CustomerSurchargeBindingSource.Position)("ITEM_NUM"))
+        'lstDept.SelectedIndex = lstDept.FindString(DsCustomerSurcharge.CustomerSurcharge.Rows(CustomerSurchargeBindingSource.Position)("DEPT"))
+        's = GetItemDesc(DsCustomerSurcharge.CustomerSurcharge.Rows(CustomerSurchargeBindingSource.Position)("ITEM_NUM"))
+        lstDept.SelectedIndex = lstDept.FindString(CurDept)
+        s = GetItemDesc(CurDept)
         txtItemDesc.Text = s
 
         SetScreen()
@@ -290,5 +296,143 @@ Public Class frmCustSurcharge
         ' Keeps events from firing when closing
         buserchange = False
 
+        SaveWindowPos(Me)
+
     End Sub
+
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        buserchange = False
+
+        CustomerSurchargeBindingSource.AddNew()
+
+        txtData2.Text = 0
+        txtData19.Text = 0
+        txtData3.Text = "O"
+        txtData0.Text = CurCust
+        txtData1.Text = CurDept
+
+        SetModeAdd()
+
+        SetControls()
+
+        buserchange = True
+
+        'buserchange = False
+        'rs.AddNew
+        ''ADO control does not set defaults from table def
+        'rs!ITEM_NUM = 0
+        'rs!Rate = 0
+        'rs!ITEM_TYPE = "O"
+        'rs!CUST_NUM = CurCust
+        'rs!DEPT = CurDept
+
+        'SetModeAdd()
+        'SetControls()
+        'buserchange = True
+
+    End Sub
+
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+
+
+        'Dim s As String
+        's = "Delete CustomerInventory where CUST_NUM = " & CurCust & " and Dept = " & CurDept & " and Item_Num = " & CurItem
+        'bCancel = False
+        'rs.Delete
+        'If Not bCancel Then
+        '    buserchange = False
+        '    DB.Execute s
+        '    Data1.Refresh
+        '    Set rs = Data1.Recordset
+        '    'DoEvents
+
+        '    GetData3()
+        '    buserchange = True
+        'End If
+        'bCancel = False
+
+    End Sub
+
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
+
+        'Dim M As Integer
+        'buserchange = False
+        'M = rs.EditMode
+        'On Error Resume Next
+        'DoEvents
+        'rs.CancelUpdate
+        'rs.CancelUpdate
+        'On Error GoTo 0
+        'If M = adEditAdd Then
+        '    If rs.RecordCount = 0 Then
+        '        cmdNew_Click()
+        '    Else
+        '        GetData3()
+        '        SetModeReg()
+        '    End If
+        'Else
+        '    GetData()
+        '    SetModeReg()
+        '    SetControls()
+        'End If
+        'buserchange = True
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        'Dim rstemp As New ADODB.Recordset
+        'buserchange = False
+        'bCancel = False
+        ''Check required data
+        'If txtData(0).Text > "" And txtData(1).Text > "" And txtData(2).Text > "" Then
+        'Else
+        '    MsgBox "Customer, Dept. and Item are required.", vbOKOnly, "Missing Data"
+        'Exit Sub
+        'End If
+        ''Test for good key value
+        'Dim q As String
+        'If rs.EditMode = adEditAdd And txtData(2).Text > "" Then
+        '    q = "Select count(*)  CT from CustomerSurcharge Where CUST_NUM=" & txtData(0)
+        '    q = q & " And DEPT='" & txtData(1) & "'"
+        '    q = q & " And ITEM_NUM=" & txtData(2)
+        '    Call rstemp.Open(q, DB, adOpenForwardOnly)
+        '    rstemp.MoveFirst()
+
+        '    If rstemp!ct > 0 Then
+        '        MsgBox "Item already exists", vbOKOnly, "Duplicate Index"
+        '    bCancel = True
+        '    End If
+        '    rstemp.Close()
+        '            Set rstemp = Nothing
+        'End If
+        'If bCancel Then Exit Sub
+        'On Error GoTo BadUpdate
+        'rs.Update
+        'On Error GoTo 0
+        'If Not bCancel Then
+        '    'update succeeded
+        '    buserchange = False
+        '    CurItem = Val(txtData(2).Text)
+        '    CurType = txtData(3).Text
+        '    SurchargeRO
+        '    data1.Refresh
+        'Set rs = data1.Recordset
+        'GetData3()
+        '    SetModeReg()
+        'End If
+        'bCancel = False
+        'buserchange = True
+
+        'Exit Sub
+
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+
+        Me.Close()
+
+    End Sub
+
 End Class

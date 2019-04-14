@@ -147,6 +147,16 @@ Public Class frmCust
 
     End Sub
 
+    Private Sub CustomerMasterBindingSource_AddingNew(sender As Object, e As AddingNewEventArgs) Handles CustomerMasterBindingSource.AddingNew
+
+        Dim drv As DataRowView = DirectCast(CustomerMasterBindingSource.List, DataView).AddNew()
+
+        drv.Row.Item("CUST_NUM") = -1
+
+        e.NewObject = drv
+
+    End Sub
+
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
 
         If bTextChanged = True Then
@@ -158,7 +168,7 @@ Public Class frmCust
         bTextChanged = False
 
         CustomerMasterBindingSource.AddNew()
-        txtData0.Text = -1
+        'txtData0.Text = -1
 
         SetModeAdd()
 

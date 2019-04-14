@@ -619,13 +619,12 @@ Partial Class frmRentOrd
         '
         'cmdFindItem
         '
-        Me.cmdFindItem.Location = New System.Drawing.Point(398, 266)
+        Me.cmdFindItem.Location = New System.Drawing.Point(390, 241)
         Me.cmdFindItem.Name = "cmdFindItem"
         Me.cmdFindItem.Size = New System.Drawing.Size(85, 25)
         Me.cmdFindItem.TabIndex = 77
         Me.cmdFindItem.Text = "&Find"
         Me.cmdFindItem.UseVisualStyleBackColor = True
-        Me.cmdFindItem.Visible = False
         Me.cmdFindItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdFindItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -709,7 +708,7 @@ Partial Class frmRentOrd
         'txtData2
         '
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "ITEM_NUM", True))
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "ITEM_NUM", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N0"))
         Me.txtData2.DataType = GetType(Integer)
         Me.txtData2.Location = New System.Drawing.Point(414, 323)
         Me.txtData2.Name = "txtData2"
@@ -991,6 +990,7 @@ Partial Class frmRentOrd
         Me.chkData0.BackColor = System.Drawing.Color.Transparent
         Me.chkData0.BorderColor = System.Drawing.Color.Transparent
         Me.chkData0.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerInventoryBindingSource, "TAXABLE", True))
         Me.chkData0.ForeColor = System.Drawing.Color.Black
         Me.chkData0.Location = New System.Drawing.Point(77, 248)
         Me.chkData0.Name = "chkData0"
@@ -1046,7 +1046,7 @@ Partial Class frmRentOrd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(494, 401)
+        Me.ClientSize = New System.Drawing.Size(482, 397)
         Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.lstDept)
         Me.Controls.Add(Me.GroupBox1)
