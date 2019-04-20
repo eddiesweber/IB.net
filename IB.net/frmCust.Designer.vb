@@ -581,7 +581,7 @@ Partial Class frmCust
         Me.txtOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
         Me.txtOption.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOption.Location = New System.Drawing.Point(600, 332)
+        Me.txtOption.Location = New System.Drawing.Point(545, 322)
         Me.txtOption.Name = "txtOption"
         Me.txtOption.Size = New System.Drawing.Size(20, 18)
         Me.txtOption.TabIndex = 65

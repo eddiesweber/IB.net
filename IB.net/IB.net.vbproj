@@ -163,6 +163,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetCustDept.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetCustsAlpha.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetCustsAlpha.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetCustsNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvHistHeader.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -995,6 +1005,28 @@
     </None>
     <None Include="dsspGetCustDept.xss">
       <DependentUpon>dsspGetCustDept.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsAlpha.xsc">
+      <DependentUpon>dsspGetCustsAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsAlpha.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetCustsAlpha.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetCustsAlpha.xss">
+      <DependentUpon>dsspGetCustsAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsNum.xsc">
+      <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetCustsNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetCustsNum.xss">
+      <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
     </None>
     <None Include="dsspGetInvHistHeader.xsc">
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>

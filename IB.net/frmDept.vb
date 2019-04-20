@@ -31,17 +31,27 @@ Public Class frmDept
             grdRoute.LoadLayout("frmDeptgrdRoute.xml")
         End If
 
-        txtData2.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_NAMEColumn.MaxLength
-        txtData3.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ADDRColumn.MaxLength
-        txtData4.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_CITYColumn.MaxLength
-        txtData5.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_STATEColumn.MaxLength
-        txtData6.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ZIPColumn.MaxLength
-        txtData7.MaxLength = DsCustomerDepartment.CustomerDepartment.CONTACTColumn.MaxLength
-        txtData8.MaxLength = DsCustomerDepartment.CustomerDepartment.MESSAGEColumn.MaxLength
-        txtData9.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_EmailColumn.MaxLength
-        txtData11.MaxLength = DsCustomerDepartment.CustomerDepartment.SALESMANColumn.MaxLength
-        txmData0.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_PHONEColumn.MaxLength
-        txmData1.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_FaxColumn.MaxLength
+        'txtData2.MaxLength = txtData2.DataField.Length
+        'txtData3.MaxLength = txtData3.DataField.Length
+        'txtData4.MaxLength = txtData4.DataField.Length
+        'txtData5.MaxLength = txtData5.DataField.Length
+        'txtData6.MaxLength = txtData6.DataField.Length
+        'txtData7.MaxLength = txtData7.DataField.Length
+        'txtData8.MaxLength = txtData8.DataField.Length
+        'txtData9.MaxLength = txtData9.DataField.Length
+        'txtData10.MaxLength = txtData10.DataField.Length
+
+        'txtData2.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_NAMEColumn.MaxLength
+        'txtData3.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ADDRColumn.MaxLength
+        'txtData4.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_CITYColumn.MaxLength
+        'txtData5.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_STATEColumn.MaxLength
+        'txtData6.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ZIPColumn.MaxLength
+        'txtData7.MaxLength = DsCustomerDepartment.CustomerDepartment.CONTACTColumn.MaxLength
+        'txtData8.MaxLength = DsCustomerDepartment.CustomerDepartment.MESSAGEColumn.MaxLength
+        'txtData9.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_EmailColumn.MaxLength
+        'txtData11.MaxLength = DsCustomerDepartment.CustomerDepartment.SALESMANColumn.MaxLength
+        'txmData0.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_PHONEColumn.MaxLength
+        'txmData1.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_FaxColumn.MaxLength
 
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
@@ -209,24 +219,15 @@ Public Class frmDept
                 If dataReader.HasRows = True Then
                     dataReader.Read()
 
-                    'txtData0.Text = CurCust
                     drv.Row.Item("CUST_NUM") = CurCust
-
-                    'txtData2.Text = dataReader("BILL_NAME")
                     drv.Row.Item("DEL_NAME") = dataReader("BILL_NAME")
 
                     If intDept = 1 Then
-                        'txtData3.Text = dataReader("BILL_STR")
                         drv.Row.Item("DEL_ADDR") = dataReader("BILL_STR")
-                        'txtData4.Text = dataReader("BILL_CTY")
                         drv.Row.Item("DEL_CITY") = dataReader("BILL_CTY")
-                        'txtData5.Text = dataReader("BILL_STATE")
                         drv.Row.Item("DEL_STATE") = dataReader("BILL_STATE")
-                        'txtData6.Text = dataReader("BILL_ZIP")
                         drv.Row.Item("DEL_ZIP") = dataReader("BILL_ZIP")
-                        'txtData7.Text = dataReader("CONTACT")
                         drv.Row.Item("CONTACT") = dataReader("CONTACT")
-                        'txmData0.Text = dataReader("PHONE")
                         drv.Row.Item("DEL_PHONE") = dataReader("PHONE")
 
                         GetTaxCodes()
@@ -284,7 +285,6 @@ Public Class frmDept
         bCancel = False
 
         CurDept = intDept
-
 
         Try
             CustomerDepartmentBindingSource.EndEdit()

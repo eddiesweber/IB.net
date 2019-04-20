@@ -1,5 +1,6 @@
 ﻿'Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frmFindCust
@@ -7,8 +8,7 @@ Public Class frmFindCust
     Public intCustNum(2500) As Integer
     Public strCustName(2500) As String
     Dim Result As DialogResult
-
-
+    Dim blnNoCLick As Boolean = False
 
     Private Sub frmFindCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -21,105 +21,41 @@ Public Class frmFindCust
 
     Private Sub GetData()
 
-        Dim Result As DialogResult
-        Dim intCustomers As Integer
+        SpGetCustsNumTableAdapter.Connection.ConnectionString = CS
+        SpGetCustsNumTableAdapter.Fill(Me.DsspGetCustsNum.SpGetCustsNum)
 
-        intCustomers = 0
+        SpGetCustsAlphaTableAdapter.Connection.ConnectionString = CS
+        SpGetCustsAlphaTableAdapter.Fill(Me.DsspGetCustsAlpha.SpGetCustsAlpha)
 
-        ' Fill customer numbers listbox
-        Using connection As New SqlConnection(CS)
-            Dim cmd As SqlCommand = New SqlCommand("spGetCustsNum", connection)
-            cmd.CommandType = CommandType.StoredProcedure
-
-            Try
-                connection.Open()
-                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
-
-                lstCustNum.ClearSelected()
-
-                Do While dataReader.Read()
-                    lstCustNum.Items.Add(dataReader("CUST_NUM"))
-
-                    ' Also load array for lookups when lists are clicked
-                    intCustomers = intCustomers + 1
-                    intCustNum(intCustomers) = dataReader("CUST_NUM")
-                    strCustName(intCustomers) = dataReader("BILL_NAME")
-
-                Loop
-                dataReader.Close()
-
-            Catch ex As Exception
-                LogError(Me.Name, "GetData", "1.0", ex.Message)
-                Result = MessageBox.Show(Me, "Error getting the customer numbers" & vbNewLine & "Error : " & ex.Message, "Getting Customer Numbers", vbOKCancel)
-                If Result = vbCancel Then
-                    Exit Sub
-                Else
-                    Exit Try
-                End If
-            End Try
-
-        End Using
-
-        Using connection As New SqlConnection(CS)
-            Dim cmd As SqlCommand = New SqlCommand("spGetCustsAlpha", connection)
-            cmd.CommandType = CommandType.StoredProcedure
-
-            Try
-                connection.Open()
-                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
-
-                lstCustName.ClearSelected()
-
-                Do While dataReader.Read()
-                    lstCustName.Items.Add(dataReader("BILL_NAME"))
-                Loop
-                dataReader.Close()
-
-            Catch ex As Exception
-                LogError(Me.Name, "GetData", "2.0", ex.Message)
-                Result = MessageBox.Show(Me, "Error getting the customer names" & vbNewLine & "Error : " & ex.Message, "Getting Customer Names", vbOKCancel)
-                If Result = vbCancel Then
-                    Exit Sub
-                Else
-                    Exit Try
-                End If
-            End Try
-
-        End Using
+        lstCustNum.SelectedIndex = 0
+        lstCustName.SelectedIndex = 0
+        If CurCust > 0 Then
+            lstCustNum.SelectedIndex = lstCustNum.FindStringExact(CurCust)
+        End If
 
     End Sub
 
-    Private Sub lstCustNum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustNum.SelectedIndexChanged
+    Private Sub lstCustNum_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles lstCustNum.SelectedIndexChanged
 
-        Dim intCompanies As Integer
-
-        ' Change lstCustName to match customer number
-        intCompanies = Array.IndexOf(intCustNum, lstCustNum.SelectedItem)
-
-        lstCustName.SelectedIndex = lstCustName.FindStringExact(strCustName(intCompanies))
+        If lstCustNum.SelectedValue <> Nothing Then
+            If blnNoCLick = False Then
+                blnNoCLick = True
+                lstCustName.SelectedIndex = lstCustName.FindStringExact(lstCustNum.SelectedValue.ToString)
+                blnNoCLick = False
+            End If
+        End If
 
     End Sub
 
     Private Sub lstCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustName.SelectedIndexChanged
 
-        Dim intCompanies As Integer
-
-        ' Change lstCustName to match customer number
-        intCompanies = Array.IndexOf(strCustName, lstCustName.SelectedItem)
-
-        lstCustNum.SelectedIndex = lstCustNum.FindStringExact(Trim(Str(intCustNum(intCompanies))))
-
-    End Sub
-
-    Private Sub lstCustName_DoubleClick(sender As Object, e As EventArgs) Handles lstCustName.DoubleClick
-
-        cmdSelect_Click(sender, e)
-
-    End Sub
-
-    Private Sub frmFindCust_Leave(sender As Object, e As EventArgs) Handles Me.Leave
-
-        SaveWindowPos(Me)
+        If lstCustName.SelectedValue <> Nothing Then
+            If blnNoCLick = False Then
+                blnNoCLick = True
+                lstCustNum.SelectedIndex = lstCustNum.FindStringExact(lstCustName.SelectedValue.ToString)
+                blnNoCLick = False
+            End If
+        End If
 
     End Sub
 
@@ -127,8 +63,7 @@ Public Class frmFindCust
 
         Dim frm As Form
 
-        CurCust = CLng(lstCustNum.SelectedItem)
-
+        CurCust = CType(lstCustNum.SelectedItem(0), Long)
         For Each frm In My.Application.OpenForms
             ' Alternate way to get "textbox" control list
             ' Dim ctrls() As Control = frm.Controls.Find("TextBox1", True)
@@ -161,4 +96,27 @@ Public Class frmFindCust
 
     End Sub
 
+    Private Sub lstCustName_DoubleClick(sender As Object, e As EventArgs) Handles lstCustName.DoubleClick
+
+        cmdSelect_Click(sender, e)
+
+    End Sub
+
+    Private Sub frmFindCust_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+        SaveWindowPos(Me)
+
+    End Sub
+
+    Private Sub frmFindCust_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
+        SaveWindowPos(Me)
+
+    End Sub
+
+    Private Sub frmFindCust_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
+        SaveWindowPos(Me)
+
+    End Sub
 End Class

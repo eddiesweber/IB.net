@@ -23,31 +23,11 @@ Public Class frmCustSurcharge
         'Line1(0).Y2 = Me.ScaleHeight
         'Line1(1).Y2 = Me.ScaleHeight
 
-        ''Set text box lengths based on tabledef
-        'Dim c As Control, fld As String
-        'Dim R As New ADODB.Recordset
-        'Dim ADOConn As New ADODB.Connection
-        'R.Open "Select * from CustomerSurcharge Where 1=0", DB, adOpenStatic
-        'For Each c In Me.Controls
-        '    If c.Name = "txtData" Then
-        '        fld = c.DataField
-        '        If fld > "" Then
-        '            Select Case R.Fields(fld).Type
-        '                Case adChar, adVarChar, adVarWChar
-        '                    c.MaxLength = R.Fields(fld).DefinedSize
-        '                Case adTinyInt
-        '                    c.MaxLength = 1
-        '                Case adSmallInt
-        '                    c.MaxLength = 5
-        '                Case adInteger, adSingle
-        '                    c.MaxLength = 10
-        '                Case Else
-        '                    c.MaxLength = 20
-        '            End Select
-        '        End If
-        '    End If
-        'Next c
-        'R.Close()
+        txtData0.MaxLength = txtData0.DataField.Length
+        txtData1.MaxLength = txtData1.DataField.Length
+        txtData2.MaxLength = txtData2.DataField.Length
+        txtData3.MaxLength = txtData3.DataField.Length
+        txtData19.MaxLength = txtData19.DataField.Length
 
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
@@ -300,17 +280,25 @@ Public Class frmCustSurcharge
 
     End Sub
 
+    Private Sub CustomerSurchargeBindingSource_AddingNew(sender As Object, e As AddingNewEventArgs) Handles CustomerSurchargeBindingSource.AddingNew
+
+        Dim drv As DataRowView = DirectCast(CustomerSurchargeBindingSource.List, DataView).AddNew()
+
+        drv.Row.Item("CUST_NUM") = CurCust
+        drv.Row.Item("Dept") = CurDept
+        drv.Row.Item("Item_Num") = 0
+        drv.Row.Item("Item_Type") = "O"
+        drv.Row.Item("Rate") = 0
+
+        e.NewObject = drv
+
+    End Sub
+
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
 
         buserchange = False
 
         CustomerSurchargeBindingSource.AddNew()
-
-        txtData2.Text = 0
-        txtData19.Text = 0
-        txtData3.Text = "O"
-        txtData0.Text = CurCust
-        txtData1.Text = CurDept
 
         SetModeAdd()
 
@@ -333,8 +321,57 @@ Public Class frmCustSurcharge
 
     End Sub
 
-    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
 
+        buserchange = False
+        bCancel = False
+
+        'Check required data
+        If txtData0.Text > "" And txtData1.Text > "" And txtData2.Text > "" Then
+        Else
+            MessageBox.Show(Me, "Customer, Dept. and Item are required.", "Missing Data", vbOKOnly)
+            Exit Sub
+        End If
+
+        ''Test for good key value
+        'Dim q As String
+        'If rs.EditMode = adEditAdd And txtData(2).Text > "" Then
+        '    q = "Select count(*)  CT from CustomerSurcharge Where CUST_NUM=" & txtData(0)
+        '    q = q & " And DEPT='" & txtData(1) & "'"
+        '    q = q & " And ITEM_NUM=" & txtData(2)
+        '    Call rstemp.Open(q, DB, adOpenForwardOnly)
+        '    rstemp.MoveFirst()
+
+        '    If rstemp!ct > 0 Then
+        '        MsgBox "Item already exists", vbOKOnly, "Duplicate Index"
+        '    bCancel = True
+        '    End If
+        '    rstemp.Close()
+        '            Set rstemp = Nothing
+        'End If
+        'If bCancel Then Exit Sub
+        'On Error GoTo BadUpdate
+        'rs.Update
+        'On Error GoTo 0
+        'If Not bCancel Then
+        '    'update succeeded
+        '    buserchange = False
+        '    CurItem = Val(txtData(2).Text)
+        '    CurType = txtData(3).Text
+        '    SurchargeRO
+        '    data1.Refresh
+        'Set rs = data1.Recordset
+        'GetData3()
+        '    SetModeReg()
+        'End If
+        'bCancel = False
+        'buserchange = True
+
+        'Exit Sub
+
+    End Sub
+
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
         'Dim s As String
         's = "Delete CustomerInventory where CUST_NUM = " & CurCust & " and Dept = " & CurDept & " and Item_Num = " & CurItem
@@ -377,55 +414,6 @@ Public Class frmCustSurcharge
         '    SetControls()
         'End If
         'buserchange = True
-
-    End Sub
-
-    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
-
-        'Dim rstemp As New ADODB.Recordset
-        'buserchange = False
-        'bCancel = False
-        ''Check required data
-        'If txtData(0).Text > "" And txtData(1).Text > "" And txtData(2).Text > "" Then
-        'Else
-        '    MsgBox "Customer, Dept. and Item are required.", vbOKOnly, "Missing Data"
-        'Exit Sub
-        'End If
-        ''Test for good key value
-        'Dim q As String
-        'If rs.EditMode = adEditAdd And txtData(2).Text > "" Then
-        '    q = "Select count(*)  CT from CustomerSurcharge Where CUST_NUM=" & txtData(0)
-        '    q = q & " And DEPT='" & txtData(1) & "'"
-        '    q = q & " And ITEM_NUM=" & txtData(2)
-        '    Call rstemp.Open(q, DB, adOpenForwardOnly)
-        '    rstemp.MoveFirst()
-
-        '    If rstemp!ct > 0 Then
-        '        MsgBox "Item already exists", vbOKOnly, "Duplicate Index"
-        '    bCancel = True
-        '    End If
-        '    rstemp.Close()
-        '            Set rstemp = Nothing
-        'End If
-        'If bCancel Then Exit Sub
-        'On Error GoTo BadUpdate
-        'rs.Update
-        'On Error GoTo 0
-        'If Not bCancel Then
-        '    'update succeeded
-        '    buserchange = False
-        '    CurItem = Val(txtData(2).Text)
-        '    CurType = txtData(3).Text
-        '    SurchargeRO
-        '    data1.Refresh
-        'Set rs = data1.Recordset
-        'GetData3()
-        '    SetModeReg()
-        'End If
-        'bCancel = False
-        'buserchange = True
-
-        'Exit Sub
 
     End Sub
 

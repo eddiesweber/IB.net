@@ -43,6 +43,17 @@ Public Class frmMain
             Password = ""
         End Try
 
+        'Screen Position
+        GetWindowPos(Me, 15, 15)
+        Me.Show()
+
+        ''RPT = Report1
+        ''RPT.PrinterSelect
+        'Dim pPrint As Boolean = pDialog.ShowDialog()
+        ''MessageBox.Show(pDialog.PrinterSettings.PrinterName)
+
+        'OpenData()
+
         CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
         CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
         CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
@@ -127,18 +138,6 @@ Public Class frmMain
                 Exit Sub
             End Try
         End Using
-
-
-        ''Screen Position
-        'GetWindowPos(Me, 15, 15)
-        'Me.Show()
-
-        ''RPT = Report1
-        ''RPT.PrinterSelect
-        'Dim pPrint As Boolean = pDialog.ShowDialog()
-        ''MessageBox.Show(pDialog.PrinterSettings.PrinterName)
-
-        'OpenData()
 
     End Sub
 
@@ -231,8 +230,6 @@ Public Class frmMain
     Private Sub cmdDepartmentsRoutes_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdDepartmentsRoutes.Click
 
         frmDept.Show()
-        'frmDeptTest.Show()
-
 
     End Sub
 

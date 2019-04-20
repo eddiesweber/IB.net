@@ -19,21 +19,23 @@ Public Class frmCust
 
         GetWindowPos(Me, 66, 66)
 
-        txtData1.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_NAMEColumn.MaxLength
-        txtData2.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_STRColumn.MaxLength
-        txtData3.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_CTYColumn.MaxLength
-        txtData4.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_STATEColumn.MaxLength
-        txtData5.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_ZIPColumn.MaxLength
-        txtData6.MaxLength = DS_CustomerMaster1.CustomerMaster.CARE_OFColumn.MaxLength
-        txtData7.MaxLength = DS_CustomerMaster1.CustomerMaster.CONTACTColumn.MaxLength
-        txtData8.MaxLength = DS_CustomerMaster1.CustomerMaster.EMAILColumn.MaxLength
-        txtData9.MaxLength = DS_CustomerMaster1.CustomerMaster.URLColumn.MaxLength
-        txtData10.MaxLength = DS_CustomerMaster1.CustomerMaster.COUNTYColumn.MaxLength
-        txtData11.MaxLength = DS_CustomerMaster1.CustomerMaster.CC_NUMColumn.MaxLength
-        txtData17.MaxLength = DS_CustomerMaster1.CustomerMaster.COMMENTSColumn.MaxLength
-        txtOption.MaxLength = DS_CustomerMaster1.CustomerMaster.PAY_TYPEColumn.MaxLength
-        txmData0.MaxLength = DS_CustomerMaster1.CustomerMaster.PHONEColumn.MaxLength
-        txmData1.MaxLength = DS_CustomerMaster1.CustomerMaster.FAX_NOColumn.MaxLength
+        'txtData1.MaxLength = txtData1.DataField.Length
+        'txtData2.MaxLength = txtData2.DataField.Length
+        'txtData3.MaxLength = txtData3.DataField.Length
+        'txtData4.MaxLength = txtData4.DataField.Length
+        'txtData5.MaxLength = txtData5.DataField.Length
+        'txtData6.MaxLength = txtData6.DataField.Length
+        'txtData7.MaxLength = txtData7.DataField.Length
+        'txtData8.MaxLength = txtData8.DataField.Length
+        'txtData9.MaxLength = txtData9.DataField.Length
+        'txtData10.MaxLength = txtData10.DataField.Length
+        'txtData11.MaxLength = txtData11.DataField.Length
+        'txtData12.MaxLength = txtData12.DataField.Length
+        'txtData17.MaxLength = txtData17.DataField.Length
+        'txtOption.MaxLength = txtOption.DataField.Length
+        'txmData0.MaxLength = txmData0.DataField.Length
+        'txmData1.MaxLength = txmData1.DataField.Length
+        'txtData1.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_NAMEColumn.MaxLength
 
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
@@ -152,6 +154,10 @@ Public Class frmCust
         Dim drv As DataRowView = DirectCast(CustomerMasterBindingSource.List, DataView).AddNew()
 
         drv.Row.Item("CUST_NUM") = -1
+        drv.Row.Item("BILL_NAME") = txtData1.Text.ToUpper
+        drv.Row.Item("PAY_TYPE") = "I"
+        drv.Row.Item("MAIL_STATEMENT") = False
+        drv.Row.Item("Last_Change") = Now()
 
         e.NewObject = drv
 
@@ -168,7 +174,6 @@ Public Class frmCust
         bTextChanged = False
 
         CustomerMasterBindingSource.AddNew()
-        'txtData0.Text = -1
 
         SetModeAdd()
 
@@ -254,7 +259,7 @@ Public Class frmCust
                 Try
                     connection.Open()
                     CurCust = Convert.ToInt32(cmd.ExecuteScalar()) + 1
-
+                    txtData0.Text = CurCust
                 Catch ex As Exception
                     Result = MessageBox.Show(Me, "Error getting a new customer number" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
                     LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
@@ -266,27 +271,9 @@ Public Class frmCust
                 End Try
 
             End Using
-
-            Dim newCustomersRow As DS_CustomerMaster.CustomerMasterRow
-            newCustomersRow = DS_CustomerMaster1.CustomerMaster.NewCustomerMasterRow
-
-            newCustomersRow.CUST_NUM = CurCust
-            newCustomersRow.BILL_NAME = txtData1.Text.ToUpper
-            newCustomersRow.PAY_TYPE = "I"
-            newCustomersRow.MAIL_STATEMENT = False
-            newCustomersRow.Last_Change = Now()
-
-            DS_CustomerMaster1.CustomerMaster.Rows.Add(newCustomersRow)
-            CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)
-
-            GetData()
-            bCancel = True
         End If
 
         If Not bCancel Then
-            'Dim customersRow As DS_CustomerMaster.CustomerMasterRow
-            'customersRow = DS_CustomerMaster1.CustomerMaster.FindByCUST_NUM(CurCust)
-
             txtLastChanged.Text = Now()
             CustomerMasterBindingSource.EndEdit()
             CustomerMasterTableAdapter.Update(DS_CustomerMaster1.CustomerMaster)

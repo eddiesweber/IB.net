@@ -30,36 +30,19 @@ Public Class frmRentOrd
         Me.SpGetSalesmenTableAdapter.Connection.ConnectionString = CS
         Me.SpGetSalesmenTableAdapter.Fill(Me.DsspGetSalesmen.spGetSalesmen)
 
-        'For Each tb As TextBox In Me.Controls.OfType(Of TextBox)()
-
-        'Next
-
-        'txtData2.MaxLength = txtData2.DataField.Length
-        'txtData4.MaxLength = txtData4.DataField.Length
-        'txtData5.MaxLength = txtData5.DataField.Length
-        'txtData6.MaxLength = txtData6.DataField.Length
-        'txtData7.MaxLength = txtData7.DataField.Length
-        'txtData8.MaxLength = txtData8.DataField.Length
-        'txtData9.MaxLength = txtData9.DataField.Length
-        'txtData10.MaxLength = txtData10.DataField.Length
-        'txtData11.MaxLength = txtData11.DataField.Length
-        'txtData12.MaxLength = txtData12.DataField.Length
-        'txtData13.MaxLength = txtData13.DataField.Length
-        'txtData19.MaxLength = txtData19.DataField.Length
-        'txtData20.MaxLength = txtData20.DataField.Length
-        'txtData2.MaxLength = DsCustomerInventory.CustomerInventory.ITEM_NUMColumn.MaxLength
-        'txtData4.MaxLength = DsCustomerInventory.CustomerInventory.SALES_1Column.MaxLength
-        'txtData5.MaxLength = DsCustomerInventory.CustomerInventory.SALES_2Column.MaxLength
-        'txtData6.MaxLength = DsCustomerInventory.CustomerInventory.SALES_3Column.MaxLength
-        'txtData7.MaxLength = DsCustomerInventory.CustomerInventory.SALES_1PCTColumn.MaxLength
-        'txtData8.MaxLength = DsCustomerInventory.CustomerInventory.SALES_2PCTColumn.MaxLength
-        'txtData9.MaxLength = DsCustomerInventory.CustomerInventory.SALES_3PCTColumn.MaxLength
-        'txtData10.MaxLength = DsCustomerInventory.CustomerInventory.LOAN_QTYColumn.MaxLength
-        'txtData11.MaxLength = DsCustomerInventory.CustomerInventory.INV_QTYColumn.MaxLength
-        'txtData12.MaxLength = DsCustomerInventory.CustomerInventory.MIN_QTYColumn.MaxLength
-        'txtData13.MaxLength = DsCustomerInventory.CustomerInventory.DEL_QTYColumn.MaxLength
-        'txtData19.MaxLength = DsCustomerInventory.CustomerInventory.UNIT_PRICEColumn.MaxLength
-        'txtData20.MaxLength = DsCustomerInventory.CustomerInventory.NAME_SIZEColumn.MaxLength
+        txtData2.MaxLength = txtData2.DataField.Length
+        txtData4.MaxLength = txtData4.DataField.Length
+        txtData5.MaxLength = txtData5.DataField.Length
+        txtData6.MaxLength = txtData6.DataField.Length
+        txtData7.MaxLength = txtData7.DataField.Length
+        txtData8.MaxLength = txtData8.DataField.Length
+        txtData9.MaxLength = txtData9.DataField.Length
+        txtData10.MaxLength = txtData10.DataField.Length
+        txtData11.MaxLength = txtData11.DataField.Length
+        txtData12.MaxLength = txtData12.DataField.Length
+        txtData13.MaxLength = txtData13.DataField.Length
+        txtData19.MaxLength = txtData19.DataField.Length
+        txtData20.MaxLength = txtData20.DataField.Length
 
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
@@ -81,27 +64,27 @@ Public Class frmRentOrd
 
     End Sub
 
-    Private Sub SetLengths(ByVal cx As Control)
-        For Each c As Control In cx.Controls
-            If TypeOf c Is TextBox Then
-                Dim b As Binding = c.DataBindings("Text")
-                If Not b Is Nothing Then
-                    Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-                    Dim tb As TextBox = DirectCast(c, TextBox)
-                    Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-                    tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-                End If
-            ElseIf TypeOf c Is RichTextBox Then
-                Dim b As Binding = c.DataBindings("Text")
-                If Not b Is Nothing Then
-                    Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-                    Dim tb As TextBox = DirectCast(c, TextBox)
-                    Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-                    tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-                End If
-            End If
-        Next
-    End Sub
+    'Private Sub SetLengths(ByVal cx As Control)
+    '    For Each c As Control In cx.Controls
+    '        If TypeOf c Is TextBox Then
+    '            Dim b As Binding = c.DataBindings("Text")
+    '            If Not b Is Nothing Then
+    '                Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
+    '                Dim tb As TextBox = DirectCast(c, TextBox)
+    '                Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
+    '                tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
+    '            End If
+    '        ElseIf TypeOf c Is RichTextBox Then
+    '            Dim b As Binding = c.DataBindings("Text")
+    '            If Not b Is Nothing Then
+    '                Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
+    '                Dim tb As TextBox = DirectCast(c, TextBox)
+    '                Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
+    '                tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
+    '            End If
+    '        End If
+    '    Next
+    'End Sub
 
     Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
