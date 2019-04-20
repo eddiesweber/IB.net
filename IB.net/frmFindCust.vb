@@ -5,8 +5,8 @@ Imports System.Data.SqlClient
 
 Public Class frmFindCust
 
-    Public intCustNum(2500) As Integer
-    Public strCustName(2500) As String
+    'Public intCustNum(2500) As Integer
+    'Public strCustName(2500) As String
     Dim Result As DialogResult
     Dim blnNoCLick As Boolean = False
 
@@ -27,8 +27,8 @@ Public Class frmFindCust
         SpGetCustsAlphaTableAdapter.Connection.ConnectionString = CS
         SpGetCustsAlphaTableAdapter.Fill(Me.DsspGetCustsAlpha.SpGetCustsAlpha)
 
-        lstCustNum.SelectedIndex = 0
-        lstCustName.SelectedIndex = 0
+        lstCustNum.SelectedIndex = -1
+        lstCustName.SelectedIndex = -1
         If CurCust > 0 Then
             lstCustNum.SelectedIndex = lstCustNum.FindStringExact(CurCust)
         End If
@@ -108,15 +108,4 @@ Public Class frmFindCust
 
     End Sub
 
-    Private Sub frmFindCust_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-
-        SaveWindowPos(Me)
-
-    End Sub
-
-    Private Sub frmFindCust_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-
-        SaveWindowPos(Me)
-
-    End Sub
 End Class

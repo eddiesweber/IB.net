@@ -25,39 +25,43 @@ Partial Class frmFindItem
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindItem))
         Me.LstItemAlpha = New System.Windows.Forms.ListBox()
+        Me.SpGetItemsAlphaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItemsAlpha = New IB.net.dsspGetItemsAlpha()
         Me.LstItemNum = New System.Windows.Forms.ListBox()
+        Me.SpGetItemsNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItemsNum = New IB.net.dsspGetItemsNum()
         Me.OptType2 = New System.Windows.Forms.RadioButton()
         Me.optType1 = New System.Windows.Forms.RadioButton()
         Me.optType0 = New System.Windows.Forms.RadioButton()
         Me.lstVendItem = New System.Windows.Forms.ListBox()
-        Me.cmdVendor = New System.Windows.Forms.ComboBox()
+        Me.SpGetItemsVend2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItemsVend2 = New IB.net.dsspGetItemsVend2()
+        Me.cmbVendor = New System.Windows.Forms.ComboBox()
+        Me.SpGetItemsVend1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItemsVend1 = New IB.net.dsspGetItemsVend1()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
-        Me.DsspGetItemsNum = New IB.net.dsspGetItemsNum()
-        Me.SpGetItemsNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetItemsNumTableAdapter = New IB.net.dsspGetItemsNumTableAdapters.spGetItemsNumTableAdapter()
-        Me.DsspGetItemsAlpha = New IB.net.dsspGetItemsAlpha()
-        Me.SpGetItemsAlphaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetItemsAlphaTableAdapter = New IB.net.dsspGetItemsAlphaTableAdapters.spGetItemsAlphaTableAdapter()
-        Me.DsspGetItemsVend1 = New IB.net.dsspGetItemsVend1()
-        Me.SpGetItemsVend1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetItemsVend1TableAdapter = New IB.net.dsspGetItemsVend1TableAdapters.spGetItemsVend1TableAdapter()
+        Me.SpGetItemsVend2TableAdapter = New IB.net.dsspGetItemsVend2TableAdapters.spGetItemsVend2TableAdapter()
+        CType(Me.SpGetItemsAlphaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItemsAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetItemsNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItemsNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetItemsVend2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItemsVend2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetItemsVend1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItemsVend1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetItemsNum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetItemsNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetItemsAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetItemsAlphaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetItemsVend1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetItemsVend1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LstItemAlpha
         '
-        Me.LstItemAlpha.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SpGetItemsAlphaBindingSource, "DESCR", True))
         Me.LstItemAlpha.DataSource = Me.SpGetItemsAlphaBindingSource
         Me.LstItemAlpha.DisplayMember = "DESCR"
         Me.LstItemAlpha.FormattingEnabled = True
@@ -65,10 +69,20 @@ Partial Class frmFindItem
         Me.LstItemAlpha.Name = "LstItemAlpha"
         Me.LstItemAlpha.Size = New System.Drawing.Size(161, 95)
         Me.LstItemAlpha.TabIndex = 7
+        Me.LstItemAlpha.ValueMember = "ITEM_NUM"
+        '
+        'SpGetItemsAlphaBindingSource
+        '
+        Me.SpGetItemsAlphaBindingSource.DataMember = "spGetItemsAlpha"
+        Me.SpGetItemsAlphaBindingSource.DataSource = Me.DsspGetItemsAlpha
+        '
+        'DsspGetItemsAlpha
+        '
+        Me.DsspGetItemsAlpha.DataSetName = "dsspGetItemsAlpha"
+        Me.DsspGetItemsAlpha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'LstItemNum
         '
-        Me.LstItemNum.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SpGetItemsNumBindingSource, "ITEM_NUM", True))
         Me.LstItemNum.DataSource = Me.SpGetItemsNumBindingSource
         Me.LstItemNum.DisplayMember = "ITEM_NUM"
         Me.LstItemNum.FormattingEnabled = True
@@ -76,6 +90,17 @@ Partial Class frmFindItem
         Me.LstItemNum.Name = "LstItemNum"
         Me.LstItemNum.Size = New System.Drawing.Size(73, 95)
         Me.LstItemNum.TabIndex = 6
+        Me.LstItemNum.ValueMember = "DESCR"
+        '
+        'SpGetItemsNumBindingSource
+        '
+        Me.SpGetItemsNumBindingSource.DataMember = "spGetItemsNum"
+        Me.SpGetItemsNumBindingSource.DataSource = Me.DsspGetItemsNum
+        '
+        'DsspGetItemsNum
+        '
+        Me.DsspGetItemsNum.DataSetName = "dsspGetItemsNum"
+        Me.DsspGetItemsNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'OptType2
         '
@@ -112,22 +137,45 @@ Partial Class frmFindItem
         '
         'lstVendItem
         '
+        Me.lstVendItem.DataSource = Me.SpGetItemsVend2BindingSource
+        Me.lstVendItem.DisplayMember = "VEND_ITEM"
         Me.lstVendItem.FormattingEnabled = True
         Me.lstVendItem.Location = New System.Drawing.Point(248, 112)
         Me.lstVendItem.Name = "lstVendItem"
         Me.lstVendItem.Size = New System.Drawing.Size(105, 69)
         Me.lstVendItem.TabIndex = 9
+        Me.lstVendItem.ValueMember = "ITEM_NUM"
         '
-        'cmdVendor
+        'SpGetItemsVend2BindingSource
         '
-        Me.cmdVendor.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemsVend1BindingSource, "Vendor", True))
-        Me.cmdVendor.DataSource = Me.SpGetItemsVend1BindingSource
-        Me.cmdVendor.DisplayMember = "Vendor"
-        Me.cmdVendor.FormattingEnabled = True
-        Me.cmdVendor.Location = New System.Drawing.Point(104, 112)
-        Me.cmdVendor.Name = "cmdVendor"
-        Me.cmdVendor.Size = New System.Drawing.Size(136, 21)
-        Me.cmdVendor.TabIndex = 10
+        Me.SpGetItemsVend2BindingSource.DataMember = "spGetItemsVend2"
+        Me.SpGetItemsVend2BindingSource.DataSource = Me.DsspGetItemsVend2
+        '
+        'DsspGetItemsVend2
+        '
+        Me.DsspGetItemsVend2.DataSetName = "dsspGetItemsVend2"
+        Me.DsspGetItemsVend2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'cmbVendor
+        '
+        Me.cmbVendor.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemsVend1BindingSource, "Vendor", True))
+        Me.cmbVendor.DataSource = Me.SpGetItemsVend1BindingSource
+        Me.cmbVendor.DisplayMember = "Vendor"
+        Me.cmbVendor.FormattingEnabled = True
+        Me.cmbVendor.Location = New System.Drawing.Point(104, 112)
+        Me.cmbVendor.Name = "cmbVendor"
+        Me.cmbVendor.Size = New System.Drawing.Size(136, 21)
+        Me.cmbVendor.TabIndex = 10
+        '
+        'SpGetItemsVend1BindingSource
+        '
+        Me.SpGetItemsVend1BindingSource.DataMember = "spGetItemsVend1"
+        Me.SpGetItemsVend1BindingSource.DataSource = Me.DsspGetItemsVend1
+        '
+        'DsspGetItemsVend1
+        '
+        Me.DsspGetItemsVend1.DataSetName = "dsspGetItemsVend1"
+        Me.DsspGetItemsVend1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label1
         '
@@ -172,47 +220,21 @@ Partial Class frmFindItem
         Me.cmdSelect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdSelect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'DsspGetItemsNum
-        '
-        Me.DsspGetItemsNum.DataSetName = "dsspGetItemsNum"
-        Me.DsspGetItemsNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetItemsNumBindingSource
-        '
-        Me.SpGetItemsNumBindingSource.DataMember = "spGetItemsNum"
-        Me.SpGetItemsNumBindingSource.DataSource = Me.DsspGetItemsNum
-        '
         'SpGetItemsNumTableAdapter
         '
         Me.SpGetItemsNumTableAdapter.ClearBeforeFill = True
-        '
-        'DsspGetItemsAlpha
-        '
-        Me.DsspGetItemsAlpha.DataSetName = "dsspGetItemsAlpha"
-        Me.DsspGetItemsAlpha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetItemsAlphaBindingSource
-        '
-        Me.SpGetItemsAlphaBindingSource.DataMember = "spGetItemsAlpha"
-        Me.SpGetItemsAlphaBindingSource.DataSource = Me.DsspGetItemsAlpha
         '
         'SpGetItemsAlphaTableAdapter
         '
         Me.SpGetItemsAlphaTableAdapter.ClearBeforeFill = True
         '
-        'DsspGetItemsVend1
-        '
-        Me.DsspGetItemsVend1.DataSetName = "dsspGetItemsVend1"
-        Me.DsspGetItemsVend1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetItemsVend1BindingSource
-        '
-        Me.SpGetItemsVend1BindingSource.DataMember = "spGetItemsVend1"
-        Me.SpGetItemsVend1BindingSource.DataSource = Me.DsspGetItemsVend1
-        '
         'SpGetItemsVend1TableAdapter
         '
         Me.SpGetItemsVend1TableAdapter.ClearBeforeFill = True
+        '
+        'SpGetItemsVend2TableAdapter
+        '
+        Me.SpGetItemsVend2TableAdapter.ClearBeforeFill = True
         '
         'frmFindItem
         '
@@ -223,7 +245,7 @@ Partial Class frmFindItem
         Me.Controls.Add(Me.cmdRefresh)
         Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cmdVendor)
+        Me.Controls.Add(Me.cmbVendor)
         Me.Controls.Add(Me.lstVendItem)
         Me.Controls.Add(Me.optType0)
         Me.Controls.Add(Me.optType1)
@@ -237,15 +259,17 @@ Partial Class frmFindItem
         Me.Name = "frmFindItem"
         Me.ShowInTaskbar = False
         Me.Text = "Find Item"
+        CType(Me.SpGetItemsAlphaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItemsAlpha, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetItemsNumBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItemsNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetItemsVend2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItemsVend2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetItemsVend1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItemsVend1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetItemsNum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetItemsNumBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetItemsAlpha, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetItemsAlphaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetItemsVend1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetItemsVend1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -257,7 +281,7 @@ Partial Class frmFindItem
     Friend WithEvents optType1 As RadioButton
     Friend WithEvents optType0 As RadioButton
     Friend WithEvents lstVendItem As ListBox
-    Friend WithEvents cmdVendor As ComboBox
+    Friend WithEvents cmbVendor As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
     Friend WithEvents cmdRefresh As C1.Win.C1Input.C1Button
@@ -271,4 +295,7 @@ Partial Class frmFindItem
     Friend WithEvents SpGetItemsVend1BindingSource As BindingSource
     Friend WithEvents DsspGetItemsVend1 As dsspGetItemsVend1
     Friend WithEvents SpGetItemsVend1TableAdapter As dsspGetItemsVend1TableAdapters.spGetItemsVend1TableAdapter
+    Friend WithEvents SpGetItemsVend2BindingSource As BindingSource
+    Friend WithEvents DsspGetItemsVend2 As dsspGetItemsVend2
+    Friend WithEvents SpGetItemsVend2TableAdapter As dsspGetItemsVend2TableAdapters.spGetItemsVend2TableAdapter
 End Class

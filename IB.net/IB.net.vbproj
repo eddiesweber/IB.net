@@ -198,6 +198,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetItemsVend1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetItemsVend2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetItemsVend2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetSalesmen.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1082,6 +1087,17 @@
     </None>
     <None Include="dsspGetItemsVend1.xss">
       <DependentUpon>dsspGetItemsVend1.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItemsVend2.xsc">
+      <DependentUpon>dsspGetItemsVend2.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItemsVend2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetItemsVend2.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetItemsVend2.xss">
+      <DependentUpon>dsspGetItemsVend2.xsd</DependentUpon>
     </None>
     <None Include="dsspGetSalesmen.xsc">
       <DependentUpon>dsspGetSalesmen.xsd</DependentUpon>
