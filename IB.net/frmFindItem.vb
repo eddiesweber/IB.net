@@ -10,7 +10,9 @@ Public Class frmFindItem
 
     Private Sub frmFindItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        blnNoCLick = True
         GetWindowPos(Me, 333, 66)
+        blnNoCLick = False
 
         TypeOpt = "B"
 
@@ -43,15 +45,13 @@ Public Class frmFindItem
         SpGetItemsVend1TableAdapter.Connection.ConnectionString = CS
         SpGetItemsVend1TableAdapter.Fill(DsspGetItemsVend1.spGetItemsVend1, TypeOpt)
 
+        'LstItemNum.BoundText = CStr(CurItem)
+        'lstItemNum_Click
         LstItemNum.SelectedIndex = -1
         LstItemAlpha.SelectedIndex = -1
         If CurItem > 0 Then
             LstItemNum.SelectedIndex = LstItemNum.FindStringExact(CurItem)
-            'LstItemAlpha.SelectedIndex = LstItemAlpha.FindStringExact(CurItem)
-            'LstItemAlpha.SelectedIndex = LstItemAlpha.FindStringExact(LstItemNum.SelectedValue.ToString)
         End If
-        'LstItemNum.BoundText = CStr(CurItem)
-        'lstItemNum_Click
 
         Me.Cursor = Cursors.Arrow
 
@@ -157,11 +157,6 @@ Public Class frmFindItem
 
     End Sub
 
-    Private Sub cmbVendor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbVendor.SelectedIndexChanged
-
-
-    End Sub
-
     Private Sub lstVendItem_DoubleClick(sender As Object, e As EventArgs) Handles lstVendItem.DoubleClick
 
         cmdSelect.Select()
@@ -172,7 +167,9 @@ Public Class frmFindItem
 
         TypeOpt = "R"
 
-        GetData()
+        If blnNoCLick = False Then
+            GetData()
+        End If
 
     End Sub
 
@@ -180,7 +177,9 @@ Public Class frmFindItem
 
         TypeOpt = "O"
 
-        GetData()
+        If blnNoCLick = False Then
+            GetData()
+        End If
 
     End Sub
 
@@ -188,7 +187,9 @@ Public Class frmFindItem
 
         TypeOpt = "B"
 
-        GetData()
+        If blnNoCLick = False Then
+            GetData()
+        End If
 
     End Sub
 
@@ -202,6 +203,8 @@ Public Class frmFindItem
 
         Dim frm As Form
         Dim intRow As Integer
+
+        CurItem = CType(LstItemNum.SelectedItem(0), Long)
 
         If CurItem > 0 Then
             SpGetItemsNumBindingSource.MoveFirst()

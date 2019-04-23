@@ -42,11 +42,11 @@ Partial Class frmFindItem
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
-        Me.cmdSelect = New C1.Win.C1Input.C1Button()
         Me.SpGetItemsNumTableAdapter = New IB.net.dsspGetItemsNumTableAdapters.spGetItemsNumTableAdapter()
         Me.SpGetItemsAlphaTableAdapter = New IB.net.dsspGetItemsAlphaTableAdapters.spGetItemsAlphaTableAdapter()
         Me.SpGetItemsVend1TableAdapter = New IB.net.dsspGetItemsVend1TableAdapters.spGetItemsVend1TableAdapter()
         Me.SpGetItemsVend2TableAdapter = New IB.net.dsspGetItemsVend2TableAdapters.spGetItemsVend2TableAdapter()
+        Me.cmdSelect = New C1.Win.C1Input.C1Button()
         CType(Me.SpGetItemsAlphaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsspGetItemsAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetItemsNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +88,7 @@ Partial Class frmFindItem
         Me.LstItemNum.FormattingEnabled = True
         Me.LstItemNum.Location = New System.Drawing.Point(104, 10)
         Me.LstItemNum.Name = "LstItemNum"
-        Me.LstItemNum.Size = New System.Drawing.Size(73, 95)
+        Me.LstItemNum.Size = New System.Drawing.Size(82, 95)
         Me.LstItemNum.TabIndex = 6
         Me.LstItemNum.ValueMember = "DESCR"
         '
@@ -208,18 +208,6 @@ Partial Class frmFindItem
         Me.cmdRefresh.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'cmdSelect
-        '
-        Me.cmdSelect.Enabled = False
-        Me.cmdSelect.Location = New System.Drawing.Point(369, 10)
-        Me.cmdSelect.Name = "cmdSelect"
-        Me.cmdSelect.Size = New System.Drawing.Size(85, 25)
-        Me.cmdSelect.TabIndex = 76
-        Me.cmdSelect.Text = "Select"
-        Me.cmdSelect.UseVisualStyleBackColor = True
-        Me.cmdSelect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdSelect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'SpGetItemsNumTableAdapter
         '
         Me.SpGetItemsNumTableAdapter.ClearBeforeFill = True
@@ -236,14 +224,25 @@ Partial Class frmFindItem
         '
         Me.SpGetItemsVend2TableAdapter.ClearBeforeFill = True
         '
+        'cmdSelect
+        '
+        Me.cmdSelect.Location = New System.Drawing.Point(369, 9)
+        Me.cmdSelect.Name = "cmdSelect"
+        Me.cmdSelect.Size = New System.Drawing.Size(85, 25)
+        Me.cmdSelect.TabIndex = 79
+        Me.cmdSelect.Text = "Select"
+        Me.cmdSelect.UseVisualStyleBackColor = True
+        Me.cmdSelect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdSelect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmFindItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(467, 191)
+        Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdRefresh)
-        Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmbVendor)
         Me.Controls.Add(Me.lstVendItem)
@@ -285,7 +284,6 @@ Partial Class frmFindItem
     Friend WithEvents Label1 As Label
     Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
     Friend WithEvents cmdRefresh As C1.Win.C1Input.C1Button
-    Friend WithEvents cmdSelect As C1.Win.C1Input.C1Button
     Friend WithEvents SpGetItemsNumBindingSource As BindingSource
     Friend WithEvents DsspGetItemsNum As dsspGetItemsNum
     Friend WithEvents SpGetItemsNumTableAdapter As dsspGetItemsNumTableAdapters.spGetItemsNumTableAdapter
@@ -298,4 +296,5 @@ Partial Class frmFindItem
     Friend WithEvents SpGetItemsVend2BindingSource As BindingSource
     Friend WithEvents DsspGetItemsVend2 As dsspGetItemsVend2
     Friend WithEvents SpGetItemsVend2TableAdapter As dsspGetItemsVend2TableAdapters.spGetItemsVend2TableAdapter
+    Friend WithEvents cmdSelect As C1.Win.C1Input.C1Button
 End Class
