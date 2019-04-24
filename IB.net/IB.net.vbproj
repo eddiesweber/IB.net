@@ -183,6 +183,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetItem.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetItem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetItemPO.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetItemPO.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetItemsAlpha.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1054,6 +1064,28 @@
     </None>
     <None Include="dsspGetInvoiceHist2.xss">
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItem.xsc">
+      <DependentUpon>dsspGetItem.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetItem.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetItem.xss">
+      <DependentUpon>dsspGetItem.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItemPO.xsc">
+      <DependentUpon>dsspGetItemPO.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetItemPO.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetItemPO.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetItemPO.xss">
+      <DependentUpon>dsspGetItemPO.xsd</DependentUpon>
     </None>
     <None Include="dsspGetItemsAlpha.xsc">
       <DependentUpon>dsspGetItemsAlpha.xsd</DependentUpon>

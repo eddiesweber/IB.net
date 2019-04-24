@@ -109,6 +109,18 @@ Public Class frmFindItem
 
     'End Sub
 
+    Private Sub LstItemAlpha_DoubleClick(sender As Object, e As EventArgs) Handles LstItemAlpha.DoubleClick
+
+        cmdSelect.Select()
+
+    End Sub
+
+    Private Sub LstItemNum_DoubleClick(sender As Object, e As EventArgs) Handles LstItemNum.DoubleClick
+
+        cmdSelect.Select()
+
+    End Sub
+
     Private Sub LstItemNum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstItemNum.SelectedIndexChanged
 
         If LstItemNum.SelectedValue <> Nothing Then
@@ -224,7 +236,7 @@ Public Class frmFindItem
             For Each ctl As Control In frm.Controls
                 If TypeOf ctl Is Label Then
                     If ctl.Name = "lblCurItem" Then
-                        ctl.Text = CurCust
+                        ctl.Text = CurItem
                     End If
                 End If
             Next
@@ -254,5 +266,4 @@ Public Class frmFindItem
         Me.Close()
 
     End Sub
-
 End Class
