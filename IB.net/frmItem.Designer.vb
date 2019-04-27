@@ -22,39 +22,26 @@ Partial Class frmItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmItem))
         Me.frmPO = New System.Windows.Forms.GroupBox()
-        Me.cmdClear = New System.Windows.Forms.Button()
-        Me.txtData13 = New System.Windows.Forms.TextBox()
-        Me.txtData12 = New System.Windows.Forms.TextBox()
-        Me.txtData10 = New System.Windows.Forms.TextBox()
-        Me.lblLabel17 = New System.Windows.Forms.Label()
-        Me.lblLabel12 = New System.Windows.Forms.Label()
-        Me.lblLabel16 = New System.Windows.Forms.Label()
-        Me.lblLabel15 = New System.Windows.Forms.Label()
+        Me.C1DateEdit2 = New C1.Win.Calendar.C1DateEdit()
+        Me.C1DateEdit1 = New C1.Win.Calendar.C1DateEdit()
+        Me.cmdClear = New C1.Win.C1Input.C1Button()
+        Me.txtData13 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData12 = New C1.Win.C1Input.C1TextBox()
         Me.lblLabel13 = New System.Windows.Forms.Label()
+        Me.lblLabel15 = New System.Windows.Forms.Label()
+        Me.lblLabel16 = New System.Windows.Forms.Label()
+        Me.lblLabel12 = New System.Windows.Forms.Label()
+        Me.lblLabel17 = New System.Windows.Forms.Label()
+        Me.txtData10 = New C1.Win.C1Input.C1TextBox()
         Me.chkData2 = New System.Windows.Forms.CheckBox()
-        Me.txtData8 = New System.Windows.Forms.TextBox()
-        Me.txtData6 = New System.Windows.Forms.TextBox()
-        Me.txtData7 = New System.Windows.Forms.TextBox()
-        Me.txtData5 = New System.Windows.Forms.TextBox()
-        Me.txtVend = New System.Windows.Forms.TextBox()
-        Me.txtData4 = New System.Windows.Forms.TextBox()
         Me.chkData1 = New System.Windows.Forms.CheckBox()
         Me.chkData0 = New System.Windows.Forms.CheckBox()
-        Me.txtData2 = New System.Windows.Forms.TextBox()
-        Me.cmdUpdate = New System.Windows.Forms.Button()
-        Me.cmdExit = New System.Windows.Forms.Button()
-        Me.cmdFind = New System.Windows.Forms.Button()
-        Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.fraType = New System.Windows.Forms.GroupBox()
-        Me.optType1 = New System.Windows.Forms.RadioButton()
         Me.optType0 = New System.Windows.Forms.RadioButton()
-        Me.txtData3 = New System.Windows.Forms.TextBox()
-        Me.cmdNew = New System.Windows.Forms.Button()
-        Me.cmdReset = New System.Windows.Forms.Button()
-        Me.cmdDelete = New System.Windows.Forms.Button()
-        Me.txtData0 = New System.Windows.Forms.TextBox()
-        Me.txtData1 = New System.Windows.Forms.TextBox()
+        Me.optType1 = New System.Windows.Forms.RadioButton()
         Me.lblLabel11 = New System.Windows.Forms.Label()
         Me.lblLabel10 = New System.Windows.Forms.Label()
         Me.lblLabel5 = New System.Windows.Forms.Label()
@@ -68,21 +55,79 @@ Partial Class frmItem
         Me.lblLabel2 = New System.Windows.Forms.Label()
         Me.lblLabel1 = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
+        Me.cmdExit = New C1.Win.C1Input.C1Button()
+        Me.cmdUpdate = New C1.Win.C1Input.C1Button()
+        Me.cmdReset = New C1.Win.C1Input.C1Button()
+        Me.cmdDelete = New C1.Win.C1Input.C1Button()
+        Me.cmdNew = New C1.Win.C1Input.C1Button()
+        Me.cmdFind = New C1.Win.C1Input.C1Button()
+        Me.txtData0 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData1 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData2 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData4 = New C1.Win.C1Input.C1TextBox()
+        Me.txtDesc = New C1.Win.C1Input.C1TextBox()
+        Me.txtVend = New C1.Win.C1Input.C1TextBox()
+        Me.txtData5 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData7 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData3 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData8 = New C1.Win.C1Input.C1TextBox()
+        Me.txtData6 = New C1.Win.C1Input.C1TextBox()
+        Me.DsVendMaster = New IB.net.dsVendMaster()
+        Me.VendMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VendMasterTableAdapter = New IB.net.dsVendMasterTableAdapters.VendMasterTableAdapter()
+        Me.cmbVend = New C1.Win.C1List.C1Combo()
+        Me.cmbCat = New C1.Win.C1List.C1Combo()
+        Me.SpGetCategoriesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetCategories = New IB.net.dsspGetCategories()
+        Me.SpGetCategoriesTableAdapter = New IB.net.dsspGetCategoriesTableAdapters.spGetCategoriesTableAdapter()
+        Me.DsItemMaster_ItemNum = New IB.net.dsItemMasterO_ItemNum()
         Me.frmPO.SuspendLayout()
+        CType(Me.C1DateEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdClear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.fraType.SuspendLayout()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtDesc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtVend, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsVendMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbVend, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCategoriesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetCategories, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsItemMaster_ItemNum, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'frmPO
         '
+        Me.frmPO.Controls.Add(Me.C1DateEdit2)
+        Me.frmPO.Controls.Add(Me.C1DateEdit1)
+        Me.frmPO.Controls.Add(Me.cmdClear)
+        Me.frmPO.Controls.Add(Me.txtData13)
+        Me.frmPO.Controls.Add(Me.txtData12)
         Me.frmPO.Controls.Add(Me.lblLabel13)
         Me.frmPO.Controls.Add(Me.lblLabel15)
         Me.frmPO.Controls.Add(Me.lblLabel16)
         Me.frmPO.Controls.Add(Me.lblLabel12)
         Me.frmPO.Controls.Add(Me.lblLabel17)
         Me.frmPO.Controls.Add(Me.txtData10)
-        Me.frmPO.Controls.Add(Me.txtData12)
-        Me.frmPO.Controls.Add(Me.txtData13)
-        Me.frmPO.Controls.Add(Me.cmdClear)
         Me.frmPO.Location = New System.Drawing.Point(8, 312)
         Me.frmPO.Name = "frmPO"
         Me.frmPO.Size = New System.Drawing.Size(297, 153)
@@ -90,74 +135,72 @@ Partial Class frmItem
         Me.frmPO.TabStop = False
         Me.frmPO.Text = "Last &Purchase"
         '
+        'C1DateEdit2
+        '
+        Me.C1DateEdit2.AllowSpinLoop = False
+        Me.C1DateEdit2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.C1DateEdit2.Calendar.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
+        Me.C1DateEdit2.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit2.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit2.ImagePadding = New System.Windows.Forms.Padding(0)
+        Me.C1DateEdit2.Location = New System.Drawing.Point(112, 71)
+        Me.C1DateEdit2.Name = "C1DateEdit2"
+        Me.C1DateEdit2.Size = New System.Drawing.Size(173, 18)
+        Me.C1DateEdit2.TabIndex = 98
+        Me.C1DateEdit2.Tag = Nothing
+        Me.C1DateEdit2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'C1DateEdit1
+        '
+        Me.C1DateEdit1.AllowSpinLoop = False
+        Me.C1DateEdit1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.C1DateEdit1.Calendar.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
+        Me.C1DateEdit1.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit1.ImagePadding = New System.Windows.Forms.Padding(0)
+        Me.C1DateEdit1.Location = New System.Drawing.Point(112, 48)
+        Me.C1DateEdit1.Name = "C1DateEdit1"
+        Me.C1DateEdit1.Size = New System.Drawing.Size(173, 18)
+        Me.C1DateEdit1.TabIndex = 97
+        Me.C1DateEdit1.Tag = Nothing
+        Me.C1DateEdit1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.C1DateEdit1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'cmdClear
         '
-        Me.cmdClear.Location = New System.Drawing.Point(224, 16)
+        Me.cmdClear.Location = New System.Drawing.Point(200, 15)
         Me.cmdClear.Name = "cmdClear"
-        Me.cmdClear.Size = New System.Drawing.Size(57, 22)
-        Me.cmdClear.TabIndex = 49
+        Me.cmdClear.Size = New System.Drawing.Size(85, 25)
+        Me.cmdClear.TabIndex = 96
         Me.cmdClear.Text = "Clear"
         Me.cmdClear.UseVisualStyleBackColor = True
+        Me.cmdClear.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdClear.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData13
         '
-        Me.txtData13.ForeColor = System.Drawing.Color.Navy
+        Me.txtData13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData13.Location = New System.Drawing.Point(112, 120)
         Me.txtData13.Name = "txtData13"
-        Me.txtData13.Size = New System.Drawing.Size(71, 20)
-        Me.txtData13.TabIndex = 39
+        Me.txtData13.Size = New System.Drawing.Size(71, 18)
+        Me.txtData13.TabIndex = 94
+        Me.txtData13.Tag = Nothing
+        Me.txtData13.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData12
         '
-        Me.txtData12.ForeColor = System.Drawing.Color.Navy
+        Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData12.Location = New System.Drawing.Point(112, 96)
         Me.txtData12.Name = "txtData12"
-        Me.txtData12.Size = New System.Drawing.Size(71, 20)
-        Me.txtData12.TabIndex = 37
-        '
-        'txtData10
-        '
-        Me.txtData10.ForeColor = System.Drawing.Color.Navy
-        Me.txtData10.Location = New System.Drawing.Point(112, 24)
-        Me.txtData10.Name = "txtData10"
-        Me.txtData10.Size = New System.Drawing.Size(71, 20)
-        Me.txtData10.TabIndex = 31
-        '
-        'lblLabel17
-        '
-        Me.lblLabel17.AutoSize = True
-        Me.lblLabel17.Location = New System.Drawing.Point(16, 74)
-        Me.lblLabel17.Name = "lblLabel17"
-        Me.lblLabel17.Size = New System.Drawing.Size(82, 13)
-        Me.lblLabel17.TabIndex = 34
-        Me.lblLabel17.Text = "Date Received:"
-        '
-        'lblLabel12
-        '
-        Me.lblLabel12.AutoSize = True
-        Me.lblLabel12.Location = New System.Drawing.Point(16, 50)
-        Me.lblLabel12.Name = "lblLabel12"
-        Me.lblLabel12.Size = New System.Drawing.Size(74, 13)
-        Me.lblLabel12.TabIndex = 32
-        Me.lblLabel12.Text = "Date Ordered:"
-        '
-        'lblLabel16
-        '
-        Me.lblLabel16.AutoSize = True
-        Me.lblLabel16.Location = New System.Drawing.Point(16, 122)
-        Me.lblLabel16.Name = "lblLabel16"
-        Me.lblLabel16.Size = New System.Drawing.Size(71, 13)
-        Me.lblLabel16.TabIndex = 38
-        Me.lblLabel16.Text = "Total &Owned:"
-        '
-        'lblLabel15
-        '
-        Me.lblLabel15.AutoSize = True
-        Me.lblLabel15.Location = New System.Drawing.Point(16, 98)
-        Me.lblLabel15.Name = "lblLabel15"
-        Me.lblLabel15.Size = New System.Drawing.Size(85, 13)
-        Me.lblLabel15.TabIndex = 36
-        Me.lblLabel15.Text = "Invoice Number:"
+        Me.txtData12.Size = New System.Drawing.Size(71, 18)
+        Me.txtData12.TabIndex = 95
+        Me.txtData12.Tag = Nothing
+        Me.txtData12.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'lblLabel13
         '
@@ -168,6 +211,54 @@ Partial Class frmItem
         Me.lblLabel13.TabIndex = 30
         Me.lblLabel13.Text = "Qty Ordered:"
         '
+        'lblLabel15
+        '
+        Me.lblLabel15.AutoSize = True
+        Me.lblLabel15.Location = New System.Drawing.Point(16, 98)
+        Me.lblLabel15.Name = "lblLabel15"
+        Me.lblLabel15.Size = New System.Drawing.Size(85, 13)
+        Me.lblLabel15.TabIndex = 36
+        Me.lblLabel15.Text = "Invoice Number:"
+        '
+        'lblLabel16
+        '
+        Me.lblLabel16.AutoSize = True
+        Me.lblLabel16.Location = New System.Drawing.Point(16, 122)
+        Me.lblLabel16.Name = "lblLabel16"
+        Me.lblLabel16.Size = New System.Drawing.Size(71, 13)
+        Me.lblLabel16.TabIndex = 38
+        Me.lblLabel16.Text = "Total &Owned:"
+        '
+        'lblLabel12
+        '
+        Me.lblLabel12.AutoSize = True
+        Me.lblLabel12.Location = New System.Drawing.Point(16, 50)
+        Me.lblLabel12.Name = "lblLabel12"
+        Me.lblLabel12.Size = New System.Drawing.Size(74, 13)
+        Me.lblLabel12.TabIndex = 32
+        Me.lblLabel12.Text = "Date Ordered:"
+        '
+        'lblLabel17
+        '
+        Me.lblLabel17.AutoSize = True
+        Me.lblLabel17.Location = New System.Drawing.Point(16, 74)
+        Me.lblLabel17.Name = "lblLabel17"
+        Me.lblLabel17.Size = New System.Drawing.Size(82, 13)
+        Me.lblLabel17.TabIndex = 34
+        Me.lblLabel17.Text = "Date Received:"
+        '
+        'txtData10
+        '
+        Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData10.Location = New System.Drawing.Point(112, 24)
+        Me.txtData10.Name = "txtData10"
+        Me.txtData10.Size = New System.Drawing.Size(71, 18)
+        Me.txtData10.TabIndex = 90
+        Me.txtData10.Tag = Nothing
+        Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'chkData2
         '
         Me.chkData2.Location = New System.Drawing.Point(280, 216)
@@ -176,61 +267,10 @@ Partial Class frmItem
         Me.chkData2.TabIndex = 17
         Me.chkData2.UseVisualStyleBackColor = True
         '
-        'txtData8
-        '
-        Me.txtData8.ForeColor = System.Drawing.Color.Navy
-        Me.txtData8.Location = New System.Drawing.Point(113, 264)
-        Me.txtData8.Name = "txtData8"
-        Me.txtData8.Size = New System.Drawing.Size(71, 20)
-        Me.txtData8.TabIndex = 24
-        '
-        'txtData6
-        '
-        Me.txtData6.ForeColor = System.Drawing.Color.Navy
-        Me.txtData6.Location = New System.Drawing.Point(113, 240)
-        Me.txtData6.Name = "txtData6"
-        Me.txtData6.Size = New System.Drawing.Size(71, 20)
-        Me.txtData6.TabIndex = 22
-        '
-        'txtData7
-        '
-        Me.txtData7.ForeColor = System.Drawing.Color.Navy
-        Me.txtData7.Location = New System.Drawing.Point(113, 216)
-        Me.txtData7.Name = "txtData7"
-        Me.txtData7.Size = New System.Drawing.Size(71, 20)
-        Me.txtData7.TabIndex = 20
-        '
-        'txtData5
-        '
-        Me.txtData5.ForeColor = System.Drawing.Color.Navy
-        Me.txtData5.Location = New System.Drawing.Point(113, 192)
-        Me.txtData5.Name = "txtData5"
-        Me.txtData5.Size = New System.Drawing.Size(151, 20)
-        Me.txtData5.TabIndex = 18
-        '
-        'txtVend
-        '
-        Me.txtVend.BackColor = System.Drawing.Color.Silver
-        Me.txtVend.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtVend.Enabled = False
-        Me.txtVend.Location = New System.Drawing.Point(178, 160)
-        Me.txtVend.Name = "txtVend"
-        Me.txtVend.Size = New System.Drawing.Size(132, 13)
-        Me.txtVend.TabIndex = 14
-        '
-        'txtData4
-        '
-        Me.txtData4.ForeColor = System.Drawing.Color.Navy
-        Me.txtData4.Location = New System.Drawing.Point(36, 160)
-        Me.txtData4.Name = "txtData4"
-        Me.txtData4.Size = New System.Drawing.Size(29, 20)
-        Me.txtData4.TabIndex = 48
-        Me.txtData4.Visible = False
-        '
         'chkData1
         '
         Me.chkData1.AutoSize = True
-        Me.chkData1.Location = New System.Drawing.Point(77, 136)
+        Me.chkData1.Location = New System.Drawing.Point(80, 136)
         Me.chkData1.Name = "chkData1"
         Me.chkData1.Size = New System.Drawing.Size(15, 14)
         Me.chkData1.TabIndex = 11
@@ -239,84 +279,27 @@ Partial Class frmItem
         'chkData0
         '
         Me.chkData0.AutoSize = True
-        Me.chkData0.Location = New System.Drawing.Point(264, 288)
+        Me.chkData0.Location = New System.Drawing.Point(264, 292)
         Me.chkData0.Name = "chkData0"
         Me.chkData0.Size = New System.Drawing.Size(15, 14)
         Me.chkData0.TabIndex = 28
         Me.chkData0.UseVisualStyleBackColor = True
         '
-        'txtData2
-        '
-        Me.txtData2.ForeColor = System.Drawing.Color.Navy
-        Me.txtData2.Location = New System.Drawing.Point(35, 112)
-        Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(29, 20)
-        Me.txtData2.TabIndex = 43
-        Me.txtData2.Visible = False
-        '
-        'cmdUpdate
-        '
-        Me.cmdUpdate.Location = New System.Drawing.Point(343, 91)
-        Me.cmdUpdate.Name = "cmdUpdate"
-        Me.cmdUpdate.Size = New System.Drawing.Size(71, 22)
-        Me.cmdUpdate.TabIndex = 44
-        Me.cmdUpdate.Text = "Update"
-        Me.cmdUpdate.UseVisualStyleBackColor = True
-        '
-        'cmdExit
-        '
-        Me.cmdExit.Location = New System.Drawing.Point(343, 119)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(71, 22)
-        Me.cmdExit.TabIndex = 45
-        Me.cmdExit.Text = "E&xit"
-        Me.cmdExit.UseVisualStyleBackColor = True
-        '
-        'cmdFind
-        '
-        Me.cmdFind.Location = New System.Drawing.Point(238, 56)
-        Me.cmdFind.Name = "cmdFind"
-        Me.cmdFind.Size = New System.Drawing.Size(71, 22)
-        Me.cmdFind.TabIndex = 5
-        Me.cmdFind.Text = "&Find"
-        Me.cmdFind.UseVisualStyleBackColor = True
-        '
-        'txtDesc
-        '
-        Me.txtDesc.BackColor = System.Drawing.Color.Silver
-        Me.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtDesc.Enabled = False
-        Me.txtDesc.Location = New System.Drawing.Point(161, 112)
-        Me.txtDesc.Name = "txtDesc"
-        Me.txtDesc.Size = New System.Drawing.Size(148, 13)
-        Me.txtDesc.TabIndex = 46
-        '
         'fraType
         '
         Me.fraType.Controls.Add(Me.optType0)
         Me.fraType.Controls.Add(Me.optType1)
-        Me.fraType.Location = New System.Drawing.Point(49, 7)
+        Me.fraType.Location = New System.Drawing.Point(50, 10)
         Me.fraType.Name = "fraType"
-        Me.fraType.Size = New System.Drawing.Size(211, 36)
+        Me.fraType.Size = New System.Drawing.Size(210, 35)
         Me.fraType.TabIndex = 0
         Me.fraType.TabStop = False
         Me.fraType.Text = "&Type"
         '
-        'optType1
-        '
-        Me.optType1.AutoSize = True
-        Me.optType1.Location = New System.Drawing.Point(120, 16)
-        Me.optType1.Name = "optType1"
-        Me.optType1.Size = New System.Drawing.Size(51, 17)
-        Me.optType1.TabIndex = 2
-        Me.optType1.TabStop = True
-        Me.optType1.Text = "Other"
-        Me.optType1.UseVisualStyleBackColor = True
-        '
         'optType0
         '
         Me.optType0.AutoSize = True
-        Me.optType0.Location = New System.Drawing.Point(32, 16)
+        Me.optType0.Location = New System.Drawing.Point(50, 10)
         Me.optType0.Name = "optType0"
         Me.optType0.Size = New System.Drawing.Size(56, 17)
         Me.optType0.TabIndex = 1
@@ -324,64 +307,21 @@ Partial Class frmItem
         Me.optType0.Text = "Rental"
         Me.optType0.UseVisualStyleBackColor = True
         '
-        'txtData3
+        'optType1
         '
-        Me.txtData3.ForeColor = System.Drawing.Color.Navy
-        Me.txtData3.Location = New System.Drawing.Point(113, 288)
-        Me.txtData3.Name = "txtData3"
-        Me.txtData3.Size = New System.Drawing.Size(71, 20)
-        Me.txtData3.TabIndex = 26
-        '
-        'cmdNew
-        '
-        Me.cmdNew.Location = New System.Drawing.Point(343, 7)
-        Me.cmdNew.Name = "cmdNew"
-        Me.cmdNew.Size = New System.Drawing.Size(71, 22)
-        Me.cmdNew.TabIndex = 40
-        Me.cmdNew.Text = "&New"
-        Me.cmdNew.UseVisualStyleBackColor = True
-        '
-        'cmdReset
-        '
-        Me.cmdReset.Enabled = False
-        Me.cmdReset.Location = New System.Drawing.Point(343, 63)
-        Me.cmdReset.Name = "cmdReset"
-        Me.cmdReset.Size = New System.Drawing.Size(71, 22)
-        Me.cmdReset.TabIndex = 42
-        Me.cmdReset.Text = "Reset"
-        Me.cmdReset.UseVisualStyleBackColor = True
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.Location = New System.Drawing.Point(343, 35)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(71, 22)
-        Me.cmdDelete.TabIndex = 41
-        Me.cmdDelete.Text = "&Delete"
-        Me.cmdDelete.UseVisualStyleBackColor = True
-        Me.cmdDelete.Visible = False
-        '
-        'txtData0
-        '
-        Me.txtData0.Enabled = False
-        Me.txtData0.ForeColor = System.Drawing.Color.Navy
-        Me.txtData0.Location = New System.Drawing.Point(77, 56)
-        Me.txtData0.Name = "txtData0"
-        Me.txtData0.Size = New System.Drawing.Size(64, 20)
-        Me.txtData0.TabIndex = 4
-        '
-        'txtData1
-        '
-        Me.txtData1.ForeColor = System.Drawing.Color.Navy
-        Me.txtData1.Location = New System.Drawing.Point(77, 84)
-        Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(232, 20)
-        Me.txtData1.TabIndex = 7
+        Me.optType1.AutoSize = True
+        Me.optType1.Location = New System.Drawing.Point(120, 10)
+        Me.optType1.Name = "optType1"
+        Me.optType1.Size = New System.Drawing.Size(51, 17)
+        Me.optType1.TabIndex = 2
+        Me.optType1.TabStop = True
+        Me.optType1.Text = "Other"
+        Me.optType1.UseVisualStyleBackColor = True
         '
         'lblLabel11
         '
         Me.lblLabel11.AutoSize = True
-        Me.lblLabel11.Location = New System.Drawing.Point(200, 216)
+        Me.lblLabel11.Location = New System.Drawing.Point(200, 217)
         Me.lblLabel11.Name = "lblLabel11"
         Me.lblLabel11.Size = New System.Drawing.Size(74, 13)
         Me.lblLabel11.TabIndex = 16
@@ -390,7 +330,7 @@ Partial Class frmItem
         'lblLabel10
         '
         Me.lblLabel10.AutoSize = True
-        Me.lblLabel10.Location = New System.Drawing.Point(8, 266)
+        Me.lblLabel10.Location = New System.Drawing.Point(10, 267)
         Me.lblLabel10.Name = "lblLabel10"
         Me.lblLabel10.Size = New System.Drawing.Size(77, 13)
         Me.lblLabel10.TabIndex = 23
@@ -399,7 +339,7 @@ Partial Class frmItem
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
-        Me.lblLabel5.Location = New System.Drawing.Point(8, 242)
+        Me.lblLabel5.Location = New System.Drawing.Point(10, 242)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(67, 13)
         Me.lblLabel5.TabIndex = 21
@@ -408,7 +348,7 @@ Partial Class frmItem
         'lblLabel9
         '
         Me.lblLabel9.AutoSize = True
-        Me.lblLabel9.Location = New System.Drawing.Point(8, 218)
+        Me.lblLabel9.Location = New System.Drawing.Point(10, 217)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(77, 13)
         Me.lblLabel9.TabIndex = 19
@@ -417,7 +357,7 @@ Partial Class frmItem
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(8, 194)
+        Me.lblLabel8.Location = New System.Drawing.Point(10, 192)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(77, 13)
         Me.lblLabel8.TabIndex = 15
@@ -426,7 +366,7 @@ Partial Class frmItem
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(8, 162)
+        Me.lblLabel7.Location = New System.Drawing.Point(10, 162)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(44, 13)
         Me.lblLabel7.TabIndex = 12
@@ -435,7 +375,7 @@ Partial Class frmItem
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(8, 138)
+        Me.lblLabel4.Location = New System.Drawing.Point(10, 137)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(40, 13)
         Me.lblLabel4.TabIndex = 10
@@ -452,7 +392,7 @@ Partial Class frmItem
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(200, 288)
+        Me.lblLabel6.Location = New System.Drawing.Point(200, 292)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(58, 13)
         Me.lblLabel6.TabIndex = 27
@@ -461,7 +401,7 @@ Partial Class frmItem
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(7, 290)
+        Me.lblLabel3.Location = New System.Drawing.Point(10, 292)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(44, 13)
         Me.lblLabel3.TabIndex = 25
@@ -470,7 +410,7 @@ Partial Class frmItem
         'lblLabel2
         '
         Me.lblLabel2.AutoSize = True
-        Me.lblLabel2.Location = New System.Drawing.Point(7, 112)
+        Me.lblLabel2.Location = New System.Drawing.Point(10, 112)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(52, 13)
         Me.lblLabel2.TabIndex = 8
@@ -479,7 +419,7 @@ Partial Class frmItem
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(7, 86)
+        Me.lblLabel1.Location = New System.Drawing.Point(10, 87)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(63, 13)
         Me.lblLabel1.TabIndex = 6
@@ -488,17 +428,326 @@ Partial Class frmItem
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(7, 58)
+        Me.lblLabel0.Location = New System.Drawing.Point(10, 57)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(70, 13)
         Me.lblLabel0.TabIndex = 3
         Me.lblLabel0.Text = "&Item Number:"
         '
+        'cmdExit
+        '
+        Me.cmdExit.Location = New System.Drawing.Point(325, 130)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(85, 25)
+        Me.cmdExit.TabIndex = 54
+        Me.cmdExit.Text = "E&xit"
+        Me.cmdExit.UseVisualStyleBackColor = True
+        Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdExit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdUpdate
+        '
+        Me.cmdUpdate.Enabled = False
+        Me.cmdUpdate.Location = New System.Drawing.Point(325, 100)
+        Me.cmdUpdate.Name = "cmdUpdate"
+        Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
+        Me.cmdUpdate.TabIndex = 53
+        Me.cmdUpdate.Text = "Update"
+        Me.cmdUpdate.UseVisualStyleBackColor = True
+        Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdUpdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdReset
+        '
+        Me.cmdReset.Enabled = False
+        Me.cmdReset.Location = New System.Drawing.Point(325, 70)
+        Me.cmdReset.Name = "cmdReset"
+        Me.cmdReset.Size = New System.Drawing.Size(85, 25)
+        Me.cmdReset.TabIndex = 52
+        Me.cmdReset.Text = "Reset"
+        Me.cmdReset.UseVisualStyleBackColor = True
+        Me.cmdReset.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdReset.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.Location = New System.Drawing.Point(325, 40)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
+        Me.cmdDelete.TabIndex = 51
+        Me.cmdDelete.Text = "&Delete"
+        Me.cmdDelete.UseVisualStyleBackColor = True
+        Me.cmdDelete.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdDelete.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdNew
+        '
+        Me.cmdNew.Location = New System.Drawing.Point(325, 10)
+        Me.cmdNew.Name = "cmdNew"
+        Me.cmdNew.Size = New System.Drawing.Size(85, 25)
+        Me.cmdNew.TabIndex = 50
+        Me.cmdNew.Text = "&New"
+        Me.cmdNew.UseVisualStyleBackColor = True
+        Me.cmdNew.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdFind
+        '
+        Me.cmdFind.Location = New System.Drawing.Point(224, 51)
+        Me.cmdFind.Name = "cmdFind"
+        Me.cmdFind.Size = New System.Drawing.Size(85, 25)
+        Me.cmdFind.TabIndex = 55
+        Me.cmdFind.Text = "&Find"
+        Me.cmdFind.UseVisualStyleBackColor = True
+        Me.cmdFind.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdFind.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData0
+        '
+        Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData0.DataType = GetType(Integer)
+        Me.txtData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData0.Location = New System.Drawing.Point(80, 55)
+        Me.txtData0.Name = "txtData0"
+        Me.txtData0.Size = New System.Drawing.Size(75, 18)
+        Me.txtData0.TabIndex = 56
+        Me.txtData0.Tag = Nothing
+        Me.txtData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData1
+        '
+        Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData1.Location = New System.Drawing.Point(80, 85)
+        Me.txtData1.Name = "txtData1"
+        Me.txtData1.Size = New System.Drawing.Size(230, 18)
+        Me.txtData1.TabIndex = 57
+        Me.txtData1.Tag = Nothing
+        Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData2
+        '
+        Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData2.DataType = GetType(Integer)
+        Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData2.Location = New System.Drawing.Point(335, 201)
+        Me.txtData2.Name = "txtData2"
+        Me.txtData2.Size = New System.Drawing.Size(75, 18)
+        Me.txtData2.TabIndex = 58
+        Me.txtData2.Tag = Nothing
+        Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData4
+        '
+        Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData4.DataType = GetType(Integer)
+        Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData4.Location = New System.Drawing.Point(335, 225)
+        Me.txtData4.Name = "txtData4"
+        Me.txtData4.Size = New System.Drawing.Size(75, 18)
+        Me.txtData4.TabIndex = 59
+        Me.txtData4.Tag = Nothing
+        Me.txtData4.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtDesc
+        '
+        Me.txtDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtDesc.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtDesc.Location = New System.Drawing.Point(159, 111)
+        Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.Padding = New System.Windows.Forms.Padding(1)
+        Me.txtDesc.Size = New System.Drawing.Size(150, 15)
+        Me.txtDesc.TabIndex = 84
+        Me.txtDesc.Tag = Nothing
+        Me.txtDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtVend
+        '
+        Me.txtVend.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtVend.BorderColor = System.Drawing.SystemColors.WindowFrame
+        Me.txtVend.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtVend.Location = New System.Drawing.Point(177, 161)
+        Me.txtVend.Name = "txtVend"
+        Me.txtVend.Padding = New System.Windows.Forms.Padding(1)
+        Me.txtVend.Size = New System.Drawing.Size(132, 15)
+        Me.txtVend.TabIndex = 85
+        Me.txtVend.Tag = Nothing
+        Me.txtVend.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData5
+        '
+        Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData5.Location = New System.Drawing.Point(110, 190)
+        Me.txtData5.Name = "txtData5"
+        Me.txtData5.Size = New System.Drawing.Size(150, 18)
+        Me.txtData5.TabIndex = 88
+        Me.txtData5.Tag = Nothing
+        Me.txtData5.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData7
+        '
+        Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData7.Location = New System.Drawing.Point(110, 215)
+        Me.txtData7.Name = "txtData7"
+        Me.txtData7.Size = New System.Drawing.Size(71, 18)
+        Me.txtData7.TabIndex = 89
+        Me.txtData7.Tag = Nothing
+        Me.txtData7.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData3
+        '
+        Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData3.Location = New System.Drawing.Point(110, 290)
+        Me.txtData3.Name = "txtData3"
+        Me.txtData3.Size = New System.Drawing.Size(71, 18)
+        Me.txtData3.TabIndex = 91
+        Me.txtData3.Tag = Nothing
+        Me.txtData3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData8
+        '
+        Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData8.Location = New System.Drawing.Point(110, 265)
+        Me.txtData8.Name = "txtData8"
+        Me.txtData8.Size = New System.Drawing.Size(71, 18)
+        Me.txtData8.TabIndex = 92
+        Me.txtData8.Tag = Nothing
+        Me.txtData8.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtData6
+        '
+        Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData6.Location = New System.Drawing.Point(110, 240)
+        Me.txtData6.Name = "txtData6"
+        Me.txtData6.Size = New System.Drawing.Size(71, 18)
+        Me.txtData6.TabIndex = 93
+        Me.txtData6.Tag = Nothing
+        Me.txtData6.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'DsVendMaster
+        '
+        Me.DsVendMaster.DataSetName = "dsVendMaster"
+        Me.DsVendMaster.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VendMasterBindingSource
+        '
+        Me.VendMasterBindingSource.DataMember = "VendMaster"
+        Me.VendMasterBindingSource.DataSource = Me.DsVendMaster
+        '
+        'VendMasterTableAdapter
+        '
+        Me.VendMasterTableAdapter.ClearBeforeFill = True
+        '
+        'cmbVend
+        '
+        Me.cmbVend.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbVend.Caption = ""
+        Me.cmbVend.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbVend.ColumnHeaders = False
+        Me.cmbVend.ColumnWidth = 100
+        Me.cmbVend.DataSource = Me.VendMasterBindingSource
+        Me.cmbVend.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbVend.DisplayMember = "VENDOR"
+        Me.cmbVend.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbVend.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbVend.Images.Add(CType(resources.GetObject("cmbVend.Images"), System.Drawing.Image))
+        Me.cmbVend.Location = New System.Drawing.Point(80, 157)
+        Me.cmbVend.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbVend.MaxDropDownItems = CType(5, Short)
+        Me.cmbVend.MaxLength = 32767
+        Me.cmbVend.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbVend.Name = "cmbVend"
+        Me.cmbVend.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbVend.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbVend.Size = New System.Drawing.Size(90, 21)
+        Me.cmbVend.TabIndex = 94
+        Me.cmbVend.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.cmbVend.PropBag = resources.GetString("cmbVend.PropBag")
+        '
+        'cmbCat
+        '
+        Me.cmbCat.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCat.Caption = ""
+        Me.cmbCat.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCat.ColumnHeaders = False
+        Me.cmbCat.ColumnWidth = 100
+        Me.cmbCat.DataSource = Me.SpGetCategoriesBindingSource
+        Me.cmbCat.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCat.DisplayMember = "VOL_CAT"
+        Me.cmbCat.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCat.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCat.Images.Add(CType(resources.GetObject("cmbCat.Images"), System.Drawing.Image))
+        Me.cmbCat.Location = New System.Drawing.Point(80, 109)
+        Me.cmbCat.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCat.MaxDropDownItems = CType(5, Short)
+        Me.cmbCat.MaxLength = 32767
+        Me.cmbCat.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCat.Name = "cmbCat"
+        Me.cmbCat.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCat.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCat.Size = New System.Drawing.Size(70, 21)
+        Me.cmbCat.TabIndex = 95
+        Me.cmbCat.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.cmbCat.PropBag = resources.GetString("cmbCat.PropBag")
+        '
+        'SpGetCategoriesBindingSource
+        '
+        Me.SpGetCategoriesBindingSource.DataMember = "spGetCategories"
+        Me.SpGetCategoriesBindingSource.DataSource = Me.DsspGetCategories
+        '
+        'DsspGetCategories
+        '
+        Me.DsspGetCategories.DataSetName = "dsspGetCategories"
+        Me.DsspGetCategories.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SpGetCategoriesTableAdapter
+        '
+        Me.SpGetCategoriesTableAdapter.ClearBeforeFill = True
+        '
+        'DsItemMaster_ItemNum
+        '
+        Me.DsItemMaster_ItemNum.DataSetName = "dsItemMasterO_ItemNum"
+        Me.DsItemMaster_ItemNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'frmItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(418, 468)
+        Me.ClientSize = New System.Drawing.Size(422, 468)
+        Me.Controls.Add(Me.cmbCat)
+        Me.Controls.Add(Me.cmbVend)
+        Me.Controls.Add(Me.txtData6)
+        Me.Controls.Add(Me.txtData8)
+        Me.Controls.Add(Me.txtData3)
+        Me.Controls.Add(Me.txtData7)
+        Me.Controls.Add(Me.txtData5)
+        Me.Controls.Add(Me.txtVend)
+        Me.Controls.Add(Me.txtDesc)
+        Me.Controls.Add(Me.txtData4)
+        Me.Controls.Add(Me.txtData2)
+        Me.Controls.Add(Me.txtData1)
+        Me.Controls.Add(Me.txtData0)
+        Me.Controls.Add(Me.cmdFind)
+        Me.Controls.Add(Me.cmdExit)
+        Me.Controls.Add(Me.cmdUpdate)
+        Me.Controls.Add(Me.cmdReset)
+        Me.Controls.Add(Me.cmdDelete)
+        Me.Controls.Add(Me.cmdNew)
         Me.Controls.Add(Me.lblLabel0)
         Me.Controls.Add(Me.lblLabel1)
         Me.Controls.Add(Me.lblLabel2)
@@ -512,26 +761,9 @@ Partial Class frmItem
         Me.Controls.Add(Me.lblLabel5)
         Me.Controls.Add(Me.lblLabel10)
         Me.Controls.Add(Me.lblLabel11)
-        Me.Controls.Add(Me.txtData1)
-        Me.Controls.Add(Me.txtData0)
-        Me.Controls.Add(Me.cmdDelete)
-        Me.Controls.Add(Me.cmdReset)
-        Me.Controls.Add(Me.cmdNew)
-        Me.Controls.Add(Me.txtData3)
         Me.Controls.Add(Me.fraType)
-        Me.Controls.Add(Me.txtDesc)
-        Me.Controls.Add(Me.cmdFind)
-        Me.Controls.Add(Me.cmdExit)
-        Me.Controls.Add(Me.cmdUpdate)
-        Me.Controls.Add(Me.txtData2)
         Me.Controls.Add(Me.chkData0)
         Me.Controls.Add(Me.chkData1)
-        Me.Controls.Add(Me.txtData4)
-        Me.Controls.Add(Me.txtVend)
-        Me.Controls.Add(Me.txtData5)
-        Me.Controls.Add(Me.txtData7)
-        Me.Controls.Add(Me.txtData6)
-        Me.Controls.Add(Me.txtData8)
         Me.Controls.Add(Me.chkData2)
         Me.Controls.Add(Me.frmPO)
         Me.Location = New System.Drawing.Point(58, 243)
@@ -542,46 +774,55 @@ Partial Class frmItem
         Me.Text = "Add/Edit Items"
         Me.frmPO.ResumeLayout(False)
         Me.frmPO.PerformLayout()
+        CType(Me.C1DateEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdClear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.fraType.ResumeLayout(False)
         Me.fraType.PerformLayout()
+        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtDesc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtVend, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsVendMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbVend, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCategoriesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetCategories, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsItemMaster_ItemNum, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents frmPO As GroupBox
-    Friend WithEvents cmdClear As Button
-    Friend WithEvents txtData13 As TextBox
-    Friend WithEvents txtData12 As TextBox
-    Friend WithEvents txtData10 As TextBox
     Friend WithEvents lblLabel16 As Label
     Friend WithEvents lblLabel12 As Label
     Friend WithEvents lblLabel17 As Label
     Friend WithEvents lblLabel13 As Label
     Friend WithEvents lblLabel15 As Label
     Friend WithEvents chkData2 As CheckBox
-    Friend WithEvents txtData8 As TextBox
-    Friend WithEvents txtData6 As TextBox
-    Friend WithEvents txtData7 As TextBox
-    Friend WithEvents txtData5 As TextBox
-    Friend WithEvents txtVend As TextBox
-    Friend WithEvents txtData4 As TextBox
     Friend WithEvents chkData1 As CheckBox
     Friend WithEvents chkData0 As CheckBox
-    Friend WithEvents txtData2 As TextBox
-    Friend WithEvents cmdUpdate As Button
-    Friend WithEvents cmdExit As Button
-    Friend WithEvents cmdFind As Button
-    Friend WithEvents txtDesc As TextBox
     Friend WithEvents fraType As GroupBox
     Friend WithEvents optType1 As RadioButton
     Friend WithEvents optType0 As RadioButton
-    Friend WithEvents txtData3 As TextBox
-    Friend WithEvents cmdNew As Button
-    Friend WithEvents cmdReset As Button
-    Friend WithEvents cmdDelete As Button
-    Friend WithEvents txtData0 As TextBox
-    Friend WithEvents txtData1 As TextBox
     Friend WithEvents lblLabel11 As Label
     Friend WithEvents lblLabel10 As Label
     Friend WithEvents lblLabel5 As Label
@@ -595,4 +836,36 @@ Partial Class frmItem
     Friend WithEvents lblLabel2 As Label
     Friend WithEvents lblLabel1 As Label
     Friend WithEvents lblLabel0 As Label
+    Friend WithEvents cmdExit As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdReset As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdDelete As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdNew As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdFind As C1.Win.C1Input.C1Button
+    Friend WithEvents txtData0 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData2 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData4 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents C1DateEdit2 As C1.Win.Calendar.C1DateEdit
+    Friend WithEvents C1DateEdit1 As C1.Win.Calendar.C1DateEdit
+    Friend WithEvents cmdClear As C1.Win.C1Input.C1Button
+    Friend WithEvents txtData13 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData12 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData10 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtDesc As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtVend As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData5 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData7 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData3 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData8 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtData6 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents DsVendMaster As dsVendMaster
+    Friend WithEvents VendMasterBindingSource As BindingSource
+    Friend WithEvents VendMasterTableAdapter As dsVendMasterTableAdapters.VendMasterTableAdapter
+    Friend WithEvents cmbVend As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbCat As C1.Win.C1List.C1Combo
+    Friend WithEvents SpGetCategoriesBindingSource As BindingSource
+    Friend WithEvents DsspGetCategories As dsspGetCategories
+    Friend WithEvents SpGetCategoriesTableAdapter As dsspGetCategoriesTableAdapters.spGetCategoriesTableAdapter
+    Friend WithEvents DsItemMaster_ItemNum As dsItemMasterO_ItemNum
 End Class

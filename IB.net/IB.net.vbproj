@@ -143,6 +143,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCustomerSurcharge.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsItemMasterO_ItemNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemMasterO_ItemNum.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsItemMasterR_ItemNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsROHist.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +167,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSOHist.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetCategories.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetCategories.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsspGetCustDept.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -230,6 +245,11 @@
     </Compile>
     <Compile Include="dsTaxMaster.vb">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsVendMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVendMaster.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsvwGetDelQty.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -977,6 +997,28 @@
     <None Include="dsCustomerSurcharge.xss">
       <DependentUpon>dsCustomerSurcharge.xsd</DependentUpon>
     </None>
+    <None Include="dsItemMasterO_ItemNum.xsc">
+      <DependentUpon>dsItemMasterO_ItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemMasterO_ItemNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemMasterO_ItemNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemMasterO_ItemNum.xss">
+      <DependentUpon>dsItemMasterO_ItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemMasterR_ItemNum.xsc">
+      <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemMasterR_ItemNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemMasterR_ItemNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemMasterR_ItemNum.xss">
+      <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
+    </None>
     <None Include="dsROHist.xsc">
       <DependentUpon>dsROHist.xsd</DependentUpon>
     </None>
@@ -1009,6 +1051,17 @@
     </None>
     <None Include="dsSOHist.xss">
       <DependentUpon>dsSOHist.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCategories.xsc">
+      <DependentUpon>dsspGetCategories.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCategories.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetCategories.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetCategories.xss">
+      <DependentUpon>dsspGetCategories.xsd</DependentUpon>
     </None>
     <None Include="dsspGetCustDept.xsc">
       <DependentUpon>dsspGetCustDept.xsd</DependentUpon>
@@ -1163,6 +1216,17 @@
     </None>
     <None Include="dsTaxMaster.xss">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMaster.xsc">
+      <DependentUpon>dsVendMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVendMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsVendMaster.xss">
+      <DependentUpon>dsVendMaster.xsd</DependentUpon>
     </None>
     <None Include="dsvwGetDelQty.xsc">
       <DependentUpon>dsvwGetDelQty.xsd</DependentUpon>
