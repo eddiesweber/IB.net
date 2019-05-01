@@ -251,6 +251,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsVendMaster.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsVendMasterFind_Vendor.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVendMasterFind_Vendor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsVendMasterFind_VendorName.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVendMasterFind_VendorName.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsVendMaster_Vendor.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVendMaster_Vendor.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsvwGetDelQty.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1227,6 +1242,39 @@
     </None>
     <None Include="dsVendMaster.xss">
       <DependentUpon>dsVendMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMasterFind_Vendor.xsc">
+      <DependentUpon>dsVendMasterFind_Vendor.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMasterFind_Vendor.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVendMasterFind_Vendor.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsVendMasterFind_Vendor.xss">
+      <DependentUpon>dsVendMasterFind_Vendor.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMasterFind_VendorName.xsc">
+      <DependentUpon>dsVendMasterFind_VendorName.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMasterFind_VendorName.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVendMasterFind_VendorName.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsVendMasterFind_VendorName.xss">
+      <DependentUpon>dsVendMasterFind_VendorName.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMaster_Vendor.xsc">
+      <DependentUpon>dsVendMaster_Vendor.xsd</DependentUpon>
+    </None>
+    <None Include="dsVendMaster_Vendor.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVendMaster_Vendor.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsVendMaster_Vendor.xss">
+      <DependentUpon>dsVendMaster_Vendor.xsd</DependentUpon>
     </None>
     <None Include="dsvwGetDelQty.xsc">
       <DependentUpon>dsvwGetDelQty.xsd</DependentUpon>

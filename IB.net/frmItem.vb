@@ -7,7 +7,7 @@
 
     Private Sub frmItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        GetWindowPos(Me, 66, 66)
+        'GetWindowPos(Me, 66, 66)
 
         buserchange = False
         bInit = True
@@ -64,11 +64,11 @@
     Sub GetData()
 
         If CurType = "O" Then
-            optType0.Checked = False
+            'optType0.Checked = False
             optType1.Checked = True
         Else
             optType0.Checked = True
-            optType1.Checked = False
+            'optType1.Checked = False
         End If
 
         buserchange = False
@@ -86,6 +86,92 @@
         'Else
         '    cmdFind_Click
         'End If
+
+    End Sub
+
+    Private Sub optType0_CheckedChanged(sender As Object, e As EventArgs) Handles optType0.CheckedChanged
+
+        If optType0.Checked = True Then
+            buserchange = False
+
+            CurType = "R"
+
+            SpGetCategoriesTableAdapter.Connection.ConnectionString = CS
+            SpGetCategoriesTableAdapter.Fill(DsspGetCategories.spGetCategories, CurType)
+            'Data3.RecordSource = "spGetCategories ('" & CurType & "')"
+            'Data3.Enabled = True
+            'Data3.Refresh
+
+            txtData0.DataSource = ItemMasterRBindingSource
+            txtData1.DataSource = ItemMasterRBindingSource
+            txtData2.DataSource = ItemMasterRBindingSource
+            txtData3.DataSource = ItemMasterRBindingSource
+            txtData4.DataSource = ItemMasterRBindingSource
+            txtData5.DataSource = ItemMasterRBindingSource
+            txtData6.DataSource = ItemMasterRBindingSource
+            txtData7.DataSource = ItemMasterRBindingSource
+            txtData8.DataSource = ItemMasterRBindingSource
+            txtData10.DataSource = ItemMasterRBindingSource
+            txtData12.DataSource = ItemMasterRBindingSource
+            txtData13.DataSource = ItemMasterRBindingSource
+            chkData0.DataSource = ItemMasterRBindingSource
+            chkData1.DataSource = ItemMasterRBindingSource
+            chkData2.DataSource = ItemMasterRBindingSource
+
+            ItemMasterRTableAdapter.Connection.ConnectionString = CS
+            ItemMasterRTableAdapter.Fill(DsItemMasterR_ItemNum.ItemMasterR, CurItem)
+            'data1.RecordSource = "ItemMaster" & CurType
+            'data1.Enabled = True
+            'data1.Refresh
+
+            'Set rs = data1.Recordset
+
+            buserchange = True
+            frmPO.Visible = True
+        End If
+
+    End Sub
+
+    Private Sub optType1_CheckedChanged(sender As Object, e As EventArgs) Handles optType1.CheckedChanged
+
+        If optType1.Checked = True Then
+            buserchange = False
+
+            CurType = "O"
+
+            SpGetCategoriesTableAdapter.Connection.ConnectionString = CS
+            SpGetCategoriesTableAdapter.Fill(DsspGetCategories.spGetCategories, CurType)
+            'Data3.RecordSource = "spGetCategories ('" & CurType & "')"
+            'Data3.Enabled = True
+            'Data3.Refresh
+
+            txtData0.DataSource = ItemMasterOBindingSource
+            txtData1.DataSource = ItemMasterOBindingSource
+            txtData2.DataSource = ItemMasterOBindingSource
+            txtData3.DataSource = ItemMasterOBindingSource
+            txtData4.DataSource = ItemMasterOBindingSource
+            txtData5.DataSource = ItemMasterOBindingSource
+            txtData6.DataSource = ItemMasterOBindingSource
+            txtData7.DataSource = ItemMasterOBindingSource
+            txtData8.DataSource = ItemMasterOBindingSource
+            txtData10.DataSource = ItemMasterOBindingSource
+            txtData12.DataSource = ItemMasterOBindingSource
+            txtData13.DataSource = ItemMasterOBindingSource
+            chkData0.DataSource = ItemMasterOBindingSource
+            chkData1.DataSource = ItemMasterOBindingSource
+            chkData2.DataSource = ItemMasterOBindingSource
+
+            ItemMasterOTableAdapter.Connection.ConnectionString = CS
+            ItemMasterOTableAdapter.Fill(DsItemMasterO_ItemNum.ItemMasterO, CurItem)
+            'data1.RecordSource = "ItemMaster" & CurType
+            'data1.Enabled = True
+            'data1.Refresh
+
+            'Set rs = data1.Recordset
+
+            buserchange = True
+            frmPO.Visible = False
+        End If
 
     End Sub
 
@@ -138,36 +224,4 @@
         fraType.Enabled = True
 
     End Sub
-
-    Private Sub optType0_CheckedChanged(sender As Object, e As EventArgs) Handles optType0.CheckedChanged
-
-        buserchange = False
-        CurType = optType0.Text.Substring(0, 1)
-
-        SpGetCategoriesTableAdapter.Connection.ConnectionString = CS
-        SpGetCategoriesTableAdapter.Fill(DsspGetCategories.spGetCategories, CurType)
-        'Data3.RecordSource = "spGetCategories ('" & CurType & "')"
-        'Data3.Enabled = True
-        'Data3.Refresh
-
-        If CurType = "R" Then
-
-        Else
-
-        End If
-        'data1.RecordSource = "ItemMaster" & CurType
-        'data1.Enabled = True
-        'data1.Refresh
-
-        'Set rs = data1.Recordset
-
-        buserchange = True
-        If CurType = "R" Then
-            frmPO.Visible = True
-        Else
-            frmPO.Visible = False
-        End If
-
-    End Sub
-
 End Class

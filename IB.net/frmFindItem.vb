@@ -47,8 +47,8 @@ Public Class frmFindItem
 
         'LstItemNum.BoundText = CStr(CurItem)
         'lstItemNum_Click
-        LstItemNum.SelectedIndex = -1
-        LstItemAlpha.SelectedIndex = -1
+        'LstItemNum.SelectedIndex = -1
+        'LstItemAlpha.SelectedIndex = -1
         If CurItem > 0 Then
             LstItemNum.SelectedIndex = LstItemNum.FindStringExact(CurItem)
         End If
@@ -61,7 +61,13 @@ Public Class frmFindItem
 
         Dim s As String
 
-        s = "Select vendor from ItemMasterO  where item_num = " & LstItemNum.SelectedItem(0) & " union select vendor from ItemMasterR where item_num = " & LstItemNum.SelectedItem(0)
+        If optType0.Checked = True Then
+            s = "Select vendor from ItemMasterR where item_num = " & LstItemNum.SelectedItem(0) & " union select vendor from ItemMasterR where item_num = " & LstItemNum.SelectedItem(0)
+        Else
+            If optType1.Checked = True Then
+                s = "Select vendor from ItemMasterO where item_num = " & LstItemNum.SelectedItem(0) & " union select vendor from ItemMasterO where item_num = " & LstItemNum.SelectedItem(0)
+            End If
+        End If
 
         Using connection As New SqlConnection(CS)
             Dim cmd As SqlCommand = New SqlCommand(s, connection)
@@ -111,13 +117,13 @@ Public Class frmFindItem
 
     Private Sub LstItemAlpha_DoubleClick(sender As Object, e As EventArgs) Handles LstItemAlpha.DoubleClick
 
-        cmdSelect.Select()
+        cmdSelect_Click(sender, e)
 
     End Sub
 
     Private Sub LstItemNum_DoubleClick(sender As Object, e As EventArgs) Handles LstItemNum.DoubleClick
 
-        cmdSelect.Select()
+        cmdSelect_Click(sender, e)
 
     End Sub
 

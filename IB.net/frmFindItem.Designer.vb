@@ -226,7 +226,7 @@ Partial Class frmFindItem
         '
         'cmdSelect
         '
-        Me.cmdSelect.Location = New System.Drawing.Point(369, 9)
+        Me.cmdSelect.Location = New System.Drawing.Point(369, 10)
         Me.cmdSelect.Name = "cmdSelect"
         Me.cmdSelect.Size = New System.Drawing.Size(85, 25)
         Me.cmdSelect.TabIndex = 79

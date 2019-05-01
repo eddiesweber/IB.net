@@ -74,6 +74,7 @@ Module Main
         SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
         SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
         SaveSetting(APPNAME, strSectionName, "CurType", CurType)
+        SaveSetting(APPNAME, strSectionName, "CurVend", CurVend)
 
     End Sub
 

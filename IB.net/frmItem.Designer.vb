@@ -29,6 +29,8 @@ Partial Class frmItem
         Me.C1DateEdit1 = New C1.Win.Calendar.C1DateEdit()
         Me.cmdClear = New C1.Win.C1Input.C1Button()
         Me.txtData13 = New C1.Win.C1Input.C1TextBox()
+        Me.ItemMasterRBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsItemMasterR_ItemNum = New IB.net.dsItemMasterR_ItemNum()
         Me.txtData12 = New C1.Win.C1Input.C1TextBox()
         Me.lblLabel13 = New System.Windows.Forms.Label()
         Me.lblLabel15 = New System.Windows.Forms.Label()
@@ -36,9 +38,6 @@ Partial Class frmItem
         Me.lblLabel12 = New System.Windows.Forms.Label()
         Me.lblLabel17 = New System.Windows.Forms.Label()
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
-        Me.chkData2 = New System.Windows.Forms.CheckBox()
-        Me.chkData1 = New System.Windows.Forms.CheckBox()
-        Me.chkData0 = New System.Windows.Forms.CheckBox()
         Me.fraType = New System.Windows.Forms.GroupBox()
         Me.optType0 = New System.Windows.Forms.RadioButton()
         Me.optType1 = New System.Windows.Forms.RadioButton()
@@ -80,12 +79,20 @@ Partial Class frmItem
         Me.SpGetCategoriesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsspGetCategories = New IB.net.dsspGetCategories()
         Me.SpGetCategoriesTableAdapter = New IB.net.dsspGetCategoriesTableAdapters.spGetCategoriesTableAdapter()
-        Me.DsItemMaster_ItemNum = New IB.net.dsItemMasterO_ItemNum()
+        Me.DsItemMasterO_ItemNum = New IB.net.dsItemMasterO_ItemNum()
+        Me.ItemMasterOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemMasterOTableAdapter = New IB.net.dsItemMasterO_ItemNumTableAdapters.ItemMasterOTableAdapter()
+        Me.ItemMasterRTableAdapter = New IB.net.dsItemMasterR_ItemNumTableAdapters.ItemMasterRTableAdapter()
+        Me.chkData1 = New C1.Win.C1Input.C1CheckBox()
+        Me.chkData2 = New C1.Win.C1Input.C1CheckBox()
+        Me.chkData0 = New C1.Win.C1Input.C1CheckBox()
         Me.frmPO.SuspendLayout()
         CType(Me.C1DateEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdClear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemMasterRBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsItemMasterR_ItemNum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.fraType.SuspendLayout()
@@ -112,7 +119,11 @@ Partial Class frmItem
         CType(Me.cmbCat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCategoriesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsspGetCategories, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsItemMaster_ItemNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsItemMasterO_ItemNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemMasterOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkData1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkData2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkData0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'frmPO
@@ -181,6 +192,8 @@ Partial Class frmItem
         'txtData13
         '
         Me.txtData13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData13.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "TOTAL_OWN", True))
+        Me.txtData13.DataType = GetType(Single)
         Me.txtData13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData13.Location = New System.Drawing.Point(112, 120)
         Me.txtData13.Name = "txtData13"
@@ -190,9 +203,20 @@ Partial Class frmItem
         Me.txtData13.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'ItemMasterRBindingSource
+        '
+        Me.ItemMasterRBindingSource.DataMember = "ItemMasterR"
+        Me.ItemMasterRBindingSource.DataSource = Me.DsItemMasterR_ItemNum
+        '
+        'DsItemMasterR_ItemNum
+        '
+        Me.DsItemMasterR_ItemNum.DataSetName = "dsItemMasterR_ItemNum"
+        Me.DsItemMasterR_ItemNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtData12
         '
         Me.txtData12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData12.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "INVC_NUM", True))
         Me.txtData12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData12.Location = New System.Drawing.Point(112, 96)
         Me.txtData12.Name = "txtData12"
@@ -250,6 +274,8 @@ Partial Class frmItem
         'txtData10
         '
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "ORDER_QTY", True))
+        Me.txtData10.DataType = GetType(Single)
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData10.Location = New System.Drawing.Point(112, 24)
         Me.txtData10.Name = "txtData10"
@@ -258,32 +284,6 @@ Partial Class frmItem
         Me.txtData10.Tag = Nothing
         Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'chkData2
-        '
-        Me.chkData2.Location = New System.Drawing.Point(280, 216)
-        Me.chkData2.Name = "chkData2"
-        Me.chkData2.Size = New System.Drawing.Size(17, 17)
-        Me.chkData2.TabIndex = 17
-        Me.chkData2.UseVisualStyleBackColor = True
-        '
-        'chkData1
-        '
-        Me.chkData1.AutoSize = True
-        Me.chkData1.Location = New System.Drawing.Point(80, 136)
-        Me.chkData1.Name = "chkData1"
-        Me.chkData1.Size = New System.Drawing.Size(15, 14)
-        Me.chkData1.TabIndex = 11
-        Me.chkData1.UseVisualStyleBackColor = True
-        '
-        'chkData0
-        '
-        Me.chkData0.AutoSize = True
-        Me.chkData0.Location = New System.Drawing.Point(264, 292)
-        Me.chkData0.Name = "chkData0"
-        Me.chkData0.Size = New System.Drawing.Size(15, 14)
-        Me.chkData0.TabIndex = 28
-        Me.chkData0.UseVisualStyleBackColor = True
         '
         'fraType
         '
@@ -505,6 +505,7 @@ Partial Class frmItem
         'txtData0
         '
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "ITEM_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
         Me.txtData0.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData0.Location = New System.Drawing.Point(80, 55)
@@ -518,6 +519,7 @@ Partial Class frmItem
         'txtData1
         '
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "DESCR", True))
         Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData1.Location = New System.Drawing.Point(80, 85)
         Me.txtData1.Name = "txtData1"
@@ -530,7 +532,7 @@ Partial Class frmItem
         'txtData2
         '
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData2.DataType = GetType(Integer)
+        Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "VOL_CAT", True))
         Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData2.Location = New System.Drawing.Point(335, 201)
         Me.txtData2.Name = "txtData2"
@@ -543,7 +545,7 @@ Partial Class frmItem
         'txtData4
         '
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtData4.DataType = GetType(Integer)
+        Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "VENDOR", True))
         Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData4.Location = New System.Drawing.Point(335, 225)
         Me.txtData4.Name = "txtData4"
@@ -582,6 +584,7 @@ Partial Class frmItem
         'txtData5
         '
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "VEND_ITEM", True))
         Me.txtData5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData5.Location = New System.Drawing.Point(110, 190)
         Me.txtData5.Name = "txtData5"
@@ -594,6 +597,8 @@ Partial Class frmItem
         'txtData7
         '
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "REORDER_LEVEL", True))
+        Me.txtData7.DataType = GetType(Single)
         Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData7.Location = New System.Drawing.Point(110, 215)
         Me.txtData7.Name = "txtData7"
@@ -606,6 +611,8 @@ Partial Class frmItem
         'txtData3
         '
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "WEIGHT", True))
+        Me.txtData3.DataType = GetType(Single)
         Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData3.Location = New System.Drawing.Point(110, 290)
         Me.txtData3.Name = "txtData3"
@@ -618,6 +625,8 @@ Partial Class frmItem
         'txtData8
         '
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "STD_COST", True))
+        Me.txtData8.DataType = GetType(Single)
         Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData8.Location = New System.Drawing.Point(110, 265)
         Me.txtData8.Name = "txtData8"
@@ -630,6 +639,8 @@ Partial Class frmItem
         'txtData6
         '
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "REORDER_QTY", True))
+        Me.txtData6.DataType = GetType(Single)
         Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData6.Location = New System.Drawing.Point(110, 240)
         Me.txtData6.Name = "txtData6"
@@ -719,16 +730,65 @@ Partial Class frmItem
         '
         Me.SpGetCategoriesTableAdapter.ClearBeforeFill = True
         '
-        'DsItemMaster_ItemNum
+        'DsItemMasterO_ItemNum
         '
-        Me.DsItemMaster_ItemNum.DataSetName = "dsItemMasterO_ItemNum"
-        Me.DsItemMaster_ItemNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.DsItemMasterO_ItemNum.DataSetName = "dsItemMasterO_ItemNum"
+        Me.DsItemMasterO_ItemNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ItemMasterOBindingSource
+        '
+        Me.ItemMasterOBindingSource.DataMember = "ItemMasterO"
+        Me.ItemMasterOBindingSource.DataSource = Me.DsItemMasterO_ItemNum
+        '
+        'ItemMasterOTableAdapter
+        '
+        Me.ItemMasterOTableAdapter.ClearBeforeFill = True
+        '
+        'ItemMasterRTableAdapter
+        '
+        Me.ItemMasterRTableAdapter.ClearBeforeFill = True
+        '
+        'chkData1
+        '
+        Me.chkData1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "ACTIVE", True))
+        Me.chkData1.Location = New System.Drawing.Point(80, 132)
+        Me.chkData1.Name = "chkData1"
+        Me.chkData1.Size = New System.Drawing.Size(20, 24)
+        Me.chkData1.TabIndex = 96
+        Me.chkData1.UseVisualStyleBackColor = True
+        Me.chkData1.Value = Nothing
+        '
+        'chkData2
+        '
+        Me.chkData2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "SPEC_ORDER", True))
+        Me.chkData2.Location = New System.Drawing.Point(275, 213)
+        Me.chkData2.Name = "chkData2"
+        Me.chkData2.Size = New System.Drawing.Size(20, 24)
+        Me.chkData2.TabIndex = 97
+        Me.chkData2.UseVisualStyleBackColor = True
+        Me.chkData2.Value = Nothing
+        '
+        'chkData0
+        '
+        Me.chkData0.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ItemMasterRBindingSource, "BULK_LOAD", True))
+        Me.chkData0.Location = New System.Drawing.Point(259, 287)
+        Me.chkData0.Name = "chkData0"
+        Me.chkData0.Size = New System.Drawing.Size(20, 24)
+        Me.chkData0.TabIndex = 98
+        Me.chkData0.UseVisualStyleBackColor = True
+        Me.chkData0.Value = Nothing
         '
         'frmItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(422, 468)
+        Me.Controls.Add(Me.chkData0)
+        Me.Controls.Add(Me.chkData2)
+        Me.Controls.Add(Me.chkData1)
         Me.Controls.Add(Me.cmbCat)
         Me.Controls.Add(Me.cmbVend)
         Me.Controls.Add(Me.txtData6)
@@ -762,9 +822,6 @@ Partial Class frmItem
         Me.Controls.Add(Me.lblLabel10)
         Me.Controls.Add(Me.lblLabel11)
         Me.Controls.Add(Me.fraType)
-        Me.Controls.Add(Me.chkData0)
-        Me.Controls.Add(Me.chkData1)
-        Me.Controls.Add(Me.chkData2)
         Me.Controls.Add(Me.frmPO)
         Me.Location = New System.Drawing.Point(58, 243)
         Me.MaximizeBox = False
@@ -778,6 +835,8 @@ Partial Class frmItem
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdClear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemMasterRBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsItemMasterR_ItemNum, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.fraType.ResumeLayout(False)
@@ -805,7 +864,11 @@ Partial Class frmItem
         CType(Me.cmbCat, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetCategoriesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsspGetCategories, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsItemMaster_ItemNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsItemMasterO_ItemNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemMasterOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkData1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkData2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkData0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -817,9 +880,6 @@ Partial Class frmItem
     Friend WithEvents lblLabel17 As Label
     Friend WithEvents lblLabel13 As Label
     Friend WithEvents lblLabel15 As Label
-    Friend WithEvents chkData2 As CheckBox
-    Friend WithEvents chkData1 As CheckBox
-    Friend WithEvents chkData0 As CheckBox
     Friend WithEvents fraType As GroupBox
     Friend WithEvents optType1 As RadioButton
     Friend WithEvents optType0 As RadioButton
@@ -867,5 +927,13 @@ Partial Class frmItem
     Friend WithEvents SpGetCategoriesBindingSource As BindingSource
     Friend WithEvents DsspGetCategories As dsspGetCategories
     Friend WithEvents SpGetCategoriesTableAdapter As dsspGetCategoriesTableAdapters.spGetCategoriesTableAdapter
-    Friend WithEvents DsItemMaster_ItemNum As dsItemMasterO_ItemNum
+    Friend WithEvents ItemMasterOBindingSource As BindingSource
+    Friend WithEvents DsItemMasterO_ItemNum As dsItemMasterO_ItemNum
+    Friend WithEvents ItemMasterOTableAdapter As dsItemMasterO_ItemNumTableAdapters.ItemMasterOTableAdapter
+    Friend WithEvents ItemMasterRBindingSource As BindingSource
+    Friend WithEvents DsItemMasterR_ItemNum As dsItemMasterR_ItemNum
+    Friend WithEvents ItemMasterRTableAdapter As dsItemMasterR_ItemNumTableAdapters.ItemMasterRTableAdapter
+    Friend WithEvents chkData1 As C1.Win.C1Input.C1CheckBox
+    Friend WithEvents chkData2 As C1.Win.C1Input.C1CheckBox
+    Friend WithEvents chkData0 As C1.Win.C1Input.C1CheckBox
 End Class

@@ -57,6 +57,7 @@ Public Class frmMain
         CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
         CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
         CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
+        CurVend = GetSetting(APPNAME, strSectionName, "CurVend", "")
 
         ' Check to see if we have a good connection to server
         If Server.Trim <> "" Then
