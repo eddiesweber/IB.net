@@ -153,6 +153,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsPOItemTemp_ItemMasterO.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPOMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPOMaster.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsROHist.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,6 +238,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetItemsVend2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetPOsAlpha.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetPOsAlpha.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetPOsNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetPOsNum.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetSalesmen.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -237,6 +257,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspTotalPO.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspTotalPO.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsTaxMaster.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1034,6 +1059,28 @@
     <None Include="dsItemMasterR_ItemNum.xss">
       <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
     </None>
+    <None Include="dsPOItemTemp_ItemMasterO.xsc">
+      <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>
+    </None>
+    <None Include="dsPOItemTemp_ItemMasterO.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPOItemTemp_ItemMasterO.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPOItemTemp_ItemMasterO.xss">
+      <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>
+    </None>
+    <None Include="dsPOMaster.xsc">
+      <DependentUpon>dsPOMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsPOMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPOMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPOMaster.xss">
+      <DependentUpon>dsPOMaster.xsd</DependentUpon>
+    </None>
     <None Include="dsROHist.xsc">
       <DependentUpon>dsROHist.xsd</DependentUpon>
     </None>
@@ -1199,6 +1246,28 @@
     <None Include="dsspGetItemsVend2.xss">
       <DependentUpon>dsspGetItemsVend2.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetPOsAlpha.xsc">
+      <DependentUpon>dsspGetPOsAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetPOsAlpha.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetPOsAlpha.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetPOsAlpha.xss">
+      <DependentUpon>dsspGetPOsAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetPOsNum.xsc">
+      <DependentUpon>dsspGetPOsNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetPOsNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetPOsNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetPOsNum.xss">
+      <DependentUpon>dsspGetPOsNum.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetSalesmen.xsc">
       <DependentUpon>dsspGetSalesmen.xsd</DependentUpon>
     </None>
@@ -1220,6 +1289,17 @@
     </None>
     <None Include="dsspGetTaxCodes.xss">
       <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </None>
+    <None Include="dsspTotalPO.xsc">
+      <DependentUpon>dsspTotalPO.xsd</DependentUpon>
+    </None>
+    <None Include="dsspTotalPO.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspTotalPO.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspTotalPO.xss">
+      <DependentUpon>dsspTotalPO.xsd</DependentUpon>
     </None>
     <None Include="dsTaxMaster.xsc">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>

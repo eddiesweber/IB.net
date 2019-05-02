@@ -582,7 +582,6 @@ Partial Class frmDept
         Me.lstDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.lstDept.PreviewInfo.ZoomFactor = 75.0R
         Me.lstDept.PrintInfo.PageSettings = CType(resources.GetObject("lstDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
         Me.lstDept.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstDept.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstDept.ScrollTrack = False
@@ -590,6 +589,7 @@ Partial Class frmDept
         Me.lstDept.Size = New System.Drawing.Size(60, 60)
         Me.lstDept.TabIndex = 71
         Me.lstDept.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.lstDept.PropBag = resources.GetString("lstDept.PropBag")
         '
         'SpGetTaxCodesTableAdapter
         '
@@ -613,7 +613,6 @@ Partial Class frmDept
         Me.cmbTax.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbTax.DisplayMember = "LOCAL_CODE"
         Me.cmbTax.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbTax.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTax.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTax.Images.Add(CType(resources.GetObject("cmbTax.Images"), System.Drawing.Image))
         Me.cmbTax.Location = New System.Drawing.Point(75, 209)
@@ -622,12 +621,12 @@ Partial Class frmDept
         Me.cmbTax.MaxLength = 32767
         Me.cmbTax.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbTax.Name = "cmbTax"
-        Me.cmbTax.PropBag = resources.GetString("cmbTax.PropBag")
         Me.cmbTax.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTax.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbTax.Size = New System.Drawing.Size(90, 21)
         Me.cmbTax.TabIndex = 72
         Me.cmbTax.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.cmbTax.PropBag = resources.GetString("cmbTax.PropBag")
         '
         'txtTaxState
         '
@@ -641,7 +640,7 @@ Partial Class frmDept
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(512, 399)
+        Me.ClientSize = New System.Drawing.Size(486, 399)
         Me.Controls.Add(Me.txtTaxState)
         Me.Controls.Add(Me.cmbTax)
         Me.Controls.Add(Me.lstDept)

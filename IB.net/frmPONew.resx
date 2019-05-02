@@ -117,25 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="txtData2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="VendMasterBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
   </metadata>
-  <metadata name="txtTotal3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="VendMasterBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
   </metadata>
-  <metadata name="txtTotal2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="DsVendMaster_Vendor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>704, 56</value>
   </metadata>
-  <metadata name="txtTotal1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="DsVendMaster_Vendor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>704, 56</value>
   </metadata>
-  <metadata name="txtTotal0.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="POMasterBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>136, 17</value>
   </metadata>
-  <metadata name="txtData1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="POMasterBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>136, 17</value>
   </metadata>
-  <metadata name="txtData0.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="DsPOMaster.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="DsPOMaster.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SpTotalPOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>334, 56</value>
+  </metadata>
+  <metadata name="SpTotalPOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>334, 56</value>
+  </metadata>
+  <metadata name="DsspTotalPO.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>213, 56</value>
+  </metadata>
+  <metadata name="DsspTotalPO.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>213, 56</value>
+  </metadata>
+  <metadata name="POMasterTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>320, 17</value>
+  </metadata>
+  <metadata name="POItemTempBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>713, 17</value>
+  </metadata>
+  <metadata name="DsPOItemTemp_ItemMasterO.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>499, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="grdPO.Images" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAADRJREFUKFN1iQEKACAMAv3/p4six3R5IIqHD+v1oIu0Lzy8B0cwQhcpQhSEwrvo
+        R9qCCWADoKoc5CkvobIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="grdPO.PrintInfo.PageSettings" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACRTeXN0ZW0uRHJh
+        d2luZy5QcmludGluZy5QYWdlU2V0dGluZ3MHAAAAD3ByaW50ZXJTZXR0aW5ncwVjb2xvcglwYXBlclNp
+        emULcGFwZXJTb3VyY2URcHJpbnRlclJlc29sdXRpb24JbGFuZHNjYXBlB21hcmdpbnMEBAQEBAQEJ1N5
+        c3RlbS5EcmF3aW5nLlByaW50aW5nLlByaW50ZXJTZXR0aW5ncwIAAAAgU3lzdGVtLkRyYXdpbmcuUHJp
+        bnRpbmcuVHJpU3RhdGUCAAAAIVN5c3RlbS5EcmF3aW5nLlByaW50aW5nLlBhcGVyU2l6ZQIAAAAjU3lz
+        dGVtLkRyYXdpbmcuUHJpbnRpbmcuUGFwZXJTb3VyY2UCAAAAKVN5c3RlbS5EcmF3aW5nLlByaW50aW5n
+        LlByaW50ZXJSZXNvbHV0aW9uAgAAACBTeXN0ZW0uRHJhd2luZy5QcmludGluZy5UcmlTdGF0ZQIAAAAf
+        U3lzdGVtLkRyYXdpbmcuUHJpbnRpbmcuTWFyZ2lucwIAAAACAAAACQMAAAAF/P///yBTeXN0ZW0uRHJh
+        d2luZy5QcmludGluZy5UcmlTdGF0ZQEAAAAFdmFsdWUAAgIAAAAACgoKAfv////8////AAkGAAAABQMA
+        AAAnU3lzdGVtLkRyYXdpbmcuUHJpbnRpbmcuUHJpbnRlclNldHRpbmdzEgAAAAtwcmludGVyTmFtZQpk
+        cml2ZXJOYW1lCm91dHB1dFBvcnQLcHJpbnRUb0ZpbGUUcHJpbnREaWFsb2dEaXNwbGF5ZWQKZXh0cmFi
+        eXRlcwlleHRyYWluZm8GY29waWVzBmR1cGxleAdjb2xsYXRlE2RlZmF1bHRQYWdlU2V0dGluZ3MIZnJv
+        bVBhZ2UGdG9QYWdlB21heFBhZ2UHbWluUGFnZQpwcmludFJhbmdlDGRldm1vZGVieXRlcw1jYWNoZWRE
+        ZXZtb2RlAQEBAAAABwAEBAQAAAAABAAHAQEHAgceU3lzdGVtLkRyYXdpbmcuUHJpbnRpbmcuRHVwbGV4
+        AgAAACBTeXN0ZW0uRHJhd2luZy5QcmludGluZy5UcmlTdGF0ZQIAAAAkU3lzdGVtLkRyYXdpbmcuUHJp
+        bnRpbmcuUGFnZVNldHRpbmdzAgAAAAgICAgiU3lzdGVtLkRyYXdpbmcuUHJpbnRpbmcuUHJpbnRSYW5n
+        ZQIAAAAHAgIAAAAKBgcAAAAACQcAAAAAAAAACv//Bfj///8eU3lzdGVtLkRyYXdpbmcuUHJpbnRpbmcu
+        RHVwbGV4AQAAAAd2YWx1ZV9fAAgCAAAA/////wH3/////P///wAJCgAAAAAAAAAAAAAADycAAAAAAAAF
+        9f///yJTeXN0ZW0uRHJhd2luZy5QcmludGluZy5QcmludFJhbmdlAQAAAAd2YWx1ZV9fAAgCAAAAAAAA
+        AAAACgUGAAAAH1N5c3RlbS5EcmF3aW5nLlByaW50aW5nLk1hcmdpbnMIAAAABGxlZnQFcmlnaHQDdG9w
+        BmJvdHRvbQpkb3VibGVMZWZ0C2RvdWJsZVJpZ2h0CWRvdWJsZVRvcAxkb3VibGVCb3R0b20AAAAAAAAA
+        AAgICAgGBgYGAgAAAGQAAABkAAAAZAAAAGQAAAAAAAAAAABZQAAAAAAAAFlAAAAAAAAAWUAAAAAAAABZ
+        QAEKAAAAAQAAAAkDAAAAAfP////8////AAoKCgHy/////P///wAJDwAAAAEPAAAABgAAAGQAAABkAAAA
+        ZAAAAGQAAAAAAAAAAABZQAAAAAAAAFlAAAAAAAAAWUAAAAAAAABZQAs=
+</value>
+  </data>
+  <data name="grdPO.PropBag" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;&lt;Blob&gt;&lt;DataCols&gt;&lt;C1DataColumn Caption="IB Item" DataField="ITEM_NUM" DataTypeInternal="System.Int32"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Vend Item" DataField="VEND_ITEM"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Qty ord" DataField="ORDERED" DataTypeInternal="System.Single"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Received" DataField="RECEIVED" DataTypeInternal="System.Single"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Backord" DataField="BACKORDERED" DataTypeInternal="System.Single"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Rec Date" DataField="DATE_RECD" DataTypeInternal="System.DateTime" NumberFormat="d"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Price" DataField="PRICE" DataTypeInternal="System.Single"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Comment" DataField="COMMENT"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Description" DataField="Descr"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;/DataCols&gt;&lt;Styles type="C1.Win.C1TrueDBGrid.Design.ContextWrapper"&gt;&lt;Data&gt;Caption{AlignHorz:Center;}ColumnSelector{}Editor{}EvenRow{BackColor:Aqua;}FilterBar{}FilterWatermark{BackColor:Info;ForeColor:InfoText;}Footer{}Group{BackColor:ControlDark;Border:None,,0, 0, 0, 0;AlignVert:Center;}Heading{BackColor:Control;ForeColor:ControlText;Border:Flat,ControlDark,0, 1, 0, 1;AlignVert:Center;WrapText:WrapWithOverflow;}HighlightRow{BackColor:Highlight;ForeColor:HighlightText;}Inactive{BackColor:InactiveCaption;ForeColor:InactiveCaptionText;}Normal{}OddRow{}RecordSelector{AlignImage:Center;}RowSelector{}Selected{BackColor:Highlight;ForeColor:HighlightText;}Style1{}Style10{}Style100{}Style101{}Style102{}Style103{AlignHorz:Near;}Style104{AlignHorz:Near;}Style105{AlignHorz:Near;}Style106{}Style107{}Style108{}Style109{}Style11{}Style110{AlignHorz:Far;}Style111{AlignHorz:Far;}Style112{AlignHorz:Far;}Style113{}Style114{}Style115{}Style116{}Style117{AlignHorz:Far;}Style118{AlignHorz:Far;}Style119{AlignHorz:Far;}Style12{}Style120{}Style121{}Style122{}Style123{}Style124{AlignHorz:Far;}Style125{AlignHorz:Far;}Style126{AlignHorz:Far;}Style127{}Style128{}Style129{}Style13{}Style130{}Style131{AlignHorz:Far;}Style132{AlignHorz:Far;}Style133{AlignHorz:Far;}Style134{}Style135{}Style136{}Style137{}Style138{AlignHorz:Far;}Style139{AlignHorz:Far;}Style14{}Style140{AlignHorz:Far;}Style141{}Style142{}Style143{}Style144{}Style145{AlignHorz:Near;}Style146{AlignHorz:Near;}Style147{AlignHorz:Near;}Style148{}Style149{}Style15{}Style150{}Style151{}Style152{AlignHorz:Near;}Style153{AlignHorz:Near;}Style154{AlignHorz:Near;}Style155{}Style156{}Style157{}Style158{}Style16{}Style17{}Style18{}Style2{}Style3{}Style4{}Style5{}Style6{}Style7{}Style8{}Style9{}Style96{AlignHorz:Far;}Style97{AlignHorz:Far;}Style98{AlignHorz:Far;}Style99{}&lt;/Data&gt;&lt;/Styles&gt;&lt;Splits&gt;&lt;C1.Win.C1TrueDBGrid.MergeView Name="" CaptionHeight="17" ColumnCaptionHeight="17" ColumnFooterHeight="17" MarqueeStyle="DottedCellBorder" RecordSelectorWidth="17" DefRecSelWidth="17" VerticalScrollGroup="1" HorizontalScrollGroup="1"&gt;&lt;CaptionStyle parent="Style2" me="Style10" /&gt;&lt;EditorStyle parent="Editor" me="Style5" /&gt;&lt;EvenRowStyle parent="EvenRow" me="Style8" /&gt;&lt;FilterBarStyle parent="FilterBar" me="Style15" /&gt;&lt;FilterWatermarkStyle parent="FilterWatermark" me="Style16" /&gt;&lt;FooterStyle parent="Footer" me="Style3" /&gt;&lt;GroupStyle parent="Group" me="Style12" /&gt;&lt;HeadingStyle parent="Heading" me="Style2" /&gt;&lt;HighLightRowStyle parent="HighlightRow" me="Style7" /&gt;&lt;InactiveStyle parent="Inactive" me="Style4" /&gt;&lt;OddRowStyle parent="OddRow" me="Style9" /&gt;&lt;RecordSelectorStyle parent="RecordSelector" me="Style11" /&gt;&lt;RowSelectorStyle parent="RowSelector" me="Style13" /&gt;&lt;ColumnSelectorStyle parent="ColumnSelector" me="Style14" /&gt;&lt;SelectedStyle parent="Selected" me="Style6" /&gt;&lt;Style parent="Normal" me="Style1" /&gt;&lt;internalCols&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style103" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style104" /&gt;&lt;Style parent="Style1" me="Style105" /&gt;&lt;FooterStyle parent="Style3" me="Style106" /&gt;&lt;EditorStyle parent="Style5" me="Style107" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style109" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style108" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;65&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;1&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style96" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style97" /&gt;&lt;Style parent="Style1" me="Style98" /&gt;&lt;FooterStyle parent="Style3" me="Style99" /&gt;&lt;EditorStyle parent="Style5" me="Style100" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style102" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style101" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;60&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;0&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style152" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style153" /&gt;&lt;Style parent="Style1" me="Style154" /&gt;&lt;FooterStyle parent="Style3" me="Style155" /&gt;&lt;EditorStyle parent="Style5" me="Style156" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style158" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style157" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;134&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;8&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style110" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style111" /&gt;&lt;Style parent="Style1" me="Style112" /&gt;&lt;FooterStyle parent="Style3" me="Style113" /&gt;&lt;EditorStyle parent="Style5" me="Style114" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style116" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style115" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;64&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;2&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style117" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style118" /&gt;&lt;Style parent="Style1" me="Style119" /&gt;&lt;FooterStyle parent="Style3" me="Style120" /&gt;&lt;EditorStyle parent="Style5" me="Style121" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style123" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style122" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;3&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style131" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style132" /&gt;&lt;Style parent="Style1" me="Style133" /&gt;&lt;FooterStyle parent="Style3" me="Style134" /&gt;&lt;EditorStyle parent="Style5" me="Style135" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style137" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style136" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;69&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;5&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style124" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style125" /&gt;&lt;Style parent="Style1" me="Style126" /&gt;&lt;FooterStyle parent="Style3" me="Style127" /&gt;&lt;EditorStyle parent="Style5" me="Style128" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style130" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style129" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;54&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;4&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style138" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style139" /&gt;&lt;Style parent="Style1" me="Style140" /&gt;&lt;FooterStyle parent="Style3" me="Style141" /&gt;&lt;EditorStyle parent="Style5" me="Style142" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style144" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style143" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;66&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;6&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style145" /&gt;&lt;ColumnSelectorStyle parent="Style14" me="Style146" /&gt;&lt;Style parent="Style1" me="Style147" /&gt;&lt;FooterStyle parent="Style3" me="Style148" /&gt;&lt;EditorStyle parent="Style5" me="Style149" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style151" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style150" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;7&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;/internalCols&gt;&lt;ClientRect&gt;0, 0, 618, 418&lt;/ClientRect&gt;&lt;BorderSide&gt;0&lt;/BorderSide&gt;&lt;/C1.Win.C1TrueDBGrid.MergeView&gt;&lt;/Splits&gt;&lt;NamedStyles&gt;&lt;Style parent="" me="Normal" /&gt;&lt;Style parent="Normal" me="Heading" /&gt;&lt;Style parent="Heading" me="Footer" /&gt;&lt;Style parent="Heading" me="Caption" /&gt;&lt;Style parent="Heading" me="Inactive" /&gt;&lt;Style parent="Normal" me="Selected" /&gt;&lt;Style parent="Normal" me="Editor" /&gt;&lt;Style parent="Normal" me="HighlightRow" /&gt;&lt;Style parent="Normal" me="EvenRow" /&gt;&lt;Style parent="Normal" me="OddRow" /&gt;&lt;Style parent="Heading" me="RecordSelector" /&gt;&lt;Style parent="Normal" me="FilterBar" /&gt;&lt;Style parent="FilterBar" me="FilterWatermark" /&gt;&lt;Style parent="Caption" me="Group" /&gt;&lt;Style parent="RecordSelector" me="RowSelector" /&gt;&lt;Style parent="Heading" me="ColumnSelector" /&gt;&lt;/NamedStyles&gt;&lt;vertSplits&gt;1&lt;/vertSplits&gt;&lt;horzSplits&gt;1&lt;/horzSplits&gt;&lt;Layout&gt;Modified&lt;/Layout&gt;&lt;DefaultRecSelWidth&gt;17&lt;/DefaultRecSelWidth&gt;&lt;ClientArea&gt;0, 0, 618, 418&lt;/ClientArea&gt;&lt;PrintPageHeaderStyle parent="" me="Style17" /&gt;&lt;PrintPageFooterStyle parent="" me="Style18" /&gt;&lt;/Blob&gt;</value>
+  </data>
+  <metadata name="DsPOItemTemp_ItemMasterO.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>499, 17</value>
+  </metadata>
+  <metadata name="POItemTempTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="SpTotalPOTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>522, 56</value>
+  </metadata>
+  <metadata name="VendMasterTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>213, 95</value>
   </metadata>
 </root>
