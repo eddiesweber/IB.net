@@ -15,7 +15,6 @@ Public Class frmPONew
     Dim bEditInProgress As Boolean
     Public RDate As Date
     Public RCancel As Boolean
-    Dim Result As DialogResult
 
     Private Sub frmPONew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

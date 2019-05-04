@@ -1,19 +1,12 @@
-﻿'Option Explicit On
+﻿Option Explicit On
 
 Imports System.ComponentModel
-Imports System.Data.SqlClient
 
 Public Class frmFindCust
-
-    'Public intCustNum(2500) As Integer
-    'Public strCustName(2500) As String
-    Dim Result As DialogResult
-    Dim blnNoCLick As Boolean = False
 
     Private Sub frmFindCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         GetWindowPos(Me, 333, 66)
-        Me.Show()
 
         GetData()
 
@@ -21,72 +14,54 @@ Public Class frmFindCust
 
     Private Sub GetData()
 
-        SpGetCustsNumTableAdapter.Connection.ConnectionString = CS
-        SpGetCustsNumTableAdapter.Fill(Me.DsspGetCustsNum.SpGetCustsNum)
+        Me.Cursor = Cursors.WaitCursor
 
-        SpGetCustsAlphaTableAdapter.Connection.ConnectionString = CS
-        SpGetCustsAlphaTableAdapter.Fill(Me.DsspGetCustsAlpha.SpGetCustsAlpha)
+        Try
+            strLocation = "GD1.0"
+            SpGetCustsNumTableAdapter.Connection.ConnectionString = CS
+            SpGetCustsNumTableAdapter.Fill(Me.DsspGetCustsNum.SpGetCustsNum)
 
-        lstCustNum.SelectedIndex = -1
-        lstCustName.SelectedIndex = -1
-        If CurCust > 0 Then
-            lstCustNum.SelectedIndex = lstCustNum.FindStringExact(CurCust)
-        End If
+            strLocation = "GD2.0"
+            SpGetCustsAlphaTableAdapter.Connection.ConnectionString = CS
+            SpGetCustsAlphaTableAdapter.Fill(Me.DsspGetCustsAlpha.SpGetCustsAlpha)
 
-    End Sub
-
-    Private Sub lstCustNum_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles lstCustNum.SelectedIndexChanged
-
-        If lstCustNum.SelectedValue <> Nothing Then
-            If blnNoCLick = False Then
-                blnNoCLick = True
-                lstCustName.SelectedIndex = lstCustName.FindStringExact(lstCustNum.SelectedValue.ToString)
-                blnNoCLick = False
+            If CurCust > 0 Then
+                strLocation = "GD3.0"
+                SpGetCustsNumBindingSource.Position = SpGetCustsNumBindingSource.Find("CUST_NUM", CurCust)
+                strLocation = "GD4.0"
+                SpGetCustsAlphaBindingSource.Position = SpGetCustsAlphaBindingSource.Find("CUST_NUM", CurCust)
             End If
-        End If
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine Getdata (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData", vbOK)
+            LogError(Me.Name, "GetData", strLocation, ex.Message)
+        End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
-    Private Sub lstCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustName.SelectedIndexChanged
+    Private Sub lstCustNum_Click(sender As Object, e As EventArgs) Handles lstCustNum.Click
 
-        If lstCustName.SelectedValue <> Nothing Then
-            If blnNoCLick = False Then
-                blnNoCLick = True
-                lstCustNum.SelectedIndex = lstCustNum.FindStringExact(lstCustName.SelectedValue.ToString)
-                blnNoCLick = False
-            End If
-        End If
-
-    End Sub
-
-    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
-
-        Dim frm As Form
-
-        CurCust = CType(lstCustNum.SelectedItem(0), Long)
-        For Each frm In My.Application.OpenForms
-            ' Alternate way to get "textbox" control list
-            ' Dim ctrls() As Control = frm.Controls.Find("TextBox1", True)
-            For Each ctl As Control In frm.Controls
-                If TypeOf ctl Is Label Then
-                    If ctl.Name = "lblCurCust" Then
-                        ctl.Text = CurCust
-                    End If
-                End If
-            Next
-        Next
+        Try
+            strLocation = "LCNC1.0"
+            SpGetCustsAlphaBindingSource.Position = SpGetCustsAlphaBindingSource.Find("CUST_NUM", lstCustNum.SelectedValue.ToString)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstCustNum_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstCustNum_Click", vbOK)
+            LogError(Me.Name, "lstCustNum_Click", strLocation, ex.Message)
+        End Try
 
     End Sub
 
-    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+    Private Sub lstCustName_Click(sender As Object, e As EventArgs) Handles lstCustName.Click
 
-        GetData()
-
-    End Sub
-
-    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
-
-        Me.Hide()
+        Try
+            strLocation = "LCNC1.0"
+            SpGetCustsNumBindingSource.Position = SpGetCustsNumBindingSource.Find("CUST_NUM", lstCustName.SelectedValue.ToString)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstCustName_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstCustName_Click", vbOK)
+            LogError(Me.Name, "lstCustName_Click", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -99,6 +74,25 @@ Public Class frmFindCust
     Private Sub lstCustName_DoubleClick(sender As Object, e As EventArgs) Handles lstCustName.DoubleClick
 
         cmdSelect_Click(sender, e)
+
+    End Sub
+
+    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
+
+        CurCust = CType(lstCustNum.SelectedItem(0), Long)
+        SetLabelOnAllOpenForms(CurCust, "lblCurCust")
+
+    End Sub
+
+    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+
+        GetData()
+
+    End Sub
+
+    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+
+        Me.Hide()
 
     End Sub
 

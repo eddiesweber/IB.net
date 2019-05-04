@@ -4,87 +4,64 @@ Imports System.ComponentModel
 
 Public Class frmFindPO
 
-    Dim blnNoCLick As Boolean = False
-
     Private Sub frmFindPO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         GetWindowPos(Me, 333, 66)
 
-        'Me.Show()
-
-        SpGetPOsNumTableAdapter.Connection.ConnectionString = CS
-        SpGetPOsNumTableAdapter.Fill(Me.DsspGetPOsNum.SpGetPOsNum)
-        'data1(0).ConnectionString = CS
-        'data1(0).RecordSource = "spGetPOsNum"
-        'data1(0).Enabled = True
-        'data1(0).Refresh
-
-        SpGetPOsAlphaTableAdapter.Connection.ConnectionString = CS
-        SpGetPOsAlphaTableAdapter.Fill(Me.DsspGetPOsAlpha.SpGetPOsAlpha)
-        'data1(1).ConnectionString = CS
-        'data1(1).RecordSource = "spGetPOsAlpha"
-        'data1(1).Enabled = True
-        'data1(1).Refresh
-
-    End Sub
-
-    Private Sub frmFindPO_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
         GetData()
-        ShowCurrent()
 
     End Sub
 
     Sub GetData()
 
-        'Screen.MousePointer = 11
-        'On Error Resume Next
-        'data1(0).Recordset.Close
-        'data1(1).Recordset.Close
-        'On Error GoTo 0
-        'data1(0).Refresh
-        'data1(1).Refresh
-        'Screen.MousePointer = 0
+        Me.Cursor = Cursors.WaitCursor
 
-    End Sub
+        Try
+            strLocation = "GD1.0"
+            SpGetPOsNumTableAdapter.Connection.ConnectionString = CS
+            SpGetPOsNumTableAdapter.Fill(Me.DsspGetPOsNum.SpGetPOsNum)
 
-    Sub ShowCurrent()
+            strLocation = "GD2.0"
+            SpGetPOsAlphaTableAdapter.Connection.ConnectionString = CS
+            SpGetPOsAlphaTableAdapter.Fill(Me.DsspGetPOsAlpha.SpGetPOsAlpha)
 
-        'If Not lstCustNum.BoundText = CStr(CurPO) Then
-        '    lstCustNum.BoundText = CStr(CurPO)
-        '    lstCustNum_Click
-        'End If
-
-    End Sub
-
-    Private Sub frmFindPO_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-        SaveWindowPos(Me)
-
-    End Sub
-
-    Private Sub lstCustNum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustNum.SelectedIndexChanged
-
-        If lstCustNum.SelectedValue <> Nothing Then
-            If blnNoCLick = False Then
-                blnNoCLick = True
-                lstCustName.SelectedIndex = lstCustName.FindStringExact(lstCustNum.SelectedValue.ToString)
-                lstCustName.SelectedIndex = lstCustName.FindStringExact(lstCustNum.SelectedItem.ToString)
-                blnNoCLick = False
+            If CurPO > 0 Then
+                strLocation = "GD3.0"
+                SpGetPOsAlphaBindingSource.Position = SpGetPOsAlphaBindingSource.Find("seq", CurPO)
+                strLocation = "GD4.0"
+                SpGetPOsNumBindingSource.Position = SpGetPOsNumBindingSource.Find("seq", CurPO)
             End If
-        End If
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine Getdata (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData", vbOK)
+            LogError(Me.Name, "GetData", strLocation, ex.Message)
+        End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
-    Private Sub lstCustName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCustName.SelectedIndexChanged
+    Private Sub lstCustNum_Click(sender As Object, e As EventArgs) Handles lstCustNum.Click
 
-        If lstCustName.SelectedValue <> Nothing Then
-            If blnNoCLick = False Then
-                blnNoCLick = True
-                lstCustNum.SelectedIndex = lstCustNum.FindStringExact(lstCustName.SelectedValue.ToString)
-                blnNoCLick = False
-            End If
-        End If
+        Try
+            strLocation = "LCNC1.0"
+            SpGetPOsAlphaBindingSource.Position = SpGetPOsAlphaBindingSource.Find("seq", lstCustNum.SelectedValue.ToString)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstCustNum_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstCustNum_Click", vbOK)
+            LogError(Me.Name, "lstCustNum_Click", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub lstCustName_Click(sender As Object, e As EventArgs) Handles lstCustName.Click
+
+        Try
+            strLocation = "LCNC1.0"
+            SpGetPOsNumBindingSource.Position = SpGetPOsNumBindingSource.Find("seq", lstCustName.SelectedValue.ToString)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "lstCustName_Click" & vbNewLine & "Error : " & ex.Message, "lstCustName_Click", vbOK)
+            LogError(Me.Name, "lstCustName_Click", "1.0", ex.Message)
+        End Try
 
     End Sub
 
@@ -102,26 +79,14 @@ Public Class frmFindPO
 
     Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
 
-        Dim frm As Form
-
         CurPO = lstCustNum.SelectedItem(0)
-        For Each frm In My.Application.OpenForms
-            ' Alternate way to get "textbox" control list
-            ' Dim ctrls() As Control = frm.Controls.Find("TextBox1", True)
-            For Each ctl As Control In frm.Controls
-                If TypeOf ctl Is Label Then
-                    If ctl.Name = "lblCurPO" Then
-                        ctl.Text = CurPO
-                    End If
-                End If
-            Next
-        Next
-        'Dim fm As Form
-        'CurPO = lstCustNum.BoundText
-        'On Error Resume Next
-        'For Each fm In Forms
-        '    fm.lblCurPO = CurPO
-        'Next
+        SetLabelOnAllOpenForms(CurPO, "lblCurPO")
+
+    End Sub
+
+    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+
+        GetData()
 
     End Sub
 
@@ -131,9 +96,10 @@ Public Class frmFindPO
 
     End Sub
 
-    Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+    Private Sub frmFindPO_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
-        GetData()
+        SaveWindowPos(Me)
 
     End Sub
+
 End Class

@@ -48,6 +48,9 @@ Module Main
     Public CurVend As String
     Public CurPO As Integer
 
+    Public strLocation As String
+    Public Result As DialogResult
+
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
@@ -481,5 +484,28 @@ Module Main
         LastCust = CurCust
         LastDept = CurDept
     End Function
+
+    Public Sub SetLabelOnAllOpenForms(strVariable As String, strLabelName As String)
+
+        Dim frm As Form
+
+        Try
+            strLocation = "SLOAOF1.0"
+            For Each frm In My.Application.OpenForms
+                For Each ctl As Control In frm.Controls
+                    If TypeOf ctl Is Label Then
+                        If ctl.Name = strLabelName Then
+                            strLocation = "SLOAOF2.0"
+                            ctl.Text = strVariable
+                        End If
+                    End If
+                Next
+            Next
+        Catch ex As Exception
+            LogError("Main.vb", "SetLabelOnAllOpenForms", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
 
 End Module

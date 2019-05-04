@@ -90,7 +90,7 @@ Partial Class frmFindItem
         Me.LstItemNum.Name = "LstItemNum"
         Me.LstItemNum.Size = New System.Drawing.Size(82, 95)
         Me.LstItemNum.TabIndex = 6
-        Me.LstItemNum.ValueMember = "DESCR"
+        Me.LstItemNum.ValueMember = "ITEM_NUM"
         '
         'SpGetItemsNumBindingSource
         '

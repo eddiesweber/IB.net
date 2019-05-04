@@ -15,7 +15,7 @@ Module modError
             Try
                 Command.ExecuteNonQuery()
             Catch ex As Exception
-                'LogError = "Error: " & ex.Message
+                'MsgBox("Error: " & ex.Message)
             End Try
         End Using
 

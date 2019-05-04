@@ -125,7 +125,7 @@ Partial Class frmFindCust
         Me.lstCustNum.Name = "lstCustNum"
         Me.lstCustNum.Size = New System.Drawing.Size(72, 95)
         Me.lstCustNum.TabIndex = 6
-        Me.lstCustNum.ValueMember = "BILL_NAME"
+        Me.lstCustNum.ValueMember = "CUST_NUM"
         '
         'frmFindCust
         '
