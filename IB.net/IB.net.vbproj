@@ -198,15 +198,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetInvCustAlpha.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvCustAlpha.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetInvCustNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvCustNum.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvHistHeader.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetInvNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvoiceHist2.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetInvRoute.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvRoute.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsspGetItem.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1158,6 +1178,28 @@
     <None Include="dsspGetCustsNum.xss">
       <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetInvCustAlpha.xsc">
+      <DependentUpon>dsspGetInvCustAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvCustAlpha.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvCustAlpha.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvCustAlpha.xss">
+      <DependentUpon>dsspGetInvCustAlpha.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvCustNum.xsc">
+      <DependentUpon>dsspGetInvCustNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvCustNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvCustNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvCustNum.xss">
+      <DependentUpon>dsspGetInvCustNum.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetInvHistHeader.xsc">
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>
     </None>
@@ -1169,6 +1211,17 @@
     <None Include="dsspGetInvHistHeader.xss">
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetInvNum.xsc">
+      <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvNum.xss">
+      <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetInvoiceHist2.xsc">
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
     </None>
@@ -1179,6 +1232,17 @@
     </None>
     <None Include="dsspGetInvoiceHist2.xss">
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvRoute.xsc">
+      <DependentUpon>dsspGetInvRoute.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvRoute.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvRoute.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvRoute.xss">
+      <DependentUpon>dsspGetInvRoute.xsd</DependentUpon>
     </None>
     <None Include="dsspGetItem.xsc">
       <DependentUpon>dsspGetItem.xsd</DependentUpon>

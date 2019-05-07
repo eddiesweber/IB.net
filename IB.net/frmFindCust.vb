@@ -79,7 +79,8 @@ Public Class frmFindCust
 
     Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
 
-        CurCust = CType(lstCustNum.SelectedItem(0), Long)
+        CurCust = lstCustNum.SelectedItem("CUST_NUM")
+
         SetLabelOnAllOpenForms(CurCust, "lblCurCust")
 
     End Sub
