@@ -65,19 +65,7 @@ Public Class frmFindVend
 
     End Sub
 
-    Private Sub lstCustName_DoubleClick(sender As Object, e As EventArgs) Handles lstCustName.DoubleClick
-
-        cmdSelect_Click(sender, e)
-
-    End Sub
-
-    Private Sub lstCustNum_DoubleClick(sender As Object, e As EventArgs) Handles lstCustNum.DoubleClick
-
-        cmdSelect_Click(sender, e)
-
-    End Sub
-
-    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
+    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click, lstCustNum.DoubleClick, lstCustName.DoubleClick
 
         CurVend = lstCustNum.SelectedItem(0)
         SetLabelOnAllOpenForms(CurVend, "lblCurVend")

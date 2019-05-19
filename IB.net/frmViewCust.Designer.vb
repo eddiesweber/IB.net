@@ -318,8 +318,9 @@ Partial Class frmViewCust
         Me.grdDept.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDept.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDept.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdDept.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.grdDept.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdDept.PrintInfo.PageSettings = CType(resources.GetObject("grdDept.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
         Me.grdDept.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdDept.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
         Me.grdDept.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
@@ -327,6 +328,7 @@ Partial Class frmViewCust
         Me.grdDept.TabIndex = 37
         Me.grdDept.UseCompatibleTextRendering = False
         Me.grdDept.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdDept.PropBag = resources.GetString("grdDept.PropBag")
         '
         'SpGetCustDeptBindingSource
         '
@@ -349,8 +351,9 @@ Partial Class frmViewCust
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRoute.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdRoute.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.grdRoute.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
         Me.grdRoute.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdRoute.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
         Me.grdRoute.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
@@ -358,6 +361,7 @@ Partial Class frmViewCust
         Me.grdRoute.TabIndex = 38
         Me.grdRoute.UseCompatibleTextRendering = False
         Me.grdRoute.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
         '
         'SpGetCustRouteBindingSource
         '
@@ -380,8 +384,9 @@ Partial Class frmViewCust
         Me.grdItem.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdItem.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdItem.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdItem.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.grdItem.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdItem.PrintInfo.PageSettings = CType(resources.GetObject("grdItem.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
         Me.grdItem.RowDivider.Color = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.grdItem.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
         Me.grdItem.RowSubDividerColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
@@ -389,6 +394,7 @@ Partial Class frmViewCust
         Me.grdItem.TabIndex = 39
         Me.grdItem.UseCompatibleTextRendering = False
         Me.grdItem.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdItem.PropBag = resources.GetString("grdItem.PropBag")
         '
         'SpGetCustItemBindingSource
         '
@@ -666,7 +672,7 @@ Partial Class frmViewCust
         Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
         Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.C1MainMenu1.Name = "C1MainMenu1"
-        Me.C1MainMenu1.Size = New System.Drawing.Size(584, 27)
+        Me.C1MainMenu1.Size = New System.Drawing.Size(584, 21)
         Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.C1MainMenu1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
@@ -725,7 +731,7 @@ Partial Class frmViewCust
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Location = New System.Drawing.Point(0, 21)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(584, 1)
         Me.Panel1.TabIndex = 68
@@ -756,7 +762,7 @@ Partial Class frmViewCust
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(584, 483)
+        Me.ClientSize = New System.Drawing.Size(584, 481)
         Me.Controls.Add(Me.txtData7)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtData10)

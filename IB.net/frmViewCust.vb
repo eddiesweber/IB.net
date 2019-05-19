@@ -258,11 +258,40 @@ Public Class frmViewCust
 
     End Sub
 
+    Private Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+
+        ' Set database information
+        ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
+        ConnInfo.ServerName = Server.Trim
+        ConnInfo.DatabaseName = DBName.Trim
+        ConnInfo.UserID = Username.Trim
+        ConnInfo.Password = Password.Trim
+
+        For Each CTable As Table In rptCrxReport.Database.Tables
+            CTable.LogOnInfo.ConnectionInfo = ConnInfo
+            CTableLogInfo = CTable.LogOnInfo
+            CTableLogInfo.ReportName = rptCrxReport.Name
+            CTableLogInfo.TableName = CTable.Name
+            CTable.ApplyLogOnInfo(CTableLogInfo)
+        Next
+
+    End Sub
+
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
+        Me.Cursor = Cursors.WaitCursor
 
-        '' NOW LOAD THE REPORT.
-        'frmViewReport.Show()
+        Dim rptCrxReport As New ReportDocument
+        rptCrxReport.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+        SetDbConnection(rptCrxReport)
+
+        rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
+        rptCrxReport.SetParameterValue("CustNum", CurCust)
+
+        rptCrxReport.PrintToPrinter(1, True, 0, 0)
+
+        Me.Cursor = Cursors.Default
 
         'Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
 
@@ -281,63 +310,6 @@ Public Class frmViewCust
         '    .SelectionFormula = ""
         '    .ReportFileName = ""
         'End With
-
-        Dim CrxReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-
-        Dim strReportName As String
-
-        strReportName = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\bin\Debug\rptTest.rpt"
-        'strReportName = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\bin\Debug\Custinfo.rpt"
-        CrxReport.Load(strReportName, CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
-
-        CrxReport.SetParameterValue("CustomerNumber", CurCust)
-
-        Dim objfrmRptViewer As New frmRptViewer
-
-        objfrmRptViewer.CRViewer.ReportSource = CrxReport
-        objfrmRptViewer.Text = "Report description goes here"
-        objfrmRptViewer.Show()
-
-        '' Maximize the window state so we can view the whole report.
-        objfrmRptViewer.WindowState = FormWindowState.Maximized
-        '' Zoom the preview window to 100%
-        objfrmRptViewer.CRViewer.Zoom(100)
-
-        objfrmRptViewer = Nothing
-
-
-
-    End Sub
-
-    Private Sub DisplayReport(ByVal CrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument, ByVal reportDesc As String)
-
-        Dim objfrmRptViewer As New frmRptViewer
-
-        '===== Generate report preview =====================
-
-        Cursor.Current = Cursors.WaitCursor
-
-        CrxReport.Refresh()
-
-        objfrmRptViewer.CRViewer.ReportSource = CrxReport
-        objfrmRptViewer.CRViewer.RefreshReport()
-
-        objfrmRptViewer.CRViewer.ShowExportButton = True
-        objfrmRptViewer.CRViewer.ShowPrintButton = True
-        objfrmRptViewer.CRViewer.ShowGroupTreeButton = True
-
-        objfrmRptViewer.Text = reportDesc
-        objfrmRptViewer.Show()
-        ' Maximize the window state so we can view the whole report.
-        objfrmRptViewer.WindowState = FormWindowState.Maximized
-        ' Zoom the preview window to 100%
-        objfrmRptViewer.CRViewer.Zoom(100)
-
-        'Screen.MousePointer = vbDefault
-        Cursor.Current = Cursors.Default
-
-        '===================================================
-        objfrmRptViewer = Nothing
 
     End Sub
 
@@ -360,6 +332,20 @@ Public Class frmViewCust
     End Sub
 
     Private Sub mnuArHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuArHistory.Click
+
+        Me.Cursor = Cursors.WaitCursor
+
+        Dim rptCrxReport As New ReportDocument
+        rptCrxReport.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+        SetDbConnection(rptCrxReport)
+
+        rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
+        rptCrxReport.SetParameterValue("CustNum", CurCust)
+
+        rptCrxReport.PrintToPrinter(1, True, 0, 0)
+
+        Me.Cursor = Cursors.Default
 
         'With RPT
         '    .ReportFileName = RptPath & "\deadbeatcust.rpt"

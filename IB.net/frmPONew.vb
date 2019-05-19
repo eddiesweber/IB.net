@@ -280,4 +280,39 @@ Public Class frmPONew
         frmFindPO.BringToFront()
 
     End Sub
+
+    Private Sub cmdAddItem_Click(sender As Object, e As EventArgs) Handles cmdAddItem.Click
+
+        CurPO = Val(txtData0.Text)
+
+        frmPOItem.Show()
+
+        SetModeChange()
+
+    End Sub
+
+    Private Sub cmdDelItem_Click(sender As Object, e As EventArgs) Handles cmdDelItem.Click
+
+        'grdPO.Delete()
+
+    End Sub
+
+    Private Sub cmdRecAll_Click(sender As Object, e As EventArgs) Handles cmdRecAll.Click
+
+        'Dim D As Integer, q As String
+        'Dim ADOCmd As New ADODB.Command
+        'ADOCmd.ActiveConnection = DB
+
+        'frmPONew2.Show 1
+
+        'If RCancel Then Exit Sub
+
+        'q = "exec spPORecAll " & Val(txtData(0)) & ", '" & Format(RDate, "mm/dd/yyyy") & "'"
+        'ADOCmd.CommandText = q
+        'ADOCmd.Execute()
+        'data2.Refresh
+
+        'SetModeChange()
+
+    End Sub
 End Class

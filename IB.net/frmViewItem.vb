@@ -28,48 +28,49 @@
 
     Private Sub lblCurItem_TextChanged(sender As Object, e As EventArgs) Handles lblCurItem.TextChanged
 
-        ''Get Item record
-        'data1(0).Recordset.Close
-        'data2.Recordset.Close
+        Me.Cursor = Cursors.WaitCursor
 
-        SpGetItemTableAdapter.Connection.ConnectionString = CS
-        SpGetItemTableAdapter.Fill(DsspGetItem.spGetItem, CurType, CurItem)
-        'q = "spGetItem ('" & CurType & "'," & CurItem & ")"
-        'data1(0).RecordSource = q
-        'data1(0).Enabled = True
-        'data1(0).Refresh
+        Try
+            strLocation = "LCITC1.0"
+            SpGetItemTableAdapter.Connection.ConnectionString = CS
+            SpGetItemTableAdapter.Fill(DsspGetItem.spGetItem, CurType, CurItem)
 
-        SpGetItemPOTableAdapter.Connection.ConnectionString = CS
-        SpGetItempoTableAdapter.Fill(DsspGetItemPO.spGetItemPO, CurItem)
-        'q = "spGetItemPO (" & CurItem & ")"
-        'data2.RecordSource = q
-        'data2.Enabled = True
-        'data2.Refresh
+            strLocation = "LCITC2.0"
+            SpGetItemPOTableAdapter.Connection.ConnectionString = CS
+            SpGetItemPOTableAdapter.Fill(DsspGetItemPO.spGetItemPO, CurItem)
 
-        If DsspGetItemPO.spGetItemPO.Rows.Count > 0 Then
-            SpGetItemPOBindingSource.MoveLast()
-        End If
-        'If data2.Recordset.RecordCount > 0 Then
-        '    data2.Recordset.MoveLast
-        'End If
+            If DsspGetItemPO.spGetItemPO.Rows.Count > 0 Then
+                strLocation = "LCITC3.0"
+                SpGetItemPOBindingSource.MoveLast()
+            End If
 
-        If CurType = "R" Then
-            txtType.Text = "Rental"
-            Frame1.Visible = True
-            grdPO.Visible = False
-        Else
-            txtType.Text = "Other"
-            Frame1.Visible = False
-            grdPO.Visible = True
-        End If
+            If CurType = "R" Then
+                strLocation = "LCITC4.0"
+                txtType.Text = "Rental"
+                Frame1.Visible = True
+                grdPO.Visible = False
+            Else
+                strLocation = "LCITC5.0"
+                txtType.Text = "Other"
+                Frame1.Visible = False
+                grdPO.Visible = True
+            End If
 
-        If DsspGetItem.spGetItem.Rows.Count > 0 Then
-            lblAvailable.Text = CStr(DsspGetItem.spGetItem.Rows(0)("TOTAL_OWN") -
+            If DsspGetItem.spGetItem.Rows.Count > 0 Then
+                strLocation = "LCITC6.0"
+                lblAvailable.Text = CStr(DsspGetItem.spGetItem.Rows(0)("TOTAL_OWN") -
                 DsspGetItem.spGetItem.Rows(0)("RENTED") -
                 DsspGetItem.spGetItem.Rows(0)("LOANED") -
                 DsspGetItem.spGetItem.Rows(0)("DAMAGED") -
                 DsspGetItem.spGetItem.Rows(0)("COMMITTED"))
-        End If
+            End If
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine lblCurItem_TextChanged (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lblCurItem_TextChanged", vbOK)
+            LogError(Me.Name, "lblCurItem_TextChanged", strLocation, ex.Message)
+        End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 

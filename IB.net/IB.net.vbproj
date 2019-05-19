@@ -50,6 +50,8 @@
     <ApplicationIcon>Resources\IB.net.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.C1Pdf.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
+    <Reference Include="C1.C1Report.4, Version=4.0.20183.338, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
     <Reference Include="C1.C1Zip.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.BarCode.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
@@ -59,6 +61,7 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1DX.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -68,6 +71,7 @@
     <Reference Include="C1.Win.C1List.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="C1.Win.C1Report.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Themes.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,6 +85,7 @@
     <Reference Include="C1.Win.FlexReport.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="C1.Win.ImportServices.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -88,10 +93,12 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -143,6 +150,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCustomerSurcharge.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsInvoiceHeader.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInvoiceHeader.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsItemMasterO_ItemNum.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,6 +200,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetCustDept.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetCustDepts.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetCustDepts.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetCustsAlpha.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,10 +235,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetInvoiceHeading.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvoiceHeading.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvoiceHist2.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetInvoiceItems.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvoiceItems.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsspGetInvRoute.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -358,10 +385,22 @@
     <Compile Include="frmInvAdj.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmInvHead.Designer.vb">
+      <DependentUpon>frmInvHead.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvHead.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInvItem.designer.vb">
       <DependentUpon>frmInvItem.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInvItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoice.Designer.vb">
+      <DependentUpon>frmInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvoice.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInvPhys.designer.vb">
@@ -458,6 +497,12 @@
       <DependentUpon>frmRentCommEdit.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRentCommEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportTest.Designer.vb">
+      <DependentUpon>frmReportTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRoute.designer.vb">
@@ -840,11 +885,17 @@
     <EmbeddedResource Include="frmInvAdj.resx">
       <DependentUpon>frmInvAdj.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInvHead.resx">
+      <DependentUpon>frmInvHead.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInvHist.resx">
       <DependentUpon>frmInvHist.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvItem.resx">
       <DependentUpon>frmInvItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoice.resx">
+      <DependentUpon>frmInvoice.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvPhys.resx">
       <DependentUpon>frmInvPhys.vb</DependentUpon>
@@ -905,6 +956,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRentOrd.resx">
       <DependentUpon>frmRentOrd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportTest.resx">
+      <DependentUpon>frmReportTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmROHist.resx">
       <DependentUpon>frmROHist.vb</DependentUpon>
@@ -1057,6 +1111,17 @@
     <None Include="dsCustomerSurcharge.xss">
       <DependentUpon>dsCustomerSurcharge.xsd</DependentUpon>
     </None>
+    <None Include="dsInvoiceHeader.xsc">
+      <DependentUpon>dsInvoiceHeader.xsd</DependentUpon>
+    </None>
+    <None Include="dsInvoiceHeader.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInvoiceHeader.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsInvoiceHeader.xss">
+      <DependentUpon>dsInvoiceHeader.xsd</DependentUpon>
+    </None>
     <None Include="dsItemMasterO_ItemNum.xsc">
       <DependentUpon>dsItemMasterO_ItemNum.xsd</DependentUpon>
     </None>
@@ -1156,6 +1221,17 @@
     <None Include="dsspGetCustDept.xss">
       <DependentUpon>dsspGetCustDept.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetCustDepts.xsc">
+      <DependentUpon>dsspGetCustDepts.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustDepts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetCustDepts.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetCustDepts.xss">
+      <DependentUpon>dsspGetCustDepts.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetCustsAlpha.xsc">
       <DependentUpon>dsspGetCustsAlpha.xsd</DependentUpon>
     </None>
@@ -1222,6 +1298,17 @@
     <None Include="dsspGetInvNum.xss">
       <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetInvoiceHeading.xsc">
+      <DependentUpon>dsspGetInvoiceHeading.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvoiceHeading.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvoiceHeading.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvoiceHeading.xss">
+      <DependentUpon>dsspGetInvoiceHeading.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetInvoiceHist2.xsc">
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
     </None>
@@ -1232,6 +1319,17 @@
     </None>
     <None Include="dsspGetInvoiceHist2.xss">
       <DependentUpon>dsspGetInvoiceHist2.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvoiceItems.xsc">
+      <DependentUpon>dsspGetInvoiceItems.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvoiceItems.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvoiceItems.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvoiceItems.xss">
+      <DependentUpon>dsspGetInvoiceItems.xsd</DependentUpon>
     </None>
     <None Include="dsspGetInvRoute.xsc">
       <DependentUpon>dsspGetInvRoute.xsd</DependentUpon>

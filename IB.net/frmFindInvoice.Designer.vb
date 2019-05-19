@@ -23,6 +23,7 @@ Partial Class frmFindInvoice
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindInvoice))
         Me.lstData0 = New System.Windows.Forms.ListBox()
         Me.SpGetInvNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsspGetInvNum = New IB.net.dsspGetInvNum()
@@ -282,6 +283,7 @@ Partial Class frmFindInvoice
         Me.Controls.Add(Me.lstData1)
         Me.Controls.Add(Me.chkAll)
         Me.Controls.Add(Me.lstData0)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(85, 92)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

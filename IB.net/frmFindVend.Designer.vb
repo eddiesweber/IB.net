@@ -23,24 +23,25 @@ Partial Class frmFindVend
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindVend))
         Me.lstCustName = New System.Windows.Forms.ListBox()
+        Me.VendMasterBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsVendMasterFind_VendorName = New IB.net.dsVendMasterFind_VendorName()
         Me.lstCustNum = New System.Windows.Forms.ListBox()
+        Me.VendMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsVendMasterFind_Vendor = New IB.net.dsVendMasterFind_Vendor()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
-        Me.DsVendMasterFind_Vendor = New IB.net.dsVendMasterFind_Vendor()
-        Me.VendMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VendMasterTableAdapter = New IB.net.dsVendMasterFind_VendorTableAdapters.VendMasterTableAdapter()
-        Me.DsVendMasterFind_VendorName = New IB.net.dsVendMasterFind_VendorName()
-        Me.VendMasterBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.VendMasterTableAdapter1 = New IB.net.dsVendMasterFind_VendorNameTableAdapters.VendMasterTableAdapter()
+        CType(Me.VendMasterBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsVendMasterFind_VendorName, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsVendMasterFind_Vendor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsVendMasterFind_Vendor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsVendMasterFind_VendorName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VendMasterBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstCustName
@@ -55,6 +56,16 @@ Partial Class frmFindVend
         Me.lstCustName.TabIndex = 4
         Me.lstCustName.ValueMember = "VENDOR"
         '
+        'VendMasterBindingSource1
+        '
+        Me.VendMasterBindingSource1.DataMember = "VendMaster"
+        Me.VendMasterBindingSource1.DataSource = Me.DsVendMasterFind_VendorName
+        '
+        'DsVendMasterFind_VendorName
+        '
+        Me.DsVendMasterFind_VendorName.DataSetName = "dsVendMasterFind_VendorName"
+        Me.DsVendMasterFind_VendorName.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'lstCustNum
         '
         Me.lstCustNum.DataSource = Me.VendMasterBindingSource
@@ -66,6 +77,16 @@ Partial Class frmFindVend
         Me.lstCustNum.Sorted = True
         Me.lstCustNum.TabIndex = 3
         Me.lstCustNum.ValueMember = "VENDOR"
+        '
+        'VendMasterBindingSource
+        '
+        Me.VendMasterBindingSource.DataMember = "VendMaster"
+        Me.VendMasterBindingSource.DataSource = Me.DsVendMasterFind_Vendor
+        '
+        'DsVendMasterFind_Vendor
+        '
+        Me.DsVendMasterFind_Vendor.DataSetName = "dsVendMasterFind_Vendor"
+        Me.DsVendMasterFind_Vendor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'cmdSelect
         '
@@ -100,29 +121,9 @@ Partial Class frmFindVend
         Me.cmdRefresh.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'DsVendMasterFind_Vendor
-        '
-        Me.DsVendMasterFind_Vendor.DataSetName = "dsVendMasterFind_Vendor"
-        Me.DsVendMasterFind_Vendor.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VendMasterBindingSource
-        '
-        Me.VendMasterBindingSource.DataMember = "VendMaster"
-        Me.VendMasterBindingSource.DataSource = Me.DsVendMasterFind_Vendor
-        '
         'VendMasterTableAdapter
         '
         Me.VendMasterTableAdapter.ClearBeforeFill = True
-        '
-        'DsVendMasterFind_VendorName
-        '
-        Me.DsVendMasterFind_VendorName.DataSetName = "dsVendMasterFind_VendorName"
-        Me.DsVendMasterFind_VendorName.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VendMasterBindingSource1
-        '
-        Me.VendMasterBindingSource1.DataMember = "VendMaster"
-        Me.VendMasterBindingSource1.DataSource = Me.DsVendMasterFind_VendorName
         '
         'VendMasterTableAdapter1
         '
@@ -138,19 +139,20 @@ Partial Class frmFindVend
         Me.Controls.Add(Me.cmdRefresh)
         Me.Controls.Add(Me.lstCustNum)
         Me.Controls.Add(Me.lstCustName)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(85, 92)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmFindVend"
         Me.ShowInTaskbar = False
         Me.Text = "Find Vendor"
+        CType(Me.VendMasterBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsVendMasterFind_VendorName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsVendMasterFind_Vendor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsVendMasterFind_Vendor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VendMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsVendMasterFind_VendorName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VendMasterBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

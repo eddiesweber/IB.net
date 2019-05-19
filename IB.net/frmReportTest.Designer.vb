@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmRptViewer
+Partial Class frmReportTest
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,18 +22,8 @@ Partial Class frmRptViewer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lblReportName = New System.Windows.Forms.Label()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.SuspendLayout()
-        '
-        'lblReportName
-        '
-        Me.lblReportName.AutoSize = True
-        Me.lblReportName.Location = New System.Drawing.Point(387, 123)
-        Me.lblReportName.Name = "lblReportName"
-        Me.lblReportName.Size = New System.Drawing.Size(39, 13)
-        Me.lblReportName.TabIndex = 1
-        Me.lblReportName.Text = "Label1"
         '
         'CrystalReportViewer1
         '
@@ -43,22 +33,20 @@ Partial Class frmRptViewer
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(750, 462)
-        Me.CrystalReportViewer1.TabIndex = 2
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(800, 450)
+        Me.CrystalReportViewer1.TabIndex = 0
         '
-        'frmRptViewer
+        'frmReportTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(750, 462)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Controls.Add(Me.lblReportName)
-        Me.Name = "frmRptViewer"
-        Me.Text = "frmRptViewer"
+        Me.Name = "frmReportTest"
+        Me.Text = "frmReportTest"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lblReportName As Label
+
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

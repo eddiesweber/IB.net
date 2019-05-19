@@ -23,24 +23,25 @@ Partial Class frmFindPO
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindPO))
         Me.lstCustName = New System.Windows.Forms.ListBox()
+        Me.SpGetPOsAlphaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetPOsAlpha = New IB.net.dsspGetPOsAlpha()
         Me.lstCustNum = New System.Windows.Forms.ListBox()
+        Me.SpGetPOsNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetPOsNum = New IB.net.dsspGetPOsNum()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
-        Me.DsspGetPOsNum = New IB.net.dsspGetPOsNum()
-        Me.SpGetPOsNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetPOsNumTableAdapter = New IB.net.dsspGetPOsNumTableAdapters.SpGetPOsNumTableAdapter()
-        Me.DsspGetPOsAlpha = New IB.net.dsspGetPOsAlpha()
-        Me.SpGetPOsAlphaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetPOsAlphaTableAdapter = New IB.net.dsspGetPOsAlphaTableAdapters.SpGetPOsAlphaTableAdapter()
+        CType(Me.SpGetPOsAlphaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetPOsAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetPOsNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetPOsNum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetPOsNum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetPOsNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetPOsAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetPOsAlphaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstCustName
@@ -54,6 +55,16 @@ Partial Class frmFindPO
         Me.lstCustName.TabIndex = 4
         Me.lstCustName.ValueMember = "Seq"
         '
+        'SpGetPOsAlphaBindingSource
+        '
+        Me.SpGetPOsAlphaBindingSource.DataMember = "SpGetPOsAlpha"
+        Me.SpGetPOsAlphaBindingSource.DataSource = Me.DsspGetPOsAlpha
+        '
+        'DsspGetPOsAlpha
+        '
+        Me.DsspGetPOsAlpha.DataSetName = "dsspGetPOsAlpha"
+        Me.DsspGetPOsAlpha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'lstCustNum
         '
         Me.lstCustNum.DataSource = Me.SpGetPOsNumBindingSource
@@ -64,6 +75,16 @@ Partial Class frmFindPO
         Me.lstCustNum.Size = New System.Drawing.Size(115, 95)
         Me.lstCustNum.TabIndex = 3
         Me.lstCustNum.ValueMember = "Seq"
+        '
+        'SpGetPOsNumBindingSource
+        '
+        Me.SpGetPOsNumBindingSource.DataMember = "SpGetPOsNum"
+        Me.SpGetPOsNumBindingSource.DataSource = Me.DsspGetPOsNum
+        '
+        'DsspGetPOsNum
+        '
+        Me.DsspGetPOsNum.DataSetName = "dsspGetPOsNum"
+        Me.DsspGetPOsNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'cmdSelect
         '
@@ -98,29 +119,9 @@ Partial Class frmFindPO
         Me.cmdRefresh.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'DsspGetPOsNum
-        '
-        Me.DsspGetPOsNum.DataSetName = "dsspGetPOsNum"
-        Me.DsspGetPOsNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetPOsNumBindingSource
-        '
-        Me.SpGetPOsNumBindingSource.DataMember = "SpGetPOsNum"
-        Me.SpGetPOsNumBindingSource.DataSource = Me.DsspGetPOsNum
-        '
         'SpGetPOsNumTableAdapter
         '
         Me.SpGetPOsNumTableAdapter.ClearBeforeFill = True
-        '
-        'DsspGetPOsAlpha
-        '
-        Me.DsspGetPOsAlpha.DataSetName = "dsspGetPOsAlpha"
-        Me.DsspGetPOsAlpha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetPOsAlphaBindingSource
-        '
-        Me.SpGetPOsAlphaBindingSource.DataMember = "SpGetPOsAlpha"
-        Me.SpGetPOsAlphaBindingSource.DataSource = Me.DsspGetPOsAlpha
         '
         'SpGetPOsAlphaTableAdapter
         '
@@ -136,19 +137,20 @@ Partial Class frmFindPO
         Me.Controls.Add(Me.cmdRefresh)
         Me.Controls.Add(Me.lstCustNum)
         Me.Controls.Add(Me.lstCustName)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(85, 92)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmFindPO"
         Me.ShowInTaskbar = False
         Me.Text = "Find Purchase Order"
+        CType(Me.SpGetPOsAlphaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetPOsAlpha, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetPOsNumBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetPOsNum, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetPOsNum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetPOsNumBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetPOsAlpha, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetPOsAlphaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

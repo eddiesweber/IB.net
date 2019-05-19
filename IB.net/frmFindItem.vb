@@ -142,24 +142,6 @@ Public Class frmFindItem
 
     End Sub
 
-    Private Sub LstItemAlpha_DoubleClick(sender As Object, e As EventArgs) Handles LstItemAlpha.DoubleClick
-
-        cmdSelect_Click(sender, e)
-
-    End Sub
-
-    Private Sub lstVendItem_DoubleClick(sender As Object, e As EventArgs) Handles lstVendItem.DoubleClick
-
-        cmdSelect.Select()
-
-    End Sub
-
-    Private Sub LstItemNum_DoubleClick(sender As Object, e As EventArgs) Handles LstItemNum.DoubleClick
-
-        cmdSelect_Click(sender, e)
-
-    End Sub
-
     Private Sub cmbVendor_TextChanged(sender As Object, e As EventArgs) Handles cmbVendor.TextChanged
 
         Try
@@ -206,7 +188,7 @@ Public Class frmFindItem
 
     End Sub
 
-    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
+    Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click, lstVendItem.DoubleClick, LstItemNum.DoubleClick, LstItemAlpha.DoubleClick
 
         Dim intRow As Integer
 

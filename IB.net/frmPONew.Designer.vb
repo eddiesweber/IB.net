@@ -516,11 +516,11 @@ Partial Class frmPONew
         Me.grdPO.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdPO.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdPO.PrintInfo.PageSettings = CType(resources.GetObject("grdPO.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdPO.PropBag = resources.GetString("grdPO.PropBag")
         Me.grdPO.Size = New System.Drawing.Size(620, 420)
         Me.grdPO.TabIndex = 78
         Me.grdPO.UseCompatibleTextRendering = False
         Me.grdPO.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdPO.PropBag = resources.GetString("grdPO.PropBag")
         '
         'POItemTempBindingSource
         '

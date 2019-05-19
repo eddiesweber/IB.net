@@ -110,7 +110,7 @@ Partial Class frmFindCustSrch
         Me.lstDelName.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.lstDelName.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.lstDelName.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstDelName.PrintInfo.PageSettings = CType(resources.GetObject("C1List1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.lstDelName.PrintInfo.PageSettings = CType(resources.GetObject("lstDelName.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.lstDelName.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstDelName.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstDelName.ShowHeaderCheckBox = False
@@ -131,6 +131,7 @@ Partial Class frmFindCustSrch
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(85, 92)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

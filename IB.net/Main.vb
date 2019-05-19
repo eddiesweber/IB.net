@@ -1,6 +1,8 @@
-﻿Imports System.Data.SqlClient
-Imports CRDESIGNERLib
+﻿Option Explicit On
 
+Imports System.Data.SqlClient
+Imports CrystalDecisions.Shared
+Imports CrystalDecisions.CrystalReports.Engine
 
 Module Main
 
@@ -35,8 +37,10 @@ Module Main
     Public CurInvoice As Long
 
     'Public RPT As CrystalReports
+    Public CTableLogInfo As TableLogOnInfo
+    Public ConnInfo As CrystalDecisions.Shared.ConnectionInfo
     Public rptConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
-    Public RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
     Public pDialog As New PrintDialog()
 
     Public RptPath As String
@@ -507,5 +511,23 @@ Module Main
 
     End Sub
 
+    'Public Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+
+    '    ' Set database information
+    '    ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
+    '    ConnInfo.ServerName = Server.Trim
+    '    ConnInfo.DatabaseName = DBName.Trim
+    '    ConnInfo.UserID = Username.Trim
+    '    ConnInfo.Password = Password.Trim
+
+    '    For Each CTable As Table In rptCrxReport.Database.Tables
+    '        CTable.LogOnInfo.ConnectionInfo = rptConnectionInfo
+    '        CTableLogInfo = CTable.LogOnInfo
+    '        CTableLogInfo.ReportName = rptCrxReport.Name
+    '        CTableLogInfo.TableName = CTable.Name
+    '        CTable.ApplyLogOnInfo(CTableLogInfo)
+    '    Next
+
+    'End Sub
 
 End Module

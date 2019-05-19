@@ -23,7 +23,6 @@ Partial Class frmCustSurcharge
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.cmdFindItem = New System.Windows.Forms.Button()
         Me.CustomerSurchargeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCustomerSurcharge = New IB.net.dsCustomerSurcharge()
         Me.lstDept = New System.Windows.Forms.ListBox()
@@ -52,6 +51,7 @@ Partial Class frmCustSurcharge
         Me.CustomerSurchargeTableAdapter = New IB.net.dsCustomerSurchargeTableAdapters.CustomerSurchargeTableAdapter()
         Me.txtData3 = New C1.Win.C1Input.C1TextBox()
         Me.txtData1 = New C1.Win.C1Input.C1TextBox()
+        Me.cmdFindItem = New C1.Win.C1Input.C1Button()
         CType(Me.CustomerSurchargeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCustomerSurcharge, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetCustDeptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,17 +70,8 @@ Partial Class frmCustSurcharge
         CType(Me.txtData2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdFindItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cmdFindItem
-        '
-        Me.cmdFindItem.Location = New System.Drawing.Point(49, 94)
-        Me.cmdFindItem.Name = "cmdFindItem"
-        Me.cmdFindItem.Size = New System.Drawing.Size(71, 20)
-        Me.cmdFindItem.TabIndex = 7
-        Me.cmdFindItem.Text = "&Find"
-        Me.cmdFindItem.UseVisualStyleBackColor = True
-        Me.cmdFindItem.Visible = False
         '
         'CustomerSurchargeBindingSource
         '
@@ -118,7 +109,7 @@ Partial Class frmCustSurcharge
         Me.lstItem.DataSource = Me.CustomerSurchargeBindingSource
         Me.lstItem.DisplayMember = "Item_Num"
         Me.lstItem.FormattingEnabled = True
-        Me.lstItem.Location = New System.Drawing.Point(42, 76)
+        Me.lstItem.Location = New System.Drawing.Point(70, 75)
         Me.lstItem.Name = "lstItem"
         Me.lstItem.Size = New System.Drawing.Size(78, 56)
         Me.lstItem.TabIndex = 22
@@ -153,7 +144,7 @@ Partial Class frmCustSurcharge
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(7, 13)
+        Me.lblLabel1.Location = New System.Drawing.Point(7, 19)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel1.TabIndex = 0
@@ -239,7 +230,7 @@ Partial Class frmCustSurcharge
         Me.cmdFindCust.Name = "cmdFindCust"
         Me.cmdFindCust.Size = New System.Drawing.Size(85, 25)
         Me.cmdFindCust.TabIndex = 87
-        Me.cmdFindCust.Text = "&Find"
+        Me.cmdFindCust.Text = "&Find Cust"
         Me.cmdFindCust.UseVisualStyleBackColor = True
         Me.cmdFindCust.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdFindCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -249,7 +240,7 @@ Partial Class frmCustSurcharge
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustDeptBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
-        Me.txtData0.Location = New System.Drawing.Point(70, 10)
+        Me.txtData0.Location = New System.Drawing.Point(70, 14)
         Me.txtData0.Name = "txtData0"
         Me.txtData0.Size = New System.Drawing.Size(70, 18)
         Me.txtData0.TabIndex = 88
@@ -352,11 +343,23 @@ Partial Class frmCustSurcharge
         Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'cmdFindItem
+        '
+        Me.cmdFindItem.Location = New System.Drawing.Point(70, 94)
+        Me.cmdFindItem.Name = "cmdFindItem"
+        Me.cmdFindItem.Size = New System.Drawing.Size(85, 25)
+        Me.cmdFindItem.TabIndex = 96
+        Me.cmdFindItem.Text = "Find &Item"
+        Me.cmdFindItem.UseVisualStyleBackColor = True
+        Me.cmdFindItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdFindItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmCustSurcharge
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(471, 184)
+        Me.Controls.Add(Me.cmdFindItem)
         Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtData3)
         Me.Controls.Add(Me.txtData2)
@@ -379,7 +382,6 @@ Partial Class frmCustSurcharge
         Me.Controls.Add(Me.lblCurItem)
         Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.lstDept)
-        Me.Controls.Add(Me.cmdFindItem)
         Me.Location = New System.Drawing.Point(65, 153)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -403,11 +405,11 @@ Partial Class frmCustSurcharge
         CType(Me.txtData2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdFindItem, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdFindItem As Button
     Friend WithEvents lstDept As ListBox
     Friend WithEvents lstItem As ListBox
     Friend WithEvents lblCurItem As Label
@@ -436,4 +438,5 @@ Partial Class frmCustSurcharge
     Friend WithEvents CustomerSurchargeTableAdapter As dsCustomerSurchargeTableAdapters.CustomerSurchargeTableAdapter
     Friend WithEvents txtData3 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents cmdFindItem As C1.Win.C1Input.C1Button
 End Class

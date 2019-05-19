@@ -290,20 +290,20 @@ Public Class frmMain
 
     Private Sub cmdView_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdView.Click
 
-        'frmInvoice.Show
+        frmInvoice.Show()
 
     End Sub
 
     Private Sub cmdNewInvoice_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdNewInvoice.Click
 
         CurInvoice = -1
-        'frmInvHead.Show
+        frmInvHead.Show()
 
     End Sub
 
     Private Sub cmdHeaders_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdHeaders.Click
 
-        'frmInvHead.Show
+        frmInvHead.Show()
 
     End Sub
 

@@ -23,11 +23,11 @@ Public Class frmCustSurcharge
         'Line1(0).Y2 = Me.ScaleHeight
         'Line1(1).Y2 = Me.ScaleHeight
 
-        txtData0.MaxLength = txtData0.DataField.Length
-        txtData1.MaxLength = txtData1.DataField.Length
-        txtData2.MaxLength = txtData2.DataField.Length
-        txtData3.MaxLength = txtData3.DataField.Length
-        txtData19.MaxLength = txtData19.DataField.Length
+        'txtData0.MaxLength = txtData0.DataField.Length
+        'txtData1.MaxLength = txtData1.DataField.Length
+        'txtData2.MaxLength = txtData2.DataField.Length
+        'txtData3.MaxLength = txtData3.DataField.Length
+        'txtData19.MaxLength = txtData19.DataField.Length
 
         ' Create one event handler for each text box
         For Each ctrl As Control In Me.Controls
@@ -95,14 +95,13 @@ Public Class frmCustSurcharge
     Sub GetData2()
 
         Dim intRow As Integer
-        Dim strResult As String
 
         If DsspGetCustDept.SpGetCustDept.Rows.Count = 0 Then
             CurDept = 0
             Exit Sub
         Else
             If CurDept = 0 Then
-                CurDept = DsspGetCustDept.SpGetCustDept.Rows(1)("DEPT")
+                CurDept = DsspGetCustDept.SpGetCustDept.Rows(0)("DEPT")
             End If
         End If
 
@@ -111,7 +110,6 @@ Public Class frmCustSurcharge
             SpGetCustDeptBindingSource.MoveFirst()
 
             intRow = SpGetCustDeptBindingSource.Find("DEPT", CurDept)
-            'strResult = LogError(Me.Name, "GetData2", "1.0", ex.Message)
 
             If intRow >= 0 Then
                 SpGetCustDeptBindingSource.Position = intRow
@@ -183,7 +181,7 @@ Public Class frmCustSurcharge
 
     Sub SetControls()
 
-        Dim s As String, i As Integer
+        Dim s As String
 
         buserchange = False
 

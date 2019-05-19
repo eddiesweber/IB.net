@@ -36,37 +36,48 @@ Public Class frmFindInvoice
 
         buserchange = False
 
-        SpGetInvNumTableAdapter.Connection.ConnectionString = CS
-        If chkAll.Checked Then
-            SpGetInvNumTableAdapter.Fill(DsspGetInvNum.spGetInvNum, Nothing)
-        Else
-            SpGetInvNumTableAdapter.Fill(DsspGetInvNum.spGetInvNum, dtInvoiceDate)
-        End If
+        Try
+            strLocation = "GD1.0"
+            SpGetInvNumTableAdapter.Connection.ConnectionString = CS
+            If chkAll.Checked Then
+                SpGetInvNumTableAdapter.Fill(DsspGetInvNum.spGetInvNum, Nothing)
+            Else
+                SpGetInvNumTableAdapter.Fill(DsspGetInvNum.spGetInvNum, dtInvoiceDate)
+            End If
 
-        SpGetInvRouteTableAdapter.Connection.ConnectionString = CS
-        If chkAll.Checked Then
-            SpGetInvRouteTableAdapter.Fill(DsspGetInvRoute.spGetInvRoute, Nothing)
-        Else
-            SpGetInvRouteTableAdapter.Fill(DsspGetInvRoute.spGetInvRoute, dtInvoiceDate)
-        End If
+            strLocation = "GD2.0"
+            SpGetInvRouteTableAdapter.Connection.ConnectionString = CS
+            If chkAll.Checked Then
+                SpGetInvRouteTableAdapter.Fill(DsspGetInvRoute.spGetInvRoute, Nothing)
+            Else
+                SpGetInvRouteTableAdapter.Fill(DsspGetInvRoute.spGetInvRoute, dtInvoiceDate)
+            End If
 
-        SpGetInvCustNumTableAdapter.Connection.ConnectionString = CS
-        If chkAll.Checked Then
-            SpGetInvCustNumTableAdapter.Fill(DsspGetInvCustNum.spGetInvCustNum, Nothing)
-        Else
-            SpGetInvCustNumTableAdapter.Fill(DsspGetInvCustNum.spGetInvCustNum, dtInvoiceDate)
-        End If
+            strLocation = "GD3.0"
+            SpGetInvCustNumTableAdapter.Connection.ConnectionString = CS
+            If chkAll.Checked Then
+                SpGetInvCustNumTableAdapter.Fill(DsspGetInvCustNum.spGetInvCustNum, Nothing)
+            Else
+                SpGetInvCustNumTableAdapter.Fill(DsspGetInvCustNum.spGetInvCustNum, dtInvoiceDate)
+            End If
 
-        SpGetInvCustAlphaTableAdapter.Connection.ConnectionString = CS
-        If chkAll.Checked Then
-            SpGetInvCustAlphaTableAdapter.Fill(DsspGetInvCustAlpha.spGetInvCustAlpha, Nothing)
-        Else
-            SpGetInvCustAlphaTableAdapter.Fill(DsspGetInvCustAlpha.spGetInvCustAlpha, dtInvoiceDate)
-        End If
+            strLocation = "GD4.0"
+            SpGetInvCustAlphaTableAdapter.Connection.ConnectionString = CS
+            If chkAll.Checked Then
+                SpGetInvCustAlphaTableAdapter.Fill(DsspGetInvCustAlpha.spGetInvCustAlpha, Nothing)
+            Else
+                SpGetInvCustAlphaTableAdapter.Fill(DsspGetInvCustAlpha.spGetInvCustAlpha, dtInvoiceDate)
+            End If
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine Getdata (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData", vbOK)
+            LogError(Me.Name, "GetData", strLocation, ex.Message)
+        Finally
+            buserchange = True
 
-        buserchange = True
+            Me.Cursor = Cursors.Default
+        End Try
 
-        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -187,6 +198,8 @@ Public Class frmFindInvoice
     Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
 
         GetData()
+
+        SetOtherListsToSameinvoice(lstData0)
 
     End Sub
 
