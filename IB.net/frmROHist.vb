@@ -63,8 +63,14 @@ Public Class frmROHist
 
     Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
+        txtCust.ReadOnly = False
+        txtCustName.ReadOnly = False
+
         txtCust.Text = CStr(CurCust)
         txtCustName.Text = GetCustName()
+
+        txtCust.ReadOnly = True
+        txtCustName.ReadOnly = True
 
     End Sub
 

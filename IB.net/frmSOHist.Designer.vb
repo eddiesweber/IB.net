@@ -122,6 +122,7 @@ Partial Class frmSOHist
         Me.txtCust.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCust.Location = New System.Drawing.Point(67, 15)
         Me.txtCust.Name = "txtCust"
+        Me.txtCust.ReadOnly = True
         Me.txtCust.Size = New System.Drawing.Size(75, 18)
         Me.txtCust.TabIndex = 12
         Me.txtCust.Tag = Nothing
@@ -133,6 +134,7 @@ Partial Class frmSOHist
         Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCustName.Location = New System.Drawing.Point(15, 40)
         Me.txtCustName.Name = "txtCustName"
+        Me.txtCustName.ReadOnly = True
         Me.txtCustName.Size = New System.Drawing.Size(220, 18)
         Me.txtCustName.TabIndex = 13
         Me.txtCustName.Tag = Nothing
@@ -186,11 +188,11 @@ Partial Class frmSOHist
         Me.C1TrueDBGrid1.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.C1TrueDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
         Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
         Me.C1TrueDBGrid1.Size = New System.Drawing.Size(585, 273)
         Me.C1TrueDBGrid1.TabIndex = 11
         Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
         Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
         '
         'frmSOHist
         '

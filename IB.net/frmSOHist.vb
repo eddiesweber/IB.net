@@ -68,8 +68,14 @@ Public Class frmSOHist
 
     Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
+        txtCust.ReadOnly = False
+        txtCustName.ReadOnly = False
+
         txtCust.Text = CStr(CurCust)
         txtCustName.Text = GetCustName()
+
+        txtCust.ReadOnly = True
+        txtCustName.ReadOnly = True
 
     End Sub
 
@@ -94,11 +100,8 @@ Public Class frmSOHist
 
     Private Sub CmdPrint_Click(sender As Object, e As EventArgs) Handles CmdPrint.Click
 
-        Dim MyReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-        'MyReport.PrintOptions.PaperOrientation = CrystalDecisions.[Shared].PaperOrientation.Landscape
-        'MyReport.PrintOptions.PrinterName = �HP LaserJet510�
-        MyReport.FileName = RptPath & "\sohist.rpt"
-        MyReport.PrintToPrinter(1, False, 0, 0)
+        frmViewReport.lblReportName.Text = "sohist.rpt"
+        frmViewReport.Show()
 
         '    'Dim SF As String
         '    'SF = "{InvoiceHistory.Cust_NUM}=" & CurCust & "and {InvoiceHistory.Money}<>" & 0 & "and {CategoryMaster.SOHist} =true"

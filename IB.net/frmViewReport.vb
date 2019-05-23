@@ -21,28 +21,83 @@ Public Class frmViewReport
         ConnInfo.Password = Password
 
         Select Case lblReportName.Text
-            Case "rptTest.rpt"
-                rptTest()
+            Case "sohist.rpt"
+                sohist()
+            Case "deadbeatcust.rpt"
+                deadbeatcust()
             Case "Custinfo.rpt"
                 CustInfo()
+            Case "rptTest.rpt"
+                rptTest()
             Case Else
                 MessageBox.Show("The report '" & strReportName & "' does not exist")
 
                 Me.Close()
         End Select
 
+    End Sub
+
+    Private Sub sohist()
+
+        Dim rptCrxReport As New ReportDocument
+        rptCrxReport.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+        SetDbConnection(rptCrxReport)
+
+        'rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
+        rptCrxReport.SetParameterValue("CustNum", CurCust)
+
+        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
+        CrystalReportViewer1.ReportSource = rptCrxReport
+        CrystalReportViewer1.Refresh()
+
+        Me.Cursor = Cursors.Default
+
+        'Dim SF As String
+        'SF = "{InvoiceHistory.Cust_NUM}=" & CurCust & "and {InvoiceHistory.Money}<>" & 0 & "and {CategoryMaster.SOHist} =true"
+
+        'With RPT
+        '    .ReportFileName = RptPath & "\sohist.rpt"
+        '    .Connect = CryCS
+        '    .SelectionFormula = SF
+        '    .Action = 1
+        '    .Formulas(0) = ""
+        '    .Formulas(1) = ""
+        '    .ReportFileName = ""
+        'End With
+
 
     End Sub
 
-    Private Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+    Private Sub deadbeatcust()
 
-        For Each CTable As Table In rptCrxReport.Database.Tables
-            CTable.LogOnInfo.ConnectionInfo = ConnInfo
-            CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = rptCrxReport.Name
-            CTableLogInfo.TableName = CTable.Name
-            CTable.ApplyLogOnInfo(CTableLogInfo)
-        Next
+        Dim rptCrxReport As New ReportDocument
+        rptCrxReport.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+        SetDbConnection(rptCrxReport)
+
+        'rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
+        rptCrxReport.SetParameterValue("CustNum", CurCust)
+
+        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
+        CrystalReportViewer1.ReportSource = rptCrxReport
+        CrystalReportViewer1.Refresh()
+
+        Me.Cursor = Cursors.Default
+
+        'With RPT
+        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
+        '    .Connect = CryCS
+        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
+        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
+        '    .Action = 1
+        '    .Destination = 0
+        '    ' .Formulas(0) = ""
+        '    ' .Formulas(1) = ""
+        '    .ReportF
 
     End Sub
 
@@ -109,6 +164,18 @@ Public Class frmViewReport
 
         'CrystalReportViewer1.ReportSource = cryRpt
         'CrystalReportViewer1.Refresh()
+
+    End Sub
+
+    Private Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+
+        For Each CTable As Table In rptCrxReport.Database.Tables
+            CTable.LogOnInfo.ConnectionInfo = ConnInfo
+            CTableLogInfo = CTable.LogOnInfo
+            CTableLogInfo.ReportName = rptCrxReport.Name
+            CTableLogInfo.TableName = CTable.Name
+            CTable.ApplyLogOnInfo(CTableLogInfo)
+        Next
 
     End Sub
 

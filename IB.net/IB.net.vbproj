@@ -140,6 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCustomerInventory.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsCustomerMasterPurge.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCustomerMasterPurge.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsCustomerRoute.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +179,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsPOMaster.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPurge.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPurge.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsROHist.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -601,6 +611,12 @@
     <Compile Include="frmTax.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTemplate.Designer.vb">
+      <DependentUpon>frmTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmVend.designer.vb">
       <DependentUpon>frmVend.vb</DependentUpon>
     </Compile>
@@ -779,6 +795,12 @@
       <DependentUpon>frmViewReport.vb</DependentUpon>
     </Compile>
     <Compile Include="frmViewReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXMLTest.Designer.vb">
+      <DependentUpon>frmXMLTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmXMLTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmZipSearch.Designer.vb">
@@ -1026,6 +1048,9 @@
     <EmbeddedResource Include="frmTax.resx">
       <DependentUpon>frmTax.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplate.resx">
+      <DependentUpon>frmTemplate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
     </EmbeddedResource>
@@ -1040,6 +1065,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewReport.resx">
       <DependentUpon>frmViewReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXMLTest.resx">
+      <DependentUpon>frmXMLTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmZipSearch.resx">
       <DependentUpon>frmZipSearch.vb</DependentUpon>
@@ -1088,6 +1116,17 @@
     </None>
     <None Include="dsCustomerInventory.xss">
       <DependentUpon>dsCustomerInventory.xsd</DependentUpon>
+    </None>
+    <None Include="dsCustomerMasterPurge.xsc">
+      <DependentUpon>dsCustomerMasterPurge.xsd</DependentUpon>
+    </None>
+    <None Include="dsCustomerMasterPurge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustomerMasterPurge.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCustomerMasterPurge.xss">
+      <DependentUpon>dsCustomerMasterPurge.xsd</DependentUpon>
     </None>
     <None Include="dsCustomerRoute.xsc">
       <DependentUpon>dsCustomerRoute.xsd</DependentUpon>
@@ -1165,6 +1204,17 @@
     </None>
     <None Include="dsPOMaster.xss">
       <DependentUpon>dsPOMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsPurge.xsc">
+      <DependentUpon>dsPurge.xsd</DependentUpon>
+    </None>
+    <None Include="dsPurge.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPurge.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPurge.xss">
+      <DependentUpon>dsPurge.xsd</DependentUpon>
     </None>
     <None Include="dsROHist.xsc">
       <DependentUpon>dsROHist.xsd</DependentUpon>

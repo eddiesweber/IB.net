@@ -282,7 +282,7 @@ Public Class frmViewCust
         Me.Cursor = Cursors.WaitCursor
 
         Dim rptCrxReport As New ReportDocument
-        rptCrxReport.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        rptCrxReport.Load("C:\IB\ReportsCR2016\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
         SetDbConnection(rptCrxReport)
 
@@ -333,19 +333,22 @@ Public Class frmViewCust
 
     Private Sub mnuArHistory_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuArHistory.Click
 
-        Me.Cursor = Cursors.WaitCursor
+        frmViewReport.lblReportName.Text = "deadbeatcust.rpt"
+        frmViewReport.Show()
 
-        Dim rptCrxReport As New ReportDocument
-        rptCrxReport.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        'Me.Cursor = Cursors.WaitCursor
 
-        SetDbConnection(rptCrxReport)
+        'Dim rptCrxReport As New ReportDocument
+        'rptCrxReport.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
-        rptCrxReport.SetParameterValue("CustNum", CurCust)
+        'SetDbConnection(rptCrxReport)
 
-        rptCrxReport.PrintToPrinter(1, True, 0, 0)
+        ''rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
+        'rptCrxReport.SetParameterValue("CustNum", CurCust)
 
-        Me.Cursor = Cursors.Default
+        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
+
+        'Me.Cursor = Cursors.Default
 
         'With RPT
         '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
