@@ -5,10 +5,11 @@ Imports C1.Win.C1TrueDBGrid
 
 Public Class frmTax
 
-    Dim rs As ADODB.Recordset
-
     Private Sub frmTax_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "FTLL1.0"
         GetWindowPos(Me, 200, 22)
 
         If Dir("frmTaxC1TrueDBGrid1.xml") <> "" Then
@@ -16,13 +17,16 @@ Public Class frmTax
         End If
 
         Try
+            strLocation = "FTL2.0"
             Me.TaxMasterTableAdapter.Connection.ConnectionString = CS
             Me.TaxMasterTableAdapter.Fill(Me.DsTaxMaster.TaxMaster)
         Catch ex As Exception
-            LogError(Me.Name, "Load", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
-            Exit Sub
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine frmTax_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmTax_Load", vbOK)
+            LogError(Me.Name, "frmTax_Load", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -47,29 +51,53 @@ Public Class frmTax
 
     Private Sub C1TrueDBGrid1_AfterColUpdate(sender As Object, e As ColEventArgs) Handles C1TrueDBGrid1.AfterColUpdate
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "CTDGACU1.0"
+        If IsDBNull(C1TrueDBGrid1.Columns("TAX_STATE").CellValue(C1TrueDBGrid1.Row)) Then
+            Exit Sub
+        End If
+
+        strLocation = "CTDGACU2.0"
         If IsDBNull(C1TrueDBGrid1.Columns("LOCAL_CODE").CellValue(C1TrueDBGrid1.Row)) Then
             Exit Sub
         End If
 
+        Me.Cursor = Cursors.WaitCursor
+
         Try
+            strLocation = "CTDGACU3.0"
             C1TrueDBGrid1.UpdateData()
+
+            strLocation = "CTDGACU4.0"
             TaxMasterTableAdapter.Update(DsTaxMaster.TaxMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterColUpdate", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterColUpdate", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub C1TrueDBGrid1_AfterDelete(sender As Object, e As EventArgs) Handles C1TrueDBGrid1.AfterDelete
 
+        Me.Cursor = Cursors.WaitCursor
+
         Try
+            strLocation = "CTDGAD1.0"
             C1TrueDBGrid1.UpdateData()
+
+            strLocation = "CTDGAD2.0"
             TaxMasterTableAdapter.Update(DsTaxMaster.TaxMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
-            MessageBox.Show(ex.Message, "Error deleting record")
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterDelete", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterDelete", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 

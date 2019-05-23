@@ -5,10 +5,11 @@ Imports C1.Win.C1TrueDBGrid
 
 Public Class frmCat
 
-    Dim rs As ADODB.Recordset
-
     Private Sub frmCat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "FCL1.0"
         GetWindowPos(Me, 200, 200)
 
         If Dir("frmCatC1TrueDBGrid1.xml") <> "" Then
@@ -16,13 +17,16 @@ Public Class frmCat
         End If
 
         Try
+            strLocation = "FCL2.0"
             Me.CategoryMasterTableAdapter.Connection.ConnectionString = CS
             Me.CategoryMasterTableAdapter.Fill(Me.DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
-            LogError(Me.Name, "frmCat_Load", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
-            Exit Sub
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine frmCat_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmCat_Load", vbOK)
+            LogError(Me.Name, "frmCat_Load", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -47,37 +51,56 @@ Public Class frmCat
 
     Private Sub C1TrueDBGrid1_AfterColUpdate(sender As Object, e As ColEventArgs) Handles C1TrueDBGrid1.AfterColUpdate
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "CTDGACU1.0"
         If IsDBNull(C1TrueDBGrid1.Columns("VOL_CAT").CellValue(C1TrueDBGrid1.Row)) Then
             Exit Sub
         End If
 
+        strLocation = "CTDGACU2.0"
         If IsDBNull(C1TrueDBGrid1.Columns("SALE_CD").CellValue(C1TrueDBGrid1.Row)) Then
             Exit Sub
         End If
 
+        strLocation = "CTDGACU3.0"
         If IsDBNull(C1TrueDBGrid1.Columns("REVENUE").CellValue(C1TrueDBGrid1.Row)) Then
             Exit Sub
         End If
 
         Try
+            strLocation = "CTDGACU4.0"
             C1TrueDBGrid1.UpdateData()
+
+            strLocation = "CTDGACU5.0"
             CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterColUpdate", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterColUpdate", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub C1TrueDBGrid1_AfterDelete(sender As Object, e As EventArgs) Handles C1TrueDBGrid1.AfterDelete
 
+        Me.Cursor = Cursors.WaitCursor
+
         Try
+            strLocation = "CTDGAD1.0"
             C1TrueDBGrid1.UpdateData()
+
+            strLocation = "CTDGAD2.0"
             CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
-            MessageBox.Show(ex.Message, "Error deleting record")
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterDelete", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterDelete", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -119,8 +142,6 @@ Public Class frmCat
             Case "COMM_CAT"
                 C1TrueDBGrid1.Columns("COMM_CAT").Value = UCase(C1TrueDBGrid1.Columns("COMM_CAT").Value)
         End Select
-
     End Sub
-
 
 End Class

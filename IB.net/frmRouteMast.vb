@@ -5,10 +5,11 @@ Imports C1.Win.C1TrueDBGrid
 
 Public Class frmRouteMast
 
-    Dim rs As ADODB.Recordset
-
     Private Sub frmRouteMast_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "FRML1.0"
         GetWindowPos(Me, 200, 200)
 
         If Dir("frmRouteMastC1TrueDBGrid1.xml") <> "" Then
@@ -16,13 +17,16 @@ Public Class frmRouteMast
         End If
 
         Try
+            strLocation = "FRML2.0"
             Me.RouteMasterTableAdapter.Connection.ConnectionString = CS
             Me.RouteMasterTableAdapter.Fill(Me.DsRouteMaster.RouteMaster)
         Catch ex As Exception
-            LogError(Me.Name, "Load", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
-            Exit Sub
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine frmRouteMast_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmRouteMast_Load", vbOK)
+            LogError(Me.Name, "frmRouteMast_Load", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -47,29 +51,44 @@ Public Class frmRouteMast
 
     Private Sub C1TrueDBGrid1_AfterColUpdate(sender As Object, e As ColEventArgs) Handles C1TrueDBGrid1.AfterColUpdate
 
+        Me.Cursor = Cursors.WaitCursor
+
+        strLocation = "CTDGACU1.0"
         If IsDBNull(C1TrueDBGrid1.Columns("Route").CellValue(C1TrueDBGrid1.Row)) Then
             Exit Sub
         End If
 
         Try
+            strLocation = "CTDGACU2.0"
             C1TrueDBGrid1.UpdateData()
             RouteMasterTableAdapter.Update(DsRouteMaster.RouteMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterColUpdate", "1.0", ex.Message)
-            MessageBox.Show(ex.Message)
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterColUpdate", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterColUpdate", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub C1TrueDBGrid1_AfterDelete(sender As Object, e As EventArgs) Handles C1TrueDBGrid1.AfterDelete
 
+        Me.Cursor = Cursors.WaitCursor
+
         Try
+            strLocation = "CTDGAD1.0"
             C1TrueDBGrid1.UpdateData()
+
+            strLocation = "CTDGAD2.0"
             RouteMasterTableAdapter.Update(DsRouteMaster.RouteMaster)
         Catch ex As Exception
-            LogError(Me.Name, "C1Truedbgrid1_AfterDelete", "1.0", ex.Message)
-            MessageBox.Show(ex.Message, "Error deleting record")
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterDelete", vbOK)
+            LogError(Me.Name, "C1TrueDBGrid1_AfterDelete", strLocation, ex.Message)
         End Try
+
+        Me.Cursor = Cursors.Default
 
     End Sub
 
