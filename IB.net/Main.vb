@@ -13,6 +13,7 @@ Module Main
     Public ConfigCS As String
     Public DBName As String
     Public ServerName As String
+    Public strPrinterName As String
 
     ' *** Eddie - 04/22/2018: Can't set strings to a specific size
     'Public Company As String * 10
@@ -37,6 +38,7 @@ Module Main
     Public CurInvoice As Long
 
     'Public RPT As CrystalReports
+    Public RPT As New ReportDocument
     Public CTableLogInfo As TableLogOnInfo
     Public ConnInfo As CrystalDecisions.Shared.ConnectionInfo
     Public rptConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
@@ -57,6 +59,21 @@ Module Main
 
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
+
+    Public Sub SelectPrinter(bStartUp As Boolean)
+
+        If pDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            RPT.PrintOptions.PrinterName = pDialog.PrinterSettings.PrinterName
+
+            If bStartUp = False Then
+                Result = MessageBox.Show("Do you want to save this printer as your default printer?", "Save Printer", MessageBoxButtons.YesNo)
+                If Result = DialogResult.Yes Then
+                    SaveSetting(APPNAME, "Printer", "DefaultPrinter", pDialog.PrinterSettings.PrinterName)
+                End If
+            End If
+        End If
+
+    End Sub
 
     Public Sub SaveSettings()
 

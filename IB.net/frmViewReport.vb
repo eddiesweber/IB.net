@@ -39,16 +39,16 @@ Public Class frmViewReport
 
     Private Sub sohist()
 
-        Dim rptCrxReport As New ReportDocument
-        rptCrxReport.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        'Dim RPT As New ReportDocument
+        RPT.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        SetDbConnection(rptCrxReport)
+        SetDbConnection(RPT)
 
-        'rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
-        rptCrxReport.SetParameterValue("CustNum", CurCust)
+        'RPT.SetParameterValue("CompanyName", frmMain.Text)
+        RPT.SetParameterValue("CustNum", CurCust)
 
-        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
-        CrystalReportViewer1.ReportSource = rptCrxReport
+        'RPT.PrintToPrinter(1, True, 0, 0)
+        CrystalReportViewer1.ReportSource = RPT
         CrystalReportViewer1.Refresh()
 
         Me.Cursor = Cursors.Default
@@ -71,16 +71,16 @@ Public Class frmViewReport
 
     Private Sub deadbeatcust()
 
-        Dim rptCrxReport As New ReportDocument
-        rptCrxReport.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        'Dim RPT As New ReportDocument
+        RPT.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        SetDbConnection(rptCrxReport)
+        SetDbConnection(RPT)
 
-        'rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
-        rptCrxReport.SetParameterValue("CustNum", CurCust)
+        'RPT.SetParameterValue("CompanyName", frmMain.Text)
+        RPT.SetParameterValue("CustNum", CurCust)
 
-        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
-        CrystalReportViewer1.ReportSource = rptCrxReport
+        'RPT.PrintToPrinter(1, True, 0, 0)
+        CrystalReportViewer1.ReportSource = RPT
         CrystalReportViewer1.Refresh()
 
         Me.Cursor = Cursors.Default
@@ -103,16 +103,16 @@ Public Class frmViewReport
 
     Private Sub CustInfo()
 
-        Dim cryRpt As New ReportDocument
-        cryRpt.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        'Dim RPT As New ReportDocument
+        RPT.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        SetDbConnection(cryRpt)
+        SetDbConnection(RPT)
 
-        cryRpt.SetParameterValue("CompanyName", frmMain.Text)
-        cryRpt.SetParameterValue("CustNum", CurCust)
+        RPT.SetParameterValue("CompanyName", frmMain.Text)
+        RPT.SetParameterValue("CustNum", CurCust)
 
-        cryRpt.PrintToPrinter(1, True, 0, 0)
-        'CrystalReportViewer1.ReportSource = cryRpt
+        RPT.PrintToPrinter(1, True, 0, 0)
+        'CrystalReportViewer1.ReportSource = RPT
         'CrystalReportViewer1.Refresh()
 
         'Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
@@ -137,24 +137,24 @@ Public Class frmViewReport
 
     Private Sub rptTest()
 
-        Dim cryRpt As New ReportDocument
-        cryRpt.Load("C:\Reports\rptTest.rpt")
+        'Dim RPT As New ReportDocument
+        RPT.Load("C:\Reports\rptTest.rpt")
 
         Dim crParameterFieldDefinitions As ParameterFieldDefinitions
         Dim crParameterFieldDefinition As ParameterFieldDefinition
         Dim crParameterValues As New ParameterValues
         Dim crParameterDiscreteValue As New ParameterDiscreteValue
 
-        For Each CTable As Table In cryRpt.Database.Tables
+        For Each CTable As Table In RPT.Database.Tables
             CTable.LogOnInfo.ConnectionInfo = ConnInfo
             CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = cryRpt.Name
+            CTableLogInfo.ReportName = RPT.Name
             CTableLogInfo.TableName = CTable.Name
             CTable.ApplyLogOnInfo(CTableLogInfo)
         Next
 
         crParameterDiscreteValue.Value = CurCust
-        crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinitions = RPT.DataDefinition.ParameterFields
         crParameterFieldDefinition = crParameterFieldDefinitions.Item("CustomerNumber")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
@@ -162,17 +162,17 @@ Public Class frmViewReport
         crParameterValues.Add(crParameterDiscreteValue)
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
-        'CrystalReportViewer1.ReportSource = cryRpt
+        'CrystalReportViewer1.ReportSource = RPT
         'CrystalReportViewer1.Refresh()
 
     End Sub
 
-    Private Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+    Private Sub SetDbConnection(ByVal RPT As CrystalDecisions.CrystalReports.Engine.ReportDocument)
 
-        For Each CTable As Table In rptCrxReport.Database.Tables
+        For Each CTable As Table In RPT.Database.Tables
             CTable.LogOnInfo.ConnectionInfo = ConnInfo
             CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = rptCrxReport.Name
+            CTableLogInfo.ReportName = RPT.Name
             CTableLogInfo.TableName = CTable.Name
             CTable.ApplyLogOnInfo(CTableLogInfo)
         Next

@@ -800,6 +800,7 @@ Partial Class frmViewCust
         Me.Controls.Add(Me.fraEdit)
         Me.Controls.Add(Me.C1MainMenu1)
         Me.ForeColor = System.Drawing.Color.Black
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(62, 101)
         Me.Name = "frmViewCust"
         Me.Text = "Customer View"

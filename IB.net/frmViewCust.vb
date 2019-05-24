@@ -281,15 +281,15 @@ Public Class frmViewCust
 
         Me.Cursor = Cursors.WaitCursor
 
-        Dim rptCrxReport As New ReportDocument
-        rptCrxReport.Load("C:\IB\ReportsCR2016\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        'Dim RPT As New ReportDocument
+        RPT.Load("C:\IB\ReportsCR2016\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        SetDbConnection(rptCrxReport)
+        SetDbConnection(RPT)
 
-        rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
-        rptCrxReport.SetParameterValue("CustNum", CurCust)
+        RPT.SetParameterValue("CompanyName", frmMain.Text)
+        RPT.SetParameterValue("CustNum", CurCust)
 
-        rptCrxReport.PrintToPrinter(1, True, 0, 0)
+        RPT.PrintToPrinter(1, True, 0, 0)
 
         Me.Cursor = Cursors.Default
 

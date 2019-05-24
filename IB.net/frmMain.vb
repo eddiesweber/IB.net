@@ -8,7 +8,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.0 - January 27, 2019")
+        MessageBox.Show("Version 3.022 - May 28th, 2019")
 
     End Sub
 
@@ -47,17 +47,24 @@ Public Class frmMain
         GetWindowPos(Me, 15, 15)
         Me.Show()
 
-        ''RPT = Report1
-        ''RPT.PrinterSelect
-        'Dim pPrint As Boolean = pDialog.ShowDialog()
-        ''MessageBox.Show(pDialog.PrinterSettings.PrinterName)
-
         'OpenData()
 
         CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
         CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
         CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
         CurVend = GetSetting(APPNAME, strSectionName, "CurVend", "")
+
+        strPrinterName = GetSetting(APPNAME, "Printer", "DefaultPrinter", "")
+        If strPrinterName <> "" Then
+            Try
+                RPT.PrintOptions.PrinterName = pDialog.PrinterSettings.PrinterName
+            Catch ex As Exception
+                SelectPrinter(True)
+            End Try
+        Else
+            SelectPrinter(True)
+        End If
+
 
         ' Check to see if we have a good connection to server
         If Server.Trim <> "" Then
@@ -142,6 +149,11 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub cmdPrintSetup_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdPrintSetup.Click
+
+        SelectPrinter(False)
+
+    End Sub
 
     Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
@@ -170,13 +182,6 @@ Public Class frmMain
         If DB Is Nothing Then
             Application.Exit()
         End If
-
-    End Sub
-
-    Private Sub cmdPrintSetup_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdPrintSetup.Click
-
-        Dim pPrint As Boolean = pDialog.ShowDialog()
-        'MessageBox.Show(pDialog.PrinterSettings.PrinterName)
 
     End Sub
 
