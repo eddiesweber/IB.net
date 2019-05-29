@@ -39,7 +39,7 @@ Public Class frmViewCust
 
         buserchange = True
 
-        Me.Cursor = Cursors.Arrow
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -67,8 +67,17 @@ Public Class frmViewCust
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
-            Me.SpGetCustTableAdapter.Connection.ConnectionString = CS
-            Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
+            Try
+                strLocation = "GD1.0"
+                Me.Cursor = Cursors.WaitCursor
+                Me.SpGetCustTableAdapter.Connection.ConnectionString = CS
+                Me.SpGetCustTableAdapter.Fill(IBPortlandDataSet.spGetCust, CurCust)
+                Me.Cursor = Cursors.Default
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine Getdata (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData", vbOK)
+                LogError(Me.Name, "GetData", strLocation, ex.Message)
+            End Try
 
             GetAverage()
             GetData1()
@@ -80,8 +89,17 @@ Public Class frmViewCust
     Private Sub GetData1()
 
         'Get customer departments
-        Me.SpGetCustDeptTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, CurCust)
+        Try
+            strLocation = "GDO1.0"
+            Me.Cursor = Cursors.WaitCursor
+            Me.SpGetCustDeptTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, CurCust)
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine Getdata1 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData1", vbOK)
+            LogError(Me.Name, "GetData1", strLocation, ex.Message)
+        End Try
 
         If IBPortlandDataSet.Tables("spGetCust").Rows.Count > 0 Then
             'data1(1).Recordset.MoveFirst
@@ -95,80 +113,106 @@ Public Class frmViewCust
 
     Private Sub GetData2()
 
-        'Get routes and items for dept
-        If IBPortlandDataSet.Tables("SpGetCustDept").Rows.Count = 0 Then
-            CurDept = 1
-        Else
-            CurDept = CInt(grdDept.Columns("Dept").CellValue(Me.grdDept.Row))
-        End If
+        Try
+            'Get routes and items for dept
+            Me.Cursor = Cursors.WaitCursor
 
-        'If buserchange Then
-        Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
+            strLocation = "GDT1.0"
+            If IBPortlandDataSet.Tables("SpGetCustDept").Rows.Count = 0 Then
+                CurDept = 1
+            Else
+                CurDept = CInt(grdDept.Columns("Dept").CellValue(Me.grdDept.Row))
+            End If
 
+            'If buserchange Then
+            strLocation = "GDT2.0"
+            Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
+
+            strLocation = "GDT3.0"
             Me.SpGetCustItemTableAdapter.Connection.ConnectionString = CS
             Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
-        'End If
+
+            Me.Cursor = Cursors.Default
+            'End If
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine Getdata2 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData2", vbOK)
+            LogError(Me.Name, "GetData2", strLocation, ex.Message)
+        End Try
 
 
     End Sub
 
     Sub GetAverage()
 
-        Using sqlConn As New SqlClient.SqlConnection
-            sqlConn.ConnectionString = CS
-            sqlConn.Open()
+        Try
+            Using sqlConn As New SqlClient.SqlConnection
+                strLocation = "GA1.0"
+                sqlConn.ConnectionString = CS
+                sqlConn.Open()
 
-            Using sqlDA As New SqlDataAdapter()
-                Using sqlCmd As New SqlCommand
-                    sqlCmd.Connection = sqlConn
-                    sqlCmd.CommandType = CommandType.StoredProcedure
+                Using sqlDA As New SqlDataAdapter()
+                    Using sqlCmd As New SqlCommand
+                        strLocation = "GA2.0"
+                        sqlCmd.Connection = sqlConn
+                        sqlCmd.CommandType = CommandType.StoredProcedure
 
-                    sqlCmd.CommandText = "spGetAverageCust"
-                    sqlCmd.Parameters.Add("CustNum", SqlDbType.VarChar).Value = CurCust
-                    sqlDA.SelectCommand = sqlCmd
+                        sqlCmd.CommandText = "spGetAverageCust"
+                        sqlCmd.Parameters.Add("CustNum", SqlDbType.VarChar).Value = CurCust
+                        sqlDA.SelectCommand = sqlCmd
 
-                    Using sqlReader = sqlCmd.ExecuteReader()
-                        ' If the SqlDataReader.Read returns true then there is a customer with that ID'
-                        'If sqlReader.Read() Then
-                        If sqlReader.HasRows = True Then
-                            sqlReader.Read()
+                        Using sqlReader = sqlCmd.ExecuteReader()
+                            ' If the SqlDataReader.Read returns true then there is a customer with that ID'
+                            'If sqlReader.Read() Then
+                            strLocation = "GA3.0"
+                            If sqlReader.HasRows = True Then
+                                sqlReader.Read()
 
-                            txtAverage.ReadOnly = False
-                            txtAverage.Text = "0"
-                            If Not sqlReader.IsDBNull(0) Then
-                                txtAverage.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                                strLocation = "GA4.0"
+                                txtAverage.ReadOnly = False
+                                txtAverage.Text = "0"
+                                If Not sqlReader.IsDBNull(0) Then
+                                    txtAverage.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                                End If
+                                txtAverage.ReadOnly = True
                             End If
-                            txtAverage.ReadOnly = True
-                        End If
+                        End Using
                     End Using
-                End Using
 
-                Using sqlCmd As New SqlCommand
-                    sqlCmd.Connection = sqlConn
-                    sqlCmd.CommandType = CommandType.StoredProcedure
+                    Using sqlCmd As New SqlCommand
+                        strLocation = "GA5.0"
+                        sqlCmd.Connection = sqlConn
+                        sqlCmd.CommandType = CommandType.StoredProcedure
 
-                    sqlCmd.CommandText = "spGetAvgPaper"
-                    sqlCmd.Parameters.Add("Cust", SqlDbType.Char).Value = CurCust
-                    sqlDA.SelectCommand = sqlCmd
+                        sqlCmd.CommandText = "spGetAvgPaper"
+                        sqlCmd.Parameters.Add("Cust", SqlDbType.Char).Value = CurCust
+                        sqlDA.SelectCommand = sqlCmd
 
-                    Using sqlReader = sqlCmd.ExecuteReader()
-                        ' If the SqlDataReader.Read returns true then there is a customer with that ID'
-                        'If sqlReader.Read() Then
-                        If sqlReader.HasRows = True Then
-                            sqlReader.Read()
+                        Using sqlReader = sqlCmd.ExecuteReader()
+                            ' If the SqlDataReader.Read returns true then there is a customer with that ID'
+                            'If sqlReader.Read() Then
+                            strLocation = "GA6.0"
+                            If sqlReader.HasRows = True Then
+                                sqlReader.Read()
 
-                            txtAverage2.ReadOnly = False
-                            txtAverage2.Text = "0"
-                            If Not sqlReader.IsDBNull(0) Then
-                                txtAverage2.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                                strLocation = "GA7.0"
+                                txtAverage2.ReadOnly = False
+                                txtAverage2.Text = "0"
+                                If Not sqlReader.IsDBNull(0) Then
+                                    txtAverage2.Text = RoundOff(sqlReader.GetDouble(0)).ToString()
+                                End If
+                                txtAverage2.ReadOnly = True
                             End If
-                            txtAverage2.ReadOnly = True
-                        End If
+                        End Using
                     End Using
                 End Using
             End Using
-        End Using
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine GetAverage (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetDGetAverageata2", vbOK)
+            LogError(Me.Name, "GetAverage", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -189,34 +233,6 @@ Public Class frmViewCust
         frmSOHist.Show()
 
     End Sub
-
-    'Private Sub ITEMHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ITEMHISTORYToolStripMenuItem.Click
-
-    '    frmROHist.Show()
-
-    'End Sub
-
-    'Private Sub ARHISTORYToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARHISTORYToolStripMenuItem.Click
-
-
-    '    'With RPT
-    '    '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
-    '    '    .Connect = CryCS
-    '    '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-    '    '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
-    '    '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
-    '    '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
-    '    '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
-    '    '    .Action = 1
-    '    '    .Destination = 0
-    '    '    ' .Formulas(0) = ""
-    '    '    ' .Formulas(1) = ""
-    '    '    .ReportFileName = ""
-    '    'End With
-
-    'End Sub
-
-
 
     Private Sub cmdFind_Click(sender As Object, e As EventArgs) Handles cmdFind.Click
 
@@ -258,33 +274,33 @@ Public Class frmViewCust
 
     End Sub
 
-    Private Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+    'Private Sub SetDbConnection()
 
-        ' Set database information
-        ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
-        ConnInfo.ServerName = Server.Trim
-        ConnInfo.DatabaseName = DBName.Trim
-        ConnInfo.UserID = Username.Trim
-        ConnInfo.Password = Password.Trim
+    '    ' Set database information
+    '    ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
+    '    ConnInfo.ServerName = Server.Trim
+    '    ConnInfo.DatabaseName = DBName.Trim
+    '    ConnInfo.UserID = Username.Trim
+    '    ConnInfo.Password = Password.Trim
 
-        For Each CTable As Table In rptCrxReport.Database.Tables
-            CTable.LogOnInfo.ConnectionInfo = ConnInfo
-            CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = rptCrxReport.Name
-            CTableLogInfo.TableName = CTable.Name
-            CTable.ApplyLogOnInfo(CTableLogInfo)
-        Next
+    '    For Each CTable As Table In RPT.Database.Tables
+    '        CTable.LogOnInfo.ConnectionInfo = ConnInfo
+    '        CTableLogInfo = CTable.LogOnInfo
+    '        CTableLogInfo.ReportName = RPT.Name
+    '        CTableLogInfo.TableName = CTable.Name
+    '        CTable.ApplyLogOnInfo(CTableLogInfo)
+    '    Next
 
-    End Sub
+    'End Sub
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
         Me.Cursor = Cursors.WaitCursor
 
-        'Dim RPT As New ReportDocument
         RPT.Load("C:\IB\ReportsCR2016\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        SetDbConnection(RPT)
+        setCrystalPrinter()
+        SetDbConnection()
 
         RPT.SetParameterValue("CompanyName", frmMain.Text)
         RPT.SetParameterValue("CustNum", CurCust)

@@ -36,11 +36,13 @@ Public Class frmMain
         Username = GetSetting(APPNAME, strSectionName, "Username", "")
 
         Try
+            strLocation = "FML1.0"
             Dim wrapper As New Simple3Des("I1!n2@()")
             Password = wrapper.DecryptData(GetSetting(APPNAME, strSectionName, "Password", ""))
         Catch ex As Exception
-            LogError(Me.Name, "Load", "1.0", ex.Message)
             Password = ""
+            Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
+            LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
         End Try
 
         'Screen Position
@@ -55,16 +57,8 @@ Public Class frmMain
         CurVend = GetSetting(APPNAME, strSectionName, "CurVend", "")
 
         strPrinterName = GetSetting(APPNAME, "Printer", "DefaultPrinter", "")
-        If strPrinterName <> "" Then
-            Try
-                RPT.PrintOptions.PrinterName = pDialog.PrinterSettings.PrinterName
-            Catch ex As Exception
-                SelectPrinter(True)
-            End Try
-        Else
-            SelectPrinter(True)
-        End If
 
+        SelectPrinter(True)
 
         ' Check to see if we have a good connection to server
         If Server.Trim <> "" Then
@@ -126,9 +120,11 @@ Public Class frmMain
         strSQL = "Select * From Company where Company_ID='" & Company & "'"
         Using cmdCompany As New SqlCommand(strSQL, DB)
             Try
+                strLocation = "FML2.0"
                 Dim dataReader As SqlDataReader = cmdCompany.ExecuteReader()
                 dataReader.Read()
 
+                strLocation = "FML3.0"
                 If dataReader.HasRows Then
                     Me.Text = "Indoor Billboard - " & dataReader.Item("Company_NM")
                     dataReader.Close()
@@ -140,8 +136,8 @@ Public Class frmMain
                 End If
             Catch ex As Exception
                 Me.Cursor = Cursors.Default
-                LogError(Me.Name, "Loan", "2.0", ex.Message)
-                MessageBox.Show("Error getting company name (FM-FL1.0)" & vbNewLine & ex.Message, "Company Name")
+                Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
+                LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
 
                 Exit Sub
             End Try

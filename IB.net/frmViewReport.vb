@@ -5,9 +5,9 @@ Imports CrystalDecisions.Shared
 
 Public Class frmViewReport
 
-    Dim strReportName As String
-    Dim CTableLogInfo As TableLogOnInfo
-    Dim ConnInfo As CrystalDecisions.Shared.ConnectionInfo
+    'Dim strReportName As String
+    'Dim CTableLogInfo As TableLogOnInfo
+    'Dim ConnInfo As CrystalDecisions.Shared.ConnectionInfo
 
     Private Sub frmViewReport_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -30,16 +30,28 @@ Public Class frmViewReport
             Case "rptTest.rpt"
                 rptTest()
             Case Else
-                MessageBox.Show("The report '" & strReportName & "' does not exist")
+                MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
 
     End Sub
 
+    Private Sub SetDbConnection(ByVal RPT As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+
+        For Each CTable As Table In RPT.Database.Tables
+            CTable.LogOnInfo.ConnectionInfo = ConnInfo
+            CTableLogInfo = CTable.LogOnInfo
+            CTableLogInfo.ReportName = RPT.Name
+            CTableLogInfo.TableName = CTable.Name
+            CTable.ApplyLogOnInfo(CTableLogInfo)
+        Next
+
+    End Sub
+
     Private Sub sohist()
 
-        'Dim RPT As New ReportDocument
+        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         RPT.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
         SetDbConnection(RPT)
@@ -71,7 +83,7 @@ Public Class frmViewReport
 
     Private Sub deadbeatcust()
 
-        'Dim RPT As New ReportDocument
+        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         RPT.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
         SetDbConnection(RPT)
@@ -103,7 +115,7 @@ Public Class frmViewReport
 
     Private Sub CustInfo()
 
-        'Dim RPT As New ReportDocument
+        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         RPT.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
         SetDbConnection(RPT)
@@ -137,7 +149,7 @@ Public Class frmViewReport
 
     Private Sub rptTest()
 
-        'Dim RPT As New ReportDocument
+        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         RPT.Load("C:\Reports\rptTest.rpt")
 
         Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -164,18 +176,6 @@ Public Class frmViewReport
 
         'CrystalReportViewer1.ReportSource = RPT
         'CrystalReportViewer1.Refresh()
-
-    End Sub
-
-    Private Sub SetDbConnection(ByVal RPT As CrystalDecisions.CrystalReports.Engine.ReportDocument)
-
-        For Each CTable As Table In RPT.Database.Tables
-            CTable.LogOnInfo.ConnectionInfo = ConnInfo
-            CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = RPT.Name
-            CTableLogInfo.TableName = CTable.Name
-            CTable.ApplyLogOnInfo(CTableLogInfo)
-        Next
 
     End Sub
 

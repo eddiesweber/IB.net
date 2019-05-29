@@ -38,7 +38,9 @@ Module Main
     Public CurInvoice As Long
 
     'Public RPT As CrystalReports
-    Public RPT As New ReportDocument
+    'Public RPT As New ReportDocument
+    Public RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+
     Public CTableLogInfo As TableLogOnInfo
     Public ConnInfo As CrystalDecisions.Shared.ConnectionInfo
     Public rptConnectionInfo = New CrystalDecisions.Shared.ConnectionInfo
@@ -62,56 +64,106 @@ Module Main
 
     Public Sub SelectPrinter(bStartUp As Boolean)
 
-        If pDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            RPT.PrintOptions.PrinterName = pDialog.PrinterSettings.PrinterName
+        ' If strPrinterName is available at startup, set the priner
+        If bStartUp = True Then
+            If strPrinterName <> "" Then
+                RPT.PrintOptions.NoPrinter = False
+                RPT.PrintOptions.PrinterName = strPrinterName
 
-            If bStartUp = False Then
-                Result = MessageBox.Show("Do you want to save this printer as your default printer?", "Save Printer", MessageBoxButtons.YesNo)
-                If Result = DialogResult.Yes Then
-                    SaveSetting(APPNAME, "Printer", "DefaultPrinter", pDialog.PrinterSettings.PrinterName)
-                End If
+                Exit Sub
             End If
         End If
 
+        ' No saved printer, prompt user
+        If pDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            strPrinterName = pDialog.PrinterSettings.PrinterName
+
+            If bStartUp = False Then
+                Result = MessageBox.Show("Do you want to save the printer '" & strPrinterName & "' as your default printer?", "Save Printer", MessageBoxButtons.YesNo)
+                If Result = DialogResult.Yes Then
+                    SaveSetting(APPNAME, "Printer", "DefaultPrinter", strPrinterName)
+                End If
+            End If
+
+            RPT.PrintOptions.NoPrinter = False
+            RPT.PrintOptions.PrinterName = strPrinterName
+        End If
+
     End Sub
+
+    Public Sub setCrystalPrinter()
+
+        If strPrinterName <> "" Then
+            RPT.PrintOptions.NoPrinter = False
+            RPT.PrintOptions.PrinterName = strPrinterName
+        End If
+
+    End Sub
+
+    Public Sub SetDbConnection()
+
+        ' Set database information
+        ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
+        ConnInfo.ServerName = Server.Trim
+        ConnInfo.DatabaseName = DBName.Trim
+        ConnInfo.UserID = Username.Trim
+        ConnInfo.Password = Password.Trim
+
+        For Each CTable As Table In RPT.Database.Tables
+            CTable.LogOnInfo.ConnectionInfo = ConnInfo
+            CTableLogInfo = CTable.LogOnInfo
+            CTableLogInfo.ReportName = RPT.Name
+            CTableLogInfo.TableName = CTable.Name
+            CTable.ApplyLogOnInfo(CTableLogInfo)
+        Next
+
+    End Sub
+
 
     Public Sub SaveSettings()
 
         Dim strSectionName As String
 
         'Save file info to registry
+        strSectionName = "SS1.0"
         strSectionName = "Data"
-        SaveSetting(APPNAME, strSectionName, "Company", Company)
-        SaveSetting(APPNAME, strSectionName, "Server", Server)
-        SaveSetting(APPNAME, strSectionName, "DBName", DBName)
-        SaveSetting(APPNAME, strSectionName, "Username", Username)
 
         Try
+            strSectionName = "SS2.0"
+            SaveSetting(APPNAME, strSectionName, "Company", Company)
+            SaveSetting(APPNAME, strSectionName, "Server", Server)
+            SaveSetting(APPNAME, strSectionName, "DBName", DBName)
+            SaveSetting(APPNAME, strSectionName, "Username", Username)
+
+            strSectionName = "SS3.0"
+            SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
+            SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
+            SaveSetting(APPNAME, strSectionName, "CurType", CurType)
+            SaveSetting(APPNAME, strSectionName, "CurVend", CurVend)
+
+            strSectionName = "SS4.0"
             Dim wrapper As New Simple3Des("I1!n2@()")
             SaveSetting(APPNAME, strSectionName, "Password", wrapper.EncryptData(Password))
         Catch ex As Exception
-            LogError("main", "SaveSettings", "1.0", ex.Message)
             SaveSetting(APPNAME, strSectionName, "Password", "")
-            MessageBox.Show("Error saving password, Password not saved (M-SS1.0)" & vbNewLine & vbNewLine & ex.Message)
+            Result = MessageBox.Show("Error in routine SaveSettings (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "SaveSettings", MessageBoxButtons.OK)
+            LogError("Main.vb", "SaveSettings", strLocation, ex.Message)
         End Try
-
-        SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
-        SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
-        SaveSetting(APPNAME, strSectionName, "CurType", CurType)
-        SaveSetting(APPNAME, strSectionName, "CurVend", CurVend)
 
     End Sub
 
     Public Function CheckConnectionServer() As Boolean
 
         Try
+            strLocation = "CCS1.0"
             configDB = New SqlConnection(ConfigCS)
             configDB.Open()
 
             CheckConnectionServer = True
         Catch ex As Exception
-            LogError("Main", "CheckConnectionServer", "1.0", ex.Message)
             CheckConnectionServer = False
+            Result = MessageBox.Show("Error in routine CheckConnectionServer (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionServer", MessageBoxButtons.OK)
+            LogError("Main.vb", "CheckConnectionServer", strLocation, ex.Message)
         End Try
 
     End Function
@@ -124,8 +176,9 @@ Module Main
 
             CheckConnectionDivision = True
         Catch ex As Exception
-            LogError("Main", "CheckConnectionServer", "1.0", ex.Message)
             CheckConnectionDivision = False
+            Result = MessageBox.Show("Error in routine CheckConnectionDivision (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionDivision", MessageBoxButtons.OK)
+            LogError("Main.vb", "CheckConnectionDivision", strLocation, ex.Message)
         End Try
 
     End Function
@@ -135,6 +188,7 @@ Module Main
         Dim strSQL As String
 
         ' Close old Database
+        strLocation = "OD1.0"
         Try
             If DB.State = ConnectionState.Open Then
                 DB.Close()
@@ -146,12 +200,14 @@ Module Main
         End Try
 
         ' Close opened forms
+        strLocation = "OD2.0"
         For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
             If Not (My.Application.OpenForms(count).Name = "frmCompany" Or My.Application.OpenForms(count).Name = "frmMain") Then
                 My.Application.OpenForms(count).Close()
             End If
         Next
 
+        strLocation = "OD3.0"
         If Server.Trim <> "" Then
             If InStr(1, Server, "windows.net") > 0 Then
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
@@ -160,14 +216,16 @@ Module Main
             End If
         End If
 
+        strLocation = "OD4.0"
         configDB = New SqlConnection(ConfigCS)
         configDB.ConnectionString = ConfigCS
 
         Try
+            strLocation = "OD5.0"
             configDB.Open()
         Catch ex As Exception
-            LogError("Main", "OpenData", "1.0", ex.Message)
-            frmSetConnection.ShowDialog()
+            Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
+            LogError("Main.vb", "OpenData", strLocation, ex.Message)
         End Try
 
         If configDB.State = ConnectionState.Closed Then
@@ -175,14 +233,17 @@ Module Main
         End If
 
         ' Get DBName and Server Name from Master/IBConfig
+        strLocation = "OD6.0"
         DBName = ""
         ServerName = ""
         strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
         Using Command As New SqlCommand(strSQL, configDB)
             Try
+                strLocation = "OD7.0"
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
                 dataReader.Read()
 
+                strLocation = "OD8.0"
                 If dataReader.HasRows Then
                     DBName = dataReader.Item("DBName")
                     ServerName = dataReader.Item("ServerName")
@@ -190,13 +251,14 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
-                LogError("Main", "OpenData", "2.0", ex.Message)
-                MessageBox.Show("Error getting the division name")
+                Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
+                LogError("Main.vb", "OpenData", strLocation, ex.Message)
                 Exit Sub
             End Try
         End Using
 
         If DBName.Trim = "" Or ServerName.TrimEnd = "" Then
+            strLocation = "OD9.0"
             frmSetConnection.ShowDialog()
         End If
 
@@ -205,9 +267,11 @@ Module Main
         End If
 
         ' ReBuld connection string and open db
+        strLocation = "OD10.0"
         CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
         ConfigCS = "Data Source=" & Trim(ServerName) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
 
+        strLocation = "OD8.0"
         DB = New SqlConnection(CS)
         DB.ConnectionString = CS
         DB.Open()
@@ -218,9 +282,11 @@ Module Main
             strSQL = "Select * From Company where Company_ID='" & Company & "'"
             Using Command As New SqlCommand(strSQL, DB)
                 Try
+                    strLocation = "OD11.0"
                     Dim dataReader As SqlDataReader = Command.ExecuteReader()
                     dataReader.Read()
 
+                    strLocation = "OD12.0"
                     If dataReader.HasRows Then
                         CompanyName = dataReader.Item("Company_NM")
                         dataReader.Close()
@@ -233,8 +299,8 @@ Module Main
                         frmCompany.ShowDialog()
                     End If
                 Catch ex As Exception
-                    LogError("Main", "OpenData", "3.0", ex.Message)
-                    MessageBox.Show("Error getting company name" & vbNewLine & ex.Message)
+                    Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
+                    LogError("Main.vb", "OpenData", strLocation, ex.Message)
 
                     Application.Exit()
                 End Try
@@ -381,22 +447,26 @@ Module Main
 
         Dim q As String
 
+        strLocation = "GCN1.0"
         q = "SELECT BILL_NAME FROM CustomerMaster WHERE CUST_NUM=" & CurCust
         GetCustName = "Not Found"
 
         Using Command As New SqlCommand(q, DB)
             Try
+                strLocation = "GCN2.0"
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
                 dataReader.Read()
 
+                strLocation = "GCN3.0"
                 If dataReader.HasRows Then
                     GetCustName = dataReader.Item("BILL_NAME")
                 End If
 
                 dataReader.Close()
             Catch ex As Exception
-                LogError("Main", "GetCustName", "1.0", ex.Message)
                 GetCustName = ""
+                Result = MessageBox.Show("Error in routine GetCustName (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetCustName", MessageBoxButtons.OK)
+                LogError("Main.vb", "GetCustName", strLocation, ex.Message)
             End Try
         End Using
 
@@ -408,14 +478,19 @@ Module Main
         Dim ITyp As String
         Dim blnFound As Boolean = True
 
+        strLocation = "GID1.0"
+        GetItemDesc = ""
+
         ITyp = "R"
         q = "SELECT DESCR FROM ItemMasterR WHERE ITEM_NUM=" & CStr(INum)
 
         Using Command As New SqlCommand(q, DB)
             Try
+                strLocation = "GID2.0"
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
                 dataReader.Read()
 
+                strLocation = "GID3.0"
                 If dataReader.HasRows Then
                     GetItemDesc = dataReader(0)
                 Else
@@ -424,38 +499,41 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
-                LogError("Main", "GetItemDesc", "1.0", ex.Message)
                 GetItemDesc = ""
+                Result = MessageBox.Show("Error in routine GetItemDesc (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetItemDesc", MessageBoxButtons.OK)
+                LogError("Main.vb", "GetItemDesc", strLocation, ex.Message)
             End Try
         End Using
 
         If blnFound = False Then
+            strLocation = "GID4.0"
             ITyp = "O"
             q = "SELECT DESCR FROM ItemMasterO WHERE ITEM_NUM=" & INum
 
             Using Command As New SqlCommand(q, DB)
                 Try
+                    strLocation = "GID5.0"
                     Dim dataReader As SqlDataReader = Command.ExecuteReader()
                     dataReader.Read()
 
+                    strLocation = "GID6.0"
                     If dataReader.HasRows Then
                         GetItemDesc = dataReader(0) ' Descr
                     Else
-                        GetItemDesc = "error"
                         Exit Function
                     End If
 
                     dataReader.Close()
                 Catch ex As Exception
-                    LogError("Main", "getItemDesc", "2.0", ex.Message)
                     GetItemDesc = ""
+                    Result = MessageBox.Show("Error in routine GetItemDesc (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetItemDesc", MessageBoxButtons.OK)
+                    LogError("Main.vb", "GetCustName", strLocation, ex.Message)
                 End Try
             End Using
         End If
 
         CurItem = INum
         CurType = ITyp
-
 
     End Function
 
@@ -468,6 +546,7 @@ Module Main
         Dim rstemp As New ADODB.Recordset
         Dim Result As DialogResult
 
+        strLocation = "CIE1.0"
         q = "SELECT CUST_NUM, DEPT FROM InvoiceHeader"
         q = q & " WHERE CUST_NUM=" & CStr(CurCust)
         q = q & " AND DEPT=" & CStr(CurDept)
@@ -478,10 +557,12 @@ Module Main
             Dim cmd As SqlCommand = New SqlCommand(q, connection)
 
             Try
+                strLocation = "CIE2.0"
                 connection.Open()
                 Dim dataReader As SqlDataReader = cmd.ExecuteReader()
 
                 If dataReader.HasRows = True Then
+                    strLocation = "CIE3.0"
                     dataReader.Read()
 
                     If CurCust <> LastCust Or CurDept <> LastDept Then
@@ -492,18 +573,14 @@ Module Main
 
                 dataReader.Close()
             Catch ex As Exception
-                LogError("Main", "ChkInvoiceExitsts", "1.0", ex.Message)
-                Result = MessageBox.Show("Error getting data from customer master" & vbNewLine & "Error : " & ex.Message, "Customer Master", MessageBoxButtons.OKCancel)
-                If Result = vbCancel Then
-                    Exit Function
-                Else
-                    Exit Try
-                End If
+                Result = MessageBox.Show("Error in routine ChkInvoiceExists (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "ChkInvoiceExists", MessageBoxButtons.OK)
+                LogError("Main.vb", "ChkInvoiceExists", strLocation, ex.Message)
             End Try
         End Using
 
         LastCust = CurCust
         LastDept = CurDept
+
     End Function
 
     Public Sub SetLabelOnAllOpenForms(strVariable As String, strLabelName As String)
@@ -523,6 +600,7 @@ Module Main
                 Next
             Next
         Catch ex As Exception
+            Result = MessageBox.Show("Error in routine SetLabelOnAllOpenForms (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "SetLabelOnAllOpenForms", MessageBoxButtons.OK)
             LogError("Main.vb", "SetLabelOnAllOpenForms", strLocation, ex.Message)
         End Try
 
