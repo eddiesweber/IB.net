@@ -27,6 +27,8 @@ Partial Class frmViewItem
         Me.Frame1 = New System.Windows.Forms.GroupBox()
         Me.cmdUsage = New C1.Win.C1Input.C1Button()
         Me.lblItemInfo4 = New System.Windows.Forms.Label()
+        Me.SpGetItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItem = New IB.net.dsspGetItem()
         Me.lblItemInfo1 = New System.Windows.Forms.Label()
         Me.lblItemInfo2 = New System.Windows.Forms.Label()
         Me.lblItemInfo3 = New System.Windows.Forms.Label()
@@ -50,6 +52,8 @@ Partial Class frmViewItem
         Me.lblItemInfo19 = New System.Windows.Forms.Label()
         Me.lblItemInfo18 = New System.Windows.Forms.Label()
         Me.Frame3 = New System.Windows.Forms.GroupBox()
+        Me.lblItemInfo13 = New System.Windows.Forms.Label()
+        Me.lblItemInfo12 = New System.Windows.Forms.Label()
         Me.lblLabel8 = New System.Windows.Forms.Label()
         Me.lblLabel10 = New System.Windows.Forms.Label()
         Me.lblLabel = New System.Windows.Forms.Label()
@@ -86,8 +90,6 @@ Partial Class frmViewItem
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
         Me.txtInfo1 = New C1.Win.C1Input.C1TextBox()
         Me.txtInfo0 = New C1.Win.C1Input.C1TextBox()
-        Me.SpGetItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsspGetItem = New IB.net.dsspGetItem()
         Me.txtInfo4 = New C1.Win.C1Input.C1TextBox()
         Me.txtInfo3 = New C1.Win.C1Input.C1TextBox()
         Me.txtType = New C1.Win.C1Input.C1TextBox()
@@ -99,13 +101,13 @@ Partial Class frmViewItem
         Me.txtInfo10 = New C1.Win.C1Input.C1TextBox()
         Me.SpGetItemTableAdapter = New IB.net.dsspGetItemTableAdapters.spGetItemTableAdapter()
         Me.grdPO = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.DsspGetItemPO = New IB.net.dsspGetItemPO()
         Me.SpGetItemPOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetItemPO = New IB.net.dsspGetItemPO()
         Me.SpGetItemPOTableAdapter = New IB.net.dsspGetItemPOTableAdapters.spGetItemPOTableAdapter()
-        Me.lblItemInfo12 = New System.Windows.Forms.Label()
-        Me.lblItemInfo13 = New System.Windows.Forms.Label()
         Me.Frame1.SuspendLayout()
         CType(Me.cmdUsage, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Frame4.SuspendLayout()
         Me.Frame3.SuspendLayout()
         Me.fraEdit.SuspendLayout()
@@ -118,8 +120,6 @@ Partial Class frmViewItem
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfo0, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfo4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfo3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtType, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,8 +130,8 @@ Partial Class frmViewItem
         CType(Me.txtInfo9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInfo10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPO, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetItemPO, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetItemPOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetItemPO, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Frame1
@@ -175,6 +175,16 @@ Partial Class frmViewItem
         Me.lblItemInfo4.Size = New System.Drawing.Size(67, 15)
         Me.lblItemInfo4.TabIndex = 73
         Me.lblItemInfo4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'SpGetItemBindingSource
+        '
+        Me.SpGetItemBindingSource.DataMember = "spGetItem"
+        Me.SpGetItemBindingSource.DataSource = Me.DsspGetItem
+        '
+        'DsspGetItem
+        '
+        Me.DsspGetItem.DataSetName = "dsspGetItem"
+        Me.DsspGetItem.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lblItemInfo1
         '
@@ -432,6 +442,28 @@ Partial Class frmViewItem
         Me.Frame3.TabIndex = 32
         Me.Frame3.TabStop = False
         Me.Frame3.Text = "Costs"
+        '
+        'lblItemInfo13
+        '
+        Me.lblItemInfo13.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemBindingSource, "STD_COST", True))
+        Me.lblItemInfo13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblItemInfo13.ForeColor = System.Drawing.Color.Navy
+        Me.lblItemInfo13.Location = New System.Drawing.Point(88, 47)
+        Me.lblItemInfo13.Name = "lblItemInfo13"
+        Me.lblItemInfo13.Size = New System.Drawing.Size(50, 15)
+        Me.lblItemInfo13.TabIndex = 57
+        Me.lblItemInfo13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblItemInfo12
+        '
+        Me.lblItemInfo12.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemBindingSource, "AVG_COST", True))
+        Me.lblItemInfo12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblItemInfo12.ForeColor = System.Drawing.Color.Navy
+        Me.lblItemInfo12.Location = New System.Drawing.Point(88, 31)
+        Me.lblItemInfo12.Name = "lblItemInfo12"
+        Me.lblItemInfo12.Size = New System.Drawing.Size(50, 15)
+        Me.lblItemInfo12.TabIndex = 56
+        Me.lblItemInfo12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblLabel8
         '
@@ -818,16 +850,6 @@ Partial Class frmViewItem
         Me.txtInfo0.Tag = Nothing
         Me.txtInfo0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'SpGetItemBindingSource
-        '
-        Me.SpGetItemBindingSource.DataMember = "spGetItem"
-        Me.SpGetItemBindingSource.DataSource = Me.DsspGetItem
-        '
-        'DsspGetItem
-        '
-        Me.DsspGetItem.DataSetName = "dsspGetItem"
-        Me.DsspGetItem.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'txtInfo4
         '
         Me.txtInfo4.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
@@ -974,48 +996,26 @@ Partial Class frmViewItem
         Me.grdPO.PreviewInfo.ZoomFactor = 75.0R
         Me.grdPO.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdPO.PrintInfo.MeasurementPrinterName = Nothing
-        Me.grdPO.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdPO.PropBag = resources.GetString("grdPO.PropBag")
+        Me.grdPO.PrintInfo.PageSettings = CType(resources.GetObject("grdPO.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdPO.Size = New System.Drawing.Size(535, 150)
         Me.grdPO.TabIndex = 94
         Me.grdPO.UseCompatibleTextRendering = False
         Me.grdPO.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
-        '
-        'DsspGetItemPO
-        '
-        Me.DsspGetItemPO.DataSetName = "dsspGetItemPO"
-        Me.DsspGetItemPO.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.grdPO.PropBag = resources.GetString("grdPO.PropBag")
         '
         'SpGetItemPOBindingSource
         '
         Me.SpGetItemPOBindingSource.DataMember = "spGetItemPO"
         Me.SpGetItemPOBindingSource.DataSource = Me.DsspGetItemPO
         '
+        'DsspGetItemPO
+        '
+        Me.DsspGetItemPO.DataSetName = "dsspGetItemPO"
+        Me.DsspGetItemPO.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'SpGetItemPOTableAdapter
         '
         Me.SpGetItemPOTableAdapter.ClearBeforeFill = True
-        '
-        'lblItemInfo12
-        '
-        Me.lblItemInfo12.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemBindingSource, "AVG_COST", True))
-        Me.lblItemInfo12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemInfo12.ForeColor = System.Drawing.Color.Navy
-        Me.lblItemInfo12.Location = New System.Drawing.Point(88, 31)
-        Me.lblItemInfo12.Name = "lblItemInfo12"
-        Me.lblItemInfo12.Size = New System.Drawing.Size(50, 15)
-        Me.lblItemInfo12.TabIndex = 56
-        Me.lblItemInfo12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'lblItemInfo13
-        '
-        Me.lblItemInfo13.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SpGetItemBindingSource, "STD_COST", True))
-        Me.lblItemInfo13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemInfo13.ForeColor = System.Drawing.Color.Navy
-        Me.lblItemInfo13.Location = New System.Drawing.Point(88, 47)
-        Me.lblItemInfo13.Name = "lblItemInfo13"
-        Me.lblItemInfo13.Size = New System.Drawing.Size(50, 15)
-        Me.lblItemInfo13.TabIndex = 57
-        Me.lblItemInfo13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmViewItem
         '
@@ -1055,6 +1055,7 @@ Partial Class frmViewItem
         Me.Controls.Add(Me.chkData1)
         Me.Controls.Add(Me.chkData2)
         Me.Controls.Add(Me.Frame1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmViewItem"
@@ -1063,6 +1064,8 @@ Partial Class frmViewItem
         Me.Frame1.ResumeLayout(False)
         Me.Frame1.PerformLayout()
         CType(Me.cmdUsage, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItem, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Frame4.ResumeLayout(False)
         Me.Frame4.PerformLayout()
         Me.Frame3.ResumeLayout(False)
@@ -1078,8 +1081,6 @@ Partial Class frmViewItem
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfo0, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetItem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfo4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfo3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtType, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1090,8 +1091,8 @@ Partial Class frmViewItem
         CType(Me.txtInfo9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtInfo10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPO, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetItemPO, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetItemPOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetItemPO, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

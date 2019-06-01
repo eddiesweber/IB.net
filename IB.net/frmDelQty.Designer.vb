@@ -220,12 +220,12 @@ Partial Class frmDelQty
         Me.grdItems.PreviewInfo.ZoomFactor = 75.0R
         Me.grdItems.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdItems.PrintInfo.MeasurementPrinterName = Nothing
-        Me.grdItems.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdItems.PropBag = resources.GetString("grdItems.PropBag")
+        Me.grdItems.PrintInfo.PageSettings = CType(resources.GetObject("grdItems.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdItems.Size = New System.Drawing.Size(345, 161)
         Me.grdItems.TabIndex = 93
         Me.grdItems.UseCompatibleTextRendering = False
         Me.grdItems.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdItems.PropBag = resources.GetString("grdItems.PropBag")
         '
         'VwGetDelQtyBindingSource1
         '

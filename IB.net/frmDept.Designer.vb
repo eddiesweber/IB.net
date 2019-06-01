@@ -493,7 +493,8 @@ Partial Class frmDept
         '
         'txtCustName
         '
-        Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtCustName.AutoSize = False
+        Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCustName.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCustName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -503,6 +504,7 @@ Partial Class frmDept
         Me.txtCustName.Size = New System.Drawing.Size(230, 15)
         Me.txtCustName.TabIndex = 64
         Me.txtCustName.Tag = Nothing
+        Me.txtCustName.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtCustName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData10
@@ -545,11 +547,11 @@ Partial Class frmDept
         Me.grdRoute.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdRoute.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
         Me.grdRoute.Size = New System.Drawing.Size(465, 64)
         Me.grdRoute.TabIndex = 70
         Me.grdRoute.UseCompatibleTextRendering = False
         Me.grdRoute.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdRoute.PropBag = resources.GetString("grdRoute.PropBag")
         '
         'CustomerRouteBindingSource
         '
@@ -681,6 +683,7 @@ Partial Class frmDept
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel5)
         Me.Controls.Add(Me.lblLabel12)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(87, 78)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

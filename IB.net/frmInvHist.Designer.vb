@@ -81,7 +81,7 @@ Partial Class frmInvHist
         'lblLabel8
         '
         Me.lblLabel8.AutoSize = True
-        Me.lblLabel8.Location = New System.Drawing.Point(180, 106)
+        Me.lblLabel8.Location = New System.Drawing.Point(179, 110)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(72, 13)
         Me.lblLabel8.TabIndex = 13
@@ -90,7 +90,7 @@ Partial Class frmInvHist
         'lblLabel7
         '
         Me.lblLabel7.AutoSize = True
-        Me.lblLabel7.Location = New System.Drawing.Point(10, 106)
+        Me.lblLabel7.Location = New System.Drawing.Point(10, 110)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel7.TabIndex = 12
@@ -99,7 +99,7 @@ Partial Class frmInvHist
         'lblLabel6
         '
         Me.lblLabel6.AutoSize = True
-        Me.lblLabel6.Location = New System.Drawing.Point(10, 92)
+        Me.lblLabel6.Location = New System.Drawing.Point(10, 95)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(52, 13)
         Me.lblLabel6.TabIndex = 11
@@ -108,7 +108,7 @@ Partial Class frmInvHist
         'lblLabel5
         '
         Me.lblLabel5.AutoSize = True
-        Me.lblLabel5.Location = New System.Drawing.Point(10, 78)
+        Me.lblLabel5.Location = New System.Drawing.Point(10, 80)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(56, 13)
         Me.lblLabel5.TabIndex = 10
@@ -117,7 +117,7 @@ Partial Class frmInvHist
         'lblLabel4
         '
         Me.lblLabel4.AutoSize = True
-        Me.lblLabel4.Location = New System.Drawing.Point(10, 64)
+        Me.lblLabel4.Location = New System.Drawing.Point(10, 65)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(64, 13)
         Me.lblLabel4.TabIndex = 9
@@ -126,7 +126,7 @@ Partial Class frmInvHist
         'lblLabel3
         '
         Me.lblLabel3.AutoSize = True
-        Me.lblLabel3.Location = New System.Drawing.Point(10, 36)
+        Me.lblLabel3.Location = New System.Drawing.Point(10, 35)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel3.TabIndex = 8
@@ -191,13 +191,14 @@ Partial Class frmInvHist
         '
         'txtData1
         '
+        Me.txtData1.AutoSize = False
         Me.txtData1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData1.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "BILL_NAME", True))
-        Me.txtData1.Location = New System.Drawing.Point(124, 36)
+        Me.txtData1.Location = New System.Drawing.Point(125, 35)
         Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(190, 13)
+        Me.txtData1.Size = New System.Drawing.Size(190, 15)
         Me.txtData1.TabIndex = 95
         Me.txtData1.Tag = Nothing
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -214,34 +215,37 @@ Partial Class frmInvHist
         '
         'txtData3
         '
+        Me.txtData3.AutoSize = False
         Me.txtData3.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData3.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "ROUTE", True))
         Me.txtData3.DataType = GetType(Short)
-        Me.txtData3.Location = New System.Drawing.Point(75, 64)
+        Me.txtData3.Location = New System.Drawing.Point(75, 65)
         Me.txtData3.Name = "txtData3"
-        Me.txtData3.Size = New System.Drawing.Size(50, 13)
+        Me.txtData3.Size = New System.Drawing.Size(50, 15)
         Me.txtData3.TabIndex = 96
         Me.txtData3.Tag = Nothing
         Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData4
         '
+        Me.txtData4.AutoSize = False
         Me.txtData4.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData4.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "SEQUENCE", True))
         Me.txtData4.DataType = GetType(Single)
-        Me.txtData4.Location = New System.Drawing.Point(141, 64)
+        Me.txtData4.Location = New System.Drawing.Point(141, 65)
         Me.txtData4.Name = "txtData4"
-        Me.txtData4.Size = New System.Drawing.Size(50, 13)
+        Me.txtData4.Size = New System.Drawing.Size(50, 15)
         Me.txtData4.TabIndex = 97
         Me.txtData4.Tag = Nothing
         Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData9
         '
+        Me.txtData9.AutoSize = False
         Me.txtData9.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData9.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -249,27 +253,29 @@ Partial Class frmInvHist
         Me.txtData9.DataType = GetType(Date)
         Me.txtData9.Location = New System.Drawing.Point(254, 14)
         Me.txtData9.Name = "txtData9"
-        Me.txtData9.Size = New System.Drawing.Size(60, 13)
+        Me.txtData9.Size = New System.Drawing.Size(60, 15)
         Me.txtData9.TabIndex = 98
         Me.txtData9.Tag = Nothing
         Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData0
         '
+        Me.txtData0.AutoSize = False
         Me.txtData0.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData0.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
-        Me.txtData0.Location = New System.Drawing.Point(75, 36)
+        Me.txtData0.Location = New System.Drawing.Point(75, 35)
         Me.txtData0.Name = "txtData0"
-        Me.txtData0.Size = New System.Drawing.Size(50, 13)
+        Me.txtData0.Size = New System.Drawing.Size(50, 15)
         Me.txtData0.TabIndex = 100
         Me.txtData0.Tag = Nothing
         Me.txtData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData2
         '
+        Me.txtData2.AutoSize = False
         Me.txtData2.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -277,86 +283,93 @@ Partial Class frmInvHist
         Me.txtData2.DataType = GetType(Short)
         Me.txtData2.Location = New System.Drawing.Point(75, 50)
         Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(50, 13)
+        Me.txtData2.Size = New System.Drawing.Size(50, 15)
         Me.txtData2.TabIndex = 101
         Me.txtData2.Tag = Nothing
         Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData10
         '
+        Me.txtData10.AutoSize = False
         Me.txtData10.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData10.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "DEL_NAME", True))
-        Me.txtData10.Location = New System.Drawing.Point(124, 50)
+        Me.txtData10.Location = New System.Drawing.Point(125, 50)
         Me.txtData10.Name = "txtData10"
-        Me.txtData10.Size = New System.Drawing.Size(190, 13)
+        Me.txtData10.Size = New System.Drawing.Size(190, 15)
         Me.txtData10.TabIndex = 102
         Me.txtData10.Tag = Nothing
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData5
         '
+        Me.txtData5.AutoSize = False
         Me.txtData5.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData5.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "TAX_LOCODE", True))
-        Me.txtData5.Location = New System.Drawing.Point(75, 78)
+        Me.txtData5.Location = New System.Drawing.Point(75, 80)
         Me.txtData5.Name = "txtData5"
-        Me.txtData5.Size = New System.Drawing.Size(50, 13)
+        Me.txtData5.Size = New System.Drawing.Size(50, 15)
         Me.txtData5.TabIndex = 103
         Me.txtData5.Tag = Nothing
         Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData6
         '
+        Me.txtData6.AutoSize = False
         Me.txtData6.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData6.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "TAX_ST", True))
-        Me.txtData6.Location = New System.Drawing.Point(141, 78)
+        Me.txtData6.Location = New System.Drawing.Point(141, 80)
         Me.txtData6.Name = "txtData6"
-        Me.txtData6.Size = New System.Drawing.Size(50, 13)
+        Me.txtData6.Size = New System.Drawing.Size(50, 15)
         Me.txtData6.TabIndex = 104
         Me.txtData6.Tag = Nothing
         Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'C1TextBox1
         '
+        Me.C1TextBox1.AutoSize = False
         Me.C1TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.C1TextBox1.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.C1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.C1TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "TRACK", True))
-        Me.C1TextBox1.Location = New System.Drawing.Point(75, 92)
+        Me.C1TextBox1.Location = New System.Drawing.Point(75, 95)
         Me.C1TextBox1.Name = "C1TextBox1"
-        Me.C1TextBox1.Size = New System.Drawing.Size(239, 13)
+        Me.C1TextBox1.Size = New System.Drawing.Size(239, 15)
         Me.C1TextBox1.TabIndex = 105
         Me.C1TextBox1.Tag = Nothing
         Me.C1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData8
         '
+        Me.txtData8.AutoSize = False
         Me.txtData8.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData8.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "TOTAL", True))
         Me.txtData8.DataType = GetType(Decimal)
-        Me.txtData8.Location = New System.Drawing.Point(254, 96)
+        Me.txtData8.Location = New System.Drawing.Point(254, 110)
         Me.txtData8.Name = "txtData8"
-        Me.txtData8.Size = New System.Drawing.Size(60, 13)
+        Me.txtData8.Size = New System.Drawing.Size(60, 15)
         Me.txtData8.TabIndex = 106
         Me.txtData8.Tag = Nothing
+        Me.txtData8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData7
         '
+        Me.txtData7.AutoSize = False
         Me.txtData7.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData7.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvHistHeaderBindingSource, "PAYBY", True))
-        Me.txtData7.Location = New System.Drawing.Point(75, 106)
+        Me.txtData7.Location = New System.Drawing.Point(75, 110)
         Me.txtData7.Name = "txtData7"
-        Me.txtData7.Size = New System.Drawing.Size(50, 13)
+        Me.txtData7.Size = New System.Drawing.Size(50, 15)
         Me.txtData7.TabIndex = 107
         Me.txtData7.Tag = Nothing
         Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -365,7 +378,8 @@ Partial Class frmInvHist
         '
         Me.TDBGrid1.DataSource = Me.SpGetInvoiceHist2BindingSource
         Me.TDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
-        Me.TDBGrid1.Location = New System.Drawing.Point(13, 125)
+        Me.TDBGrid1.Images.Add(CType(resources.GetObject("TDBGrid1.Images"), System.Drawing.Image))
+        Me.TDBGrid1.Location = New System.Drawing.Point(10, 130)
         Me.TDBGrid1.Name = "TDBGrid1"
         Me.TDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.TDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
@@ -373,11 +387,11 @@ Partial Class frmInvHist
         Me.TDBGrid1.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.TDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
         Me.TDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("TDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.TDBGrid1.PropBag = resources.GetString("TDBGrid1.PropBag")
         Me.TDBGrid1.Size = New System.Drawing.Size(459, 225)
         Me.TDBGrid1.TabIndex = 108
         Me.TDBGrid1.UseCompatibleTextRendering = False
         Me.TDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.TDBGrid1.PropBag = resources.GetString("TDBGrid1.PropBag")
         '
         'SpGetInvoiceHist2BindingSource
         '
@@ -412,7 +426,7 @@ Partial Class frmInvHist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(484, 402)
+        Me.ClientSize = New System.Drawing.Size(484, 360)
         Me.Controls.Add(Me.cmdSearch)
         Me.Controls.Add(Me.TDBGrid1)
         Me.Controls.Add(Me.txtData7)

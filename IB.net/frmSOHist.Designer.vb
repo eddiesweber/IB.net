@@ -60,7 +60,7 @@ Partial Class frmSOHist
         'lblLabel0
         '
         Me.lblLabel0.AutoSize = True
-        Me.lblLabel0.Location = New System.Drawing.Point(14, 17)
+        Me.lblLabel0.Location = New System.Drawing.Point(12, 16)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel0.TabIndex = 4
@@ -119,26 +119,30 @@ Partial Class frmSOHist
         '
         'txtCust
         '
-        Me.txtCust.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCust.AutoSize = False
+        Me.txtCust.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtCust.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCust.Location = New System.Drawing.Point(67, 15)
         Me.txtCust.Name = "txtCust"
         Me.txtCust.ReadOnly = True
-        Me.txtCust.Size = New System.Drawing.Size(75, 18)
+        Me.txtCust.Size = New System.Drawing.Size(75, 15)
         Me.txtCust.TabIndex = 12
         Me.txtCust.Tag = Nothing
-        Me.txtCust.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtCust.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtCustName
         '
-        Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCustName.AutoSize = False
+        Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCustName.Location = New System.Drawing.Point(15, 40)
         Me.txtCustName.Name = "txtCustName"
         Me.txtCustName.ReadOnly = True
-        Me.txtCustName.Size = New System.Drawing.Size(220, 18)
+        Me.txtCustName.Size = New System.Drawing.Size(220, 15)
         Me.txtCustName.TabIndex = 13
         Me.txtCustName.Tag = Nothing
-        Me.txtCustName.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtCustName.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtCustName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'cmdFind

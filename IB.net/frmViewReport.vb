@@ -1,24 +1,11 @@
 ﻿Option Explicit On
 
-Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class frmViewReport
 
-    'Dim strReportName As String
-    'Dim CTableLogInfo As TableLogOnInfo
-    'Dim ConnInfo As CrystalDecisions.Shared.ConnectionInfo
-
     Private Sub frmViewReport_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-        'CrystalReportViewer1.BringToFront()
-
-        ' Set database information
-        ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
-        ConnInfo.ServerName = Server.Trim
-        ConnInfo.DatabaseName = DBName.Trim
-        ConnInfo.UserID = Username.Trim
-        ConnInfo.Password = Password
 
         Select Case lblReportName.Text
             Case "sohist.rpt"
@@ -27,8 +14,10 @@ Public Class frmViewReport
                 deadbeatcust()
             Case "Custinfo.rpt"
                 CustInfo()
-            Case "rptTest.rpt"
-                rptTest()
+            Case "zipreport.rpt"
+                zipreport()
+            Case "invoice_historical.rpt"
+                invoice_historical()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
@@ -37,147 +26,174 @@ Public Class frmViewReport
 
     End Sub
 
-    Private Sub SetDbConnection(ByVal RPT As CrystalDecisions.CrystalReports.Engine.ReportDocument)
+    Private Sub invoice_historical()
 
-        For Each CTable As Table In RPT.Database.Tables
-            CTable.LogOnInfo.ConnectionInfo = ConnInfo
-            CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = RPT.Name
-            CTableLogInfo.TableName = CTable.Name
-            CTable.ApplyLogOnInfo(CTableLogInfo)
-        Next
+        Try
+            strLocation = "IH1.0"
+            RPT.Load("C:\IB\ReportsCR2016\invoice_historical.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-    End Sub
+            setCrystalPrinter()
 
-    Private Sub sohist()
+            SetDbConnection()
 
-        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-        RPT.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            strLocation = "IH2.0"
+            RPT.SetParameterValue("InvoiceNumber", frmInvHist.txtInvoice.Text)
 
-        SetDbConnection(RPT)
-
-        'RPT.SetParameterValue("CompanyName", frmMain.Text)
-        RPT.SetParameterValue("CustNum", CurCust)
-
-        'RPT.PrintToPrinter(1, True, 0, 0)
-        CrystalReportViewer1.ReportSource = RPT
-        CrystalReportViewer1.Refresh()
-
-        Me.Cursor = Cursors.Default
-
-        'Dim SF As String
-        'SF = "{InvoiceHistory.Cust_NUM}=" & CurCust & "and {InvoiceHistory.Money}<>" & 0 & "and {CategoryMaster.SOHist} =true"
+            strLocation = "IH3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine invoice_historical (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "invoice_historical", vbOK)
+            LogError(Me.Name, "invoice_historical", strLocation, ex.Message)
+        End Try
 
         'With RPT
-        '    .ReportFileName = RptPath & "\sohist.rpt"
+        '    .ReportFileName = RptPath & "\invoice_historical.rpt"
         '    .Connect = CryCS
-        '    .SelectionFormula = SF
+        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+        '    '.Formulas(0) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "({INVHISTORYHEADER.INV_NUMBER} = " & Val(txtInvoice) & ")"
         '    .Action = 1
         '    .Formulas(0) = ""
         '    .Formulas(1) = ""
-        '    .ReportFileName = ""
-        'End With
-
-
-    End Sub
-
-    Private Sub deadbeatcust()
-
-        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-        RPT.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
-
-        SetDbConnection(RPT)
-
-        'RPT.SetParameterValue("CompanyName", frmMain.Text)
-        RPT.SetParameterValue("CustNum", CurCust)
-
-        'RPT.PrintToPrinter(1, True, 0, 0)
-        CrystalReportViewer1.ReportSource = RPT
-        CrystalReportViewer1.Refresh()
-
-        Me.Cursor = Cursors.Default
-
-        'With RPT
-        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
-        '    .Connect = CryCS
-        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
-        '    .Action = 1
-        '    .Destination = 0
-        '    ' .Formulas(0) = ""
-        '    ' .Formulas(1) = ""
-        '    .ReportF
-
-    End Sub
-
-    Private Sub CustInfo()
-
-        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-        RPT.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
-
-        SetDbConnection(RPT)
-
-        RPT.SetParameterValue("CompanyName", frmMain.Text)
-        RPT.SetParameterValue("CustNum", CurCust)
-
-        RPT.PrintToPrinter(1, True, 0, 0)
-        'CrystalReportViewer1.ReportSource = RPT
-        'CrystalReportViewer1.Refresh()
-
-        'Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
-
-        'Dim dt As New DataTable                     ' THE DATATABLE HAS THE DATA FROM THE DATABASE.
-        'Report.SetDataSource(dt)                    ' SET REPORT DATA SOURCE.
-        'Report.PrintToPrinter(1, True, 0, 0)        ' FINALY, PRINT IT.
-
-        'With RPT
-        '    .ReportFileName = DataPath & "\Custinfo.rpt"
-        '    .Connect = CryCS
-        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "{CustomerMaster.CUST_NUM}=" & CStr(CurCust)
-        '    .Destination = 1
-        '    .Action = 1
-        '    .Formulas(0) = ""
         '    .SelectionFormula = ""
         '    .ReportFileName = ""
         'End With
 
     End Sub
+    Private Sub zipreport()
 
-    Private Sub rptTest()
+        Try
+            strLocation = "ZR1.0"
+            RPT.Load("C:\IB\ReportsCR2016\zipreport.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-        Dim RPT As New CrystalDecisions.CrystalReports.Engine.ReportDocument
-        RPT.Load("C:\Reports\rptTest.rpt")
+            setCrystalPrinter()
 
-        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-        Dim crParameterFieldDefinition As ParameterFieldDefinition
-        Dim crParameterValues As New ParameterValues
-        Dim crParameterDiscreteValue As New ParameterDiscreteValue
+            SetDbConnection()
 
-        For Each CTable As Table In RPT.Database.Tables
-            CTable.LogOnInfo.ConnectionInfo = ConnInfo
-            CTableLogInfo = CTable.LogOnInfo
-            CTableLogInfo.ReportName = RPT.Name
-            CTableLogInfo.TableName = CTable.Name
-            CTable.ApplyLogOnInfo(CTableLogInfo)
-        Next
+            strLocation = "ZR2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            If frmZipSearch.optZip.Checked = True Then
+                strLocation = "ZR3.0"
+                RPT.SetParameterValue("byCity", "NO")
+                RPT.SetParameterValue("SearchField", frmZipSearch.txtZip.Text)
+            Else
+                strLocation = "ZR4.0"
+                RPT.SetParameterValue("byCity", "YES")
+                RPT.SetParameterValue("SearchField", UCase(frmZipSearch.txtZip.Text))
+            End If
 
-        crParameterDiscreteValue.Value = CurCust
-        crParameterFieldDefinitions = RPT.DataDefinition.ParameterFields
-        crParameterFieldDefinition = crParameterFieldDefinitions.Item("CustomerNumber")
-        crParameterValues = crParameterFieldDefinition.CurrentValues
-
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
-        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-        'CrystalReportViewer1.ReportSource = RPT
-        'CrystalReportViewer1.Refresh()
+            strLocation = "ZR5.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine zipreport (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "zipreport", vbOK)
+            LogError(Me.Name, "zipreport", strLocation, ex.Message)
+        End Try
 
     End Sub
+    Private Sub sohist()
+
+        Try
+            strLocation = "SH1.0"
+            RPT.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+
+            SetDbConnection()
+
+            strLocation = "SH2.0"
+            RPT.SetParameterValue("CustNum", CurCust)
+
+            strLocation = "SH3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine sohist (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "sohist", vbOK)
+            LogError(Me.Name, "sohist", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub deadbeatcust()
+
+        Try
+            strLocation = "DBC1.0"
+            RPT.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+
+            SetDbConnection()
+
+            strLocation = "DBC2.0"
+            RPT.SetParameterValue("CustNum", CurCust)
+
+            strLocation = "DBC3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine deadbeatcust (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "deadbeatcust", vbOK)
+            LogError(Me.Name, "deadbeatcust", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub CustInfo()
+
+        Try
+            strLocation = "CI1.0"
+            RPT.Load("C:\Reports\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+
+            SetDbConnection()
+
+            strLocation = "CI2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("CustNum", CurCust)
+
+            strLocation = "CI3.0"
+            RPT.PrintToPrinter(1, True, 0, 0)
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine CustInfo (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CustInfo", vbOK)
+            LogError(Me.Name, "CustInfo", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    'Private Sub rptTest()
+
+    ' This also works, but I like to format above.  
+    ' Keeping just incase needed
+
+    '    RPT.Load("C:\Reports\rptTest.rpt")
+
+    '    Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+    '    Dim crParameterFieldDefinition As ParameterFieldDefinition
+    '    Dim crParameterValues As New ParameterValues
+    '    Dim crParameterDiscreteValue As New ParameterDiscreteValue
+
+    '    For Each CTable As Table In RPT.Database.Tables
+    '        CTable.LogOnInfo.ConnectionInfo = ConnInfo
+    '        CTableLogInfo = CTable.LogOnInfo
+    '        CTableLogInfo.ReportName = RPT.Name
+    '        CTableLogInfo.TableName = CTable.Name
+    '        CTable.ApplyLogOnInfo(CTableLogInfo)
+    '    Next
+
+    '    crParameterDiscreteValue.Value = CurCust
+    '    crParameterFieldDefinitions = RPT.DataDefinition.ParameterFields
+    '    crParameterFieldDefinition = crParameterFieldDefinitions.Item("CustomerNumber")
+    '    crParameterValues = crParameterFieldDefinition.CurrentValues
+
+    '    crParameterValues.Clear()
+    '    crParameterValues.Add(crParameterDiscreteValue)
+    '    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+    '    'CrystalReportViewer1.ReportSource = RPT
+    '    'CrystalReportViewer1.Refresh()
+
+    'End Sub
 
 
 End Class

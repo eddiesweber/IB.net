@@ -823,6 +823,7 @@ Partial Class frmItem
         Me.Controls.Add(Me.lblLabel11)
         Me.Controls.Add(Me.fraType)
         Me.Controls.Add(Me.frmPO)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(58, 243)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

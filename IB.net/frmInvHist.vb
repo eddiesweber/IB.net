@@ -6,7 +6,6 @@ Public Class frmInvHist
 
         GetWindowPos(Me, 66, 66)
 
-        'GetColWidths Me, TDBGrid1
         If Dir("frmInvHistTDBGrid1.xml") <> "" Then
             TDBGrid1.LoadLayout("frmInvHistTDBGrid1.xml")
         End If
@@ -41,18 +40,8 @@ Public Class frmInvHist
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
-        'With RPT
-        '    .ReportFileName = RptPath & "\invoice_historical.rpt"
-        '    .Connect = CryCS
-        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-        '    '.Formulas(0) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "({INVHISTORYHEADER.INV_NUMBER} = " & Val(txtInvoice) & ")"
-        '    .Action = 1
-        '    .Formulas(0) = ""
-        '    .Formulas(1) = ""
-        '    .SelectionFormula = ""
-        '    .ReportFileName = ""
-        'End With
+        frmViewReport.lblReportName.Text = "invoice_historical.rpt"
+        frmViewReport.Show()
 
     End Sub
 
@@ -64,7 +53,7 @@ Public Class frmInvHist
 
     Private Sub txtInvoice_TextChanged(sender As Object, e As EventArgs) Handles txtInvoice.TextChanged
 
-        'GetData()
+        GetData()
 
     End Sub
 

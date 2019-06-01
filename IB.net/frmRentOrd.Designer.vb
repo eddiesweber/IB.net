@@ -23,6 +23,7 @@ Partial Class frmRentOrd
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRentOrd))
         Me.scrChange3 = New System.Windows.Forms.VScrollBar()
         Me.scrChange2 = New System.Windows.Forms.VScrollBar()
         Me.scrChange1 = New System.Windows.Forms.VScrollBar()
@@ -668,6 +669,7 @@ Partial Class frmRentOrd
         '
         'txtCustName
         '
+        Me.txtCustName.AutoSize = False
         Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCustName.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCustName.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -677,10 +679,12 @@ Partial Class frmRentOrd
         Me.txtCustName.Size = New System.Drawing.Size(230, 15)
         Me.txtCustName.TabIndex = 80
         Me.txtCustName.Tag = Nothing
+        Me.txtCustName.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtCustName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtCustDept
         '
+        Me.txtCustDept.AutoSize = False
         Me.txtCustDept.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtCustDept.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCustDept.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -690,19 +694,22 @@ Partial Class frmRentOrd
         Me.txtCustDept.Size = New System.Drawing.Size(230, 15)
         Me.txtCustDept.TabIndex = 81
         Me.txtCustDept.Tag = Nothing
+        Me.txtCustDept.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtCustDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtItemDesc
         '
+        Me.txtItemDesc.AutoSize = False
         Me.txtItemDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtItemDesc.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtItemDesc.Location = New System.Drawing.Point(130, 79)
+        Me.txtItemDesc.Location = New System.Drawing.Point(130, 80)
         Me.txtItemDesc.Name = "txtItemDesc"
         Me.txtItemDesc.Padding = New System.Windows.Forms.Padding(1)
         Me.txtItemDesc.Size = New System.Drawing.Size(230, 15)
         Me.txtItemDesc.TabIndex = 82
         Me.txtItemDesc.Tag = Nothing
+        Me.txtItemDesc.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtItemDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData2
@@ -1037,7 +1044,7 @@ Partial Class frmRentOrd
         Me.lstItem.DataSource = Me.CustomerInventoryBindingSource
         Me.lstItem.DisplayMember = "ITEM_NUM"
         Me.lstItem.FormattingEnabled = True
-        Me.lstItem.Location = New System.Drawing.Point(46, 79)
+        Me.lstItem.Location = New System.Drawing.Point(46, 80)
         Me.lstItem.Name = "lstItem"
         Me.lstItem.Size = New System.Drawing.Size(76, 56)
         Me.lstItem.TabIndex = 118
@@ -1109,6 +1116,7 @@ Partial Class frmRentOrd
         Me.Controls.Add(Me.scrChange1)
         Me.Controls.Add(Me.scrChange2)
         Me.Controls.Add(Me.scrChange3)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(65, 153)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

@@ -185,7 +185,7 @@ Partial Class frmViewCust
         Me.lblLabel9.AutoSize = True
         Me.lblLabel9.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel9.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel9.Location = New System.Drawing.Point(10, 108)
+        Me.lblLabel9.Location = New System.Drawing.Point(10, 107)
         Me.lblLabel9.Name = "lblLabel9"
         Me.lblLabel9.Size = New System.Drawing.Size(150, 13)
         Me.lblLabel9.TabIndex = 35
@@ -196,7 +196,7 @@ Partial Class frmViewCust
         Me.lblLabel8.AutoSize = True
         Me.lblLabel8.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel8.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel8.Location = New System.Drawing.Point(240, 108)
+        Me.lblLabel8.Location = New System.Drawing.Point(240, 107)
         Me.lblLabel8.Name = "lblLabel8"
         Me.lblLabel8.Size = New System.Drawing.Size(136, 13)
         Me.lblLabel8.TabIndex = 32
@@ -207,7 +207,7 @@ Partial Class frmViewCust
         Me.lblLabel7.AutoSize = True
         Me.lblLabel7.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel7.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel7.Location = New System.Drawing.Point(116, 93)
+        Me.lblLabel7.Location = New System.Drawing.Point(116, 92)
         Me.lblLabel7.Name = "lblLabel7"
         Me.lblLabel7.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel7.TabIndex = 13
@@ -218,7 +218,7 @@ Partial Class frmViewCust
         Me.lblLabel6.AutoSize = True
         Me.lblLabel6.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel6.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel6.Location = New System.Drawing.Point(240, 93)
+        Me.lblLabel6.Location = New System.Drawing.Point(240, 92)
         Me.lblLabel6.Name = "lblLabel6"
         Me.lblLabel6.Size = New System.Drawing.Size(32, 13)
         Me.lblLabel6.TabIndex = 9
@@ -229,7 +229,7 @@ Partial Class frmViewCust
         Me.lblLabel5.AutoSize = True
         Me.lblLabel5.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel5.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel5.Location = New System.Drawing.Point(240, 78)
+        Me.lblLabel5.Location = New System.Drawing.Point(240, 77)
         Me.lblLabel5.Name = "lblLabel5"
         Me.lblLabel5.Size = New System.Drawing.Size(38, 13)
         Me.lblLabel5.TabIndex = 8
@@ -240,7 +240,7 @@ Partial Class frmViewCust
         Me.lblLabel4.AutoSize = True
         Me.lblLabel4.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel4.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel4.Location = New System.Drawing.Point(240, 63)
+        Me.lblLabel4.Location = New System.Drawing.Point(240, 62)
         Me.lblLabel4.Name = "lblLabel4"
         Me.lblLabel4.Size = New System.Drawing.Size(27, 13)
         Me.lblLabel4.TabIndex = 7
@@ -251,7 +251,7 @@ Partial Class frmViewCust
         Me.lblLabel3.AutoSize = True
         Me.lblLabel3.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel3.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel3.Location = New System.Drawing.Point(240, 48)
+        Me.lblLabel3.Location = New System.Drawing.Point(240, 47)
         Me.lblLabel3.Name = "lblLabel3"
         Me.lblLabel3.Size = New System.Drawing.Size(41, 13)
         Me.lblLabel3.TabIndex = 6
@@ -262,7 +262,7 @@ Partial Class frmViewCust
         Me.lblLabel2.AutoSize = True
         Me.lblLabel2.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel2.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel2.Location = New System.Drawing.Point(240, 33)
+        Me.lblLabel2.Location = New System.Drawing.Point(240, 32)
         Me.lblLabel2.Name = "lblLabel2"
         Me.lblLabel2.Size = New System.Drawing.Size(47, 13)
         Me.lblLabel2.TabIndex = 5
@@ -273,7 +273,7 @@ Partial Class frmViewCust
         Me.lblLabel1.AutoSize = True
         Me.lblLabel1.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel1.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel1.Location = New System.Drawing.Point(10, 93)
+        Me.lblLabel1.Location = New System.Drawing.Point(10, 92)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(43, 13)
         Me.lblLabel1.TabIndex = 4
@@ -284,7 +284,7 @@ Partial Class frmViewCust
         Me.lblLabel0.AutoSize = True
         Me.lblLabel0.BackColor = System.Drawing.SystemColors.Control
         Me.lblLabel0.ForeColor = System.Drawing.Color.Black
-        Me.lblLabel0.Location = New System.Drawing.Point(10, 78)
+        Me.lblLabel0.Location = New System.Drawing.Point(10, 77)
         Me.lblLabel0.Name = "lblLabel0"
         Me.lblLabel0.Size = New System.Drawing.Size(30, 13)
         Me.lblLabel0.TabIndex = 3
@@ -459,208 +459,234 @@ Partial Class frmViewCust
         '
         'txtData1
         '
-        Me.txtData1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData1.AutoSize = False
+        Me.txtData1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData1.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "BILL_NAME", True))
         Me.txtData1.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData1.Location = New System.Drawing.Point(60, 31)
+        Me.txtData1.Location = New System.Drawing.Point(60, 30)
         Me.txtData1.Name = "txtData1"
         Me.txtData1.ReadOnly = True
-        Me.txtData1.Size = New System.Drawing.Size(175, 14)
+        Me.txtData1.Size = New System.Drawing.Size(175, 15)
         Me.txtData1.TabIndex = 50
         Me.txtData1.Tag = Nothing
+        Me.txtData1.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData2
         '
-        Me.txtData2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData2.AutoSize = False
+        Me.txtData2.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "BILL_STR", True))
         Me.txtData2.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData2.Location = New System.Drawing.Point(60, 46)
+        Me.txtData2.Location = New System.Drawing.Point(60, 45)
         Me.txtData2.Name = "txtData2"
         Me.txtData2.ReadOnly = True
-        Me.txtData2.Size = New System.Drawing.Size(175, 14)
+        Me.txtData2.Size = New System.Drawing.Size(175, 15)
         Me.txtData2.TabIndex = 51
         Me.txtData2.Tag = Nothing
+        Me.txtData2.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData11
         '
-        Me.txtData11.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData11.AutoSize = False
+        Me.txtData11.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData11.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData11.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData11.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CARE_OF", True))
         Me.txtData11.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData11.Location = New System.Drawing.Point(60, 76)
+        Me.txtData11.Location = New System.Drawing.Point(60, 75)
         Me.txtData11.Name = "txtData11"
         Me.txtData11.ReadOnly = True
-        Me.txtData11.Size = New System.Drawing.Size(175, 14)
+        Me.txtData11.Size = New System.Drawing.Size(175, 15)
         Me.txtData11.TabIndex = 52
         Me.txtData11.Tag = Nothing
+        Me.txtData11.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData4
         '
-        Me.txtData4.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData4.AutoSize = False
+        Me.txtData4.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData4.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData4.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData4.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PAYBY", True))
         Me.txtData4.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData4.Location = New System.Drawing.Point(60, 91)
+        Me.txtData4.Location = New System.Drawing.Point(60, 90)
         Me.txtData4.Name = "txtData4"
         Me.txtData4.ReadOnly = True
-        Me.txtData4.Size = New System.Drawing.Size(50, 14)
+        Me.txtData4.Size = New System.Drawing.Size(50, 15)
         Me.txtData4.TabIndex = 53
         Me.txtData4.Tag = Nothing
+        Me.txtData4.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtAverage2
         '
-        Me.txtAverage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.txtAverage2.AutoSize = False
+        Me.txtAverage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtAverage2.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtAverage2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAverage2.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtAverage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAverage2.Location = New System.Drawing.Point(160, 106)
+        Me.txtAverage2.Location = New System.Drawing.Point(160, 105)
         Me.txtAverage2.Name = "txtAverage2"
         Me.txtAverage2.ReadOnly = True
-        Me.txtAverage2.Size = New System.Drawing.Size(75, 14)
+        Me.txtAverage2.Size = New System.Drawing.Size(75, 15)
         Me.txtAverage2.TabIndex = 55
         Me.txtAverage2.Tag = Nothing
         Me.txtAverage2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtAverage2.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtAverage2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData9
         '
-        Me.txtData9.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData9.AutoSize = False
+        Me.txtData9.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData9.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData9.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData9.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "EMAIL", True))
         Me.txtData9.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData9.Location = New System.Drawing.Point(285, 76)
+        Me.txtData9.Location = New System.Drawing.Point(285, 75)
         Me.txtData9.Name = "txtData9"
         Me.txtData9.ReadOnly = True
-        Me.txtData9.Size = New System.Drawing.Size(175, 14)
+        Me.txtData9.Size = New System.Drawing.Size(175, 15)
         Me.txtData9.TabIndex = 56
         Me.txtData9.Tag = Nothing
+        Me.txtData9.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData6
         '
-        Me.txtData6.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData6.AutoSize = False
+        Me.txtData6.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData6.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData6.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData6.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CONTACT", True))
         Me.txtData6.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData6.Location = New System.Drawing.Point(285, 31)
+        Me.txtData6.Location = New System.Drawing.Point(285, 30)
         Me.txtData6.Name = "txtData6"
         Me.txtData6.ReadOnly = True
-        Me.txtData6.Size = New System.Drawing.Size(175, 14)
+        Me.txtData6.Size = New System.Drawing.Size(175, 15)
         Me.txtData6.TabIndex = 58
         Me.txtData6.Tag = Nothing
+        Me.txtData6.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData3
         '
-        Me.txtData3.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData3.AutoSize = False
+        Me.txtData3.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData3.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CSZ", True))
         Me.txtData3.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData3.Location = New System.Drawing.Point(60, 61)
+        Me.txtData3.Location = New System.Drawing.Point(60, 60)
         Me.txtData3.Name = "txtData3"
         Me.txtData3.ReadOnly = True
-        Me.txtData3.Size = New System.Drawing.Size(175, 14)
+        Me.txtData3.Size = New System.Drawing.Size(175, 15)
         Me.txtData3.TabIndex = 59
         Me.txtData3.Tag = Nothing
+        Me.txtData3.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData0
         '
-        Me.txtData0.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData0.AutoSize = False
+        Me.txtData0.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData0.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData0.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData0.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "CUST_NUM", True))
         Me.txtData0.DataType = GetType(Integer)
         Me.txtData0.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
-        Me.txtData0.Location = New System.Drawing.Point(10, 33)
+        Me.txtData0.Location = New System.Drawing.Point(10, 30)
         Me.txtData0.Name = "txtData0"
-        Me.txtData0.Size = New System.Drawing.Size(45, 13)
+        Me.txtData0.Size = New System.Drawing.Size(45, 15)
         Me.txtData0.TabIndex = 60
         Me.txtData0.Tag = Nothing
+        Me.txtData0.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData5
         '
-        Me.txtData5.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData5.AutoSize = False
+        Me.txtData5.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData5.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData5.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData5.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "COUNTY", True))
         Me.txtData5.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData5.Location = New System.Drawing.Point(160, 91)
+        Me.txtData5.Location = New System.Drawing.Point(160, 90)
         Me.txtData5.Name = "txtData5"
         Me.txtData5.ReadOnly = True
-        Me.txtData5.Size = New System.Drawing.Size(75, 14)
+        Me.txtData5.Size = New System.Drawing.Size(75, 15)
         Me.txtData5.TabIndex = 63
         Me.txtData5.Tag = Nothing
+        Me.txtData5.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtAverage
         '
-        Me.txtAverage.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtAverage.AutoSize = False
+        Me.txtAverage.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtAverage.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtAverage.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtAverage.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
-        Me.txtAverage.Location = New System.Drawing.Point(385, 106)
+        Me.txtAverage.Location = New System.Drawing.Point(385, 105)
         Me.txtAverage.Name = "txtAverage"
         Me.txtAverage.ReadOnly = True
-        Me.txtAverage.Size = New System.Drawing.Size(75, 13)
+        Me.txtAverage.Size = New System.Drawing.Size(75, 15)
         Me.txtAverage.TabIndex = 64
         Me.txtAverage.Tag = Nothing
         Me.txtAverage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtAverage.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtAverage.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData8
         '
-        Me.txtData8.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData8.AutoSize = False
+        Me.txtData8.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData8.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData8.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData8.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "FAX_NO", True))
         Me.txtData8.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData8.Location = New System.Drawing.Point(285, 61)
+        Me.txtData8.Location = New System.Drawing.Point(285, 60)
         Me.txtData8.Name = "txtData8"
         Me.txtData8.ReadOnly = True
-        Me.txtData8.Size = New System.Drawing.Size(175, 14)
+        Me.txtData8.Size = New System.Drawing.Size(175, 15)
         Me.txtData8.TabIndex = 65
         Me.txtData8.Tag = Nothing
+        Me.txtData8.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData10
         '
-        Me.txtData10.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData10.AutoSize = False
+        Me.txtData10.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData10.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "URL", True))
         Me.txtData10.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData10.Location = New System.Drawing.Point(285, 91)
+        Me.txtData10.Location = New System.Drawing.Point(285, 90)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.ReadOnly = True
-        Me.txtData10.Size = New System.Drawing.Size(175, 14)
+        Me.txtData10.Size = New System.Drawing.Size(175, 15)
         Me.txtData10.TabIndex = 66
         Me.txtData10.Tag = Nothing
+        Me.txtData10.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'C1MainMenu1
@@ -738,18 +764,20 @@ Partial Class frmViewCust
         '
         'txtData7
         '
-        Me.txtData7.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.txtData7.AutoSize = False
+        Me.txtData7.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData7.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData7.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData7.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetCustBindingSource, "PHONE", True))
         Me.txtData7.DisabledForeColor = System.Drawing.Color.FromArgb(CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer), CType(CType(183, Byte), Integer))
         Me.txtData7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData7.Location = New System.Drawing.Point(285, 46)
+        Me.txtData7.Location = New System.Drawing.Point(285, 45)
         Me.txtData7.Name = "txtData7"
         Me.txtData7.ReadOnly = True
-        Me.txtData7.Size = New System.Drawing.Size(175, 14)
+        Me.txtData7.Size = New System.Drawing.Size(175, 15)
         Me.txtData7.TabIndex = 70
         Me.txtData7.Tag = Nothing
+        Me.txtData7.VerticalAlign = C1.Win.C1Input.VerticalAlignEnum.Middle
         Me.txtData7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'C1FlexReport1

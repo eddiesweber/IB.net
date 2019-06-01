@@ -88,26 +88,35 @@ Public Class frmViewCust
 
     Private Sub GetData1()
 
-        'Get customer departments
+        Dim intRow As Integer
+
         Try
-            strLocation = "GDO1.0"
+            'Get customer departments
             Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "GDO1.0"
             Me.SpGetCustDeptTableAdapter.Connection.ConnectionString = CS
             Me.SpGetCustDeptTableAdapter.Fill(IBPortlandDataSet.SpGetCustDept, CurCust)
+
+            If IBPortlandDataSet.Tables("spGetCust").Rows.Count > 0 Then
+                strLocation = "GDO2.0"
+                SpGetCustDeptBindingSource.MoveFirst()
+
+                If CurDept > 0 Then
+                    strLocation = "GDO3.0"
+                    intRow = SpGetCustDeptBindingSource.Find("DEPT", CurDept)
+                    If intRow >= 0 Then
+                        SpGetCustDeptBindingSource.Position = intRow
+                    End If
+                End If
+            End If
+
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine Getdata1 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData1", vbOK)
             LogError(Me.Name, "GetData1", strLocation, ex.Message)
         End Try
-
-        If IBPortlandDataSet.Tables("spGetCust").Rows.Count > 0 Then
-            'data1(1).Recordset.MoveFirst
-            If CurDept > 0 Then
-                '   data1(1).Recordset.Find "DEPT=" & CStr(CurDept)
-                '   If data1(1).Recordset.EOF Then data1(1).Recordset.MoveFirst
-            End If
-        End If
 
     End Sub
 
@@ -124,7 +133,6 @@ Public Class frmViewCust
                 CurDept = CInt(grdDept.Columns("Dept").CellValue(Me.grdDept.Row))
             End If
 
-            'If buserchange Then
             strLocation = "GDT2.0"
             Me.SpGetCustRouteTableAdapter.Connection.ConnectionString = CS
             Me.SpGetCustRouteTableAdapter.Fill(IBPortlandDataSet.SpGetCustRoute, CurCust, CurDept)
@@ -134,7 +142,6 @@ Public Class frmViewCust
             Me.SpGetCustItemTableAdapter.Fill(IBPortlandDataSet.SpGetCustItem, CurCust, CurDept)
 
             Me.Cursor = Cursors.Default
-            'End If
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine Getdata2 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData2", vbOK)
@@ -274,25 +281,6 @@ Public Class frmViewCust
 
     End Sub
 
-    'Private Sub SetDbConnection()
-
-    '    ' Set database information
-    '    ConnInfo = New CrystalDecisions.Shared.ConnectionInfo
-    '    ConnInfo.ServerName = Server.Trim
-    '    ConnInfo.DatabaseName = DBName.Trim
-    '    ConnInfo.UserID = Username.Trim
-    '    ConnInfo.Password = Password.Trim
-
-    '    For Each CTable As Table In RPT.Database.Tables
-    '        CTable.LogOnInfo.ConnectionInfo = ConnInfo
-    '        CTableLogInfo = CTable.LogOnInfo
-    '        CTableLogInfo.ReportName = RPT.Name
-    '        CTableLogInfo.TableName = CTable.Name
-    '        CTable.ApplyLogOnInfo(CTableLogInfo)
-    '    Next
-
-    'End Sub
-
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
 
         Me.Cursor = Cursors.WaitCursor
@@ -308,24 +296,6 @@ Public Class frmViewCust
         RPT.PrintToPrinter(1, True, 0, 0)
 
         Me.Cursor = Cursors.Default
-
-        'Report.Load(System.AppDomain.CurrentDomain.BaseDirectory() & "CustInfo.rpt")
-
-        'Dim dt As New DataTable                     ' THE DATATABLE HAS THE DATA FROM THE DATABASE.
-        'Report.SetDataSource(dt)                    ' SET REPORT DATA SOURCE.
-        'Report.PrintToPrinter(1, True, 0, 0)        ' FINALY, PRINT IT.
-
-        'With RPT
-        '    .ReportFileName = DataPath & "\Custinfo.rpt"
-        '    .Connect = CryCS
-        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "{CustomerMaster.CUST_NUM}=" & CStr(CurCust)
-        '    .Destination = 1
-        '    .Action = 1
-        '    .Formulas(0) = ""
-        '    .SelectionFormula = ""
-        '    .ReportFileName = ""
-        'End With
 
     End Sub
 
@@ -351,34 +321,6 @@ Public Class frmViewCust
 
         frmViewReport.lblReportName.Text = "deadbeatcust.rpt"
         frmViewReport.Show()
-
-        'Me.Cursor = Cursors.WaitCursor
-
-        'Dim rptCrxReport As New ReportDocument
-        'rptCrxReport.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
-
-        'SetDbConnection(rptCrxReport)
-
-        ''rptCrxReport.SetParameterValue("CompanyName", frmMain.Text)
-        'rptCrxReport.SetParameterValue("CustNum", CurCust)
-
-        'rptCrxReport.PrintToPrinter(1, True, 0, 0)
-
-        'Me.Cursor = Cursors.Default
-
-        'With RPT
-        '    .ReportFileName = RptPath & "\deadbeatcust.rpt"
-        '    .Connect = CryCS
-        '    '.Formulas(0) = "RUNDATE=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-        '    ' .Formulas(1) = "COMPANY='" & CompanyName & "'"
-        '    .SelectionFormula = "{custcopy.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{ARCUSTSCOPY2.Cust # (2)}=" & CurCust
-        '    '.SelectionFormula = "{custcopy.Cust # (2)}in [" & txtcustnum.Text & "]"
-        '    .Action = 1
-        '    .Destination = 0
-        '    ' .Formulas(0) = ""
-        '    ' .Formulas(1) = ""
-        '    .ReportF
 
     End Sub
 

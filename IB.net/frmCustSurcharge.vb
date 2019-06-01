@@ -29,13 +29,6 @@ Public Class frmCustSurcharge
         'txtData3.MaxLength = txtData3.DataField.Length
         'txtData19.MaxLength = txtData19.DataField.Length
 
-        ' Create one event handler for each text box
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox Then
-                AddHandler ctrl.TextChanged, AddressOf boxfocus
-            End If
-        Next
-
         If CurCust = 0 Then
             frmFindCust.Show()
             frmFindCust.BringToFront()
@@ -56,16 +49,6 @@ Public Class frmCustSurcharge
             GetData()
         End If
         buserchange = True
-
-    End Sub
-
-    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
-
-        bTextChanged = True
-
-        If buserchange Then
-            SetModeChange()
-        End If
 
     End Sub
 
@@ -119,6 +102,7 @@ Public Class frmCustSurcharge
         End If
 
         CurDept = DsspGetCustDept.SpGetCustDept.Rows(intRow)("DEPT")
+        txtCustDept.Text = DsspGetCustDept.SpGetCustDept.Rows(intRow)("Name")
 
         ' rs / data1
         Me.CustomerSurchargeTableAdapter.Connection.ConnectionString = CS
@@ -133,7 +117,7 @@ Public Class frmCustSurcharge
         Dim intRow As Integer
 
         If DsCustomerSurcharge.CustomerSurcharge.Rows.Count = 0 Then
-            cmdNew.PerformClick()
+            'cmdNew.PerformClick()
         Else
             If CurItem > 0 Then
                 CustomerSurchargeBindingSource.MoveFirst()
@@ -149,6 +133,40 @@ Public Class frmCustSurcharge
             SetModeReg()
 
             SetControls()
+        End If
+
+    End Sub
+
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtData3.TextChanged, txtData2.TextChanged, txtData19.TextChanged, txtData1.TextChanged
+
+        bTextChanged = True
+
+        If buserchange Then
+            SetModeChange()
+        Else
+            'Handle invisible boxes
+            Select Case sender.name
+                Case "txtData1"
+                    'lstDept.BoundText = txtData(1).Text
+                Case "txtData2"
+                    If Not buserchange2 Then
+                        'lstItem.BoundText = txtData(2).Text
+                    End If
+            End Select
+        End If
+
+    End Sub
+
+    Private Sub lstDept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstDept.SelectedIndexChanged
+
+        If buserchange Then
+            buserchange = False
+
+            CurDept = lstDept.SelectedValue
+
+            GetData2()
+
+            buserchange = True
         End If
 
     End Sub
@@ -243,22 +261,6 @@ Public Class frmCustSurcharge
         txtData2.Visible = False
         lstItem.Visible = True
         cmdFindItem.Visible = False
-
-    End Sub
-
-    Private Sub lstDept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstDept.SelectedIndexChanged
-
-        If buserchange Then
-            buserchange = False
-
-            If SpGetCustDeptBindingSource.Count > 0 Then
-                CurDept = CType(SpGetCustDeptBindingSource.Current, DataRowView).Item("Dept").ToString()
-            End If
-
-            GetData2()
-
-            buserchange = True
-        End If
 
     End Sub
 

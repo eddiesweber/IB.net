@@ -25,13 +25,6 @@ Public Class frmDelQty
         'Line1(0).Y2 = Me.ScaleHeight
         'Line1(1).Y2 = Me.ScaleHeight
 
-        ' Create one event handler for each text box
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox Then
-                AddHandler ctrl.TextChanged, AddressOf boxfocus
-            End If
-        Next
-
         SetModeReg()
 
         If CurCust = 0 Then
@@ -58,12 +51,18 @@ Public Class frmDelQty
 
     End Sub
 
-    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtdata1.TextChanged
 
         bTextChanged = True
 
         If buserchange Then
             SetModeChange()
+        Else
+            'Handle invisible boxes
+            Select Case sender.name
+                Case "txtData1"
+                    'lstDept.BoundText = txtData(1).Text
+            End Select
         End If
 
     End Sub
@@ -118,6 +117,7 @@ Public Class frmDelQty
         End If
 
         CurDept = DsspGetCustDept.SpGetCustDept.Rows(intRow)("DEPT")
+        txtCustDept.Text = DsspGetCustDept.SpGetCustDept.Rows(intRow)("Name")
 
         ' rs / data1
         VwGetDelQtyTableAdapter.Connection.ConnectionString = CS
@@ -216,4 +216,5 @@ Public Class frmDelQty
         grdItems.SaveLayout("frmDelQtygrdItems.xml")
 
     End Sub
+
 End Class

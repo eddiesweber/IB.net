@@ -225,6 +225,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetCustsSrch.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetCustsSrch.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetCustsSrch.vb">
+      <DependentUpon>dsspGetCustsSrch.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvCustAlpha.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1303,6 +1311,17 @@
     </None>
     <None Include="dsspGetCustsNum.xss">
       <DependentUpon>dsspGetCustsNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsSrch.xsc">
+      <DependentUpon>dsspGetCustsSrch.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetCustsSrch.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetCustsSrch.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetCustsSrch.xss">
+      <DependentUpon>dsspGetCustsSrch.xsd</DependentUpon>
     </None>
     <None Include="dsspGetInvCustAlpha.xsc">
       <DependentUpon>dsspGetInvCustAlpha.xsd</DependentUpon>

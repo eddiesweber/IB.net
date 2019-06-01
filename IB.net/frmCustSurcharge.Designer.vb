@@ -23,6 +23,7 @@ Partial Class frmCustSurcharge
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustSurcharge))
         Me.CustomerSurchargeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCustomerSurcharge = New IB.net.dsCustomerSurcharge()
         Me.lstDept = New System.Windows.Forms.ListBox()
@@ -92,6 +93,7 @@ Partial Class frmCustSurcharge
         Me.lstDept.Name = "lstDept"
         Me.lstDept.Size = New System.Drawing.Size(45, 56)
         Me.lstDept.TabIndex = 21
+        Me.lstDept.ValueMember = "DEPT"
         '
         'SpGetCustDeptBindingSource
         '
@@ -144,7 +146,7 @@ Partial Class frmCustSurcharge
         'lblLabel1
         '
         Me.lblLabel1.AutoSize = True
-        Me.lblLabel1.Location = New System.Drawing.Point(7, 19)
+        Me.lblLabel1.Location = New System.Drawing.Point(7, 16)
         Me.lblLabel1.Name = "lblLabel1"
         Me.lblLabel1.Size = New System.Drawing.Size(54, 13)
         Me.lblLabel1.TabIndex = 0
@@ -277,9 +279,9 @@ Partial Class frmCustSurcharge
         Me.txtItemDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtItemDesc.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtItemDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtItemDesc.Location = New System.Drawing.Point(130, 75)
+        Me.txtItemDesc.Location = New System.Drawing.Point(154, 75)
         Me.txtItemDesc.Name = "txtItemDesc"
-        Me.txtItemDesc.Size = New System.Drawing.Size(230, 13)
+        Me.txtItemDesc.Size = New System.Drawing.Size(206, 13)
         Me.txtItemDesc.TabIndex = 91
         Me.txtItemDesc.Tag = Nothing
         Me.txtItemDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -302,9 +304,9 @@ Partial Class frmCustSurcharge
         Me.txtData2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerSurchargeBindingSource, "Item_Num", True))
         Me.txtData2.DataType = GetType(Integer)
-        Me.txtData2.Location = New System.Drawing.Point(209, 161)
+        Me.txtData2.Location = New System.Drawing.Point(195, 161)
         Me.txtData2.Name = "txtData2"
-        Me.txtData2.Size = New System.Drawing.Size(75, 18)
+        Me.txtData2.Size = New System.Drawing.Size(50, 18)
         Me.txtData2.TabIndex = 93
         Me.txtData2.Tag = Nothing
         Me.txtData2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -335,9 +337,9 @@ Partial Class frmCustSurcharge
         Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerSurchargeBindingSource, "Dept", True))
         Me.txtData1.DataType = GetType(Short)
-        Me.txtData1.Location = New System.Drawing.Point(294, 161)
+        Me.txtData1.Location = New System.Drawing.Point(279, 161)
         Me.txtData1.Name = "txtData1"
-        Me.txtData1.Size = New System.Drawing.Size(43, 18)
+        Me.txtData1.Size = New System.Drawing.Size(58, 18)
         Me.txtData1.TabIndex = 95
         Me.txtData1.Tag = Nothing
         Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -351,6 +353,7 @@ Partial Class frmCustSurcharge
         Me.cmdFindItem.TabIndex = 96
         Me.cmdFindItem.Text = "Find &Item"
         Me.cmdFindItem.UseVisualStyleBackColor = True
+        Me.cmdFindItem.Visible = False
         Me.cmdFindItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdFindItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
@@ -358,7 +361,7 @@ Partial Class frmCustSurcharge
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(471, 184)
+        Me.ClientSize = New System.Drawing.Size(471, 161)
         Me.Controls.Add(Me.cmdFindItem)
         Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtData3)
@@ -382,6 +385,7 @@ Partial Class frmCustSurcharge
         Me.Controls.Add(Me.lblCurItem)
         Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.lstDept)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(65, 153)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

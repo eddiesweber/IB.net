@@ -22,6 +22,7 @@ Partial Class frmFindCustSrch
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFindCustSrch))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -29,12 +30,16 @@ Partial Class frmFindCustSrch
         Me.cmdRefresh = New C1.Win.C1Input.C1Button()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
-        Me.lstDelName = New C1.Win.C1List.C1List()
+        Me.lstDelName = New System.Windows.Forms.ListBox()
+        Me.DsspGetCustsSrch = New IB.net.dsspGetCustsSrch()
+        Me.SpGetCustsSrchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpGetCustsSrchTableAdapter = New IB.net.dsspGetCustsSrchTableAdapters.spGetCustsSrchTableAdapter()
         CType(Me.txtSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lstDelName, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetCustsSrch, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpGetCustsSrchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -49,7 +54,7 @@ Partial Class frmFindCustSrch
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(165, 10)
+        Me.Label3.Location = New System.Drawing.Point(160, 10)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 13)
         Me.Label3.TabIndex = 3
@@ -79,7 +84,7 @@ Partial Class frmFindCustSrch
         '
         'cmdCancel
         '
-        Me.cmdCancel.Location = New System.Drawing.Point(346, 105)
+        Me.cmdCancel.Location = New System.Drawing.Point(340, 113)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(85, 25)
         Me.cmdCancel.TabIndex = 9
@@ -90,7 +95,7 @@ Partial Class frmFindCustSrch
         '
         'cmdSelect
         '
-        Me.cmdSelect.Location = New System.Drawing.Point(346, 30)
+        Me.cmdSelect.Location = New System.Drawing.Point(340, 30)
         Me.cmdSelect.Name = "cmdSelect"
         Me.cmdSelect.Size = New System.Drawing.Size(85, 25)
         Me.cmdSelect.TabIndex = 10
@@ -101,29 +106,35 @@ Partial Class frmFindCustSrch
         '
         'lstDelName
         '
-        Me.lstDelName.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.lstDelName.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstDelName.Images.Add(CType(resources.GetObject("lstDelName.Images"), System.Drawing.Image))
-        Me.lstDelName.Location = New System.Drawing.Point(165, 30)
-        Me.lstDelName.MatchEntryTimeout = CType(2000, Long)
+        Me.lstDelName.DataSource = Me.SpGetCustsSrchBindingSource
+        Me.lstDelName.DisplayMember = "DEL_NAME"
+        Me.lstDelName.FormattingEnabled = True
+        Me.lstDelName.Location = New System.Drawing.Point(163, 30)
         Me.lstDelName.Name = "lstDelName"
-        Me.lstDelName.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.lstDelName.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.lstDelName.PreviewInfo.ZoomFactor = 75.0R
-        Me.lstDelName.PrintInfo.PageSettings = CType(resources.GetObject("lstDelName.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstDelName.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.lstDelName.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.lstDelName.ShowHeaderCheckBox = False
-        Me.lstDelName.Size = New System.Drawing.Size(175, 100)
+        Me.lstDelName.Size = New System.Drawing.Size(171, 108)
         Me.lstDelName.TabIndex = 11
-        Me.lstDelName.Text = "C1List1"
-        Me.lstDelName.PropBag = resources.GetString("lstDelName.PropBag")
+        Me.lstDelName.ValueMember = "CUST_NUM"
+        '
+        'DsspGetCustsSrch
+        '
+        Me.DsspGetCustsSrch.DataSetName = "dsspGetCustsSrch"
+        Me.DsspGetCustsSrch.EnforceConstraints = False
+        Me.DsspGetCustsSrch.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SpGetCustsSrchBindingSource
+        '
+        Me.SpGetCustsSrchBindingSource.DataMember = "spGetCustsSrch"
+        Me.SpGetCustsSrchBindingSource.DataSource = Me.DsspGetCustsSrch
+        '
+        'SpGetCustsSrchTableAdapter
+        '
+        Me.SpGetCustsSrchTableAdapter.ClearBeforeFill = True
         '
         'frmFindCustSrch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(444, 141)
+        Me.ClientSize = New System.Drawing.Size(434, 149)
         Me.Controls.Add(Me.lstDelName)
         Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.cmdCancel)
@@ -143,7 +154,8 @@ Partial Class frmFindCustSrch
         CType(Me.cmdRefresh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lstDelName, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetCustsSrch, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpGetCustsSrchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -154,5 +166,8 @@ Partial Class frmFindCustSrch
     Friend WithEvents cmdRefresh As C1.Win.C1Input.C1Button
     Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
     Friend WithEvents cmdSelect As C1.Win.C1Input.C1Button
-    Friend WithEvents lstDelName As C1.Win.C1List.C1List
+    Friend WithEvents lstDelName As ListBox
+    Friend WithEvents SpGetCustsSrchBindingSource As BindingSource
+    Friend WithEvents DsspGetCustsSrch As dsspGetCustsSrch
+    Friend WithEvents SpGetCustsSrchTableAdapter As dsspGetCustsSrchTableAdapters.spGetCustsSrchTableAdapter
 End Class

@@ -22,10 +22,11 @@ Partial Class frmZipSearch
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmZipSearch))
         Me.Splitter1 = New System.Windows.Forms.Splitter()
         Me.Frame1 = New System.Windows.Forms.GroupBox()
         Me.optZip = New System.Windows.Forms.RadioButton()
-        Me.OPTcITY = New System.Windows.Forms.RadioButton()
+        Me.optCity = New System.Windows.Forms.RadioButton()
         Me.lblCityorZip = New System.Windows.Forms.Label()
         Me.txtZip = New C1.Win.C1Input.C1TextBox()
         Me.cmdPrint = New C1.Win.C1Input.C1Button()
@@ -45,7 +46,7 @@ Partial Class frmZipSearch
         'Frame1
         '
         Me.Frame1.Controls.Add(Me.optZip)
-        Me.Frame1.Controls.Add(Me.OPTcITY)
+        Me.Frame1.Controls.Add(Me.optCity)
         Me.Frame1.Location = New System.Drawing.Point(10, 10)
         Me.Frame1.Name = "Frame1"
         Me.Frame1.Size = New System.Drawing.Size(201, 77)
@@ -64,17 +65,17 @@ Partial Class frmZipSearch
         Me.optZip.Text = "ZIP CODE"
         Me.optZip.UseVisualStyleBackColor = True
         '
-        'OPTcITY
+        'optCity
         '
-        Me.OPTcITY.AutoSize = True
-        Me.OPTcITY.ForeColor = System.Drawing.Color.Black
-        Me.OPTcITY.Location = New System.Drawing.Point(16, 48)
-        Me.OPTcITY.Name = "OPTcITY"
-        Me.OPTcITY.Size = New System.Drawing.Size(49, 17)
-        Me.OPTcITY.TabIndex = 2
-        Me.OPTcITY.TabStop = True
-        Me.OPTcITY.Text = "CITY"
-        Me.OPTcITY.UseVisualStyleBackColor = True
+        Me.optCity.AutoSize = True
+        Me.optCity.ForeColor = System.Drawing.Color.Black
+        Me.optCity.Location = New System.Drawing.Point(16, 48)
+        Me.optCity.Name = "optCity"
+        Me.optCity.Size = New System.Drawing.Size(49, 17)
+        Me.optCity.TabIndex = 2
+        Me.optCity.TabStop = True
+        Me.optCity.Text = "CITY"
+        Me.optCity.UseVisualStyleBackColor = True
         '
         'lblCityorZip
         '
@@ -117,6 +118,7 @@ Partial Class frmZipSearch
         Me.Controls.Add(Me.lblCityorZip)
         Me.Controls.Add(Me.Frame1)
         Me.Controls.Add(Me.Splitter1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(120, 190)
         Me.Name = "frmZipSearch"
         Me.Text = "CUSTOMER AREA REPORT"
@@ -130,7 +132,7 @@ Partial Class frmZipSearch
     End Sub
     Friend WithEvents Splitter1 As Splitter
     Friend WithEvents Frame1 As GroupBox
-    Friend WithEvents OPTcITY As RadioButton
+    Friend WithEvents optCity As RadioButton
     Friend WithEvents optZip As RadioButton
     Friend WithEvents lblCityorZip As Label
     Friend WithEvents txtZip As C1.Win.C1Input.C1TextBox
