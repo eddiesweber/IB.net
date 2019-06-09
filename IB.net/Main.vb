@@ -62,6 +62,27 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
+    Public Function GetWeekDay(D As Date) As Integer
+
+        Dim Base As Date
+        Dim Day As Integer
+        Dim WDay As Integer
+        Dim Week As Integer
+
+        'Validate for weekend and get weekday
+        Base = CDate("1/12/97") 'Sunday before week 1
+        Day = DateDiff(DateInterval.Day, Base, D) Mod 28
+        WDay = Day Mod 7
+
+        If WDay = 0 Or WDay = 6 Then
+            GetWeekDay = 99
+        Else
+            Week = Int(Day / 7) + 1
+            GetWeekDay = Week * 10 + WDay
+        End If
+
+    End Function
+
     Public Sub SelectPrinter(bStartUp As Boolean)
 
         ' If strPrinterName is available at startup, set the priner

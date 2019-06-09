@@ -93,6 +93,8 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.AnalysisServices.AdomdClient, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AnalysisServices.SPClient.Interfaces, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -125,10 +127,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dsCalcLog_RunDate.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCalcLog_RunDate.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsCategoryMaster.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsCompany_LASTCALC.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCompany_LASTCALC.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsCustomerDepartment.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1092,6 +1104,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="dsCalcLog_RunDate.xsc">
+      <DependentUpon>dsCalcLog_RunDate.xsd</DependentUpon>
+    </None>
+    <None Include="dsCalcLog_RunDate.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCalcLog_RunDate.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCalcLog_RunDate.xss">
+      <DependentUpon>dsCalcLog_RunDate.xsd</DependentUpon>
+    </None>
     <None Include="dsCategoryMaster.xsc">
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
     </None>
@@ -1102,6 +1125,17 @@
     </None>
     <None Include="dsCategoryMaster.xss">
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
+    </None>
+    <None Include="dsCompany_LASTCALC.xsc">
+      <DependentUpon>dsCompany_LASTCALC.xsd</DependentUpon>
+    </None>
+    <None Include="dsCompany_LASTCALC.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCompany_LASTCALC.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCompany_LASTCALC.xss">
+      <DependentUpon>dsCompany_LASTCALC.xsd</DependentUpon>
     </None>
     <None Include="dsCustomerDepartment.xsc">
       <DependentUpon>dsCustomerDepartment.xsd</DependentUpon>

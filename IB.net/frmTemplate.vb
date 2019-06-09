@@ -110,47 +110,31 @@ Public Class frmTemplate
     Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
 
         ' frmCompany
-        Dim strSQL As String
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT * FROM CustomerMaster WHERE CUST_NUM=" & CurCust, connection)
 
-        'lstCompany.Items.Clear()
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        strSQL = "Select * From IBConfig"
-        Using Command As New SqlCommand(strSQL, configDB)
             Try
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                If dataReader.HasRows Then
-                    Do While dataReader.Read()
-                        'lstCompany.Items.Add(dataReader.Item("Location_ID"))
-                    Loop
+                connection.Open()
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+
+                If dataReader.HasRows = True Then
+                    dataReader.Read()
+
+                    'drv.Row.Item("CUST_NUM") = CurCust
+                    'drv.Row.Item("DEL_NAME") = dataReader("BILL_NAME")
+
                 End If
                 dataReader.Close()
-
             Catch ex As Exception
-                LogError(Me.Name, "frmCompany_Load", "1.0", ex.Message)
-                MessageBox.Show("Error in form: frmCompany, error loading division names to listbox." & vbNewLine & ex.Message)
-            End Try
-        End Using
-
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
-        Using Command As New SqlCommand(strSQL, configDB)
-            Try
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                dataReader.Read()
-
-                If dataReader.HasRows Then
-                    DBName = dataReader.Item("DBName")
-                    Server = dataReader.Item("ServerName")
+                Result = MessageBox.Show(Me, "Error adding new item" & vbNewLine & "Error : " & ex.Message, "Adding new", vbOKCancel)
+                LogError(Me.Name, "CustomerDepartmentBindingSource_AddingNew", "1.0", ex.Message)
+                If Result = vbCancel Then
+                    Exit Sub
+                Else
+                    Exit Try
                 End If
-
-                dataReader.Close()
-            Catch ex As Exception
-                Me.Cursor = Cursors.Default
-                LogError(Me.Name, "cmdConnectDivision_Click", "1.0", ex.Message)
-                MessageBox.Show("Error getting division name (FSC-CCD1.0)" & vbNewLine & ex.Message, "Division Name")
-
-                Exit Sub
             End Try
+
         End Using
 
     End Sub

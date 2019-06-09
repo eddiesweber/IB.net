@@ -319,6 +319,7 @@ Partial Class frmInvoice
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvoiceHeadingBindingSource, "DATE", True))
         Me.txtData10.DataType = GetType(Date)
+        Me.txtData10.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.txtData10.Location = New System.Drawing.Point(270, 40)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Padding = New System.Windows.Forms.Padding(1)
@@ -429,6 +430,7 @@ Partial Class frmInvoice
         Me.txtData14.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData14.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.SpGetInvoiceHeadingBindingSource, "TAX_MON", True))
         Me.txtData14.DataType = GetType(Decimal)
+        Me.txtData14.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.txtData14.Location = New System.Drawing.Point(60, 35)
         Me.txtData14.Name = "txtData14"
         Me.txtData14.Padding = New System.Windows.Forms.Padding(1)
