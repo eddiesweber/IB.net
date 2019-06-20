@@ -72,6 +72,8 @@ Partial Class frmCust
         Me.chkData = New C1.Win.C1Input.C1CheckBox()
         Me.txtData17 = New C1.Win.C1Input.C1TextBox()
         Me.txtLastChanged = New C1.Win.C1Input.C1TextBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,7 +160,7 @@ Partial Class frmCust
         'lblCurCust
         '
         Me.lblCurCust.AutoSize = True
-        Me.lblCurCust.Location = New System.Drawing.Point(181, 16)
+        Me.lblCurCust.Location = New System.Drawing.Point(518, 217)
         Me.lblCurCust.Name = "lblCurCust"
         Me.lblCurCust.Size = New System.Drawing.Size(44, 13)
         Me.lblCurCust.TabIndex = 35
@@ -300,7 +302,7 @@ Partial Class frmCust
         '
         'cmdNew
         '
-        Me.cmdNew.Location = New System.Drawing.Point(480, 10)
+        Me.cmdNew.Location = New System.Drawing.Point(496, 10)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
         Me.cmdNew.TabIndex = 17
@@ -311,7 +313,7 @@ Partial Class frmCust
         '
         'cmdDelete
         '
-        Me.cmdDelete.Location = New System.Drawing.Point(480, 40)
+        Me.cmdDelete.Location = New System.Drawing.Point(496, 40)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
         Me.cmdDelete.TabIndex = 18
@@ -323,7 +325,7 @@ Partial Class frmCust
         'cmdReset
         '
         Me.cmdReset.Enabled = False
-        Me.cmdReset.Location = New System.Drawing.Point(480, 70)
+        Me.cmdReset.Location = New System.Drawing.Point(496, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
         Me.cmdReset.TabIndex = 19
@@ -335,7 +337,7 @@ Partial Class frmCust
         'cmdUpdate
         '
         Me.cmdUpdate.Enabled = False
-        Me.cmdUpdate.Location = New System.Drawing.Point(480, 100)
+        Me.cmdUpdate.Location = New System.Drawing.Point(496, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
         Me.cmdUpdate.TabIndex = 20
@@ -346,7 +348,7 @@ Partial Class frmCust
         '
         'cmdExit
         '
-        Me.cmdExit.Location = New System.Drawing.Point(480, 130)
+        Me.cmdExit.Location = New System.Drawing.Point(496, 130)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
         Me.cmdExit.TabIndex = 21
@@ -357,6 +359,7 @@ Partial Class frmCust
         '
         'cmdEditDept
         '
+        Me.cmdEditDept.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdEditDept.Location = New System.Drawing.Point(80, 315)
         Me.cmdEditDept.Name = "cmdEditDept"
         Me.cmdEditDept.Size = New System.Drawing.Size(230, 25)
@@ -581,7 +584,7 @@ Partial Class frmCust
         Me.txtOption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtOption.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "PAY_TYPE", True))
         Me.txtOption.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOption.Location = New System.Drawing.Point(545, 322)
+        Me.txtOption.Location = New System.Drawing.Point(556, 322)
         Me.txtOption.Name = "txtOption"
         Me.txtOption.Size = New System.Drawing.Size(20, 18)
         Me.txtOption.TabIndex = 65
@@ -612,7 +615,6 @@ Partial Class frmCust
         Me.txtData17.AutoSize = False
         Me.txtData17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData17.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtData17.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "COMMENTS", True))
         Me.txtData17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtData17.Location = New System.Drawing.Point(325, 40)
         Me.txtData17.Multiline = True
@@ -629,19 +631,38 @@ Partial Class frmCust
         Me.txtLastChanged.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerMasterBindingSource, "Last_Change", True))
         Me.txtLastChanged.DataType = GetType(Date)
         Me.txtLastChanged.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLastChanged.Location = New System.Drawing.Point(600, 226)
+        Me.txtLastChanged.Location = New System.Drawing.Point(496, 237)
         Me.txtLastChanged.Name = "txtLastChanged"
-        Me.txtLastChanged.Size = New System.Drawing.Size(100, 18)
+        Me.txtLastChanged.Size = New System.Drawing.Size(80, 18)
         Me.txtLastChanged.TabIndex = 66
         Me.txtLastChanged.Tag = Nothing
         Me.txtLastChanged.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtLastChanged.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.Line1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(594, 351)
+        Me.ShapeContainer1.TabIndex = 67
+        Me.ShapeContainer1.TabStop = False
+        '
+        'Line1
+        '
+        Me.Line1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Line1.Name = "Line1"
+        Me.Line1.X1 = 480
+        Me.Line1.X2 = 480
+        Me.Line1.Y1 = 0
+        Me.Line1.Y2 = 220
+        '
         'frmCust
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(574, 351)
+        Me.ClientSize = New System.Drawing.Size(594, 351)
         Me.Controls.Add(Me.txtLastChanged)
         Me.Controls.Add(Me.txtData17)
         Me.Controls.Add(Me.chkData)
@@ -685,6 +706,7 @@ Partial Class frmCust
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.optData0)
         Me.Controls.Add(Me.optData1)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(134, 111)
         Me.MaximizeBox = False
@@ -772,4 +794,6 @@ Partial Class frmCust
     Private WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
     Private WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
     Friend WithEvents txtLastChanged As C1.Win.C1Input.C1TextBox
+    Friend WithEvents ShapeContainer1 As PowerPacks.ShapeContainer
+    Friend WithEvents Line1 As PowerPacks.LineShape
 End Class

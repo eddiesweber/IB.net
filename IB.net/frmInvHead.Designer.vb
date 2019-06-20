@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmInvHead
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmInvHead
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.chkCC = New System.Windows.Forms.CheckBox()
@@ -42,8 +42,12 @@ Partial Class frmInvHead
         Me.lblLabel2 = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.lstDept = New System.Windows.Forms.ListBox()
+        Me.SpGetCustDeptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetCustDepts = New IB.net.dsspGetCustDepts()
         Me.txtCustName = New C1.Win.C1Input.C1TextBox()
         Me.txtData10 = New C1.Win.C1Input.C1TextBox()
+        Me.InvoiceHeaderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsInvoiceHeader = New IB.net.dsInvoiceHeader()
         Me.txtData3 = New C1.Win.C1Input.C1TextBox()
         Me.txtData1 = New C1.Win.C1Input.C1TextBox()
         Me.txtData0 = New C1.Win.C1Input.C1TextBox()
@@ -75,16 +79,21 @@ Partial Class frmInvHead
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.datData0 = New C1.Win.Calendar.C1DateEdit()
-        Me.DsInvoiceHeader = New IB.net.dsInvoiceHeader()
-        Me.InvoiceHeaderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.InvoiceHeaderTableAdapter = New IB.net.dsInvoiceHeaderTableAdapters.InvoiceHeaderTableAdapter()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.DsspGetCustDepts = New IB.net.dsspGetCustDepts()
-        Me.SpGetCustDeptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SpGetCustDeptsTableAdapter = New IB.net.dsspGetCustDeptsTableAdapters.spGetCustDeptsTableAdapter()
+        Me.DS_CustomerMaster = New IB.net.DS_CustomerMaster()
+        Me.CustomerMasterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CustomerMasterTableAdapter = New IB.net.DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter()
+        Me.DsspGetTaxCodes = New IB.net.dsspGetTaxCodes()
+        Me.SpGetTaxCodesTableAdapter = New IB.net.dsspGetTaxCodesTableAdapters.spGetTaxCodesTableAdapter()
+        CType(Me.SpGetCustDeptsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetCustDepts, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InvoiceHeaderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsInvoiceHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,10 +120,9 @@ Partial Class frmInvHead
         CType(Me.txtData14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtData13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datData0, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsInvoiceHeader, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InvoiceHeaderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetCustDepts, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpGetCustDeptsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_CustomerMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkCC
@@ -291,6 +299,16 @@ Partial Class frmInvHead
         Me.lstDept.TabIndex = 47
         Me.lstDept.ValueMember = "DEPT"
         '
+        'SpGetCustDeptsBindingSource
+        '
+        Me.SpGetCustDeptsBindingSource.DataMember = "spGetCustDepts"
+        Me.SpGetCustDeptsBindingSource.DataSource = Me.DsspGetCustDepts
+        '
+        'DsspGetCustDepts
+        '
+        Me.DsspGetCustDepts.DataSetName = "dsspGetCustDepts"
+        Me.DsspGetCustDepts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtCustName
         '
         Me.txtCustName.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
@@ -316,6 +334,16 @@ Partial Class frmInvHead
         Me.txtData10.Tag = Nothing
         Me.txtData10.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtData10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'InvoiceHeaderBindingSource
+        '
+        Me.InvoiceHeaderBindingSource.DataMember = "InvoiceHeader"
+        Me.InvoiceHeaderBindingSource.DataSource = Me.DsInvoiceHeader
+        '
+        'DsInvoiceHeader
+        '
+        Me.DsInvoiceHeader.DataSetName = "dsInvoiceHeader"
+        Me.DsInvoiceHeader.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtData3
         '
@@ -389,6 +417,7 @@ Partial Class frmInvHead
         '
         'cmdExit
         '
+        Me.cmdExit.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.cmdExit.Location = New System.Drawing.Point(398, 132)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
@@ -400,6 +429,7 @@ Partial Class frmInvHead
         '
         'cmdUpdate
         '
+        Me.cmdUpdate.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.cmdUpdate.Enabled = False
         Me.cmdUpdate.Location = New System.Drawing.Point(398, 102)
         Me.cmdUpdate.Name = "cmdUpdate"
@@ -412,6 +442,7 @@ Partial Class frmInvHead
         '
         'cmdReset
         '
+        Me.cmdReset.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(398, 72)
         Me.cmdReset.Name = "cmdReset"
@@ -424,6 +455,7 @@ Partial Class frmInvHead
         '
         'cmdDelete
         '
+        Me.cmdDelete.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.cmdDelete.Location = New System.Drawing.Point(398, 42)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
@@ -435,6 +467,7 @@ Partial Class frmInvHead
         '
         'cmdNew
         '
+        Me.cmdNew.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.cmdNew.Location = New System.Drawing.Point(398, 12)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
@@ -558,6 +591,7 @@ Partial Class frmInvHead
         '
         'cmdItem
         '
+        Me.cmdItem.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdItem.Location = New System.Drawing.Point(230, 375)
         Me.cmdItem.Name = "cmdItem"
         Me.cmdItem.Size = New System.Drawing.Size(145, 25)
@@ -569,6 +603,7 @@ Partial Class frmInvHead
         '
         'cmdLoad
         '
+        Me.cmdLoad.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdLoad.Location = New System.Drawing.Point(75, 375)
         Me.cmdLoad.Name = "cmdLoad"
         Me.cmdLoad.Size = New System.Drawing.Size(145, 25)
@@ -600,7 +635,6 @@ Partial Class frmInvHead
         Me.txtData15.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData15.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.InvoiceHeaderBindingSource, "INV_TOTAL", True))
         Me.txtData15.DataType = GetType(Decimal)
-        Me.txtData15.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.txtData15.Location = New System.Drawing.Point(60, 55)
         Me.txtData15.Name = "txtData15"
         Me.txtData15.Padding = New System.Windows.Forms.Padding(1)
@@ -615,7 +649,6 @@ Partial Class frmInvHead
         Me.txtData14.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.txtData14.BorderColor = System.Drawing.SystemColors.WindowFrame
         Me.txtData14.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtData14.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.txtData14.Location = New System.Drawing.Point(60, 30)
         Me.txtData14.Name = "txtData14"
         Me.txtData14.Padding = New System.Windows.Forms.Padding(1)
@@ -632,7 +665,6 @@ Partial Class frmInvHead
         Me.txtData13.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtData13.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.InvoiceHeaderBindingSource, "SUBTOTAL", True))
         Me.txtData13.DataType = GetType(Decimal)
-        Me.txtData13.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.txtData13.Location = New System.Drawing.Point(60, 15)
         Me.txtData13.Name = "txtData13"
         Me.txtData13.Padding = New System.Windows.Forms.Padding(1)
@@ -705,16 +737,6 @@ Partial Class frmInvHead
         Me.datData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.datData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'DsInvoiceHeader
-        '
-        Me.DsInvoiceHeader.DataSetName = "dsInvoiceHeader"
-        Me.DsInvoiceHeader.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'InvoiceHeaderBindingSource
-        '
-        Me.InvoiceHeaderBindingSource.DataMember = "InvoiceHeader"
-        Me.InvoiceHeaderBindingSource.DataSource = Me.DsInvoiceHeader
-        '
         'InvoiceHeaderTableAdapter
         '
         Me.InvoiceHeaderTableAdapter.ClearBeforeFill = True
@@ -725,37 +747,52 @@ Partial Class frmInvHead
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.Line1})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(498, 411)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(494, 411)
         Me.ShapeContainer2.TabIndex = 117
         Me.ShapeContainer2.TabStop = False
         '
         'Line1
         '
+        Me.Line1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Line1.BorderColor = System.Drawing.Color.DarkBlue
         Me.Line1.Name = "Line1"
         Me.Line1.X1 = 385
         Me.Line1.X2 = 385
-        Me.Line1.Y1 = 1
+        Me.Line1.Y1 = 0
         Me.Line1.Y2 = 397
-        '
-        'DsspGetCustDepts
-        '
-        Me.DsspGetCustDepts.DataSetName = "dsspGetCustDepts"
-        Me.DsspGetCustDepts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpGetCustDeptsBindingSource
-        '
-        Me.SpGetCustDeptsBindingSource.DataMember = "spGetCustDepts"
-        Me.SpGetCustDeptsBindingSource.DataSource = Me.DsspGetCustDepts
         '
         'SpGetCustDeptsTableAdapter
         '
         Me.SpGetCustDeptsTableAdapter.ClearBeforeFill = True
         '
+        'DS_CustomerMaster
+        '
+        Me.DS_CustomerMaster.DataSetName = "DS_CustomerMaster"
+        Me.DS_CustomerMaster.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CustomerMasterBindingSource
+        '
+        Me.CustomerMasterBindingSource.DataMember = "CustomerMaster"
+        Me.CustomerMasterBindingSource.DataSource = Me.DS_CustomerMaster
+        '
+        'CustomerMasterTableAdapter
+        '
+        Me.CustomerMasterTableAdapter.ClearBeforeFill = True
+        '
+        'DsspGetTaxCodes
+        '
+        Me.DsspGetTaxCodes.DataSetName = "dsspGetTaxCodes"
+        Me.DsspGetTaxCodes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SpGetTaxCodesTableAdapter
+        '
+        Me.SpGetTaxCodesTableAdapter.ClearBeforeFill = True
+        '
         'frmInvHead
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(498, 411)
+        Me.ClientSize = New System.Drawing.Size(494, 411)
         Me.Controls.Add(Me.datData0)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cmdLoad)
@@ -806,8 +843,12 @@ Partial Class frmInvHead
         Me.Name = "frmInvHead"
         Me.ShowInTaskbar = False
         Me.Text = "Add/Edit Invoice Header"
+        CType(Me.SpGetCustDeptsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetCustDepts, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCustName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InvoiceHeaderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsInvoiceHeader, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData0, System.ComponentModel.ISupportInitialize).EndInit()
@@ -835,10 +876,9 @@ Partial Class frmInvHead
         CType(Me.txtData14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtData13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.datData0, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsInvoiceHeader, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InvoiceHeaderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetCustDepts, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpGetCustDeptsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_CustomerMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetTaxCodes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -904,4 +944,9 @@ Partial Class frmInvHead
     Friend WithEvents SpGetCustDeptsBindingSource As BindingSource
     Friend WithEvents DsspGetCustDepts As dsspGetCustDepts
     Friend WithEvents SpGetCustDeptsTableAdapter As dsspGetCustDeptsTableAdapters.spGetCustDeptsTableAdapter
+    Friend WithEvents DS_CustomerMaster As DS_CustomerMaster
+    Friend WithEvents CustomerMasterBindingSource As BindingSource
+    Friend WithEvents CustomerMasterTableAdapter As DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter
+    Friend WithEvents DsspGetTaxCodes As dsspGetTaxCodes
+    Friend WithEvents SpGetTaxCodesTableAdapter As dsspGetTaxCodesTableAdapters.spGetTaxCodesTableAdapter
 End Class

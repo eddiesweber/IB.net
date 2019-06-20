@@ -19,30 +19,46 @@ Public Class frmCust
 
         GetWindowPos(Me, 66, 66)
 
-        'txtData1.MaxLength = txtData1.DataField.Length
-        'txtData2.MaxLength = txtData2.DataField.Length
-        'txtData3.MaxLength = txtData3.DataField.Length
-        'txtData4.MaxLength = txtData4.DataField.Length
-        'txtData5.MaxLength = txtData5.DataField.Length
-        'txtData6.MaxLength = txtData6.DataField.Length
-        'txtData7.MaxLength = txtData7.DataField.Length
-        'txtData8.MaxLength = txtData8.DataField.Length
-        'txtData9.MaxLength = txtData9.DataField.Length
-        'txtData10.MaxLength = txtData10.DataField.Length
-        'txtData11.MaxLength = txtData11.DataField.Length
-        'txtData12.MaxLength = txtData12.DataField.Length
-        'txtData17.MaxLength = txtData17.DataField.Length
-        'txtOption.MaxLength = txtOption.DataField.Length
-        'txmData0.MaxLength = txmData0.DataField.Length
-        'txmData1.MaxLength = txmData1.DataField.Length
-        'txtData1.MaxLength = DS_CustomerMaster1.CustomerMaster.BILL_NAMEColumn.MaxLength
-
-        ' Create one event handler for each text box
+        'Set text box lengths based on tabledef
         For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox Then
-                AddHandler ctrl.TextChanged, AddressOf boxfocus
+            If TypeOf ctrl Is C1.Win.C1Input.C1TextBox Then
+                Dim c1tb As C1.Win.C1Input.C1TextBox = ctrl
+
+                Select Case c1tb.DataType.ToString
+                    Case "System.Int16"
+                        c1tb.MaxLength = 5
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int32"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int64"
+                        c1tb.MaxLength = 19
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Integer"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Double"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Single"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Decimal"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.String"
+                        If c1tb.DataField <> "" Then
+                            c1tb.MaxLength = DS_CustomerMaster1.CustomerMaster.Columns(c1tb.DataField).MaxLength
+                        End If
+                    Case "System.DateTime"
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+                    Case Else
+                        MsgBox(c1tb.Name & ": " & c1tb.DataType.ToString)
+                End Select
             End If
         Next
+
+        Line1.Y2 = Me.Height
 
         If CurCust = 0 Then
             frmFindCust.Show()
@@ -63,7 +79,7 @@ Public Class frmCust
 
     End Sub
 
-    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged
 
         bTextChanged = True
 

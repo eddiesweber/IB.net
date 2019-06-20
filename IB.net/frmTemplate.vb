@@ -33,13 +33,9 @@ Public Class frmTemplate
                 CurCust = Convert.ToInt32(cmd.ExecuteScalar()) + 1
                 'txtData0.Text = CurCust
             Catch ex As Exception
-                Result = MessageBox.Show(Me, "Error getting a new customer number" & vbNewLine & "Error : " & ex.Message, "New Customer Number", vbOKCancel)
-                LogError(Me.Name, "cmdUpdate_Click", "1.0", ex.Message)
-                If Result = vbCancel Then
-                    Exit Sub
-                Else
-                    Exit Try
-                End If
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
+                LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
             End Try
 
         End Using
@@ -126,13 +122,28 @@ Public Class frmTemplate
                 End If
                 dataReader.Close()
             Catch ex As Exception
-                Result = MessageBox.Show(Me, "Error adding new item" & vbNewLine & "Error : " & ex.Message, "Adding new", vbOKCancel)
-                LogError(Me.Name, "CustomerDepartmentBindingSource_AddingNew", "1.0", ex.Message)
-                If Result = vbCancel Then
-                    Exit Sub
-                Else
-                    Exit Try
-                End If
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
+                LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
+            End Try
+
+        End Using
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand("UPDATE CalcLog SET LastChange = now() WHERE RunDate = '" & Now(), connection)
+
+            Try
+                strLocation = "UIQ"
+                connection.Open()
+                Dim intRowsAffected As Integer = cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
+                LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
             End Try
 
         End Using

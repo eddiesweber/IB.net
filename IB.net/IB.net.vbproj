@@ -62,6 +62,7 @@
     </Reference>
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1DX.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
+    <Reference Include="C1.Win.C1Editor.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -260,6 +261,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetInvItems.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvItems.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetInvName.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetInvName.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetInvNum.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -334,6 +345,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspGetVolCodes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetVolCodes.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsspTotalPO.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1390,6 +1406,28 @@
     <None Include="dsspGetInvHistHeader.xss">
       <DependentUpon>dsspGetInvHistHeader.xsd</DependentUpon>
     </None>
+    <None Include="dsspGetInvItems.xsc">
+      <DependentUpon>dsspGetInvItems.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvItems.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvItems.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvItems.xss">
+      <DependentUpon>dsspGetInvItems.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvName.xsc">
+      <DependentUpon>dsspGetInvName.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetInvName.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetInvName.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetInvName.xss">
+      <DependentUpon>dsspGetInvName.xsd</DependentUpon>
+    </None>
     <None Include="dsspGetInvNum.xsc">
       <DependentUpon>dsspGetInvNum.xsd</DependentUpon>
     </None>
@@ -1554,6 +1592,17 @@
     </None>
     <None Include="dsspGetTaxCodes.xss">
       <DependentUpon>dsspGetTaxCodes.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetVolCodes.xsc">
+      <DependentUpon>dsspGetVolCodes.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetVolCodes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetVolCodes.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetVolCodes.xss">
+      <DependentUpon>dsspGetVolCodes.xsd</DependentUpon>
     </None>
     <None Include="dsspTotalPO.xsc">
       <DependentUpon>dsspTotalPO.xsd</DependentUpon>

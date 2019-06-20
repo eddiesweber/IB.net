@@ -26,10 +26,12 @@ Partial Class frmTemplate
         Me.cmdDelete = New C1.Win.C1Input.C1Button()
         Me.cmdStoredProcedure = New C1.Win.C1Input.C1Button()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
+        Me.cmdUpdate = New C1.Win.C1Input.C1Button()
         CType(Me.ExecuteScalar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdStoredProcedure, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ExecuteScalar
@@ -76,11 +78,23 @@ Partial Class frmTemplate
         Me.cmdSelect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdSelect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'cmdUpdate
+        '
+        Me.cmdUpdate.Location = New System.Drawing.Point(23, 136)
+        Me.cmdUpdate.Name = "cmdUpdate"
+        Me.cmdUpdate.Size = New System.Drawing.Size(202, 25)
+        Me.cmdUpdate.TabIndex = 31
+        Me.cmdUpdate.Text = "Update"
+        Me.cmdUpdate.UseVisualStyleBackColor = True
+        Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdUpdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmTemplate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.cmdUpdate)
         Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.cmdStoredProcedure)
         Me.Controls.Add(Me.cmdDelete)
@@ -91,6 +105,7 @@ Partial Class frmTemplate
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdStoredProcedure, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -99,4 +114,5 @@ Partial Class frmTemplate
     Friend WithEvents cmdDelete As C1.Win.C1Input.C1Button
     Friend WithEvents cmdStoredProcedure As C1.Win.C1Input.C1Button
     Friend WithEvents cmdSelect As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
 End Class

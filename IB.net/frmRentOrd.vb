@@ -11,45 +11,70 @@ Public Class frmRentOrd
     Dim qtychgflag(0 To 3) As Integer
     Dim SalesOpt As Integer
     Dim bCancel As Boolean
-    ' intDept is replacing txtdata1
-    Dim intDept As Integer
     Dim Result As DialogResult
     Dim blnNewRecord As Boolean = False
 
-
-
     Private Sub frmRentOrd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Me.Cursor = Cursors.WaitCursor
 
         buserchange = False
         bTextChanged = False
 
         GetWindowPos(Me, 66, 33)
 
-        Me.SpGetSalesmenTableAdapter.Connection.ConnectionString = CS
-        Me.SpGetSalesmenTableAdapter.Fill(Me.DsspGetSalesmen.spGetSalesmen)
+        Try
+            Me.Cursor = Cursors.WaitCursor
 
-        txtData2.MaxLength = txtData2.DataField.Length
-        txtData4.MaxLength = txtData4.DataField.Length
-        txtData5.MaxLength = txtData5.DataField.Length
-        txtData6.MaxLength = txtData6.DataField.Length
-        txtData7.MaxLength = txtData7.DataField.Length
-        txtData8.MaxLength = txtData8.DataField.Length
-        txtData9.MaxLength = txtData9.DataField.Length
-        txtData10.MaxLength = txtData10.DataField.Length
-        txtData11.MaxLength = txtData11.DataField.Length
-        txtData12.MaxLength = txtData12.DataField.Length
-        txtData13.MaxLength = txtData13.DataField.Length
-        txtData19.MaxLength = txtData19.DataField.Length
-        txtData20.MaxLength = txtData20.DataField.Length
+            strLocation = "FROL1.0"
+            Me.SpGetSalesmenTableAdapter.Connection.ConnectionString = CS
+            Me.SpGetSalesmenTableAdapter.Fill(Me.DsspGetSalesmen.spGetSalesmen)
 
-        ' Create one event handler for each text box
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox Then
-                AddHandler ctrl.TextChanged, AddressOf boxfocus
-            End If
-        Next
+            'Set text box lengths based on tabledef
+            For Each ctrl As Control In Me.Controls
+                If TypeOf ctrl Is C1.Win.C1Input.C1TextBox Then
+                    Dim c1tb As C1.Win.C1Input.C1TextBox = ctrl
+
+                    Select Case c1tb.DataType.ToString
+                        Case "System.Int16"
+                            c1tb.MaxLength = 5
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                        Case "System.Int32"
+                            c1tb.MaxLength = 10
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                        Case "System.Int64"
+                            c1tb.MaxLength = 19
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                        Case "System.Integer"
+                            c1tb.MaxLength = 10
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                        Case "System.Double"
+                            c1tb.MaxLength = 10
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                        Case "System.Single"
+                            c1tb.MaxLength = 10
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                        Case "System.Decimal"
+                            c1tb.MaxLength = 10
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                        Case "System.String"
+                            If c1tb.DataField <> "" Then
+                                c1tb.MaxLength = DsCustomerInventory.CustomerInventory.Columns(c1tb.DataField).MaxLength
+                            End If
+                        Case "System.DateTime"
+                            c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+                        Case Else
+                            MsgBox(c1tb.Name & ": " & c1tb.DataType.ToString)
+                    End Select
+                End If
+            Next
+
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine frmRentOrd_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmRentOrd_Load", vbOK)
+            LogError(Me.Name, "frmRentOrd_Load", strLocation, ex.Message)
+        End Try
+
+        Line1.Y2 = Me.Height
 
         If CurCust = 0 Then
             frmFindCust.Show()
@@ -60,31 +85,7 @@ Public Class frmRentOrd
 
         buserchange = True
 
-        Me.Cursor = Cursors.Arrow
-
     End Sub
-
-    'Private Sub SetLengths(ByVal cx As Control)
-    '    For Each c As Control In cx.Controls
-    '        If TypeOf c Is TextBox Then
-    '            Dim b As Binding = c.DataBindings("Text")
-    '            If Not b Is Nothing Then
-    '                Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-    '                Dim tb As TextBox = DirectCast(c, TextBox)
-    '                Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-    '                tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-    '            End If
-    '        ElseIf TypeOf c Is RichTextBox Then
-    '            Dim b As Binding = c.DataBindings("Text")
-    '            If Not b Is Nothing Then
-    '                Dim bs As BindingSource = DirectCast(b.DataSource, BindingSource)
-    '                Dim tb As TextBox = DirectCast(c, TextBox)
-    '                Dim ds As DataSet = DirectCast(bs.DataSource, DataSet)
-    '                tb.MaxLength = ds.Tables(bs.DataMember).Columns(b.BindingMemberInfo.BindingField).MaxLength
-    '            End If
-    '        End If
-    '    Next
-    'End Sub
 
     Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
 
@@ -96,13 +97,46 @@ Public Class frmRentOrd
 
     End Sub
 
-    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtData20.TextChanged, chkLoan.TextChanged, txtData9.TextChanged, txtData8.TextChanged, txtData7.TextChanged, txtData6.TextChanged, txtData5.TextChanged, txtData4.TextChanged, txtData3.TextChanged, txtData2.TextChanged, txtData14.TextChanged, txtData1.TextChanged, txtData19.TextChanged, txtData13.TextChanged, txtData12.TextChanged, txtData11.TextChanged, txtData10.TextChanged
 
         bTextChanged = True
 
-        If buserchange Then
-            SetModeChange()
-        End If
+        'Dim i As Single
+        'If buserchange Then
+        '    SetModeChange()
+        '    If Index = 8 Or Index = 9 Then SetSalesPct()
+        '    If Index = 4 Or Index = 5 Or Index = 6 Then SetSalesOpt()
+        'Else
+        '    'Handle invisible boxes
+        '    Select Case Index
+        '        Case 1
+        '            lstDept.BoundText = txtData(1).Text
+        '        Case 2
+        '            If Not buserchange2 Then lstItem.BoundText = txtData(2).Text
+        '        Case 14
+        '            If txtData(14) = "2" Then chkLoan = 1 Else chkLoan = 0
+        '    End Select
+        'End If
+
+        ''Handle sales option
+        ''SetSalesOpt
+        ''Quantity grid
+        'If Index > 9 And Index < 14 Then
+        '    If qtychgflag(Index - 10) = 0 Then qtychgflag(Index - 10) = 3
+        '    If qtychgflag(Index - 10) <> 4 Then scrQty(Index).Value = 0 - Val(txtData(Index))
+        '    If qtychgflag(Index - 10) > 2 Then txtChange(Index - 10) = CStr(Val(txtData(Index)) - Val(txtCurrent(Index - 10)))
+        '    If qtychgflag(Index - 10) = 3 Then qtychgflag(Index - 10) = 0
+        '    If buserchange And Index = 11 Then
+        '        If txtCurrent(1) = txtCurrent(3) Then rs!DEL_QTY = Val(txtData(11))
+        '    End If
+        '    If buserchange And Index = 10 And txtCurrent(0) = txtCurrent(2) Then
+        '        rs!DEL_QTY = Val(txtData(10))
+        '    End If
+        'End If
+
+        'If Index = 13 Or Index = 19 Then
+        '    txtTotal = Format(RoundOff(Val(txtData(13)) * Val(txtData(19))), "Currency")
+        'End If
 
     End Sub
 
@@ -165,7 +199,7 @@ Public Class frmRentOrd
 
         txtCustName.Text = GetCustName()
 
-        SetModeReg
+        SetModeReg()
 
         SetControls()
 
@@ -397,9 +431,6 @@ ChkPct:
     End Sub
 
     Private Sub lstDept_Click(sender As Object, e As EventArgs)
-
-        'intDept = lstDept.SelectedText
-        intDept = lstDept.SelectedItem
 
         If buserchange Then
             buserchange = False
@@ -721,13 +752,10 @@ ChkPct:
 
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
-        Dim q As String
-
         bCancel = False
 
         PostRentOrder(True)
 
-        CurDept = intDept
         Result = MsgBox("This will delete the current item." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
         If Result = vbCancel Then
             Exit Sub
@@ -741,6 +769,8 @@ ChkPct:
         End If
 
         If Not bCancel Then
+            buserchange = False
+
             GetData3()
 
             buserchange = True
@@ -812,6 +842,15 @@ ChkPct:
     Private Sub cmdFindItem_Click(sender As Object, e As EventArgs) Handles cmdFindItem.Click
 
         frmFindItem.Show()
+
+    End Sub
+
+    Private Sub txtChange0_TextChanged(sender As Object, e As EventArgs) Handles txtChange0.TextChanged, txtChange3.TextChanged, txtChange2.TextChanged, txtChange1.TextChanged
+
+        'If qtychgflag(Index) = 0 Then qtychgflag(Index) = 1
+        'If qtychgflag(Index) <> 2 Then scrChange(Index).Value = 0 - Val(txtChange(Index))
+        'If qtychgflag(Index) < 3 Then rs(txtData(Index + 10).DataField) = CStr(Val(txtCurrent(Index)) + Val(txtChange(Index)))
+        'If qtychgflag(Index) = 1 Then qtychgflag(Index) = 0
 
     End Sub
 End Class

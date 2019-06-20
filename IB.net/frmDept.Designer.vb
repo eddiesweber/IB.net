@@ -74,6 +74,10 @@ Partial Class frmDept
         Me.TableAdapterManager = New IB.net.dsspGetTaxCodesTableAdapters.TableAdapterManager()
         Me.cmbTax = New C1.Win.C1List.C1Combo()
         Me.txtTaxState = New System.Windows.Forms.TextBox()
+        Me.txtData1 = New C1.Win.C1Input.C1TextBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.Line2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,6 +109,7 @@ Partial Class frmDept
         CType(Me.DsCustomerRoute, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstDept, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblLabel12
@@ -247,7 +252,7 @@ Partial Class frmDept
         '
         'cmdNew
         '
-        Me.cmdNew.Location = New System.Drawing.Point(390, 10)
+        Me.cmdNew.Location = New System.Drawing.Point(395, 10)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
         Me.cmdNew.TabIndex = 45
@@ -258,7 +263,7 @@ Partial Class frmDept
         '
         'cmdDelete
         '
-        Me.cmdDelete.Location = New System.Drawing.Point(390, 40)
+        Me.cmdDelete.Location = New System.Drawing.Point(395, 40)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
         Me.cmdDelete.TabIndex = 46
@@ -270,7 +275,7 @@ Partial Class frmDept
         'cmdReset
         '
         Me.cmdReset.Enabled = False
-        Me.cmdReset.Location = New System.Drawing.Point(390, 70)
+        Me.cmdReset.Location = New System.Drawing.Point(395, 70)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
         Me.cmdReset.TabIndex = 47
@@ -282,7 +287,7 @@ Partial Class frmDept
         'cmdUpdate
         '
         Me.cmdUpdate.Enabled = False
-        Me.cmdUpdate.Location = New System.Drawing.Point(390, 100)
+        Me.cmdUpdate.Location = New System.Drawing.Point(395, 100)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
         Me.cmdUpdate.TabIndex = 48
@@ -293,7 +298,7 @@ Partial Class frmDept
         '
         'cmdExit
         '
-        Me.cmdExit.Location = New System.Drawing.Point(390, 130)
+        Me.cmdExit.Location = New System.Drawing.Point(395, 130)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
         Me.cmdExit.TabIndex = 49
@@ -304,7 +309,7 @@ Partial Class frmDept
         '
         'cmdItem
         '
-        Me.cmdItem.Location = New System.Drawing.Point(92, 354)
+        Me.cmdItem.Location = New System.Drawing.Point(95, 364)
         Me.cmdItem.Name = "cmdItem"
         Me.cmdItem.Size = New System.Drawing.Size(145, 25)
         Me.cmdItem.TabIndex = 50
@@ -315,7 +320,7 @@ Partial Class frmDept
         '
         'cmdSurcharge
         '
-        Me.cmdSurcharge.Location = New System.Drawing.Point(247, 354)
+        Me.cmdSurcharge.Location = New System.Drawing.Point(250, 364)
         Me.cmdSurcharge.Name = "cmdSurcharge"
         Me.cmdSurcharge.Size = New System.Drawing.Size(145, 25)
         Me.cmdSurcharge.TabIndex = 51
@@ -512,7 +517,7 @@ Partial Class frmDept
         Me.txtData10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtData10.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerDepartmentBindingSource, "TAX_LOCODE", True))
         Me.txtData10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtData10.Location = New System.Drawing.Point(400, 211)
+        Me.txtData10.Location = New System.Drawing.Point(405, 211)
         Me.txtData10.Name = "txtData10"
         Me.txtData10.Size = New System.Drawing.Size(67, 18)
         Me.txtData10.TabIndex = 68
@@ -536,10 +541,11 @@ Partial Class frmDept
         '
         'grdRoute
         '
+        Me.grdRoute.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.grdRoute.DataSource = Me.CustomerRouteBindingSource
         Me.grdRoute.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdRoute.Images.Add(CType(resources.GetObject("grdRoute.Images"), System.Drawing.Image))
-        Me.grdRoute.Location = New System.Drawing.Point(10, 284)
+        Me.grdRoute.Location = New System.Drawing.Point(10, 294)
         Me.grdRoute.Name = "grdRoute"
         Me.grdRoute.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoute.PreviewInfo.Size = New System.Drawing.Size(0, 0)
@@ -547,7 +553,7 @@ Partial Class frmDept
         Me.grdRoute.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdRoute.PrintInfo.MeasurementPrinterName = Nothing
         Me.grdRoute.PrintInfo.PageSettings = CType(resources.GetObject("grdRoute.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdRoute.Size = New System.Drawing.Size(465, 64)
+        Me.grdRoute.Size = New System.Drawing.Size(470, 64)
         Me.grdRoute.TabIndex = 70
         Me.grdRoute.UseCompatibleTextRendering = False
         Me.grdRoute.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -632,17 +638,59 @@ Partial Class frmDept
         '
         'txtTaxState
         '
-        Me.txtTaxState.Location = New System.Drawing.Point(400, 165)
+        Me.txtTaxState.Location = New System.Drawing.Point(405, 165)
         Me.txtTaxState.Name = "txtTaxState"
         Me.txtTaxState.Size = New System.Drawing.Size(67, 20)
         Me.txtTaxState.TabIndex = 73
         Me.txtTaxState.Visible = False
         '
+        'txtData1
+        '
+        Me.txtData1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtData1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CustomerDepartmentBindingSource, "DEPT", True))
+        Me.txtData1.DataType = GetType(Short)
+        Me.txtData1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtData1.Location = New System.Drawing.Point(405, 233)
+        Me.txtData1.Name = "txtData1"
+        Me.txtData1.Size = New System.Drawing.Size(67, 18)
+        Me.txtData1.TabIndex = 74
+        Me.txtData1.Tag = Nothing
+        Me.txtData1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtData1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.Line2, Me.Line1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(490, 399)
+        Me.ShapeContainer1.TabIndex = 75
+        Me.ShapeContainer1.TabStop = False
+        '
+        'Line1
+        '
+        Me.Line1.Name = "Line1"
+        Me.Line1.X1 = 385
+        Me.Line1.X2 = 385
+        Me.Line1.Y1 = 0
+        Me.Line1.Y2 = 285
+        '
+        'Line2
+        '
+        Me.Line2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Line2.Name = "Line2"
+        Me.Line2.X1 = 0
+        Me.Line2.X2 = 490
+        Me.Line2.Y1 = 285
+        Me.Line2.Y2 = 285
+        '
         'frmDept
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(486, 399)
+        Me.ClientSize = New System.Drawing.Size(490, 399)
+        Me.Controls.Add(Me.txtData1)
         Me.Controls.Add(Me.txtTaxState)
         Me.Controls.Add(Me.cmbTax)
         Me.Controls.Add(Me.lstDept)
@@ -683,6 +731,7 @@ Partial Class frmDept
         Me.Controls.Add(Me.lblCurCust)
         Me.Controls.Add(Me.lblLabel5)
         Me.Controls.Add(Me.lblLabel12)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(87, 78)
         Me.MaximizeBox = False
@@ -721,6 +770,7 @@ Partial Class frmDept
         CType(Me.DsCustomerRoute, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstDept, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTax, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtData1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -775,4 +825,8 @@ Partial Class frmDept
     Friend WithEvents TableAdapterManager As dsspGetTaxCodesTableAdapters.TableAdapterManager
     Friend WithEvents cmbTax As C1.Win.C1List.C1Combo
     Friend WithEvents txtTaxState As TextBox
+    Friend WithEvents txtData1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents ShapeContainer1 As PowerPacks.ShapeContainer
+    Friend WithEvents Line2 As PowerPacks.LineShape
+    Friend WithEvents Line1 As PowerPacks.LineShape
 End Class

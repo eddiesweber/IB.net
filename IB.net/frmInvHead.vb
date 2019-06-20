@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 
 Public Class frmInvHead
@@ -8,55 +9,59 @@ Public Class frmInvHead
     Dim bInit As Boolean
     Dim CurState As String
     Dim bCancel As Boolean
-    Dim ItemTot As Single, ItemTaxable As Single, ItemCount As Integer
+    Dim ItemTot As Double, ItemTaxable As Double, ItemCount As Integer
     Dim OldRoute As Integer, OldDept As Integer, OldTax As Single
     Dim LastDate As Date
     Dim bTextChanged As Boolean
 
-    Private Sub frmInvHead_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmInvHead_Load(tb As Object, e As EventArgs) Handles MyBase.Load
 
         GetWindowPos(Me, 33, 33)
 
         buserchange = False
         bInit = True
 
-        'data1.ConnectionString = CS
-        'data2.ConnectionString = CS
-        'data3.ConnectionString = CS
-        'data1.RecordSource = "Select * From InvoiceHeader Where 1=0"
-        'data1.Enabled = True
-        'data1.Refresh
+        Line1.Y2 = Me.Height
 
-        'rs = data1.Recordset
-        'Call RORS.Open("InvoiceQty", DB, adOpenDynamic, adLockOptimistic)
+        'Set text box lengths based on tabledef
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is C1.Win.C1Input.C1TextBox Then
+                Dim c1tb As C1.Win.C1Input.C1TextBox = ctrl
 
-        'Line1(0).Y2 = Me.ScaleHeight
-        'Line1(1).Y2 = Me.ScaleHeight
+                Select Case c1tb.DataType.ToString
+                    Case "System.Int16"
+                        c1tb.MaxLength = 5
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int32"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int64"
+                        c1tb.MaxLength = 19
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Integer"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Double"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Single"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Decimal"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.String"
+                        If c1tb.DataField <> "" Then
+                            c1tb.MaxLength = DsInvoiceHeader.InvoiceHeader.Columns(c1tb.DataField).MaxLength
+                        End If
+                    Case "System.DateTime"
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+                    Case Else
+                        MsgBox(c1tb.Name & ": " & c1tb.DataType.ToString)
+                End Select
+            End If
+        Next
 
-        ''Set text box lengths based on tabledef
-        'Dim c As Control, fld As String
-
-        'For Each c In Me.Controls
-        '    If TypeOf c Is TextBox Then
-        '        fld = c.DataField
-        '        If fld > "" Then
-        '            Select Case rs.Fields(fld).Type
-        '                Case adChar, adVarChar, adVarWChar
-        '                    c.MaxLength = rs.Fields(fld).DefinedSize
-        '                Case adTinyInt
-        '                    c.MaxLength = 1
-        '                Case adSmallInt
-        '                    c.MaxLength = 5
-        '                Case adInteger, adSingle
-        '                    c.MaxLength = 10
-        '                Case Else
-        '                    c.MaxLength = 20
-        '            End Select
-        '        End If
-        '    End If
-        'Next c
-
-        'Me.Show
         bInit = False
 
         GetCalcLog()
@@ -80,29 +85,40 @@ Public Class frmInvHead
 
     End Sub
 
-    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
+    Private Sub frmInvHead_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
+        'buserchange = False
+        SaveWindowPos(Me)
+
+    End Sub
+
+    Private Sub lblCurCust_TextChanged(tb As Object, e As EventArgs) Handles lblCurCust.TextChanged
+
+        'If Me.Visible = True Then
         buserchange = False
 
-        If cmdReset.Enabled Then
-            txtData1.Text = CurCust
-            'txtData_LostFocus 1
+            If cmdReset.Enabled Then
+                txtData1.Text = CurCust
+                'txtData_LostFocus 1
+            End If
+
+            buserchange = True
+            bInit = False
+        'End If
+
+    End Sub
+
+    Private Sub lblCurInvoice_TextChanged(tb As Object, e As EventArgs) Handles lblCurInvoice.TextChanged
+
+        If Me.Visible = True Then
+            buserchange = False
+            GetData()
+            buserchange = True
         End If
 
-        buserchange = True
-        bInit = False
-
     End Sub
 
-    Private Sub lblCurInvoice_TextChanged(sender As Object, e As EventArgs) Handles lblCurInvoice.TextChanged
-
-        buserchange = False
-        GetData()
-        buserchange = True
-
-    End Sub
-
-    Private Sub lstDept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstDept.SelectedIndexChanged
+    Private Sub lstDept_SelectedIndexChanged(tb As Object, e As EventArgs) Handles lstDept.SelectedIndexChanged
 
         If buserchange And CurDept <> lstDept.SelectedValue Then
             If Not cmdReset.Enabled Then
@@ -126,7 +142,9 @@ Public Class frmInvHead
 
     Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtData9.TextChanged, txtData8.TextChanged, txtData7.TextChanged, txtData6.TextChanged, txtData5.TextChanged, txtData4.TextChanged, txtData3.TextChanged, txtData2.TextChanged, txtData15.TextChanged, txtData14.TextChanged, txtData13.TextChanged, txtData10.TextChanged, txtData1.TextChanged, datData0.TextChanged
 
-        If sender.name <> "txtData13" And sender.name <> "txtData14" And sender.name <> "txtData15" Then
+        Dim tb As TextBox = sender
+
+        If tb.Name <> "txtData13" And tb.Name <> "txtData14" And tb.Name <> "txtData15" Then
             bTextChanged = True
         End If
 
@@ -137,85 +155,129 @@ Public Class frmInvHead
         If buserchange Then
             If Not cmdReset.Enabled Then SetModeChange()
         Else
-            'Handle invisible boxes
-            Select Case sender.name
-                Case "txtData2"
-                    'lstDept.BoundText = txtData2.Text
-                    lstDept.SelectedIndex = lstDept.FindStringExact(txtData2.Text)
-                Case "txtData6"
-                    cmbTax.SelectedIndex = cmbTax.FindStringExact(txtData6.Text)
+            Try
+                Me.Cursor = Cursors.WaitCursor
+
+                'Handle invisible boxes
+                Select Case tb.Name
+                    Case "txtData2"
+                        strLocation = "TD0TC1.0"
+                        'lstDept.BoundText = txtData2.Text
+                        lstDept.SelectedIndex = lstDept.FindStringExact(txtData2.Text)
+                    Case "txtData6"
+                        strLocation = "TD0TC2.0"
+                        cmbTax.SelectedIndex = cmbTax.FindStringExact(txtData6.Text)
                     'cmbTax.BoundText = txtData6.Text
-                Case "txtData10"
-                    If txtData10.Text = "A" Then
-                        chkCC.Visible = False
-                    Else
-                        chkCC.Visible = True
-                        If txtData10.Text = "C" Then
-                            chkCC.Checked = True
+                    Case "txtData10"
+                        strLocation = "TD0TC3.0"
+                        If txtData10.Text = "A" Then
+                            chkCC.Visible = False
                         Else
-                            chkCC.Checked = False
+                            chkCC.Visible = True
+                            If txtData10.Text = "C" Then
+                                chkCC.Checked = True
+                            Else
+                                chkCC.Checked = False
+                            End If
                         End If
-                    End If
-            End Select
+                End Select
+
+                Me.Cursor = Cursors.Default
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine txtData0_TextChanged (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "txtData0_TextChanged", vbOK)
+                LogError(Me.Name, "txtData0_TextChanged", strLocation, ex.Message)
+            End Try
         End If
-        Select Case sender.name
-            Case "txtData1"
-                'GetData2 (handled in txtdata_lostfocus, GetData)
-                If txtData1.Text > "" Then
-                    GetData2()
 
-                    If DsInvoiceHeader.InvoiceHeader.Rows.Count = 0 Then
-                        MessageBox.Show(Me, "Customer missing department or route.", "Validation Error", vbOKOnly)
-                        txtData1.Select()
-                        Exit Sub
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            Select Case tb.Name
+                Case "txtData1"
+                    'GetData2 (handled in txtdata_lostfocus, GetData)
+                    If txtData1.Text > "" Then
+                        GetData2()
+
+                        strLocation = "TD0TC4.0"
+                        If DsInvoiceHeader.InvoiceHeader.Rows.Count = 0 Then
+                            MessageBox.Show(Me, "Customer missing department or route.", "Validation Error", vbOKOnly)
+                            txtData1.Select()
+                            Exit Sub
+                        End If
+
+                        'If RS4.RecordCount = 0 Then
+                        strLocation = "TD0TC5.0"
+                        If txtCustName.Text.Trim = "" Then
+                            MessageBox.Show(Me, "Customer not found.", "Validation Error", vbOKOnly)
+                            txtData1.Select()
+                            Exit Sub
+                        End If
+
+                        buserchange = False
+
+                        strLocation = "TD0TC6.0"
+                        txtData2.Text = lstDept.SelectedValue
+
+                        strLocation = "TD0TC7.0"
+                        GetData9()
+
+                        buserchange = True
                     End If
 
-                    'If RS4.RecordCount = 0 Then
-                    If txtCustName.Text.Trim = "" Then
-                        MessageBox.Show(Me, "Customer not found.", "Validation Error", vbOKOnly)
-                        txtData1.Select()
-                        Exit Sub
-                    End If
-
-                    buserchange = False
-
-                    txtData2.Text = lstDept.SelectedValue
-
-                    GetData9()
-
-                    buserchange = True
-                End If
-
-            Case "txtData2" 'dept
+                Case "txtData2" 'dept
                 'GetData9
-            Case "txtData5"
-                GetTaxCodes()
-            Case "txtData7" 'tax amount
-                txtData14.Text = txtData7.Text
-            Case "txtData13", "txtData14", "txtData15"
-                sender.text = Format(Val(sender.text), "#####0.00")
+                Case "txtData5"
+                    GetTaxCodes()
+                Case "txtData7" 'tax amount
+                    strLocation = "TD0TC8.0"
+                    txtData14.Text = txtData7.Text
+                Case "txtData13", "txtData14", "txtData15"
+                    ' Done in format of textbox
+                    strLocation = "TD0TC9.0"
+                    If tb.Name <> "txtData15" And buserchange Then
+                        txtData15.Text = Val(txtData13.Text) + Val(txtData14.Text)
+                    End If
+                    txtData13.Text = Format(Val(txtData13.Text), "#####0.00")
+                    txtData14.Text = Format(Val(txtData14.Text), "#####0.00")
+                    txtData15.Text = Format(Val(txtData15.Text), "#####0.00")
+            End Select
 
-                If sender.text <> "txtData15" And buserchange Then
-                    txtData15.Text = Val(txtData13.Text) + Val(txtData14.Text)
-                End If
-        End Select
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine txtData0_TextChanged (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "txtData0_TextChanged", vbOK)
+            LogError(Me.Name, "txtData0_TextChanged", strLocation, ex.Message)
+        End Try
 
     End Sub
 
     Sub GetData()
 
         If CurInvoice > 0 Then
-            InvoiceHeaderTableAdapter.Connection.ConnectionString = CS
-            InvoiceHeaderTableAdapter.Fill(DsInvoiceHeader.InvoiceHeader, CurInvoice)
-            '    data1.RecordSource = "Select * from InvoiceHeader Where INV_NUMBER=" & CurInvoice
-            '    rs = data1.Recordset
+            Try
+                Me.Cursor = Cursors.WaitCursor
 
-            If DsInvoiceHeader.InvoiceHeader.Rows.Count = 0 Then
-                frmFindInvoice.Show()
-                frmFindInvoice.BringToFront()
+                strLocation = "GD1.0"
+                InvoiceHeaderTableAdapter.Connection.ConnectionString = CS
+                InvoiceHeaderTableAdapter.Fill(DsInvoiceHeader.InvoiceHeader, CurInvoice)
+                '    data1.RecordSource = "Select * from InvoiceHeader Where INV_NUMBER=" & CurInvoice
+                '    rs = data1.Recordset
 
-                Exit Sub
-            End If
+                strLocation = "GD2.0"
+                If DsInvoiceHeader.InvoiceHeader.Rows.Count = 0 Then
+                    frmFindInvoice.Show()
+                    frmFindInvoice.BringToFront()
+
+                    Exit Sub
+                End If
+
+                Me.Cursor = Cursors.Default
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine GetData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData", vbOK)
+                LogError(Me.Name, "GetData", strLocation, ex.Message)
+            End Try
         Else
             frmFindInvoice.Show()
             frmFindInvoice.BringToFront()
@@ -234,20 +296,40 @@ Public Class frmInvHead
 
     Sub GetData2()
 
-        Dim q As String
+        Try
+            Me.Cursor = Cursors.WaitCursor
 
-        CurCust = DsInvoiceHeader.InvoiceHeader(0)("CUST_NUM")
+            strLocation = "GDT1.0"
+            CurCust = DsInvoiceHeader.InvoiceHeader(0)("CUST_NUM")
 
-        'Get customer departments
-        SpGetCustDeptsTableAdapter.Connection.ConnectionString = CS
-        SpGetCustDeptsTableAdapter.Fill(DsspGetCustDepts.spGetCustDepts, CurCust)
-        'data2.RecordSource = q
-        'RS2 = data2.Recordset
+            'Get customer departments
+            strLocation = "GDT2.0"
+            SpGetCustDeptsTableAdapter.Connection.ConnectionString = CS
+            SpGetCustDeptsTableAdapter.Fill(DsspGetCustDepts.spGetCustDepts, CurCust)
+            'data2.RecordSource = q
+            'RS2 = data2.Recordset
 
-        GetData3()
+            strLocation = "GDT3.0"
+            GetData3()
 
-        'Get customer info
-        txtCustName.Text = GetCustName()
+            'Get customer info
+            strLocation = "GDT4.0"
+            CustomerMasterTableAdapter.Connection.ConnectionString = CS
+            CustomerMasterTableAdapter.Fill(DS_CustomerMaster.CustomerMaster, CurCust)
+            'q = "SELECT * FROM CustomerMaster WHERE CUST_NUM=" & CurCust
+            'Call RS4.Open(q, DB, adOpenStatic)
+            If DS_CustomerMaster.CustomerMaster.Rows.Count > 0 Then
+                txtCustName.Text = DS_CustomerMaster.CustomerMaster.Rows(0)("BILL_NAME")
+            Else
+                txtCustName.Text = ""
+            End If
+
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine GetData2 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData2", vbOK)
+            LogError(Me.Name, "GetData2", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -255,51 +337,69 @@ Public Class frmInvHead
 
         Dim intRow As Integer
 
-        If DsspGetCustDepts.spGetCustDepts.Rows.Count > 0 Then
-            SpGetCustDeptsBindingSource.MoveFirst()
+        Try
+            If DsspGetCustDepts.spGetCustDepts.Rows.Count > 0 Then
+                SpGetCustDeptsBindingSource.MoveFirst()
 
-            intRow = SpGetCustDeptsBindingSource.Find("DEPT", CurDept)
+                intRow = SpGetCustDeptsBindingSource.Find("DEPT", CurDept)
 
-            If intRow >= 0 Then
-                SpGetCustDeptsBindingSource.Position = intRow
-                'lstDept.BoundText = RS2!DEPT
+                If intRow >= 0 Then
+                    SpGetCustDeptsBindingSource.Position = intRow
+                    'lstDept.BoundText = RS2!DEPT
+                End If
+
+                CurDept = txtData2.Text
+                txtCustDept.Text = DsspGetCustDepts.spGetCustDepts(SpGetCustDeptsBindingSource.Position)("DEL_NAME")
             End If
+        Catch ex As Exception
 
-            CurDept = txtData2.Text
-            txtCustDept.Text = DsspGetCustDepts.spGetCustDepts(SpGetCustDeptsBindingSource.Position)("DEL_NAME")
-        End If
+        End Try
 
     End Sub
 
     Sub GetData9()
 
-        'Dim route1 As Integer, route2 As Integer
+        Dim route1 As Integer, route2 As Integer
 
-        'If Not bInit Then
-        '    'RS2.MoveFirst
-        '    'RS2.Find "Dept=" & txtData(2)
-        '    On Error Resume Next
-        '    route1 = 0
-        '    route1 = RS2!FirstofROUTE
-        '    If route1 = 9 Then
-        '        route2 = 0
-        '        route2 = RS2!FirstofDEF_ROUTE
-        '        If route2 <> 0 Then route1 = route2
-        '    End If
-        '    rs!ROUTE = CStr(route1)
-        '    rs![SEQUENCE] = CStr(RS2!FirstofSEQUENCE)
-        '    rs!TAX_ST = RS2!DEL_STATE
-        '    rs!TAX_LOCODE = ""
-        '    rs!TAX_LOCODE = RS2!TAX_LOCODE
-        '    'lstDept.BoundText = RS2!DEPT
-        '    'txtData(2).Text = CStr(RS2!DEPT)
-        '    rs!CALCULATED = 0
-        '    If RS4!PAY_TYPE = "I" And RS4!CC_NUM > "" Then
-        '        rs!PAY_TYPE = "C"
-        '    Else
-        '        rs!PAY_TYPE = RS4!PAY_TYPE
-        '    End If
-        'End If
+        If Not bInit Then
+            Try
+                If SpGetCustDeptsBindingSource.Position >= 0 Then
+                    strLocation = "GDN1.0"
+                    route1 = 0
+                    route1 = DsspGetCustDepts.spGetCustDepts.Rows(SpGetCustDeptsBindingSource.Position)("FirstofROUTE")
+                    If route1 = 9 Then
+                        route2 = 0
+                        route2 = DsspGetCustDepts.spGetCustDepts.Rows(SpGetCustDeptsBindingSource.Position)("FirstofDEF_ROUTE")
+                        If route2 <> 0 Then route1 = route2
+                    End If
+                    strLocation = "GDN2.0"
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("ROUTE") = CStr(route1)
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("SEQUENCE") = CStr(DsspGetCustDepts.spGetCustDepts.Rows(SpGetCustDeptsBindingSource.Position)("FirstofSEQUENCE"))
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("TAX_ST") = DsspGetCustDepts.spGetCustDepts.Rows(SpGetCustDeptsBindingSource.Position)("DEL_STATE")
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("TAX_LOCODE") = ""
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("TAX_LOCODE") = DsspGetCustDepts.spGetCustDepts.Rows(SpGetCustDeptsBindingSource.Position)("TAX_LOCODE")
+                    'lstDept.BoundText = RS2!DEPT
+                    'txtData(2).Text = CStr(RS2!DEPT)
+                    strLocation = "GDN3.0"
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("CALCULATED") = 0
+                    strLocation = "GDN4.0"
+                    DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("PAY_TYPE") = DS_CustomerMaster.CustomerMaster.Rows(0)("PAY_TYPE")
+                    If IsDBNull(DS_CustomerMaster.CustomerMaster.Rows(0)("CC_NUM")) = False Then
+                        If DS_CustomerMaster.CustomerMaster.Rows(0)("PAY_TYPE") = "I" And DS_CustomerMaster.CustomerMaster.Rows(0)("CC_NUM") > "" Then
+                            DsInvoiceHeader.InvoiceHeader(InvoiceHeaderBindingSource.Position)("PAY_TYPE") = "C"
+                        End If
+                    End If
+                End If
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine GetData9 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetData9", vbOK)
+                LogError(Me.Name, "GetData9", strLocation, ex.Message)
+                If Dir("StopOnError.txt") <> "" Then
+                    Stop
+                End If
+
+            End Try
+        End If
 
     End Sub
 
@@ -334,12 +434,12 @@ Public Class frmInvHead
                         sqlReader.Read()
 
                         strLocation = "GII5.0"
-                        If Not sqlReader.IsDBNull("ext") Then
+                        If Not IsDBNull(sqlReader("ext")) Then
                             ItemTot = sqlReader("ext")
                         End If
 
                         strLocation = "GII6.0"
-                        If Not sqlReader.IsDBNull("TAXBASIS") Then
+                        If Not IsDBNull(sqlReader("TAXBASIS")) Then
                             ItemTaxable = sqlReader("TAXBASIS")
                         End If
 
@@ -351,6 +451,9 @@ Public Class frmInvHead
                 Me.Cursor = Cursors.Default
                 Result = MessageBox.Show(Me, "Error in routine GetItemInfo (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetItemInfo", vbOK)
                 LogError(Me.Name, "GetItemInfo", strLocation, ex.Message)
+                If Dir("StopOnError.txt") <> "" Then
+                    Stop
+                End If
             End Try
 
         End Using
@@ -368,16 +471,21 @@ Public Class frmInvHead
 
     Sub GetTaxCodes()
 
-        'If txtData(5).Text <> CurState Then
-        '    Dim q As String, q1 As String
-        '    CurState = txtData(5).Text
-        '    q = "spGetTaxCodes '" & CurState & "'"
-        '    data3.RecordSource = q
-        '    data3.Enabled = True
-        '    data3.Refresh
-        '    cmbTax.BoundText = txtData(6).Text
-        '    If data3.Recordset.BOF And data3.Recordset.EOF Then cmbTax.Text = ""
-        'End If
+        If txtData5.Text <> CurState Then
+            CurState = txtData5.Text
+
+            SpGetTaxCodesTableAdapter.Connection.ConnectionString = CS
+            SpGetTaxCodesTableAdapter.Fill(DsspGetTaxCodes.spGetTaxCodes, CurState)
+            'q = "spGetTaxCodes '" & CurState & "'"
+            'data3.RecordSource = q
+            'data3.Enabled = True
+            'data3.Refresh
+
+            cmbTax.Text = ""
+            If txtData6.Text <> "" Then
+                cmbTax.SelectedIndex = lstDept.FindStringExact(txtData6.Text)
+            End If
+        End If
 
     End Sub
 
@@ -464,11 +572,21 @@ Public Class frmInvHead
 
     End Sub
 
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+    End Sub
+
     Sub closedata()
 
         'On Error Resume Next
         'rs.Close
         'RORS.Close
+
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+
+        Me.Close()
 
     End Sub
 

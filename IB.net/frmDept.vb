@@ -9,10 +9,6 @@ Public Class frmDept
     Dim CurState As String
     'Dim CurState As String * 2
     Dim bCancel As Boolean
-    ' intDept is replacing txtdata1
-    Dim intDept As Integer
-    ' strTAX_LOCODE is replacing txtdata10
-    Dim strTAX_LOCODE As String
     Dim blnNewRecord As Boolean
     Dim bTextChanged As Boolean
     Dim Result As DialogResult
@@ -31,32 +27,42 @@ Public Class frmDept
             grdRoute.LoadLayout("frmDeptgrdRoute.xml")
         End If
 
-        'txtData2.MaxLength = txtData2.DataField.Length
-        'txtData3.MaxLength = txtData3.DataField.Length
-        'txtData4.MaxLength = txtData4.DataField.Length
-        'txtData5.MaxLength = txtData5.DataField.Length
-        'txtData6.MaxLength = txtData6.DataField.Length
-        'txtData7.MaxLength = txtData7.DataField.Length
-        'txtData8.MaxLength = txtData8.DataField.Length
-        'txtData9.MaxLength = txtData9.DataField.Length
-        'txtData10.MaxLength = txtData10.DataField.Length
-
-        'txtData2.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_NAMEColumn.MaxLength
-        'txtData3.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ADDRColumn.MaxLength
-        'txtData4.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_CITYColumn.MaxLength
-        'txtData5.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_STATEColumn.MaxLength
-        'txtData6.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_ZIPColumn.MaxLength
-        'txtData7.MaxLength = DsCustomerDepartment.CustomerDepartment.CONTACTColumn.MaxLength
-        'txtData8.MaxLength = DsCustomerDepartment.CustomerDepartment.MESSAGEColumn.MaxLength
-        'txtData9.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_EmailColumn.MaxLength
-        'txtData11.MaxLength = DsCustomerDepartment.CustomerDepartment.SALESMANColumn.MaxLength
-        'txmData0.MaxLength = DsCustomerDepartment.CustomerDepartment.DEL_PHONEColumn.MaxLength
-        'txmData1.MaxLength = DsCustomerDepartment.CustomerDepartment.Del_FaxColumn.MaxLength
-
-        ' Create one event handler for each text box
+        'Set text box lengths based on tabledef
         For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox Then
-                AddHandler ctrl.TextChanged, AddressOf boxfocus
+            If TypeOf ctrl Is C1.Win.C1Input.C1TextBox Then
+                Dim c1tb As C1.Win.C1Input.C1TextBox = ctrl
+
+                Select Case c1tb.DataType.ToString
+                    Case "System.Int16"
+                        c1tb.MaxLength = 5
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int32"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Int64"
+                        c1tb.MaxLength = 19
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Integer"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.Integer
+                    Case "System.Double"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Single"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.Decimal"
+                        c1tb.MaxLength = 10
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+                    Case "System.String"
+                        If c1tb.DataField <> "" Then
+                            c1tb.MaxLength = DsCustomerDepartment.CustomerDepartment.Columns(c1tb.DataField).MaxLength
+                        End If
+                    Case "System.DateTime"
+                        c1tb.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+                    Case Else
+                        MsgBox(c1tb.Name & ": " & c1tb.DataType.ToString)
+                End Select
             End If
         Next
 
@@ -81,12 +87,21 @@ Public Class frmDept
 
     End Sub
 
-    Private Sub boxfocus(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtData9.TextChanged, txtData8.TextChanged, txtData7.TextChanged, txtData6.TextChanged, txtData5.TextChanged, txtData4.TextChanged, txtData3.TextChanged, txtData2.TextChanged, txtData11.TextChanged, txmData1.TextChanged, txmData0.TextChanged
 
         bTextChanged = True
 
+        ' This needs to be done for each text box
         If buserchange Then
             SetModeChange()
+        Else
+            ''Handle invisible boxes
+            Select Case sender.name
+                Case "txtData1"
+                    lstDept.SelectedIndex = lstDept.FindString(txtData1.Text)
+                Case "txtData10"
+                    cmbTax.SelectedIndex = cmbTax.FindString(txtData10.Text)
+            End Select
         End If
 
     End Sub
@@ -112,14 +127,14 @@ Public Class frmDept
             bTextChanged = False
 
             CustomerDepartmentTableAdapter.Connection.ConnectionString = CS
-            Me.CustomerDepartmentTableAdapter.Fill(Me.DsCustomerDepartment.CustomerDepartment, CurCust)
+            CustomerDepartmentTableAdapter.Fill(DsCustomerDepartment.CustomerDepartment, CurCust)
+            'data1.Refresh
+            'rs = data1.Recordset
         End If
 
         If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
             cmdNew.PerformClick()
         Else
-            intDept = DsCustomerDepartment.CustomerDepartment.Rows(0)("DEPT")
-
             GetData2()
         End If
 
@@ -134,9 +149,8 @@ Public Class frmDept
             Exit Sub
         End If
 
-        ' "Select * from CustomerDepartment Where Cust_Num=" & CurCust
+        CustomerDepartmentBindingSource.MoveFirst()
         If CurDept > 0 Then
-            CustomerDepartmentBindingSource.MoveFirst()
             intRow = CustomerDepartmentBindingSource.Find("DEPT", CurDept)
 
             If intRow >= 0 Then
@@ -144,22 +158,9 @@ Public Class frmDept
             End If
         End If
 
-        ' What if it doesn't find a row?
-        CurDept = DsCustomerDepartment.CustomerDepartment.Rows(intRow)("DEPT")
-
-        ' Both following lines do the same, keeping to see other way of getting position
-        'lstDept.SelectedIndex = lstDept.Find(intDept.ToString, C1.Win.C1List.MatchCompareEnum.Equal, True, 0, 0)
-        lstDept.SelectedIndex = CustomerDepartmentBindingSource.Position
-
-        intDept = lstDept.SelectedText
-
-        'cmbTax.BoundText = txtData10.Text
-        cmbTax.SelectedIndex = cmbTax.FindString(strTAX_LOCODE)
-        If Not DBNull.Value.Equals(DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")) Then
-            strTAX_LOCODE = DsCustomerDepartment.CustomerDepartment.Rows(0)("TAX_LOCODE")
-        Else
-            strTAX_LOCODE = ""
-        End If
+        CurDept = DsCustomerDepartment.CustomerDepartment.Rows(CustomerDepartmentBindingSource.Position)("DEPT")
+        lstDept.SelectedIndex = lstDept.FindString(txtData1.Text)
+        cmbTax.SelectedIndex = cmbTax.FindString(txtData10.Text)
 
         GetDataRoute()
 
@@ -186,21 +187,24 @@ Public Class frmDept
 
     Private Sub GetDataRoute()
 
+        Dim D As Integer
+
         If Me.Visible Then
             SetModeReg()
         End If
 
         ForceUpdates()
 
-        ' Moved to getdata2
-        'GetTaxCodes()
+        GetTaxCodes()
 
         'Get routes for dept
-        If intDept > 0 Then
-            CustomerRouteTableAdapter.Connection.ConnectionString = CS
-            CustomerRouteTableAdapter.Fill(DsCustomerRoute.CustomerRoute, CurCust, intDept)
-            'Set RS2 = data2.Recordset
-        End If
+        D = 0
+        D = DsCustomerDepartment.CustomerDepartment(CustomerDepartmentBindingSource.Position)("DEPT")
+
+        CustomerRouteTableAdapter.Connection.ConnectionString = CS
+        CustomerRouteTableAdapter.Fill(DsCustomerRoute.CustomerRoute, CurCust, D)
+        'data2.RecordSource = q
+        'RS2 = data2.Recordset
 
     End Sub
 
@@ -222,7 +226,7 @@ Public Class frmDept
                     drv.Row.Item("CUST_NUM") = CurCust
                     drv.Row.Item("DEL_NAME") = dataReader("BILL_NAME")
 
-                    If intDept = 1 Then
+                    If txtData1.Text = 1 Then
                         drv.Row.Item("DEL_ADDR") = dataReader("BILL_STR")
                         drv.Row.Item("DEL_CITY") = dataReader("BILL_CTY")
                         drv.Row.Item("DEL_STATE") = dataReader("BILL_STATE")
@@ -256,21 +260,20 @@ Public Class frmDept
 
         buserchange = False
 
+        'Default dept
         If DsCustomerDepartment.CustomerDepartment.Rows.Count = 0 Then
             D = 1
         Else
             CustomerDepartmentBindingSource.MoveFirst()
-            'D = txtData1.Text + 1
-            D = intDept + 1
+            D = txtData1.Text + 1
         End If
 
         CustomerDepartmentBindingSource.AddNew()
-        'Dim newRow As DataRowView = CustomerDepartmentBindingSource.AddNew()
+        'rs.addnew
 
         SetModeAdd()
 
-        'txtData1.Text = D
-        intDept = D
+        txtData1.Text = D
 
         blnNewRecord = True
         buserchange = True
@@ -284,7 +287,7 @@ Public Class frmDept
         buserchange = False
         bCancel = False
 
-        CurDept = intDept
+        CurDept = txtData1.Text
 
         Try
             CustomerDepartmentBindingSource.EndEdit()
@@ -305,7 +308,7 @@ Public Class frmDept
             'update succeeded
             GetData()
             CurCust = txtData0.Text
-            CurDept = intDept
+            CurDept = txtData1.Text
             SetModeReg()
             'If M = adEditAdd Then grdRoute.SetFocus
         End If
@@ -320,8 +323,7 @@ Public Class frmDept
         Dim intResult As Integer
         Dim q As String
 
-        'CurDept = txtData1.Text
-        CurDept = intDept
+        CurDept = txtData1.Text
         If ChkInvoiceExists() Then Exit Sub
         intResult = MsgBox("This will delete the dept., its routes and items." & Chr(10) & "Are you sure?", vbOKCancel + vbQuestion, "Delete Record")
         If intResult = vbCancel Then
@@ -396,8 +398,6 @@ Public Class frmDept
 
     Private Sub lstDept_Click(sender As Object, e As EventArgs) Handles lstDept.Click
 
-        intDept = lstDept.SelectedText
-
         If buserchange Then
             buserchange = False
             CurDept = lstDept.SelectedText
@@ -420,39 +420,6 @@ Public Class frmDept
         ''Make sure grid data is updated by closing recordsets
         'On Error Resume Next
         'If RS2.EditMode > 0 Then RS2.Update
-
-    End Sub
-
-    Private Sub txmData0_TextChanged(sender As Object, e As EventArgs) Handles txmData0.TextChanged
-
-        If buserchange Then
-            SetModeChange()
-        End If
-
-    End Sub
-
-    Private Sub txmData1_TextChanged(sender As Object, e As EventArgs) Handles txmData1.TextChanged
-
-        If buserchange Then
-            SetModeChange()
-        End If
-
-    End Sub
-
-    Private Sub txtData_Change(Index As Integer)
-
-        ' This needs to be done for each text box
-        If buserchange Then
-            SetModeChange()
-        Else
-            'Handle invisible boxes
-            Select Case Index
-                Case 1
-                    'lstDept.BoundText = txtData(1).Text
-                Case 10
-                    'cmbTax.BoundText = txtData(10).Text
-            End Select
-        End If
 
     End Sub
 

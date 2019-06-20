@@ -43,6 +43,10 @@ Public Class frmSetConnection
         grpServer.Text = "Not Connected"
         grpDivision.Text = "Not Connected"
 
+        lstServerName.SelectedIndex = lstServerName.FindStringExact("indoorbillboard.database.windows.net")
+
+        'cmdConnect.PerformClick()
+
     End Sub
 
     Private Sub cmdConnect_Click(sender As Object, e As EventArgs) Handles cmdConnect.Click

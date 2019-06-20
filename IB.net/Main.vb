@@ -627,6 +627,62 @@ Module Main
 
     End Sub
 
+    Public Function GetInvoiceNum() As Long
+
+        GetInvoiceNum = 0
+
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand
+
+            Try
+                strLocation = "GIN1.0"
+                connection.Open()
+
+                strLocation = "GIN2.0"
+                cmd.Connection = connection
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.CommandText = "spGetInvoiceNum"
+
+                strLocation = "GIN3.0"
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                LogError("Main.vb", "GetInvoiceNum", strLocation, ex.Message)
+            End Try
+        End Using
+        'q = "spGetInvoiceNum"
+        'Dim ADOCmd As New ADODB.Command
+        'With ADOCmd
+        '    .ActiveConnection = DB
+        '    .CommandType = adCmdStoredProc
+        '    .CommandText = q
+        '    .Execute()
+        'End With
+
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand("Select Lastinv_Number from Company", connection)
+
+            Try
+                strLocation = "GIN4.0"
+                connection.Open()
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+
+                If dataReader.HasRows = True Then
+                    strLocation = "GIN5.0"
+                    dataReader.Read()
+
+                    GetInvoiceNum = dataReader(0)
+                End If
+                dataReader.Close()
+            Catch ex As Exception
+                LogError("Main.vb", "GetInvoiceNum", strLocation, ex.Message)
+            End Try
+        End Using
+        'q = "Select Lastinv_Number from Company"
+        'Call R.Open(q, DB, adOpenStatic)
+        'GetInvoiceNum = R.Fields(0)
+        'R.Close()
+    End Function
+
     'Public Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
 
     '    ' Set database information

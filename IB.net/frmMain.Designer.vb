@@ -26,7 +26,6 @@ Partial Class frmMain
         Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
         Me.mnuFile = New C1.Win.C1Command.C1CommandMenu()
-        Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink62 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdSetupConnectionToDB = New C1.Win.C1Command.C1Command()
         Me.clPrintSetup = New C1.Win.C1Command.C1CommandLink()
@@ -43,6 +42,7 @@ Partial Class frmMain
         Me.cmdPurge = New C1.Win.C1Command.C1Command()
         Me.clExit = New C1.Win.C1Command.C1CommandLink()
         Me.cmdExit = New C1.Win.C1Command.C1Command()
+        Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
         Me.C1Command1 = New C1.Win.C1Command.C1Command()
         Me.mnuCustomer = New C1.Win.C1Command.C1CommandMenu()
         Me.C1CommandLink9 = New C1.Win.C1Command.C1CommandLink()
@@ -164,6 +164,7 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink63 = New C1.Win.C1Command.C1CommandLink()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -176,7 +177,7 @@ Partial Class frmMain
         Me.C1MainMenu1.Dock = System.Windows.Forms.DockStyle.Top
         Me.C1MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.C1MainMenu1.Name = "C1MainMenu1"
-        Me.C1MainMenu1.Size = New System.Drawing.Size(472, 27)
+        Me.C1MainMenu1.Size = New System.Drawing.Size(472, 21)
         Me.C1MainMenu1.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.C1MainMenu1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
@@ -255,7 +256,7 @@ Partial Class frmMain
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -263,15 +264,10 @@ Partial Class frmMain
         Me.mnuFile.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.mnuFile.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
         '
-        'cmdSelectDivision
-        '
-        Me.cmdSelectDivision.Name = "cmdSelectDivision"
-        Me.cmdSelectDivision.ShortcutText = ""
-        Me.cmdSelectDivision.Text = "Select &Division"
-        '
         'C1CommandLink62
         '
         Me.C1CommandLink62.Command = Me.cmdSetupConnectionToDB
+        Me.C1CommandLink62.SortOrder = 1
         '
         'cmdSetupConnectionToDB
         '
@@ -282,7 +278,7 @@ Partial Class frmMain
         'clPrintSetup
         '
         Me.clPrintSetup.Command = Me.cmdPrintSetup
-        Me.clPrintSetup.SortOrder = 1
+        Me.clPrintSetup.SortOrder = 2
         '
         'cmdPrintSetup
         '
@@ -293,7 +289,7 @@ Partial Class frmMain
         'C1CommandLink4
         '
         Me.C1CommandLink4.Command = Me.mnuMiscSetup
-        Me.C1CommandLink4.SortOrder = 2
+        Me.C1CommandLink4.SortOrder = 3
         Me.C1CommandLink4.Text = "&Misc Setup"
         '
         'mnuMiscSetup
@@ -353,7 +349,7 @@ Partial Class frmMain
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 3
+        Me.clExit.SortOrder = 4
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -361,6 +357,12 @@ Partial Class frmMain
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.ShortcutText = ""
         Me.cmdExit.Text = "&Exit"
+        '
+        'cmdSelectDivision
+        '
+        Me.cmdSelectDivision.Name = "cmdSelectDivision"
+        Me.cmdSelectDivision.ShortcutText = ""
+        Me.cmdSelectDivision.Text = "Select &Division"
         '
         'C1Command1
         '
@@ -1043,7 +1045,7 @@ Partial Class frmMain
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Location = New System.Drawing.Point(0, 21)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(472, 1)
         Me.Panel1.TabIndex = 1
@@ -1055,6 +1057,10 @@ Partial Class frmMain
         'C1CommandLink42
         '
         Me.C1CommandLink42.Text = "New Command"
+        '
+        'C1CommandLink63
+        '
+        Me.C1CommandLink63.Command = Me.cmdSelectDivision
         '
         'frmMain
         '
@@ -1214,4 +1220,5 @@ Partial Class frmMain
     Friend WithEvents cmdAreaSearch As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink62 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdSetupConnectionToDB As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink63 As C1.Win.C1Command.C1CommandLink
 End Class

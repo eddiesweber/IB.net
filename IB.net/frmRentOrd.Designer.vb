@@ -104,13 +104,14 @@ Partial Class frmRentOrd
         Me.txtData19 = New C1.Win.C1Input.C1TextBox()
         Me.txtTotal = New C1.Win.C1Input.C1TextBox()
         Me.chkData0 = New C1.Win.C1Input.C1CheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.C1RadialMenu1 = New C1.Win.C1Command.C1RadialMenu()
         Me.SpGetSalesmenTableAdapter = New IB.net.dsspGetSalesmenTableAdapters.spGetSalesmenTableAdapter()
         Me.SpGetCustDeptTableAdapter = New IB.net.dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter()
         Me.CustomerInventoryTableAdapter = New IB.net.dsCustomerInventoryTableAdapters.CustomerInventoryTableAdapter()
         Me.lstDept = New System.Windows.Forms.ListBox()
         Me.lstItem = New System.Windows.Forms.ListBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.fraSales.SuspendLayout()
         CType(Me.SpGetSalesmenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsspGetSalesmen, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -620,7 +621,7 @@ Partial Class frmRentOrd
         '
         'cmdFindItem
         '
-        Me.cmdFindItem.Location = New System.Drawing.Point(390, 241)
+        Me.cmdFindItem.Location = New System.Drawing.Point(395, 241)
         Me.cmdFindItem.Name = "cmdFindItem"
         Me.cmdFindItem.Size = New System.Drawing.Size(85, 25)
         Me.cmdFindItem.TabIndex = 77
@@ -1009,14 +1010,6 @@ Partial Class frmRentOrd
         Me.chkData0.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.chkData0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Location = New System.Drawing.Point(380, 0)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(2, 400)
-        Me.GroupBox1.TabIndex = 116
-        Me.GroupBox1.TabStop = False
-        '
         'SpGetSalesmenTableAdapter
         '
         Me.SpGetSalesmenTableAdapter.ClearBeforeFill = True
@@ -1049,14 +1042,32 @@ Partial Class frmRentOrd
         Me.lstItem.Size = New System.Drawing.Size(76, 56)
         Me.lstItem.TabIndex = 118
         '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.Line1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(492, 397)
+        Me.ShapeContainer1.TabIndex = 119
+        Me.ShapeContainer1.TabStop = False
+        '
+        'Line1
+        '
+        Me.Line1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Line1.Name = "Line1"
+        Me.Line1.X1 = 380
+        Me.Line1.X2 = 380
+        Me.Line1.Y1 = 0
+        Me.Line1.Y2 = 385
+        '
         'frmRentOrd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(482, 397)
+        Me.ClientSize = New System.Drawing.Size(492, 397)
         Me.Controls.Add(Me.lstItem)
         Me.Controls.Add(Me.lstDept)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkData0)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.txtData19)
@@ -1116,6 +1127,7 @@ Partial Class frmRentOrd
         Me.Controls.Add(Me.scrChange1)
         Me.Controls.Add(Me.scrChange2)
         Me.Controls.Add(Me.scrChange3)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(65, 153)
         Me.MaximizeBox = False
@@ -1248,7 +1260,6 @@ Partial Class frmRentOrd
     Friend WithEvents txtData5 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData6 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData4 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents C1RadialMenu1 As C1.Win.C1Command.C1RadialMenu
     Friend WithEvents SpGetSalesmenTableAdapter As dsspGetSalesmenTableAdapters.spGetSalesmenTableAdapter
     Friend WithEvents SpGetCustDeptTableAdapter As dsspGetCustDeptTableAdapters.SpGetCustDeptTableAdapter
@@ -1262,4 +1273,6 @@ Partial Class frmRentOrd
     Friend WithEvents lstDept As ListBox
     Friend WithEvents lstItem As ListBox
     Friend WithEvents lstSales As ListBox
+    Friend WithEvents ShapeContainer1 As PowerPacks.ShapeContainer
+    Friend WithEvents Line1 As PowerPacks.LineShape
 End Class
