@@ -348,7 +348,7 @@ Partial Class frmCust
         '
         'cmdExit
         '
-        Me.cmdExit.Location = New System.Drawing.Point(496, 130)
+        Me.cmdExit.Location = New System.Drawing.Point(496, 131)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
         Me.cmdExit.TabIndex = 21

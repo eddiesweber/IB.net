@@ -8,7 +8,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.024 - June 9st, 2019")
+        MessageBox.Show("Version 3.025 - June 22nd, 2019")
 
     End Sub
 
@@ -528,6 +528,12 @@ Public Class frmMain
     Private Sub cmdSetupConnectionToDB_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdSetupConnectionToDB.Click
 
         frmSetConnection.ShowDialog()
+
+    End Sub
+
+    Private Sub cmdRestoreCustomer_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRestoreCustomer.Click
+
+        frmRestoreCustomer.Show()
 
     End Sub
 End Class

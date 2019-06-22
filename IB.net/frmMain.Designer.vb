@@ -26,6 +26,8 @@ Partial Class frmMain
         Me.C1MainMenu1 = New C1.Win.C1Command.C1MainMenu()
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
         Me.mnuFile = New C1.Win.C1Command.C1CommandMenu()
+        Me.C1CommandLink63 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink62 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdSetupConnectionToDB = New C1.Win.C1Command.C1Command()
         Me.clPrintSetup = New C1.Win.C1Command.C1CommandLink()
@@ -42,7 +44,6 @@ Partial Class frmMain
         Me.cmdPurge = New C1.Win.C1Command.C1Command()
         Me.clExit = New C1.Win.C1Command.C1CommandLink()
         Me.cmdExit = New C1.Win.C1Command.C1Command()
-        Me.cmdSelectDivision = New C1.Win.C1Command.C1Command()
         Me.C1Command1 = New C1.Win.C1Command.C1Command()
         Me.mnuCustomer = New C1.Win.C1Command.C1CommandMenu()
         Me.C1CommandLink9 = New C1.Win.C1Command.C1CommandLink()
@@ -164,7 +165,8 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink63 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink64 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdRestoreCustomer = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -252,6 +254,7 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdCommissionReports)
         Me.C1CommandHolder1.Commands.Add(Me.cmdAreaSearch)
         Me.C1CommandHolder1.Commands.Add(Me.cmdSetupConnectionToDB)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdRestoreCustomer)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
@@ -263,6 +266,16 @@ Partial Class frmMain
         Me.mnuFile.Text = "&File"
         Me.mnuFile.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
         Me.mnuFile.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2007Blue
+        '
+        'C1CommandLink63
+        '
+        Me.C1CommandLink63.Command = Me.cmdSelectDivision
+        '
+        'cmdSelectDivision
+        '
+        Me.cmdSelectDivision.Name = "cmdSelectDivision"
+        Me.cmdSelectDivision.ShortcutText = ""
+        Me.cmdSelectDivision.Text = "Select &Division"
         '
         'C1CommandLink62
         '
@@ -358,12 +371,6 @@ Partial Class frmMain
         Me.cmdExit.ShortcutText = ""
         Me.cmdExit.Text = "&Exit"
         '
-        'cmdSelectDivision
-        '
-        Me.cmdSelectDivision.Name = "cmdSelectDivision"
-        Me.cmdSelectDivision.ShortcutText = ""
-        Me.cmdSelectDivision.Text = "Select &Division"
-        '
         'C1Command1
         '
         Me.C1Command1.Name = "C1Command1"
@@ -372,7 +379,7 @@ Partial Class frmMain
         '
         'mnuCustomer
         '
-        Me.mnuCustomer.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink9, Me.C1CommandLink10, Me.C1CommandLink, Me.C1CommandLink15, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink5, Me.C1CommandLink11, Me.C1CommandLink12, Me.C1CommandLink13, Me.C1CommandLink14, Me.C1CommandLink16})
+        Me.mnuCustomer.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink9, Me.C1CommandLink10, Me.C1CommandLink64, Me.C1CommandLink, Me.C1CommandLink15, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink5, Me.C1CommandLink11, Me.C1CommandLink12, Me.C1CommandLink13, Me.C1CommandLink14, Me.C1CommandLink16})
         Me.mnuCustomer.HideNonRecentLinks = False
         Me.mnuCustomer.Name = "mnuCustomer"
         Me.mnuCustomer.ShortcutText = ""
@@ -404,7 +411,7 @@ Partial Class frmMain
         'C1CommandLink
         '
         Me.C1CommandLink.Command = Me.cmdAreaSearch
-        Me.C1CommandLink.SortOrder = 2
+        Me.C1CommandLink.SortOrder = 3
         Me.C1CommandLink.Text = "Area Search"
         '
         'cmdAreaSearch
@@ -416,7 +423,7 @@ Partial Class frmMain
         'C1CommandLink15
         '
         Me.C1CommandLink15.Command = Me.cmdGeneralSearch
-        Me.C1CommandLink15.SortOrder = 3
+        Me.C1CommandLink15.SortOrder = 4
         '
         'cmdGeneralSearch
         '
@@ -428,7 +435,7 @@ Partial Class frmMain
         '
         Me.C1CommandLink2.Command = Me.cmdCustomerMaster
         Me.C1CommandLink2.Delimiter = True
-        Me.C1CommandLink2.SortOrder = 4
+        Me.C1CommandLink2.SortOrder = 5
         '
         'cmdCustomerMaster
         '
@@ -439,7 +446,7 @@ Partial Class frmMain
         'C1CommandLink3
         '
         Me.C1CommandLink3.Command = Me.cmdDepartmentsRoutes
-        Me.C1CommandLink3.SortOrder = 5
+        Me.C1CommandLink3.SortOrder = 6
         '
         'cmdDepartmentsRoutes
         '
@@ -450,7 +457,7 @@ Partial Class frmMain
         'C1CommandLink5
         '
         Me.C1CommandLink5.Command = Me.cmdItemsStandingOrders
-        Me.C1CommandLink5.SortOrder = 6
+        Me.C1CommandLink5.SortOrder = 7
         '
         'cmdItemsStandingOrders
         '
@@ -461,7 +468,7 @@ Partial Class frmMain
         'C1CommandLink11
         '
         Me.C1CommandLink11.Command = Me.cmdSurchargesDiscounts
-        Me.C1CommandLink11.SortOrder = 7
+        Me.C1CommandLink11.SortOrder = 8
         '
         'cmdSurchargesDiscounts
         '
@@ -472,7 +479,7 @@ Partial Class frmMain
         'C1CommandLink12
         '
         Me.C1CommandLink12.Command = Me.cmdDeliveryQuantities
-        Me.C1CommandLink12.SortOrder = 8
+        Me.C1CommandLink12.SortOrder = 9
         '
         'cmdDeliveryQuantities
         '
@@ -484,7 +491,7 @@ Partial Class frmMain
         '
         Me.C1CommandLink13.Command = Me.cmdSalesHistory
         Me.C1CommandLink13.Delimiter = True
-        Me.C1CommandLink13.SortOrder = 9
+        Me.C1CommandLink13.SortOrder = 10
         '
         'cmdSalesHistory
         '
@@ -495,7 +502,7 @@ Partial Class frmMain
         'C1CommandLink14
         '
         Me.C1CommandLink14.Command = Me.cmdViewOldInvoice
-        Me.C1CommandLink14.SortOrder = 10
+        Me.C1CommandLink14.SortOrder = 11
         '
         'cmdViewOldInvoice
         '
@@ -506,7 +513,7 @@ Partial Class frmMain
         'C1CommandLink16
         '
         Me.C1CommandLink16.Command = Me.cmdItemHistory
-        Me.C1CommandLink16.SortOrder = 11
+        Me.C1CommandLink16.SortOrder = 12
         '
         'cmdItemHistory
         '
@@ -1058,9 +1065,16 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
-        'C1CommandLink63
+        'C1CommandLink64
         '
-        Me.C1CommandLink63.Command = Me.cmdSelectDivision
+        Me.C1CommandLink64.Command = Me.cmdRestoreCustomer
+        Me.C1CommandLink64.SortOrder = 2
+        '
+        'cmdRestoreCustomer
+        '
+        Me.cmdRestoreCustomer.Name = "cmdRestoreCustomer"
+        Me.cmdRestoreCustomer.ShortcutText = ""
+        Me.cmdRestoreCustomer.Text = "Restore Customer"
         '
         'frmMain
         '
@@ -1221,4 +1235,6 @@ Partial Class frmMain
     Friend WithEvents C1CommandLink62 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdSetupConnectionToDB As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink63 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink64 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdRestoreCustomer As C1.Win.C1Command.C1Command
 End Class
