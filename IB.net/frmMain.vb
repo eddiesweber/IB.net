@@ -8,7 +8,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.025 - June 22nd, 2019")
+        MessageBox.Show("Version 3.027 - July 7th, 2019")
 
     End Sub
 
@@ -27,7 +27,11 @@ Public Class frmMain
 
         CommFlag = False
         DataPath = Application.StartupPath()
-        RptPath = Application.StartupPath() '& "\reports"
+        If Dir("ReportFolder.txt") <> "" Then
+            RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
+        Else
+            RptPath = Application.StartupPath() '& "\reports"
+        End If
 
         strSectionName = "Data"
         Company = GetSetting(APPNAME, strSectionName, "Company", "")
@@ -536,4 +540,117 @@ Public Class frmMain
         frmRestoreCustomer.Show()
 
     End Sub
+
+    Private Sub cmdAdagioExport_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdAdagioExport.Click
+
+        Dim strCSV As String
+        Dim strSQL As String = "SELECT CUST_NUM, BILL_NAME, BILL_STR, CARE_OF, BILL_CTY, BILL_STATE, BILL_ZIP, PHONE, FAX_NO, MAIL_STATEMENT, EMAIL FROM CustomerMaster"
+        Dim strFax As String
+        Dim strPhone As String
+        Dim objWriter As New System.IO.StreamWriter("xportcust.csv")
+        Dim strCSZ As String
+
+        Using connection As New SqlConnection(CS)
+            strLocation = "CAEC1.0"
+            Dim cmd As SqlCommand = New SqlCommand(strSQL, connection)
+
+            Try
+                Me.Cursor = Cursors.WaitCursor
+
+                strLocation = "CAEC2.0"
+                connection.Open()
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+
+                If dataReader.HasRows = True Then
+                    Do While dataReader.Read()
+                        strLocation = "CAEC3.0"
+                        If Not IsDBNull(dataReader.Item("FAX_NO")) Then
+                            strFax = Replace(dataReader.Item("FAX_NO"), "-", "")
+                            strFax = Replace(strFax, "(", "")
+                            strFax = Trim(Replace(strFax, ")", ""))
+                        Else
+                            strFax = ""
+                        End If
+
+                        strLocation = "CAEC4.0"
+                        If Not IsDBNull(dataReader.Item("PHONE")) Then
+                            strPhone = Replace(dataReader.Item("PHONE"), "-", "")
+                            strPhone = Replace(strPhone, "(", "")
+                            strPhone = Trim(Replace(strPhone, ")", ""))
+                        Else
+                            strPhone = ""
+                        End If
+
+                        strLocation = "CAEC5.0"
+                        strCSV = Chr(34) & dataReader.Item("EMAIL") & Chr(34)
+                        strCSV = strCSV & ", " & Chr(34) & dataReader.Item("CUST_NUM").ToString & Chr(34)
+                        strCSV = strCSV & ", " & Chr(34) & dataReader.Item("BILL_NAME") & Chr(34)
+
+                        strLocation = "CAEC6.0"
+                        If Not IsDBNull(dataReader.Item("BILL_STR")) Then
+                            strCSV = strCSV & ", " & Chr(34) & dataReader.Item("BILL_STR") & Chr(34)
+                        Else
+                            strCSV = strCSV & ", " & Chr(34) & "" & Chr(34)
+                        End If
+
+                        strLocation = "CAEC7.0"
+                        strCSZ = ""
+                        If Not IsDBNull(dataReader.Item("BILL_CTY")) Then
+                            strCSZ = dataReader.Item("BILL_CTY")
+                        End If
+
+                        If Not IsDBNull(dataReader.Item("BILL_STATE")) Then
+                            strCSZ = Trim(strCSZ & " " & dataReader.Item("BILL_STATE"))
+                        End If
+
+                        If Not IsDBNull(dataReader.Item("BILL_ZIP")) Then
+                            strCSZ = Trim(strCSZ & " " & dataReader.Item("BILL_ZIP"))
+                        End If
+                        strCSV = strCSV & ", " & Chr(34) & strCSZ & Chr(34)
+
+                        strLocation = "CAEC8.0"
+                        strCSV = strCSV & ", " & Chr(34) & strPhone & Chr(34)
+                        strCSV = strCSV & ", " & Chr(34) & strFax & Chr(34)
+
+                        strLocation = "CAEC9.0"
+                        If Not IsDBNull(dataReader.Item("CARE_OF")) Then
+                            strCSV = strCSV & ", " & Chr(34) & dataReader.Item("CARE_OF") & Chr(34)
+                        Else
+                            strCSV = strCSV & ", " & Chr(34) & "" & Chr(34)
+                        End If
+
+                        strLocation = "CAEC10.0"
+                        If dataReader.Item("MAIL_STATEMENT") = True Then
+                            strCSV = strCSV & ", " & Chr(34) & "1" & Chr(34)
+                        Else
+                            strCSV = strCSV & ", " & Chr(34) & "0" & Chr(34)
+                        End If
+                        strLocation = "CAEC11.0"
+                        strCSV = strCSV & ", " & Chr(34) & dataReader.Item("EMAIL") & Chr(34)
+
+                        strLocation = "CAEC12.0"
+                        objWriter.Write(strCSV & vbNewLine)
+                    Loop
+                End If
+                dataReader.Close()
+                objWriter.Close()
+
+                MessageBox.Show("Finished Export")
+
+                Me.Cursor = Cursors.Default
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
+                LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
+            End Try
+
+        End Using
+
+
+
+
+
+
+    End Sub
+
 End Class

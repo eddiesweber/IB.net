@@ -138,6 +138,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsCompany_CompanyID.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCompany_CompanyID.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsCompany_LASTCALC.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,6 +187,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsItemReportTemp.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsPOItemTemp_ItemMasterO.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1151,6 +1161,17 @@
     <None Include="dsCategoryMaster.xss">
       <DependentUpon>dsCategoryMaster.xsd</DependentUpon>
     </None>
+    <None Include="dsCompany_CompanyID.xsc">
+      <DependentUpon>dsCompany_CompanyID.xsd</DependentUpon>
+    </None>
+    <None Include="dsCompany_CompanyID.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCompany_CompanyID.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCompany_CompanyID.xss">
+      <DependentUpon>dsCompany_CompanyID.xsd</DependentUpon>
+    </None>
     <None Include="dsCompany_LASTCALC.xsc">
       <DependentUpon>dsCompany_LASTCALC.xsd</DependentUpon>
     </None>
@@ -1249,6 +1270,17 @@
     </None>
     <None Include="dsItemMasterR_ItemNum.xss">
       <DependentUpon>dsItemMasterR_ItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemReportTemp.xsc">
+      <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemReportTemp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemReportTemp.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemReportTemp.xss">
+      <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
     </None>
     <None Include="dsPOItemTemp_ItemMasterO.xsc">
       <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>

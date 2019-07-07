@@ -301,6 +301,7 @@ Partial Class frmInvRebill
         Me.txtData5.Size = New System.Drawing.Size(50, 15)
         Me.txtData5.TabIndex = 95
         Me.txtData5.Tag = Nothing
+        Me.txtData5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData12
@@ -316,6 +317,7 @@ Partial Class frmInvRebill
         Me.txtData12.Size = New System.Drawing.Size(50, 15)
         Me.txtData12.TabIndex = 96
         Me.txtData12.Tag = Nothing
+        Me.txtData12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData11
@@ -331,6 +333,7 @@ Partial Class frmInvRebill
         Me.txtData11.Size = New System.Drawing.Size(50, 15)
         Me.txtData11.TabIndex = 97
         Me.txtData11.Tag = Nothing
+        Me.txtData11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData10
@@ -361,6 +364,7 @@ Partial Class frmInvRebill
         Me.txtdata1.Size = New System.Drawing.Size(30, 15)
         Me.txtdata1.TabIndex = 99
         Me.txtdata1.Tag = Nothing
+        Me.txtdata1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtdata1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'txtData3
@@ -375,6 +379,7 @@ Partial Class frmInvRebill
         Me.txtData3.Size = New System.Drawing.Size(25, 15)
         Me.txtData3.TabIndex = 100
         Me.txtData3.Tag = Nothing
+        Me.txtData3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtData3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'datNewDate

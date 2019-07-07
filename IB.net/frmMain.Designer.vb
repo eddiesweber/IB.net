@@ -50,6 +50,8 @@ Partial Class frmMain
         Me.cmdFindCustomer = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink10 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdViewCustomer = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink64 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdRestoreCustomer = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink = New C1.Win.C1Command.C1CommandLink()
         Me.cmdAreaSearch = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink15 = New C1.Win.C1Command.C1CommandLink()
@@ -165,8 +167,8 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink64 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdRestoreCustomer = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink65 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdAdagioExport = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -255,6 +257,7 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdAreaSearch)
         Me.C1CommandHolder1.Commands.Add(Me.cmdSetupConnectionToDB)
         Me.C1CommandHolder1.Commands.Add(Me.cmdRestoreCustomer)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdAdagioExport)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
@@ -407,6 +410,17 @@ Partial Class frmMain
         Me.cmdViewCustomer.Name = "cmdViewCustomer"
         Me.cmdViewCustomer.ShortcutText = ""
         Me.cmdViewCustomer.Text = "&View Customer"
+        '
+        'C1CommandLink64
+        '
+        Me.C1CommandLink64.Command = Me.cmdRestoreCustomer
+        Me.C1CommandLink64.SortOrder = 2
+        '
+        'cmdRestoreCustomer
+        '
+        Me.cmdRestoreCustomer.Name = "cmdRestoreCustomer"
+        Me.cmdRestoreCustomer.ShortcutText = ""
+        Me.cmdRestoreCustomer.Text = "Restore Customer"
         '
         'C1CommandLink
         '
@@ -712,7 +726,7 @@ Partial Class frmMain
         '
         'mnuReports
         '
-        Me.mnuReports.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink34, Me.C1CommandLink35, Me.C1CommandLink36, Me.C1CommandLink43, Me.C1CommandLink44, Me.C1CommandLink45, Me.C1CommandLink46, Me.C1CommandLink47, Me.C1CommandLink48, Me.C1CommandLink49})
+        Me.mnuReports.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink34, Me.C1CommandLink35, Me.C1CommandLink36, Me.C1CommandLink43, Me.C1CommandLink44, Me.C1CommandLink45, Me.C1CommandLink46, Me.C1CommandLink47, Me.C1CommandLink48, Me.C1CommandLink49, Me.C1CommandLink65})
         Me.mnuReports.HideNonRecentLinks = False
         Me.mnuReports.Name = "mnuReports"
         Me.mnuReports.ShortcutText = ""
@@ -1065,16 +1079,16 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
-        'C1CommandLink64
+        'C1CommandLink65
         '
-        Me.C1CommandLink64.Command = Me.cmdRestoreCustomer
-        Me.C1CommandLink64.SortOrder = 2
+        Me.C1CommandLink65.Command = Me.cmdAdagioExport
+        Me.C1CommandLink65.SortOrder = 10
         '
-        'cmdRestoreCustomer
+        'cmdAdagioExport
         '
-        Me.cmdRestoreCustomer.Name = "cmdRestoreCustomer"
-        Me.cmdRestoreCustomer.ShortcutText = ""
-        Me.cmdRestoreCustomer.Text = "Restore Customer"
+        Me.cmdAdagioExport.Name = "cmdAdagioExport"
+        Me.cmdAdagioExport.ShortcutText = ""
+        Me.cmdAdagioExport.Text = "Adagio Export"
         '
         'frmMain
         '
@@ -1237,4 +1251,6 @@ Partial Class frmMain
     Friend WithEvents C1CommandLink63 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink64 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdRestoreCustomer As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink65 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdAdagioExport As C1.Win.C1Command.C1Command
 End Class

@@ -1068,7 +1068,7 @@ Namespace dsCategoryMasterTableAdapters
                 " [REVENUE], [DIST_CODE], [COMM_CAT], [SOHist], [Paper]) VALUES (@VOL_CAT, @VOL_T"& _ 
                 "ITLE, @REMARKS, @SALE_CD, @REVENUE, @DIST_CODE, @COMM_CAT, @SOHist, @Paper);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SE"& _ 
                 "LECT VOL_CAT, VOL_TITLE, REMARKS, SALE_CD, REVENUE, DIST_CODE, COMM_CAT, SOHist,"& _ 
-                " Paper FROM CategoryMaster WHERE (VOL_CAT = @VOL_CAT)"
+                " Paper FROM CategoryMaster WHERE (VOL_CAT = @VOL_CAT) ORDER BY VOL_CAT"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VOL_CAT", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VOL_CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VOL_TITLE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VOL_TITLE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1093,7 +1093,7 @@ Namespace dsCategoryMasterTableAdapters
                 "OHist = 1 AND [SOHist] IS NULL) OR ([SOHist] = @Original_SOHist)) AND ((@IsNull_"& _ 
                 "Paper = 1 AND [Paper] IS NULL) OR ([Paper] = @Original_Paper)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT VOL_CAT"& _ 
                 ", VOL_TITLE, REMARKS, SALE_CD, REVENUE, DIST_CODE, COMM_CAT, SOHist, Paper FROM "& _ 
-                "CategoryMaster WHERE (VOL_CAT = @VOL_CAT)"
+                "CategoryMaster WHERE (VOL_CAT = @VOL_CAT) ORDER BY VOL_CAT"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VOL_CAT", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VOL_CAT", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@VOL_TITLE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "VOL_TITLE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1135,7 +1135,7 @@ Namespace dsCategoryMasterTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT VOL_CAT, VOL_TITLE, REMARKS, SALE_CD, REVENUE, DIST_CODE, COMM_CAT, SOHist"& _ 
-                ", Paper FROM dbo.CategoryMaster"
+                ", Paper FROM dbo.CategoryMaster"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY VOL_CAT"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

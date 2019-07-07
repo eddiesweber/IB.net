@@ -493,7 +493,7 @@ Public Class frmInvHead
 
         Dim q As String
 
-        q = "SELECT Max(Rundate) RunDate FROM CalcLog Where ProcessDate>0"
+        q = "SELECT Max(Rundate) RunDate FROM CalcLog Where ProcessDate > 0"
 
         Using connection As New SqlConnection(CS)
             Dim cmd As SqlCommand = New SqlCommand(q, connection)

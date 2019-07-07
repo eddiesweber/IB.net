@@ -62,6 +62,344 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
+    Sub CalcItemUse(First As Long, Last As Long, IUFlag As Boolean, IMFlag As Boolean)
+
+        'Collect information for ItemUse screen/report
+        Dim q As String
+        'Dim AR(11 To 45) As Integer
+        Dim AR(45) As Integer
+        Dim PD As Integer
+        Dim W As Integer
+        Dim D As Integer
+        Dim LastItem As Single
+        Dim LastType As String
+
+        'Dim cmdSQL As SqlCommand
+
+        'Get data
+        Try
+            Using connection As New SqlConnection(CS)
+                Dim cmdSQL = New SqlCommand()
+                cmdSQL.Connection = connection
+                cmdSQL.Connection.Open()
+
+                If IUFlag Then
+                    strLocation = "CIU1.0"
+                    cmdSQL.CommandText = "DELETE ItemReportTemp"
+                    cmdSQL.ExecuteNonQuery()
+                End If
+                ''''''''''''''''''''''''''''
+                ' Moved to routine ItemDone
+                'Call IRRS.Open("ItemReportTemp", DB, adOpenDynamic, adLockOptimistic)
+
+                strLocation = "CIU2.0"
+                q = "Select PEAK_DAYS From Company where COMPANY_ID='" & Company & "'"
+                cmdSQL.CommandText = q
+                Using sqlReader As SqlDataReader = cmdSQL.ExecuteReader()
+                    If sqlReader.Read() Then
+                        PD = sqlReader.Item("PEAK_DAYS")
+                    Else
+                        Stop
+                    End If
+                End Using
+
+                If IMFlag Then
+                    strLocation = "CIU3.0"
+                    q = "UPDATE ItemMasterO SET PEAK = 0 WHERE ITEM_NUM BETWEEN " & First & " AND " & Last
+                    cmdSQL.CommandText = q
+                    cmdSQL.ExecuteNonQuery()
+
+                    strLocation = "CIU4.0"
+                    q = "UPDATE ItemMasterR SET PEAK = 0 WHERE ITEM_NUM BETWEEN " & First & " AND " & Last
+                    cmdSQL.CommandText = q
+                    cmdSQL.ExecuteNonQuery()
+                    'q = "SELECT ITEM_NUM,DESCR,TOTAL_OWN,RENTED,LOANED,PEAK FROM ItemMasterO WHERE ITEM_NUM BETWEEN " & First & " AND " & Last
+                    'Call IMORS.Open(q, DB, adOpenDynamic, adLockOptimistic)
+
+                    'q = "SELECT ITEM_NUM,DESCR,TOTAL_OWN,RENTED,LOANED,PEAK FROM ItemMasterR WHERE ITEM_NUM BETWEEN " & First & " AND " & Last
+                    'Call IMRRS.Open(q, DB, adOpenDynamic, adLockOptimistic)
+
+                    'If IMFlag Then
+                    '    While Not IMORS.EOF
+                    '        IMORS!peak = 0
+                    '        IMORS.Update()
+                    '        IMORS.MoveNext()
+                    '    Wend
+                    '    While Not IMRRS.EOF
+                    '        IMRRS!peak = 0
+                    '        IMRRS.Update()
+                    '        IMRRS.MoveNext()
+                    '    Wend
+                    'End If
+                End If
+
+                strLocation = "CIU5.0"
+                cmdSQL.CommandType = CommandType.StoredProcedure
+                cmdSQL.CommandText = "SpGetItemUse"
+                cmdSQL.Parameters.Add("item1", SqlDbType.Int).Value = First
+                cmdSQL.Parameters.Add("item2", SqlDbType.Int).Value = Last
+                'q = "SpGetItemUse (" & First & "," & Last & ")"
+                'Call IURS.Open(q, DB, adOpenStatic)
+
+                strLocation = "CIU6.0"
+                Using sqlReader As SqlDataReader = cmdSQL.ExecuteReader()
+                    LastItem = -1
+                    LastType = ""
+                    Do While sqlReader.Read()
+                        strLocation = "CIU7.0"
+                        If sqlReader("ITEM_NUM") <> LastItem Then
+                            If LastItem <> -1 Then
+                                ItemDone(AR, PD, LastType, LastItem, IUFlag)
+                            End If
+
+                            strLocation = "CIU8.0"
+                            For W = 1 To 4
+                                For D = 1 To 5
+                                    AR(W * 10 + D) = 0
+                                Next D
+                            Next W
+                            LastItem = sqlReader("ITEM_NUM")
+                            LastType = sqlReader("ITEM_TYPE")
+                        End If
+
+                        strLocation = "CIU9.0"
+                        D = CInt(Right(sqlReader("Weekday"), 1))
+                        q = Left(sqlReader("Weekday"), 1)
+                        Select Case q
+                            Case "A"
+                                AR(10 + D) = AR(10 + D) + sqlReader("Qty")
+                                AR(30 + D) = AR(30 + D) + sqlReader("Qty")
+                            Case "B"
+                                AR(20 + D) = AR(20 + D) + sqlReader("Qty")
+                                AR(40 + D) = AR(40 + D) + sqlReader("Qty")
+                            Case Else
+                                W = CInt(q)
+                                AR(10 * W + D) = AR(10 * W + D) + sqlReader("Qty")
+                        End Select
+                    Loop
+                    'LastItem = -1
+                    'While Not IURS.EOF
+                    '    If IURS!ITEM_NUM <> LastItem Then
+                    '        If LastItem <> -1 Then GoSub ItemDone
+                    '        For W = 1 To 4
+                    '            For D = 1 To 5
+                    '                AR(W * 10 + D) = 0
+                    '            Next D
+                    '        Next W
+                    '        LastItem = IURS!ITEM_NUM
+                    '        LastType = IURS!ITEM_TYPE
+                    '    End If
+                    '    D = CInt(Right(IURS!Weekday, 1))
+                    '    q = Left(IURS!Weekday, 1)
+                    '    Select Case q
+                    '        Case "A"
+                    '            AR(10 + D) = AR(10 + D) + IURS!Qty
+                    '            AR(30 + D) = AR(30 + D) + IURS!Qty
+                    '        Case "B"
+                    '            AR(20 + D) = AR(20 + D) + IURS!Qty
+                    '            AR(40 + D) = AR(40 + D) + IURS!Qty
+                    '        Case Else
+                    '            W = CInt(q)
+                    '            AR(10 * W + D) = AR(10 * W + D) + IURS!Qty
+                    '    End Select
+                    '    IURS.MoveNext()
+                    'Wend
+                End Using
+
+                strLocation = "CIU10.0"
+                If LastItem <> -1 Then
+                    ItemDone(AR, PD, LastType, LastItem, IUFlag)
+                End If
+            End Using
+        Catch ex As Exception
+            Result = MessageBox.Show("Error in routine CalcItemUse (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CalcItemUse", MessageBoxButtons.OK)
+            LogError("Main.vb", "CalcItemUse", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub ItemDone(AR() As Integer, PD As Integer, LastType As String, LastItem As Single, IUFlag As Boolean)
+
+        Dim q As String
+        Dim ct As Integer
+        Dim X As Integer
+
+        Dim peak As Integer
+        Dim W As Integer
+        Dim d As Integer
+        Dim wd As Integer
+
+        Dim intTOTAL_OWN As Integer
+
+        strLocation = "ID1.0"
+        peak = 0
+        For W = 1 To 4
+            For d = 1 To 5
+                wd = 10 * W + d
+                X = AR(wd)
+                ct = 1
+                While ct < PD
+                    wd = wd + 1
+                    If wd Mod 10 = 6 Then
+                        wd = wd + 5
+                        If Int(wd / 10) = 5 Then wd = 11
+                    End If
+                    X = X + AR(wd)
+                    ct = ct + 1
+                End While
+
+                If X > peak Then
+                    peak = X
+                End If
+            Next d
+        Next W
+
+        Try
+            strLocation = "ID2.0"
+            'Load ItemReportTemp
+            If LastType = "O" Then
+                q = "SELECT ITEM_NUM,DESCR,TOTAL_OWN,RENTED,LOANED,PEAK FROM ItemMasterO WHERE ITEM_NUM = " & LastItem
+                'IMRS = IMORS
+            Else
+                q = "SELECT ITEM_NUM,DESCR,TOTAL_OWN,RENTED,LOANED,PEAK FROM ItemMasterR WHERE ITEM_NUM = " & LastItem
+                'IMRS = IMRRS
+            End If
+            'IMRS.Find "ITEM_NUM=" & LastItem
+
+            Using connection As New SqlConnection(CS)
+                strLocation = "ID3.0"
+                connection.Open()
+                Dim command As New SqlCommand(q, connection)
+                Dim dataReader As SqlDataReader = command.ExecuteReader()
+
+                strLocation = "ID4.0"
+                If dataReader.Read() Then
+                    If IUFlag Then
+                        'Call IRRS.Open("ItemReportTemp", DB, adOpenDynamic, adLockOptimistic)
+                        'IRRS.AddNew()
+
+                        If IsNumeric(dataReader.Item("TOTAL_OWN")) = False Then
+                            intTOTAL_OWN = 0
+                        Else
+                            intTOTAL_OWN = dataReader.Item("TOTAL_OWN")
+                        End If
+
+                        strLocation = "ID5.0"
+                        q = "INSERT INTO ItemReportTemp " &
+                         "(ITEM_NUM, DESCR, [11], [12], [13], [14], [15], [21], [22], [23], [24], [25], [31], [32], [33], [34], [35], [41], [42], [43], [44], [45], Peak, TOTAL_OWN, RENTED, LOANED) " &
+                          "VALUES (" &
+                          dataReader.Item("ITEM_NUM") & ", '" & Replace(dataReader.Item("DESCR"), "'", "") & "', " &
+                          AR(11) & ", " & AR(12) & ", " & AR(13) & ", " & AR(14) & ", " & AR(15) & ", " &
+                          AR(21) & ", " & AR(22) & ", " & AR(23) & ", " & AR(24) & ", " & AR(25) & ", " &
+                          AR(31) & ", " & AR(32) & ", " & AR(33) & ", " & AR(34) & ", " & AR(35) & ", " &
+                          AR(41) & ", " & AR(42) & ", " & AR(43) & ", " & AR(44) & ", " & AR(45) & ", " &
+                          peak & ", " & intTOTAL_OWN & ", " & dataReader.Item("RENTED") & ", " & dataReader.Item("LOANED") & ")"
+                        'For W = 1 To 4
+                        '    For d = 1 To 5
+                        '        wd = 10 * W + d
+                        '        q = CStr(wd)
+                        '        IRRS.Fields(q) = AR(wd)
+                        '    Next d
+                        'Next W
+                        'IRRS!peak = peak
+                        'IRRS!ITEM_NUM = IMRS!ITEM_NUM
+                        'IRRS!DESCR = IMRS!DESCR
+                        'IRRS!TOTAL_OWN = IMRS!TOTAL_OWN
+                        'IRRS!RENTED = IMRS!RENTED
+                        'IRRS!LOANED = IMRS!LOANED
+                        'IRRS.Update()
+                        strLocation = "ID6.0"
+                        If dataReader.IsClosed = False Then
+                            dataReader.Close()
+                        End If
+
+                        strLocation = "ID7.0"
+                        command.CommandText = q
+                        command.ExecuteNonQuery()
+                    End If
+
+                    strLocation = "ID8.0"
+                    If dataReader.IsClosed = False Then
+                        dataReader.Close()
+                    End If
+
+                    'Update ItemMaster
+                    If LastType = "O" Then
+                        q = "UPDATE ItemMasterO SET PEAK = 0 WHERE ITEM_NUM  =" & LastItem
+                    Else
+                        q = "UPDATE ItemMasterR SET PEAK = 0 WHERE ITEM_NUM  =" & LastItem
+                    End If
+                    strLocation = "ID8.0"
+                    command.CommandText = q
+                    command.ExecuteNonQuery()
+                    'If IMFlag Then
+                    '    'IMRS.Edit
+                    '    IMRS!peak = peak
+                    '    IMRS.Update()
+                    'End If
+                End If
+            End Using
+        Catch ex As Exception
+            Result = MessageBox.Show("Error in routine ItemDone (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "ItemDone", MessageBoxButtons.OK)
+            LogError("Main.vb", "ItemDone", strLocation, ex.Message)
+            Stop
+        End Try
+
+        'peak = 0
+        'For W = 1 To 4
+        '    For D = 1 To 5
+        '        wd = 10 * W + D
+        '        X = AR(wd)
+        '        ct = 1
+        '        While ct < PD
+        '            wd = wd + 1
+        '            If wd Mod 10 = 6 Then
+        '                wd = wd + 5
+        '                If Int(wd / 10) = 5 Then wd = 11
+        '            End If
+        '            X = X + AR(wd)
+        '            ct = ct + 1
+        'Wend
+        'If X > peak Then peak = X
+        '    Next D
+        'Next W
+
+        ''Load ItemReportTemp
+        'If LastType = "O" Then
+        '    IMRS = IMORS
+        'Else
+        '    IMRS = IMRRS
+        'End If
+        'IMRS.Find "ITEM_NUM=" & LastItem
+        'If IMRS.EOF Then Return
+        'If IUFlag Then
+        '    IRRS.AddNew()
+
+        '    For W = 1 To 4
+        '        For D = 1 To 5
+        '            wd = 10 * W + D
+        '            q = CStr(wd)
+        '            IRRS.Fields(q) = AR(wd)
+        '        Next D
+        '    Next W
+        '    IRRS!peak = peak
+        '    IRRS!ITEM_NUM = IMRS!ITEM_NUM
+        '    IRRS!DESCR = IMRS!DESCR
+        '    IRRS!TOTAL_OWN = IMRS!TOTAL_OWN
+        '    IRRS!RENTED = IMRS!RENTED
+        '    IRRS!LOANED = IMRS!LOANED
+        '    IRRS.Update()
+        'End If
+        ''Update ItemMaster
+        'If IMFlag Then
+        '    'IMRS.Edit
+        '    IMRS!peak = peak
+        '    IMRS.Update()
+        'End If
+        'Return
+
+    End Sub
+
     Public Function GetWeekDay(D As Date) As Integer
 
         Dim Base As Date
