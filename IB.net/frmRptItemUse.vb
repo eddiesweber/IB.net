@@ -118,6 +118,8 @@ Public Class frmRptItemUse
         Me.Cursor = Cursors.Default
 
         'RunReport1()
+        frmViewReport.lblReportName.Text = "ItemUse2.rpt"
+        frmViewReport.Show()
 
     End Sub
 
@@ -131,6 +133,8 @@ Public Class frmRptItemUse
         Me.Cursor = Cursors.Default
 
         'RunReport2()
+        frmViewReport.lblReportName.Text = "InvAnal.rpt"
+        frmViewReport.Show()
 
     End Sub
 

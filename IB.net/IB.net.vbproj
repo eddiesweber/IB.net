@@ -346,6 +346,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetPOsNum.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsspGetRouteTemp.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspGetRouteTemp.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsspGetSalesmen.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1611,6 +1616,17 @@
     </None>
     <None Include="dsspGetPOsNum.xss">
       <DependentUpon>dsspGetPOsNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetRouteTemp.xsc">
+      <DependentUpon>dsspGetRouteTemp.xsd</DependentUpon>
+    </None>
+    <None Include="dsspGetRouteTemp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspGetRouteTemp.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspGetRouteTemp.xss">
+      <DependentUpon>dsspGetRouteTemp.xsd</DependentUpon>
     </None>
     <None Include="dsspGetSalesmen.xsc">
       <DependentUpon>dsspGetSalesmen.xsd</DependentUpon>

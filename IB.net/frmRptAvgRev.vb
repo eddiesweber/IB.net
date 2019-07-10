@@ -54,6 +54,7 @@ Public Class frmRptAvgRev
             End If
 
             lblStatus0.Text = "Data current as of " & q
+            lblStatus0.Update()
         Catch ex As Exception
 
         End Try
@@ -63,6 +64,7 @@ Public Class frmRptAvgRev
     Sub RunReport1()
 
         lblStatus1.Text = "Printing Top 100 Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -101,6 +103,7 @@ Public Class frmRptAvgRev
     Sub RunReport2()
 
         lblStatus1.Text = "Printing Change Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -156,7 +159,8 @@ Public Class frmRptAvgRev
             RunReport2()
         End If
 
-        'lblStatus1.Text = "Reports completed."
+        lblStatus1.Text = "Reports completed."
+        lblStatus1.Update()
 
     End Sub
 

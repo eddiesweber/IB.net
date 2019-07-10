@@ -22,53 +22,65 @@ Partial Class frmdeptlist
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Command1 = New System.Windows.Forms.Button()
-        Me.Text1 = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmdeptlist))
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmdOK = New C1.Win.C1Input.C1Button()
+        Me.txtItemNumber = New C1.Win.C1Input.C1TextBox()
+        CType(Me.cmdOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtItemNumber, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Command1
-        '
-        Me.Command1.Location = New System.Drawing.Point(48, 112)
-        Me.Command1.Name = "Command1"
-        Me.Command1.Size = New System.Drawing.Size(75, 34)
-        Me.Command1.TabIndex = 1
-        Me.Command1.Text = "PRINT REPORT"
-        Me.Command1.UseVisualStyleBackColor = True
-        '
-        'Text1
-        '
-        Me.Text1.Location = New System.Drawing.Point(40, 56)
-        Me.Text1.Name = "Text1"
-        Me.Text1.Size = New System.Drawing.Size(105, 20)
-        Me.Text1.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(40, 32)
+        Me.Label1.Location = New System.Drawing.Point(58, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Enter Customer Number"
         '
+        'cmdOK
+        '
+        Me.cmdOK.Location = New System.Drawing.Point(75, 75)
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.Size = New System.Drawing.Size(85, 23)
+        Me.cmdOK.TabIndex = 85
+        Me.cmdOK.Text = "Print"
+        Me.cmdOK.UseVisualStyleBackColor = True
+        Me.cmdOK.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdOK.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'txtItemNumber
+        '
+        Me.txtItemNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtItemNumber.DataType = GetType(Integer)
+        Me.txtItemNumber.Location = New System.Drawing.Point(61, 40)
+        Me.txtItemNumber.Name = "txtItemNumber"
+        Me.txtItemNumber.Size = New System.Drawing.Size(112, 18)
+        Me.txtItemNumber.TabIndex = 89
+        Me.txtItemNumber.Tag = Nothing
+        Me.txtItemNumber.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtItemNumber.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmdeptlist
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(216, 237)
+        Me.ClientSize = New System.Drawing.Size(234, 111)
+        Me.Controls.Add(Me.txtItemNumber)
+        Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Text1)
-        Me.Controls.Add(Me.Command1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(104, 154)
         Me.Name = "frmdeptlist"
-        Me.Text = "DEPARTMENT LIST"
+        Me.Text = "Dept List"
+        CType(Me.cmdOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtItemNumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Command1 As Button
-    Friend WithEvents Text1 As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents cmdOK As C1.Win.C1Input.C1Button
+    Friend WithEvents txtItemNumber As C1.Win.C1Input.C1TextBox
 End Class

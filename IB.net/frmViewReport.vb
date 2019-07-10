@@ -59,12 +59,86 @@ Public Class frmViewReport
                 VolItem()
             Case "VolCust.rpt"
                 VolCust()
-
+            Case "ardept.rpt"
+                ardept()
+            Case "RouteChange.rpt"
+                RouteChange()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Private Sub RouteChange()
+
+        Try
+            strLocation = "RC1.0"
+            RPT.Load("C:\IB\ReportsCR2016\RouteChange.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "RC2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+
+            strLocation = "RC3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine RouteChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "RouteChange", vbOK)
+            LogError(Me.Name, "RouteChange", strLocation, ex.Message)
+        End Try
+
+        'With RPT
+        '    .ReportFileName = RptPath & "\RouteChange.rpt"
+        '    .Connect = CryCS
+        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
+        '    .Destination = 1
+        '    .Action = 1
+        '    .Formulas(0) = ""
+        '    .SelectionFormula = ""
+        '    .ReportFileName = ""
+        'End With
+
+    End Sub
+
+    Public Sub ardept()
+
+        Try
+            strLocation = "AD1.0"
+            RPT.Load("C:\IB\ReportsCR2016\ardept.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "AD2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "AD2.1"
+            RPT.SetParameterValue("CustomerNumber", frmdeptlist.txtItemNumber.Text)
+
+            strLocation = "AD3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine ardept (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "ardept", vbOK)
+            LogError(Me.Name, "ardept", strLocation, ex.Message)
+        End Try
+
+        'With RPT
+        '    .ReportFileName = RptPath & "\ardept.rpt"
+        '    .Connect = CryCS
+        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{CustomerDepartment.CUST_NUM} =" & Text1.Text
+
+        '    .Action = 1
+        '    .Formulas(0) = ""
+        '    .ReportFileName = ""
+        '    .SelectionFormula = ""
+        '    .Destination = 0
+        '    ' {CustomerDepartment.CUST_NUM} = 1901
+        'End With
 
     End Sub
 

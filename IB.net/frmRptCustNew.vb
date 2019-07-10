@@ -132,12 +132,14 @@ Calc1:
 
 OKDone:
         lblStatus1.Text = "Reports completed."
+        lblStatus1.Update()
 
     End Sub
 
     Sub RunReport1()
 
         lblStatus1.Text = "Printing New Customers Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -181,6 +183,7 @@ OKDone:
     Sub RunReport2()
 
         lblStatus1.Text = "Printing Anniversary Report"
+        lblStatus1.Update()
 
         MessageBox.Show("This report runs forever and does not have date selection in the report, which field do the date search by?  Exiting...")
         Exit Sub
@@ -233,6 +236,7 @@ OKDone:
     Sub RunReport3()
 
         lblStatus1.Text = "Printing Expiration Report"
+        lblStatus1.Update()
 
         'With RPT
         '    .ReportFileName = RptPath & "\CustExp.rpt"
@@ -256,6 +260,7 @@ OKDone:
     Sub RunReport4()
 
         lblStatus1.Text = "Printing Cancelled Customers Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -306,6 +311,7 @@ OKDone:
         End If
 
         lblStatus1.Text = "Printing full Customer Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -348,6 +354,7 @@ OKDone:
     Public Sub runreport6()
 
         lblStatus1.Text = "Printing Stop Delivery Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -389,6 +396,7 @@ OKDone:
     Public Sub runreport7()
 
         lblStatus1.Text = "Printing Recollect Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor

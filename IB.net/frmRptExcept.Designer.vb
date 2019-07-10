@@ -105,7 +105,7 @@ Partial Class frmRptExcept
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(85, 23)
         Me.cmdOK.TabIndex = 0
-        Me.cmdOK.Text = "OK"
+        Me.cmdOK.Text = "Print"
         Me.cmdOK.UseVisualStyleBackColor = True
         Me.cmdOK.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdOK.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue

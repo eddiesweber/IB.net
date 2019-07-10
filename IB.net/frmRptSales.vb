@@ -58,6 +58,7 @@ Public Class frmRptSales
                     Loop
 
                     lblStaus0.Text = "Data updated through " & Format(RunDate, "Short Date")
+                    lblStaus0.Update()
                 Else
                     MessageBox.Show("No dates updated")
                     Me.Close()
@@ -81,6 +82,7 @@ Public Class frmRptSales
     Sub RunReport1()
 
         lblStatus1.Text = "Printing Production Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -126,6 +128,7 @@ Public Class frmRptSales
     Sub RunReport2()
 
         lblStatus1.Text = "Printing Top 100 Report"
+        lblStatus1.Update()
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -185,6 +188,7 @@ Public Class frmRptSales
         End If
 
         lblStatus1.Text = "Reports completed."
+        lblStatus1.Update()
 
     End Sub
 
