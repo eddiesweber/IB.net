@@ -60,8 +60,6 @@ Public Class frmTemplate
             LogError(Me.Name, "cmdOK_Click", strLocation, ex.Message)
         End Try
 
-
-
     End Sub
 
     Private Sub cmdStoredProcedure_Click(sender As Object, e As EventArgs) Handles cmdStoredProcedure.Click

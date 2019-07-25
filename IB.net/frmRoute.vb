@@ -11,6 +11,12 @@ Public Class frmRoute
 
     End Sub
 
+    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+
+        Me.Close()
+
+    End Sub
+
     Private Sub frmRoute_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
         SaveWindowPos(Me)

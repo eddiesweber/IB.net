@@ -22,24 +22,23 @@ Partial Class frmInvPhys2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtDate0 = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInvPhys2))
         Me.Option11 = New System.Windows.Forms.RadioButton()
         Me.Option10 = New System.Windows.Forms.RadioButton()
-        Me.CancelButton = New System.Windows.Forms.Button()
-        Me.OKButton = New System.Windows.Forms.Button()
+        Me.txtDate = New C1.Win.C1Input.C1TextBox()
+        Me.datDate = New C1.Win.Calendar.C1DateEdit()
+        Me.OKButton = New C1.Win.C1Input.C1Button()
+        Me.CancelButton = New C1.Win.C1Input.C1Button()
+        CType(Me.txtDate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.datDate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OKButton, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CancelButton, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txtDate0
-        '
-        Me.txtDate0.Location = New System.Drawing.Point(208, 16)
-        Me.txtDate0.Name = "txtDate0"
-        Me.txtDate0.Size = New System.Drawing.Size(81, 20)
-        Me.txtDate0.TabIndex = 5
         '
         'Option11
         '
         Me.Option11.AutoSize = True
-        Me.Option11.Location = New System.Drawing.Point(16, 48)
+        Me.Option11.Location = New System.Drawing.Point(10, 45)
         Me.Option11.Name = "Option11"
         Me.Option11.Size = New System.Drawing.Size(148, 17)
         Me.Option11.TabIndex = 1
@@ -50,7 +49,7 @@ Partial Class frmInvPhys2
         'Option10
         '
         Me.Option10.AutoSize = True
-        Me.Option10.Location = New System.Drawing.Point(16, 16)
+        Me.Option10.Location = New System.Drawing.Point(10, 15)
         Me.Option10.Name = "Option10"
         Me.Option10.Size = New System.Drawing.Size(190, 17)
         Me.Option10.TabIndex = 0
@@ -58,48 +57,86 @@ Partial Class frmInvPhys2
         Me.Option10.Text = "Continue working with counts as of"
         Me.Option10.UseVisualStyleBackColor = True
         '
-        'CancelButton
+        'txtDate
         '
-        Me.CancelButton.Location = New System.Drawing.Point(312, 40)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(81, 25)
-        Me.CancelButton.TabIndex = 4
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDate.Location = New System.Drawing.Point(205, 15)
+        Me.txtDate.Name = "txtDate"
+        Me.txtDate.Size = New System.Drawing.Size(80, 18)
+        Me.txtDate.TabIndex = 6
+        Me.txtDate.Tag = Nothing
+        Me.txtDate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'datDate
+        '
+        Me.datDate.AllowSpinLoop = False
+        Me.datDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.datDate.Calendar.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
+        Me.datDate.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.datDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.datDate.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+        Me.datDate.ImagePadding = New System.Windows.Forms.Padding(0, 0, 0, 0)
+        Me.datDate.Location = New System.Drawing.Point(160, 45)
+        Me.datDate.Name = "datDate"
+        Me.datDate.Size = New System.Drawing.Size(125, 18)
+        Me.datDate.TabIndex = 7
+        Me.datDate.Tag = Nothing
+        Me.datDate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.datDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'OKButton
         '
-        Me.OKButton.Location = New System.Drawing.Point(312, 8)
+        Me.OKButton.Location = New System.Drawing.Point(300, 12)
         Me.OKButton.Name = "OKButton"
-        Me.OKButton.Size = New System.Drawing.Size(81, 25)
-        Me.OKButton.TabIndex = 3
+        Me.OKButton.Size = New System.Drawing.Size(85, 23)
+        Me.OKButton.TabIndex = 11
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
+        Me.OKButton.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.OKButton.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'CancelButton
+        '
+        Me.CancelButton.Location = New System.Drawing.Point(300, 42)
+        Me.CancelButton.Name = "CancelButton"
+        Me.CancelButton.Size = New System.Drawing.Size(85, 23)
+        Me.CancelButton.TabIndex = 12
+        Me.CancelButton.Text = "Cancel"
+        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.CancelButton.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.CancelButton.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'frmInvPhys2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(395, 82)
-        Me.Controls.Add(Me.OKButton)
+        Me.ClientSize = New System.Drawing.Size(394, 76)
         Me.Controls.Add(Me.CancelButton)
+        Me.Controls.Add(Me.OKButton)
+        Me.Controls.Add(Me.datDate)
+        Me.Controls.Add(Me.txtDate)
         Me.Controls.Add(Me.Option10)
         Me.Controls.Add(Me.Option11)
-        Me.Controls.Add(Me.txtDate0)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(184, 250)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmInvPhys2"
         Me.ShowInTaskbar = False
         Me.Text = "Physical Inventory Date"
+        CType(Me.txtDate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.datDate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OKButton, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CancelButton, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txtDate0 As TextBox
     Friend WithEvents Option11 As RadioButton
     Friend WithEvents Option10 As RadioButton
-    Friend WithEvents CancelButton As Button
-    Friend WithEvents OKButton As Button
+    Friend WithEvents txtDate As C1.Win.C1Input.C1TextBox
+    Friend WithEvents datDate As C1.Win.Calendar.C1DateEdit
+    Friend WithEvents OKButton As C1.Win.C1Input.C1Button
+    Friend WithEvents CancelButton As C1.Win.C1Input.C1Button
 End Class

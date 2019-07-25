@@ -32,15 +32,15 @@ Partial Class frmRouteEdit
         Me.optSort1 = New System.Windows.Forms.RadioButton()
         Me.optSort2 = New System.Windows.Forms.RadioButton()
         Me.cmdClose = New C1.Win.C1Input.C1Button()
-        Me.C1TrueDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.DsspGetRouteTemp = New IB.net.dsspGetRouteTemp()
+        Me.TDBGrid1 = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.SpGetRouteTempBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsspGetRouteTemp = New IB.net.dsspGetRouteTemp()
         Me.SpGetRouteTempTableAdapter = New IB.net.dsspGetRouteTempTableAdapters.spGetRouteTempTableAdapter()
         Me.fraSort.SuspendLayout()
         CType(Me.cmdClose, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsspGetRouteTemp, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpGetRouteTempBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsspGetRouteTemp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Timer1
@@ -51,18 +51,18 @@ Partial Class frmRouteEdit
         '
         Me.lstDays1.ForeColor = System.Drawing.Color.Maroon
         Me.lstDays1.FormattingEnabled = True
-        Me.lstDays1.Location = New System.Drawing.Point(676, 28)
+        Me.lstDays1.Location = New System.Drawing.Point(666, 12)
         Me.lstDays1.Name = "lstDays1"
-        Me.lstDays1.Size = New System.Drawing.Size(43, 121)
+        Me.lstDays1.Size = New System.Drawing.Size(53, 225)
         Me.lstDays1.TabIndex = 7
         '
         'lstDays0
         '
         Me.lstDays0.ForeColor = System.Drawing.Color.Maroon
         Me.lstDays0.FormattingEnabled = True
-        Me.lstDays0.Location = New System.Drawing.Point(676, 155)
+        Me.lstDays0.Location = New System.Drawing.Point(666, 248)
         Me.lstDays0.Name = "lstDays0"
-        Me.lstDays0.Size = New System.Drawing.Size(29, 121)
+        Me.lstDays0.Size = New System.Drawing.Size(53, 134)
         Me.lstDays0.TabIndex = 6
         '
         'fraSort
@@ -112,7 +112,7 @@ Partial Class frmRouteEdit
         '
         'cmdClose
         '
-        Me.cmdClose.Location = New System.Drawing.Point(316, 22)
+        Me.cmdClose.Location = New System.Drawing.Point(546, 15)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(85, 23)
         Me.cmdClose.TabIndex = 91
@@ -121,34 +121,36 @@ Partial Class frmRouteEdit
         Me.cmdClose.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'C1TrueDBGrid1
+        'TDBGrid1
         '
-        Me.C1TrueDBGrid1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.C1TrueDBGrid1.DataSource = Me.SpGetRouteTempBindingSource
-        Me.C1TrueDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
-        Me.C1TrueDBGrid1.Images.Add(CType(resources.GetObject("C1TrueDBGrid1.Images"), System.Drawing.Image))
-        Me.C1TrueDBGrid1.Location = New System.Drawing.Point(10, 63)
-        Me.C1TrueDBGrid1.Name = "C1TrueDBGrid1"
-        Me.C1TrueDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.C1TrueDBGrid1.PreviewInfo.ZoomFactor = 75.0R
-        Me.C1TrueDBGrid1.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
-        Me.C1TrueDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
-        Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(621, 319)
-        Me.C1TrueDBGrid1.TabIndex = 92
-        Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
-        Me.C1TrueDBGrid1.PropBag = resources.GetString("C1TrueDBGrid1.PropBag")
-        '
-        'DsspGetRouteTemp
-        '
-        Me.DsspGetRouteTemp.DataSetName = "dsspGetRouteTemp"
-        Me.DsspGetRouteTemp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.TDBGrid1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TDBGrid1.DataSource = Me.SpGetRouteTempBindingSource
+        Me.TDBGrid1.GroupByCaption = "Drag a column header here to group by that column"
+        Me.TDBGrid1.Images.Add(CType(resources.GetObject("TDBGrid1.Images"), System.Drawing.Image))
+        Me.TDBGrid1.Location = New System.Drawing.Point(10, 63)
+        Me.TDBGrid1.Name = "TDBGrid1"
+        Me.TDBGrid1.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.TDBGrid1.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.TDBGrid1.PreviewInfo.ZoomFactor = 75.0R
+        Me.TDBGrid1.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
+        Me.TDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
+        Me.TDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("TDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.TDBGrid1.Size = New System.Drawing.Size(620, 319)
+        Me.TDBGrid1.TabIndex = 92
+        Me.TDBGrid1.UseCompatibleTextRendering = False
+        Me.TDBGrid1.PropBag = resources.GetString("TDBGrid1.PropBag")
         '
         'SpGetRouteTempBindingSource
         '
         Me.SpGetRouteTempBindingSource.DataMember = "spGetRouteTemp"
         Me.SpGetRouteTempBindingSource.DataSource = Me.DsspGetRouteTemp
+        '
+        'DsspGetRouteTemp
+        '
+        Me.DsspGetRouteTemp.DataSetName = "dsspGetRouteTemp"
+        Me.DsspGetRouteTemp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'SpGetRouteTempTableAdapter
         '
@@ -158,21 +160,22 @@ Partial Class frmRouteEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 394)
-        Me.Controls.Add(Me.C1TrueDBGrid1)
+        Me.ClientSize = New System.Drawing.Size(730, 394)
+        Me.Controls.Add(Me.TDBGrid1)
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.fraSort)
         Me.Controls.Add(Me.lstDays0)
         Me.Controls.Add(Me.lstDays1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(76, 103)
         Me.Name = "frmRouteEdit"
         Me.Text = "Edit Routing"
         Me.fraSort.ResumeLayout(False)
         Me.fraSort.PerformLayout()
         CType(Me.cmdClose, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsspGetRouteTemp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TDBGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpGetRouteTempBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsspGetRouteTemp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -185,7 +188,7 @@ Partial Class frmRouteEdit
     Friend WithEvents optSort1 As RadioButton
     Friend WithEvents optSort0 As RadioButton
     Friend WithEvents cmdClose As C1.Win.C1Input.C1Button
-    Friend WithEvents C1TrueDBGrid1 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents TDBGrid1 As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents SpGetRouteTempBindingSource As BindingSource
     Friend WithEvents DsspGetRouteTemp As dsspGetRouteTemp
     Friend WithEvents SpGetRouteTempTableAdapter As dsspGetRouteTempTableAdapters.spGetRouteTempTableAdapter

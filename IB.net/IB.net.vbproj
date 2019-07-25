@@ -63,6 +63,7 @@
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1DX.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1Editor.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -192,6 +193,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsItemTempOrderByDescr.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsItemTempOrderByItemNum.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsItemTempOrderByVendorVendItem.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsPOItemTemp_ItemMasterO.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -365,6 +381,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsspGetVolCodes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsspLoadItemTemp.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsspLoadItemTemp.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsspTotalPO.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1287,6 +1308,39 @@
     <None Include="dsItemReportTemp.xss">
       <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
     </None>
+    <None Include="dsItemTempOrderByDescr.xsc">
+      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemTempOrderByDescr.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemTempOrderByDescr.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemTempOrderByDescr.xss">
+      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemTempOrderByItemNum.xsc">
+      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemTempOrderByItemNum.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemTempOrderByItemNum.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemTempOrderByItemNum.xss">
+      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemTempOrderByVendorVendItem.xsc">
+      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
+    </None>
+    <None Include="dsItemTempOrderByVendorVendItem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsItemTempOrderByVendorVendItem.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsItemTempOrderByVendorVendItem.xss">
+      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
+    </None>
     <None Include="dsPOItemTemp_ItemMasterO.xsc">
       <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>
     </None>
@@ -1660,6 +1714,17 @@
     </None>
     <None Include="dsspGetVolCodes.xss">
       <DependentUpon>dsspGetVolCodes.xsd</DependentUpon>
+    </None>
+    <None Include="dsspLoadItemTemp.xsc">
+      <DependentUpon>dsspLoadItemTemp.xsd</DependentUpon>
+    </None>
+    <None Include="dsspLoadItemTemp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsspLoadItemTemp.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsspLoadItemTemp.xss">
+      <DependentUpon>dsspLoadItemTemp.xsd</DependentUpon>
     </None>
     <None Include="dsspTotalPO.xsc">
       <DependentUpon>dsspTotalPO.xsd</DependentUpon>

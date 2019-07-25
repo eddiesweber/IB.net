@@ -63,11 +63,127 @@ Public Class frmViewReport
                 ardept()
             Case "RouteChange.rpt"
                 RouteChange()
+            Case "Route.rpt"
+                Route()
+            Case "Route2.rpt"
+                Route2()
+            Case "routesum.rpt"
+                routesum()
+            Case "ItemTemp.rpt"
+                ItemTemp()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Public Sub ItemTemp()
+
+        Try
+            strLocation = "IT1.0"
+            RPT.Load("C:\IB\ReportsCR2016\ItemTemp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "IT2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "IT2.1"
+            RPT.SetParameterValue("AsOfDate", CDate(frmInvPhys.lblDate.Text))
+
+            strLocation = "IT3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine ItemTemp (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "ItemTemp", vbOK)
+            LogError(Me.Name, "ItemTemp", strLocation, ex.Message)
+        End Try
+        'With RPT
+        '    .Destination = crptToWindow
+        '    .ReportFileName = RptPath & "\ItemTemp.rpt"
+        '    .Connect = CryCS
+        '    .Formulas(0) = "COMPANY='" & CompanyName & "'"
+        '    .SelectionFormula = "{ItemTemp.Date} = Date(" & Format(LD, "yyyy,mm,dd") & ")"
+        '    .Action = 1
+        '    .PageZoom(100)
+        '    .Formulas(0) = ""
+        '    .SelectionFormula = ""
+        '    .ReportFileName = ""
+        'End With
+
+    End Sub
+
+    Public Sub routesum()
+
+        Try
+            strLocation = "RS1.0"
+            RPT.Load("C:\IB\ReportsCR2016\routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "RS2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "RS2.1"
+            RPT.SetParameterValue("Route", Val(frmRouteRpt.SF))
+
+            strLocation = "RS3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine routesum (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "routesum", vbOK)
+            LogError(Me.Name, "routesum", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub Route2()
+
+        Try
+            strLocation = "R2-1.0"
+            RPT.Load("C:\IB\ReportsCR2016\Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "R2-2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "R2-2.1"
+            RPT.SetParameterValue("Route", Val(frmRouteRpt.SF))
+
+            strLocation = "R2-3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine Route2 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "Route2", vbOK)
+            LogError(Me.Name, "Route2", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub Route()
+
+        Try
+            strLocation = "R1.0"
+            RPT.Load("C:\IB\ReportsCR2016\Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "R2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "R2.1"
+            RPT.SetParameterValue("Route", Val(frmRouteRpt.SF))
+
+            strLocation = "R3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine Route (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "Route", vbOK)
+            LogError(Me.Name, "Route", strLocation, ex.Message)
+        End Try
 
     End Sub
 
