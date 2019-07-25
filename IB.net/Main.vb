@@ -687,18 +687,38 @@ Module Main
 
     Public Sub PostInvChange(Dat As Date, Typ As String, Item As Long, Source As String, Dest As String, Qty As Single, flag As Boolean)
 
-        ''Handles non-sale changes to inventory
-        ''Used by Inventory Adjustments, Purchase Order
-        ''Tables updated: ItemMaster(R/O) - if flag is true, InventoryChange
-        'Dim s As String, ADOCmd As New ADODB.Command
-        's = "spPostInvChange ('" & Format(Dat, "MM/DD/YYYY") & "','" _
-        '& Typ & "'," & Item & ",'" & Source & "','" & Dest & "'," & Qty & "," & flag & ")"
-        'With ADOCmd
-        '    .ActiveConnection = DB
-        '    .CommandType = ADODB.CommandTypeEnum.adCmdStoredProc
-        '    .CommandText = s
-        '    .Execute()
-        'End With
+        'Handles non-sale changes to inventory
+        'Used by Inventory Adjustments, Purchase Order
+        'Tables updated: ItemMaster(R/O) - if flag is true, InventoryChange
+
+        Using connection As New SqlConnection(CS)
+            Dim cmd As SqlCommand = New SqlCommand
+
+            Try
+                strLocation = "PIC1.0"
+                connection.Open()
+
+                strLocation = "PIC2.0"
+                cmd.Connection = connection
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.CommandText = "spPostInvChange"
+                cmd.Parameters.Add("Dat", SqlDbType.Date).Value = Format(Dat, "Short Date")
+                cmd.Parameters.Add("Typ", SqlDbType.Char).Value = Typ
+                cmd.Parameters.Add("Item", SqlDbType.Int).Value = Item
+                cmd.Parameters.Add("Source", SqlDbType.Char).Value = Source
+                cmd.Parameters.Add("Dest", SqlDbType.Char).Value = Dest
+                cmd.Parameters.Add("Qty", SqlDbType.Real).Value = Qty
+                cmd.Parameters.Add("Flag", SqlDbType.Bit).Value = flag
+                's = "spPostInvChange ('" & Format(Dat, "MM/DD/YYYY") & "','" _
+                '& Typ & "'," & Item & ",'" & Source & "','" & Dest & "'," & Qty & "," & flag & ")"
+
+                strLocation = "PIC3.0"
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Result = MessageBox.Show("Error in routine PostInvChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "PostInvChange", MessageBoxButtons.OK)
+                LogError("Main.vb", "PostInvChange", strLocation, ex.Message)
+            End Try
+        End Using
 
     End Sub
 

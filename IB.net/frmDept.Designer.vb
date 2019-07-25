@@ -76,8 +76,8 @@ Partial Class frmDept
         Me.txtTaxState = New System.Windows.Forms.TextBox()
         Me.txtData1 = New C1.Win.C1Input.C1TextBox()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Line2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         CType(Me.cmdFindCust, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -668,14 +668,6 @@ Partial Class frmDept
         Me.ShapeContainer1.TabIndex = 75
         Me.ShapeContainer1.TabStop = False
         '
-        'Line1
-        '
-        Me.Line1.Name = "Line1"
-        Me.Line1.X1 = 385
-        Me.Line1.X2 = 385
-        Me.Line1.Y1 = 0
-        Me.Line1.Y2 = 285
-        '
         'Line2
         '
         Me.Line2.Anchor = System.Windows.Forms.AnchorStyles.Left
@@ -684,6 +676,14 @@ Partial Class frmDept
         Me.Line2.X2 = 490
         Me.Line2.Y1 = 285
         Me.Line2.Y2 = 285
+        '
+        'Line1
+        '
+        Me.Line1.Name = "Line1"
+        Me.Line1.X1 = 385
+        Me.Line1.X2 = 385
+        Me.Line1.Y1 = 0
+        Me.Line1.Y2 = 285
         '
         'frmDept
         '
