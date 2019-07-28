@@ -8,7 +8,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.028 - July 25th, 2019")
+        MessageBox.Show("Version 3.029 - July 28th, 2019")
 
     End Sub
 
@@ -643,13 +643,7 @@ Public Class frmMain
                 Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
                 LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
             End Try
-
         End Using
-
-
-
-
-
 
     End Sub
 

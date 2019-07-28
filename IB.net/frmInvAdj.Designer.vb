@@ -33,19 +33,22 @@ Partial Class frmInvAdj
         Me.datDate = New C1.Win.Calendar.C1DateEdit()
         Me.cmdUpdate = New C1.Win.C1Input.C1Button()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
-        Me.txtItem = New C1.Win.C1Input.C1TextBox()
-        Me.txtType = New C1.Win.C1Input.C1TextBox()
         Me.txtItemDesc = New C1.Win.C1Input.C1TextBox()
         Me.txtQty = New C1.Win.C1Input.C1TextBox()
         Me.lstAction = New System.Windows.Forms.ListBox()
+        Me.txtType = New System.Windows.Forms.TextBox()
+        Me.C1ContextMenu1 = New C1.Win.C1Command.C1ContextMenu()
+        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
+        Me.txtItem = New C1.Win.C1Input.C1TextBox()
         CType(Me.cmdFindItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtItem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtQty, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblCurItem
@@ -150,32 +153,6 @@ Partial Class frmInvAdj
         Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'txtItem
-        '
-        Me.txtItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtItem.DataType = GetType(Integer)
-        Me.txtItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtItem.Location = New System.Drawing.Point(50, 39)
-        Me.txtItem.Name = "txtItem"
-        Me.txtItem.Size = New System.Drawing.Size(75, 18)
-        Me.txtItem.TabIndex = 54
-        Me.txtItem.Tag = Nothing
-        Me.txtItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'txtType
-        '
-        Me.txtType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtType.DataType = GetType(Integer)
-        Me.txtType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtType.Location = New System.Drawing.Point(266, 110)
-        Me.txtType.Name = "txtType"
-        Me.txtType.Size = New System.Drawing.Size(25, 18)
-        Me.txtType.TabIndex = 55
-        Me.txtType.Tag = Nothing
-        Me.txtType.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'txtItemDesc
         '
         Me.txtItemDesc.AutoSize = False
@@ -213,16 +190,49 @@ Partial Class frmInvAdj
         Me.lstAction.Size = New System.Drawing.Size(125, 69)
         Me.lstAction.TabIndex = 68
         '
+        'txtType
+        '
+        Me.txtType.Location = New System.Drawing.Point(266, 158)
+        Me.txtType.Name = "txtType"
+        Me.txtType.Size = New System.Drawing.Size(55, 20)
+        Me.txtType.TabIndex = 69
+        '
+        'C1ContextMenu1
+        '
+        Me.C1ContextMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1})
+        Me.C1ContextMenu1.Name = "C1ContextMenu1"
+        Me.C1ContextMenu1.ShortcutText = ""
+        '
+        'C1CommandHolder1
+        '
+        Me.C1CommandHolder1.Commands.Add(Me.C1ContextMenu1)
+        Me.C1CommandHolder1.Owner = Me
+        '
+        'C1CommandLink1
+        '
+        Me.C1CommandLink1.Text = "New Command"
+        '
+        'txtItem
+        '
+        Me.txtItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtItem.Location = New System.Drawing.Point(50, 38)
+        Me.txtItem.Name = "txtItem"
+        Me.txtItem.Size = New System.Drawing.Size(75, 18)
+        Me.txtItem.TabIndex = 70
+        Me.txtItem.Tag = Nothing
+        Me.txtItem.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtItem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmInvAdj
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(349, 226)
+        Me.Controls.Add(Me.txtItem)
+        Me.Controls.Add(Me.txtType)
         Me.Controls.Add(Me.lstAction)
         Me.Controls.Add(Me.txtQty)
         Me.Controls.Add(Me.txtItemDesc)
-        Me.Controls.Add(Me.txtType)
-        Me.Controls.Add(Me.txtItem)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdUpdate)
         Me.Controls.Add(Me.datDate)
@@ -244,10 +254,10 @@ Partial Class frmInvAdj
         CType(Me.datDate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtItem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtType, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtItemDesc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtQty, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtItem, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -262,9 +272,12 @@ Partial Class frmInvAdj
     Friend WithEvents datDate As C1.Win.Calendar.C1DateEdit
     Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
     Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
-    Friend WithEvents txtItem As C1.Win.C1Input.C1TextBox
-    Friend WithEvents txtType As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtItemDesc As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtQty As C1.Win.C1Input.C1TextBox
     Friend WithEvents lstAction As ListBox
+    Friend WithEvents txtType As TextBox
+    Friend WithEvents C1ContextMenu1 As C1.Win.C1Command.C1ContextMenu
+    Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
+    Friend WithEvents txtItem As C1.Win.C1Input.C1TextBox
 End Class

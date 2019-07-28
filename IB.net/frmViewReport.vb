@@ -71,11 +71,166 @@ Public Class frmViewReport
                 routesum()
             Case "ItemTemp.rpt"
                 ItemTemp()
+            Case "InvSales.rpt"
+                InvSales()
+            Case "Inventory.rpt"
+                Inventory()
+            Case "InvReorder.rpt"
+                InvReorder()
+            Case "InvSalesHist.rpt"
+                InvSalesHist()
+            Case "InvSpecOrd.rpt"
+                InvSpecOrd()
+            Case "InvSalesDeliv.rpt"
+                InvSalesDeliv()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Public Sub InvSalesDeliv()
+
+        Try
+            strLocation = "ISD1.0"
+            RPT.Load("C:\IB\ReportsCR2016\InvSalesDeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "ISD2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("DateFrom", frmInvRpt.datDate0.Value)
+            RPT.SetParameterValue("DateTo", frmInvRpt.datDate1.Value)
+
+            strLocation = "ISD3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine InvSalesDeliv (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvSalesDeliv", vbOK)
+            LogError(Me.Name, "InvSalesDeliv", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub InvSpecOrd()
+
+        Try
+            strLocation = "ISO1.0"
+            RPT.Load("C:\IB\ReportsCR2016\InvSpecOrd.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "ISO2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+
+            strLocation = "ISO3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine InvSpecOrd (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvSpecOrd", vbOK)
+            LogError(Me.Name, "InvSpecOrd", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub InvSalesHist()
+
+        Try
+            strLocation = "ISH1.0"
+            RPT.Load("C:\IB\ReportsCR2016\InvSalesHist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "ISH2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("@Date2", frmInvRpt.datDate1.Value)
+
+            strLocation = "ISH3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine InvSalesHist (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvSalesHist", vbOK)
+            LogError(Me.Name, "InvSalesHist", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub InvReorder()
+
+        Try
+            strLocation = "IR1.0"
+            RPT.Load("C:\IB\ReportsCR2016\InvReorder.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "IR2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+
+            strLocation = "IR3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine InvReorder (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvReorder", vbOK)
+            LogError(Me.Name, "InvReorder", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub Inventory()
+
+        Try
+            strLocation = "I1.0"
+            RPT.Load("C:\IB\ReportsCR2016\Inventory.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "I2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("@Date1", frmInvRpt.datDate0.Value)
+            RPT.SetParameterValue("@date2", frmInvRpt.datDate1.Value)
+            RPT.SetParameterValue("DateFrom", frmInvRpt.datDate0.Value)
+            RPT.SetParameterValue("DateTo", frmInvRpt.datDate1.Value)
+
+            strLocation = "I3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine Inventory (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "Inventory", vbOK)
+            LogError(Me.Name, "Inventory", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub InvSales()
+
+        Try
+            strLocation = "IS1.0"
+            RPT.Load("C:\IB\ReportsCR2016\InvSales.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "IS2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("DateFrom", frmInvRpt.datDate0.Value)
+            RPT.SetParameterValue("DateTo", frmInvRpt.datDate1.Value)
+
+            strLocation = "IS3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine InvSales (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvSales", vbOK)
+            LogError(Me.Name, "InvSales", strLocation, ex.Message)
+        End Try
+
 
     End Sub
 

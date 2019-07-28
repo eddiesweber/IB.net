@@ -34,18 +34,14 @@ Public Class frmInvAdj
             Dat = Now
             datDate.Value = Now
 
+            lblCurItem.Text = CurItem
+
             buserchange = True
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine frmInvAdj_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmInvAdj_Load", vbOK)
             LogError(Me.Name, "frmInvAdj_Load", strLocation, ex.Message)
         End Try
-
-    End Sub
-
-    Private Sub frmInvAdj_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        lblCurItem.Text = CurItem
 
     End Sub
 
@@ -59,18 +55,18 @@ Public Class frmInvAdj
 
         txtItem.Text = CurItem
         txtItemLostFocus()
-        txtQty.Select()
+            txtQty.Select()
 
     End Sub
 
-    Private Sub txtItem_GotFocus(sender As Object, e As EventArgs) Handles txtItem.GotFocus
+    Private Sub txtItem_GotFocus(sender As Object, e As EventArgs)
 
         txtItem.SelectionStart = 0
         txtItem.SelectionLength = Len(txtItem.Text)
 
     End Sub
 
-    Private Sub txtItem_LostFocus(sender As Object, e As EventArgs) Handles txtItem.LostFocus
+    Private Sub txtItem_LostFocus(sender As Object, e As EventArgs)
 
         txtItemLostFocus()
 
@@ -79,7 +75,7 @@ Public Class frmInvAdj
     Private Sub txtItemLostFocus()
 
         Try
-            If txtItem.Text > "" Then
+            If txtItem.Text <> "" Then
                 Dim Des As String = GetItemDesc(txtItem.Text)
 
                 strLocation = "TILF1.0"
@@ -104,10 +100,9 @@ Public Class frmInvAdj
             LogError(Me.Name, "txtItemLostFocus", strLocation, ex.Message)
         End Try
 
-
     End Sub
 
-    Private Sub txtItem_Enter(sender As Object, e As EventArgs) Handles txtItem.Enter
+    Private Sub txtItem_Enter(sender As Object, e As EventArgs)
 
         txtQty.SelectionStart = 0
         txtQty.SelectionLength = Len(txtQty.Text)
