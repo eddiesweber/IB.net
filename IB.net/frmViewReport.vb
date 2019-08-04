@@ -83,11 +83,73 @@ Public Class frmViewReport
                 InvSpecOrd()
             Case "InvSalesDeliv.rpt"
                 InvSalesDeliv()
+            Case "trip.rpt"
+                trip()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Public Sub trip()
+
+        Try
+            strLocation = "TR1.0"
+            RPT.Load("C:\IB\ReportsCR2016\trip.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "TR2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "TR2.1"
+            RPT.SetParameterValue("RunDate", frmRptDay1.datDate.Value)
+            strLocation = "TR2.2"
+            If IsNumeric(frmRptDay1.txtRoute0.Text) Then
+                RPT.SetParameterValue("Route0", Val(frmRptDay1.txtRoute0.Text))
+            Else
+                RPT.SetParameterValue("Route0", 0)
+            End If
+            strLocation = "TR2.3"
+            If IsNumeric(frmRptDay1.txtRoute1.Text) Then
+                RPT.SetParameterValue("Route1", Val(frmRptDay1.txtRoute1.Text))
+            Else
+                RPT.SetParameterValue("Route1", 0)
+            End If
+            strLocation = "TR2.4"
+            If IsNumeric(frmRptDay1.txtRoute2.Text) Then
+                RPT.SetParameterValue("Route2", Val(frmRptDay1.txtRoute2.Text))
+            Else
+                RPT.SetParameterValue("Route2", 0)
+            End If
+            strLocation = "TR2.5"
+            If IsNumeric(frmRptDay1.txtRoute3.Text) Then
+                RPT.SetParameterValue("Route3", Val(frmRptDay1.txtRoute3.Text))
+            Else
+                RPT.SetParameterValue("Route3", 0)
+            End If
+            strLocation = "TR2.6"
+            If IsNumeric(frmRptDay1.txtRoute4.Text) Then
+                RPT.SetParameterValue("Route4", Val(frmRptDay1.txtRoute4.Text))
+            Else
+                RPT.SetParameterValue("Route4", 0)
+            End If
+            strLocation = "TR2.7"
+            If IsNumeric(frmRptDay1.txtRoute5.Text) Then
+                RPT.SetParameterValue("Route5", Val(frmRptDay1.txtRoute5.Text))
+            Else
+                RPT.SetParameterValue("Route5", 0)
+            End If
+
+            strLocation = "TR3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine trip (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "trip", vbOK)
+            LogError(Me.Name, "trip", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -109,7 +171,6 @@ Public Class frmViewReport
             CrystalReportViewer1.ReportSource = RPT
             CrystalReportViewer1.Refresh()
         Catch ex As Exception
-            Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine InvSalesDeliv (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "InvSalesDeliv", vbOK)
             LogError(Me.Name, "InvSalesDeliv", strLocation, ex.Message)
         End Try
