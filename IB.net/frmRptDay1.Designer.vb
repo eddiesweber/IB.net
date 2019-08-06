@@ -191,6 +191,8 @@ Partial Class frmRptDay1
         'chkRpt2
         '
         Me.chkRpt2.AutoSize = True
+        Me.chkRpt2.Checked = True
+        Me.chkRpt2.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRpt2.Location = New System.Drawing.Point(25, 217)
         Me.chkRpt2.Name = "chkRpt2"
         Me.chkRpt2.Size = New System.Drawing.Size(85, 17)
@@ -201,6 +203,8 @@ Partial Class frmRptDay1
         'chkRpt1
         '
         Me.chkRpt1.AutoSize = True
+        Me.chkRpt1.Checked = True
+        Me.chkRpt1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRpt1.Location = New System.Drawing.Point(25, 186)
         Me.chkRpt1.Name = "chkRpt1"
         Me.chkRpt1.Size = New System.Drawing.Size(105, 17)
@@ -211,6 +215,8 @@ Partial Class frmRptDay1
         'chkRpt0
         '
         Me.chkRpt0.AutoSize = True
+        Me.chkRpt0.Checked = True
+        Me.chkRpt0.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRpt0.Location = New System.Drawing.Point(25, 155)
         Me.chkRpt0.Name = "chkRpt0"
         Me.chkRpt0.Size = New System.Drawing.Size(75, 17)

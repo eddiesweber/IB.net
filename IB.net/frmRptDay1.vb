@@ -6,7 +6,7 @@ Imports C1.Win.C1Input
 
 Public Class frmRptDay1
 
-    Public RunDate As Date
+    Dim RunDate As Date
     Dim Stamp As Date
     Dim CoRS As New ADODB.Recordset
     Dim CLRS As New ADODB.Recordset
@@ -261,55 +261,55 @@ Public Class frmRptDay1
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            'strLocation = "RR3-1.0"
-            'RPT.Load("C:\IB\ReportsCR2016\load.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            strLocation = "RR3-1.0"
+            RPT.Load("C:\IB\ReportsCR2016\load.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
-            'setCrystalPrinter()
-            'SetDbConnection()
+            setCrystalPrinter()
+            SetDbConnection()
 
-            'strLocation = "RR3-2.0"
-            'RPT.SetParameterValue("CompanyName", frmMain.Text)
-            'strLocation = "RR3-2.1"
-            'RPT.SetParameterValue("RunDate", RunDate)
-            'strLocation = "RR3-2.2"
-            'If IsNumeric(txtRoute0.Text) Then
-            '    RPT.SetParameterValue("Route0", Val(txtRoute0.Text))
-            'Else
-            '    RPT.SetParameterValue("Route0", 0)
-            'End If
-            'strLocation = "RR3-2.3"
-            'If IsNumeric(txtRoute1.Text) Then
-            '    RPT.SetParameterValue("Route1", Val(txtRoute1.Text))
-            'Else
-            '    RPT.SetParameterValue("Route1", 0)
-            'End If
-            'strLocation = "RR3-2.4"
-            'If IsNumeric(txtRoute2.Text) Then
-            '    RPT.SetParameterValue("Route2", Val(txtRoute2.Text))
-            'Else
-            '    RPT.SetParameterValue("Route2", 0)
-            'End If
-            'strLocation = "RR3-2.5"
-            'If IsNumeric(txtRoute3.Text) Then
-            '    RPT.SetParameterValue("Route3", Val(txtRoute3.Text))
-            'Else
-            '    RPT.SetParameterValue("Route3", 0)
-            'End If
-            'strLocation = "RR2-2.6"
-            'If IsNumeric(txtRoute4.Text) Then
-            '    RPT.SetParameterValue("Route4", Val(txtRoute4.Text))
-            'Else
-            '    RPT.SetParameterValue("Route4", 0)
-            'End If
-            'strLocation = "RR3-2.7"
-            'If IsNumeric(txtRoute5.Text) Then
-            '    RPT.SetParameterValue("Route5", Val(txtRoute5.Text))
-            'Else
-            '    RPT.SetParameterValue("Route5", 0)
-            'End If
+            strLocation = "RR3-2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "RR3-2.1"
+            RPT.SetParameterValue("RunDate", RunDate)
+            strLocation = "RR3-2.2"
+            If IsNumeric(txtRoute0.Text) Then
+                RPT.SetParameterValue("Route0", Val(txtRoute0.Text))
+            Else
+                RPT.SetParameterValue("Route0", 0)
+            End If
+            strLocation = "RR3-2.3"
+            If IsNumeric(txtRoute1.Text) Then
+                RPT.SetParameterValue("Route1", Val(txtRoute1.Text))
+            Else
+                RPT.SetParameterValue("Route1", 0)
+            End If
+            strLocation = "RR3-2.4"
+            If IsNumeric(txtRoute2.Text) Then
+                RPT.SetParameterValue("Route2", Val(txtRoute2.Text))
+            Else
+                RPT.SetParameterValue("Route2", 0)
+            End If
+            strLocation = "RR3-2.5"
+            If IsNumeric(txtRoute3.Text) Then
+                RPT.SetParameterValue("Route3", Val(txtRoute3.Text))
+            Else
+                RPT.SetParameterValue("Route3", 0)
+            End If
+            strLocation = "RR2-2.6"
+            If IsNumeric(txtRoute4.Text) Then
+                RPT.SetParameterValue("Route4", Val(txtRoute4.Text))
+            Else
+                RPT.SetParameterValue("Route4", 0)
+            End If
+            strLocation = "RR3-2.7"
+            If IsNumeric(txtRoute5.Text) Then
+                RPT.SetParameterValue("Route5", Val(txtRoute5.Text))
+            Else
+                RPT.SetParameterValue("Route5", 0)
+            End If
 
-            'strLocation = "RR3-3.0"
-            'RPT.PrintToPrinter(1, True, 0, 0)
+            strLocation = "RR3-3.0"
+            RPT.PrintToPrinter(1, True, 0, 0)
 
             'With RPT
             '    .ReportFileName = RptPath & "\load.rpt"
@@ -374,8 +374,73 @@ Public Class frmRptDay1
 
             strLocation = "RR3-6.0"
             RPT.PrintToPrinter(1, True, 0, 0)
+
             'With RPT
             '    .ReportFileName = RptPath & "\load1.rpt"
+            '    .Connect = CryCS
+            '    .Formulas(0) = "RunDate=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
+            '    .Formulas(1) = "COMPANY='" & CoRS!COMPANY_NM & "'"
+            '    .Formulas(2) = ""
+            '    .SelectionFormula = SF
+            '    .Action = 1
+            '    .Formulas(0) = ""
+            '    .Formulas(1) = ""
+            '    .SelectionFormula = ""
+            '    .ReportFileName = ""
+            'End With
+
+            strLocation = "RR3-7.0"
+            RPT.Load("C:\IB\ReportsCR2016\deex.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "RR3-8.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "RR3-8.1"
+            RPT.SetParameterValue("RunDate", RunDate)
+            strLocation = "RR3-8.2"
+            If IsNumeric(txtRoute0.Text) Then
+                RPT.SetParameterValue("Route0", Val(txtRoute0.Text))
+            Else
+                RPT.SetParameterValue("Route0", 0)
+            End If
+            strLocation = "RR3-8.3"
+            If IsNumeric(txtRoute1.Text) Then
+                RPT.SetParameterValue("Route1", Val(txtRoute1.Text))
+            Else
+                RPT.SetParameterValue("Route1", 0)
+            End If
+            strLocation = "RR3-8.4"
+            If IsNumeric(txtRoute2.Text) Then
+                RPT.SetParameterValue("Route2", Val(txtRoute2.Text))
+            Else
+                RPT.SetParameterValue("Route2", 0)
+            End If
+            strLocation = "RR3-8.5"
+            If IsNumeric(txtRoute3.Text) Then
+                RPT.SetParameterValue("Route3", Val(txtRoute3.Text))
+            Else
+                RPT.SetParameterValue("Route3", 0)
+            End If
+            strLocation = "RR2-8.6"
+            If IsNumeric(txtRoute4.Text) Then
+                RPT.SetParameterValue("Route4", Val(txtRoute4.Text))
+            Else
+                RPT.SetParameterValue("Route4", 0)
+            End If
+            strLocation = "RR3-8.7"
+            If IsNumeric(txtRoute5.Text) Then
+                RPT.SetParameterValue("Route5", Val(txtRoute5.Text))
+            Else
+                RPT.SetParameterValue("Route5", 0)
+            End If
+
+            strLocation = "RR3-9.0"
+            RPT.PrintToPrinter(1, True, 0, 0)
+
+            'With RPT
+            '    .ReportFileName = RptPath & "\deex.rpt"
             '    .Connect = CryCS
             '    .Formulas(0) = "RunDate=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
             '    .Formulas(1) = "COMPANY='" & CoRS!COMPANY_NM & "'"
@@ -394,21 +459,6 @@ Public Class frmRptDay1
             Result = MessageBox.Show(Me, "Error in routine RunReport3 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "RunReport3", vbOK)
             LogError(Me.Name, "RunReport3", strLocation, ex.Message)
         End Try
-
-
-        'With RPT
-        '    .ReportFileName = RptPath & "\deex.rpt"
-        '    .Connect = CryCS
-        '    .Formulas(0) = "RunDate=Date(" & Format(RunDate, "yyyy,mm,dd") & ")"
-        '    .Formulas(1) = "COMPANY='" & CoRS!COMPANY_NM & "'"
-        '    .Formulas(2) = ""
-        '    .SelectionFormula = SF
-        '    .Action = 1
-        '    .Formulas(0) = ""
-        '    .Formulas(1) = ""
-        '    .SelectionFormula = ""
-        '    .ReportFileName = ""
-        'End With
 
     End Sub
 
@@ -433,9 +483,19 @@ Public Class frmRptDay1
                 frmViewReport.lblReportName.Text = "trip.rpt"
                 frmViewReport.Show()
             Case "cmdPreview1"
-                RunReport2()
+                frmViewReport.lblReportName.Text = "triprec.rpt"
+                frmViewReport.Show()
             Case "cmdPreview2"
-                RunReport3()
+                frmViewReport.lblReportName.Text = "load.rpt"
+                frmViewReport.Show()
+
+                Dim frmViewReport2 As New frmViewReport
+                frmViewReport2.lblReportName.Text = "load1.rpt"
+                frmViewReport2.Show()
+
+                Dim frmViewReport3 As New frmViewReport
+                frmViewReport3.lblReportName.Text = "deex.rpt"
+                frmViewReport3.Show()
         End Select
 
     End Sub
