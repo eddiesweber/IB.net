@@ -35,13 +35,12 @@ Public Class frmRptDay1
 
     Sub ResetScreen()
 
-        Dim q As String
-
         GetCompany()
 
         'Get first date calculated but not printed
         If DsCalcLogOrderbyRunDate.CalcLog.Rows.Count = 0 Then
             MessageBox.Show("No dates have been calculated.")
+            RunDate = Nothing
             Me.Close()
         End If
         'If CLRS.RecordCount = 0 Then

@@ -59,6 +59,8 @@ Module Main
     Public strLocation As String
     Public Result As DialogResult
 
+    Public strCommissionPassword As String = ""
+
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
@@ -145,7 +147,7 @@ Module Main
                 Using sqlReader As SqlDataReader = cmdSQL.ExecuteReader()
                     LastItem = -1
                     LastType = ""
-                    Do While sqlReader.Read()
+                    While sqlReader.Read()
                         strLocation = "CIU7.0"
                         If sqlReader("ITEM_NUM") <> LastItem Then
                             If LastItem <> -1 Then
@@ -176,7 +178,7 @@ Module Main
                                 W = CInt(q)
                                 AR(10 * W + D) = AR(10 * W + D) + sqlReader("Qty")
                         End Select
-                    Loop
+                    End While
                     'LastItem = -1
                     'While Not IURS.EOF
                     '    If IURS!ITEM_NUM <> LastItem Then

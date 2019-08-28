@@ -27,11 +27,13 @@ Partial Class frmTemplate
         Me.cmdStoredProcedure = New C1.Win.C1Input.C1Button()
         Me.cmdSelect = New C1.Win.C1Input.C1Button()
         Me.cmdUpdate = New C1.Win.C1Input.C1Button()
+        Me.cmdStoredProcedureNonQuery = New C1.Win.C1Input.C1Button()
         CType(Me.ExecuteScalar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdStoredProcedure, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdStoredProcedureNonQuery, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ExecuteScalar
@@ -62,7 +64,7 @@ Partial Class frmTemplate
         Me.cmdStoredProcedure.Name = "cmdStoredProcedure"
         Me.cmdStoredProcedure.Size = New System.Drawing.Size(202, 25)
         Me.cmdStoredProcedure.TabIndex = 28
-        Me.cmdStoredProcedure.Text = "StoredProcedure"
+        Me.cmdStoredProcedure.Text = "Stored Procedure DataReader"
         Me.cmdStoredProcedure.UseVisualStyleBackColor = True
         Me.cmdStoredProcedure.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdStoredProcedure.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -89,11 +91,23 @@ Partial Class frmTemplate
         Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdUpdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'cmdStoredProcedureNonQuery
+        '
+        Me.cmdStoredProcedureNonQuery.Location = New System.Drawing.Point(23, 167)
+        Me.cmdStoredProcedureNonQuery.Name = "cmdStoredProcedureNonQuery"
+        Me.cmdStoredProcedureNonQuery.Size = New System.Drawing.Size(202, 25)
+        Me.cmdStoredProcedureNonQuery.TabIndex = 32
+        Me.cmdStoredProcedureNonQuery.Text = "Stored Procedure NonQuery"
+        Me.cmdStoredProcedureNonQuery.UseVisualStyleBackColor = True
+        Me.cmdStoredProcedureNonQuery.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdStoredProcedureNonQuery.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'frmTemplate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.cmdStoredProcedureNonQuery)
         Me.Controls.Add(Me.cmdUpdate)
         Me.Controls.Add(Me.cmdSelect)
         Me.Controls.Add(Me.cmdStoredProcedure)
@@ -106,6 +120,7 @@ Partial Class frmTemplate
         CType(Me.cmdStoredProcedure, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdSelect, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdStoredProcedureNonQuery, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -115,4 +130,5 @@ Partial Class frmTemplate
     Friend WithEvents cmdStoredProcedure As C1.Win.C1Input.C1Button
     Friend WithEvents cmdSelect As C1.Win.C1Input.C1Button
     Friend WithEvents cmdUpdate As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdStoredProcedureNonQuery As C1.Win.C1Input.C1Button
 End Class

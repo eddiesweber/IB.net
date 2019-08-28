@@ -3,6 +3,7 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.Configuration
+Imports C1.Win.C1Command
 
 Public Class frmMain
 
@@ -471,16 +472,21 @@ Public Class frmMain
 
     End Sub
 
-
     Private Sub cmdSalesPeople_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdSalesPeople.Click
 
+        'If Not CommFlag Then
+        '    frmPW.ShowDialog()
+
+        '    If CommFlag Then
         frmSlsmn.Show()
+        '    End If
+        'End If
 
     End Sub
 
     Private Sub cmdRates_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRates.Click
 
-        'frmCommRate.Show
+        frmCommRate.Show()
 
     End Sub
 
@@ -496,24 +502,25 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub mnuCommission_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles mnuCommission.Click
+    Private Sub mnuCommission_Select(sender As Object, e As EventArgs) Handles mnuCommission.[Select]
 
-        '    If Not CommFlag Then
-        '        frmPW.Show 1
-        '        If CommFlag Then
-        '            SendKeys "%M"
-        '            Exit Sub
-        '        End If
-        '    End If
+        If Not CommFlag Then
+            frmPW.ShowDialog()
 
-        '    If CommFlag Then
-        '        mnuCommSales.Enabled = True
-        '        mnuCommRate.Enabled = True
-        '        mnuCommEdit.Enabled = True
-        '        mnuCommLoadR.Enabled = True
-        '        mnuCommRptRev.Enabled = True
-        '        mnuCommRptComm.Enabled = True
-        '    End If
+            If CommFlag Then
+                My.Computer.Keyboard.SendKeys("%M")
+                Exit Sub
+            End If
+        End If
+
+        If CommFlag Then
+            cmdSalesPeople.Enabled = True
+            cmdRates.Enabled = True
+            cmdProcessRentals.Enabled = True
+            cmdEditCommissions.Enabled = True
+            cmdRevenueReports.Enabled = True
+            cmdCommissionReports.Enabled = True
+        End If
 
     End Sub
 

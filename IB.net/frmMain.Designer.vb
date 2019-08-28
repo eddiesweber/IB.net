@@ -126,6 +126,8 @@ Partial Class frmMain
         Me.cmdDeptList = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink49 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdRouting = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink65 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdAdagioExport = New C1.Win.C1Command.C1Command()
         Me.mnuInventory = New C1.Win.C1Command.C1CommandMenu()
         Me.C1CommandLink38 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdFindItem = New C1.Win.C1Command.C1Command()
@@ -167,8 +169,6 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink65 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdAdagioExport = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -846,6 +846,17 @@ Partial Class frmMain
         Me.cmdRouting.ShortcutText = ""
         Me.cmdRouting.Text = "Routing"
         '
+        'C1CommandLink65
+        '
+        Me.C1CommandLink65.Command = Me.cmdAdagioExport
+        Me.C1CommandLink65.SortOrder = 10
+        '
+        'cmdAdagioExport
+        '
+        Me.cmdAdagioExport.Name = "cmdAdagioExport"
+        Me.cmdAdagioExport.ShortcutText = ""
+        Me.cmdAdagioExport.Text = "Adagio Export"
+        '
         'mnuInventory
         '
         Me.mnuInventory.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink38, Me.C1CommandLink50, Me.C1CommandLink51, Me.C1CommandLink52, Me.C1CommandLink53, Me.C1CommandLink54, Me.C1CommandLink55, Me.C1CommandLink56})
@@ -961,6 +972,7 @@ Partial Class frmMain
         '
         'cmdSalesPeople
         '
+        Me.cmdSalesPeople.Enabled = False
         Me.cmdSalesPeople.Name = "cmdSalesPeople"
         Me.cmdSalesPeople.ShortcutText = ""
         Me.cmdSalesPeople.Text = "&SalesPeople"
@@ -972,6 +984,7 @@ Partial Class frmMain
         '
         'cmdRates
         '
+        Me.cmdRates.Enabled = False
         Me.cmdRates.Name = "cmdRates"
         Me.cmdRates.ShortcutText = ""
         Me.cmdRates.Text = "R&ates"
@@ -984,6 +997,7 @@ Partial Class frmMain
         '
         'cmdProcessRentals
         '
+        Me.cmdProcessRentals.Enabled = False
         Me.cmdProcessRentals.Name = "cmdProcessRentals"
         Me.cmdProcessRentals.ShortcutText = ""
         Me.cmdProcessRentals.Text = "Process &Rentals"
@@ -995,6 +1009,7 @@ Partial Class frmMain
         '
         'cmdEditCommissions
         '
+        Me.cmdEditCommissions.Enabled = False
         Me.cmdEditCommissions.Name = "cmdEditCommissions"
         Me.cmdEditCommissions.ShortcutText = ""
         Me.cmdEditCommissions.Text = "&Edit Commissions"
@@ -1007,6 +1022,7 @@ Partial Class frmMain
         '
         'cmdRevenueReports
         '
+        Me.cmdRevenueReports.Enabled = False
         Me.cmdRevenueReports.Name = "cmdRevenueReports"
         Me.cmdRevenueReports.ShortcutText = ""
         Me.cmdRevenueReports.Text = "Re&venue Reports"
@@ -1018,6 +1034,7 @@ Partial Class frmMain
         '
         'cmdCommissionReports
         '
+        Me.cmdCommissionReports.Enabled = False
         Me.cmdCommissionReports.Name = "cmdCommissionReports"
         Me.cmdCommissionReports.ShortcutText = ""
         Me.cmdCommissionReports.Text = "&Commission Reports"
@@ -1078,17 +1095,6 @@ Partial Class frmMain
         'C1CommandLink42
         '
         Me.C1CommandLink42.Text = "New Command"
-        '
-        'C1CommandLink65
-        '
-        Me.C1CommandLink65.Command = Me.cmdAdagioExport
-        Me.C1CommandLink65.SortOrder = 10
-        '
-        'cmdAdagioExport
-        '
-        Me.cmdAdagioExport.Name = "cmdAdagioExport"
-        Me.cmdAdagioExport.ShortcutText = ""
-        Me.cmdAdagioExport.Text = "Adagio Export"
         '
         'frmMain
         '

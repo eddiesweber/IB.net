@@ -2,33 +2,31 @@
 Imports System.ComponentModel
 Imports C1.Win.C1TrueDBGrid
 
-Public Class frmSlsmn
+Public Class frmCommRate
 
-    Dim buserchange As Boolean
-    Dim rs As ADODB.Recordset
+    Private Sub frmCommRate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    Private Sub frmSlsmn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'GetWindowPos(Me, 200, 200)
 
-        GetWindowPos(Me, 200, 200)
-
-        If Dir("frmSlsmmgrdData.xml") <> "" Then
-            grdData.LoadLayout("frmSlsmmgrdData.xml")
+        If Dir("frmCommRategrdData.xml") <> "" Then
+            'grdData.LoadLayout("frmCommRategrdData.xml")
         End If
 
-        buserchange = False
-
-        SalesmanMasterTableAdapter.Connection.ConnectionString = CS
-        SalesmanMasterTableAdapter.Fill(DsSalesmanMaster.SalesmanMaster)
-
-        buserchange = True
+        CommRateTableAdapter.Connection.ConnectionString = CS
+        CommRateTableAdapter.Fill(DsCommRate.CommRate)
+        'Data1.ConnectionString = CS
+        'Data1.RecordSource = "CommRate"
+        'Data1.Enabled = True
+        'Data1.Refresh
+        'rs = Data1.Recordset
 
     End Sub
 
-    Private Sub frmSlsmn_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
+    Private Sub frmCommRate_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
 
         SaveWindowPos(Me)
 
-        grdData.SaveLayout("frmSlsmmgrdData.xml")
+        grdData.SaveLayout("frmCommRategrdData.xml")
 
     End Sub
 
@@ -52,7 +50,7 @@ Public Class frmSlsmn
             grdData.UpdateData()
 
             strLocation = "GDAD2.0"
-            SalesmanMasterTableAdapter.Update(DsSalesmanMaster.SalesmanMaster)
+            CommRateTableAdapter.Update(DsCommRate.CommRate)
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine grdData_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdData_AfterDelete", vbOK)
@@ -67,15 +65,16 @@ Public Class frmSlsmn
 
         ' Validate fields
         Select Case e.Column.DataColumn.DataField
-            Case "FSALESNUM"
-                If grdData.Columns("FSALESNUM").Value = "" Then
+            Case "COMM_CAT"
+                If grdData.Columns("COMM_CAT").Value = "" Then
                     MessageBox.Show(e.Column.Name & " - must have a value")
                     e.Cancel = True
                 End If
-            Case "FSALESNAME"
-                grdData.Columns("FSALESNAME").Value = UCase(grdData.Columns("FSALESNAME").Value)
-            Case "ACTIVE"
-                grdData.Columns("ACTIVE").Value = 0
+            Case "FTYPE"
+                If grdData.Columns("FTYPE").Value = "" Then
+                    MessageBox.Show(e.Column.Name & " - must have a value")
+                    e.Cancel = True
+                End If
         End Select
 
     End Sub
@@ -85,7 +84,12 @@ Public Class frmSlsmn
         Me.Cursor = Cursors.WaitCursor
 
         strLocation = "GDACU1.0"
-        If IsDBNull(grdData.Columns("FSALESNUM").CellValue(grdData.Row)) Then
+        If IsDBNull(grdData.Columns("COMM_CAT").CellValue(grdData.Row)) Then
+            Exit Sub
+        End If
+
+        strLocation = "GDACU1.0"
+        If IsDBNull(grdData.Columns("FTYPE").CellValue(grdData.Row)) Then
             Exit Sub
         End If
 
@@ -96,7 +100,7 @@ Public Class frmSlsmn
             grdData.UpdateData()
 
             strLocation = "GDACU3.0"
-            SalesmanMasterTableAdapter.Update(DsSalesmanMaster.SalesmanMaster)
+            CommRateTableAdapter.Update(DsCommRate.CommRate)
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterColUpdate", vbOK)
@@ -106,5 +110,4 @@ Public Class frmSlsmn
         Me.Cursor = Cursors.Default
 
     End Sub
-
 End Class

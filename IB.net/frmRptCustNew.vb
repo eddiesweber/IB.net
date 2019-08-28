@@ -109,9 +109,7 @@ Calc1:
         End If
 
         If chkRpt2.Checked Then
-            ' Same as the report above?
-            'RunReport3()
-            RunReport2()
+            RunReport3()
         End If
 
         If chkRpt3.Checked Then
@@ -185,9 +183,6 @@ OKDone:
         lblStatus1.Text = "Printing Anniversary Report"
         lblStatus1.Update()
 
-        MessageBox.Show("This report runs forever and does not have date selection in the report, which field do the date search by?  Exiting...")
-        Exit Sub
-
         Try
             Me.Cursor = Cursors.WaitCursor
 
@@ -201,9 +196,9 @@ OKDone:
             RPT.SetParameterValue("CompanyName", frmMain.Text)
             RPT.SetParameterValue("DateFrom", datDate0.Value)
             RPT.SetParameterValue("DateTo", datDate1.Value)
-            RPT.SetParameterValue("ReportTitle", frmMain.Text)
+            RPT.SetParameterValue("ReportTitle", "CONTRACT ANNIVERSARIES")
 
-            strLocation = "RRO2-.0"
+            strLocation = "RRO2-3.0"
             RPT.PrintToPrinter(1, True, 0, 0)
 
             Me.Cursor = Cursors.Default
@@ -238,6 +233,30 @@ OKDone:
         lblStatus1.Text = "Printing Expiration Report"
         lblStatus1.Update()
 
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "RR3-1.0"
+            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "RR3-2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            RPT.SetParameterValue("DateFrom", datDate0.Value)
+            RPT.SetParameterValue("DateTo", datDate1.Value)
+            RPT.SetParameterValue("ReportTitle", "CONTRACT EXPIRATIONS")
+
+            strLocation = "RRO3-3.0"
+            RPT.PrintToPrinter(1, True, 0, 0)
+
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine RunReport3 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "RunReport3", vbOK)
+            LogError(Me.Name, "RunReport3", strLocation, ex.Message)
+        End Try
         'With RPT
         '    .ReportFileName = RptPath & "\CustExp.rpt"
         '    .Connect = CryCS
@@ -432,14 +451,12 @@ OKDone:
             Case "cmdView0"
                 frmViewReport.lblReportName.Text = "CustNew.rpt"
                 frmViewReport.Show()
-            Case "cmdView1", "cmdView2"
-                MessageBox.Show("This report runs forever and does not have date selection in the report, which field do the date search by?  Exiting...")
-                Exit Sub
+            Case "cmdView1"
+                frmViewReport.lblReportName.Text = "CustExpa.rpt"
+                frmViewReport.Show()
+            Case "cmdView2"
                 frmViewReport.lblReportName.Text = "CustExp.rpt"
                 frmViewReport.Show()
-            'Case "cmdView2"
-            '    frmViewReport.lblReportName.Text = "CustExp.rpt"
-            '    frmViewReport.Show()
             Case "cmdView3"
                 frmViewReport.lblReportName.Text = "CustCanc.rpt"
                 frmViewReport.Show()

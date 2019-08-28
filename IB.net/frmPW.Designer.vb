@@ -22,57 +22,94 @@ Partial Class frmPW
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOK = New System.Windows.Forms.Button()
-        Me.txtPW = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPW))
+        Me.txtPW = New C1.Win.C1Input.C1TextBox()
+        Me.cmdCancel = New C1.Win.C1Input.C1Button()
+        Me.cmdOK = New C1.Win.C1Input.C1Button()
+        Me.C1ContextMenu1 = New C1.Win.C1Command.C1ContextMenu()
+        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
+        CType(Me.txtPW, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cmdCancel
-        '
-        Me.cmdCancel.Location = New System.Drawing.Point(98, 42)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(57, 22)
-        Me.cmdCancel.TabIndex = 2
-        Me.cmdCancel.Text = "Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        '
-        'cmdOK
-        '
-        Me.cmdOK.Location = New System.Drawing.Point(21, 42)
-        Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(57, 22)
-        Me.cmdOK.TabIndex = 1
-        Me.cmdOK.Text = "Ok"
-        Me.cmdOK.UseVisualStyleBackColor = True
         '
         'txtPW
         '
-        Me.txtPW.ImeMode = System.Windows.Forms.ImeMode.Disable
-        Me.txtPW.Location = New System.Drawing.Point(14, 7)
+        Me.txtPW.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPW.Location = New System.Drawing.Point(15, 15)
         Me.txtPW.Name = "txtPW"
-        Me.txtPW.Size = New System.Drawing.Size(148, 20)
-        Me.txtPW.TabIndex = 0
+        Me.txtPW.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPW.Size = New System.Drawing.Size(180, 18)
+        Me.txtPW.TabIndex = 3
+        Me.txtPW.Tag = Nothing
+        Me.txtPW.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtPW.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdCancel
+        '
+        Me.cmdCancel.Location = New System.Drawing.Point(110, 45)
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.Size = New System.Drawing.Size(85, 25)
+        Me.cmdCancel.TabIndex = 49
+        Me.cmdCancel.Text = "Cancel"
+        Me.cmdCancel.UseVisualStyleBackColor = True
+        Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'cmdOK
+        '
+        Me.cmdOK.Location = New System.Drawing.Point(15, 45)
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.Size = New System.Drawing.Size(85, 25)
+        Me.cmdOK.TabIndex = 48
+        Me.cmdOK.Text = "OK"
+        Me.cmdOK.UseVisualStyleBackColor = True
+        Me.cmdOK.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdOK.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'C1ContextMenu1
+        '
+        Me.C1ContextMenu1.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1})
+        Me.C1ContextMenu1.Name = "C1ContextMenu1"
+        Me.C1ContextMenu1.ShortcutText = ""
+        '
+        'C1CommandHolder1
+        '
+        Me.C1CommandHolder1.Commands.Add(Me.C1ContextMenu1)
+        Me.C1CommandHolder1.Owner = Me
+        '
+        'C1CommandLink1
+        '
+        Me.C1CommandLink1.Text = "New Command"
         '
         'frmPW
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(187, 72)
-        Me.Controls.Add(Me.txtPW)
-        Me.Controls.Add(Me.cmdOK)
+        Me.ClientSize = New System.Drawing.Size(209, 81)
         Me.Controls.Add(Me.cmdCancel)
+        Me.Controls.Add(Me.cmdOK)
+        Me.Controls.Add(Me.txtPW)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(129, 110)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmPW"
         Me.ShowInTaskbar = False
         Me.Text = "Commission Password"
+        CType(Me.txtPW, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents cmdCancel As Button
-    Friend WithEvents cmdOK As Button
-    Friend WithEvents txtPW As TextBox
+    Friend WithEvents txtPW As C1.Win.C1Input.C1TextBox
+    Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdOK As C1.Win.C1Input.C1Button
+    Friend WithEvents C1ContextMenu1 As C1.Win.C1Command.C1ContextMenu
+    Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
 End Class

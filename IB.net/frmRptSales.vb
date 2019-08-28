@@ -99,6 +99,8 @@ Public Class frmRptSales
             RPT.SetParameterValue("RunDate", Format(RunDate, "Short Date"))
             strLocation = "RR1-2.2"
             RPT.SetParameterValue("VolCat", cmbCat.SelectedText)
+            strLocation = "RR1-2.3"
+            RPT.SetParameterValue("ReportName", "rptSales")
 
             strLocation = "RR1-3.0"
             RPT.PrintToPrinter(1, True, 0, 0)

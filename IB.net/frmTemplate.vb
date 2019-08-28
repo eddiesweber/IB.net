@@ -62,14 +62,40 @@ Public Class frmTemplate
 
     End Sub
 
+    Private Sub cmdStoredProcedureNonQuery_Click(sender As Object, e As EventArgs) Handles cmdStoredProcedureNonQuery.Click
+
+        Try
+            Using connection As New SqlConnection(CS)
+                Dim cmd As SqlCommand = New SqlCommand
+
+                strLocation = "GII1.0"
+                connection.Open()
+
+                strLocation = "GII2.0"
+                cmd.Connection = connection
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.CommandText = "spGetInvInfo"
+                cmd.Parameters.Add("Invnum", SqlDbType.Int).Value = CurInvoice
+
+                strLocation = "GII3.0"
+                cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine cmdOK_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmdOK_Click", vbOK)
+            LogError(Me.Name, "cmdOK_Click", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
     Private Sub cmdStoredProcedure_Click(sender As Object, e As EventArgs) Handles cmdStoredProcedure.Click
 
         Dim ItemTot As Single, ItemTaxable As Single, ItemCount As Integer
 
-        Using connection As New SqlConnection(CS)
-            Dim cmd As SqlCommand = New SqlCommand
+        Try
+            Using connection As New SqlConnection(CS)
+                Dim cmd As SqlCommand = New SqlCommand
 
-            Try
                 strLocation = "GII1.0"
                 connection.Open()
 
@@ -91,13 +117,12 @@ Public Class frmTemplate
                         End If
                     End If
                 End Using
-            Catch ex As Exception
-                Me.Cursor = Cursors.Default
-                Result = MessageBox.Show(Me, "Error in routine GetItemInfo (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetItemInfo", vbOK)
-                LogError(Me.Name, "GetItemInfo", strLocation, ex.Message)
-            End Try
-
-        End Using
+            End Using
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine GetItemInfo (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetItemInfo", vbOK)
+            LogError(Me.Name, "GetItemInfo", strLocation, ex.Message)
+        End Try
 
     End Sub
 

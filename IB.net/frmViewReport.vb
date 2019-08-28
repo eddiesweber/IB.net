@@ -25,6 +25,8 @@ Public Class frmViewReport
                 invoice_historical()
             Case "CustNew.rpt"
                 CustNew()
+            Case "CustExpa.rpt"
+                CustExpa()
             Case "CustExp.rpt"
                 CustExp()
             Case "CustCanc.rpt"
@@ -93,11 +95,46 @@ Public Class frmViewReport
                 load1()
             Case "deex.rpt"
                 deex()
+            Case "triprec2.rpt"
+                triprec2()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Public Sub triprec2()
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "TR1.0"
+            RPT.Load("C:\IB\ReportsCR2016\triprec.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "TR2-2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "TR2-2.1"
+            RPT.SetParameterValue("RunDate", frmRptDay2.datDate.Value)
+            strLocation = "TR2-2.2"
+            RPT.SetParameterValue("Route0", 0)
+            RPT.SetParameterValue("Route1", 0)
+            RPT.SetParameterValue("Route2", 0)
+            RPT.SetParameterValue("Route3", 0)
+            RPT.SetParameterValue("Route4", 0)
+            RPT.SetParameterValue("Route5", 0)
+
+            strLocation = "TR32-20"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine triprec2 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "triprec2", vbOK)
+            LogError(Me.Name, "triprec2", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -765,6 +802,8 @@ Public Class frmViewReport
             RPT.SetParameterValue("RunDate", Format(frmRptSales.RunDate, "Short Date"))
             strLocation = "VI2.2"
             RPT.SetParameterValue("VolCat", frmRptSales.cmbCat.SelectedText)
+            strLocation = "VI2.3"
+            RPT.SetParameterValue("ReportName", "rtpSales")
 
             strLocation = "VI3.0"
             CrystalReportViewer1.ReportSource = RPT
@@ -1205,6 +1244,34 @@ Public Class frmViewReport
 
     End Sub
 
+    Private Sub CustExpa()
+
+        Try
+            strLocation = "CE1.0"
+            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "CE2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "CE3.0"
+            RPT.SetParameterValue("DateFrom", frmRptCustNew.datDate0.Value)
+            strLocation = "CE4.0"
+            RPT.SetParameterValue("DateTo", frmRptCustNew.datDate1.Value)
+            strLocation = "CE5.0"
+            RPT.SetParameterValue("ReportTitle", "CONTRACT ANNIVERSARIES")
+
+            strLocation = "CE6.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine CustExp (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CustExp", vbOK)
+            LogError(Me.Name, "CustExp", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
     Private Sub CustExp()
 
         Try
@@ -1221,7 +1288,7 @@ Public Class frmViewReport
             strLocation = "CE4.0"
             RPT.SetParameterValue("DateTo", frmRptCustNew.datDate1.Value)
             strLocation = "CE5.0"
-            RPT.SetParameterValue("ReportTitle", frmMain.Text)
+            RPT.SetParameterValue("ReportTitle", "CONTRACT EXPIRATIONS")
 
             strLocation = "CE6.0"
             CrystalReportViewer1.ReportSource = RPT
