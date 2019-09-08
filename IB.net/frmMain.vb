@@ -7,6 +7,8 @@ Imports C1.Win.C1Command
 
 Public Class frmMain
 
+    Dim blnNoClick As Boolean = False
+
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
         MessageBox.Show("Version 3.029 - July 28th, 2019")
@@ -492,6 +494,8 @@ Public Class frmMain
 
     Private Sub cmdProcessRentals_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdProcessRentals.Click
 
+        frmRentComm.Show()
+
     End Sub
 
     Private Sub cmdRevenueReports_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRevenueReports.Click
@@ -654,4 +658,9 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub cmdEditCommissions_Click(sender As Object, e As ClickEventArgs) Handles cmdEditCommissions.Click
+
+        frmCommEdit.Show()
+
+    End Sub
 End Class

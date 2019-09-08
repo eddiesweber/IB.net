@@ -17,9 +17,6 @@ Public Class frmRptDay2
     Dim NewYear As Boolean
     Dim ReRun As Boolean
     Dim MoYr As Long
-    Dim ADOCmd As New ADODB.Command
-    Dim CoRS As New ADODB.Recordset
-    Dim CLRS As New ADODB.Recordset
 
     Private Sub frmRptDay2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
