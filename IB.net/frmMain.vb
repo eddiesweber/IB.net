@@ -11,7 +11,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.029 - July 28th, 2019")
+        MessageBox.Show("Version 3.03 - September 8th, 2019")
 
     End Sub
 
