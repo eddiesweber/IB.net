@@ -58,8 +58,6 @@ Public Class frmRentComm
 
     Private Sub cmdLoad_Click(sender As Object, e As EventArgs) Handles cmdLoad.Click
 
-        Dim q As String
-
         Try
             'Begin process
             strLocation = "CLC1.0"
@@ -116,8 +114,6 @@ Public Class frmRentComm
     End Sub
 
     Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
-
-        Dim q As String
 
         Try
             strLocation = "CUC1.0"

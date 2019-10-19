@@ -109,7 +109,7 @@ Public Class frmRptInv
     Sub RunReport1()
 
         Dim SF As String = ""
-        Dim q2 As String
+        Dim q2 As String = ""
 
         ''process selection criteria
         If chkDate.Checked Then
@@ -288,11 +288,20 @@ Public Class frmRptInv
 
     Sub PrintInvoices()
 
-        Dim SF As String, q As String, q2 As String
+        Dim SF As String = ""
+        Dim q As String = ""
+        Dim q2 As String = ""
         Dim IRS As New ADODB.Recordset
-        Dim LastInv As Long, PageCt As Integer, LineCt As Integer, LastDept As Integer
-        Dim i As Integer, SvTax As Single, SvTotal As Single, SvTerms As Boolean
-        Dim CH As Integer, ICt As Integer
+        Dim LastInv As Long
+        Dim PageCt As Integer
+        Dim LineCt As Integer
+        Dim LastDept As Integer
+        Dim i As Integer
+        Dim SvTax As Single
+        Dim SvTotal As Single
+        Dim SvTerms As Boolean
+        Dim CH As Integer
+        Dim ICt As Integer
         Dim strOCR As String
         Dim strOCR2 As String
         Dim intLeftMargin As Integer

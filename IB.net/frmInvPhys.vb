@@ -95,40 +95,27 @@ Public Class frmInvPhys
         Try
             's = "Select * from ItemTemp Order by "
             Me.Cursor = Cursors.WaitCursor
+
             If optSort0.Checked Then
                 's = s & "item_num"
                 strLocation = "GD2-1.0"
-                grdItemTemp.SaveLayout("frmInvPhysgrdItemTemp.xml")
-
-                ItemTempByItemNumTableAdapter.Connection.ConnectionString = CS
-                ItemTempByItemNumTableAdapter.Fill(DsItemTempOrderByItemNum.ItemTempByItemNum)
-                grdItemTemp.DataSource = DsItemTempOrderByItemNum.ItemTempByItemNum
-                If Dir("frmInvPhysgrdItemTemp.xml") <> "" Then
-                    grdItemTemp.LoadLayout("frmInvPhysgrdItemTemp.xml")
-                End If
+                ItemTempBindingSource.Sort = "item_num ASC"
             End If
             If optSort1.Checked Then
                 's = s & "descr"
                 strLocation = "GD2-2.0"
-                ItemTempByDescTableAdapter.Connection.ConnectionString = CS
-                ItemTempByDescTableAdapter.Fill(DsItemTempOrderByDescr.ItemTempByDesc)
-                grdItemTemp.DataSource = DsItemTempOrderByDescr.ItemTempByDesc
-                If Dir("frmInvPhysgrdItemTemp.xml") <> "" Then
-                    grdItemTemp.LoadLayout("frmInvPhysgrdItemTemp.xml")
-                End If
+                ItemTempBindingSource.Sort = "descr ASC"
             End If
             If optSort2.Checked Then
                 's = s & "vendor, vend_item"
-                strLocation = "GD2-3.0"
-                ItemTempByVendorVendItemTableAdapter.Connection.ConnectionString = CS
-                ItemTempByVendorVendItemTableAdapter.Fill(DsItemTempOrderByVendorVendItem.ItemTempByVendorVendItem)
-                grdItemTemp.DataSource = DsItemTempOrderByVendorVendItem.ItemTempByVendorVendItem
-                If Dir("frmInvPhysgrdItemTemp.xml") <> "" Then
-                    grdItemTemp.LoadLayout("frmInvPhysgrdItemTemp.xml")
-                End If
+                ItemTempBindingSource.Sort = "vendor ASC, vend_item ASC"
             End If
+
             'RS2 = data2.Recordset
             Me.Cursor = Cursors.Default
+
+            ItemTempTableAdapter.Connection.ConnectionString = CS
+            ItemTempTableAdapter.Fill(Me.DsItemTemp.ItemTemp)
 
             SetModeReg()
         Catch ex As Exception
@@ -218,21 +205,12 @@ Public Class frmInvPhys
             strLocation = "CU1.0"
             grdItemTemp.UpdateData()
 
-            If optSort0.Checked Then
-                strLocation = "CU2.0"
-                ItemTempByItemNumTableAdapter.Update(DsItemTempOrderByItemNum.ItemTempByItemNum)
-            End If
-            If optSort1.Checked Then
-                strLocation = "CU3.0"
-                ItemTempByDescTableAdapter.Update(DsItemTempOrderByDescr.ItemTempByDesc)
-            End If
-            If optSort2.Checked Then
-                strLocation = "CU4.0"
-                ItemTempByVendorVendItemTableAdapter.Update(DsItemTempOrderByVendorVendItem.ItemTempByVendorVendItem)
-            End If
+            strLocation = "CU2.0"
+            ItemTempTableAdapter.Update(DsItemTemp.ItemTemp)
             'q = "exec spPostItemTemp '" & lblDate & "'"
 
             bEditInProgress = False
+
             SetModeReg()
 
             Me.Cursor = Cursors.Default
@@ -282,19 +260,12 @@ Public Class frmInvPhys
             bEditInProgress = True
             SetModeChange()
 
-            'strLocation = "IPDGAU6.0"
-            'grdItemTemp.UpdateData()
+            strLocation = "IPDGAU6.0"
+            grdItemTemp.UpdateData()
 
-            'strLocation = "IPDGAU7.0"
-            'If optSort0.Checked Then
-            '    ItemTempByItemNumTableAdapter.Update(DsItemTempOrderByItemNum.ItemTempByItemNum)
-            'End If
-            'If optSort1.Checked Then
-            '    ItemTempByDescTableAdapter.Update(DsItemTempOrderByDescr.ItemTempByDesc)
-            'End If
-            'If optSort2.Checked Then
-            '    ItemTempByVendorVendItemTableAdapter.Update(DsItemTempOrderByVendorVendItem.ItemTempByVendorVendItem)
-            'End If
+            strLocation = "IPDGAU7.0"
+            ItemTempTableAdapter.Update(DsItemTemp.ItemTemp)
+
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
@@ -324,15 +295,7 @@ Public Class frmInvPhys
         Dim LD As Date
         LD = lblDate.Text
 
-        If optSort0.Checked Then
-            ItemTempByItemNumBindingSource.MoveFirst()
-        End If
-        If optSort1.Checked Then
-            ItemTempByDescBindingSource.MoveFirst()
-        End If
-        If optSort2.Checked Then
-            ItemTempByVendorVendItemBindingSource.MoveFirst()
-        End If
+        ItemTempBindingSource.MoveFirst()
         'data2.Recordset.MoveFirst
 
         frmViewReport.lblReportName.Text = "ItemTemp.rpt"

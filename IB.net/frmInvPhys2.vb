@@ -66,6 +66,8 @@ Public Class frmInvPhys2
             frmInvPhys.lblStatus.Text = "Old"
         Else
             Try
+                Me.Cursor = Cursors.WaitCursor
+
                 Using connection As New SqlConnection(CS)
                     Dim cmd As SqlCommand = New SqlCommand
 

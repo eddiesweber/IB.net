@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsItemTempOrderByDescr"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dsItemTemp"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsItemTempOrderByDescr
+Partial Public Class dsItemTemp
     Inherits Global.System.Data.DataSet
     
-    Private tableItemTempByDesc As ItemTempByDescDataTable
+    Private tableItemTemp As ItemTempDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class dsItemTempOrderByDescr
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("ItemTempByDesc")) Is Nothing) Then
-                MyBase.Tables.Add(New ItemTempByDescDataTable(ds.Tables("ItemTempByDesc")))
+            If (Not (ds.Tables("ItemTemp")) Is Nothing) Then
+                MyBase.Tables.Add(New ItemTempDataTable(ds.Tables("ItemTemp")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class dsItemTempOrderByDescr
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property ItemTempByDesc() As ItemTempByDescDataTable
+    Public ReadOnly Property ItemTemp() As ItemTempDataTable
         Get
-            Return Me.tableItemTempByDesc
+            Return Me.tableItemTemp
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class dsItemTempOrderByDescr
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsItemTempOrderByDescr = CType(MyBase.Clone,dsItemTempOrderByDescr)
+        Dim cln As dsItemTemp = CType(MyBase.Clone,dsItemTemp)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class dsItemTempOrderByDescr
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("ItemTempByDesc")) Is Nothing) Then
-                MyBase.Tables.Add(New ItemTempByDescDataTable(ds.Tables("ItemTempByDesc")))
+            If (Not (ds.Tables("ItemTemp")) Is Nothing) Then
+                MyBase.Tables.Add(New ItemTempDataTable(ds.Tables("ItemTemp")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class dsItemTempOrderByDescr
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableItemTempByDesc = CType(MyBase.Tables("ItemTempByDesc"),ItemTempByDescDataTable)
+        Me.tableItemTemp = CType(MyBase.Tables("ItemTemp"),ItemTempDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableItemTempByDesc) Is Nothing) Then
-                Me.tableItemTempByDesc.InitVars
+            If (Not (Me.tableItemTemp) Is Nothing) Then
+                Me.tableItemTemp.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class dsItemTempOrderByDescr
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "dsItemTempOrderByDescr"
+        Me.DataSetName = "dsItemTemp"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsItemTempOrderByDescr.xsd"
+        Me.Namespace = "http://tempuri.org/dsItemTemp.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableItemTempByDesc = New ItemTempByDescDataTable()
-        MyBase.Tables.Add(Me.tableItemTempByDesc)
+        Me.tableItemTemp = New ItemTempDataTable()
+        MyBase.Tables.Add(Me.tableItemTemp)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializeItemTempByDesc() As Boolean
+    Private Function ShouldSerializeItemTemp() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class dsItemTempOrderByDescr
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsItemTempOrderByDescr = New dsItemTempOrderByDescr()
+        Dim ds As dsItemTemp = New dsItemTemp()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,15 +273,15 @@ Partial Public Class dsItemTempOrderByDescr
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub ItemTempByDescRowChangeEventHandler(ByVal sender As Object, ByVal e As ItemTempByDescRowChangeEvent)
+    Public Delegate Sub ItemTempRowChangeEventHandler(ByVal sender As Object, ByVal e As ItemTempRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class ItemTempByDescDataTable
-        Inherits Global.System.Data.TypedTableBase(Of ItemTempByDescRow)
+    Partial Public Class ItemTempDataTable
+        Inherits Global.System.Data.TypedTableBase(Of ItemTempRow)
         
         Private columnDate As Global.System.Data.DataColumn
         
@@ -309,7 +309,7 @@ Partial Public Class dsItemTempOrderByDescr
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "ItemTempByDesc"
+            Me.TableName = "ItemTemp"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -439,50 +439,50 @@ Partial Public Class dsItemTempOrderByDescr
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As ItemTempByDescRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As ItemTempRow
             Get
-                Return CType(Me.Rows(index),ItemTempByDescRow)
+                Return CType(Me.Rows(index),ItemTempRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ItemTempByDescRowChanging As ItemTempByDescRowChangeEventHandler
+        Public Event ItemTempRowChanging As ItemTempRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ItemTempByDescRowChanged As ItemTempByDescRowChangeEventHandler
+        Public Event ItemTempRowChanged As ItemTempRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ItemTempByDescRowDeleting As ItemTempByDescRowChangeEventHandler
+        Public Event ItemTempRowDeleting As ItemTempRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ItemTempByDescRowDeleted As ItemTempByDescRowChangeEventHandler
+        Public Event ItemTempRowDeleted As ItemTempRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddItemTempByDescRow(ByVal row As ItemTempByDescRow)
+        Public Overloads Sub AddItemTempRow(ByVal row As ItemTempRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddItemTempByDescRow(ByVal _Date As Date, ByVal Item_Num As Integer, ByVal Descr As String, ByVal Vendor As String, ByVal Vend_item As String, ByVal Total_Own As Single, ByVal Phys_Count As Single, ByVal Count1 As Single, ByVal Count2 As Single, ByVal Count3 As Single, ByVal Count4 As Single) As ItemTempByDescRow
-            Dim rowItemTempByDescRow As ItemTempByDescRow = CType(Me.NewRow,ItemTempByDescRow)
+        Public Overloads Function AddItemTempRow(ByVal _Date As Date, ByVal Item_Num As Integer, ByVal Descr As String, ByVal Vendor As String, ByVal Vend_item As String, ByVal Total_Own As Single, ByVal Phys_Count As Single, ByVal Count1 As Single, ByVal Count2 As Single, ByVal Count3 As Single, ByVal Count4 As Single) As ItemTempRow
+            Dim rowItemTempRow As ItemTempRow = CType(Me.NewRow,ItemTempRow)
             Dim columnValuesArray() As Object = New Object() {_Date, Item_Num, Descr, Vendor, Vend_item, Total_Own, Phys_Count, Count1, Count2, Count3, Count4}
-            rowItemTempByDescRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowItemTempByDescRow)
-            Return rowItemTempByDescRow
+            rowItemTempRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowItemTempRow)
+            Return rowItemTempRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindBy_DateItem_Num(ByVal _Date As Date, ByVal Item_Num As Integer) As ItemTempByDescRow
-            Return CType(Me.Rows.Find(New Object() {_Date, Item_Num}),ItemTempByDescRow)
+        Public Function FindBy_DateItem_Num(ByVal _Date As Date, ByVal Item_Num As Integer) As ItemTempRow
+            Return CType(Me.Rows.Find(New Object() {_Date, Item_Num}),ItemTempRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As ItemTempByDescDataTable = CType(MyBase.Clone,ItemTempByDescDataTable)
+            Dim cln As ItemTempDataTable = CType(MyBase.Clone,ItemTempDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -490,7 +490,7 @@ Partial Public Class dsItemTempOrderByDescr
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New ItemTempByDescDataTable()
+            Return New ItemTempDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -547,28 +547,28 @@ Partial Public Class dsItemTempOrderByDescr
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewItemTempByDescRow() As ItemTempByDescRow
-            Return CType(Me.NewRow,ItemTempByDescRow)
+        Public Function NewItemTempRow() As ItemTempRow
+            Return CType(Me.NewRow,ItemTempRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New ItemTempByDescRow(builder)
+            Return New ItemTempRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(ItemTempByDescRow)
+            Return GetType(ItemTempRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.ItemTempByDescRowChangedEvent) Is Nothing) Then
-                RaiseEvent ItemTempByDescRowChanged(Me, New ItemTempByDescRowChangeEvent(CType(e.Row,ItemTempByDescRow), e.Action))
+            If (Not (Me.ItemTempRowChangedEvent) Is Nothing) Then
+                RaiseEvent ItemTempRowChanged(Me, New ItemTempRowChangeEvent(CType(e.Row,ItemTempRow), e.Action))
             End If
         End Sub
         
@@ -576,8 +576,8 @@ Partial Public Class dsItemTempOrderByDescr
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.ItemTempByDescRowChangingEvent) Is Nothing) Then
-                RaiseEvent ItemTempByDescRowChanging(Me, New ItemTempByDescRowChangeEvent(CType(e.Row,ItemTempByDescRow), e.Action))
+            If (Not (Me.ItemTempRowChangingEvent) Is Nothing) Then
+                RaiseEvent ItemTempRowChanging(Me, New ItemTempRowChangeEvent(CType(e.Row,ItemTempRow), e.Action))
             End If
         End Sub
         
@@ -585,8 +585,8 @@ Partial Public Class dsItemTempOrderByDescr
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.ItemTempByDescRowDeletedEvent) Is Nothing) Then
-                RaiseEvent ItemTempByDescRowDeleted(Me, New ItemTempByDescRowChangeEvent(CType(e.Row,ItemTempByDescRow), e.Action))
+            If (Not (Me.ItemTempRowDeletedEvent) Is Nothing) Then
+                RaiseEvent ItemTempRowDeleted(Me, New ItemTempRowChangeEvent(CType(e.Row,ItemTempRow), e.Action))
             End If
         End Sub
         
@@ -594,14 +594,14 @@ Partial Public Class dsItemTempOrderByDescr
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.ItemTempByDescRowDeletingEvent) Is Nothing) Then
-                RaiseEvent ItemTempByDescRowDeleting(Me, New ItemTempByDescRowChangeEvent(CType(e.Row,ItemTempByDescRow), e.Action))
+            If (Not (Me.ItemTempRowDeletingEvent) Is Nothing) Then
+                RaiseEvent ItemTempRowDeleting(Me, New ItemTempRowChangeEvent(CType(e.Row,ItemTempRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemoveItemTempByDescRow(ByVal row As ItemTempByDescRow)
+        Public Sub RemoveItemTempRow(ByVal row As ItemTempRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -610,7 +610,7 @@ Partial Public Class dsItemTempOrderByDescr
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsItemTempOrderByDescr = New dsItemTempOrderByDescr()
+            Dim ds As dsItemTemp = New dsItemTemp()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -628,7 +628,7 @@ Partial Public Class dsItemTempOrderByDescr
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "ItemTempByDescDataTable"
+            attribute2.FixedValue = "ItemTempDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -675,26 +675,26 @@ Partial Public Class dsItemTempOrderByDescr
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class ItemTempByDescRow
+    Partial Public Class ItemTempRow
         Inherits Global.System.Data.DataRow
         
-        Private tableItemTempByDesc As ItemTempByDescDataTable
+        Private tableItemTemp As ItemTempDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableItemTempByDesc = CType(Me.Table,ItemTempByDescDataTable)
+            Me.tableItemTemp = CType(Me.Table,ItemTempDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property _Date() As Date
             Get
-                Return CType(Me(Me.tableItemTempByDesc.DateColumn),Date)
+                Return CType(Me(Me.tableItemTemp.DateColumn),Date)
             End Get
             Set
-                Me(Me.tableItemTempByDesc.DateColumn) = value
+                Me(Me.tableItemTemp.DateColumn) = value
             End Set
         End Property
         
@@ -702,10 +702,10 @@ Partial Public Class dsItemTempOrderByDescr
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Item_Num() As Integer
             Get
-                Return CType(Me(Me.tableItemTempByDesc.Item_NumColumn),Integer)
+                Return CType(Me(Me.tableItemTemp.Item_NumColumn),Integer)
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Item_NumColumn) = value
+                Me(Me.tableItemTemp.Item_NumColumn) = value
             End Set
         End Property
         
@@ -714,13 +714,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Descr() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.DescrColumn),String)
+                    Return CType(Me(Me.tableItemTemp.DescrColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Descr' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Descr' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.DescrColumn) = value
+                Me(Me.tableItemTemp.DescrColumn) = value
             End Set
         End Property
         
@@ -729,13 +729,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Vendor() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.VendorColumn),String)
+                    Return CType(Me(Me.tableItemTemp.VendorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Vendor' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Vendor' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.VendorColumn) = value
+                Me(Me.tableItemTemp.VendorColumn) = value
             End Set
         End Property
         
@@ -744,13 +744,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Vend_item() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Vend_itemColumn),String)
+                    Return CType(Me(Me.tableItemTemp.Vend_itemColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Vend_item' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Vend_item' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Vend_itemColumn) = value
+                Me(Me.tableItemTemp.Vend_itemColumn) = value
             End Set
         End Property
         
@@ -759,13 +759,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Total_Own() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Total_OwnColumn),Single)
+                    Return CType(Me(Me.tableItemTemp.Total_OwnColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Total_Own' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Total_Own' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Total_OwnColumn) = value
+                Me(Me.tableItemTemp.Total_OwnColumn) = value
             End Set
         End Property
         
@@ -774,13 +774,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Phys_Count() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Phys_CountColumn),Single)
+                    Return CType(Me(Me.tableItemTemp.Phys_CountColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Phys_Count' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Phys_Count' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Phys_CountColumn) = value
+                Me(Me.tableItemTemp.Phys_CountColumn) = value
             End Set
         End Property
         
@@ -789,13 +789,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Count1() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Count1Column),Single)
+                    Return CType(Me(Me.tableItemTemp.Count1Column),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count1' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count1' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Count1Column) = value
+                Me(Me.tableItemTemp.Count1Column) = value
             End Set
         End Property
         
@@ -804,13 +804,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Count2() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Count2Column),Single)
+                    Return CType(Me(Me.tableItemTemp.Count2Column),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count2' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count2' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Count2Column) = value
+                Me(Me.tableItemTemp.Count2Column) = value
             End Set
         End Property
         
@@ -819,13 +819,13 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Count3() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Count3Column),Single)
+                    Return CType(Me(Me.tableItemTemp.Count3Column),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count3' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count3' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Count3Column) = value
+                Me(Me.tableItemTemp.Count3Column) = value
             End Set
         End Property
         
@@ -834,122 +834,122 @@ Partial Public Class dsItemTempOrderByDescr
         Public Property Count4() As Single
             Get
                 Try 
-                    Return CType(Me(Me.tableItemTempByDesc.Count4Column),Single)
+                    Return CType(Me(Me.tableItemTemp.Count4Column),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count4' in table 'ItemTempByDesc' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Count4' in table 'ItemTemp' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableItemTempByDesc.Count4Column) = value
+                Me(Me.tableItemTemp.Count4Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDescrNull() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.DescrColumn)
+            Return Me.IsNull(Me.tableItemTemp.DescrColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDescrNull()
-            Me(Me.tableItemTempByDesc.DescrColumn) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.DescrColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsVendorNull() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.VendorColumn)
+            Return Me.IsNull(Me.tableItemTemp.VendorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetVendorNull()
-            Me(Me.tableItemTempByDesc.VendorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.VendorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsVend_itemNull() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Vend_itemColumn)
+            Return Me.IsNull(Me.tableItemTemp.Vend_itemColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetVend_itemNull()
-            Me(Me.tableItemTempByDesc.Vend_itemColumn) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Vend_itemColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsTotal_OwnNull() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Total_OwnColumn)
+            Return Me.IsNull(Me.tableItemTemp.Total_OwnColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetTotal_OwnNull()
-            Me(Me.tableItemTempByDesc.Total_OwnColumn) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Total_OwnColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsPhys_CountNull() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Phys_CountColumn)
+            Return Me.IsNull(Me.tableItemTemp.Phys_CountColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPhys_CountNull()
-            Me(Me.tableItemTempByDesc.Phys_CountColumn) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Phys_CountColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCount1Null() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Count1Column)
+            Return Me.IsNull(Me.tableItemTemp.Count1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCount1Null()
-            Me(Me.tableItemTempByDesc.Count1Column) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Count1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCount2Null() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Count2Column)
+            Return Me.IsNull(Me.tableItemTemp.Count2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCount2Null()
-            Me(Me.tableItemTempByDesc.Count2Column) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Count2Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCount3Null() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Count3Column)
+            Return Me.IsNull(Me.tableItemTemp.Count3Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCount3Null()
-            Me(Me.tableItemTempByDesc.Count3Column) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Count3Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCount4Null() As Boolean
-            Return Me.IsNull(Me.tableItemTempByDesc.Count4Column)
+            Return Me.IsNull(Me.tableItemTemp.Count4Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCount4Null()
-            Me(Me.tableItemTempByDesc.Count4Column) = Global.System.Convert.DBNull
+            Me(Me.tableItemTemp.Count4Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -957,16 +957,16 @@ Partial Public Class dsItemTempOrderByDescr
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class ItemTempByDescRowChangeEvent
+    Public Class ItemTempRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As ItemTempByDescRow
+        Private eventRow As ItemTempRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As ItemTempByDescRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As ItemTempRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -974,7 +974,7 @@ Partial Public Class dsItemTempOrderByDescr
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As ItemTempByDescRow
+        Public ReadOnly Property Row() As ItemTempRow
             Get
                 Return Me.eventRow
             End Get
@@ -990,7 +990,7 @@ Partial Public Class dsItemTempOrderByDescr
     End Class
 End Class
 
-Namespace dsItemTempOrderByDescrTableAdapters
+Namespace dsItemTempTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -1001,7 +1001,7 @@ Namespace dsItemTempOrderByDescrTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class ItemTempByDescTableAdapter
+    Partial Public Class ItemTempTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -1118,7 +1118,7 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "ItemTempByDesc"
+            tableMapping.DataSetTable = "ItemTemp"
             tableMapping.ColumnMappings.Add("Date", "Date")
             tableMapping.ColumnMappings.Add("Item_Num", "Item_Num")
             tableMapping.ColumnMappings.Add("Descr", "Descr")
@@ -1133,17 +1133,17 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [ItemTemp] WHERE (([Date] = @Original_Date) AND ([Item_Num] = @Origin"& _ 
-                "al_Item_Num) AND ((@IsNull_Descr = 1 AND [Descr] IS NULL) OR ([Descr] = @Origina"& _ 
-                "l_Descr)) AND ((@IsNull_Vendor = 1 AND [Vendor] IS NULL) OR ([Vendor] = @Origina"& _ 
-                "l_Vendor)) AND ((@IsNull_Vend_item = 1 AND [Vend_item] IS NULL) OR ([Vend_item] "& _ 
-                "= @Original_Vend_item)) AND ((@IsNull_Total_Own = 1 AND [Total_Own] IS NULL) OR "& _ 
-                "([Total_Own] = @Original_Total_Own)) AND ((@IsNull_Phys_Count = 1 AND [Phys_Coun"& _ 
-                "t] IS NULL) OR ([Phys_Count] = @Original_Phys_Count)) AND ((@IsNull_Count1 = 1 A"& _ 
-                "ND [Count1] IS NULL) OR ([Count1] = @Original_Count1)) AND ((@IsNull_Count2 = 1 "& _ 
-                "AND [Count2] IS NULL) OR ([Count2] = @Original_Count2)) AND ((@IsNull_Count3 = 1"& _ 
-                " AND [Count3] IS NULL) OR ([Count3] = @Original_Count3)) AND ((@IsNull_Count4 = "& _ 
-                "1 AND [Count4] IS NULL) OR ([Count4] = @Original_Count4)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ItemTemp] WHERE (([Date] = @Original_Date) AND ([Item_Num] = @"& _ 
+                "Original_Item_Num) AND ((@IsNull_Descr = 1 AND [Descr] IS NULL) OR ([Descr] = @O"& _ 
+                "riginal_Descr)) AND ((@IsNull_Vendor = 1 AND [Vendor] IS NULL) OR ([Vendor] = @O"& _ 
+                "riginal_Vendor)) AND ((@IsNull_Vend_item = 1 AND [Vend_item] IS NULL) OR ([Vend_"& _ 
+                "item] = @Original_Vend_item)) AND ((@IsNull_Total_Own = 1 AND [Total_Own] IS NUL"& _ 
+                "L) OR ([Total_Own] = @Original_Total_Own)) AND ((@IsNull_Phys_Count = 1 AND [Phy"& _ 
+                "s_Count] IS NULL) OR ([Phys_Count] = @Original_Phys_Count)) AND ((@IsNull_Count1"& _ 
+                " = 1 AND [Count1] IS NULL) OR ([Count1] = @Original_Count1)) AND ((@IsNull_Count"& _ 
+                "2 = 1 AND [Count2] IS NULL) OR ([Count2] = @Original_Count2)) AND ((@IsNull_Coun"& _ 
+                "t3 = 1 AND [Count3] IS NULL) OR ([Count3] = @Original_Count3)) AND ((@IsNull_Cou"& _ 
+                "nt4 = 1 AND [Count4] IS NULL) OR ([Count4] = @Original_Count4)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Date", Global.System.Data.SqlDbType.SmallDateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Item_Num", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Num", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1167,12 +1167,12 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Count4", Global.System.Data.SqlDbType.Real, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Count4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [ItemTemp] ([Date], [Item_Num], [Descr], [Vendor], [Vend_item], [Tota"& _ 
-                "l_Own], [Phys_Count], [Count1], [Count2], [Count3], [Count4]) VALUES (@Date, @It"& _ 
-                "em_Num, @Descr, @Vendor, @Vend_item, @Total_Own, @Phys_Count, @Count1, @Count2, "& _ 
-                "@Count3, @Count4);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Date, Item_Num, Descr, Vendor, Vend_item, Total_Own, "& _ 
-                "Phys_Count, Count1, Count2, Count3, Count4 FROM ItemTemp WHERE (Date = @Date) AN"& _ 
-                "D (Item_Num = @Item_Num) ORDER BY Descr"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ItemTemp] ([Date], [Item_Num], [Descr], [Vendor], [Vend_item],"& _ 
+                " [Total_Own], [Phys_Count], [Count1], [Count2], [Count3], [Count4]) VALUES (@Dat"& _ 
+                "e, @Item_Num, @Descr, @Vendor, @Vend_item, @Total_Own, @Phys_Count, @Count1, @Co"& _ 
+                "unt2, @Count3, @Count4);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Date, Item_Num, Descr, Vendor, Vend_item, Total"& _ 
+                "_Own, Phys_Count, Count1, Count2, Count3, Count4 FROM ItemTemp WHERE (Date = @Da"& _ 
+                "te) AND (Item_Num = @Item_Num)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.SmallDateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Num", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Num", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1187,22 +1187,22 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Count4", Global.System.Data.SqlDbType.Real, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Count4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [ItemTemp] SET [Date] = @Date, [Item_Num] = @Item_Num, [Descr] = @Descr, ["& _ 
-                "Vendor] = @Vendor, [Vend_item] = @Vend_item, [Total_Own] = @Total_Own, [Phys_Cou"& _ 
-                "nt] = @Phys_Count, [Count1] = @Count1, [Count2] = @Count2, [Count3] = @Count3, ["& _ 
-                "Count4] = @Count4 WHERE (([Date] = @Original_Date) AND ([Item_Num] = @Original_I"& _ 
-                "tem_Num) AND ((@IsNull_Descr = 1 AND [Descr] IS NULL) OR ([Descr] = @Original_De"& _ 
-                "scr)) AND ((@IsNull_Vendor = 1 AND [Vendor] IS NULL) OR ([Vendor] = @Original_Ve"& _ 
-                "ndor)) AND ((@IsNull_Vend_item = 1 AND [Vend_item] IS NULL) OR ([Vend_item] = @O"& _ 
-                "riginal_Vend_item)) AND ((@IsNull_Total_Own = 1 AND [Total_Own] IS NULL) OR ([To"& _ 
-                "tal_Own] = @Original_Total_Own)) AND ((@IsNull_Phys_Count = 1 AND [Phys_Count] I"& _ 
-                "S NULL) OR ([Phys_Count] = @Original_Phys_Count)) AND ((@IsNull_Count1 = 1 AND ["& _ 
-                "Count1] IS NULL) OR ([Count1] = @Original_Count1)) AND ((@IsNull_Count2 = 1 AND "& _ 
-                "[Count2] IS NULL) OR ([Count2] = @Original_Count2)) AND ((@IsNull_Count3 = 1 AND"& _ 
-                " [Count3] IS NULL) OR ([Count3] = @Original_Count3)) AND ((@IsNull_Count4 = 1 AN"& _ 
-                "D [Count4] IS NULL) OR ([Count4] = @Original_Count4)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Date, Item_Num, "& _ 
-                "Descr, Vendor, Vend_item, Total_Own, Phys_Count, Count1, Count2, Count3, Count4 "& _ 
-                "FROM ItemTemp WHERE (Date = @Date) AND (Item_Num = @Item_Num) ORDER BY Descr"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ItemTemp] SET [Date] = @Date, [Item_Num] = @Item_Num, [Descr] = @De"& _ 
+                "scr, [Vendor] = @Vendor, [Vend_item] = @Vend_item, [Total_Own] = @Total_Own, [Ph"& _ 
+                "ys_Count] = @Phys_Count, [Count1] = @Count1, [Count2] = @Count2, [Count3] = @Cou"& _ 
+                "nt3, [Count4] = @Count4 WHERE (([Date] = @Original_Date) AND ([Item_Num] = @Orig"& _ 
+                "inal_Item_Num) AND ((@IsNull_Descr = 1 AND [Descr] IS NULL) OR ([Descr] = @Origi"& _ 
+                "nal_Descr)) AND ((@IsNull_Vendor = 1 AND [Vendor] IS NULL) OR ([Vendor] = @Origi"& _ 
+                "nal_Vendor)) AND ((@IsNull_Vend_item = 1 AND [Vend_item] IS NULL) OR ([Vend_item"& _ 
+                "] = @Original_Vend_item)) AND ((@IsNull_Total_Own = 1 AND [Total_Own] IS NULL) O"& _ 
+                "R ([Total_Own] = @Original_Total_Own)) AND ((@IsNull_Phys_Count = 1 AND [Phys_Co"& _ 
+                "unt] IS NULL) OR ([Phys_Count] = @Original_Phys_Count)) AND ((@IsNull_Count1 = 1"& _ 
+                " AND [Count1] IS NULL) OR ([Count1] = @Original_Count1)) AND ((@IsNull_Count2 = "& _ 
+                "1 AND [Count2] IS NULL) OR ([Count2] = @Original_Count2)) AND ((@IsNull_Count3 ="& _ 
+                " 1 AND [Count3] IS NULL) OR ([Count3] = @Original_Count3)) AND ((@IsNull_Count4 "& _ 
+                "= 1 AND [Count4] IS NULL) OR ([Count4] = @Original_Count4)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Date, Item"& _ 
+                "_Num, Descr, Vendor, Vend_item, Total_Own, Phys_Count, Count1, Count2, Count3, C"& _ 
+                "ount4 FROM ItemTemp WHERE (Date = @Date) AND (Item_Num = @Item_Num)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.SmallDateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Num", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Num", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1250,8 +1250,8 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Date, Item_Num, Descr, Vendor, Vend_item, Total_Own, Phys_Count, Co"& _ 
-                "unt1, Count2, Count3, Count4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ItemTemp"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
+            Me._commandCollection(0).CommandText = "SELECT Date, Item_Num, Descr, Vendor, Vend_item, Total_Own, Phys_Count, Count1, C"& _ 
+                "ount2, Count3, Count4 FROM dbo.ItemTemp"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1259,7 +1259,7 @@ Namespace dsItemTempOrderByDescrTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsItemTempOrderByDescr.ItemTempByDescDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsItemTemp.ItemTempDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -1272,9 +1272,9 @@ Namespace dsItemTempOrderByDescrTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsItemTempOrderByDescr.ItemTempByDescDataTable
+        Public Overloads Overridable Function GetData() As dsItemTemp.ItemTempDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As dsItemTempOrderByDescr.ItemTempByDescDataTable = New dsItemTempOrderByDescr.ItemTempByDescDataTable()
+            Dim dataTable As dsItemTemp.ItemTempDataTable = New dsItemTemp.ItemTempDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1282,15 +1282,15 @@ Namespace dsItemTempOrderByDescrTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As dsItemTempOrderByDescr.ItemTempByDescDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As dsItemTemp.ItemTempDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As dsItemTempOrderByDescr) As Integer
-            Return Me.Adapter.Update(dataSet, "ItemTempByDesc")
+        Public Overloads Overridable Function Update(ByVal dataSet As dsItemTemp) As Integer
+            Return Me.Adapter.Update(dataSet, "ItemTemp")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1655,7 +1655,7 @@ Namespace dsItemTempOrderByDescrTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _itemTempByDescTableAdapter As ItemTempByDescTableAdapter
+        Private _itemTempTableAdapter As ItemTempTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -1677,12 +1677,12 @@ Namespace dsItemTempOrderByDescrTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property ItemTempByDescTableAdapter() As ItemTempByDescTableAdapter
+        Public Property ItemTempTableAdapter() As ItemTempTableAdapter
             Get
-                Return Me._itemTempByDescTableAdapter
+                Return Me._itemTempTableAdapter
             End Get
             Set
-                Me._itemTempByDescTableAdapter = value
+                Me._itemTempTableAdapter = value
             End Set
         End Property
         
@@ -1705,9 +1705,9 @@ Namespace dsItemTempOrderByDescrTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._itemTempByDescTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._itemTempByDescTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._itemTempByDescTableAdapter.Connection
+                If ((Not (Me._itemTempTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._itemTempTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._itemTempTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -1722,7 +1722,7 @@ Namespace dsItemTempOrderByDescrTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
+                If (Not (Me._itemTempTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -1734,14 +1734,14 @@ Namespace dsItemTempOrderByDescrTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As dsItemTempOrderByDescr, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As dsItemTemp, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ItemTempByDesc.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._itemTempTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.ItemTemp.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._itemTempByDescTableAdapter.Update(updatedRows))
+                    result = (result + Me._itemTempTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -1753,13 +1753,13 @@ Namespace dsItemTempOrderByDescrTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As dsItemTempOrderByDescr, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As dsItemTemp, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.ItemTempByDesc.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._itemTempTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.ItemTemp.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._itemTempByDescTableAdapter.Update(addedRows))
+                    result = (result + Me._itemTempTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -1771,13 +1771,13 @@ Namespace dsItemTempOrderByDescrTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As dsItemTempOrderByDescr, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As dsItemTemp, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ItemTempByDesc.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._itemTempTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.ItemTemp.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._itemTempByDescTableAdapter.Update(deletedRows))
+                    result = (result + Me._itemTempTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -1815,15 +1815,15 @@ Namespace dsItemTempOrderByDescrTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As dsItemTempOrderByDescr) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As dsItemTemp) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._itemTempByDescTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._itemTempByDescTableAdapter.Connection) = false)) Then
+            If ((Not (Me._itemTempTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._itemTempTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -1859,13 +1859,13 @@ Namespace dsItemTempOrderByDescrTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._itemTempByDescTableAdapter, Me._itemTempByDescTableAdapter.Connection)
-                    Me._itemTempByDescTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._itemTempByDescTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._itemTempByDescTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._itemTempByDescTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._itemTempByDescTableAdapter.Adapter)
+                If (Not (Me._itemTempTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._itemTempTableAdapter, Me._itemTempTableAdapter.Connection)
+                    Me._itemTempTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._itemTempTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._itemTempTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._itemTempTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._itemTempTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -1928,9 +1928,9 @@ Namespace dsItemTempOrderByDescrTableAdapters
                 If workConnOpened Then
                     workConnection.Close
                 End If
-                If (Not (Me._itemTempByDescTableAdapter) Is Nothing) Then
-                    Me._itemTempByDescTableAdapter.Connection = CType(revertConnections(Me._itemTempByDescTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._itemTempByDescTableAdapter.Transaction = Nothing
+                If (Not (Me._itemTempTableAdapter) Is Nothing) Then
+                    Me._itemTempTableAdapter.Connection = CType(revertConnections(Me._itemTempTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._itemTempTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

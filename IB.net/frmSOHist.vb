@@ -36,8 +36,6 @@ Public Class frmSOHist
 
     Private Sub GetData()
 
-        Dim q As String
-
         If IsDate(datSince.Value) And CurCust > 0 Then
             Me.SpGetInvoiceHistTableAdapter.Connection.ConnectionString = CS
             Me.SpGetInvoiceHistTableAdapter.Fill(DsSOHist.spGetInvoiceHist, CurCust, datSince.Value)

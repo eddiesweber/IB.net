@@ -517,8 +517,6 @@ Public Class frmRptDay1
 
     Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
 
-        Dim q As String
-
         '   ****************************************************************************
         '   * Not needed, can't send formulas to Crystal anymore.  Done with parameters
         '   ****************************************************************************

@@ -53,8 +53,6 @@ Public Class frmRptDay2
 
     Sub ResetScreen()
 
-        Dim q As String
-
         GetCompany()
 
         'Get first date calculated but not printed
@@ -456,8 +454,6 @@ Public Class frmRptDay2
 
         Dim FirstWeek As Date
         Dim RunWeek As Date
-        Dim q As String
-        Dim q1 As String
         Dim LastO As Double
         Dim LastR As Double
         Dim tempRS As New ADODB.Recordset
@@ -1223,7 +1219,6 @@ OKDone:
 
         Dim D1 As Integer
         Dim intRow As Integer
-        Dim q As String
         Dim M As Integer
         Dim NextDate As Date
         Dim TempDate As Date

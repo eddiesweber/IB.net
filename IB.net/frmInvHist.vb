@@ -14,7 +14,6 @@ Public Class frmInvHist
 
     Private Sub GetData()
 
-        Dim q As String
         Dim inv As Long
 
         inv = Val(txtInvoice.Text)

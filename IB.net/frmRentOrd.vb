@@ -316,7 +316,6 @@ Public Class frmRentOrd
 
         'Set up sales section on reposition or change
         Dim OldOpt As Integer
-        Dim i As Integer
 
         OldOpt = SalesOpt
 
@@ -640,8 +639,6 @@ ChkPct:
         End If
 
         'Test for good key value
-        Dim q As String
-
         Dim newRow As DataRowView = CustomerInventoryBindingSource.Current
 
         'If blnNewRecord = True And txtData2.Text > 0 Then

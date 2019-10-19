@@ -29,7 +29,6 @@ Public Class frmCustCanc
 
     Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
 
-        Dim q As String
         Dim Result As DialogResult
 
         Me.Cursor = Cursors.WaitCursor

@@ -24,8 +24,6 @@ Public Class frmUndo
 
     Sub ResetScreen()
 
-        Dim q As String
-
         GetCompany()
 
         RunDate = Now()

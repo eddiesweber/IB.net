@@ -44,21 +44,21 @@ Public Class frmTemplate
 
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
-        Dim q As String
+        'Dim q As String
 
         'q = "DELETE " & dr("TableName") & " WHERE [" & dr("FieldName") & "]<'" & Format(CutoffDate, "MM/DD/YYYY") & "'"
-        Try
-            Using connection As New SqlConnection(CS)
-                strLocation = "CO10.0"
-                Dim command As New SqlCommand(q, connection)
-                command.Connection.Open()
-                command.ExecuteNonQuery()
-            End Using
-        Catch ex As Exception
-            Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine cmdOK_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmdOK_Click", vbOK)
-            LogError(Me.Name, "cmdOK_Click", strLocation, ex.Message)
-        End Try
+        'Try
+        '    Using connection As New SqlConnection(CS)
+        '        strLocation = "CO10.0"
+        '        Dim command As New SqlCommand(q, connection)
+        '        command.Connection.Open()
+        '        command.ExecuteNonQuery()
+        '    End Using
+        'Catch ex As Exception
+        '    Me.Cursor = Cursors.Default
+        '    Result = MessageBox.Show(Me, "Error in routine cmdOK_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmdOK_Click", vbOK)
+        '    LogError(Me.Name, "cmdOK_Click", strLocation, ex.Message)
+        'End Try
 
     End Sub
 
@@ -90,7 +90,7 @@ Public Class frmTemplate
 
     Private Sub cmdStoredProcedure_Click(sender As Object, e As EventArgs) Handles cmdStoredProcedure.Click
 
-        Dim ItemTot As Single, ItemTaxable As Single, ItemCount As Integer
+        Dim ItemTot As Single
 
         Try
             Using connection As New SqlConnection(CS)

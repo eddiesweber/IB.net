@@ -340,8 +340,6 @@ Public Class frmCust
 
     Private Sub Optionchanged(intOption As Integer)
 
-        Dim i As Integer
-
         If buserchange Then
             ' Shouldn't have to do this, does it just uncheck the opposite option box
             'optData(1 - Index).Value = Not (optData(Index).Value)
@@ -368,8 +366,6 @@ Public Class frmCust
         If buserchange Then
             SetModeChange()
         Else
-            Dim i As Integer
-
             If optData0.Tag = Trim(txtOption.Text) Then
                 optData0.Checked = True
             Else

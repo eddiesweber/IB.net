@@ -11,7 +11,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.03 - September 8th, 2019")
+        MessageBox.Show("Version 3.1 - October 19th, 2019")
 
     End Sub
 
@@ -500,9 +500,13 @@ Public Class frmMain
 
     Private Sub cmdRevenueReports_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRevenueReports.Click
 
+        frmRptAvgRev.Show()
+
     End Sub
 
     Private Sub cmdCommissionReports_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdCommissionReports.Click
+
+        frmRptComm.Show()
 
     End Sub
 

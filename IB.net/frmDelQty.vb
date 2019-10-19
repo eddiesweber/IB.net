@@ -92,8 +92,6 @@ Public Class frmDelQty
 
     Sub GetData2()
 
-        Dim q As String
-
         'Goto current department
         Dim intRow As Integer
 

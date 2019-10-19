@@ -32,8 +32,6 @@ Public Class frmROHist
 
     Private Sub GetData()
 
-        Dim q As String
-
         If IsDate(datSince.Value) And CurCust > 0 Then
             Me.SpGetRentHistTableAdapter.Fill(DsROHist.spGetRentHist, CurCust, datSince.Value)
         End If

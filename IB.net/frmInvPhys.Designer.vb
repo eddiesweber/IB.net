@@ -36,27 +36,17 @@ Partial Class frmInvPhys
         Me.cmdReset = New C1.Win.C1Input.C1Button()
         Me.cmdPrint = New C1.Win.C1Input.C1Button()
         Me.grdItemTemp = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.ItemTempByItemNumBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsItemTempOrderByItemNum = New IB.net.dsItemTempOrderByItemNum()
-        Me.DsItemTempOrderByDescr = New IB.net.dsItemTempOrderByDescr()
-        Me.ItemTempByDescBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ItemTempByDescTableAdapter = New IB.net.dsItemTempOrderByDescrTableAdapters.ItemTempByDescTableAdapter()
-        Me.ItemTempByItemNumTableAdapter = New IB.net.dsItemTempOrderByItemNumTableAdapters.ItemTempByItemNumTableAdapter()
-        Me.DsItemTempOrderByVendorVendItem = New IB.net.dsItemTempOrderByVendorVendItem()
-        Me.ItemTempByVendorVendItemBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ItemTempByVendorVendItemTableAdapter = New IB.net.dsItemTempOrderByVendorVendItemTableAdapters.ItemTempByVendorVendItemTableAdapter()
+        Me.DsItemTemp = New IB.net.dsItemTemp()
+        Me.ItemTempBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ItemTempTableAdapter = New IB.net.dsItemTempTableAdapters.ItemTempTableAdapter()
         Me.Frame1.SuspendLayout()
         CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdItemTemp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ItemTempByItemNumBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsItemTempOrderByItemNum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsItemTempOrderByDescr, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ItemTempByDescBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsItemTempOrderByVendorVendItem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ItemTempByVendorVendItemBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsItemTemp, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemTempBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Frame1
@@ -180,7 +170,9 @@ Partial Class frmInvPhys
         '
         'grdItemTemp
         '
-        Me.grdItemTemp.DataSource = Me.ItemTempByItemNumBindingSource
+        Me.grdItemTemp.AllowAddNew = True
+        Me.grdItemTemp.AllowDelete = True
+        Me.grdItemTemp.DataSource = Me.ItemTempBindingSource
         Me.grdItemTemp.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdItemTemp.Images.Add(CType(resources.GetObject("grdItemTemp.Images"), System.Drawing.Image))
         Me.grdItemTemp.Location = New System.Drawing.Point(10, 65)
@@ -197,47 +189,19 @@ Partial Class frmInvPhys
         Me.grdItemTemp.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         Me.grdItemTemp.PropBag = resources.GetString("grdItemTemp.PropBag")
         '
-        'ItemTempByItemNumBindingSource
+        'DsItemTemp
         '
-        Me.ItemTempByItemNumBindingSource.DataMember = "ItemTempByItemNum"
-        Me.ItemTempByItemNumBindingSource.DataSource = Me.DsItemTempOrderByItemNum
+        Me.DsItemTemp.DataSetName = "dsItemTemp"
+        Me.DsItemTemp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'DsItemTempOrderByItemNum
+        'ItemTempBindingSource
         '
-        Me.DsItemTempOrderByItemNum.DataSetName = "dsItemTempOrderByItemNum"
-        Me.DsItemTempOrderByItemNum.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ItemTempBindingSource.DataMember = "ItemTemp"
+        Me.ItemTempBindingSource.DataSource = Me.DsItemTemp
         '
-        'DsItemTempOrderByDescr
+        'ItemTempTableAdapter
         '
-        Me.DsItemTempOrderByDescr.DataSetName = "dsItemTempOrderByDescr"
-        Me.DsItemTempOrderByDescr.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ItemTempByDescBindingSource
-        '
-        Me.ItemTempByDescBindingSource.DataMember = "ItemTempByDesc"
-        Me.ItemTempByDescBindingSource.DataSource = Me.DsItemTempOrderByDescr
-        '
-        'ItemTempByDescTableAdapter
-        '
-        Me.ItemTempByDescTableAdapter.ClearBeforeFill = True
-        '
-        'ItemTempByItemNumTableAdapter
-        '
-        Me.ItemTempByItemNumTableAdapter.ClearBeforeFill = True
-        '
-        'DsItemTempOrderByVendorVendItem
-        '
-        Me.DsItemTempOrderByVendorVendItem.DataSetName = "dsItemTempOrderByVendorVendItem"
-        Me.DsItemTempOrderByVendorVendItem.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ItemTempByVendorVendItemBindingSource
-        '
-        Me.ItemTempByVendorVendItemBindingSource.DataMember = "ItemTempByVendorVendItem"
-        Me.ItemTempByVendorVendItemBindingSource.DataSource = Me.DsItemTempOrderByVendorVendItem
-        '
-        'ItemTempByVendorVendItemTableAdapter
-        '
-        Me.ItemTempByVendorVendItemTableAdapter.ClearBeforeFill = True
+        Me.ItemTempTableAdapter.ClearBeforeFill = True
         '
         'frmInvPhys
         '
@@ -264,12 +228,8 @@ Partial Class frmInvPhys
         CType(Me.cmdReset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdPrint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdItemTemp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ItemTempByItemNumBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsItemTempOrderByItemNum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsItemTempOrderByDescr, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ItemTempByDescBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsItemTempOrderByVendorVendItem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ItemTempByVendorVendItemBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsItemTemp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemTempBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -286,13 +246,7 @@ Partial Class frmInvPhys
     Friend WithEvents cmdReset As C1.Win.C1Input.C1Button
     Friend WithEvents cmdPrint As C1.Win.C1Input.C1Button
     Friend WithEvents grdItemTemp As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents DsItemTempOrderByDescr As dsItemTempOrderByDescr
-    Friend WithEvents ItemTempByDescBindingSource As BindingSource
-    Friend WithEvents ItemTempByDescTableAdapter As dsItemTempOrderByDescrTableAdapters.ItemTempByDescTableAdapter
-    Friend WithEvents DsItemTempOrderByItemNum As dsItemTempOrderByItemNum
-    Friend WithEvents ItemTempByItemNumBindingSource As BindingSource
-    Friend WithEvents ItemTempByItemNumTableAdapter As dsItemTempOrderByItemNumTableAdapters.ItemTempByItemNumTableAdapter
-    Friend WithEvents DsItemTempOrderByVendorVendItem As dsItemTempOrderByVendorVendItem
-    Friend WithEvents ItemTempByVendorVendItemBindingSource As BindingSource
-    Friend WithEvents ItemTempByVendorVendItemTableAdapter As dsItemTempOrderByVendorVendItemTableAdapters.ItemTempByVendorVendItemTableAdapter
+    Friend WithEvents DsItemTemp As dsItemTemp
+    Friend WithEvents ItemTempBindingSource As BindingSource
+    Friend WithEvents ItemTempTableAdapter As dsItemTempTableAdapters.ItemTempTableAdapter
 End Class

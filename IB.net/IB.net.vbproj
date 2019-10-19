@@ -205,20 +205,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
     </Compile>
-    <Compile Include="dsItemTempOrderByDescr.Designer.vb">
+    <Compile Include="dsItemTemp.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dsItemTempOrderByItemNum.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dsItemTempOrderByVendorVendItem.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
+      <DependentUpon>dsItemTemp.xsd</DependentUpon>
     </Compile>
     <Compile Include="dsPOItemTemp_ItemMasterO.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1078,6 +1068,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPONew.resx">
       <DependentUpon>frmPONew.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPONew2.resx">
       <DependentUpon>frmPONew2.vb</DependentUpon>
@@ -1384,38 +1375,16 @@
     <None Include="dsItemReportTemp.xss">
       <DependentUpon>dsItemReportTemp.xsd</DependentUpon>
     </None>
-    <None Include="dsItemTempOrderByDescr.xsc">
-      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
+    <None Include="dsItemTemp.xsc">
+      <DependentUpon>dsItemTemp.xsd</DependentUpon>
     </None>
-    <None Include="dsItemTempOrderByDescr.xsd">
+    <None Include="dsItemTemp.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsItemTempOrderByDescr.Designer.vb</LastGenOutput>
+      <LastGenOutput>dsItemTemp.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="dsItemTempOrderByDescr.xss">
-      <DependentUpon>dsItemTempOrderByDescr.xsd</DependentUpon>
-    </None>
-    <None Include="dsItemTempOrderByItemNum.xsc">
-      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
-    </None>
-    <None Include="dsItemTempOrderByItemNum.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsItemTempOrderByItemNum.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dsItemTempOrderByItemNum.xss">
-      <DependentUpon>dsItemTempOrderByItemNum.xsd</DependentUpon>
-    </None>
-    <None Include="dsItemTempOrderByVendorVendItem.xsc">
-      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
-    </None>
-    <None Include="dsItemTempOrderByVendorVendItem.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsItemTempOrderByVendorVendItem.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dsItemTempOrderByVendorVendItem.xss">
-      <DependentUpon>dsItemTempOrderByVendorVendItem.xsd</DependentUpon>
+    <None Include="dsItemTemp.xss">
+      <DependentUpon>dsItemTemp.xsd</DependentUpon>
     </None>
     <None Include="dsPOItemTemp_ItemMasterO.xsc">
       <DependentUpon>dsPOItemTemp_ItemMasterO.xsd</DependentUpon>

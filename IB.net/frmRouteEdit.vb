@@ -55,8 +55,6 @@ Public Class frmRouteEdit
 
     Sub GetData()
 
-        Dim q As String
-        Dim q1 As String
         Dim OptVal As Integer
         Dim SavCust As Long
         Dim SavDept As Integer

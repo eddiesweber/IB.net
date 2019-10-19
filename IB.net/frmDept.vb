@@ -321,7 +321,6 @@ Public Class frmDept
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
 
         Dim intResult As Integer
-        Dim q As String
 
         CurDept = txtData1.Text
         If ChkInvoiceExists() Then Exit Sub

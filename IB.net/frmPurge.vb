@@ -104,9 +104,11 @@ Public Class frmPurge
         MessageBox.Show(Me, "This routine appears to be unused, not tested in new IB.net program, exiting...", vbOK)
         Exit Sub
 
-        Dim i As Integer, q As String, CutoffDate As Date
-        Dim ct As Integer, CRS As New ADODB.Recordset
-        Dim cust As Long, R As Long
+        Dim i As Integer
+        Dim q As String
+        Dim CutoffDate As Date
+        Dim ct As Integer
+        Dim cust As Long
 
         Result = MessageBox.Show(Me, "Are you sure?", "Purge Data", vbYesNo)
         If Result = vbNo Then

@@ -17,7 +17,7 @@ Public Class frmFindInvoice
         chkAll.Checked = True
 
         ''''''''''''''''''''''''''''''''''''''''''''''''
-        '''From Activated
+        'From Activated
         buserchange = True
 
         'If Not Val(lstData(0).BoundText) = CurInvoice Then

@@ -77,7 +77,6 @@ Calc:
         Dim Opt As Integer
         Dim Memo As String
         Dim DefMemo As String
-        Dim q As String
         Dim ChangeMemo As String
         Dim ADOCmd As New ADODB.Command
 

@@ -97,6 +97,10 @@ Public Class frmViewReport
                 deex()
             Case "triprec2.rpt"
                 triprec2()
+            Case "CommDet.rpt"
+                CommDet()
+            Case "CommSum.rpt"
+                CommSum()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
@@ -105,11 +109,62 @@ Public Class frmViewReport
 
     End Sub
 
+    Public Sub CommSum()
+
+        Try
+            strLocation = "CS1.0"
+            RPT.Load("C:\IB\ReportsCR2016\CommSum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "CS2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "CS2.1"
+            RPT.SetParameterValue("StartDate", Format(frmRptComm.RunDate(0), "Short Date"))
+            strLocation = "CS2.2"
+            RPT.SetParameterValue("EndDate", Format(frmRptComm.RunDate(1), "Short Date"))
+
+            strLocation = "CS3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine CommSum (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CommSum", vbOK)
+            LogError(Me.Name, "CommSum", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Public Sub CommDet()
+
+        Try
+            strLocation = "CD1.0"
+            RPT.Load("C:\IB\ReportsCR2016\CommDet.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "CD2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+            strLocation = "CD2.1"
+            RPT.SetParameterValue("StartDate", Format(frmRptComm.RunDate(0), "Short Date"))
+            strLocation = "CD2.2"
+            RPT.SetParameterValue("EndDate", Format(frmRptComm.RunDate(1), "Short Date"))
+
+            strLocation = "CD3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine CommDet (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CommDet", vbOK)
+            LogError(Me.Name, "CommDet", strLocation, ex.Message)
+        End Try
+
+
+    End Sub
+
     Public Sub triprec2()
 
         Try
-            Me.Cursor = Cursors.WaitCursor
-
             strLocation = "TR1.0"
             RPT.Load("C:\IB\ReportsCR2016\triprec.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 

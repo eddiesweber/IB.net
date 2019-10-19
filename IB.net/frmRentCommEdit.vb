@@ -33,8 +33,6 @@ Public Class frmRentCommEdit
 
     Sub GetData()
 
-        Dim q As String
-
         ' Clear grid?
 
         If optCust0.Checked Then
@@ -120,7 +118,7 @@ Public Class frmRentCommEdit
 
     Private Sub TDBGrid1_AfterColUpdate(sender As Object, e As ColEventArgs) Handles TDBGrid1.AfterColUpdate
 
-        Dim i As Integer, n As Integer
+        Dim i As Integer
 
         i = e.ColIndex
 
@@ -132,11 +130,11 @@ Public Class frmRentCommEdit
 
     Private Sub TDBGrid1_ButtonClick(sender As Object, e As ColEventArgs) Handles TDBGrid1.ButtonClick
 
-        Dim Co As Column
-        Dim T As Integer
-        Dim i As Integer
-        Dim s As String
-        Dim LB As DataList
+        'Dim Co As Column
+        'Dim T As Integer
+        'Dim i As Integer
+        'Dim s As String
+        'Dim LB As DataList
 
         'Co = TDBGrid1.Columns(e.ColIndex)
         's = Co(0).Text
