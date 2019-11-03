@@ -944,6 +944,12 @@
     <Compile Include="frmRestoreCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="rptAWRTop100.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAWRTop100.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Simple3Des.vb" />
     <Compile Include="Test.Designer.vb">
       <DependentUpon>Test.vb</DependentUpon>
@@ -1193,6 +1199,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRestoreCustomer.resx">
       <DependentUpon>frmRestoreCustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptAWRTop100.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAWRTop100.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Test.resx">
       <DependentUpon>Test.vb</DependentUpon>

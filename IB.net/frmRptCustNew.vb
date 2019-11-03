@@ -143,7 +143,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustNew.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustNew.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -187,7 +187,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR2-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -237,7 +237,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR3-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -285,7 +285,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR4-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustCanc.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustCanc.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -336,7 +336,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR5-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Custinfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Custinfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -379,7 +379,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR6-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\stopdeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "stopdeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -421,7 +421,7 @@ OKDone:
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR7-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\recollect.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "recollect.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()

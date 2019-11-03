@@ -43,7 +43,7 @@ Public Class frmRptExcept
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Except.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Except.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -93,7 +93,7 @@ Public Class frmRptExcept
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR2-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\NoOrders.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "NoOrders.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()

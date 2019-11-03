@@ -11,7 +11,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.1 - October 19th, 2019")
+        MessageBox.Show("Version 3.2 - November 3rd, 2019")
 
     End Sub
 
@@ -33,7 +33,8 @@ Public Class frmMain
         If Dir("ReportFolder.txt") <> "" Then
             RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
         Else
-            RptPath = Application.StartupPath() '& "\reports"
+            'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure"
+            RptPath = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\ReportsAzure\"
         End If
 
         strSectionName = "Data"

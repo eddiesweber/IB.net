@@ -27,7 +27,7 @@ Public Class frmRptItemUse
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\ItemUse2.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "ItemUse2.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -66,7 +66,7 @@ Public Class frmRptItemUse
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR2-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvAnal.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvAnal.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()

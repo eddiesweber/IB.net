@@ -285,7 +285,7 @@ Public Class frmViewCust
 
         Me.Cursor = Cursors.WaitCursor
 
-        RPT.Load("C:\IB\ReportsCR2016\CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+        RPT.Load(RptPath & "CustInfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
         setCrystalPrinter()
         SetDbConnection()

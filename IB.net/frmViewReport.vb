@@ -113,7 +113,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CS1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CommSum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CommSum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -139,7 +139,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CD1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CommDet.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CommDet.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -166,7 +166,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "TR1.0"
-            RPT.Load("C:\IB\ReportsCR2016\triprec.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "triprec.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -197,7 +197,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "D1.0"
-            RPT.Load("C:\IB\ReportsCR2016\deex.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "deex.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -257,7 +257,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "R1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\load1.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "load1.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -317,7 +317,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "RL1.0"
-            RPT.Load("C:\IB\ReportsCR2016\load.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "load.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -379,7 +379,7 @@ Public Class frmViewReport
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "TR1.0"
-            RPT.Load("C:\IB\ReportsCR2016\trip.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "trip.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -439,7 +439,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "TR1.0"
-            RPT.Load("C:\IB\ReportsCR2016\trip.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "trip.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -499,7 +499,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "ISD1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSalesDeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSalesDeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -523,7 +523,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "ISO1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSpecOrd.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSpecOrd.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -545,7 +545,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "ISH1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSalesHist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSalesHist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -568,7 +568,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "IR1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvReorder.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvReorder.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -590,7 +590,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "I1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Inventory.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Inventory.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -616,7 +616,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "IS1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSales.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSales.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -641,7 +641,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "IT1.0"
-            RPT.Load("C:\IB\ReportsCR2016\ItemTemp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "ItemTemp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -677,7 +677,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "RS1.0"
-            RPT.Load("C:\IB\ReportsCR2016\routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -701,7 +701,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "R2-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -725,7 +725,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "R1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Route.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -749,7 +749,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "RC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\RouteChange.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "RouteChange.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -782,7 +782,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "AD1.0"
-            RPT.Load("C:\IB\ReportsCR2016\ardept.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "ardept.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -820,7 +820,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "VC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\VolCust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "VolCust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -846,7 +846,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "VI1.0"
-            RPT.Load("C:\IB\ReportsCR2016\VolItem.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "VolItem.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -874,7 +874,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "STS1.0"
-            RPT.Load("C:\IB\ReportsCR2016\salestaxsql.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "salestaxsql.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -909,7 +909,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "ACFB1.0"
-            RPT.Load("C:\IB\ReportsCR2016\all customers for bobm.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "all customers for bobm.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -954,7 +954,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "MD1.0"
-            RPT.Load("C:\IB\ReportsCR2016\monthly_dispenser.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "monthly_dispenser.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -987,7 +987,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "NP1.0"
-            RPT.Load("C:\IB\ReportsCR2016\New_Paper.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "New_Paper.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1019,7 +1019,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "YC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\ytdcomp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "ytdcomp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1051,7 +1051,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "LYC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\lytdcomp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "lytdcomp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1083,7 +1083,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "MI1.0"
-            RPT.Load("C:\IB\ReportsCR2016\monthlyitem.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "monthlyitem.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1120,7 +1120,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "AWRC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\awrchange.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "awrchange.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1142,7 +1142,8 @@ Public Class frmViewReport
 
         Try
             strLocation = "AWRT1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\awrtop100.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            'RPT.Load(RptPath & "awrtop100.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "AWRTop100.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1164,7 +1165,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "NO1.0"
-            RPT.Load("C:\IB\ReportsCR2016\NoOrders.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "NoOrders.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1187,7 +1188,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "EX1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Except.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Except.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1210,7 +1211,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "RC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\recollect.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "recollect.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1230,7 +1231,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "SD1.0"
-            RPT.Load("C:\IB\ReportsCR2016\stopdeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "stopdeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1253,7 +1254,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CIA1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Custinfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Custinfo.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1277,7 +1278,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "cc1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustCanc.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustCanc.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1303,7 +1304,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CE1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1331,7 +1332,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CE1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustExp.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1359,7 +1360,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "CN1.0"
-            RPT.Load("C:\IB\ReportsCR2016\CustNew.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "CustNew.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1385,7 +1386,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "IH1.0"
-            RPT.Load("C:\IB\ReportsCR2016\invoice_historical.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "invoice_historical.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -1420,7 +1421,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "ZR1.0"
-            RPT.Load("C:\IB\ReportsCR2016\zipreport.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "zipreport.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
 
@@ -1452,7 +1453,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "SH1.0"
-            RPT.Load("C:\IB\ReportsCR2016\sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "sohist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
 
@@ -1475,7 +1476,7 @@ Public Class frmViewReport
 
         Try
             strLocation = "DBC1.0"
-            RPT.Load("C:\IB\ReportsCR2016\deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "deadbeatcust.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
 

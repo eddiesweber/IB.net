@@ -111,7 +111,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR1-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSales.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSales.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -159,7 +159,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR2-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\Inventory.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "Inventory.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -212,7 +212,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR3-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvReorder.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvReorder.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -253,7 +253,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR4-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSalesHist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSalesHist.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -297,7 +297,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR5-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSpecOrd.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSpecOrd.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()
@@ -338,7 +338,7 @@ Public Class frmInvRpt
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "RR6-1.0"
-            RPT.Load("C:\IB\ReportsCR2016\InvSalesDeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+            RPT.Load(RptPath & "InvSalesDeliv.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
             setCrystalPrinter()
             SetDbConnection()

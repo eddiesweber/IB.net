@@ -43,6 +43,8 @@ Partial Class frmRptAvgRev
         'chkRpt2
         '
         Me.chkRpt2.AutoSize = True
+        Me.chkRpt2.Checked = True
+        Me.chkRpt2.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRpt2.Location = New System.Drawing.Point(15, 85)
         Me.chkRpt2.Name = "chkRpt2"
         Me.chkRpt2.Size = New System.Drawing.Size(98, 17)
@@ -54,6 +56,8 @@ Partial Class frmRptAvgRev
         'chkRpt1
         '
         Me.chkRpt1.AutoSize = True
+        Me.chkRpt1.Checked = True
+        Me.chkRpt1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkRpt1.Location = New System.Drawing.Point(15, 50)
         Me.chkRpt1.Name = "chkRpt1"
         Me.chkRpt1.Size = New System.Drawing.Size(118, 17)

@@ -57,7 +57,7 @@ Public Class frmRouteRpt
                     Me.Cursor = Cursors.WaitCursor
 
                     strLocation = "CO3.0"
-                    RPT.Load("C:\IB\ReportsCR2016\routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+                    RPT.Load(RptPath & "routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
                     setCrystalPrinter()
                     SetDbConnection()
@@ -93,7 +93,7 @@ Public Class frmRouteRpt
                 Me.Cursor = Cursors.WaitCursor
 
                 strLocation = "CO6.0"
-                RPT.Load("C:\IB\ReportsCR2016\routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+                RPT.Load(RptPath & "routesum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
 
                 setCrystalPrinter()
                 SetDbConnection()

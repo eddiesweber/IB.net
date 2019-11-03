@@ -7,9 +7,9 @@
 
             strLocation = "CPC1.0"
             If optNumeric.Checked = True Then
-                RPT.Load("C:\IB\ReportsCR2016\itemsbynum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+                RPT.Load(RptPath & "itemsbynum.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
             Else
-                RPT.Load("C:\IB\ReportsCR2016\itemsbyalpha.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+                RPT.Load(RptPath & "itemsbyalpha.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
             End If
 
             setCrystalPrinter()
