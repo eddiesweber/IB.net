@@ -47,13 +47,6 @@ Public Class frmInvPhys2
 
     End Sub
 
-    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
-
-        frmInvPhys.lblStatus.Text = "Cancel"
-        Me.Close()
-
-    End Sub
-
     Private Sub OKButton_Click(sender As Object, e As EventArgs) Handles OKButton.Click
 
         If Not IsDate(datDate.Text) And Option11.Checked = True Then
@@ -118,4 +111,10 @@ Public Class frmInvPhys2
 
     End Sub
 
+    Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
+
+        frmInvPhys.lblStatus.Text = "Cancel"
+        Me.Close()
+
+    End Sub
 End Class

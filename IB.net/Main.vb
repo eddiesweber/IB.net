@@ -515,6 +515,8 @@ Module Main
 
     Public Function CheckConnectionServer() As Boolean
 
+        CheckConnectionServer = False
+
         Try
             strLocation = "CCS1.0"
             configDB = New SqlConnection(ConfigCS)
@@ -523,7 +525,7 @@ Module Main
             CheckConnectionServer = True
         Catch ex As Exception
             CheckConnectionServer = False
-            Result = MessageBox.Show("Error in routine CheckConnectionServer (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionServer", MessageBoxButtons.OK)
+            'Result = MessageBox.Show("Error in routine CheckConnectionServer (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionServer", MessageBoxButtons.OK)
             LogError("Main.vb", "CheckConnectionServer", strLocation, ex.Message)
         End Try
 
@@ -602,10 +604,10 @@ Module Main
             Try
                 strLocation = "OD7.0"
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                dataReader.Read()
 
                 strLocation = "OD8.0"
                 If dataReader.HasRows Then
+                    dataReader.Read()
                     DBName = dataReader.Item("DBName")
                     ServerName = dataReader.Item("ServerName")
                 End If
@@ -618,12 +620,12 @@ Module Main
             End Try
         End Using
 
-        If DBName.Trim = "" Or ServerName.TrimEnd = "" Then
+        If DBName.Trim = "" Or ServerName.Trim = "" Then
             strLocation = "OD9.0"
             frmSetConnection.ShowDialog()
         End If
 
-        If DBName.Trim = "" Or ServerName.TrimEnd = "" Then
+        If DBName.Trim = "" Or ServerName.Trim = "" Then
             Exit Sub
         End If
 
@@ -636,6 +638,8 @@ Module Main
         DB = New SqlConnection(CS)
         DB.ConnectionString = CS
         DB.Open()
+
+
 
         frmMain.Text = ""
 

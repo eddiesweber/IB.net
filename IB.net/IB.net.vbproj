@@ -49,8 +49,10 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\IB.net.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.C1Pdf.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="C1.C1Report.4, Version=4.0.20183.338, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
     <Reference Include="C1.C1Zip.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
@@ -61,8 +63,8 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1DX.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1Editor.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1InputPanel.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
@@ -83,7 +85,6 @@
     <Reference Include="C1.Win.FlexReport.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="C1.Win.ImportServices.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -100,6 +101,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
@@ -424,6 +426,11 @@
     <Compile Include="dsTaxMaster.vb">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsTestingHeader.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTestingHeader.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsVendMaster.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -459,6 +466,12 @@
       <DependentUpon>frmCommRate.vb</DependentUpon>
     </Compile>
     <Compile Include="frmCommRate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectToServer.Designer.vb">
+      <DependentUpon>frmConnectToServer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnectToServer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCustCanc.designer.vb">
@@ -725,6 +738,12 @@
     <Compile Include="frmTemplate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTesting.Designer.vb">
+      <DependentUpon>frmTesting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTesting.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmVend.designer.vb">
       <DependentUpon>frmVend.vb</DependentUpon>
     </Compile>
@@ -972,6 +991,9 @@
     <EmbeddedResource Include="frmCompany.resx">
       <DependentUpon>frmCompany.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConnectToServer.resx">
+      <DependentUpon>frmConnectToServer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCust.resx">
       <DependentUpon>frmCust.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1168,6 +1190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTemplate.resx">
       <DependentUpon>frmTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTesting.resx">
+      <DependentUpon>frmTesting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
@@ -1847,6 +1872,17 @@
     <None Include="dsTaxMaster.xss">
       <DependentUpon>dsTaxMaster.xsd</DependentUpon>
     </None>
+    <None Include="dsTestingHeader.xsc">
+      <DependentUpon>dsTestingHeader.xsd</DependentUpon>
+    </None>
+    <None Include="dsTestingHeader.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTestingHeader.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsTestingHeader.xss">
+      <DependentUpon>dsTestingHeader.xsd</DependentUpon>
+    </None>
     <None Include="dsVendMaster.xsc">
       <DependentUpon>dsVendMaster.xsd</DependentUpon>
     </None>
@@ -1935,6 +1971,7 @@
     <None Include="masterDataSet.xss">
       <DependentUpon>masterDataSet.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

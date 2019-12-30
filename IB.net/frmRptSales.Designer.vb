@@ -140,8 +140,6 @@ Partial Class frmRptSales
         Me.cmbCat.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbCat.AllowColSelect = True
         Me.cmbCat.Caption = ""
-        Me.cmbCat.CaptionHeight = 0
-        Me.cmbCat.CaptionVisible = False
         Me.cmbCat.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbCat.ColumnHeaders = False
         Me.cmbCat.ColumnWidth = 100

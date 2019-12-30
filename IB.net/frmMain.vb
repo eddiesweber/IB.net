@@ -11,7 +11,7 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.2 - November 3rd, 2019")
+        MessageBox.Show("Version 3.21 - December 30, 2019")
 
     End Sub
 
@@ -30,10 +30,11 @@ Public Class frmMain
 
         CommFlag = False
         DataPath = Application.StartupPath()
+
         If Dir("ReportFolder.txt") <> "" Then
             RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
         Else
-            'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure"
+            'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure\"
             RptPath = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\ReportsAzure\"
         End If
 
@@ -42,6 +43,14 @@ Public Class frmMain
         Server = GetSetting(APPNAME, strSectionName, "Server", "")
         DBName = GetSetting(APPNAME, strSectionName, "DBName", "")
         Username = GetSetting(APPNAME, strSectionName, "Username", "")
+
+        CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
+        CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
+        CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
+        CurVend = GetSetting(APPNAME, strSectionName, "CurVend", "")
+
+        strPrinterName = GetSetting(APPNAME, "Printer", "DefaultPrinter", "")
+        SelectPrinter(True)
 
         Try
             strLocation = "FML1.0"
@@ -59,34 +68,30 @@ Public Class frmMain
 
         'OpenData()
 
-        CurCust = GetSetting(APPNAME, strSectionName, "CurCust", 0)
-        CurItem = GetSetting(APPNAME, strSectionName, "CurItem", 0)
-        CurType = GetSetting(APPNAME, strSectionName, "CurType", "")
-        CurVend = GetSetting(APPNAME, strSectionName, "CurVend", "")
-
-        strPrinterName = GetSetting(APPNAME, "Printer", "DefaultPrinter", "")
-
-        SelectPrinter(True)
-
         ' Check to see if we have a good connection to server
+        Server = ""
         If Server.Trim <> "" Then
             If InStr(1, Server, "windows.net") > 0 Then
                 If Username.Trim <> "" And Password.Trim <> "" Then
                     ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+                Else
+                    'frmConnectToServer.ShowDialog()
                 End If
             Else
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=master;Integrated Security=True"
             End If
+        Else
+            'frmConnectToServer.ShowDialog()
         End If
 
         If CheckConnectionServer() = False Then
-            frmSetConnection.ShowDialog()
+            frmConnectToServer.ShowDialog()
             Do While CheckConnectionServer() = False And blnExit = False
-                Result = MessageBox.Show("Cannot connect to the server, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
+                Result = MessageBox.Show("Cannot connect to the server, do you want to try to connect again?", "Connect to Server", MessageBoxButtons.YesNo)
                 If Result = DialogResult.No Then
                     blnExit = True
                 Else
-                    frmSetConnection.ShowDialog()
+                    frmConnectToServer.ShowDialog()
                 End If
             Loop
 
@@ -106,13 +111,13 @@ Public Class frmMain
         End If
 
         If CheckConnectionDivision() = False Then
-            frmSetConnection.ShowDialog()
+            frmConnectToServer.ShowDialog()
             Do While CheckConnectionDivision() = False And blnExit = False
                 Result = MessageBox.Show("Cannot connect to the division db, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
                 If Result = DialogResult.No Then
                     blnExit = True
                 Else
-                    frmSetConnection.ShowDialog()
+                    frmConnectToServer.ShowDialog()
                 End If
             Loop
 
@@ -547,7 +552,7 @@ Public Class frmMain
 
     Private Sub cmdSetupConnectionToDB_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdSetupConnectionToDB.Click
 
-        frmSetConnection.ShowDialog()
+        frmConnectToServer.ShowDialog()
 
     End Sub
 
@@ -666,6 +671,12 @@ Public Class frmMain
     Private Sub cmdEditCommissions_Click(sender As Object, e As ClickEventArgs) Handles cmdEditCommissions.Click
 
         frmCommEdit.Show()
+
+    End Sub
+
+    Private Sub cmdTesting_Click(sender As Object, e As ClickEventArgs) Handles cmdTesting.Click
+
+        'frmTesting.Show()
 
     End Sub
 End Class

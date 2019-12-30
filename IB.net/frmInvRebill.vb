@@ -89,6 +89,7 @@ Calc:
         End If
 
         Me.Enabled = False
+        DefMemo = ""
         lblStatus.Text = "Rebilling Invoice"
 
         Using connection As New SqlConnection(CS)

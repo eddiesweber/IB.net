@@ -28,11 +28,11 @@ Partial Class frmInvPhys2
         Me.txtDate = New C1.Win.C1Input.C1TextBox()
         Me.datDate = New C1.Win.Calendar.C1DateEdit()
         Me.OKButton = New C1.Win.C1Input.C1Button()
-        Me.CancelButton = New C1.Win.C1Input.C1Button()
+        Me.cmdCancel = New C1.Win.C1Input.C1Button()
         CType(Me.txtDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OKButton, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CancelButton, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Option11
@@ -76,7 +76,7 @@ Partial Class frmInvPhys2
         Me.datDate.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.datDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.datDate.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.datDate.ImagePadding = New System.Windows.Forms.Padding(0, 0, 0, 0)
+        Me.datDate.ImagePadding = New System.Windows.Forms.Padding(0)
         Me.datDate.Location = New System.Drawing.Point(160, 45)
         Me.datDate.Name = "datDate"
         Me.datDate.Size = New System.Drawing.Size(125, 18)
@@ -96,23 +96,23 @@ Partial Class frmInvPhys2
         Me.OKButton.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.OKButton.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'CancelButton
+        'cmdCancel
         '
-        Me.CancelButton.Location = New System.Drawing.Point(300, 42)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(85, 23)
-        Me.CancelButton.TabIndex = 12
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
-        Me.CancelButton.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.CancelButton.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdCancel.Location = New System.Drawing.Point(300, 42)
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.Size = New System.Drawing.Size(85, 23)
+        Me.cmdCancel.TabIndex = 12
+        Me.cmdCancel.Text = "Cancel"
+        Me.cmdCancel.UseVisualStyleBackColor = True
+        Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'frmInvPhys2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(394, 76)
-        Me.Controls.Add(Me.CancelButton)
+        Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.datDate)
         Me.Controls.Add(Me.txtDate)
@@ -128,7 +128,7 @@ Partial Class frmInvPhys2
         CType(Me.txtDate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.datDate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OKButton, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CancelButton, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -138,5 +138,5 @@ Partial Class frmInvPhys2
     Friend WithEvents txtDate As C1.Win.C1Input.C1TextBox
     Friend WithEvents datDate As C1.Win.Calendar.C1DateEdit
     Friend WithEvents OKButton As C1.Win.C1Input.C1Button
-    Friend WithEvents CancelButton As C1.Win.C1Input.C1Button
+    Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
 End Class

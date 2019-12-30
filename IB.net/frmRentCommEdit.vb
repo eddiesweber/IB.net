@@ -11,21 +11,22 @@ Public Class frmRentCommEdit
 
     Private Sub frmRentCommEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'GetWindowPos(Me, 0, 0)
-        'GetColWidths Me, TDBGrid1
+        GetWindowPos(Me, 0, 0)
+
+        If Dir("frmRentCommEditTDBGrid1.xml") <> "" Then
+            TDBGrid1.LoadLayout("frmRentCommEditTDBGrid1.xml")
+        End If
 
         GetData()
 
         SpGetSalesmenTableAdapter.Connection.ConnectionString = CS
         SpGetSalesmenTableAdapter.Fill(DsspGetSalesmen.spGetSalesmen)
-        'Data2.ConnectionString = CS
-        'Data2.RecordSource = "spGetSalesmen"
-        'Data2.Enabled = True
-        'Data2.Refresh
 
     End Sub
 
     Private Sub frmRentCommEdit_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
+
+        TDBGrid1.SaveLayout("frmRentCommEditTDBGrid1.xml")
 
         SaveWindowPos(Me)
 
@@ -94,18 +95,20 @@ Public Class frmRentCommEdit
 
     Private Sub lstSales2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstSales2.SelectedIndexChanged
 
-        Dim L As DataList
-
-        'L  = lstSales2
-        L.DataSource = lstSales2
+        ' Why is a dataset needed?
+        'Dim L As DataList
+        'Set L = lstSales2
 
         If buserchange Then
+            ' Test, not using datalist, does it cause some kind of event to fire?
             'TDBGrid1.Columns(TDBGrid1.Col).Value = L.BoundText
-            TDBGrid1.Columns(TDBGrid1.Col).Value = L.SelectedValue
-            L.Visible = False
+            TDBGrid1.Columns(TDBGrid1.Col).Value = lstSales2.SelectedItem
+            'L.Visible = False
+
             SetPercent()
+
             TDBGrid1.Col = TDBGrid1.Col + 1
-            'TDBGrid1.SetFocus
+            TDBGrid1.Select()
         End If
 
     End Sub

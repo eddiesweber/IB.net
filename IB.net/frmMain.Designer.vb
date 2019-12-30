@@ -169,6 +169,8 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink66 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdTesting = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -258,11 +260,12 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdSetupConnectionToDB)
         Me.C1CommandHolder1.Commands.Add(Me.cmdRestoreCustomer)
         Me.C1CommandHolder1.Commands.Add(Me.cmdAdagioExport)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdTesting)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.C1CommandLink66, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -284,6 +287,7 @@ Partial Class frmMain
         '
         Me.C1CommandLink62.Command = Me.cmdSetupConnectionToDB
         Me.C1CommandLink62.SortOrder = 1
+        Me.C1CommandLink62.Text = "Connect to Database"
         '
         'cmdSetupConnectionToDB
         '
@@ -365,7 +369,7 @@ Partial Class frmMain
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 4
+        Me.clExit.SortOrder = 5
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -958,9 +962,11 @@ Partial Class frmMain
         '
         'mnuCommission
         '
+        Me.mnuCommission.Checked = True
         Me.mnuCommission.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink40, Me.C1CommandLink57, Me.C1CommandLink58, Me.C1CommandLink59, Me.C1CommandLink60, Me.C1CommandLink61})
         Me.mnuCommission.HideNonRecentLinks = False
         Me.mnuCommission.Name = "mnuCommission"
+        Me.mnuCommission.Pressed = True
         Me.mnuCommission.ShortcutText = ""
         Me.mnuCommission.Text = "Co&mmission"
         Me.mnuCommission.VisualStyle = C1.Win.C1Command.VisualStyle.Custom
@@ -1095,6 +1101,17 @@ Partial Class frmMain
         'C1CommandLink42
         '
         Me.C1CommandLink42.Text = "New Command"
+        '
+        'C1CommandLink66
+        '
+        Me.C1CommandLink66.Command = Me.cmdTesting
+        Me.C1CommandLink66.SortOrder = 4
+        '
+        'cmdTesting
+        '
+        Me.cmdTesting.Name = "cmdTesting"
+        Me.cmdTesting.ShortcutText = ""
+        Me.cmdTesting.Text = "Testing"
         '
         'frmMain
         '
@@ -1259,4 +1276,6 @@ Partial Class frmMain
     Friend WithEvents cmdRestoreCustomer As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink65 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdAdagioExport As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink66 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdTesting As C1.Win.C1Command.C1Command
 End Class

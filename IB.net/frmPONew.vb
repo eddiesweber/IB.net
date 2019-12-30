@@ -303,7 +303,7 @@ Public Class frmPONew
         'Dim ADOCmd As New ADODB.Command
         'ADOCmd.ActiveConnection = DB
 
-        'frmPONew2.Show 1
+        frmPONew2.ShowDialog()
 
         'If RCancel Then Exit Sub
 

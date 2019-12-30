@@ -8,7 +8,6 @@ Public Class frmCust
     Dim buserchange As Boolean
     Dim bCancel As Boolean
     Dim bTextChanged As Boolean
-    Dim strPAY_TYPE As String
 
     Private Sub frmCust_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

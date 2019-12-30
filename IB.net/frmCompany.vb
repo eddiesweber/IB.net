@@ -6,24 +6,27 @@ Public Class frmCompany
 
     Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim strSQL As String
-
+        strLocation = "FCL1.0"
         lstCompany.Items.Clear()
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        strSQL = "Select * From IBConfig"
+
+        Dim strSQL As String = "Select * From IBConfig"
+
         Using Command As New SqlCommand(strSQL, configDB)
             Try
+                strLocation = "FCL2.0"
                 Dim dataReader As SqlDataReader = Command.ExecuteReader()
+
+                strLocation = "FCL3.0"
                 If dataReader.HasRows Then
                     Do While dataReader.Read()
+                        strLocation = "FCL4.0"
                         lstCompany.Items.Add(dataReader.Item("Location_ID"))
                     Loop
                 End If
                 dataReader.Close()
-
             Catch ex As Exception
-                LogError(Me.Name, "frmCompany_Load", "1.0", ex.Message)
-                MessageBox.Show("Error in form: frmCompany, error loading division names to listbox." & vbNewLine & ex.Message)
+                Result = MessageBox.Show(Me, "Error in routine frmCompany_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmCompany_Load", vbOK)
+                LogError(Me.Name, "frmCompany_Load", strLocation, ex.Message)
             End Try
         End Using
 
@@ -31,31 +34,40 @@ Public Class frmCompany
 
     Private Sub cmdOpen_Click(sender As Object, e As EventArgs) Handles cmdOpen.Click
 
-        Dim NewCo As String
+        Try
+            strLocation = "COC1.0"
+            If lstCompany.SelectedIndex >= 0 Then
+                strLocation = "COC2.0"
+                Dim NewCo As String = lstCompany.SelectedItem.ToString()
 
-        If lstCompany.SelectedIndex >= 0 Then
-            NewCo = lstCompany.SelectedItem.ToString()
-        Else
-            MessageBox.Show("Please select a division.")
+                If NewCo <> Company Then
+                    CurCust = 0
+                    CurDept = 0
+                    CurItem = 0
+                    CurInvoice = 0
 
-            Exit Sub
-        End If
+                    strLocation = "COC3.0"
+                    Company = NewCo
 
-        If NewCo <> Company Then
-            Company = NewCo
-            CurCust = 0
-            CurDept = 0
-            CurItem = 0
-            CurInvoice = 0
+                    OpenData()
+                End If
 
-            'OpenData()
-        End If
+                If Not DB Is Nothing Then
+                    strLocation = "COC4.0"
+                    Company = lstCompany.SelectedItem.ToString
 
-        If Not DB Is Nothing Then
-            Company = lstCompany.SelectedItem.ToString
+                    Me.Close()
+                End If
+            Else
+                MessageBox.Show("Please select a division.")
 
-            Me.Close()
-        End If
+                Exit Sub
+            End If
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine cmdOpen_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmdOpen_Click", vbOK)
+            LogError(Me.Name, "cmdOpen_Click", strLocation, ex.Message)
+        End Try
+
 
     End Sub
 

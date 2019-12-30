@@ -4,10 +4,8 @@ Imports System.Data.SqlClient
 
 Public Class frmInvItem
 
-    Dim rs As ADODB.Recordset, RS2 As New ADODB.Recordset
     'Dim rstemp As Recordset
     Dim buserchange As Boolean
-    Dim buserchange2 As Boolean
     Dim qtychgflag(0 To 3) As Integer
     Dim bInit As Boolean
     Dim SalesOpt As Integer

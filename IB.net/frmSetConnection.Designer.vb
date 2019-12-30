@@ -114,13 +114,13 @@ Partial Class frmSetConnection
         Me.lstServerName.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.lstServerName.PreviewInfo.ZoomFactor = 75.0R
         Me.lstServerName.PrintInfo.PageSettings = CType(resources.GetObject("lstServerName.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstServerName.PropBag = resources.GetString("lstServerName.PropBag")
         Me.lstServerName.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstServerName.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstServerName.ShowHeaderCheckBox = False
         Me.lstServerName.Size = New System.Drawing.Size(199, 82)
         Me.lstServerName.TabIndex = 8
         Me.lstServerName.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.lstServerName.PropBag = resources.GetString("lstServerName.PropBag")
         '
         'grpDivision
         '
@@ -162,13 +162,13 @@ Partial Class frmSetConnection
         Me.lstDivision.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.lstDivision.PreviewInfo.ZoomFactor = 75.0R
         Me.lstDivision.PrintInfo.PageSettings = CType(resources.GetObject("lstDivision.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.lstDivision.PropBag = resources.GetString("lstDivision.PropBag")
         Me.lstDivision.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstDivision.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstDivision.ShowHeaderCheckBox = False
         Me.lstDivision.Size = New System.Drawing.Size(200, 82)
         Me.lstDivision.TabIndex = 9
         Me.lstDivision.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.lstDivision.PropBag = resources.GetString("lstDivision.PropBag")
         '
         'cmdSave
         '
