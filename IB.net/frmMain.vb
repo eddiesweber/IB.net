@@ -4,6 +4,7 @@ Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.Configuration
 Imports C1.Win.C1Command
+Imports System.IO
 
 Public Class frmMain
 
@@ -18,11 +19,9 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim command As New SqlCommand
+        Dim blnExit As Boolean = False
         Dim blnConnected As Boolean = False
         Dim strSectionName As String
-        Dim Result As DialogResult
-        Dim blnExit As Boolean = False
-        Dim strSQL As String
 
         If PrevInstance() Then
             Exit Sub
@@ -31,12 +30,21 @@ Public Class frmMain
         CommFlag = False
         DataPath = Application.StartupPath()
 
-        If Dir("ReportFolder.txt") <> "" Then
-            RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
-        Else
-            'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure\"
-            RptPath = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\ReportsAzure\"
-        End If
+        'Try
+        '    strLocation = "FML0.1"
+        '    If Dir("ReportFolder.txt") <> "" Then
+        '        strLocation = "FML0.2"
+        '        RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
+        '    Else
+        '        strLocation = "FML0.3"
+        '        'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure\"
+        '        RptPath = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\ReportsAzure\"
+        '    End If
+        'Catch ex As Exception
+        '    Password = ""
+        '    Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
+        '    LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
+        'End Try
 
         strSectionName = "Data"
         Company = GetSetting(APPNAME, strSectionName, "Company", "")
@@ -66,101 +74,68 @@ Public Class frmMain
         GetWindowPos(Me, 15, 15)
         Me.Show()
 
-        'OpenData()
+        blnExit = False
+        Do While (Server.Trim = "" Or DBName.Trim = "") And (blnExit = False)
+            GetDefaultsFromTheWeb("PDXSettings.htm")
+        Loop
 
-        ' Check to see if we have a good connection to server
-        Server = ""
-        If Server.Trim <> "" Then
-            If InStr(1, Server, "windows.net") > 0 Then
-                If Username.Trim <> "" And Password.Trim <> "" Then
-                    ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
-                Else
-                    'frmConnectToServer.ShowDialog()
-                End If
-            Else
-                ConfigCS = "Data Source=" & Server & ";Initial Catalog=master;Integrated Security=True"
-            End If
+        ' Create connection strings
+        If InStr(1, Server, "windows.net") > 0 Then
+            CS = "Data Source=" & Server.Trim & ";Initial Catalog=" & DBName.Trim & ";User ID=" & Username.Trim & ";Password=" & Password.Trim
+            ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
         Else
-            'frmConnectToServer.ShowDialog()
+            CS = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=" & Server.Trim
+            ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;Integrated Security=True"
         End If
 
-        If CheckConnectionServer() = False Then
-            frmConnectToServer.ShowDialog()
-            Do While CheckConnectionServer() = False And blnExit = False
-                Result = MessageBox.Show("Cannot connect to the server, do you want to try to connect again?", "Connect to Server", MessageBoxButtons.YesNo)
-                If Result = DialogResult.No Then
-                    blnExit = True
-                Else
-                    frmConnectToServer.ShowDialog()
+        Do While blnConnected = False
+            ' Check to see if we have a good connection to server
+            If CheckConnectionServer() = False Then
+                frmConnectToServer.ShowDialog()
+
+                blnExit = False
+                Do While CheckConnectionServer() = False And blnExit = False
+                    Result = MessageBox.Show("Cannot connect to the server, do you want to try to connect again?", "Connect to Server", MessageBoxButtons.YesNo)
+                    If Result = DialogResult.No Then
+                        blnExit = True
+                    Else
+                        frmConnectToServer.ShowDialog()
+                    End If
+                Loop
+
+                If blnExit = True Then
+                    Me.Close()
+                    Exit Sub
                 End If
-            Loop
-
-            If blnExit = True Then
-                Me.Close()
-
-                Exit Sub
             End If
-        End If
 
-        If DBName.Trim <> "" Then
-            If InStr(1, Server, "windows.net") > 0 Then
-                CS = "Data Source=" & Trim(Server) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
-            Else
-                CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(Server)
-            End If
-        End If
+            ' Create connection string for Company Database
+            If CheckConnectionDivision() = False Then
+                frmCompany.ShowDialog()
 
-        If CheckConnectionDivision() = False Then
-            frmConnectToServer.ShowDialog()
-            Do While CheckConnectionDivision() = False And blnExit = False
-                Result = MessageBox.Show("Cannot connect to the division db, do you want to try setup again?", "Connect to Server", MessageBoxButtons.YesNo)
-                If Result = DialogResult.No Then
-                    blnExit = True
-                Else
-                    frmConnectToServer.ShowDialog()
+                blnExit = False
+                Do While CheckConnectionDivision() = False And blnExit = False
+                    Result = MessageBox.Show("Cannot connect to the division db, do you want to try to connect again?", "Connect to division", MessageBoxButtons.YesNo)
+                    If Result = DialogResult.No Then
+                        blnExit = True
+                    Else
+                        frmCompany.ShowDialog()
+                    End If
+                Loop
+
+                If blnExit = True Then
+                    Result = MessageBox.Show("Do you want to try to connect to a different server?", "Connect to division", MessageBoxButtons.YesNo)
+                    If Result = DialogResult.No Then
+                        Me.Dispose()
+                        Exit Sub
+                    End If
                 End If
-            Loop
-
-            If blnExit = True Then
-                Me.Close()
-
-                Exit Sub
             End If
-        End If
 
-        ' Get company (division) name
-        Me.Text = ""
-        strSQL = "Select * From Company where Company_ID='" & Company & "'"
-        Using cmdCompany As New SqlCommand(strSQL, DB)
-            Try
-                strLocation = "FML2.0"
-                Dim dataReader As SqlDataReader = cmdCompany.ExecuteReader()
-                dataReader.Read()
+            blnConnected = True
+        Loop
 
-                strLocation = "FML3.0"
-                If dataReader.HasRows Then
-                    Me.Text = "Indoor Billboard - " & dataReader.Item("Company_NM")
-                    dataReader.Close()
-
-                    'Rearrange CS the way Crystal likes
-                    CryCS = "DSN=" & Trim(Server) & ";DSQ=" & Trim(Company) & ";UID=<<Use Integrated Security>>"
-                Else
-                    MessageBox.Show("Company " & Company & " not found in company table", "Company Name")
-                End If
-            Catch ex As Exception
-                Me.Cursor = Cursors.Default
-                Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
-                LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
-
-                Exit Sub
-            End Try
-        End Using
-
-    End Sub
-
-    Private Sub cmdPrintSetup_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdPrintSetup.Click
-
-        SelectPrinter(False)
+        OpenData()
 
     End Sub
 
@@ -171,6 +146,12 @@ Public Class frmMain
         SaveWindowPos(Me)
 
         Application.Exit()
+
+    End Sub
+
+    Private Sub cmdPrintSetup_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdPrintSetup.Click
+
+        SelectPrinter(False)
 
     End Sub
 
@@ -188,9 +169,9 @@ Public Class frmMain
 
         frmCompany.ShowDialog()
 
-        If DB Is Nothing Then
-            Application.Exit()
-        End If
+        'If DB Is Nothing Then
+        '    Application.Exit()
+        'End If
 
     End Sub
 
@@ -677,6 +658,12 @@ Public Class frmMain
     Private Sub cmdTesting_Click(sender As Object, e As ClickEventArgs) Handles cmdTesting.Click
 
         'frmTesting.Show()
+
+    End Sub
+
+    Private Sub cmdTestForm_Click(sender As Object, e As ClickEventArgs) Handles cmdTestForm.Click
+
+        frmTextboxTest.Show()
 
     End Sub
 End Class

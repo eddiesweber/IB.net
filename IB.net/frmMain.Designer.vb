@@ -42,6 +42,8 @@ Partial Class frmMain
         Me.cmdRouteMaster = New C1.Win.C1Command.C1Command()
         Me.clPurge = New C1.Win.C1Command.C1CommandLink()
         Me.cmdPurge = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink66 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdTesting = New C1.Win.C1Command.C1Command()
         Me.clExit = New C1.Win.C1Command.C1CommandLink()
         Me.cmdExit = New C1.Win.C1Command.C1Command()
         Me.C1Command1 = New C1.Win.C1Command.C1Command()
@@ -169,8 +171,8 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink66 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdTesting = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink67 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdTestForm = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -261,11 +263,12 @@ Partial Class frmMain
         Me.C1CommandHolder1.Commands.Add(Me.cmdRestoreCustomer)
         Me.C1CommandHolder1.Commands.Add(Me.cmdAdagioExport)
         Me.C1CommandHolder1.Commands.Add(Me.cmdTesting)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdTestForm)
         Me.C1CommandHolder1.Owner = Me
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.C1CommandLink66, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.C1CommandLink67, Me.C1CommandLink66, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -365,11 +368,22 @@ Partial Class frmMain
         Me.cmdPurge.ShortcutText = ""
         Me.cmdPurge.Text = "&Purge"
         '
+        'C1CommandLink66
+        '
+        Me.C1CommandLink66.Command = Me.cmdTesting
+        Me.C1CommandLink66.SortOrder = 5
+        '
+        'cmdTesting
+        '
+        Me.cmdTesting.Name = "cmdTesting"
+        Me.cmdTesting.ShortcutText = ""
+        Me.cmdTesting.Text = "Testing"
+        '
         'clExit
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 5
+        Me.clExit.SortOrder = 6
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -1102,16 +1116,16 @@ Partial Class frmMain
         '
         Me.C1CommandLink42.Text = "New Command"
         '
-        'C1CommandLink66
+        'C1CommandLink67
         '
-        Me.C1CommandLink66.Command = Me.cmdTesting
-        Me.C1CommandLink66.SortOrder = 4
+        Me.C1CommandLink67.Command = Me.cmdTestForm
+        Me.C1CommandLink67.SortOrder = 4
         '
-        'cmdTesting
+        'cmdTestForm
         '
-        Me.cmdTesting.Name = "cmdTesting"
-        Me.cmdTesting.ShortcutText = ""
-        Me.cmdTesting.Text = "Testing"
+        Me.cmdTestForm.Name = "cmdTestForm"
+        Me.cmdTestForm.ShortcutText = ""
+        Me.cmdTestForm.Text = "Test form"
         '
         'frmMain
         '
@@ -1278,4 +1292,6 @@ Partial Class frmMain
     Friend WithEvents cmdAdagioExport As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink66 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdTesting As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink67 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdTestForm As C1.Win.C1Command.C1Command
 End Class

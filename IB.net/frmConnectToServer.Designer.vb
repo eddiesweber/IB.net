@@ -23,54 +23,57 @@ Partial Class frmConnectToServer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConnectToServer))
-        Me.cmdConnect = New C1.Win.C1Input.C1Button()
         Me.grpServer = New System.Windows.Forms.GroupBox()
+        Me.cmdConnect = New C1.Win.C1Input.C1Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblSelectServer = New System.Windows.Forms.Label()
         Me.txtOther = New C1.Win.C1Input.C1TextBox()
         Me.lstServerName = New C1.Win.C1List.C1List()
-        Me.chkPassword = New C1.Win.C1Input.C1CheckBox()
-        Me.grpUsernamePassword = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtPassword = New C1.Win.C1Input.C1TextBox()
-        Me.txtUserName = New C1.Win.C1Input.C1TextBox()
         Me.cmdCancel = New C1.Win.C1Input.C1Button()
-        CType(Me.cmdConnect, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdAutoConnect = New C1.Win.C1Input.C1Button()
+        Me.optPortland = New System.Windows.Forms.RadioButton()
+        Me.optSeattle = New System.Windows.Forms.RadioButton()
+        Me.optLosAngeles = New System.Windows.Forms.RadioButton()
+        Me.optSanFrancisco = New System.Windows.Forms.RadioButton()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lstStatus = New C1.Win.C1List.C1List()
         Me.grpServer.SuspendLayout()
+        CType(Me.cmdConnect, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtOther, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstServerName, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPassword, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpUsernamePassword.SuspendLayout()
-        CType(Me.txtPassword, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtUserName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.cmdAutoConnect, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cmdConnect
-        '
-        Me.cmdConnect.Location = New System.Drawing.Point(355, 185)
-        Me.cmdConnect.Name = "cmdConnect"
-        Me.cmdConnect.Size = New System.Drawing.Size(85, 23)
-        Me.cmdConnect.TabIndex = 16
-        Me.cmdConnect.Text = "Connect "
-        Me.cmdConnect.UseVisualStyleBackColor = True
-        Me.cmdConnect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdConnect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'grpServer
         '
-        Me.grpServer.Controls.Add(Me.chkPassword)
+        Me.grpServer.Controls.Add(Me.cmdConnect)
         Me.grpServer.Controls.Add(Me.Label3)
         Me.grpServer.Controls.Add(Me.lblSelectServer)
         Me.grpServer.Controls.Add(Me.txtOther)
         Me.grpServer.Controls.Add(Me.lstServerName)
-        Me.grpServer.Location = New System.Drawing.Point(15, 15)
+        Me.grpServer.Location = New System.Drawing.Point(150, 15)
         Me.grpServer.Name = "grpServer"
-        Me.grpServer.Size = New System.Drawing.Size(230, 195)
+        Me.grpServer.Size = New System.Drawing.Size(230, 200)
         Me.grpServer.TabIndex = 24
         Me.grpServer.TabStop = False
-        Me.grpServer.Text = "Not Connected"
+        Me.grpServer.Text = "Manual Connection"
+        '
+        'cmdConnect
+        '
+        Me.cmdConnect.Location = New System.Drawing.Point(15, 164)
+        Me.cmdConnect.Name = "cmdConnect"
+        Me.cmdConnect.Size = New System.Drawing.Size(200, 23)
+        Me.cmdConnect.TabIndex = 28
+        Me.cmdConnect.Text = "Connect"
+        Me.cmdConnect.UseVisualStyleBackColor = True
+        Me.cmdConnect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdConnect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'Label3
         '
@@ -126,126 +129,169 @@ Partial Class frmConnectToServer
         Me.lstServerName.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
         Me.lstServerName.PropBag = resources.GetString("lstServerName.PropBag")
         '
-        'chkPassword
-        '
-        Me.chkPassword.BackColor = System.Drawing.Color.Transparent
-        Me.chkPassword.BorderColor = System.Drawing.Color.Transparent
-        Me.chkPassword.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.chkPassword.ForeColor = System.Drawing.Color.Black
-        Me.chkPassword.Location = New System.Drawing.Point(15, 160)
-        Me.chkPassword.Name = "chkPassword"
-        Me.chkPassword.Padding = New System.Windows.Forms.Padding(1)
-        Me.chkPassword.Size = New System.Drawing.Size(104, 24)
-        Me.chkPassword.TabIndex = 28
-        Me.chkPassword.Text = "Use Password"
-        Me.chkPassword.UseVisualStyleBackColor = True
-        Me.chkPassword.Value = Nothing
-        Me.chkPassword.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.chkPassword.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'grpUsernamePassword
-        '
-        Me.grpUsernamePassword.Controls.Add(Me.Label2)
-        Me.grpUsernamePassword.Controls.Add(Me.Label1)
-        Me.grpUsernamePassword.Controls.Add(Me.txtPassword)
-        Me.grpUsernamePassword.Controls.Add(Me.txtUserName)
-        Me.grpUsernamePassword.Location = New System.Drawing.Point(260, 15)
-        Me.grpUsernamePassword.Name = "grpUsernamePassword"
-        Me.grpUsernamePassword.Size = New System.Drawing.Size(180, 75)
-        Me.grpUsernamePassword.TabIndex = 25
-        Me.grpUsernamePassword.TabStop = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 22)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 13)
-        Me.Label2.TabIndex = 25
-        Me.Label2.Text = "Username:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 47)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 13)
-        Me.Label1.TabIndex = 24
-        Me.Label1.Text = "Password:"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPassword.Enabled = False
-        Me.txtPassword.Location = New System.Drawing.Point(70, 45)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(100, 18)
-        Me.txtPassword.TabIndex = 23
-        Me.txtPassword.Tag = Nothing
-        Me.txtPassword.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtPassword.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'txtUserName
-        '
-        Me.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtUserName.Enabled = False
-        Me.txtUserName.Location = New System.Drawing.Point(70, 20)
-        Me.txtUserName.Name = "txtUserName"
-        Me.txtUserName.Size = New System.Drawing.Size(100, 18)
-        Me.txtUserName.TabIndex = 22
-        Me.txtUserName.Tag = Nothing
-        Me.txtUserName.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtUserName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'cmdCancel
         '
-        Me.cmdCancel.Location = New System.Drawing.Point(260, 185)
+        Me.cmdCancel.Location = New System.Drawing.Point(15, 391)
         Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(85, 23)
+        Me.cmdCancel.Size = New System.Drawing.Size(365, 23)
         Me.cmdCancel.TabIndex = 26
-        Me.cmdCancel.Text = "Cancel"
+        Me.cmdCancel.Text = "Close"
         Me.cmdCancel.UseVisualStyleBackColor = True
         Me.cmdCancel.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cmdAutoConnect)
+        Me.GroupBox1.Controls.Add(Me.optPortland)
+        Me.GroupBox1.Controls.Add(Me.optSeattle)
+        Me.GroupBox1.Controls.Add(Me.optLosAngeles)
+        Me.GroupBox1.Controls.Add(Me.optSanFrancisco)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 15)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(125, 200)
+        Me.GroupBox1.TabIndex = 27
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Automatic Connection"
+        '
+        'cmdAutoConnect
+        '
+        Me.cmdAutoConnect.Location = New System.Drawing.Point(15, 165)
+        Me.cmdAutoConnect.Name = "cmdAutoConnect"
+        Me.cmdAutoConnect.Size = New System.Drawing.Size(95, 23)
+        Me.cmdAutoConnect.TabIndex = 34
+        Me.cmdAutoConnect.Text = "Connect "
+        Me.cmdAutoConnect.UseVisualStyleBackColor = True
+        Me.cmdAutoConnect.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdAutoConnect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'optPortland
+        '
+        Me.optPortland.AutoSize = True
+        Me.optPortland.Checked = True
+        Me.optPortland.Location = New System.Drawing.Point(20, 40)
+        Me.optPortland.Name = "optPortland"
+        Me.optPortland.Size = New System.Drawing.Size(64, 17)
+        Me.optPortland.TabIndex = 33
+        Me.optPortland.TabStop = True
+        Me.optPortland.Text = "Portland"
+        Me.optPortland.UseVisualStyleBackColor = True
+        '
+        'optSeattle
+        '
+        Me.optSeattle.AutoSize = True
+        Me.optSeattle.Location = New System.Drawing.Point(20, 60)
+        Me.optSeattle.Name = "optSeattle"
+        Me.optSeattle.Size = New System.Drawing.Size(58, 17)
+        Me.optSeattle.TabIndex = 32
+        Me.optSeattle.Text = "Seattle"
+        Me.optSeattle.UseVisualStyleBackColor = True
+        '
+        'optLosAngeles
+        '
+        Me.optLosAngeles.AutoSize = True
+        Me.optLosAngeles.Location = New System.Drawing.Point(20, 80)
+        Me.optLosAngeles.Name = "optLosAngeles"
+        Me.optLosAngeles.Size = New System.Drawing.Size(83, 17)
+        Me.optLosAngeles.TabIndex = 31
+        Me.optLosAngeles.Text = "Los Angeles"
+        Me.optLosAngeles.UseVisualStyleBackColor = True
+        '
+        'optSanFrancisco
+        '
+        Me.optSanFrancisco.AutoSize = True
+        Me.optSanFrancisco.Location = New System.Drawing.Point(20, 100)
+        Me.optSanFrancisco.Name = "optSanFrancisco"
+        Me.optSanFrancisco.Size = New System.Drawing.Size(93, 17)
+        Me.optSanFrancisco.TabIndex = 30
+        Me.optSanFrancisco.Text = "San Francisco"
+        Me.optSanFrancisco.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(15, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(100, 13)
+        Me.Label4.TabIndex = 27
+        Me.Label4.Text = "Select your location"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.lstStatus)
+        Me.GroupBox2.Location = New System.Drawing.Point(15, 225)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(365, 160)
+        Me.GroupBox2.TabIndex = 40
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Connection Status"
+        '
+        'lstStatus
+        '
+        Me.lstStatus.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.lstStatus.Caption = ""
+        Me.lstStatus.ColumnHeaders = False
+        Me.lstStatus.DataMode = C1.Win.C1List.DataModeEnum.AddItem
+        Me.lstStatus.DeadAreaBackColor = System.Drawing.SystemColors.Window
+        Me.lstStatus.ExtendRightColumn = True
+        Me.lstStatus.Images.Add(CType(resources.GetObject("lstStatus.Images"), System.Drawing.Image))
+        Me.lstStatus.ItemHeight = 15
+        Me.lstStatus.Location = New System.Drawing.Point(15, 20)
+        Me.lstStatus.MatchEntryTimeout = CType(2000, Long)
+        Me.lstStatus.Name = "lstStatus"
+        Me.lstStatus.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.lstStatus.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.lstStatus.PreviewInfo.ZoomFactor = 75.0R
+        Me.lstStatus.PrintInfo.PageSettings = CType(resources.GetObject("lstStatus.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.lstStatus.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.lstStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.lstStatus.ShowHeaderCheckBox = False
+        Me.lstStatus.Size = New System.Drawing.Size(335, 125)
+        Me.lstStatus.TabIndex = 39
+        Me.lstStatus.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
+        Me.lstStatus.PropBag = resources.GetString("lstStatus.PropBag")
         '
         'frmConnectToServer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(454, 221)
+        Me.ClientSize = New System.Drawing.Size(394, 426)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cmdCancel)
-        Me.Controls.Add(Me.grpUsernamePassword)
         Me.Controls.Add(Me.grpServer)
-        Me.Controls.Add(Me.cmdConnect)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmConnectToServer"
         Me.Text = "Connect To Server"
-        CType(Me.cmdConnect, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpServer.ResumeLayout(False)
         Me.grpServer.PerformLayout()
+        CType(Me.cmdConnect, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtOther, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstServerName, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPassword, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpUsernamePassword.ResumeLayout(False)
-        Me.grpUsernamePassword.PerformLayout()
-        CType(Me.txtPassword, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtUserName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdCancel, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.cmdAutoConnect, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdConnect As C1.Win.C1Input.C1Button
     Friend WithEvents grpServer As GroupBox
-    Friend WithEvents chkPassword As C1.Win.C1Input.C1CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents lblSelectServer As Label
     Friend WithEvents txtOther As C1.Win.C1Input.C1TextBox
     Friend WithEvents lstServerName As C1.Win.C1List.C1List
-    Friend WithEvents grpUsernamePassword As GroupBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents txtPassword As C1.Win.C1Input.C1TextBox
-    Friend WithEvents txtUserName As C1.Win.C1Input.C1TextBox
     Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents cmdAutoConnect As C1.Win.C1Input.C1Button
+    Friend WithEvents optPortland As RadioButton
+    Friend WithEvents optSeattle As RadioButton
+    Friend WithEvents optLosAngeles As RadioButton
+    Friend WithEvents optSanFrancisco As RadioButton
+    Friend WithEvents Label4 As Label
+    Friend WithEvents cmdConnect As C1.Win.C1Input.C1Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents lstStatus As C1.Win.C1List.C1List
 End Class

@@ -6,29 +6,33 @@ Public Class frmCompany
 
     Private Sub frmCompany_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        strLocation = "FCL1.0"
-        lstCompany.Items.Clear()
+        Try
+            strLocation = "FCL1.0"
+            Dim strSQL As String = "Select * From IBConfig"
 
-        Dim strSQL As String = "Select * From IBConfig"
+            strLocation = "FCL2.0"
+            lstCompany.Items.Clear()
+            Using configDB As New SqlConnection(ConfigCS)
+                configDB.Open()
 
-        Using Command As New SqlCommand(strSQL, configDB)
-            Try
-                strLocation = "FCL2.0"
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                Using Command As New SqlCommand(strSQL, configDB)
+                    strLocation = "FCL3.0"
+                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
 
-                strLocation = "FCL3.0"
-                If dataReader.HasRows Then
+                    strLocation = "FCL4.0"
+                    'If dataReader.HasRows Then
                     Do While dataReader.Read()
-                        strLocation = "FCL4.0"
-                        lstCompany.Items.Add(dataReader.Item("Location_ID"))
-                    Loop
-                End If
-                dataReader.Close()
-            Catch ex As Exception
-                Result = MessageBox.Show(Me, "Error in routine frmCompany_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmCompany_Load", vbOK)
-                LogError(Me.Name, "frmCompany_Load", strLocation, ex.Message)
-            End Try
-        End Using
+                            strLocation = "FCL5.0"
+                            lstCompany.Items.Add(dataReader.Item("Location_ID"))
+                        Loop
+                    'End If
+                    dataReader.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine frmCompany_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmCompany_Load", vbOK)
+            LogError(Me.Name, "frmCompany_Load", strLocation, ex.Message)
+        End Try
 
     End Sub
 
@@ -40,24 +44,16 @@ Public Class frmCompany
                 strLocation = "COC2.0"
                 Dim NewCo As String = lstCompany.SelectedItem.ToString()
 
-                If NewCo <> Company Then
-                    CurCust = 0
-                    CurDept = 0
-                    CurItem = 0
-                    CurInvoice = 0
+                strLocation = "COC3.0"
+                CurCust = 0
+                CurDept = 0
+                CurItem = 0
+                CurInvoice = 0
+                Company = NewCo
 
-                    strLocation = "COC3.0"
-                    Company = NewCo
+                OpenData()
 
-                    OpenData()
-                End If
-
-                If Not DB Is Nothing Then
-                    strLocation = "COC4.0"
-                    Company = lstCompany.SelectedItem.ToString
-
-                    Me.Close()
-                End If
+                Me.Dispose()
             Else
                 MessageBox.Show("Please select a division.")
 
@@ -73,7 +69,7 @@ Public Class frmCompany
 
     Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
 
-        Application.Exit()
+        Me.Dispose()
 
     End Sub
 End Class

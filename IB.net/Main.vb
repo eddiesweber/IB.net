@@ -64,6 +64,51 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
+    Dim strDefaultRequired As String
+    Dim strDefaultServer As String
+    Dim strDefaultDBName As String
+    Dim strDefaultRptPath As String
+
+    Public Sub GetDefaultsFromTheWeb(strFilename As String)
+
+        Dim intStartingPosition As Int16
+        Dim intEndingPosition As Int16
+
+        Try
+            ' Read settings file from web to get default values
+            strLocation = "GDFTW1.0"
+            Dim sourceString As String = New System.Net.WebClient().DownloadString("http://www.techdawg.net/" & strFilename)
+
+            strLocation = "GDFTW2.0"
+            intStartingPosition = sourceString.IndexOf("Required")
+            intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
+            intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
+            strDefaultRequired = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+
+            strLocation = "GDFTW3.0"
+            intStartingPosition = sourceString.IndexOf("Server")
+            intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
+            intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
+            strDefaultServer = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+
+            strLocation = "GDFTW4.0"
+            intStartingPosition = sourceString.IndexOf("DBName")
+            intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
+            intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
+            strDefaultDBName = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+
+            strLocation = "GDFTW5.0"
+            intStartingPosition = sourceString.IndexOf("RptPath")
+            intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
+            intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
+            strDefaultRptPath = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+        Catch ex As Exception
+            Result = MessageBox.Show("Error in routine frmMain_Load" & vbNewLine & "Error reading settings file from the web (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", MessageBoxButtons.OK)
+            LogError("Main.vb", "frmMain_Load", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
     Sub CalcItemUse(First As Long, Last As Long, IUFlag As Boolean, IMFlag As Boolean)
 
         'Collect information for ItemUse screen/report
@@ -485,24 +530,24 @@ Module Main
 
         Dim strSectionName As String
 
-        'Save file info to registry
-        strSectionName = "SS1.0"
-        strSectionName = "Data"
-
         Try
-            strSectionName = "SS2.0"
+            'Save file info to registry
+            strLocation = "SS1.0"
+            strSectionName = "Data"
+
+            strLocation = "SS2.0"
             SaveSetting(APPNAME, strSectionName, "Company", Company)
             SaveSetting(APPNAME, strSectionName, "Server", Server)
             SaveSetting(APPNAME, strSectionName, "DBName", DBName)
             SaveSetting(APPNAME, strSectionName, "Username", Username)
 
-            strSectionName = "SS3.0"
+            strLocation = "SS3.0"
             SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
             SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
             SaveSetting(APPNAME, strSectionName, "CurType", CurType)
             SaveSetting(APPNAME, strSectionName, "CurVend", CurVend)
 
-            strSectionName = "SS4.0"
+            strLocation = "SS4.0"
             Dim wrapper As New Simple3Des("I1!n2@()")
             SaveSetting(APPNAME, strSectionName, "Password", wrapper.EncryptData(Password))
         Catch ex As Exception
@@ -519,10 +564,10 @@ Module Main
 
         Try
             strLocation = "CCS1.0"
-            configDB = New SqlConnection(ConfigCS)
-            configDB.Open()
-
-            CheckConnectionServer = True
+            Using configDB As New SqlConnection(ConfigCS)
+                configDB.Open()
+                CheckConnectionServer = True
+            End Using
         Catch ex As Exception
             CheckConnectionServer = False
             'Result = MessageBox.Show("Error in routine CheckConnectionServer (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionServer", MessageBoxButtons.OK)
@@ -534,13 +579,14 @@ Module Main
     Public Function CheckConnectionDivision() As Boolean
 
         Try
-            DB = New SqlConnection(CS)
-            DB.Open()
-
-            CheckConnectionDivision = True
+            strLocation = "CCD1.0"
+            Using DB As New SqlConnection(CS)
+                DB.Open()
+                CheckConnectionDivision = True
+            End Using
         Catch ex As Exception
             CheckConnectionDivision = False
-            Result = MessageBox.Show("Error in routine CheckConnectionDivision (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionDivision", MessageBoxButtons.OK)
+            'Result = MessageBox.Show("Error in routine CheckConnectionDivision (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CheckConnectionDivision", MessageBoxButtons.OK)
             LogError("Main.vb", "CheckConnectionDivision", strLocation, ex.Message)
         End Try
 
@@ -550,137 +596,94 @@ Module Main
 
         Dim strSQL As String
 
-        ' Close old Database
-        strLocation = "OD1.0"
         Try
-            If DB.State = ConnectionState.Open Then
-                DB.Close()
-            End If
-        Catch
-            ' DB is already closed
-        Finally
-            DB = Nothing
-        End Try
+            ' Close opened forms
+            strLocation = "OD1.0"
+            For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
+                If Not (My.Application.OpenForms(count).Name = "frmCompany" Or My.Application.OpenForms(count).Name = "frmMain") Then
+                    My.Application.OpenForms(count).Close()
+                End If
+            Next
 
-        ' Close opened forms
-        strLocation = "OD2.0"
-        For count As Integer = My.Application.OpenForms.Count - 1 To 1 Step -1
-            If Not (My.Application.OpenForms(count).Name = "frmCompany" Or My.Application.OpenForms(count).Name = "frmMain") Then
-                My.Application.OpenForms(count).Close()
+            ' Set connection string
+            strLocation = "OD2.0"
+            If Server.Trim <> "" Then
+                If InStr(1, Server, "windows.net") > 0 Then
+                    ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
+                Else
+                    ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=master;Integrated Security=True"
+                End If
             End If
-        Next
 
-        strLocation = "OD3.0"
-        If Server.Trim <> "" Then
+            ' Get server and database name from global database
+            strLocation = "OD3.0"
+            Using configDB As New SqlConnection(ConfigCS)
+                configDB.Open()
+
+                ' Get DBName and Server Name from Master/IBConfig
+                strLocation = "OD4.0"
+                DBName = ""
+                ServerName = ""
+                strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
+
+                Using Command As New SqlCommand(strSQL, configDB)
+                    strLocation = "OD5.0"
+                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
+
+                    strLocation = "OD6.0"
+                    If dataReader.HasRows Then
+                        dataReader.Read()
+                        DBName = dataReader.Item("DBName")
+                        ServerName = dataReader.Item("ServerName")
+                    Else
+                        MessageBox.Show("Error getting server/db name from IBGlobal, exiting program")
+                        Application.Exit()
+                    End If
+                    dataReader.Close()
+                End Using
+            End Using
+
+            ' ReBuld connection string for company db
+            strLocation = "OD7.0"
             If InStr(1, Server, "windows.net") > 0 Then
-                ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+                CS = "Data Source=" & Trim(Server) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
             Else
-                ConfigCS = "Data Source=" & Server & ";Initial Catalog=master;Integrated Security=True"
+                CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(Server)
             End If
-        End If
 
-        strLocation = "OD4.0"
-        configDB = New SqlConnection(ConfigCS)
-        configDB.ConnectionString = ConfigCS
+            ' Get company information from company db
+            strLocation = "OD8.0"
+            Using DB As New SqlConnection(CS)
+                DB.Open()
 
-        Try
-            strLocation = "OD5.0"
-            configDB.Open()
+                frmMain.Text = ""
+                Do While frmMain.Text = ""
+                    strSQL = "Select * From Company where Company_ID='" & Company & "'"
+                    Using Command As New SqlCommand(strSQL, DB)
+                        strLocation = "OD9.0"
+                        Dim dataReader As SqlDataReader = Command.ExecuteReader()
+                        dataReader.Read()
+
+                        strLocation = "OD10.0"
+                        If dataReader.HasRows Then
+                            CompanyName = dataReader.Item("Company_NM")
+                            dataReader.Close()
+
+                            frmMain.Text = "Indoor Billboard - " & CompanyName
+
+                            'Rearrange CS the way Crystal likes
+                            CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
+                        Else
+                            frmCompany.ShowDialog()
+                        End If
+                    End Using
+                Loop
+            End Using
         Catch ex As Exception
             Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
             LogError("Main.vb", "OpenData", strLocation, ex.Message)
-        End Try
 
-        If configDB.State = ConnectionState.Closed Then
-            Exit Sub
-        End If
-
-        ' Get DBName and Server Name from Master/IBConfig
-        strLocation = "OD6.0"
-        DBName = ""
-        ServerName = ""
-        strSQL = "Select * From IBConfig where Location_ID='" & Company & "'"
-        Using Command As New SqlCommand(strSQL, configDB)
-            Try
-                strLocation = "OD7.0"
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
-
-                strLocation = "OD8.0"
-                If dataReader.HasRows Then
-                    dataReader.Read()
-                    DBName = dataReader.Item("DBName")
-                    ServerName = dataReader.Item("ServerName")
-                End If
-
-                dataReader.Close()
-            Catch ex As Exception
-                Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
-                LogError("Main.vb", "OpenData", strLocation, ex.Message)
-                Exit Sub
-            End Try
-        End Using
-
-        If DBName.Trim = "" Or ServerName.Trim = "" Then
-            strLocation = "OD9.0"
-            frmSetConnection.ShowDialog()
-        End If
-
-        If DBName.Trim = "" Or ServerName.Trim = "" Then
-            Exit Sub
-        End If
-
-        ' ReBuld connection string and open db
-        strLocation = "OD10.0"
-        CS = "Integrated Security=True;Initial Catalog=" & Trim(DBName) & ";Data Source=" & Trim(ServerName)
-        ConfigCS = "Data Source=" & Trim(ServerName) & ";Initial Catalog=" & Trim(DBName) & ";User ID=" & Username & ";Password=" & Password
-
-        strLocation = "OD8.0"
-        DB = New SqlConnection(CS)
-        DB.ConnectionString = CS
-        DB.Open()
-
-
-
-        frmMain.Text = ""
-
-        Do While frmMain.Text = ""
-            strSQL = "Select * From Company where Company_ID='" & Company & "'"
-            Using Command As New SqlCommand(strSQL, DB)
-                Try
-                    strLocation = "OD11.0"
-                    Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                    dataReader.Read()
-
-                    strLocation = "OD12.0"
-                    If dataReader.HasRows Then
-                        CompanyName = dataReader.Item("Company_NM")
-                        dataReader.Close()
-
-                        frmMain.Text = "Indoor Billboard - " & CompanyName
-
-                        'Rearrange CS the way Crystal likes
-                        CryCS = "DSN=" & Trim(ServerName) & ";DSQ=" & Trim(DBName) & ";UID=<<Use Integrated Security>>"
-                    Else
-                        frmCompany.ShowDialog()
-                    End If
-                Catch ex As Exception
-                    Result = MessageBox.Show("Error in routine OpenData (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "OpenData", MessageBoxButtons.OK)
-                    LogError("Main.vb", "OpenData", strLocation, ex.Message)
-
-                    Application.Exit()
-                End Try
-            End Using
-        Loop
-
-        ' Close master Database
-        Try
-            If DB.State = ConnectionState.Open Then
-                DB.Close()
-            End If
-        Catch
-            ' DB is already closed
-        Finally
-            DB = Nothing
+            Application.Exit()
         End Try
 
     End Sub

@@ -53,35 +53,34 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.C1Report.4, Version=4.0.20183.338, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
-    <Reference Include="C1.C1Zip.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.BarCode.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Chart.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=a22e16972c085838, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Chart3D.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=a22e16972c085838, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Report.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Zip.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.BarCode.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Chart.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=a22e16972c085838, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Chart3D.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=a22e16972c085838, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Command.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="C1.Win.C1Document.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Editor.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Input.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Document.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Editor.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1InputPanel.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="C1.Win.C1List.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="C1.Win.C1Report.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Report.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Themes.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20183.343, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="C1.Win.Calendar.4, Version=4.0.20191.363, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Calendar.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.FlexReport.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -564,6 +563,12 @@
     <Compile Include="frmitemreports.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmmiscrpt.designer.vb">
       <DependentUpon>frmmiscrpt.vb</DependentUpon>
     </Compile>
@@ -738,10 +743,16 @@
     <Compile Include="frmTemplate.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTesting.Designer.vb">
-      <DependentUpon>frmTesting.vb</DependentUpon>
+    <Compile Include="frmTestingMain.Designer.vb">
+      <DependentUpon>frmTestingMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTesting.vb">
+    <Compile Include="frmTestingMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTextboxTest.Designer.vb">
+      <DependentUpon>frmTextboxTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTextboxTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmVend.designer.vb">
@@ -1076,6 +1087,9 @@
     <EmbeddedResource Include="frmitemreports.resx">
       <DependentUpon>frmitemreports.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -1191,8 +1205,8 @@
     <EmbeddedResource Include="frmTemplate.resx">
       <DependentUpon>frmTemplate.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTesting.resx">
-      <DependentUpon>frmTesting.vb</DependentUpon>
+    <EmbeddedResource Include="frmTextboxTest.resx">
+      <DependentUpon>frmTextboxTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUndo.resx">
       <DependentUpon>frmUndo.vb</DependentUpon>
@@ -2003,7 +2017,9 @@
     <Content Include="IB.net.ico" />
     <Content Include="IBnet.ico" />
     <Content Include="imageedit_1_3798369172.ico" />
+    <Content Include="PDXSettings.htm" />
     <Content Include="picture1_0ns_icon.ico" />
+    <Content Include="Settings.htm" />
     <None Include="Resources\BackgroundNet.bmp" />
     <None Include="Resources\Background.png" />
     <None Include="Resources\BackgroundIBnet.png" />
