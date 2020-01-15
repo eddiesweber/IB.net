@@ -22,6 +22,7 @@ Public Class frmMain
         Dim blnExit As Boolean = False
         Dim blnConnected As Boolean = False
         Dim strSectionName As String
+        Dim strFilename As String = ""
 
         If PrevInstance() Then
             Exit Sub
@@ -29,22 +30,6 @@ Public Class frmMain
 
         CommFlag = False
         DataPath = Application.StartupPath()
-
-        'Try
-        '    strLocation = "FML0.1"
-        '    If Dir("ReportFolder.txt") <> "" Then
-        '        strLocation = "FML0.2"
-        '        RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
-        '    Else
-        '        strLocation = "FML0.3"
-        '        'RptPath = "C:\Users\Robert\source\repos\IB.net\IB.net\ReportsAzure\"
-        '        RptPath = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\ReportsAzure\"
-        '    End If
-        'Catch ex As Exception
-        '    Password = ""
-        '    Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
-        '    LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
-        'End Try
 
         strSectionName = "Data"
         Company = GetSetting(APPNAME, strSectionName, "Company", "")
@@ -60,6 +45,36 @@ Public Class frmMain
         strPrinterName = GetSetting(APPNAME, "Printer", "DefaultPrinter", "")
         SelectPrinter(True)
 
+        RptPath = GetSetting(APPNAME, "Printer", "ReportPath", "")
+        If RptPath.Trim = "" Then
+            Try
+                strLocation = "FML0.1"
+                If Dir("ReportFolder.txt") <> "" Then
+                    strLocation = "FML0.2"
+                    RptPath = My.Computer.FileSystem.ReadAllText("ReportFolder.txt")
+                Else
+                    strLocation = "FML0.3"
+                    Select Case Company.Trim
+                        Case "Portland"
+                            strFilename = "PDXSettings.htm"
+                        Case "Seattle"
+                            strFilename = "SEASettings.htm"
+                        Case "LA"
+                            strFilename = "LASettings.htm"
+                        Case "Sanf"
+                            strFilename = "SFSettings.htm"
+                    End Select
+
+                    GetDefaultsFromTheWeb(strFilename)
+                    RptPath = strDefaultRptPath
+                End If
+            Catch ex As Exception
+                Password = ""
+                Result = MessageBox.Show(Me, "Error in routine frmMain_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", vbOK)
+                LogError(Me.Name, "frmMain_Load", strLocation, ex.Message)
+            End Try
+        End If
+
         Try
             strLocation = "FML1.0"
             Dim wrapper As New Simple3Des("I1!n2@()")
@@ -73,11 +88,6 @@ Public Class frmMain
         'Screen Position
         GetWindowPos(Me, 15, 15)
         Me.Show()
-
-        blnExit = False
-        Do While (Server.Trim = "" Or DBName.Trim = "") And (blnExit = False)
-            GetDefaultsFromTheWeb("PDXSettings.htm")
-        Loop
 
         ' Create connection strings
         If InStr(1, Server, "windows.net") > 0 Then
@@ -499,23 +509,23 @@ Public Class frmMain
 
     Private Sub mnuCommission_Select(sender As Object, e As EventArgs) Handles mnuCommission.[Select]
 
-        If Not CommFlag Then
-            frmPW.ShowDialog()
+        'If Not CommFlag Then
+        '    frmPW.ShowDialog()
 
-            If CommFlag Then
-                My.Computer.Keyboard.SendKeys("%M")
-                Exit Sub
-            End If
-        End If
+        '    If CommFlag Then
+        '        My.Computer.Keyboard.SendKeys("%M")
+        '        Exit Sub
+        '    End If
+        'End If
 
-        If CommFlag Then
-            cmdSalesPeople.Enabled = True
-            cmdRates.Enabled = True
-            cmdProcessRentals.Enabled = True
-            cmdEditCommissions.Enabled = True
-            cmdRevenueReports.Enabled = True
-            cmdCommissionReports.Enabled = True
-        End If
+        'If CommFlag Then
+        '    cmdSalesPeople.Enabled = True
+        '    cmdRates.Enabled = True
+        '    cmdProcessRentals.Enabled = True
+        '    cmdEditCommissions.Enabled = True
+        '    cmdRevenueReports.Enabled = True
+        '    cmdCommissionReports.Enabled = True
+        'End If
 
     End Sub
 
@@ -664,6 +674,28 @@ Public Class frmMain
     Private Sub cmdTestForm_Click(sender As Object, e As ClickEventArgs) Handles cmdTestForm.Click
 
         frmTextboxTest.Show()
+
+    End Sub
+
+    Private Sub mnuCommission_DrawBar(sender As Object, e As DrawBarEventArgs) Handles mnuCommission.DrawBar
+
+        If Not CommFlag Then
+            frmPW.ShowDialog()
+
+            If CommFlag Then
+                My.Computer.Keyboard.SendKeys("%M")
+                Exit Sub
+            End If
+        End If
+
+        If CommFlag Then
+            cmdSalesPeople.Enabled = True
+            cmdRates.Enabled = True
+            cmdProcessRentals.Enabled = True
+            cmdEditCommissions.Enabled = True
+            cmdRevenueReports.Enabled = True
+            cmdCommissionReports.Enabled = True
+        End If
 
     End Sub
 End Class

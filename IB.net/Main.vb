@@ -64,15 +64,16 @@ Module Main
     Public Const APPNAME As String = "IB.net"
     Public Const COMMPW As String = "BUX"
 
-    Dim strDefaultRequired As String
-    Dim strDefaultServer As String
-    Dim strDefaultDBName As String
-    Dim strDefaultRptPath As String
+    Public strDefaultRequired As String
+    Public strDefaultServer As String
+    Public strDefaultDBName As String
+    Public strDefaultRptPath As String
 
     Public Sub GetDefaultsFromTheWeb(strFilename As String)
 
         Dim intStartingPosition As Int16
         Dim intEndingPosition As Int16
+        Dim wrapper As New Simple3Des("I1!n2@()")
 
         Try
             ' Read settings file from web to get default values
@@ -90,18 +91,21 @@ Module Main
             intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
             intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
             strDefaultServer = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+            strDefaultServer = wrapper.DecryptData(strDefaultServer)
 
             strLocation = "GDFTW4.0"
             intStartingPosition = sourceString.IndexOf("DBName")
             intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
             intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
             strDefaultDBName = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+            strDefaultDBName = wrapper.DecryptData(strDefaultDBName)
 
             strLocation = "GDFTW5.0"
             intStartingPosition = sourceString.IndexOf("RptPath")
             intStartingPosition = sourceString.IndexOf("=", intStartingPosition) + 1
             intEndingPosition = sourceString.IndexOf("<BR>", intStartingPosition)
             strDefaultRptPath = sourceString.Substring(intStartingPosition, intEndingPosition - intStartingPosition)
+            strDefaultRptPath = wrapper.DecryptData(strDefaultRptPath)
         Catch ex As Exception
             Result = MessageBox.Show("Error in routine frmMain_Load" & vbNewLine & "Error reading settings file from the web (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmMain_Load", MessageBoxButtons.OK)
             LogError("Main.vb", "frmMain_Load", strLocation, ex.Message)
@@ -524,7 +528,6 @@ Module Main
         Next
 
     End Sub
-
 
     Public Sub SaveSettings()
 

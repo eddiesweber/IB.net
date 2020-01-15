@@ -42,6 +42,8 @@ Partial Class frmMain
         Me.cmdRouteMaster = New C1.Win.C1Command.C1Command()
         Me.clPurge = New C1.Win.C1Command.C1CommandLink()
         Me.cmdPurge = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink67 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdTestForm = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink66 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdTesting = New C1.Win.C1Command.C1Command()
         Me.clExit = New C1.Win.C1Command.C1CommandLink()
@@ -171,8 +173,6 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.C1CommandLink18 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink42 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink67 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdTestForm = New C1.Win.C1Command.C1Command()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -367,6 +367,17 @@ Partial Class frmMain
         Me.cmdPurge.Name = "cmdPurge"
         Me.cmdPurge.ShortcutText = ""
         Me.cmdPurge.Text = "&Purge"
+        '
+        'C1CommandLink67
+        '
+        Me.C1CommandLink67.Command = Me.cmdTestForm
+        Me.C1CommandLink67.SortOrder = 4
+        '
+        'cmdTestForm
+        '
+        Me.cmdTestForm.Name = "cmdTestForm"
+        Me.cmdTestForm.ShortcutText = ""
+        Me.cmdTestForm.Text = "Test form"
         '
         'C1CommandLink66
         '
@@ -1115,17 +1126,6 @@ Partial Class frmMain
         'C1CommandLink42
         '
         Me.C1CommandLink42.Text = "New Command"
-        '
-        'C1CommandLink67
-        '
-        Me.C1CommandLink67.Command = Me.cmdTestForm
-        Me.C1CommandLink67.SortOrder = 4
-        '
-        'cmdTestForm
-        '
-        Me.cmdTestForm.Name = "cmdTestForm"
-        Me.cmdTestForm.ShortcutText = ""
-        Me.cmdTestForm.Text = "Test form"
         '
         'frmMain
         '

@@ -2017,9 +2017,12 @@
     <Content Include="IB.net.ico" />
     <Content Include="IBnet.ico" />
     <Content Include="imageedit_1_3798369172.ico" />
+    <Content Include="LASettings.htm" />
     <Content Include="PDXSettings.htm" />
     <Content Include="picture1_0ns_icon.ico" />
+    <Content Include="SEASettings.htm" />
     <Content Include="Settings.htm" />
+    <Content Include="SFSettings.htm" />
     <None Include="Resources\BackgroundNet.bmp" />
     <None Include="Resources\Background.png" />
     <None Include="Resources\BackgroundIBnet.png" />

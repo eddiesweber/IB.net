@@ -19,6 +19,10 @@
 
         Try
             strLocation = "CSC1.0"
+            Username = txtUserName.Text.Trim
+            Password = txtPassword.Text.Trim
+
+            strLocation = "CSC2.0"
             SaveSettings()
             SaveWindowPos(Me)
 

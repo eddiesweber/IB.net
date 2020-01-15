@@ -5,6 +5,7 @@
         Me.Left = frmMain.Left + 213
         Me.Top = frmMain.Top + 53
         'Me.Move frmMain.Left + 3200, frmMain.Top + 800
+        txtPW.Select()
 
     End Sub
 

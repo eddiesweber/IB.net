@@ -95,17 +95,67 @@ Public Class frmConnectToServer
 
     Private Sub cmdAutoConnect_Click(sender As Object, e As EventArgs) Handles cmdAutoConnect.Click
 
-        lstStatus.ClearItems()
-
-        If optLosAngeles.Checked = False And optPortland.Checked = False And optSanFrancisco.Checked = False And optSeattle.Checked = False Then
-            MessageBox.Show(Me, "Please select a location", "Select Location")
-            Exit Sub
-        End If
-
         Try
+            strLocation = "CAC1.0"
+            lstStatus.ClearItems()
 
+            If optLosAngeles.Checked = False And optPortland.Checked = False And optSanFrancisco.Checked = False And optSeattle.Checked = False Then
+                MessageBox.Show(Me, "Please select a location", "Select Location")
+                Exit Sub
+            End If
+
+            strLocation = "CAC2.0"
+            lstStatus.AddItem("Getting default information from the web ")
+
+            If optLosAngeles.Checked Then
+                strLocation = "CAC3.0"
+                GetDefaultsFromTheWeb("LASettings.htm")
+            End If
+            If optPortland.Checked Then
+                strLocation = "CAC4.0"
+                GetDefaultsFromTheWeb("PDXSettings.htm")
+            End If
+            If optSanFrancisco.Checked Then
+                strLocation = "CAC5.0"
+                GetDefaultsFromTheWeb("SFSettings.htm")
+            End If
+            If optSeattle.Checked Then
+                strLocation = "CAC6.0"
+                GetDefaultsFromTheWeb("SEASettings.htm")
+            End If
+
+            strLocation = "CAC7.0"
+            Server = strDefaultServer.Trim
+            DBName = strDefaultDBName.Trim
+
+            strLocation = "CAC8.0"
+            lstStatus.AddItem("Trying to connect to server")
+
+            strLocation = "CAC9.0"
+            If InStr(1, Server, "windows.net") > 0 Then
+                frmLogin.ShowDialog()
+                ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+            Else
+                ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;Integrated Security=True"
+            End If
+
+            strLocation = "CAC10.0"
+            Using configDB As New SqlConnection(ConfigCS)
+                configDB.Open()
+                lstStatus.AddItem("Connected to - " & Server.Trim)
+            End Using
+
+            lstStatus.AddItem("Loading company data")
+            OpenData()
+
+            lstStatus.AddItem("Finished connecting - Success")
+            Me.Cursor = Cursors.Default
+            Me.Dispose()
         Catch ex As Exception
-
+            Me.Cursor = Cursors.Default
+            lstStatus.AddItem("Error connecting - Not connected")
+            Result = MessageBox.Show(Me, "Error in routine cmdAutoConnect_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmdAutoConnect_Click", vbOK)
+            LogError(Me.Name, "cmdAutoConnect_Click", strLocation, ex.Message)
         End Try
 
     End Sub
