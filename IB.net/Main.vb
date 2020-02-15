@@ -11,6 +11,7 @@ Module Main
     Public CS As String
     Public CryCS As String
     Public ConfigCS As String
+    Public connGlobal As String
     Public DBName As String
     Public ServerName As String
     Public strPrinterName As String
@@ -68,6 +69,9 @@ Module Main
     Public strDefaultServer As String
     Public strDefaultDBName As String
     Public strDefaultRptPath As String
+
+    Public dVersion As Decimal
+    Public dtVersionDate As Date
 
     Public Sub GetDefaultsFromTheWeb(strFilename As String)
 
@@ -531,26 +535,23 @@ Module Main
 
     Public Sub SaveSettings()
 
-        Dim strSectionName As String
+        Dim strSectionName As String = "Data"
 
         Try
             'Save file info to registry
             strLocation = "SS1.0"
-            strSectionName = "Data"
-
-            strLocation = "SS2.0"
             SaveSetting(APPNAME, strSectionName, "Company", Company)
             SaveSetting(APPNAME, strSectionName, "Server", Server)
             SaveSetting(APPNAME, strSectionName, "DBName", DBName)
             SaveSetting(APPNAME, strSectionName, "Username", Username)
 
-            strLocation = "SS3.0"
+            strLocation = "SS2.0"
             SaveSetting(APPNAME, strSectionName, "CurCust", CurCust)
             SaveSetting(APPNAME, strSectionName, "CurItem", CurItem)
             SaveSetting(APPNAME, strSectionName, "CurType", CurType)
             SaveSetting(APPNAME, strSectionName, "CurVend", CurVend)
 
-            strLocation = "SS4.0"
+            strLocation = "SS3.0"
             Dim wrapper As New Simple3Des("I1!n2@()")
             SaveSetting(APPNAME, strSectionName, "Password", wrapper.EncryptData(Password))
         Catch ex As Exception
@@ -613,8 +614,10 @@ Module Main
             If Server.Trim <> "" Then
                 If InStr(1, Server, "windows.net") > 0 Then
                     ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
+                    connGlobal = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
                 Else
-                    ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=master;Integrated Security=True"
+                    ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;Integrated Security=True"
+                    connGlobal = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=IBGlobal"
                 End If
             End If
 

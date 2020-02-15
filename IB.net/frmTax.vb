@@ -20,13 +20,12 @@ Public Class frmTax
             strLocation = "FTL2.0"
             Me.TaxMasterTableAdapter.Connection.ConnectionString = CS
             Me.TaxMasterTableAdapter.Fill(Me.DsTaxMaster.TaxMaster)
+            Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine frmTax_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmTax_Load", vbOK)
             LogError(Me.Name, "frmTax_Load", strLocation, ex.Message)
         End Try
-
-        Me.Cursor = Cursors.Default
 
     End Sub
 

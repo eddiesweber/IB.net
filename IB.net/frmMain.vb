@@ -12,7 +12,9 @@ Public Class frmMain
 
     Private Sub cmdVersion_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdVersion.Click
 
-        MessageBox.Show("Version 3.21 - December 30, 2019")
+        dVersion = 3.21
+        dtVersionDate = CDate("12/30/2019")
+        frmVersion.Show()
 
     End Sub
 
@@ -93,9 +95,11 @@ Public Class frmMain
         If InStr(1, Server, "windows.net") > 0 Then
             CS = "Data Source=" & Server.Trim & ";Initial Catalog=" & DBName.Trim & ";User ID=" & Username.Trim & ";Password=" & Password.Trim
             ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
+            connGlobal = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
         Else
             CS = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=" & Server.Trim
             ConfigCS = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;Integrated Security=True"
+            connGlobal = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=IBGlobal"
         End If
 
         Do While blnConnected = False
@@ -667,7 +671,7 @@ Public Class frmMain
 
     Private Sub cmdTesting_Click(sender As Object, e As ClickEventArgs) Handles cmdTesting.Click
 
-        'frmTesting.Show()
+        frmTestingMain.Show()
 
     End Sub
 

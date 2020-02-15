@@ -42,7 +42,6 @@ Partial Class frmMain
         Me.cmdRouteMaster = New C1.Win.C1Command.C1Command()
         Me.clPurge = New C1.Win.C1Command.C1CommandLink()
         Me.cmdPurge = New C1.Win.C1Command.C1Command()
-        Me.C1CommandLink67 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdTestForm = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink66 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdTesting = New C1.Win.C1Command.C1Command()
@@ -268,7 +267,7 @@ Partial Class frmMain
         '
         'mnuFile
         '
-        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.C1CommandLink67, Me.C1CommandLink66, Me.clExit})
+        Me.mnuFile.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink63, Me.C1CommandLink62, Me.clPrintSetup, Me.C1CommandLink4, Me.C1CommandLink66, Me.clExit})
         Me.mnuFile.HideNonRecentLinks = False
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.ShortcutText = ""
@@ -368,11 +367,6 @@ Partial Class frmMain
         Me.cmdPurge.ShortcutText = ""
         Me.cmdPurge.Text = "&Purge"
         '
-        'C1CommandLink67
-        '
-        Me.C1CommandLink67.Command = Me.cmdTestForm
-        Me.C1CommandLink67.SortOrder = 4
-        '
         'cmdTestForm
         '
         Me.cmdTestForm.Name = "cmdTestForm"
@@ -382,7 +376,8 @@ Partial Class frmMain
         'C1CommandLink66
         '
         Me.C1CommandLink66.Command = Me.cmdTesting
-        Me.C1CommandLink66.SortOrder = 5
+        Me.C1CommandLink66.SortOrder = 4
+        Me.C1CommandLink66.Text = "IB.net Testing"
         '
         'cmdTesting
         '
@@ -394,7 +389,7 @@ Partial Class frmMain
         '
         Me.clExit.Command = Me.cmdExit
         Me.clExit.Delimiter = True
-        Me.clExit.SortOrder = 6
+        Me.clExit.SortOrder = 5
         Me.clExit.Text = "E&xit"
         '
         'cmdExit
@@ -1292,6 +1287,5 @@ Partial Class frmMain
     Friend WithEvents cmdAdagioExport As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink66 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdTesting As C1.Win.C1Command.C1Command
-    Friend WithEvents C1CommandLink67 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdTestForm As C1.Win.C1Command.C1Command
 End Class

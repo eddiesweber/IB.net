@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsTestingHeader"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dsTesters"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsTestingHeader
+Partial Public Class dsTesters
     Inherits Global.System.Data.DataSet
     
-    Private tableTestingHeader As TestingHeaderDataTable
+    Private tableTesters As TestersDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class dsTestingHeader
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("TestingHeader")) Is Nothing) Then
-                MyBase.Tables.Add(New TestingHeaderDataTable(ds.Tables("TestingHeader")))
+            If (Not (ds.Tables("Testers")) Is Nothing) Then
+                MyBase.Tables.Add(New TestersDataTable(ds.Tables("Testers")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class dsTestingHeader
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property TestingHeader() As TestingHeaderDataTable
+    Public ReadOnly Property Testers() As TestersDataTable
         Get
-            Return Me.tableTestingHeader
+            Return Me.tableTesters
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class dsTestingHeader
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsTestingHeader = CType(MyBase.Clone,dsTestingHeader)
+        Dim cln As dsTesters = CType(MyBase.Clone,dsTesters)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class dsTestingHeader
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("TestingHeader")) Is Nothing) Then
-                MyBase.Tables.Add(New TestingHeaderDataTable(ds.Tables("TestingHeader")))
+            If (Not (ds.Tables("Testers")) Is Nothing) Then
+                MyBase.Tables.Add(New TestersDataTable(ds.Tables("Testers")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class dsTestingHeader
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableTestingHeader = CType(MyBase.Tables("TestingHeader"),TestingHeaderDataTable)
+        Me.tableTesters = CType(MyBase.Tables("Testers"),TestersDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableTestingHeader) Is Nothing) Then
-                Me.tableTestingHeader.InitVars
+            If (Not (Me.tableTesters) Is Nothing) Then
+                Me.tableTesters.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class dsTestingHeader
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "dsTestingHeader"
+        Me.DataSetName = "dsTesters"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsTestingHeader.xsd"
+        Me.Namespace = "http://tempuri.org/dsTesters.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableTestingHeader = New TestingHeaderDataTable()
-        MyBase.Tables.Add(Me.tableTestingHeader)
+        Me.tableTesters = New TestersDataTable()
+        MyBase.Tables.Add(Me.tableTesters)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeTestingHeader() As Boolean
+    Private Function ShouldSerializeTesters() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class dsTestingHeader
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsTestingHeader = New dsTestingHeader()
+        Dim ds As dsTesters = New dsTesters()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,45 +273,23 @@ Partial Public Class dsTestingHeader
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub TestingHeaderRowChangeEventHandler(ByVal sender As Object, ByVal e As TestingHeaderRowChangeEvent)
+    Public Delegate Sub TestersRowChangeEventHandler(ByVal sender As Object, ByVal e As TestersRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class TestingHeaderDataTable
-        Inherits Global.System.Data.TypedTableBase(Of TestingHeaderRow)
-        
-        Private columnID As Global.System.Data.DataColumn
-        
-        Private columnScreenName As Global.System.Data.DataColumn
+    Partial Public Class TestersDataTable
+        Inherits Global.System.Data.TypedTableBase(Of TestersRow)
         
         Private columnTester As Global.System.Data.DataColumn
-        
-        Private columnCreated As Global.System.Data.DataColumn
-        
-        Private columnLastModified As Global.System.Data.DataColumn
-        
-        Private columnEditSequence As Global.System.Data.DataColumn
-        
-        Private columnDisplayOrder As Global.System.Data.DataColumn
-        
-        Private columnMenu As Global.System.Data.DataColumn
-        
-        Private columnSubMenu1 As Global.System.Data.DataColumn
-        
-        Private columnSubMenu2 As Global.System.Data.DataColumn
-        
-        Private columnReadyToTest As Global.System.Data.DataColumn
-        
-        Private columnStatus As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "TestingHeader"
+            Me.TableName = "Testers"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -344,97 +322,9 @@ Partial Public Class dsTestingHeader
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property ScreenNameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnScreenName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property TesterColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnTester
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property CreatedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCreated
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property LastModifiedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnLastModified
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property EditSequenceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnEditSequence
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DisplayOrderColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDisplayOrder
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property MenuColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnMenu
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property SubMenu1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSubMenu1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property SubMenu2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSubMenu2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property ReadyToTestColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnReadyToTest
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property StatusColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnStatus
             End Get
         End Property
         
@@ -449,50 +339,50 @@ Partial Public Class dsTestingHeader
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As TestingHeaderRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As TestersRow
             Get
-                Return CType(Me.Rows(index),TestingHeaderRow)
+                Return CType(Me.Rows(index),TestersRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event TestingHeaderRowChanging As TestingHeaderRowChangeEventHandler
+        Public Event TestersRowChanging As TestersRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event TestingHeaderRowChanged As TestingHeaderRowChangeEventHandler
+        Public Event TestersRowChanged As TestersRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event TestingHeaderRowDeleting As TestingHeaderRowChangeEventHandler
+        Public Event TestersRowDeleting As TestersRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event TestingHeaderRowDeleted As TestingHeaderRowChangeEventHandler
+        Public Event TestersRowDeleted As TestersRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddTestingHeaderRow(ByVal row As TestingHeaderRow)
+        Public Overloads Sub AddTestersRow(ByVal row As TestersRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddTestingHeaderRow(ByVal ScreenName As String, ByVal Tester As String, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal DisplayOrder As Integer, ByVal Menu As String, ByVal SubMenu1 As String, ByVal SubMenu2 As String, ByVal ReadyToTest As Boolean, ByVal Status As String) As TestingHeaderRow
-            Dim rowTestingHeaderRow As TestingHeaderRow = CType(Me.NewRow,TestingHeaderRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder, Menu, SubMenu1, SubMenu2, ReadyToTest, Status}
-            rowTestingHeaderRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowTestingHeaderRow)
-            Return rowTestingHeaderRow
+        Public Overloads Function AddTestersRow(ByVal Tester As String) As TestersRow
+            Dim rowTestersRow As TestersRow = CType(Me.NewRow,TestersRow)
+            Dim columnValuesArray() As Object = New Object() {Tester}
+            rowTestersRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowTestersRow)
+            Return rowTestersRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByID(ByVal ID As Integer) As TestingHeaderRow
-            Return CType(Me.Rows.Find(New Object() {ID}),TestingHeaderRow)
+        Public Function FindByTester(ByVal Tester As String) As TestersRow
+            Return CType(Me.Rows.Find(New Object() {Tester}),TestersRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As TestingHeaderDataTable = CType(MyBase.Clone,TestingHeaderDataTable)
+            Dim cln As TestersDataTable = CType(MyBase.Clone,TestersDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -500,99 +390,50 @@ Partial Public Class dsTestingHeader
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New TestingHeaderDataTable()
+            Return New TestersDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnID = MyBase.Columns("ID")
-            Me.columnScreenName = MyBase.Columns("ScreenName")
             Me.columnTester = MyBase.Columns("Tester")
-            Me.columnCreated = MyBase.Columns("Created")
-            Me.columnLastModified = MyBase.Columns("LastModified")
-            Me.columnEditSequence = MyBase.Columns("EditSequence")
-            Me.columnDisplayOrder = MyBase.Columns("DisplayOrder")
-            Me.columnMenu = MyBase.Columns("Menu")
-            Me.columnSubMenu1 = MyBase.Columns("SubMenu1")
-            Me.columnSubMenu2 = MyBase.Columns("SubMenu2")
-            Me.columnReadyToTest = MyBase.Columns("ReadyToTest")
-            Me.columnStatus = MyBase.Columns("Status")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnID)
-            Me.columnScreenName = New Global.System.Data.DataColumn("ScreenName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnScreenName)
             Me.columnTester = New Global.System.Data.DataColumn("Tester", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTester)
-            Me.columnCreated = New Global.System.Data.DataColumn("Created", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCreated)
-            Me.columnLastModified = New Global.System.Data.DataColumn("LastModified", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLastModified)
-            Me.columnEditSequence = New Global.System.Data.DataColumn("EditSequence", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnEditSequence)
-            Me.columnDisplayOrder = New Global.System.Data.DataColumn("DisplayOrder", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDisplayOrder)
-            Me.columnMenu = New Global.System.Data.DataColumn("Menu", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnMenu)
-            Me.columnSubMenu1 = New Global.System.Data.DataColumn("SubMenu1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSubMenu1)
-            Me.columnSubMenu2 = New Global.System.Data.DataColumn("SubMenu2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSubMenu2)
-            Me.columnReadyToTest = New Global.System.Data.DataColumn("ReadyToTest", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnReadyToTest)
-            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnStatus)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
-            Me.columnID.AutoIncrement = true
-            Me.columnID.AutoIncrementSeed = -1
-            Me.columnID.AutoIncrementStep = -1
-            Me.columnID.AllowDBNull = false
-            Me.columnID.ReadOnly = true
-            Me.columnID.Unique = true
-            Me.columnScreenName.AllowDBNull = false
-            Me.columnScreenName.MaxLength = 50
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnTester}, true))
             Me.columnTester.AllowDBNull = false
+            Me.columnTester.Unique = true
             Me.columnTester.MaxLength = 50
-            Me.columnCreated.AllowDBNull = false
-            Me.columnLastModified.AllowDBNull = false
-            Me.columnEditSequence.AllowDBNull = false
-            Me.columnMenu.MaxLength = 50
-            Me.columnSubMenu1.MaxLength = 50
-            Me.columnSubMenu2.MaxLength = 50
-            Me.columnReadyToTest.AllowDBNull = false
-            Me.columnStatus.AllowDBNull = false
-            Me.columnStatus.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewTestingHeaderRow() As TestingHeaderRow
-            Return CType(Me.NewRow,TestingHeaderRow)
+        Public Function NewTestersRow() As TestersRow
+            Return CType(Me.NewRow,TestersRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New TestingHeaderRow(builder)
+            Return New TestersRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(TestingHeaderRow)
+            Return GetType(TestersRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.TestingHeaderRowChangedEvent) Is Nothing) Then
-                RaiseEvent TestingHeaderRowChanged(Me, New TestingHeaderRowChangeEvent(CType(e.Row,TestingHeaderRow), e.Action))
+            If (Not (Me.TestersRowChangedEvent) Is Nothing) Then
+                RaiseEvent TestersRowChanged(Me, New TestersRowChangeEvent(CType(e.Row,TestersRow), e.Action))
             End If
         End Sub
         
@@ -600,8 +441,8 @@ Partial Public Class dsTestingHeader
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.TestingHeaderRowChangingEvent) Is Nothing) Then
-                RaiseEvent TestingHeaderRowChanging(Me, New TestingHeaderRowChangeEvent(CType(e.Row,TestingHeaderRow), e.Action))
+            If (Not (Me.TestersRowChangingEvent) Is Nothing) Then
+                RaiseEvent TestersRowChanging(Me, New TestersRowChangeEvent(CType(e.Row,TestersRow), e.Action))
             End If
         End Sub
         
@@ -609,8 +450,8 @@ Partial Public Class dsTestingHeader
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.TestingHeaderRowDeletedEvent) Is Nothing) Then
-                RaiseEvent TestingHeaderRowDeleted(Me, New TestingHeaderRowChangeEvent(CType(e.Row,TestingHeaderRow), e.Action))
+            If (Not (Me.TestersRowDeletedEvent) Is Nothing) Then
+                RaiseEvent TestersRowDeleted(Me, New TestersRowChangeEvent(CType(e.Row,TestersRow), e.Action))
             End If
         End Sub
         
@@ -618,14 +459,14 @@ Partial Public Class dsTestingHeader
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.TestingHeaderRowDeletingEvent) Is Nothing) Then
-                RaiseEvent TestingHeaderRowDeleting(Me, New TestingHeaderRowChangeEvent(CType(e.Row,TestingHeaderRow), e.Action))
+            If (Not (Me.TestersRowDeletingEvent) Is Nothing) Then
+                RaiseEvent TestersRowDeleting(Me, New TestersRowChangeEvent(CType(e.Row,TestersRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveTestingHeaderRow(ByVal row As TestingHeaderRow)
+        Public Sub RemoveTestersRow(ByVal row As TestersRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -634,7 +475,7 @@ Partial Public Class dsTestingHeader
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsTestingHeader = New dsTestingHeader()
+            Dim ds As dsTesters = New dsTesters()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -652,7 +493,7 @@ Partial Public Class dsTestingHeader
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "TestingHeaderDataTable"
+            attribute2.FixedValue = "TestersDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -699,229 +540,44 @@ Partial Public Class dsTestingHeader
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class TestingHeaderRow
+    Partial Public Class TestersRow
         Inherits Global.System.Data.DataRow
         
-        Private tableTestingHeader As TestingHeaderDataTable
+        Private tableTesters As TestersDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableTestingHeader = CType(Me.Table,TestingHeaderDataTable)
+            Me.tableTesters = CType(Me.Table,TestersDataTable)
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ID() As Integer
-            Get
-                Return CType(Me(Me.tableTestingHeader.IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ScreenName() As String
-            Get
-                Return CType(Me(Me.tableTestingHeader.ScreenNameColumn),String)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.ScreenNameColumn) = value
-            End Set
-        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property Tester() As String
             Get
-                Return CType(Me(Me.tableTestingHeader.TesterColumn),String)
+                Return CType(Me(Me.tableTesters.TesterColumn),String)
             End Get
             Set
-                Me(Me.tableTestingHeader.TesterColumn) = value
+                Me(Me.tableTesters.TesterColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Created() As Date
-            Get
-                Return CType(Me(Me.tableTestingHeader.CreatedColumn),Date)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.CreatedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property LastModified() As Date
-            Get
-                Return CType(Me(Me.tableTestingHeader.LastModifiedColumn),Date)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.LastModifiedColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property EditSequence() As Integer
-            Get
-                Return CType(Me(Me.tableTestingHeader.EditSequenceColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.EditSequenceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DisplayOrder() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableTestingHeader.DisplayOrderColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DisplayOrder' in table 'TestingHeader' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTestingHeader.DisplayOrderColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Menu() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTestingHeader.MenuColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Menu' in table 'TestingHeader' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTestingHeader.MenuColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property SubMenu1() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTestingHeader.SubMenu1Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SubMenu1' in table 'TestingHeader' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTestingHeader.SubMenu1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property SubMenu2() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTestingHeader.SubMenu2Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SubMenu2' in table 'TestingHeader' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTestingHeader.SubMenu2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ReadyToTest() As Boolean
-            Get
-                Return CType(Me(Me.tableTestingHeader.ReadyToTestColumn),Boolean)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.ReadyToTestColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Status() As String
-            Get
-                Return CType(Me(Me.tableTestingHeader.StatusColumn),String)
-            End Get
-            Set
-                Me(Me.tableTestingHeader.StatusColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDisplayOrderNull() As Boolean
-            Return Me.IsNull(Me.tableTestingHeader.DisplayOrderColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDisplayOrderNull()
-            Me(Me.tableTestingHeader.DisplayOrderColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsMenuNull() As Boolean
-            Return Me.IsNull(Me.tableTestingHeader.MenuColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetMenuNull()
-            Me(Me.tableTestingHeader.MenuColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsSubMenu1Null() As Boolean
-            Return Me.IsNull(Me.tableTestingHeader.SubMenu1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetSubMenu1Null()
-            Me(Me.tableTestingHeader.SubMenu1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsSubMenu2Null() As Boolean
-            Return Me.IsNull(Me.tableTestingHeader.SubMenu2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetSubMenu2Null()
-            Me(Me.tableTestingHeader.SubMenu2Column) = Global.System.Convert.DBNull
-        End Sub
     End Class
     
     '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class TestingHeaderRowChangeEvent
+    Public Class TestersRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As TestingHeaderRow
+        Private eventRow As TestersRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As TestingHeaderRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As TestersRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -929,7 +585,7 @@ Partial Public Class dsTestingHeader
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As TestingHeaderRow
+        Public ReadOnly Property Row() As TestersRow
             Get
                 Return Me.eventRow
             End Get
@@ -945,7 +601,7 @@ Partial Public Class dsTestingHeader
     End Class
 End Class
 
-Namespace dsTestingHeaderTableAdapters
+Namespace dsTestersTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -956,7 +612,7 @@ Namespace dsTestingHeaderTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class TestingHeaderTableAdapter
+    Partial Public Class TestersTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -1073,115 +729,27 @@ Namespace dsTestingHeaderTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "TestingHeader"
-            tableMapping.ColumnMappings.Add("ID", "ID")
-            tableMapping.ColumnMappings.Add("ScreenName", "ScreenName")
+            tableMapping.DataSetTable = "Testers"
             tableMapping.ColumnMappings.Add("Tester", "Tester")
-            tableMapping.ColumnMappings.Add("Created", "Created")
-            tableMapping.ColumnMappings.Add("LastModified", "LastModified")
-            tableMapping.ColumnMappings.Add("EditSequence", "EditSequence")
-            tableMapping.ColumnMappings.Add("DisplayOrder", "DisplayOrder")
-            tableMapping.ColumnMappings.Add("Menu", "Menu")
-            tableMapping.ColumnMappings.Add("SubMenu1", "SubMenu1")
-            tableMapping.ColumnMappings.Add("SubMenu2", "SubMenu2")
-            tableMapping.ColumnMappings.Add("ReadyToTest", "ReadyToTest")
-            tableMapping.ColumnMappings.Add("Status", "Status")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TestingHeader] WHERE (([ID] = @Original_ID) AND ([ScreenName] "& _ 
-                "= @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Created] = @Orig"& _ 
-                "inal_Created) AND ([LastModified] = @Original_LastModified) AND ([EditSequence] "& _ 
-                "= @Original_EditSequence) AND ((@IsNull_DisplayOrder = 1 AND [DisplayOrder] IS N"& _ 
-                "ULL) OR ([DisplayOrder] = @Original_DisplayOrder)) AND ((@IsNull_Menu = 1 AND [M"& _ 
-                "enu] IS NULL) OR ([Menu] = @Original_Menu)) AND ((@IsNull_SubMenu1 = 1 AND [SubM"& _ 
-                "enu1] IS NULL) OR ([SubMenu1] = @Original_SubMenu1)) AND ((@IsNull_SubMenu2 = 1 "& _ 
-                "AND [SubMenu2] IS NULL) OR ([SubMenu2] = @Original_SubMenu2)) AND ([ReadyToTest]"& _ 
-                " = @Original_ReadyToTest) AND ([Status] = @Original_Status))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Testers] WHERE (([Tester] = @Original_Tester))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Menu", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SubMenu1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SubMenu1", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SubMenu2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SubMenu2", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ReadyToTest", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReadyToTest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TestingHeader] ([ScreenName], [Tester], [Created], [LastModifi"& _ 
-                "ed], [EditSequence], [DisplayOrder], [Menu], [SubMenu1], [SubMenu2], [ReadyToTes"& _ 
-                "t], [Status]) VALUES (@ScreenName, @Tester, @Created, @LastModified, @EditSequen"& _ 
-                "ce, @DisplayOrder, @Menu, @SubMenu1, @SubMenu2, @ReadyToTest, @Status);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "ID, ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder, Menu,"& _ 
-                " SubMenu1, SubMenu2, ReadyToTest, Status FROM TestingHeader WHERE (ID = SCOPE_ID"& _ 
-                "ENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Testers] ([Tester]) VALUES (@Tester);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tester FROM Test"& _ 
+                "ers WHERE (Tester = @Tester)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SubMenu1", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SubMenu2", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReadyToTest", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReadyToTest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TestingHeader] SET [ScreenName] = @ScreenName, [Tester] = @Tester, "& _ 
-                "[Created] = @Created, [LastModified] = @LastModified, [EditSequence] = @EditSequ"& _ 
-                "ence, [DisplayOrder] = @DisplayOrder, [Menu] = @Menu, [SubMenu1] = @SubMenu1, [S"& _ 
-                "ubMenu2] = @SubMenu2, [ReadyToTest] = @ReadyToTest, [Status] = @Status WHERE ((["& _ 
-                "ID] = @Original_ID) AND ([ScreenName] = @Original_ScreenName) AND ([Tester] = @O"& _ 
-                "riginal_Tester) AND ([Created] = @Original_Created) AND ([LastModified] = @Origi"& _ 
-                "nal_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ((@IsNull_Di"& _ 
-                "splayOrder = 1 AND [DisplayOrder] IS NULL) OR ([DisplayOrder] = @Original_Displa"& _ 
-                "yOrder)) AND ((@IsNull_Menu = 1 AND [Menu] IS NULL) OR ([Menu] = @Original_Menu)"& _ 
-                ") AND ((@IsNull_SubMenu1 = 1 AND [SubMenu1] IS NULL) OR ([SubMenu1] = @Original_"& _ 
-                "SubMenu1)) AND ((@IsNull_SubMenu2 = 1 AND [SubMenu2] IS NULL) OR ([SubMenu2] = @"& _ 
-                "Original_SubMenu2)) AND ([ReadyToTest] = @Original_ReadyToTest) AND ([Status] = "& _ 
-                "@Original_Status));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ScreenName, Tester, Created, LastModified, EditS"& _ 
-                "equence, DisplayOrder, Menu, SubMenu1, SubMenu2, ReadyToTest, Status FROM Testin"& _ 
-                "gHeader WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Testers] SET [Tester] = @Tester WHERE (([Tester] = @Original_Tester"& _ 
+                "));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tester FROM Testers WHERE (Tester = @Tester)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SubMenu1", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SubMenu2", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReadyToTest", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReadyToTest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DisplayOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DisplayOrder", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Menu", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SubMenu1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SubMenu1", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SubMenu2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SubMenu2", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SubMenu2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ReadyToTest", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReadyToTest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1197,8 +765,7 @@ Namespace dsTestingHeaderTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder,"& _ 
-                " Menu, SubMenu1, SubMenu2, ReadyToTest, Status FROM dbo.TestingHeader"
+            Me._commandCollection(0).CommandText = "SELECT Tester FROM dbo.Testers"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1206,7 +773,7 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsTestingHeader.TestingHeaderDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsTesters.TestersDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -1219,9 +786,9 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsTestingHeader.TestingHeaderDataTable
+        Public Overloads Overridable Function GetData() As dsTesters.TestersDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As dsTestingHeader.TestingHeaderDataTable = New dsTestingHeader.TestingHeaderDataTable()
+            Dim dataTable As dsTesters.TestersDataTable = New dsTesters.TestersDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1229,15 +796,15 @@ Namespace dsTestingHeaderTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As dsTestingHeader.TestingHeaderDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As dsTesters.TestersDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As dsTestingHeader) As Integer
-            Return Me.Adapter.Update(dataSet, "TestingHeader")
+        Public Overloads Overridable Function Update(ByVal dataSet As dsTesters) As Integer
+            Return Me.Adapter.Update(dataSet, "Testers")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1258,54 +825,11 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_ScreenName As String, ByVal Original_Tester As String, ByVal Original_Created As Date, ByVal Original_LastModified As Date, ByVal Original_EditSequence As Integer, ByVal Original_DisplayOrder As Global.System.Nullable(Of Integer), ByVal Original_Menu As String, ByVal Original_SubMenu1 As String, ByVal Original_SubMenu2 As String, ByVal Original_ReadyToTest As Boolean, ByVal Original_Status As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
-            If (Original_ScreenName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_ScreenName")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_ScreenName,String)
-            End If
+        Public Overloads Overridable Function Delete(ByVal Original_Tester As String) As Integer
             If (Original_Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tester")
             Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Tester,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Created,Date)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_LastModified,Date)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_EditSequence,Integer)
-            If (Original_DisplayOrder.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_DisplayOrder.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Menu Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Menu,String)
-            End If
-            If (Original_SubMenu1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_SubMenu1,String)
-            End If
-            If (Original_SubMenu2 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_SubMenu2,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_ReadyToTest,Boolean)
-            If (Original_Status Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Status")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_Status,String)
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Tester,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1326,45 +850,11 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ScreenName As String, ByVal Tester As String, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal DisplayOrder As Global.System.Nullable(Of Integer), ByVal Menu As String, ByVal SubMenu1 As String, ByVal SubMenu2 As String, ByVal ReadyToTest As Boolean, ByVal Status As String) As Integer
-            If (ScreenName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ScreenName")
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(ScreenName,String)
-            End If
+        Public Overloads Overridable Function Insert(ByVal Tester As String) As Integer
             If (Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Tester")
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Tester,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(Created,Date)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(LastModified,Date)
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(EditSequence,Integer)
-            If (DisplayOrder.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(DisplayOrder.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Menu Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Menu,String)
-            End If
-            If (SubMenu1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(SubMenu1,String)
-            End If
-            If (SubMenu2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(SubMenu2,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(9).Value = CType(ReadyToTest,Boolean)
-            If (Status Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Status")
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Status,String)
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Tester,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1385,119 +875,17 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal ScreenName As String,  _
-                    ByVal Tester As String,  _
-                    ByVal Created As Date,  _
-                    ByVal LastModified As Date,  _
-                    ByVal EditSequence As Integer,  _
-                    ByVal DisplayOrder As Global.System.Nullable(Of Integer),  _
-                    ByVal Menu As String,  _
-                    ByVal SubMenu1 As String,  _
-                    ByVal SubMenu2 As String,  _
-                    ByVal ReadyToTest As Boolean,  _
-                    ByVal Status As String,  _
-                    ByVal Original_ID As Integer,  _
-                    ByVal Original_ScreenName As String,  _
-                    ByVal Original_Tester As String,  _
-                    ByVal Original_Created As Date,  _
-                    ByVal Original_LastModified As Date,  _
-                    ByVal Original_EditSequence As Integer,  _
-                    ByVal Original_DisplayOrder As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Menu As String,  _
-                    ByVal Original_SubMenu1 As String,  _
-                    ByVal Original_SubMenu2 As String,  _
-                    ByVal Original_ReadyToTest As Boolean,  _
-                    ByVal Original_Status As String,  _
-                    ByVal ID As Integer) As Integer
-            If (ScreenName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("ScreenName")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ScreenName,String)
-            End If
+        Public Overloads Overridable Function Update(ByVal Tester As String, ByVal Original_Tester As String) As Integer
             If (Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Tester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Tester,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Created,Date)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(LastModified,Date)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(EditSequence,Integer)
-            If (DisplayOrder.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(DisplayOrder.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Menu Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Menu,String)
-            End If
-            If (SubMenu1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(SubMenu1,String)
-            End If
-            If (SubMenu2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(SubMenu2,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(ReadyToTest,Boolean)
-            If (Status Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Status")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Status,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ID,Integer)
-            If (Original_ScreenName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_ScreenName")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ScreenName,String)
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Tester,String)
             End If
             If (Original_Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Tester,String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Original_Tester,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Created,Date)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_LastModified,Date)
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_EditSequence,Integer)
-            If (Original_DisplayOrder.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_DisplayOrder.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Menu Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Menu,String)
-            End If
-            If (Original_SubMenu1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_SubMenu1,String)
-            End If
-            If (Original_SubMenu2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_SubMenu2,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_ReadyToTest,Boolean)
-            If (Original_Status Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Status")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Status,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(27).Value = CType(ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1517,31 +905,8 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal ScreenName As String,  _
-                    ByVal Tester As String,  _
-                    ByVal Created As Date,  _
-                    ByVal LastModified As Date,  _
-                    ByVal EditSequence As Integer,  _
-                    ByVal DisplayOrder As Global.System.Nullable(Of Integer),  _
-                    ByVal Menu As String,  _
-                    ByVal SubMenu1 As String,  _
-                    ByVal SubMenu2 As String,  _
-                    ByVal ReadyToTest As Boolean,  _
-                    ByVal Status As String,  _
-                    ByVal Original_ID As Integer,  _
-                    ByVal Original_ScreenName As String,  _
-                    ByVal Original_Tester As String,  _
-                    ByVal Original_Created As Date,  _
-                    ByVal Original_LastModified As Date,  _
-                    ByVal Original_EditSequence As Integer,  _
-                    ByVal Original_DisplayOrder As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Menu As String,  _
-                    ByVal Original_SubMenu1 As String,  _
-                    ByVal Original_SubMenu2 As String,  _
-                    ByVal Original_ReadyToTest As Boolean,  _
-                    ByVal Original_Status As String) As Integer
-            Return Me.Update(ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder, Menu, SubMenu1, SubMenu2, ReadyToTest, Status, Original_ID, Original_ScreenName, Original_Tester, Original_Created, Original_LastModified, Original_EditSequence, Original_DisplayOrder, Original_Menu, Original_SubMenu1, Original_SubMenu2, Original_ReadyToTest, Original_Status, Original_ID)
+        Public Overloads Overridable Function Update(ByVal Original_Tester As String) As Integer
+            Return Me.Update(Original_Tester, Original_Tester)
         End Function
     End Class
     
@@ -1558,7 +923,7 @@ Namespace dsTestingHeaderTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _testingHeaderTableAdapter As TestingHeaderTableAdapter
+        Private _testersTableAdapter As TestersTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -1580,12 +945,12 @@ Namespace dsTestingHeaderTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property TestingHeaderTableAdapter() As TestingHeaderTableAdapter
+        Public Property TestersTableAdapter() As TestersTableAdapter
             Get
-                Return Me._testingHeaderTableAdapter
+                Return Me._testersTableAdapter
             End Get
             Set
-                Me._testingHeaderTableAdapter = value
+                Me._testersTableAdapter = value
             End Set
         End Property
         
@@ -1608,9 +973,9 @@ Namespace dsTestingHeaderTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._testingHeaderTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._testingHeaderTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._testingHeaderTableAdapter.Connection
+                If ((Not (Me._testersTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._testersTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._testersTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -1625,7 +990,7 @@ Namespace dsTestingHeaderTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
+                If (Not (Me._testersTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -1637,14 +1002,14 @@ Namespace dsTestingHeaderTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As dsTestingHeader, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As dsTesters, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.TestingHeader.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._testersTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Testers.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._testingHeaderTableAdapter.Update(updatedRows))
+                    result = (result + Me._testersTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -1656,13 +1021,13 @@ Namespace dsTestingHeaderTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As dsTestingHeader, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As dsTesters, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.TestingHeader.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._testersTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Testers.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._testingHeaderTableAdapter.Update(addedRows))
+                    result = (result + Me._testersTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -1674,13 +1039,13 @@ Namespace dsTestingHeaderTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As dsTestingHeader, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As dsTesters, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.TestingHeader.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._testersTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Testers.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._testingHeaderTableAdapter.Update(deletedRows))
+                    result = (result + Me._testersTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -1718,15 +1083,15 @@ Namespace dsTestingHeaderTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As dsTestingHeader) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As dsTesters) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._testingHeaderTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._testingHeaderTableAdapter.Connection) = false)) Then
+            If ((Not (Me._testersTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._testersTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -1762,13 +1127,13 @@ Namespace dsTestingHeaderTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._testingHeaderTableAdapter, Me._testingHeaderTableAdapter.Connection)
-                    Me._testingHeaderTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._testingHeaderTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._testingHeaderTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._testingHeaderTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._testingHeaderTableAdapter.Adapter)
+                If (Not (Me._testersTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._testersTableAdapter, Me._testersTableAdapter.Connection)
+                    Me._testersTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._testersTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._testersTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._testersTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._testersTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -1831,9 +1196,9 @@ Namespace dsTestingHeaderTableAdapters
                 If workConnOpened Then
                     workConnection.Close
                 End If
-                If (Not (Me._testingHeaderTableAdapter) Is Nothing) Then
-                    Me._testingHeaderTableAdapter.Connection = CType(revertConnections(Me._testingHeaderTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._testingHeaderTableAdapter.Transaction = Nothing
+                If (Not (Me._testersTableAdapter) Is Nothing) Then
+                    Me._testersTableAdapter.Connection = CType(revertConnections(Me._testersTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._testersTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

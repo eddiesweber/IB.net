@@ -68,8 +68,10 @@ Public Class frmConnectToServer
             If InStr(1, Server, "windows.net") > 0 Then
                 frmLogin.ShowDialog()
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+                connGlobal = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
             Else
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;Integrated Security=True"
+                connGlobal = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=IBGlobal"
             End If
 
             strLocation = "CCC3.0"
@@ -135,8 +137,10 @@ Public Class frmConnectToServer
             If InStr(1, Server, "windows.net") > 0 Then
                 frmLogin.ShowDialog()
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;User ID=" & Username & ";Password=" & Password
+                connGlobal = "Data Source=" & Server.Trim & ";Initial Catalog=IBGlobal;User ID=" & Username.Trim & ";Password=" & Password.Trim
             Else
                 ConfigCS = "Data Source=" & Server & ";Initial Catalog=IBGlobal;Integrated Security=True"
+                connGlobal = "Integrated Security=True;Initial Catalog=" & DBName.Trim & ";Data Source=IBGlobal"
             End If
 
             strLocation = "CAC10.0"

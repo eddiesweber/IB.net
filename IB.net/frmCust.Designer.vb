@@ -44,8 +44,6 @@ Partial Class frmCust
         Me.lblLabel = New System.Windows.Forms.Label()
         Me.lblLabel0 = New System.Windows.Forms.Label()
         Me.CustomerMasterTableAdapter = New IB.net.DS_CustomerMasterTableAdapters.CustomerMasterTableAdapter()
-        Me.C1SuperErrorProvider1 = New C1.Win.C1SuperTooltip.C1SuperErrorProvider(Me.components)
-        Me.C1SuperTooltip1 = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
         Me.cmdFind = New C1.Win.C1Input.C1Button()
         Me.cmdNew = New C1.Win.C1Input.C1Button()
         Me.cmdDelete = New C1.Win.C1Input.C1Button()
@@ -76,7 +74,6 @@ Partial Class frmCust
         Me.Line1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -279,15 +276,6 @@ Partial Class frmCust
         '
         Me.CustomerMasterTableAdapter.ClearBeforeFill = True
         '
-        'C1SuperErrorProvider1
-        '
-        Me.C1SuperErrorProvider1.ContainerControl = Me
-        Me.C1SuperErrorProvider1.ToolTip = Me.C1SuperTooltip1
-        '
-        'C1SuperTooltip1
-        '
-        Me.C1SuperTooltip1.Font = New System.Drawing.Font("Tahoma", 8.0!)
-        Me.C1SuperTooltip1.RightToLeft = System.Windows.Forms.RightToLeft.Inherit
         '
         'cmdFind
         '
@@ -715,7 +703,6 @@ Partial Class frmCust
         Me.ShowInTaskbar = False
         CType(Me.CustomerMasterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_CustomerMaster1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1SuperErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdFind, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).EndInit()
@@ -792,7 +779,6 @@ Partial Class frmCust
     Friend WithEvents txtData12 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtData17 As C1.Win.C1Input.C1TextBox
     Private WithEvents C1SuperErrorProvider1 As C1.Win.C1SuperTooltip.C1SuperErrorProvider
-    Private WithEvents C1SuperTooltip1 As C1.Win.C1SuperTooltip.C1SuperTooltip
     Friend WithEvents txtLastChanged As C1.Win.C1Input.C1TextBox
     Friend WithEvents ShapeContainer1 As PowerPacks.ShapeContainer
     Friend WithEvents Line1 As PowerPacks.LineShape
