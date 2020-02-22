@@ -1123,7 +1123,7 @@ Namespace dsTestingHeaderTableAdapters
                 "ce, @DisplayOrder, @Menu, @SubMenu1, @SubMenu2, @ReadyToTest, @Status);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
                 "ID, ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder, Menu,"& _ 
                 " SubMenu1, SubMenu2, ReadyToTest, Status FROM TestingHeader WHERE (ID = SCOPE_ID"& _ 
-                "ENTITY())"
+                "ENTITY()) ORDER BY DisplayOrder"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1152,7 +1152,7 @@ Namespace dsTestingHeaderTableAdapters
                 "Original_SubMenu2)) AND ([ReadyToTest] = @Original_ReadyToTest) AND ([Status] = "& _ 
                 "@Original_Status));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ScreenName, Tester, Created, LastModified, EditS"& _ 
                 "equence, DisplayOrder, Menu, SubMenu1, SubMenu2, ReadyToTest, Status FROM Testin"& _ 
-                "gHeader WHERE (ID = @ID)"
+                "gHeader WHERE (ID = @ID) ORDER BY DisplayOrder"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1198,7 +1198,8 @@ Namespace dsTestingHeaderTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, ScreenName, Tester, Created, LastModified, EditSequence, DisplayOrder,"& _ 
-                " Menu, SubMenu1, SubMenu2, ReadyToTest, Status FROM dbo.TestingHeader"
+                " Menu, SubMenu1, SubMenu2, ReadyToTest, Status FROM dbo.TestingHeader ORDER By D"& _ 
+                "isplayOrder"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

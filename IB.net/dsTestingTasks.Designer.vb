@@ -295,8 +295,6 @@ Partial Public Class dsTestingTasks
         
         Private columnScreenName As Global.System.Data.DataColumn
         
-        Private columnDateLastTested As Global.System.Data.DataColumn
-        
         Private columnTester As Global.System.Data.DataColumn
         
         Private columnTask As Global.System.Data.DataColumn
@@ -390,14 +388,6 @@ Partial Public Class dsTestingTasks
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DateLastTestedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDateLastTested
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property TesterColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnTester
@@ -465,9 +455,9 @@ Partial Public Class dsTestingTasks
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddTestingTasksRow(ByVal TestingHeaderID As Integer, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal ScreenName As String, ByVal DateLastTested As Date, ByVal Tester As String, ByVal Task As String, ByVal Status As String, ByVal Comments As String) As TestingTasksRow
+        Public Overloads Function AddTestingTasksRow(ByVal TestingHeaderID As Integer, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal ScreenName As String, ByVal Tester As String, ByVal Task As String, ByVal Status As String, ByVal Comments As String) As TestingTasksRow
             Dim rowTestingTasksRow As TestingTasksRow = CType(Me.NewRow,TestingTasksRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, TestingHeaderID, Created, LastModified, EditSequence, ScreenName, DateLastTested, Tester, Task, Status, Comments}
+            Dim columnValuesArray() As Object = New Object() {Nothing, TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments}
             rowTestingTasksRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTestingTasksRow)
             Return rowTestingTasksRow
@@ -502,7 +492,6 @@ Partial Public Class dsTestingTasks
             Me.columnLastModified = MyBase.Columns("LastModified")
             Me.columnEditSequence = MyBase.Columns("EditSequence")
             Me.columnScreenName = MyBase.Columns("ScreenName")
-            Me.columnDateLastTested = MyBase.Columns("DateLastTested")
             Me.columnTester = MyBase.Columns("Tester")
             Me.columnTask = MyBase.Columns("Task")
             Me.columnStatus = MyBase.Columns("Status")
@@ -524,8 +513,6 @@ Partial Public Class dsTestingTasks
             MyBase.Columns.Add(Me.columnEditSequence)
             Me.columnScreenName = New Global.System.Data.DataColumn("ScreenName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnScreenName)
-            Me.columnDateLastTested = New Global.System.Data.DataColumn("DateLastTested", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDateLastTested)
             Me.columnTester = New Global.System.Data.DataColumn("Tester", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTester)
             Me.columnTask = New Global.System.Data.DataColumn("Task", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -547,7 +534,6 @@ Partial Public Class dsTestingTasks
             Me.columnEditSequence.AllowDBNull = false
             Me.columnScreenName.AllowDBNull = false
             Me.columnScreenName.MaxLength = 50
-            Me.columnDateLastTested.AllowDBNull = false
             Me.columnTester.AllowDBNull = false
             Me.columnTester.MaxLength = 25
             Me.columnTask.AllowDBNull = false
@@ -762,17 +748,6 @@ Partial Public Class dsTestingTasks
             End Get
             Set
                 Me(Me.tableTestingTasks.ScreenNameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DateLastTested() As Date
-            Get
-                Return CType(Me(Me.tableTestingTasks.DateLastTestedColumn),Date)
-            End Get
-            Set
-                Me(Me.tableTestingTasks.DateLastTestedColumn) = value
             End Set
         End Property
         
@@ -1009,7 +984,6 @@ Namespace dsTestingTasksTableAdapters
             tableMapping.ColumnMappings.Add("LastModified", "LastModified")
             tableMapping.ColumnMappings.Add("EditSequence", "EditSequence")
             tableMapping.ColumnMappings.Add("ScreenName", "ScreenName")
-            tableMapping.ColumnMappings.Add("DateLastTested", "DateLastTested")
             tableMapping.ColumnMappings.Add("Tester", "Tester")
             tableMapping.ColumnMappings.Add("Task", "Task")
             tableMapping.ColumnMappings.Add("Status", "Status")
@@ -1017,13 +991,12 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TestingTasks] WHERE (([ID] = @Original_ID) AND ([TestingHeader"& _ 
-                "ID] = @Original_TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastM"& _ 
-                "odified] = @Original_LastModified) AND ([EditSequence] = @Original_EditSequence)"& _ 
-                " AND ([ScreenName] = @Original_ScreenName) AND ([DateLastTested] = @Original_Dat"& _ 
-                "eLastTested) AND ([Tester] = @Original_Tester) AND ([Task] = @Original_Task) AND"& _ 
-                " ([Status] = @Original_Status) AND ((@IsNull_Comments = 1 AND [Comments] IS NULL"& _ 
-                ") OR ([Comments] = @Original_Comments)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [TestingTasks] WHERE (([ID] = @Original_ID) AND ([TestingHeaderID] = "& _ 
+                "@Original_TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastModifie"& _ 
+                "d] = @Original_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ("& _ 
+                "[ScreenName] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Tas"& _ 
+                "k] = @Original_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments = "& _ 
+                "1 AND [Comments] IS NULL) OR ([Comments] = @Original_Comments)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1031,7 +1004,6 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateLastTested", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateLastTested", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Task", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Task", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1039,44 +1011,41 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Comments", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Comments", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TestingTasks] ([TestingHeaderID], [Created], [LastModified], ["& _ 
-                "EditSequence], [ScreenName], [DateLastTested], [Tester], [Task], [Status], [Comm"& _ 
-                "ents]) VALUES (@TestingHeaderID, @Created, @LastModified, @EditSequence, @Screen"& _ 
-                "Name, @DateLastTested, @Tester, @Task, @Status, @Comments);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingH"& _ 
-                "eaderID, Created, LastModified, EditSequence, ScreenName, DateLastTested, Tester"& _ 
-                ", Task, Status, Comments FROM TestingTasks WHERE (ID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [TestingTasks] ([TestingHeaderID], [Created], [LastModified], [EditSe"& _ 
+                "quence], [ScreenName], [Tester], [Task], [Status], [Comments]) VALUES (@TestingH"& _ 
+                "eaderID, @Created, @LastModified, @EditSequence, @ScreenName, @Tester, @Task, @S"& _ 
+                "tatus, @Comments);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingHeaderID, Created, LastModified, EditSeque"& _ 
+                "nce, ScreenName, Tester, Task, Status, Comments FROM TestingTasks WHERE (ID = SC"& _ 
+                "OPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateLastTested", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateLastTested", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Task", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Task", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Comments", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Comments", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TestingTasks] SET [TestingHeaderID] = @TestingHeaderID, [Created] ="& _ 
-                " @Created, [LastModified] = @LastModified, [EditSequence] = @EditSequence, [Scre"& _ 
-                "enName] = @ScreenName, [DateLastTested] = @DateLastTested, [Tester] = @Tester, ["& _ 
-                "Task] = @Task, [Status] = @Status, [Comments] = @Comments WHERE (([ID] = @Origin"& _ 
-                "al_ID) AND ([TestingHeaderID] = @Original_TestingHeaderID) AND ([Created] = @Ori"& _ 
-                "ginal_Created) AND ([LastModified] = @Original_LastModified) AND ([EditSequence]"& _ 
-                " = @Original_EditSequence) AND ([ScreenName] = @Original_ScreenName) AND ([DateL"& _ 
-                "astTested] = @Original_DateLastTested) AND ([Tester] = @Original_Tester) AND ([T"& _ 
-                "ask] = @Original_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments "& _ 
-                "= 1 AND [Comments] IS NULL) OR ([Comments] = @Original_Comments)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, "& _ 
-                "TestingHeaderID, Created, LastModified, EditSequence, ScreenName, DateLastTested"& _ 
-                ", Tester, Task, Status, Comments FROM TestingTasks WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [TestingTasks] SET [TestingHeaderID] = @TestingHeaderID, [Created] = @Crea"& _ 
+                "ted, [LastModified] = @LastModified, [EditSequence] = @EditSequence, [ScreenName"& _ 
+                "] = @ScreenName, [Tester] = @Tester, [Task] = @Task, [Status] = @Status, [Commen"& _ 
+                "ts] = @Comments WHERE (([ID] = @Original_ID) AND ([TestingHeaderID] = @Original_"& _ 
+                "TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastModified] = @Orig"& _ 
+                "inal_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ([ScreenNam"& _ 
+                "e] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Task] = @Orig"& _ 
+                "inal_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments = 1 AND [Com"& _ 
+                "ments] IS NULL) OR ([Comments] = @Original_Comments)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingHeade"& _ 
+                "rID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comm"& _ 
+                "ents FROM TestingTasks WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DateLastTested", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateLastTested", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Task", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Task", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1087,7 +1056,6 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastModified", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastModified", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EditSequence", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EditSequence", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ScreenName", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ScreenName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DateLastTested", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DateLastTested", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tester", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tester", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Task", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Task", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1109,9 +1077,9 @@ Namespace dsTestingTasksTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Date"& _ 
-                "LastTested, Tester, Task, Status, Comments FROM dbo.TestingTasks WHERE TestingHe"& _ 
-                "aderID = @TestingHeaderID"
+            Me._commandCollection(0).CommandText = "SELECT ID, TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Test"& _ 
+                "er, Task, Status, Comments FROM TestingTasks WHERE (TestingHeaderID = @TestingHe"& _ 
+                "aderID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -1174,7 +1142,7 @@ Namespace dsTestingTasksTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_TestingHeaderID As Integer, ByVal Original_Created As Date, ByVal Original_LastModified As Date, ByVal Original_EditSequence As Integer, ByVal Original_ScreenName As String, ByVal Original_DateLastTested As Date, ByVal Original_Tester As String, ByVal Original_Task As String, ByVal Original_Status As String, ByVal Original_Comments As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_TestingHeaderID As Integer, ByVal Original_Created As Date, ByVal Original_LastModified As Date, ByVal Original_EditSequence As Integer, ByVal Original_ScreenName As String, ByVal Original_Tester As String, ByVal Original_Task As String, ByVal Original_Status As String, ByVal Original_Comments As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_TestingHeaderID,Integer)
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Created,Date)
@@ -1185,28 +1153,27 @@ Namespace dsTestingTasksTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_ScreenName,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_DateLastTested,Date)
             If (Original_Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tester")
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Tester,String)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Tester,String)
             End If
             If (Original_Task Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Task")
             Else
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Task,String)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Task,String)
             End If
             If (Original_Status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Status")
             Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Status,String)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Status,String)
             End If
             If (Original_Comments Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Comments,String)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Comments,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1227,7 +1194,7 @@ Namespace dsTestingTasksTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal TestingHeaderID As Integer, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal ScreenName As String, ByVal DateLastTested As Date, ByVal Tester As String, ByVal Task As String, ByVal Status As String, ByVal Comments As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal TestingHeaderID As Integer, ByVal Created As Date, ByVal LastModified As Date, ByVal EditSequence As Integer, ByVal ScreenName As String, ByVal Tester As String, ByVal Task As String, ByVal Status As String, ByVal Comments As String) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(TestingHeaderID,Integer)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Created,Date)
             Me.Adapter.InsertCommand.Parameters(2).Value = CType(LastModified,Date)
@@ -1237,26 +1204,25 @@ Namespace dsTestingTasksTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = CType(ScreenName,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(5).Value = CType(DateLastTested,Date)
             If (Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Tester")
             Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Tester,String)
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Tester,String)
             End If
             If (Task Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Task")
             Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Task,String)
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Task,String)
             End If
             If (Status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Status")
             Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Status,String)
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Status,String)
             End If
             If (Comments Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Comments,String)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Comments,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1283,7 +1249,6 @@ Namespace dsTestingTasksTableAdapters
                     ByVal LastModified As Date,  _
                     ByVal EditSequence As Integer,  _
                     ByVal ScreenName As String,  _
-                    ByVal DateLastTested As Date,  _
                     ByVal Tester As String,  _
                     ByVal Task As String,  _
                     ByVal Status As String,  _
@@ -1294,7 +1259,6 @@ Namespace dsTestingTasksTableAdapters
                     ByVal Original_LastModified As Date,  _
                     ByVal Original_EditSequence As Integer,  _
                     ByVal Original_ScreenName As String,  _
-                    ByVal Original_DateLastTested As Date,  _
                     ByVal Original_Tester As String,  _
                     ByVal Original_Task As String,  _
                     ByVal Original_Status As String,  _
@@ -1309,61 +1273,59 @@ Namespace dsTestingTasksTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = CType(ScreenName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(DateLastTested,Date)
             If (Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Tester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Tester,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Tester,String)
             End If
             If (Task Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Task")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Task,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Task,String)
             End If
             If (Status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Status")
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Status,String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Status,String)
             End If
             If (Comments Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Comments,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Comments,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_TestingHeaderID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Created,Date)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_LastModified,Date)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_EditSequence,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_TestingHeaderID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Created,Date)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_LastModified,Date)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_EditSequence,Integer)
             If (Original_ScreenName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ScreenName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ScreenName,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_ScreenName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_DateLastTested,Date)
             If (Original_Tester Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Tester")
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Tester,String)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Tester,String)
             End If
             If (Original_Task Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Task")
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Task,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Task,String)
             End If
             If (Original_Status Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Status")
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Status,String)
             End If
             If (Original_Comments Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Comments,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Comments,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1389,7 +1351,6 @@ Namespace dsTestingTasksTableAdapters
                     ByVal LastModified As Date,  _
                     ByVal EditSequence As Integer,  _
                     ByVal ScreenName As String,  _
-                    ByVal DateLastTested As Date,  _
                     ByVal Tester As String,  _
                     ByVal Task As String,  _
                     ByVal Status As String,  _
@@ -1400,12 +1361,11 @@ Namespace dsTestingTasksTableAdapters
                     ByVal Original_LastModified As Date,  _
                     ByVal Original_EditSequence As Integer,  _
                     ByVal Original_ScreenName As String,  _
-                    ByVal Original_DateLastTested As Date,  _
                     ByVal Original_Tester As String,  _
                     ByVal Original_Task As String,  _
                     ByVal Original_Status As String,  _
                     ByVal Original_Comments As String) As Integer
-            Return Me.Update(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, DateLastTested, Tester, Task, Status, Comments, Original_ID, Original_TestingHeaderID, Original_Created, Original_LastModified, Original_EditSequence, Original_ScreenName, Original_DateLastTested, Original_Tester, Original_Task, Original_Status, Original_Comments, Original_ID)
+            Return Me.Update(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments, Original_ID, Original_TestingHeaderID, Original_Created, Original_LastModified, Original_EditSequence, Original_ScreenName, Original_Tester, Original_Task, Original_Status, Original_Comments, Original_ID)
         End Function
     End Class
     

@@ -12,7 +12,12 @@
         Dim CurTask As Integer
 
         TestersTableAdapter.Connection.ConnectionString = connGlobal
-        Me.TestersTableAdapter.Fill(DsTesters.Testers)
+        TestersTableAdapter.Fill(DsTesters.Testers)
+        cmbTester.MaxDropDownItems = TestersBindingSource.Count
+
+        TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
+        TestingStatusTableAdapter.Fill(DsTestingStatus.TestingStatus)
+        cmbTester.MaxDropDownItems = TestingStatusBindingSource.Count
 
         If IsNumeric(lblCurTaskNumber.Text) Then
             CurTask = CLng(lblCurTaskNumber.Text)

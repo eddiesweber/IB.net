@@ -28,41 +28,39 @@ Partial Class frmTestingMain
         Dim SubMenu1Label As System.Windows.Forms.Label
         Dim SubMenu2Label As System.Windows.Forms.Label
         Dim ReadyToTestLabel As System.Windows.Forms.Label
-        Dim Style21 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style22 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style23 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style24 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style25 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style26 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style121 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style122 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style123 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style124 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style125 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style126 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTestingMain))
-        Dim Style27 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style28 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style29 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style30 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style31 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style32 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style33 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style34 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style35 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style36 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style37 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style38 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style39 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style40 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style127 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style128 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style129 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style130 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style131 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style132 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style133 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style134 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style135 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style136 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style137 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style138 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style139 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style140 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Me.tdrpTesters = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.TestersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTesters = New IB.net.dsTesters()
         Me.tdrpStatus = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.TestingStatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTestingStatus = New IB.net.dsTestingStatus()
-        Me.cmdGetForms = New C1.Win.C1Input.C1Button()
-        Me.cmdExit = New C1.Win.C1Input.C1Button()
         Me.txtMenu = New C1.Win.C1Input.C1TextBox()
         Me.TestingHeaderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTestingHeader = New IB.net.dsTestingHeader()
-        Me.C1TextBox1 = New C1.Win.C1Input.C1TextBox()
-        Me.C1TextBox2 = New C1.Win.C1Input.C1TextBox()
-        Me.C1TextBox3 = New C1.Win.C1Input.C1TextBox()
+        Me.txtSubMenu1 = New C1.Win.C1Input.C1TextBox()
+        Me.txtSubMenu2 = New C1.Win.C1Input.C1TextBox()
+        Me.txtScreenName = New C1.Win.C1Input.C1TextBox()
         Me.lstTesters = New C1.Win.C1List.C1List()
         Me.lstStatus = New C1.Win.C1List.C1List()
         Me.chkReadyToTest = New C1.Win.C1Input.C1CheckBox()
@@ -84,9 +82,6 @@ Partial Class frmTestingMain
         Me.TestingHeaderBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.TestersTableAdapter = New IB.net.dsTestersTableAdapters.TestersTableAdapter()
         Me.TestingStatusTableAdapter = New IB.net.dsTestingStatusTableAdapters.TestingStatusTableAdapter()
-        Me.DsTestingTasks = New IB.net.dsTestingTasks()
-        Me.TestingTasksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TestingTasksTableAdapter = New IB.net.dsTestingTasksTableAdapters.TestingTasksTableAdapter()
         Me.grdTestingHeader = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         ScreenNameLabel = New System.Windows.Forms.Label()
         MenuLabel = New System.Windows.Forms.Label()
@@ -99,72 +94,68 @@ Partial Class frmTestingMain
         CType(Me.tdrpStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TestingStatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsTestingStatus, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmdGetForms, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TestingHeaderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsTestingHeader, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1TextBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSubMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtSubMenu2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtScreenName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkReadyToTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdShowTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TestingHeaderBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TestingHeaderBindingNavigator.SuspendLayout()
-        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdTestingHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ScreenNameLabel
         '
         ScreenNameLabel.AutoSize = True
-        ScreenNameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ScreenNameLabel.Location = New System.Drawing.Point(10, 37)
+        ScreenNameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ScreenNameLabel.Location = New System.Drawing.Point(10, 39)
         ScreenNameLabel.Name = "ScreenNameLabel"
-        ScreenNameLabel.Size = New System.Drawing.Size(98, 17)
-        ScreenNameLabel.TabIndex = 13
+        ScreenNameLabel.Size = New System.Drawing.Size(110, 20)
+        ScreenNameLabel.TabIndex = 9
         ScreenNameLabel.Text = "Screen Name:"
         '
         'MenuLabel
         '
         MenuLabel.AutoSize = True
-        MenuLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        MenuLabel.Location = New System.Drawing.Point(220, 37)
+        MenuLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        MenuLabel.Location = New System.Drawing.Point(278, 37)
         MenuLabel.Name = "MenuLabel"
-        MenuLabel.Size = New System.Drawing.Size(47, 17)
+        MenuLabel.Size = New System.Drawing.Size(53, 20)
         MenuLabel.TabIndex = 15
         MenuLabel.Text = "Menu:"
         '
         'SubMenu1Label
         '
         SubMenu1Label.AutoSize = True
-        SubMenu1Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        SubMenu1Label.Location = New System.Drawing.Point(183, 62)
+        SubMenu1Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        SubMenu1Label.Location = New System.Drawing.Point(241, 62)
         SubMenu1Label.Name = "SubMenu1Label"
-        SubMenu1Label.Size = New System.Drawing.Size(84, 17)
+        SubMenu1Label.Size = New System.Drawing.Size(91, 20)
         SubMenu1Label.TabIndex = 16
-        SubMenu1Label.Text = "Sub Menu1:"
+        SubMenu1Label.Text = "Submenu1:"
         '
         'SubMenu2Label
         '
         SubMenu2Label.AutoSize = True
-        SubMenu2Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        SubMenu2Label.Location = New System.Drawing.Point(183, 87)
+        SubMenu2Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        SubMenu2Label.Location = New System.Drawing.Point(241, 87)
         SubMenu2Label.Name = "SubMenu2Label"
-        SubMenu2Label.Size = New System.Drawing.Size(84, 17)
+        SubMenu2Label.Size = New System.Drawing.Size(91, 20)
         SubMenu2Label.TabIndex = 17
-        SubMenu2Label.Text = "Sub Menu2:"
+        SubMenu2Label.Text = "Submenu2:"
         '
         'ReadyToTestLabel
         '
         ReadyToTestLabel.AutoSize = True
-        ReadyToTestLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ReadyToTestLabel.Location = New System.Drawing.Point(10, 85)
+        ReadyToTestLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ReadyToTestLabel.Location = New System.Drawing.Point(10, 87)
         ReadyToTestLabel.Name = "ReadyToTestLabel"
-        ReadyToTestLabel.Size = New System.Drawing.Size(106, 17)
+        ReadyToTestLabel.Size = New System.Drawing.Size(116, 20)
         ReadyToTestLabel.TabIndex = 19
         ReadyToTestLabel.Text = "Ready To Test:"
         '
@@ -174,30 +165,30 @@ Partial Class frmTestingMain
         Me.tdrpTesters.AllowColSelect = True
         Me.tdrpTesters.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.tdrpTesters.AlternatingRows = False
-        Me.tdrpTesters.CaptionStyle = Style21
+        Me.tdrpTesters.CaptionStyle = Style121
         Me.tdrpTesters.ColumnCaptionHeight = 17
         Me.tdrpTesters.ColumnFooterHeight = 17
         Me.tdrpTesters.ColumnHeaders = False
-        Me.tdrpTesters.ColumnSelectorStyle = Style22
+        Me.tdrpTesters.ColumnSelectorStyle = Style122
         Me.tdrpTesters.DataSource = Me.TestersBindingSource
         Me.tdrpTesters.DisplayMember = "Tester"
-        Me.tdrpTesters.EvenRowStyle = Style23
+        Me.tdrpTesters.EvenRowStyle = Style123
         Me.tdrpTesters.FetchRowStyles = False
-        Me.tdrpTesters.FooterStyle = Style24
-        Me.tdrpTesters.HeadingStyle = Style25
-        Me.tdrpTesters.HighLightRowStyle = Style26
+        Me.tdrpTesters.FooterStyle = Style124
+        Me.tdrpTesters.HeadingStyle = Style125
+        Me.tdrpTesters.HighLightRowStyle = Style126
         Me.tdrpTesters.Images.Add(CType(resources.GetObject("tdrpTesters.Images"), System.Drawing.Image))
         Me.tdrpTesters.Location = New System.Drawing.Point(465, 62)
         Me.tdrpTesters.Name = "tdrpTesters"
-        Me.tdrpTesters.OddRowStyle = Style27
-        Me.tdrpTesters.RecordSelectorStyle = Style28
+        Me.tdrpTesters.OddRowStyle = Style127
+        Me.tdrpTesters.RecordSelectorStyle = Style128
         Me.tdrpTesters.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.tdrpTesters.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
-        Me.tdrpTesters.RowSelectorStyle = Style29
+        Me.tdrpTesters.RowSelectorStyle = Style129
         Me.tdrpTesters.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.tdrpTesters.ScrollTips = False
         Me.tdrpTesters.Size = New System.Drawing.Size(100, 89)
-        Me.tdrpTesters.Style = Style30
+        Me.tdrpTesters.Style = Style130
         Me.tdrpTesters.TabIndex = 5
         Me.tdrpTesters.TabStop = False
         Me.tdrpTesters.UseCompatibleTextRendering = False
@@ -221,30 +212,30 @@ Partial Class frmTestingMain
         Me.tdrpStatus.AllowColSelect = True
         Me.tdrpStatus.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.tdrpStatus.AlternatingRows = False
-        Me.tdrpStatus.CaptionStyle = Style31
+        Me.tdrpStatus.CaptionStyle = Style131
         Me.tdrpStatus.ColumnCaptionHeight = 17
         Me.tdrpStatus.ColumnFooterHeight = 17
         Me.tdrpStatus.ColumnHeaders = False
-        Me.tdrpStatus.ColumnSelectorStyle = Style32
+        Me.tdrpStatus.ColumnSelectorStyle = Style132
         Me.tdrpStatus.DataSource = Me.TestingStatusBindingSource
         Me.tdrpStatus.DisplayMember = "Status"
-        Me.tdrpStatus.EvenRowStyle = Style33
+        Me.tdrpStatus.EvenRowStyle = Style133
         Me.tdrpStatus.FetchRowStyles = False
-        Me.tdrpStatus.FooterStyle = Style34
-        Me.tdrpStatus.HeadingStyle = Style35
-        Me.tdrpStatus.HighLightRowStyle = Style36
+        Me.tdrpStatus.FooterStyle = Style134
+        Me.tdrpStatus.HeadingStyle = Style135
+        Me.tdrpStatus.HighLightRowStyle = Style136
         Me.tdrpStatus.Images.Add(CType(resources.GetObject("tdrpStatus.Images"), System.Drawing.Image))
         Me.tdrpStatus.Location = New System.Drawing.Point(596, 62)
         Me.tdrpStatus.Name = "tdrpStatus"
-        Me.tdrpStatus.OddRowStyle = Style37
-        Me.tdrpStatus.RecordSelectorStyle = Style38
+        Me.tdrpStatus.OddRowStyle = Style137
+        Me.tdrpStatus.RecordSelectorStyle = Style138
         Me.tdrpStatus.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.tdrpStatus.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
-        Me.tdrpStatus.RowSelectorStyle = Style39
+        Me.tdrpStatus.RowSelectorStyle = Style139
         Me.tdrpStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.tdrpStatus.ScrollTips = False
         Me.tdrpStatus.Size = New System.Drawing.Size(100, 89)
-        Me.tdrpStatus.Style = Style40
+        Me.tdrpStatus.Style = Style140
         Me.tdrpStatus.TabIndex = 6
         Me.tdrpStatus.TabStop = False
         Me.tdrpStatus.UseCompatibleTextRendering = False
@@ -262,41 +253,15 @@ Partial Class frmTestingMain
         Me.DsTestingStatus.DataSetName = "dsTestingStatus"
         Me.DsTestingStatus.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'cmdGetForms
-        '
-        Me.cmdGetForms.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdGetForms.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGetForms.Location = New System.Drawing.Point(726, 117)
-        Me.cmdGetForms.Name = "cmdGetForms"
-        Me.cmdGetForms.Size = New System.Drawing.Size(100, 25)
-        Me.cmdGetForms.TabIndex = 12
-        Me.cmdGetForms.Text = "Get Forms"
-        Me.cmdGetForms.UseVisualStyleBackColor = True
-        Me.cmdGetForms.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdGetForms.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'cmdExit
-        '
-        Me.cmdExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdExit.Location = New System.Drawing.Point(726, 32)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(100, 25)
-        Me.cmdExit.TabIndex = 11
-        Me.cmdExit.Text = "Exit"
-        Me.cmdExit.UseVisualStyleBackColor = True
-        Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdExit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
         'txtMenu
         '
         Me.txtMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtMenu.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "Menu", True))
-        Me.txtMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMenu.Location = New System.Drawing.Point(270, 35)
+        Me.txtMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMenu.Location = New System.Drawing.Point(330, 35)
         Me.txtMenu.Name = "txtMenu"
-        Me.txtMenu.Size = New System.Drawing.Size(150, 21)
-        Me.txtMenu.TabIndex = 21
+        Me.txtMenu.Size = New System.Drawing.Size(175, 24)
+        Me.txtMenu.TabIndex = 1
         Me.txtMenu.Tag = Nothing
         Me.txtMenu.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtMenu.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -311,44 +276,44 @@ Partial Class frmTestingMain
         Me.DsTestingHeader.DataSetName = "dsTestingHeader"
         Me.DsTestingHeader.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'C1TextBox1
+        'txtSubMenu1
         '
-        Me.C1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "SubMenu1", True))
-        Me.C1TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1TextBox1.Location = New System.Drawing.Point(270, 60)
-        Me.C1TextBox1.Name = "C1TextBox1"
-        Me.C1TextBox1.Size = New System.Drawing.Size(150, 21)
-        Me.C1TextBox1.TabIndex = 22
-        Me.C1TextBox1.Tag = Nothing
-        Me.C1TextBox1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtSubMenu1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSubMenu1.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "SubMenu1", True))
+        Me.txtSubMenu1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSubMenu1.Location = New System.Drawing.Point(330, 60)
+        Me.txtSubMenu1.Name = "txtSubMenu1"
+        Me.txtSubMenu1.Size = New System.Drawing.Size(175, 24)
+        Me.txtSubMenu1.TabIndex = 2
+        Me.txtSubMenu1.Tag = Nothing
+        Me.txtSubMenu1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtSubMenu1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'C1TextBox2
+        'txtSubMenu2
         '
-        Me.C1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "SubMenu2", True))
-        Me.C1TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1TextBox2.Location = New System.Drawing.Point(270, 85)
-        Me.C1TextBox2.Name = "C1TextBox2"
-        Me.C1TextBox2.Size = New System.Drawing.Size(150, 21)
-        Me.C1TextBox2.TabIndex = 23
-        Me.C1TextBox2.Tag = Nothing
-        Me.C1TextBox2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtSubMenu2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSubMenu2.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "SubMenu2", True))
+        Me.txtSubMenu2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSubMenu2.Location = New System.Drawing.Point(330, 85)
+        Me.txtSubMenu2.Name = "txtSubMenu2"
+        Me.txtSubMenu2.Size = New System.Drawing.Size(175, 24)
+        Me.txtSubMenu2.TabIndex = 3
+        Me.txtSubMenu2.Tag = Nothing
+        Me.txtSubMenu2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtSubMenu2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'C1TextBox3
+        'txtScreenName
         '
-        Me.C1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.C1TextBox3.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "ScreenName", True))
-        Me.C1TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1TextBox3.Location = New System.Drawing.Point(10, 55)
-        Me.C1TextBox3.Name = "C1TextBox3"
-        Me.C1TextBox3.Size = New System.Drawing.Size(150, 21)
-        Me.C1TextBox3.TabIndex = 24
-        Me.C1TextBox3.Tag = Nothing
-        Me.C1TextBox3.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.C1TextBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtScreenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtScreenName.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "ScreenName", True))
+        Me.txtScreenName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtScreenName.Location = New System.Drawing.Point(10, 60)
+        Me.txtScreenName.Name = "txtScreenName"
+        Me.txtScreenName.Size = New System.Drawing.Size(225, 24)
+        Me.txtScreenName.TabIndex = 0
+        Me.txtScreenName.Tag = Nothing
+        Me.txtScreenName.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtScreenName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'lstTesters
         '
@@ -358,9 +323,10 @@ Partial Class frmTestingMain
         Me.lstTesters.ColumnWidth = 100
         Me.lstTesters.DataSource = Me.TestersBindingSource
         Me.lstTesters.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstTesters.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstTesters.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstTesters.Images.Add(CType(resources.GetObject("lstTesters.Images"), System.Drawing.Image))
-        Me.lstTesters.Location = New System.Drawing.Point(440, 35)
+        Me.lstTesters.ItemHeight = 18
+        Me.lstTesters.Location = New System.Drawing.Point(515, 35)
         Me.lstTesters.MatchEntryTimeout = CType(2000, Long)
         Me.lstTesters.Name = "lstTesters"
         Me.lstTesters.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -370,8 +336,8 @@ Partial Class frmTestingMain
         Me.lstTesters.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstTesters.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstTesters.ShowHeaderCheckBox = False
-        Me.lstTesters.Size = New System.Drawing.Size(125, 98)
-        Me.lstTesters.TabIndex = 29
+        Me.lstTesters.Size = New System.Drawing.Size(125, 105)
+        Me.lstTesters.TabIndex = 4
         Me.lstTesters.Text = "C1List1"
         Me.lstTesters.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
         Me.lstTesters.PropBag = resources.GetString("lstTesters.PropBag")
@@ -384,9 +350,10 @@ Partial Class frmTestingMain
         Me.lstStatus.ColumnWidth = 100
         Me.lstStatus.DataSource = Me.TestingStatusBindingSource
         Me.lstStatus.DeadAreaBackColor = System.Drawing.SystemColors.ControlDark
-        Me.lstStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstStatus.Images.Add(CType(resources.GetObject("lstStatus.Images"), System.Drawing.Image))
-        Me.lstStatus.Location = New System.Drawing.Point(571, 35)
+        Me.lstStatus.ItemHeight = 18
+        Me.lstStatus.Location = New System.Drawing.Point(647, 35)
         Me.lstStatus.MatchEntryTimeout = CType(2000, Long)
         Me.lstStatus.Name = "lstStatus"
         Me.lstStatus.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -396,8 +363,8 @@ Partial Class frmTestingMain
         Me.lstStatus.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.lstStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstStatus.ShowHeaderCheckBox = False
-        Me.lstStatus.Size = New System.Drawing.Size(125, 98)
-        Me.lstStatus.TabIndex = 30
+        Me.lstStatus.Size = New System.Drawing.Size(125, 105)
+        Me.lstStatus.TabIndex = 5
         Me.lstStatus.Text = "C1List2"
         Me.lstStatus.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
         Me.lstStatus.PropBag = resources.GetString("lstStatus.PropBag")
@@ -408,7 +375,7 @@ Partial Class frmTestingMain
         Me.chkReadyToTest.BorderColor = System.Drawing.Color.Transparent
         Me.chkReadyToTest.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.chkReadyToTest.ForeColor = System.Drawing.Color.Black
-        Me.chkReadyToTest.Location = New System.Drawing.Point(118, 83)
+        Me.chkReadyToTest.Location = New System.Drawing.Point(130, 86)
         Me.chkReadyToTest.Name = "chkReadyToTest"
         Me.chkReadyToTest.Padding = New System.Windows.Forms.Padding(1)
         Me.chkReadyToTest.Size = New System.Drawing.Size(23, 24)
@@ -422,10 +389,10 @@ Partial Class frmTestingMain
         '
         Me.cmdShowTasks.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdShowTasks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdShowTasks.Location = New System.Drawing.Point(-48, 117)
+        Me.cmdShowTasks.Location = New System.Drawing.Point(10, 117)
         Me.cmdShowTasks.Name = "cmdShowTasks"
-        Me.cmdShowTasks.Size = New System.Drawing.Size(408, 25)
-        Me.cmdShowTasks.TabIndex = 31
+        Me.cmdShowTasks.Size = New System.Drawing.Size(495, 25)
+        Me.cmdShowTasks.TabIndex = 6
         Me.cmdShowTasks.Text = "Show tasks for screen "
         Me.cmdShowTasks.UseVisualStyleBackColor = True
         Me.cmdShowTasks.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -455,8 +422,8 @@ Partial Class frmTestingMain
         Me.TestingHeaderBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.TestingHeaderBindingNavigator.Name = "TestingHeaderBindingNavigator"
         Me.TestingHeaderBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.TestingHeaderBindingNavigator.Size = New System.Drawing.Size(832, 25)
-        Me.TestingHeaderBindingNavigator.TabIndex = 32
+        Me.TestingHeaderBindingNavigator.Size = New System.Drawing.Size(784, 25)
+        Me.TestingHeaderBindingNavigator.TabIndex = 8
         Me.TestingHeaderBindingNavigator.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem
@@ -561,20 +528,6 @@ Partial Class frmTestingMain
         '
         Me.TestingStatusTableAdapter.ClearBeforeFill = True
         '
-        'DsTestingTasks
-        '
-        Me.DsTestingTasks.DataSetName = "dsTestingTasks"
-        Me.DsTestingTasks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TestingTasksBindingSource
-        '
-        Me.TestingTasksBindingSource.DataMember = "TestingTasks"
-        Me.TestingTasksBindingSource.DataSource = Me.DsTestingTasks
-        '
-        'TestingTasksTableAdapter
-        '
-        Me.TestingTasksTableAdapter.ClearBeforeFill = True
-        '
         'grdTestingHeader
         '
         Me.grdTestingHeader.AllowAddNew = True
@@ -585,17 +538,17 @@ Partial Class frmTestingMain
         Me.grdTestingHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdTestingHeader.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdTestingHeader.Images.Add(CType(resources.GetObject("grdTestingHeader.Images"), System.Drawing.Image))
-        Me.grdTestingHeader.Location = New System.Drawing.Point(13, 148)
+        Me.grdTestingHeader.Location = New System.Drawing.Point(10, 148)
         Me.grdTestingHeader.Name = "grdTestingHeader"
         Me.grdTestingHeader.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdTestingHeader.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdTestingHeader.PreviewInfo.ZoomFactor = 75.0R
         Me.grdTestingHeader.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdTestingHeader.PrintInfo.MeasurementPrinterName = Nothing
-        Me.grdTestingHeader.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdTestingHeader.PrintInfo.PageSettings = CType(resources.GetObject("grdTestingHeader.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdTestingHeader.RowHeight = 15
-        Me.grdTestingHeader.Size = New System.Drawing.Size(813, 340)
-        Me.grdTestingHeader.TabIndex = 33
+        Me.grdTestingHeader.Size = New System.Drawing.Size(762, 340)
+        Me.grdTestingHeader.TabIndex = 7
         Me.grdTestingHeader.UseCompatibleTextRendering = False
         Me.grdTestingHeader.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         Me.grdTestingHeader.PropBag = resources.GetString("grdTestingHeader.PropBag")
@@ -604,24 +557,22 @@ Partial Class frmTestingMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(832, 500)
+        Me.ClientSize = New System.Drawing.Size(784, 500)
         Me.Controls.Add(Me.grdTestingHeader)
         Me.Controls.Add(Me.TestingHeaderBindingNavigator)
         Me.Controls.Add(Me.cmdShowTasks)
         Me.Controls.Add(Me.lstStatus)
         Me.Controls.Add(Me.lstTesters)
         Me.Controls.Add(Me.chkReadyToTest)
-        Me.Controls.Add(Me.C1TextBox3)
-        Me.Controls.Add(Me.C1TextBox2)
-        Me.Controls.Add(Me.C1TextBox1)
+        Me.Controls.Add(Me.txtScreenName)
+        Me.Controls.Add(Me.txtSubMenu2)
+        Me.Controls.Add(Me.txtSubMenu1)
         Me.Controls.Add(Me.txtMenu)
         Me.Controls.Add(ReadyToTestLabel)
         Me.Controls.Add(SubMenu2Label)
         Me.Controls.Add(SubMenu1Label)
         Me.Controls.Add(MenuLabel)
         Me.Controls.Add(ScreenNameLabel)
-        Me.Controls.Add(Me.cmdGetForms)
-        Me.Controls.Add(Me.cmdExit)
         Me.Controls.Add(Me.tdrpStatus)
         Me.Controls.Add(Me.tdrpTesters)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -633,14 +584,12 @@ Partial Class frmTestingMain
         CType(Me.tdrpStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TestingStatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsTestingStatus, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmdGetForms, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmdExit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TestingHeaderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsTestingHeader, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1TextBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSubMenu1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtSubMenu2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtScreenName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkReadyToTest, System.ComponentModel.ISupportInitialize).EndInit()
@@ -648,8 +597,6 @@ Partial Class frmTestingMain
         CType(Me.TestingHeaderBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TestingHeaderBindingNavigator.ResumeLayout(False)
         Me.TestingHeaderBindingNavigator.PerformLayout()
-        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdTestingHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -657,12 +604,10 @@ Partial Class frmTestingMain
     End Sub
     Friend WithEvents tdrpTesters As C1.Win.C1TrueDBGrid.C1TrueDBDropdown
     Friend WithEvents tdrpStatus As C1.Win.C1TrueDBGrid.C1TrueDBDropdown
-    Friend WithEvents cmdGetForms As C1.Win.C1Input.C1Button
-    Friend WithEvents cmdExit As C1.Win.C1Input.C1Button
     Friend WithEvents txtMenu As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1TextBox1 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1TextBox2 As C1.Win.C1Input.C1TextBox
-    Friend WithEvents C1TextBox3 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtSubMenu1 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtSubMenu2 As C1.Win.C1Input.C1TextBox
+    Friend WithEvents txtScreenName As C1.Win.C1Input.C1TextBox
     Friend WithEvents chkReadyToTest As C1.Win.C1Input.C1CheckBox
     Friend WithEvents lstTesters As C1.Win.C1List.C1List
     Friend WithEvents lstStatus As C1.Win.C1List.C1List
@@ -690,8 +635,5 @@ Partial Class frmTestingMain
     Friend WithEvents DsTestingStatus As dsTestingStatus
     Friend WithEvents TestingStatusBindingSource As BindingSource
     Friend WithEvents TestingStatusTableAdapter As dsTestingStatusTableAdapters.TestingStatusTableAdapter
-    Friend WithEvents DsTestingTasks As dsTestingTasks
-    Friend WithEvents TestingTasksBindingSource As BindingSource
-    Friend WithEvents TestingTasksTableAdapter As dsTestingTasksTableAdapters.TestingTasksTableAdapter
     Friend WithEvents grdTestingHeader As C1.Win.C1TrueDBGrid.C1TrueDBGrid
 End Class
