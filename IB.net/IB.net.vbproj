@@ -468,6 +468,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTestingHeader.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsTestingHeaderWithTesters.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTestingHeaderWithTesters.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsTestingStatus.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1976,6 +1981,17 @@
     </None>
     <None Include="dsTestingHeader.xss">
       <DependentUpon>dsTestingHeader.xsd</DependentUpon>
+    </None>
+    <None Include="dsTestingHeaderWithTesters.xsc">
+      <DependentUpon>dsTestingHeaderWithTesters.xsd</DependentUpon>
+    </None>
+    <None Include="dsTestingHeaderWithTesters.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTestingHeaderWithTesters.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsTestingHeaderWithTesters.xss">
+      <DependentUpon>dsTestingHeaderWithTesters.xsd</DependentUpon>
     </None>
     <None Include="dsTestingStatus.xsc">
       <DependentUpon>dsTestingStatus.xsd</DependentUpon>

@@ -535,11 +535,11 @@ Partial Public Class dsTestingTasks
             Me.columnScreenName.AllowDBNull = false
             Me.columnScreenName.MaxLength = 50
             Me.columnTester.AllowDBNull = false
-            Me.columnTester.MaxLength = 25
+            Me.columnTester.MaxLength = 50
             Me.columnTask.AllowDBNull = false
             Me.columnTask.MaxLength = 255
             Me.columnStatus.AllowDBNull = false
-            Me.columnStatus.MaxLength = 25
+            Me.columnStatus.MaxLength = 50
             Me.columnComments.MaxLength = 255
         End Sub
         
@@ -991,12 +991,12 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [TestingTasks] WHERE (([ID] = @Original_ID) AND ([TestingHeaderID] = "& _ 
-                "@Original_TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastModifie"& _ 
-                "d] = @Original_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ("& _ 
-                "[ScreenName] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Tas"& _ 
-                "k] = @Original_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments = "& _ 
-                "1 AND [Comments] IS NULL) OR ([Comments] = @Original_Comments)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TestingTasks] WHERE (([ID] = @Original_ID) AND ([TestingHeader"& _ 
+                "ID] = @Original_TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastM"& _ 
+                "odified] = @Original_LastModified) AND ([EditSequence] = @Original_EditSequence)"& _ 
+                " AND ([ScreenName] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND"& _ 
+                " ([Task] = @Original_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comme"& _ 
+                "nts = 1 AND [Comments] IS NULL) OR ([Comments] = @Original_Comments)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -1011,12 +1011,12 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Comments", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Comments", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [TestingTasks] ([TestingHeaderID], [Created], [LastModified], [EditSe"& _ 
-                "quence], [ScreenName], [Tester], [Task], [Status], [Comments]) VALUES (@TestingH"& _ 
-                "eaderID, @Created, @LastModified, @EditSequence, @ScreenName, @Tester, @Task, @S"& _ 
-                "tatus, @Comments);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingHeaderID, Created, LastModified, EditSeque"& _ 
-                "nce, ScreenName, Tester, Task, Status, Comments FROM TestingTasks WHERE (ID = SC"& _ 
-                "OPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TestingTasks] ([TestingHeaderID], [Created], [LastModified], ["& _ 
+                "EditSequence], [ScreenName], [Tester], [Task], [Status], [Comments]) VALUES (@Te"& _ 
+                "stingHeaderID, @Created, @LastModified, @EditSequence, @ScreenName, @Tester, @Ta"& _ 
+                "sk, @Status, @Comments);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingHeaderID, Created, LastModified, Edi"& _ 
+                "tSequence, ScreenName, Tester, Task, Status, Comments FROM TestingTasks WHERE (I"& _ 
+                "D = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1029,17 +1029,17 @@ Namespace dsTestingTasksTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Comments", Global.System.Data.SqlDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Comments", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [TestingTasks] SET [TestingHeaderID] = @TestingHeaderID, [Created] = @Crea"& _ 
-                "ted, [LastModified] = @LastModified, [EditSequence] = @EditSequence, [ScreenName"& _ 
-                "] = @ScreenName, [Tester] = @Tester, [Task] = @Task, [Status] = @Status, [Commen"& _ 
-                "ts] = @Comments WHERE (([ID] = @Original_ID) AND ([TestingHeaderID] = @Original_"& _ 
-                "TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastModified] = @Orig"& _ 
-                "inal_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ([ScreenNam"& _ 
-                "e] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Task] = @Orig"& _ 
-                "inal_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments = 1 AND [Com"& _ 
-                "ments] IS NULL) OR ([Comments] = @Original_Comments)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, TestingHeade"& _ 
-                "rID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comm"& _ 
-                "ents FROM TestingTasks WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TestingTasks] SET [TestingHeaderID] = @TestingHeaderID, [Created] ="& _ 
+                " @Created, [LastModified] = @LastModified, [EditSequence] = @EditSequence, [Scre"& _ 
+                "enName] = @ScreenName, [Tester] = @Tester, [Task] = @Task, [Status] = @Status, ["& _ 
+                "Comments] = @Comments WHERE (([ID] = @Original_ID) AND ([TestingHeaderID] = @Ori"& _ 
+                "ginal_TestingHeaderID) AND ([Created] = @Original_Created) AND ([LastModified] ="& _ 
+                " @Original_LastModified) AND ([EditSequence] = @Original_EditSequence) AND ([Scr"& _ 
+                "eenName] = @Original_ScreenName) AND ([Tester] = @Original_Tester) AND ([Task] ="& _ 
+                " @Original_Task) AND ([Status] = @Original_Status) AND ((@IsNull_Comments = 1 AN"& _ 
+                "D [Comments] IS NULL) OR ([Comments] = @Original_Comments)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Testin"& _ 
+                "gHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status"& _ 
+                ", Comments FROM TestingTasks WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Created", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Created", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1078,19 +1078,19 @@ Namespace dsTestingTasksTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Test"& _ 
-                "er, Task, Status, Comments FROM TestingTasks WHERE (TestingHeaderID = @TestingHe"& _ 
-                "aderID)"
+                "er, Task, Status, Comments FROM dbo.TestingTasks WHERE TestingHeaderID = @CurTas"& _ 
+                "k"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TestingHeaderID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CurTask", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "TestingHeaderID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsTestingTasks.TestingTasksDataTable, ByVal TestingHeaderID As Integer) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsTestingTasks.TestingTasksDataTable, ByVal CurTask As Integer) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(TestingHeaderID,Integer)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CurTask,Integer)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1102,9 +1102,9 @@ Namespace dsTestingTasksTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal TestingHeaderID As Integer) As dsTestingTasks.TestingTasksDataTable
+        Public Overloads Overridable Function GetData(ByVal CurTask As Integer) As dsTestingTasks.TestingTasksDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(TestingHeaderID,Integer)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CurTask,Integer)
             Dim dataTable As dsTestingTasks.TestingTasksDataTable = New dsTestingTasks.TestingTasksDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

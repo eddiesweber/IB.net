@@ -4,7 +4,6 @@ Imports System.ComponentModel
 Imports C1.Win.C1TrueDBGrid
 Imports System.Data.SqlClient
 
-
 Public Class frmTestingMain
 
     Dim blnNew As Boolean
@@ -12,6 +11,8 @@ Public Class frmTestingMain
     Dim blnNoClick As Boolean
 
     Private Sub frmTestingMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Dim intRow As Int16
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -36,7 +37,10 @@ Public Class frmTestingMain
             lstTesters.ColumnWidth = lstTesters.Width - 5
 
             strLocation = "FTML5.0"
-            lstTesters.SelectedIndex = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
+            intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
+            If intRow >= 0 Then
+                lstTesters.SelectedIndex = intRow
+            End If
 
             strLocation = "FTML6.0"
             TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
@@ -44,7 +48,10 @@ Public Class frmTestingMain
             lstStatus.ColumnWidth = lstStatus.Width - 5
 
             strLocation = "FTML7.0"
-            lstStatus.SelectedIndex = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
+            intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
+            If intRow >= 0 Then
+                lstStatus.SelectedIndex = intRow
+            End If
 
             Me.Cursor = Cursors.Default
         Catch ex As Exception
@@ -82,13 +89,8 @@ Public Class frmTestingMain
             grdTestingHeader.UpdateData()
 
             strLocation = "UAIOFAS2.0"
-            TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
-
-            ' Do I need to do this stuff?
-            Me.Validate()
             Me.TestingHeaderBindingSource.EndEdit()
-            Me.TableAdapterManager.UpdateAll(Me.DsTestingHeader)
-            '''''''''''''''''''''''''''''''
+            TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
 
             strLocation = "UAIOFAS3.0"
             blnNew = False
@@ -97,8 +99,8 @@ Public Class frmTestingMain
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterColUpdate", vbOK)
-            LogError(Me.Name, "grdTestingHeader_AfterColUpdate", strLocation, ex.Message)
+            Result = MessageBox.Show(Me, "Error in routine UpdateAllItemsOnFormAfterSave (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateAllItemsOnFormAfterSave", vbOK)
+            LogError(Me.Name, "UpdateAllItemsOnFormAfterSave", strLocation, ex.Message)
         End Try
 
     End Sub
@@ -195,7 +197,7 @@ Public Class frmTestingMain
 
     End Sub
 
-    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs) Handles txtScreenName.TextChanged, txtSubMenu2.TextChanged, txtSubMenu1.TextChanged, txtMenu.TextChanged, lstTesters.TextChanged, lstStatus.TextChanged, chkReadyToTest.TextChanged
+    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs)
 
         If blnNoClick = False Then
             blnEdit = True
@@ -295,29 +297,6 @@ Public Class frmTestingMain
 
     End Sub
 
-    Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
-
-        ' Must set BindingNavigator DeleteItem property to (none) on form
-        ' Is there a way to do it programmatically - TestingHeaderBindingNavigator.DeleteItem. = "(none)"
-
-        If TestingHeaderBindingSource.Count > 0 Then
-            If MessageBox.Show("Are you sure you want to delete this record?", "Delete record", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = Windows.Forms.DialogResult.Yes Then
-                Me.TestingHeaderBindingSource.RemoveCurrent()
-
-                Try
-                    Me.Validate()
-                    Me.TestingHeaderBindingSource.EndEdit()
-                    Me.TableAdapterManager.UpdateAll(Me.DsTestingHeader)
-                Catch ex As Exception
-                    Me.Cursor = Cursors.Default
-                    Result = MessageBox.Show(Me, "Error in routine BindingNavigatorDeleteItem_Click (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "BindingNavigatorDeleteItem_Click", vbOK)
-                    LogError(Me.Name, "BindingNavigatorDeleteItem_Click", strLocation, ex.Message)
-                End Try
-            End If
-        End If
-
-    End Sub
-
     Private Sub grdTestingHeader_AfterDelete(sender As Object, e As EventArgs) Handles grdTestingHeader.AfterDelete
 
         UpdateAllItemsOnFormAfterSave()
@@ -326,24 +305,26 @@ Public Class frmTestingMain
 
     Private Sub grdTestingHeader_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdTestingHeader.RowColChange
 
+        Dim intRow As Int16
+
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "GTHAD1.0"
             If e.LastRow >= 0 Then
-                Dim intRow As Int16
-
                 If grdTestingHeader.Row <> e.LastRow Then
+                    strLocation = "GTHAD1.0"
                     cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value
 
-                    intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
-                    If intRow > 0 Then
-                        lstStatus.SelectedIndex = intRow
+                    strLocation = "GTHAD2.0"
+                    intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
+                    If intRow >= 0 Then
+                        lstTesters.SelectedIndex = intRow
                     End If
 
-                    intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
-                    If intRow > 0 Then
-                        lstTesters.SelectedIndex = intRow
+                    strLocation = "GTHAD3.0"
+                    intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
+                    If intRow >= 0 Then
+                        lstStatus.SelectedIndex = intRow
                     End If
                 End If
             End If
@@ -354,6 +335,7 @@ Public Class frmTestingMain
             Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterDelete", vbOK)
             LogError(Me.Name, "grdTestingHeader_AfterDelete", strLocation, ex.Message)
         End Try
+
     End Sub
 
     Private Sub cmdExit_Click(sender As Object, e As EventArgs)
@@ -369,20 +351,6 @@ Public Class frmTestingMain
 
     End Sub
 
-    Private Sub TestingHeaderBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles TestingHeaderBindingNavigatorSaveItem.Click
-
-        Me.Validate()
-        Me.TestingHeaderBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.DsTestingHeader)
-
-    End Sub
-
-    Private Sub cmdTest_Click(sender As Object, e As EventArgs)
-
-        Test.Show()
-
-    End Sub
-
     Private Sub cmdShowTasks_MouseDown(sender As Object, e As MouseEventArgs) Handles cmdShowTasks.MouseDown
 
         If e.Button = MouseButtons.Right Then
@@ -391,143 +359,170 @@ Public Class frmTestingMain
             Dim strFormName As String
             Dim intRow As Integer
             Dim intRowsAffected As Integer
+            Dim strSQL As String = ""
+            Dim cmd As SqlCommand = New SqlCommand
 
             Result = MessageBox.Show(Me, "First delete all testing records, are you sure you want to continue?", "Delete testing", vbYesNo)
             If Result = vbNo Then
                 Exit Sub
             End If
 
-            Result = MessageBox.Show(Me, "Do you want to re-add the headers?", "Header Records", vbYesNo)
-            If Result = vbYes Then
+            Try
+                Me.Cursor = Cursors.WaitCursor
+
+                strLocation = "GF1"
                 Using connection As New SqlConnection(connGlobal)
-                    Dim cmd As SqlCommand = New SqlCommand("DELETE FROM TestingHeader", connection)
+                    connection.Open()
+                    cmd.Connection = connection
 
-                    Try
-                        strLocation = "GF1"
-                        connection.Open()
+                    Result = MessageBox.Show(Me, "Do you want to re-add the headers?", "Header Records", vbYesNo)
+                    If Result = vbYes Then
+                        cmd.CommandText = "DELETE FROM TestingHeader"
                         intRowsAffected = cmd.ExecuteNonQuery()
-                        MessageBox.Show(Me, "Records Deleted: " & intRowsAffected)
-                    Catch ex As Exception
-                        Me.Cursor = Cursors.Default
-                        Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
-                        LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
-                    End Try
-                End Using
 
-                For Each foundFile As String In My.Computer.FileSystem.GetFiles("C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net")
-                    If Strings.Right(foundFile, 3) = ".vb" Then
-                        If InStr(foundFile, "Designer") = False Then
-                            intPosition = InStrRev(foundFile, "\")
-                            If Mid(foundFile, intPosition + 1, 2) <> "ds" Then
-                                strFormName = Mid(foundFile, intPosition + 1, foundFile.Length - intPosition)
+                        For Each foundFile As String In My.Computer.FileSystem.GetFiles("C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net")
+                            If Strings.Right(foundFile, 3) = ".vb" Then
+                                'If foundFile.Trim = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\frmTax.vb" Then
+                                If InStr(foundFile, "Designer") = False Then
+                                        intPosition = InStrRev(foundFile, "\")
+                                        If Mid(foundFile, intPosition + 1, 2) <> "ds" Then
+                                            strFormName = Mid(foundFile, intPosition + 1, foundFile.Length - intPosition)
 
-                                grdTestingHeader.MoveLast()
-                                grdTestingHeader.Row = grdTestingHeader.Row + 1
-                                grdTestingHeader.Select()
+                                            strSQL = "INSERT INTO TestingHeader "
+                                            strSQL &= "(Created, LastModified, EditSequence, ScreenName, Tester, Status, DisplayOrder, Menu, SubMenu1, Submenu2, ReadyToTest)  "
+                                            strSQL &= "VALUES ('" & Now() & "', '" & Now() & "', 1, '" & strFormName.Trim & "', 'Eddie', 'Not Started', 99999, '', '', '', 0)"
 
-                                grdTestingHeader.Columns("ScreenName").Value = strFormName.Trim
-                                grdTestingHeader.Columns("Tester").Value = "Eddie"
-                                grdTestingHeader.Columns("Created").Value = Now()
-                                grdTestingHeader.Columns("LastModified").Value = Now()
-                                grdTestingHeader.Columns("EditSequence").Value = 1
-                                grdTestingHeader.Columns("DisplayOrder").Value = 99999
-                                grdTestingHeader.Columns("Menu").Value = ""
-                                grdTestingHeader.Columns("SubMenu1").Value = ""
-                                grdTestingHeader.Columns("SubMenu2").Value = ""
-                                grdTestingHeader.Columns("ReadyToTest").Value = 0
-                                grdTestingHeader.Columns("Status").Value = "Not Started"
-
-                                grdTestingHeader.Update()
-                                TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
-                            End If
-                        End If
-                    End If
-                Next
-
-                ' Refresh the grid
-                TestingHeaderTableAdapter.Fill(DsTestingHeader.TestingHeader)
-            End If
-
-            Dim strSQL As String = ""
-
-            Using conn As New SqlConnection(connGlobal)
-                Using comm As New SqlCommand()
-                    With comm
-                        .Connection = conn
-                        .CommandType = CommandType.Text
-                        .CommandText = strSQL
-                    End With
-
-                    Try
-                        conn.Open()
-
-                        For intRow = 0 To grdTestingHeader.RowCount - 1
-                            grdTestingHeader.Row = intRow
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Load form position', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Save form position', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Font Sizes', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Tab Positions', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Hide text boxes', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Load Grid Positions', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            'strSQL = "INSERT INTO TestingTasks "
-                            'strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            'strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Save Grid Positions', 'Not Started', '')"
-
-                            'comm.CommandText = strSQL
-                            'comm.ExecuteNonQuery()
-
-                            strSQL = "INSERT INTO TestingTasks "
-                            strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
-                            strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Error checking', 'Not Started', '')"
-
-                            comm.CommandText = strSQL
-                            comm.ExecuteNonQuery()
+                                            cmd.CommandText = strSQL
+                                            cmd.ExecuteNonQuery()
+                                        End If
+                                    End If
+                                End If
                         Next
-                    Catch ex As SqlException
-                        MessageBox.Show(ex.Message.ToString(), "Error Message")
-                    End Try
+
+                        ' Refresh the grid
+                        TestingHeaderTableAdapter.Fill(DsTestingHeader.TestingHeader)
+
+                    End If
+
+                    cmd.CommandText = "DELETE FROM TestingTasks"
+                    intRowsAffected = cmd.ExecuteNonQuery()
+
+                    For intRow = 0 To grdTestingHeader.RowCount - 1
+                        grdTestingHeader.Row = intRow
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Option Explicit', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Load form position', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Save form position', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Font Sizes', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Tab Positions', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Hide hidden labels', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Load Grid Positions', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Save Grid Positions', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'TestBox max length', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Error checking', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+                    Next
                 End Using
-            End Using
+
+                Me.Cursor = Cursors.Default
+            Catch ex As Exception
+                Me.Cursor = Cursors.Default
+                Result = MessageBox.Show(Me, "Error in routine UpdateInvoiceQty (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateInvoiceQty", vbOK)
+                LogError(Me.Name, "UpdateInvoiceQty", strLocation, ex.Message)
+            End Try
 
             MessageBox.Show("Finished")
         End If
+    End Sub
+
+    Private Sub cmdTest_Click(sender As Object, e As EventArgs) Handles cmdTest.Click
+
+        Test.Show()
+
+    End Sub
+
+    Private Sub lstTesters_RowChange(sender As Object, e As EventArgs) Handles lstTesters.RowChange
+
+        Try
+            strLocation = "LTRC1.0"
+            blnEdit = True
+            grdTestingHeader.Columns("Tester").Value = lstTesters.SelectedText
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstTesters_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstTesters_RowChange", vbOK)
+            LogError(Me.Name, "lstTesters_RowChange", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub lstStatus_RowChange(sender As Object, e As EventArgs) Handles lstStatus.RowChange
+
+        Try
+            strLocation = "LSRC1.0"
+            blnEdit = True
+            grdTestingHeader.Columns("Status").Value = lstStatus.SelectedText
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstStatus_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstStatus_RowChange", vbOK)
+            LogError(Me.Name, "lstStatus_RowChange", strLocation, ex.Message)
+        End Try
+
     End Sub
 
 End Class
