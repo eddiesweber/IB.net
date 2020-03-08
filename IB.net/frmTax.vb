@@ -10,10 +10,10 @@ Public Class frmTax
         Me.Cursor = Cursors.WaitCursor
 
         strLocation = "FTLL1.0"
-        GetWindowPos(Me, 200, 22)
+        'GetWindowPos(Me, 200, 22)
 
         If Dir("frmTaxC1TrueDBGrid1.xml") <> "" Then
-            C1TrueDBGrid1.LoadLayout("frmTaxC1TrueDBGrid1.xml")
+            'C1TrueDBGrid1.LoadLayout("frmTaxC1TrueDBGrid1.xml")
         End If
 
         Try

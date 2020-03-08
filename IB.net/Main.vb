@@ -1056,6 +1056,39 @@ Module Main
         'R.Close()
     End Function
 
+    Public Function GetFieldMaxLenght(strFieldType As String, intMaxLength As Int16) As Int16
+
+        Select Case strFieldType
+            Case "System.Boolean"
+                GetFieldMaxLenght = 1
+            Case "System.Byte"
+                GetFieldMaxLenght = 1
+            Case "System.Char"
+                GetFieldMaxLenght = intMaxLength
+            Case "System.DateTime"
+                GetFieldMaxLenght = 20
+            Case "System.Decimal"
+                GetFieldMaxLenght = 16
+            Case "System.Double"
+                GetFieldMaxLenght = 20
+            Case "System.Int16"
+                GetFieldMaxLenght = 5
+            Case "System.Int32"
+                GetFieldMaxLenght = 10
+            Case "System.Int64"
+                GetFieldMaxLenght = 20
+            Case "System."
+                GetFieldMaxLenght = 1
+            Case "System.Single"
+                GetFieldMaxLenght = 10
+            Case "System.String"
+                GetFieldMaxLenght = intMaxLength
+            Case Else
+                GetFieldMaxLenght = 255
+        End Select
+
+    End Function
+
     'Public Sub SetDbConnection(ByVal rptCrxReport As CrystalDecisions.CrystalReports.Engine.ReportDocument)
 
     '    ' Set database information

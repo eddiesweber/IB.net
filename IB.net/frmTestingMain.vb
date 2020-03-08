@@ -9,10 +9,14 @@ Public Class frmTestingMain
     Dim blnNew As Boolean
     Dim blnEdit As Boolean
     Dim blnNoClick As Boolean
+    Dim blnFormLoadStarted As Boolean = False
 
     Private Sub frmTestingMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim intRow As Int16
+
+        blnNoClick = True
+        blnFormLoadStarted = True
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -26,14 +30,12 @@ Public Class frmTestingMain
             End If
 
             strLocation = "FTML3.0"
-            blnNoClick = True
-            TestingHeaderTableAdapter.Connection.ConnectionString = connGlobal
-            TestingHeaderTableAdapter.Fill(DsTestingHeader.TestingHeader)
-            blnNoClick = False
+            Me.TestingHeaderTableAdapter.Connection.ConnectionString = connGlobal
+            Me.TestingHeaderTableAdapter.Fill(DsTestingHeader.TestingHeader)
 
             strLocation = "FTML4.0"
-            TestersTableAdapter.Connection.ConnectionString = connGlobal
-            TestersTableAdapter.Fill(Me.DsTesters.Testers)
+            Me.TestersTableAdapter.Connection.ConnectionString = connGlobal
+            Me.TestersTableAdapter.Fill(Me.DsTesters.Testers)
             lstTesters.ColumnWidth = lstTesters.Width - 5
 
             strLocation = "FTML5.0"
@@ -43,8 +45,8 @@ Public Class frmTestingMain
             End If
 
             strLocation = "FTML6.0"
-            TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
-            TestingStatusTableAdapter.Fill(Me.DsTestingStatus.TestingStatus)
+            Me.TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
+            Me.TestingStatusTableAdapter.Fill(Me.DsTestingStatus.TestingStatus)
             lstStatus.ColumnWidth = lstStatus.Width - 5
 
             strLocation = "FTML7.0"
@@ -56,9 +58,11 @@ Public Class frmTestingMain
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            blnNoClick = False
             Result = MessageBox.Show(Me, "Error in routine frmTax_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmTax_Load", vbOK)
             LogError(Me.Name, "frmTax_Load", strLocation, ex.Message)
+        Finally
+            blnNoClick = False
+            SetModeReg()
         End Try
 
     End Sub
@@ -70,7 +74,7 @@ Public Class frmTestingMain
 
             intYesNo = MsgBox("Do you want to save your changes before exiting?", vbYesNo, "Save Record")
             If intYesNo = vbYes Then
-                e.Cancel = True
+                UpdateAllItemsOnFormAfterSave()
             End If
         End If
 
@@ -90,11 +94,10 @@ Public Class frmTestingMain
 
             strLocation = "UAIOFAS2.0"
             Me.TestingHeaderBindingSource.EndEdit()
-            TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
+            Me.TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
 
             strLocation = "UAIOFAS3.0"
-            blnNew = False
-            blnEdit = False
+            SetModeReg()
 
             Me.Cursor = Cursors.Default
         Catch ex As Exception
@@ -105,16 +108,28 @@ Public Class frmTestingMain
 
     End Sub
 
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        TestingHeaderBindingSource.AddNew()
+        AddNewRecord()
+
+    End Sub
+
     Private Sub grdTestingHeader_OnAddNew(sender As Object, e As EventArgs) Handles grdTestingHeader.OnAddNew
+
+        AddNewRecord()
+
+    End Sub
+
+    Public Sub AddNewRecord()
 
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "GTOAN1.0"
-            blnNew = True
-            blnEdit = True
+            strLocation = "ANR1.0"
+            SetModeNew()
 
-            strLocation = "GTOAN2.0"
+            strLocation = "ANR2.0"
             ' Set default values and clear nulls for the rest of the fields
             grdTestingHeader.Columns("ScreenName").Value = ""
             grdTestingHeader.Columns("Tester").Value = ""
@@ -128,79 +143,36 @@ Public Class frmTestingMain
             grdTestingHeader.Columns("ReadyToTest").Value = 0
             grdTestingHeader.Columns("Status").Value = "Not Started"
 
+            strLocation = "ANR3.0"
             cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value.ToString.Trim
 
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_OnAddNew (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_OnAddNew", vbOK)
-            LogError(Me.Name, "grdTestingHeader_OnAddNew", strLocation, ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub grdTestingHeader_BeforeInsert(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeInsert
-
-        Try
-            ' Don't insert unless all required fields are filled in
-            Me.Cursor = Cursors.WaitCursor
-
-            strLocation = "GTHBI1.0"
-            If IsDBNull(grdTestingHeader.Columns("ScreenName").Value) Then
-                e.Cancel = True
-            End If
-
-            strLocation = "GTHBI2.0"
-            If IsDBNull(grdTestingHeader.Columns("Tester").Value) Then
-                e.Cancel = True
-            End If
-
-            strLocation = "GTHBI3.0"
-            If IsDBNull(grdTestingHeader.Columns("DisplayOrder").Value) Then
-                e.Cancel = True
-            End If
-
-            strLocation = "GTHBI4.0"
-            If IsDBNull(grdTestingHeader.Columns("Menu").Value) Then
-                e.Cancel = True
-            End If
-
-            strLocation = "GTHBI5.0"
-            If IsDBNull(grdTestingHeader.Columns("ReadyToTest").Value) Then
-                e.Cancel = True
-            End If
-
-            strLocation = "GTHBI6.0"
-            If IsDBNull(grdTestingHeader.Columns("Status").Value) Then
-                e.Cancel = True
-            End If
-
-            Me.Cursor = Cursors.Default
-        Catch ex As Exception
-            Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_BeforeInsert (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_BeforeInsert", vbOK)
-            LogError(Me.Name, "grdTestingHeader_BeforeInsert", strLocation, ex.Message)
+            Result = MessageBox.Show(Me, "Error in routine AddNewRecord (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "AddNewRecord", vbOK)
+            LogError(Me.Name, "AddNewRecord", strLocation, ex.Message)
         End Try
 
     End Sub
 
     Private Sub grdTestingHeader_AfterInsert(sender As Object, e As EventArgs) Handles grdTestingHeader.AfterInsert
 
-        blnNew = False
-        blnEdit = False
+        SetModeReg()
 
     End Sub
 
-    Private Sub grdTestingHeader_TextChanged(sender As Object, e As EventArgs) Handles grdTestingHeader.TextChanged
-
-        blnEdit = True
-
-    End Sub
-
-    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs)
+    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs) Handles txtScreenName.TextChanged, txtSubMenu2.TextChanged, txtSubMenu1.TextChanged, txtMenu.TextChanged
 
         If blnNoClick = False Then
-            blnEdit = True
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub chkReadyToTest_ValueChanged(sender As Object, e As EventArgs) Handles chkReadyToTest.ValueChanged
+
+        If blnNoClick = False Then
+            SetModeChange()
         End If
 
     End Sub
@@ -286,6 +258,18 @@ Public Class frmTestingMain
 
     End Sub
 
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+
+        Dim intYesNo As Int16
+
+        intYesNo = MsgBox("Are you sure you want to delete this record?", vbYesNo, "Delete Record Confirmation")
+        If intYesNo = vbYes Then
+            grdTestingHeader.Delete()
+            UpdateAllItemsOnFormAfterSave()
+        End If
+
+    End Sub
+
     Private Sub grdTestingHeader_BeforeDelete(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeDelete
 
         Dim intYesNo As Int16
@@ -300,6 +284,15 @@ Public Class frmTestingMain
     Private Sub grdTestingHeader_AfterDelete(sender As Object, e As EventArgs) Handles grdTestingHeader.AfterDelete
 
         UpdateAllItemsOnFormAfterSave()
+
+    End Sub
+
+    Private Sub grdTestingHeader_BeforeRowColChange(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeRowColChange
+
+        If blnEdit = True Or blnNew = True Then
+            UpdateAllItemsOnFormAfterSave()
+        End If
+        blnNoClick = True
 
     End Sub
 
@@ -334,13 +327,25 @@ Public Class frmTestingMain
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterDelete", vbOK)
             LogError(Me.Name, "grdTestingHeader_AfterDelete", strLocation, ex.Message)
+        Finally
+            blnNoClick = False
         End Try
 
     End Sub
 
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs)
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
 
-        Me.Dispose()
+        TestingHeaderBindingSource.CancelEdit()
+        blnEdit = False
+        SetModeReg()
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        UpdateAllItemsOnFormAfterSave()
+        blnEdit = False
+        SetModeReg()
 
     End Sub
 
@@ -348,6 +353,80 @@ Public Class frmTestingMain
 
         frmTestingTasks.lblCurTaskNumber.Text = grdTestingHeader.Columns("ID").Value
         frmTestingTasks.Show()
+
+    End Sub
+
+    Private Sub cmdTest_Click(sender As Object, e As EventArgs)
+
+        Test.Show()
+
+    End Sub
+
+    Private Sub lstTesters_RowChange(sender As Object, e As EventArgs) Handles lstTesters.RowChange
+
+        Try
+            strLocation = "LTRC1.0"
+            If blnNoClick = False Then
+                blnEdit = True
+                SetModeChange()
+                grdTestingHeader.Columns("Tester").Value = lstTesters.SelectedText
+            End If
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstTesters_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstTesters_RowChange", vbOK)
+            LogError(Me.Name, "lstTesters_RowChange", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub lstStatus_RowChange(sender As Object, e As EventArgs) Handles lstStatus.RowChange
+
+        Try
+            strLocation = "LSRC1.0"
+            If blnNoClick = False Then
+                blnEdit = True
+                SetModeChange()
+                grdTestingHeader.Columns("Status").Value = lstStatus.SelectedText
+            End If
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine lstStatus_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstStatus_RowChange", vbOK)
+            LogError(Me.Name, "lstStatus_RowChange", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+
+        Me.Dispose()
+
+    End Sub
+
+    Public Sub SetModeNew()
+
+        blnNew = True
+        SetModeChange()
+
+    End Sub
+
+    Public Sub SetModeChange()
+
+        blnEdit = True
+        cmdNew.Enabled = False
+        cmdDelete.Enabled = False
+        cmdReset.Enabled = True
+        cmdUpdate.Enabled = True
+        cmdExit.Enabled = False
+
+    End Sub
+
+    Public Sub SetModeReg()
+
+        blnEdit = False
+        blnNew = False
+        cmdNew.Enabled = True
+        cmdDelete.Enabled = True
+        cmdReset.Enabled = False
+        cmdUpdate.Enabled = False
+        cmdExit.Enabled = True
 
     End Sub
 
@@ -384,19 +463,19 @@ Public Class frmTestingMain
                             If Strings.Right(foundFile, 3) = ".vb" Then
                                 'If foundFile.Trim = "C:\Users\eddie.IBEDDIE\source\repos\IB.net\IB.net\frmTax.vb" Then
                                 If InStr(foundFile, "Designer") = False Then
-                                        intPosition = InStrRev(foundFile, "\")
-                                        If Mid(foundFile, intPosition + 1, 2) <> "ds" Then
-                                            strFormName = Mid(foundFile, intPosition + 1, foundFile.Length - intPosition)
+                                    intPosition = InStrRev(foundFile, "\")
+                                    If Mid(foundFile, intPosition + 1, 2) <> "ds" Then
+                                        strFormName = Mid(foundFile, intPosition + 1, foundFile.Length - intPosition)
 
-                                            strSQL = "INSERT INTO TestingHeader "
-                                            strSQL &= "(Created, LastModified, EditSequence, ScreenName, Tester, Status, DisplayOrder, Menu, SubMenu1, Submenu2, ReadyToTest)  "
-                                            strSQL &= "VALUES ('" & Now() & "', '" & Now() & "', 1, '" & strFormName.Trim & "', 'Eddie', 'Not Started', 99999, '', '', '', 0)"
+                                        strSQL = "INSERT INTO TestingHeader "
+                                        strSQL &= "(Created, LastModified, EditSequence, ScreenName, Tester, Status, DisplayOrder, Menu, SubMenu1, Submenu2, ReadyToTest)  "
+                                        strSQL &= "VALUES ('" & Now() & "', '" & Now() & "', 1, '" & strFormName.Trim & "', 'Eddie', 'Not Started', 99999, '', '', '', 0)"
 
-                                            cmd.CommandText = strSQL
-                                            cmd.ExecuteNonQuery()
-                                        End If
+                                        cmd.CommandText = strSQL
+                                        cmd.ExecuteNonQuery()
                                     End If
                                 End If
+                            End If
                         Next
 
                         ' Refresh the grid
@@ -493,36 +572,48 @@ Public Class frmTestingMain
         End If
     End Sub
 
-    Private Sub cmdTest_Click(sender As Object, e As EventArgs) Handles cmdTest.Click
+    'Private Sub grdTestingHeader_BeforeInsert(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeInsert
 
-        Test.Show()
+    '    Try
+    '        ' Don't insert unless all required fields are filled in
+    '        Me.Cursor = Cursors.WaitCursor
 
-    End Sub
+    '        strLocation = "GTHBI1.0"
+    '        If IsDBNull(grdTestingHeader.Columns("ScreenName").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-    Private Sub lstTesters_RowChange(sender As Object, e As EventArgs) Handles lstTesters.RowChange
+    '        strLocation = "GTHBI2.0"
+    '        If IsDBNull(grdTestingHeader.Columns("Tester").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-        Try
-            strLocation = "LTRC1.0"
-            blnEdit = True
-            grdTestingHeader.Columns("Tester").Value = lstTesters.SelectedText
-        Catch ex As Exception
-            Result = MessageBox.Show(Me, "Error in routine lstTesters_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstTesters_RowChange", vbOK)
-            LogError(Me.Name, "lstTesters_RowChange", strLocation, ex.Message)
-        End Try
+    '        strLocation = "GTHBI3.0"
+    '        If IsDBNull(grdTestingHeader.Columns("DisplayOrder").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-    End Sub
+    '        strLocation = "GTHBI4.0"
+    '        If IsDBNull(grdTestingHeader.Columns("Menu").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-    Private Sub lstStatus_RowChange(sender As Object, e As EventArgs) Handles lstStatus.RowChange
+    '        strLocation = "GTHBI5.0"
+    '        If IsDBNull(grdTestingHeader.Columns("ReadyToTest").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-        Try
-            strLocation = "LSRC1.0"
-            blnEdit = True
-            grdTestingHeader.Columns("Status").Value = lstStatus.SelectedText
-        Catch ex As Exception
-            Result = MessageBox.Show(Me, "Error in routine lstStatus_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstStatus_RowChange", vbOK)
-            LogError(Me.Name, "lstStatus_RowChange", strLocation, ex.Message)
-        End Try
+    '        strLocation = "GTHBI6.0"
+    '        If IsDBNull(grdTestingHeader.Columns("Status").Value) Then
+    '            e.Cancel = True
+    '        End If
 
-    End Sub
+    '        Me.Cursor = Cursors.Default
+    '    Catch ex As Exception
+    '        Me.Cursor = Cursors.Default
+    '        Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_BeforeInsert (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_BeforeInsert", vbOK)
+    '        LogError(Me.Name, "grdTestingHeader_BeforeInsert", strLocation, ex.Message)
+    '    End Try
 
+    'End Sub
 End Class

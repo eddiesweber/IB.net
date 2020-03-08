@@ -28,27 +28,27 @@ Partial Class frmTestingMain
         Dim SubMenu1Label As System.Windows.Forms.Label
         Dim MenuLabel As System.Windows.Forms.Label
         Dim ScreenNameLabel As System.Windows.Forms.Label
-        Dim Style21 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style22 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style23 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style24 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style25 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style26 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style141 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style142 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style143 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style144 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style145 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style146 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTestingMain))
-        Dim Style27 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style28 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style29 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style30 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style31 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style32 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style33 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style34 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style35 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style36 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style37 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style38 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style39 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style40 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style147 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style148 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style149 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style150 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style151 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style152 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style153 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style154 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style155 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style156 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style157 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style158 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style159 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style160 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Me.tdrpTesters = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.TestersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTesters = New IB.net.dsTesters()
@@ -68,7 +68,6 @@ Partial Class frmTestingMain
         Me.cmdDelete = New C1.Win.C1Input.C1Button()
         Me.cmdNew = New C1.Win.C1Input.C1Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmdTest = New C1.Win.C1Input.C1Button()
         Me.cmdShowTasks = New C1.Win.C1Input.C1Button()
         Me.lstStatus = New C1.Win.C1List.C1List()
         Me.lstTesters = New C1.Win.C1List.C1List()
@@ -98,7 +97,6 @@ Partial Class frmTestingMain
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.cmdTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdShowTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,30 +163,30 @@ Partial Class frmTestingMain
         Me.tdrpTesters.AllowColSelect = True
         Me.tdrpTesters.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.tdrpTesters.AlternatingRows = False
-        Me.tdrpTesters.CaptionStyle = Style21
+        Me.tdrpTesters.CaptionStyle = Style141
         Me.tdrpTesters.ColumnCaptionHeight = 17
         Me.tdrpTesters.ColumnFooterHeight = 17
         Me.tdrpTesters.ColumnHeaders = False
-        Me.tdrpTesters.ColumnSelectorStyle = Style22
+        Me.tdrpTesters.ColumnSelectorStyle = Style142
         Me.tdrpTesters.DataSource = Me.TestersBindingSource
         Me.tdrpTesters.DisplayMember = "Tester"
-        Me.tdrpTesters.EvenRowStyle = Style23
+        Me.tdrpTesters.EvenRowStyle = Style143
         Me.tdrpTesters.FetchRowStyles = False
-        Me.tdrpTesters.FooterStyle = Style24
-        Me.tdrpTesters.HeadingStyle = Style25
-        Me.tdrpTesters.HighLightRowStyle = Style26
+        Me.tdrpTesters.FooterStyle = Style144
+        Me.tdrpTesters.HeadingStyle = Style145
+        Me.tdrpTesters.HighLightRowStyle = Style146
         Me.tdrpTesters.Images.Add(CType(resources.GetObject("tdrpTesters.Images"), System.Drawing.Image))
         Me.tdrpTesters.Location = New System.Drawing.Point(382, 122)
         Me.tdrpTesters.Name = "tdrpTesters"
-        Me.tdrpTesters.OddRowStyle = Style27
-        Me.tdrpTesters.RecordSelectorStyle = Style28
+        Me.tdrpTesters.OddRowStyle = Style147
+        Me.tdrpTesters.RecordSelectorStyle = Style148
         Me.tdrpTesters.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.tdrpTesters.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
-        Me.tdrpTesters.RowSelectorStyle = Style29
+        Me.tdrpTesters.RowSelectorStyle = Style149
         Me.tdrpTesters.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.tdrpTesters.ScrollTips = False
         Me.tdrpTesters.Size = New System.Drawing.Size(100, 67)
-        Me.tdrpTesters.Style = Style30
+        Me.tdrpTesters.Style = Style150
         Me.tdrpTesters.TabIndex = 5
         Me.tdrpTesters.TabStop = False
         Me.tdrpTesters.UseCompatibleTextRendering = False
@@ -212,30 +210,30 @@ Partial Class frmTestingMain
         Me.tdrpStatus.AllowColSelect = True
         Me.tdrpStatus.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.tdrpStatus.AlternatingRows = False
-        Me.tdrpStatus.CaptionStyle = Style31
+        Me.tdrpStatus.CaptionStyle = Style151
         Me.tdrpStatus.ColumnCaptionHeight = 17
         Me.tdrpStatus.ColumnFooterHeight = 17
         Me.tdrpStatus.ColumnHeaders = False
-        Me.tdrpStatus.ColumnSelectorStyle = Style32
+        Me.tdrpStatus.ColumnSelectorStyle = Style152
         Me.tdrpStatus.DataSource = Me.TestingStatusBindingSource
         Me.tdrpStatus.DisplayMember = "Status"
-        Me.tdrpStatus.EvenRowStyle = Style33
+        Me.tdrpStatus.EvenRowStyle = Style153
         Me.tdrpStatus.FetchRowStyles = False
-        Me.tdrpStatus.FooterStyle = Style34
-        Me.tdrpStatus.HeadingStyle = Style35
-        Me.tdrpStatus.HighLightRowStyle = Style36
+        Me.tdrpStatus.FooterStyle = Style154
+        Me.tdrpStatus.HeadingStyle = Style155
+        Me.tdrpStatus.HighLightRowStyle = Style156
         Me.tdrpStatus.Images.Add(CType(resources.GetObject("tdrpStatus.Images"), System.Drawing.Image))
         Me.tdrpStatus.Location = New System.Drawing.Point(501, 120)
         Me.tdrpStatus.Name = "tdrpStatus"
-        Me.tdrpStatus.OddRowStyle = Style37
-        Me.tdrpStatus.RecordSelectorStyle = Style38
+        Me.tdrpStatus.OddRowStyle = Style157
+        Me.tdrpStatus.RecordSelectorStyle = Style158
         Me.tdrpStatus.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.tdrpStatus.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
-        Me.tdrpStatus.RowSelectorStyle = Style39
+        Me.tdrpStatus.RowSelectorStyle = Style159
         Me.tdrpStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.tdrpStatus.ScrollTips = False
         Me.tdrpStatus.Size = New System.Drawing.Size(100, 69)
-        Me.tdrpStatus.Style = Style40
+        Me.tdrpStatus.Style = Style160
         Me.tdrpStatus.TabIndex = 6
         Me.tdrpStatus.TabStop = False
         Me.tdrpStatus.UseCompatibleTextRendering = False
@@ -279,6 +277,7 @@ Partial Class frmTestingMain
         '
         Me.grdTestingHeader.AllowAddNew = True
         Me.grdTestingHeader.AllowDelete = True
+        Me.grdTestingHeader.AlternatingRows = True
         Me.grdTestingHeader.CaptionHeight = 17
         Me.grdTestingHeader.DataSource = Me.TestingHeaderBindingSource
         Me.grdTestingHeader.FilterBar = True
@@ -296,7 +295,7 @@ Partial Class frmTestingMain
         Me.grdTestingHeader.PrintInfo.PageSettings = CType(resources.GetObject("grdTestingHeader.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdTestingHeader.RowHeight = 15
         Me.grdTestingHeader.Size = New System.Drawing.Size(765, 285)
-        Me.grdTestingHeader.TabIndex = 7
+        Me.grdTestingHeader.TabIndex = 0
         Me.grdTestingHeader.UseCompatibleTextRendering = False
         Me.grdTestingHeader.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
         Me.grdTestingHeader.PropBag = resources.GetString("grdTestingHeader.PropBag")
@@ -319,7 +318,7 @@ Partial Class frmTestingMain
         Me.cmdExit.Location = New System.Drawing.Point(15, 154)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
-        Me.cmdExit.TabIndex = 35
+        Me.cmdExit.TabIndex = 4
         Me.cmdExit.Text = "E&xit"
         Me.cmdExit.UseVisualStyleBackColor = True
         Me.cmdExit.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -327,11 +326,10 @@ Partial Class frmTestingMain
         '
         'cmdUpdate
         '
-        Me.cmdUpdate.Enabled = False
         Me.cmdUpdate.Location = New System.Drawing.Point(15, 110)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
-        Me.cmdUpdate.TabIndex = 34
+        Me.cmdUpdate.TabIndex = 3
         Me.cmdUpdate.Text = "Update"
         Me.cmdUpdate.UseVisualStyleBackColor = True
         Me.cmdUpdate.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -339,11 +337,10 @@ Partial Class frmTestingMain
         '
         'cmdReset
         '
-        Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(15, 80)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
-        Me.cmdReset.TabIndex = 33
+        Me.cmdReset.TabIndex = 2
         Me.cmdReset.Text = "Reset"
         Me.cmdReset.UseVisualStyleBackColor = True
         Me.cmdReset.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -354,7 +351,7 @@ Partial Class frmTestingMain
         Me.cmdDelete.Location = New System.Drawing.Point(15, 50)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
-        Me.cmdDelete.TabIndex = 32
+        Me.cmdDelete.TabIndex = 1
         Me.cmdDelete.Text = "&Delete"
         Me.cmdDelete.UseVisualStyleBackColor = True
         Me.cmdDelete.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -365,7 +362,7 @@ Partial Class frmTestingMain
         Me.cmdNew.Location = New System.Drawing.Point(15, 20)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
-        Me.cmdNew.TabIndex = 31
+        Me.cmdNew.TabIndex = 0
         Me.cmdNew.Text = "&New"
         Me.cmdNew.UseVisualStyleBackColor = True
         Me.cmdNew.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -373,7 +370,6 @@ Partial Class frmTestingMain
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.cmdTest)
         Me.GroupBox2.Controls.Add(Me.cmdShowTasks)
         Me.GroupBox2.Controls.Add(Me.lstStatus)
         Me.GroupBox2.Controls.Add(Me.lstTesters)
@@ -392,19 +388,8 @@ Partial Class frmTestingMain
         Me.GroupBox2.Location = New System.Drawing.Point(10, 5)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(640, 195)
-        Me.GroupBox2.TabIndex = 32
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
-        '
-        'cmdTest
-        '
-        Me.cmdTest.Location = New System.Drawing.Point(275, 125)
-        Me.cmdTest.Name = "cmdTest"
-        Me.cmdTest.Size = New System.Drawing.Size(85, 25)
-        Me.cmdTest.TabIndex = 36
-        Me.cmdTest.Text = "Test"
-        Me.cmdTest.UseVisualStyleBackColor = True
-        Me.cmdTest.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.cmdTest.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
         'cmdShowTasks
         '
@@ -413,7 +398,7 @@ Partial Class frmTestingMain
         Me.cmdShowTasks.Location = New System.Drawing.Point(15, 155)
         Me.cmdShowTasks.Name = "cmdShowTasks"
         Me.cmdShowTasks.Size = New System.Drawing.Size(610, 25)
-        Me.cmdShowTasks.TabIndex = 32
+        Me.cmdShowTasks.TabIndex = 8
         Me.cmdShowTasks.Text = "Show tasks for screen "
         Me.cmdShowTasks.UseVisualStyleBackColor = True
         Me.cmdShowTasks.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -441,7 +426,7 @@ Partial Class frmTestingMain
         Me.lstStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstStatus.ShowHeaderCheckBox = False
         Me.lstStatus.Size = New System.Drawing.Size(125, 125)
-        Me.lstStatus.TabIndex = 31
+        Me.lstStatus.TabIndex = 7
         Me.lstStatus.Text = "C1List2"
         Me.lstStatus.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
         Me.lstStatus.PropBag = resources.GetString("lstStatus.PropBag")
@@ -468,7 +453,7 @@ Partial Class frmTestingMain
         Me.lstTesters.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.lstTesters.ShowHeaderCheckBox = False
         Me.lstTesters.Size = New System.Drawing.Size(125, 125)
-        Me.lstTesters.TabIndex = 30
+        Me.lstTesters.TabIndex = 6
         Me.lstTesters.Text = "C1List1"
         Me.lstTesters.VisualStyle = C1.Win.C1List.VisualStyle.Office2007Blue
         Me.lstTesters.PropBag = resources.GetString("lstTesters.PropBag")
@@ -478,12 +463,13 @@ Partial Class frmTestingMain
         Me.chkReadyToTest.BackColor = System.Drawing.Color.Transparent
         Me.chkReadyToTest.BorderColor = System.Drawing.Color.Transparent
         Me.chkReadyToTest.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.chkReadyToTest.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "ReadyToTest", True))
         Me.chkReadyToTest.ForeColor = System.Drawing.Color.Black
         Me.chkReadyToTest.Location = New System.Drawing.Point(137, 121)
         Me.chkReadyToTest.Name = "chkReadyToTest"
         Me.chkReadyToTest.Padding = New System.Windows.Forms.Padding(1)
         Me.chkReadyToTest.Size = New System.Drawing.Size(23, 24)
-        Me.chkReadyToTest.TabIndex = 38
+        Me.chkReadyToTest.TabIndex = 5
         Me.chkReadyToTest.UseVisualStyleBackColor = True
         Me.chkReadyToTest.Value = Nothing
         Me.chkReadyToTest.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -497,7 +483,7 @@ Partial Class frmTestingMain
         Me.txtScreenName.Location = New System.Drawing.Point(135, 20)
         Me.txtScreenName.Name = "txtScreenName"
         Me.txtScreenName.Size = New System.Drawing.Size(225, 24)
-        Me.txtScreenName.TabIndex = 26
+        Me.txtScreenName.TabIndex = 1
         Me.txtScreenName.Tag = Nothing
         Me.txtScreenName.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtScreenName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -510,7 +496,7 @@ Partial Class frmTestingMain
         Me.txtSubMenu2.Location = New System.Drawing.Point(135, 95)
         Me.txtSubMenu2.Name = "txtSubMenu2"
         Me.txtSubMenu2.Size = New System.Drawing.Size(225, 24)
-        Me.txtSubMenu2.TabIndex = 29
+        Me.txtSubMenu2.TabIndex = 4
         Me.txtSubMenu2.Tag = Nothing
         Me.txtSubMenu2.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtSubMenu2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -523,7 +509,7 @@ Partial Class frmTestingMain
         Me.txtSubMenu1.Location = New System.Drawing.Point(135, 70)
         Me.txtSubMenu1.Name = "txtSubMenu1"
         Me.txtSubMenu1.Size = New System.Drawing.Size(225, 24)
-        Me.txtSubMenu1.TabIndex = 28
+        Me.txtSubMenu1.TabIndex = 3
         Me.txtSubMenu1.Tag = Nothing
         Me.txtSubMenu1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtSubMenu1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -536,7 +522,7 @@ Partial Class frmTestingMain
         Me.txtMenu.Location = New System.Drawing.Point(135, 45)
         Me.txtMenu.Name = "txtMenu"
         Me.txtMenu.Size = New System.Drawing.Size(225, 24)
-        Me.txtMenu.TabIndex = 27
+        Me.txtMenu.TabIndex = 2
         Me.txtMenu.Tag = Nothing
         Me.txtMenu.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtMenu.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
@@ -569,7 +555,6 @@ Partial Class frmTestingMain
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.cmdTest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdShowTasks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).EndInit()
@@ -608,5 +593,4 @@ Partial Class frmTestingMain
     Friend WithEvents txtSubMenu2 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtSubMenu1 As C1.Win.C1Input.C1TextBox
     Friend WithEvents txtMenu As C1.Win.C1Input.C1TextBox
-    Friend WithEvents cmdTest As C1.Win.C1Input.C1Button
 End Class

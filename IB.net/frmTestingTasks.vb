@@ -1,4 +1,5 @@
 ﻿Option Explicit On
+
 Imports System.ComponentModel
 Imports C1.Win.C1TrueDBGrid
 
@@ -7,11 +8,15 @@ Public Class frmTestingTasks
     Dim blnNew As Boolean
     Dim blnEdit As Boolean
     Dim blnNoClick As Boolean
+    Dim blnFormLoadStarted As Boolean = False
 
     Private Sub frmTestingTasks_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim intRow As Int16
         Dim CurTask As Integer
+
+        blnNoClick = True
+        blnFormLoadStarted = True
 
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -25,13 +30,13 @@ Public Class frmTestingTasks
             End If
 
             strLocation = "FTTL3.0"
-            TestersTableAdapter.Connection.ConnectionString = connGlobal
-            TestersTableAdapter.Fill(DsTesters.Testers)
+            Me.TestersTableAdapter.Connection.ConnectionString = connGlobal
+            Me.TestersTableAdapter.Fill(DsTesters.Testers)
             cmbTester.MaxDropDownItems = TestersBindingSource.Count
 
             strLocation = "FTTL4.0"
-            TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
-            TestingStatusTableAdapter.Fill(DsTestingStatus.TestingStatus)
+            Me.TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
+            Me.TestingStatusTableAdapter.Fill(DsTestingStatus.TestingStatus)
             cmbTester.MaxDropDownItems = TestingStatusBindingSource.Count
 
             strLocation = "FTTL5.0"
@@ -40,8 +45,8 @@ Public Class frmTestingTasks
 
                 If CurTask > 0 Then
                     blnNoClick = True
-                    TestingTasksTableAdapter.Connection.ConnectionString = connGlobal
-                    TestingTasksTableAdapter.Fill(DsTestingTasks.TestingTasks, CurTask)
+                    Me.TestingTasksTableAdapter.Connection.ConnectionString = connGlobal
+                    Me.TestingTasksTableAdapter.Fill(DsTestingTasks.TestingTasks, CurTask)
                     blnNoClick = False
                 End If
             End If
@@ -61,9 +66,12 @@ Public Class frmTestingTasks
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            blnNoClick = False
             Result = MessageBox.Show(Me, "Error in routine frmTestingTasks_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmTestingTasks_Load", vbOK)
             LogError(Me.Name, "frmTestingTasks_Load", strLocation, ex.Message)
+        Finally
+            blnEdit = False
+            blnNew = False
+            blnNoClick = False
         End Try
 
     End Sub
@@ -75,7 +83,7 @@ Public Class frmTestingTasks
 
             intYesNo = MsgBox("Do you want to save your changes before exiting?", vbYesNo, "Save Record")
             If intYesNo = vbYes Then
-                e.Cancel = True
+                UpdateAllItemsOnFormAfterSave()
             End If
         End If
 
@@ -93,8 +101,8 @@ Public Class frmTestingTasks
             CurTask = CLng(lblCurTaskNumber.Text)
 
             If CurTask > 0 Then
-                TestingTasksTableAdapter.Connection.ConnectionString = connGlobal
-                TestingTasksTableAdapter.Fill(DsTestingTasks.TestingTasks, CurTask)
+                Me.TestingTasksTableAdapter.Connection.ConnectionString = connGlobal
+                Me.TestingTasksTableAdapter.Fill(DsTestingTasks.TestingTasks, CurTask)
             End If
         End If
 
@@ -110,7 +118,7 @@ Public Class frmTestingTasks
 
             strLocation = "UAIOFAS2.0"
             Me.TestingTasksBindingSource.EndEdit()
-            TestingTasksTableAdapter.Update(DsTestingTasks.TestingTasks)
+            Me.TestingTasksTableAdapter.Update(DsTestingTasks.TestingTasks)
 
             strLocation = "UAIOFAS3.0"
             blnNew = False
@@ -122,18 +130,31 @@ Public Class frmTestingTasks
             Result = MessageBox.Show(Me, "Error in routine UpdateAllItemsOnFormAfterSave (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateAllItemsOnFormAfterSave", vbOK)
             LogError(Me.Name, "UpdateAllItemsOnFormAfterSave", strLocation, ex.Message)
         End Try
+
+    End Sub
+
+    Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
+
+        AddNewRecord()
+
     End Sub
 
     Private Sub grdTestingTasks_OnAddNew(sender As Object, e As EventArgs) Handles grdTestingTasks.OnAddNew
 
+        AddNewRecord()
+
+    End Sub
+
+    Public Sub AddNewRecord()
+
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "GTTOAN1.0"
+            strLocation = "ANR1.0"
             blnNew = True
             blnEdit = True
 
-            strLocation = "GTTOAN2.0"
+            strLocation = "ANR2.0"
             ' Set default values and clear nulls for the rest of the fields
             grdTestingTasks.Columns("TestingHeaderID").Value = CLng(lblCurTaskNumber.Text)
             grdTestingTasks.Columns("Created").Value = Now()
@@ -148,8 +169,8 @@ Public Class frmTestingTasks
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingTasks_OnAddNew (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingTasks_OnAddNew", vbOK)
-            LogError(Me.Name, "grdTestingTasks_OnAddNew", strLocation, ex.Message)
+            Result = MessageBox.Show(Me, "Error in routine AddNewRecord (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "AddNewRecord", vbOK)
+            LogError(Me.Name, "AddNewRecord", strLocation, ex.Message)
         End Try
 
     End Sub
@@ -215,15 +236,11 @@ Public Class frmTestingTasks
 
     End Sub
 
-    Private Sub grdTestingTasks_TextChanged(sender As Object, e As EventArgs) Handles grdTestingTasks.TextChanged
-
-        blnEdit = True
-
-    End Sub
-
     Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs) Handles txtScreenName.TextChanged, txtTask.TextChanged, txtComments.TextChanged
 
-        blnEdit = True
+        If blnNoClick = False Then
+            blnEdit = True
+        End If
 
     End Sub
 
@@ -298,6 +315,18 @@ Public Class frmTestingTasks
         End Try
     End Sub
 
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+
+        Dim intYesNo As Int16
+
+        intYesNo = MsgBox("Are you sure you want to delete this record?", vbYesNo, "Delete Record Confirmation")
+        If intYesNo = vbYes Then
+            grdTestingTasks.Delete()
+            UpdateAllItemsOnFormAfterSave()
+        End If
+
+    End Sub
+
     Private Sub grdTestingTasks_BeforeDelete(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingTasks.BeforeDelete
 
         Dim intYesNo As Int16
@@ -312,6 +341,15 @@ Public Class frmTestingTasks
     Private Sub grdTestingTasks_AfterDelete(sender As Object, e As EventArgs) Handles grdTestingTasks.AfterDelete
 
         UpdateAllItemsOnFormAfterSave()
+
+    End Sub
+
+    Private Sub grdTestingTasks_BeforeRowColChange(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingTasks.BeforeRowColChange
+
+        If blnEdit = True Or blnNew = True Then
+            UpdateAllItemsOnFormAfterSave()
+        End If
+        blnNoClick = True
 
     End Sub
 
@@ -347,18 +385,14 @@ Public Class frmTestingTasks
 
     End Sub
 
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
-
-        Me.Dispose()
-
-    End Sub
-
     Private Sub cmbStatus_TextChanged(sender As Object, e As EventArgs) Handles cmbStatus.TextChanged
 
         Try
             strLocation = "CSTC1.0"
-            blnEdit = True
-            grdTestingTasks.Columns("Status").Value = cmbStatus.Text
+            If blnNoClick = False Then
+                blnEdit = True
+                grdTestingTasks.Columns("Status").Value = cmbStatus.Text
+            End If
         Catch ex As Exception
             Result = MessageBox.Show(Me, "Error in routine cmbStatus_TextChanged (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmbStatus_TextChanged", vbOK)
             LogError(Me.Name, "cmbStatus_TextChanged", strLocation, ex.Message)
@@ -370,12 +404,35 @@ Public Class frmTestingTasks
 
         Try
             strLocation = "CTTC1.0"
-            blnEdit = True
-            grdTestingTasks.Columns("Tester").Value = cmbTester.Text
+            If blnNoClick = False Then
+                blnEdit = True
+                grdTestingTasks.Columns("Tester").Value = cmbTester.Text
+            End If
         Catch ex As Exception
             Result = MessageBox.Show(Me, "Error in routine cmbTester_TextChanged (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "cmbTester_TextChanged", vbOK)
             LogError(Me.Name, "cmbTester_TextChanged", strLocation, ex.Message)
         End Try
 
     End Sub
+
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
+
+        TestingTasksBindingSource.CancelEdit()
+        UpdateAllItemsOnFormAfterSave()
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        UpdateAllItemsOnFormAfterSave()
+        blnEdit = False
+
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+
+        Me.Dispose()
+
+    End Sub
+
 End Class

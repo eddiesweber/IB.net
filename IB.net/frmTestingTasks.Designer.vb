@@ -29,26 +29,26 @@ Partial Class frmTestingTasks
         Dim TesterLabel As System.Windows.Forms.Label
         Dim ScreenNameLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTestingTasks))
-        Dim Style21 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style22 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style23 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style24 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style25 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style26 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style27 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style28 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style29 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style30 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style31 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style32 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style33 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style34 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style35 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style36 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style37 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style38 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style39 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Style40 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style121 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style122 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style123 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style124 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style125 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style126 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style127 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style128 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style129 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style130 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style131 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style132 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style133 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style134 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style135 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style136 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style137 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style138 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style139 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style140 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Me.DsTesters = New IB.net.dsTesters()
         Me.TestersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TestersTableAdapter = New IB.net.dsTestersTableAdapters.TestersTableAdapter()
@@ -65,14 +65,14 @@ Partial Class frmTestingTasks
         Me.lblCurTaskNumber = New System.Windows.Forms.Label()
         Me.cmbStatus = New C1.Win.C1List.C1Combo()
         Me.txtComments = New C1.Win.C1Input.C1TextBox()
+        Me.TestingTasksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsTestingTasks = New IB.net.dsTestingTasks()
         Me.txtTask = New C1.Win.C1Input.C1TextBox()
         Me.cmbTester = New C1.Win.C1List.C1Combo()
         Me.txtScreenName = New C1.Win.C1Input.C1TextBox()
         Me.grdTestingTasks = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.drpTester = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.drpStatus = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
-        Me.TestingTasksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsTestingTasks = New IB.net.dsTestingTasks()
         Me.TestingTasksTableAdapter = New IB.net.dsTestingTasksTableAdapters.TestingTasksTableAdapter()
         Label1 = New System.Windows.Forms.Label()
         CommentsLabel = New System.Windows.Forms.Label()
@@ -92,14 +92,14 @@ Partial Class frmTestingTasks
         Me.GroupBox2.SuspendLayout()
         CType(Me.cmbStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTask, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTester, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtScreenName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdTestingTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.drpTester, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.drpStatus, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -206,7 +206,6 @@ Partial Class frmTestingTasks
         '
         'cmdUpdate
         '
-        Me.cmdUpdate.Enabled = False
         Me.cmdUpdate.Location = New System.Drawing.Point(15, 110)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
@@ -218,7 +217,6 @@ Partial Class frmTestingTasks
         '
         'cmdReset
         '
-        Me.cmdReset.Enabled = False
         Me.cmdReset.Location = New System.Drawing.Point(15, 80)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
@@ -325,6 +323,16 @@ Partial Class frmTestingTasks
         Me.txtComments.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtComments.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'TestingTasksBindingSource
+        '
+        Me.TestingTasksBindingSource.DataMember = "TestingTasks"
+        Me.TestingTasksBindingSource.DataSource = Me.DsTestingTasks
+        '
+        'DsTestingTasks
+        '
+        Me.DsTestingTasks.DataSetName = "dsTestingTasks"
+        Me.DsTestingTasks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtTask
         '
         Me.txtTask.AutoSize = False
@@ -377,7 +385,6 @@ Partial Class frmTestingTasks
         Me.txtScreenName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtScreenName.Location = New System.Drawing.Point(115, 20)
         Me.txtScreenName.Name = "txtScreenName"
-        Me.txtScreenName.ReadOnly = True
         Me.txtScreenName.Size = New System.Drawing.Size(300, 24)
         Me.txtScreenName.TabIndex = 41
         Me.txtScreenName.Tag = Nothing
@@ -388,6 +395,7 @@ Partial Class frmTestingTasks
         '
         Me.grdTestingTasks.AllowAddNew = True
         Me.grdTestingTasks.AllowDelete = True
+        Me.grdTestingTasks.AlternatingRows = True
         Me.grdTestingTasks.CaptionHeight = 17
         Me.grdTestingTasks.DataSource = Me.TestingTasksBindingSource
         Me.grdTestingTasks.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -400,7 +408,7 @@ Partial Class frmTestingTasks
         Me.grdTestingTasks.PreviewInfo.ZoomFactor = 75.0R
         Me.grdTestingTasks.PrintInfo.MeasurementDevice = C1.Win.C1TrueDBGrid.PrintInfo.MeasurementDeviceEnum.Screen
         Me.grdTestingTasks.PrintInfo.MeasurementPrinterName = Nothing
-        Me.grdTestingTasks.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid2.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdTestingTasks.PrintInfo.PageSettings = CType(resources.GetObject("grdTestingTasks.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdTestingTasks.RowHeight = 15
         Me.grdTestingTasks.Size = New System.Drawing.Size(765, 238)
         Me.grdTestingTasks.TabIndex = 43
@@ -415,32 +423,32 @@ Partial Class frmTestingTasks
         Me.drpTester.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.drpTester.AlternatingRows = False
         Me.drpTester.CaptionHeight = 17
-        Me.drpTester.CaptionStyle = Style21
+        Me.drpTester.CaptionStyle = Style121
         Me.drpTester.ColumnCaptionHeight = 17
         Me.drpTester.ColumnFooterHeight = 17
         Me.drpTester.ColumnHeaders = False
-        Me.drpTester.ColumnSelectorStyle = Style22
+        Me.drpTester.ColumnSelectorStyle = Style122
         Me.drpTester.DataSource = Me.TestersBindingSource
         Me.drpTester.DisplayMember = "Tester"
-        Me.drpTester.EvenRowStyle = Style23
+        Me.drpTester.EvenRowStyle = Style123
         Me.drpTester.FetchRowStyles = False
         Me.drpTester.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.drpTester.FooterStyle = Style24
-        Me.drpTester.HeadingStyle = Style25
-        Me.drpTester.HighLightRowStyle = Style26
+        Me.drpTester.FooterStyle = Style124
+        Me.drpTester.HeadingStyle = Style125
+        Me.drpTester.HighLightRowStyle = Style126
         Me.drpTester.Images.Add(CType(resources.GetObject("drpTester.Images"), System.Drawing.Image))
         Me.drpTester.Location = New System.Drawing.Point(155, 251)
         Me.drpTester.Name = "drpTester"
-        Me.drpTester.OddRowStyle = Style27
-        Me.drpTester.RecordSelectorStyle = Style28
+        Me.drpTester.OddRowStyle = Style127
+        Me.drpTester.RecordSelectorStyle = Style128
         Me.drpTester.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.drpTester.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
         Me.drpTester.RowHeight = 15
-        Me.drpTester.RowSelectorStyle = Style29
+        Me.drpTester.RowSelectorStyle = Style129
         Me.drpTester.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.drpTester.ScrollTips = False
         Me.drpTester.Size = New System.Drawing.Size(100, 150)
-        Me.drpTester.Style = Style30
+        Me.drpTester.Style = Style130
         Me.drpTester.TabIndex = 44
         Me.drpTester.TabStop = False
         Me.drpTester.UseCompatibleTextRendering = False
@@ -455,48 +463,38 @@ Partial Class frmTestingTasks
         Me.drpStatus.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
         Me.drpStatus.AlternatingRows = False
         Me.drpStatus.CaptionHeight = 17
-        Me.drpStatus.CaptionStyle = Style31
+        Me.drpStatus.CaptionStyle = Style131
         Me.drpStatus.ColumnCaptionHeight = 17
         Me.drpStatus.ColumnFooterHeight = 17
         Me.drpStatus.ColumnHeaders = False
-        Me.drpStatus.ColumnSelectorStyle = Style32
+        Me.drpStatus.ColumnSelectorStyle = Style132
         Me.drpStatus.DataSource = Me.TestingStatusBindingSource
         Me.drpStatus.DisplayMember = "Status"
-        Me.drpStatus.EvenRowStyle = Style33
+        Me.drpStatus.EvenRowStyle = Style133
         Me.drpStatus.FetchRowStyles = False
         Me.drpStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.drpStatus.FooterStyle = Style34
-        Me.drpStatus.HeadingStyle = Style35
-        Me.drpStatus.HighLightRowStyle = Style36
+        Me.drpStatus.FooterStyle = Style134
+        Me.drpStatus.HeadingStyle = Style135
+        Me.drpStatus.HighLightRowStyle = Style136
         Me.drpStatus.Images.Add(CType(resources.GetObject("drpStatus.Images"), System.Drawing.Image))
         Me.drpStatus.Location = New System.Drawing.Point(261, 251)
         Me.drpStatus.Name = "drpStatus"
-        Me.drpStatus.OddRowStyle = Style37
-        Me.drpStatus.RecordSelectorStyle = Style38
+        Me.drpStatus.OddRowStyle = Style137
+        Me.drpStatus.RecordSelectorStyle = Style138
         Me.drpStatus.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.drpStatus.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
         Me.drpStatus.RowHeight = 15
-        Me.drpStatus.RowSelectorStyle = Style39
+        Me.drpStatus.RowSelectorStyle = Style139
         Me.drpStatus.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.drpStatus.ScrollTips = False
         Me.drpStatus.Size = New System.Drawing.Size(100, 150)
-        Me.drpStatus.Style = Style40
+        Me.drpStatus.Style = Style140
         Me.drpStatus.TabIndex = 45
         Me.drpStatus.TabStop = False
         Me.drpStatus.UseCompatibleTextRendering = False
         Me.drpStatus.ValueMember = "Status"
         Me.drpStatus.Visible = False
         Me.drpStatus.PropBag = resources.GetString("drpStatus.PropBag")
-        '
-        'TestingTasksBindingSource
-        '
-        Me.TestingTasksBindingSource.DataMember = "TestingTasks"
-        Me.TestingTasksBindingSource.DataSource = Me.DsTestingTasks
-        '
-        'DsTestingTasks
-        '
-        Me.DsTestingTasks.DataSetName = "dsTestingTasks"
-        Me.DsTestingTasks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TestingTasksTableAdapter
         '
@@ -529,14 +527,14 @@ Partial Class frmTestingTasks
         Me.GroupBox2.PerformLayout()
         CType(Me.cmbStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTask, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTester, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtScreenName, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdTestingTasks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.drpTester, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.drpStatus, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TestingTasksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsTestingTasks, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

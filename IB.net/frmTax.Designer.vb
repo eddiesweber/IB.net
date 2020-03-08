@@ -53,7 +53,7 @@ Partial Class frmTax
         Me.C1TrueDBGrid1.PrintInfo.MeasurementPrinterName = Nothing
         Me.C1TrueDBGrid1.PrintInfo.PageSettings = CType(resources.GetObject("C1TrueDBGrid1.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.C1TrueDBGrid1.RowHeight = 15
-        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(553, 160)
+        Me.C1TrueDBGrid1.Size = New System.Drawing.Size(634, 211)
         Me.C1TrueDBGrid1.TabIndex = 0
         Me.C1TrueDBGrid1.UseCompatibleTextRendering = False
         Me.C1TrueDBGrid1.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
@@ -77,7 +77,7 @@ Partial Class frmTax
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(553, 160)
+        Me.ClientSize = New System.Drawing.Size(634, 211)
         Me.Controls.Add(Me.C1TrueDBGrid1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTax"
