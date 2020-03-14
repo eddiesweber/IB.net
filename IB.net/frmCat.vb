@@ -16,15 +16,17 @@ Public Class frmCat
             strLocation = "FCL1.0"
             'GetWindowPos(Me, 200, 200)
 
+            strLocation = "FCL2.0"
             If Dir("frmCatC1TrueDBGrid1.xml") <> "" Then
                 'C1TrueDBGrid1.LoadLayout("frmCatC1TrueDBGrid1.xml")
             End If
 
-            strLocation = "FCL2.0"
+            strLocation = "FCL3.0"
             Me.CategoryMasterTableAdapter.Connection.ConnectionString = CS
             Me.CategoryMasterTableAdapter.Fill(Me.DsCategoryMaster.CategoryMaster)
 
             ' Get field types and set limits
+            strLocation = "FCL4.0"
             For intCount = 0 To DsCategoryMaster.CategoryMaster.Columns.Count - 1
                 intLength = GetFieldMaxLenght(Me.DsCategoryMaster.CategoryMaster.Columns(intCount).DataType.ToString, Me.DsCategoryMaster.CategoryMaster.Columns(intCount).MaxLength)
                 C1TrueDBGrid1.Columns(Me.DsCategoryMaster.CategoryMaster.Columns(intCount).ColumnName).DataWidth = intLength
@@ -52,7 +54,7 @@ Public Class frmCat
             Me.Cursor = Cursors.WaitCursor
 
             ' Set default values and clear nulls for the rest of the fields
-            strLocation = "CTDG1.0"
+            strLocation = "FC_CTDG1.0"
             C1TrueDBGrid1.Columns("VOL_CAT").Value = ""
             C1TrueDBGrid1.Columns("VOL_TITLE").Value = ""
             C1TrueDBGrid1.Columns("REMARKS").Value = ""
@@ -79,37 +81,37 @@ Public Class frmCat
                 Try
                     Me.Cursor = Cursors.WaitCursor
 
-                    strLocation = "CTDGBRCC1.0"
+                    strLocation = "FC_CTDGBRCC1.0"
                     If C1TrueDBGrid1.Columns("VOL_CAT").Value = "" Then
                         MessageBox.Show("VOL_CAT" & " - must have a value")
                         e.Cancel = True
-                    Else
-                        C1TrueDBGrid1.Columns("VOL_CAT").Value = UCase(C1TrueDBGrid1.Columns("VOL_CAT").Value)
                     End If
 
+                    strLocation = "FC_CTDGBRCC2.0"
                     If C1TrueDBGrid1.Columns("SALE_CD").Value = "" Then
                         MessageBox.Show("SALE_CD" & " - must have a value")
                         e.Cancel = True
-                    Else
-                        C1TrueDBGrid1.Columns("SALE_CD").Value = UCase(C1TrueDBGrid1.Columns("SALE_CD").Value)
                     End If
 
+                    strLocation = "FC_CTDGBRCC3.0"
                     If C1TrueDBGrid1.Columns("REVENUE").Value = "" Then
                         MessageBox.Show("REVENUE" & " - must have a value")
                         e.Cancel = True
                     End If
 
-                    strLocation = "CTDGBRCC2.0"
+                    strLocation = "FC_CTDGBRCC4.0"
+                    C1TrueDBGrid1.Columns("VOL_CAT").Value = UCase(C1TrueDBGrid1.Columns("VOL_CAT").Value)
+                    C1TrueDBGrid1.Columns("SALE_CD").Value = UCase(C1TrueDBGrid1.Columns("SALE_CD").Value)
                     C1TrueDBGrid1.Columns("VOL_TITLE").Value = UCase(C1TrueDBGrid1.Columns("VOL_TITLE").Value)
                     C1TrueDBGrid1.Columns("REMARKS").Value = UCase(C1TrueDBGrid1.Columns("REMARKS").Value)
                     C1TrueDBGrid1.Columns("DIST_CODE").Value = UCase(C1TrueDBGrid1.Columns("DIST_CODE").Value)
                     C1TrueDBGrid1.Columns("COMM_CAT").Value = UCase(C1TrueDBGrid1.Columns("COMM_CAT").Value)
 
-                    strLocation = "CTDGBRCC3.0"
+                    strLocation = "FC_CTDGBRCC5.0"
                     C1TrueDBGrid1.UpdateData()
 
-                    strLocation = "CTDGBRCC4.0"
-                    CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
+                    strLocation = "FC_CTDGBRCC6.0"
+                    Me.CategoryMasterTableAdapter.Update(Me.DsCategoryMaster.CategoryMaster)
 
                     Me.Cursor = Cursors.Default
                 Catch ex As Exception
@@ -135,14 +137,16 @@ Public Class frmCat
 
     Private Sub C1TrueDBGrid1_AfterDelete(sender As Object, e As EventArgs) Handles C1TrueDBGrid1.AfterDelete
 
-        Me.Cursor = Cursors.WaitCursor
-
         Try
-            strLocation = "CTDGAD1.0"
+            Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "FC_CTDGAD1.0"
             C1TrueDBGrid1.UpdateData()
 
-            strLocation = "CTDGAD2.0"
-            CategoryMasterTableAdapter.Update(DsCategoryMaster.CategoryMaster)
+            strLocation = "FC_CTDGAD2.0"
+            Me.CategoryMasterTableAdapter.Update(Me.DsCategoryMaster.CategoryMaster)
+
+            Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
             Result = MessageBox.Show(Me, "Error in routine C1TrueDBGrid1_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "C1TrueDBGrid1_AfterDelete", vbOK)

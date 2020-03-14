@@ -21,35 +21,35 @@ Public Class frmTestingMain
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "FTML1.0"
+            strLocation = "FTM_FTML1.0"
             'GetWindowPos(Me, 200, 22)
 
-            strLocation = "FTML2.0"
+            strLocation = "FTM_FTML2.0"
             If Dir("frmTestingMaingrdTestingHeader.xml") <> "" Then
                 'grdTestingHeader.LoadLayout("frmTestingMaingrdTestingHeader.xml")
             End If
 
-            strLocation = "FTML3.0"
+            strLocation = "FTM_FTML3.0"
             Me.TestingHeaderTableAdapter.Connection.ConnectionString = connGlobal
             Me.TestingHeaderTableAdapter.Fill(DsTestingHeader.TestingHeader)
 
-            strLocation = "FTML4.0"
+            strLocation = "FTM_FTML4.0"
             Me.TestersTableAdapter.Connection.ConnectionString = connGlobal
             Me.TestersTableAdapter.Fill(Me.DsTesters.Testers)
             lstTesters.ColumnWidth = lstTesters.Width - 5
 
-            strLocation = "FTML5.0"
+            strLocation = "FTM_FTML5.0"
             intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
             If intRow >= 0 Then
                 lstTesters.SelectedIndex = intRow
             End If
 
-            strLocation = "FTML6.0"
+            strLocation = "FTM_FTML6.0"
             Me.TestingStatusTableAdapter.Connection.ConnectionString = connGlobal
             Me.TestingStatusTableAdapter.Fill(Me.DsTestingStatus.TestingStatus)
             lstStatus.ColumnWidth = lstStatus.Width - 5
 
-            strLocation = "FTML7.0"
+            strLocation = "FTM_FTML7.0"
             intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
             If intRow >= 0 Then
                 lstStatus.SelectedIndex = intRow
@@ -89,14 +89,14 @@ Public Class frmTestingMain
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "UAIOFAS1.0"
+            strLocation = "FTM_UAIOFAS1.0"
             grdTestingHeader.UpdateData()
 
-            strLocation = "UAIOFAS2.0"
+            strLocation = "FTM_UAIOFAS2.0"
             Me.TestingHeaderBindingSource.EndEdit()
             Me.TestingHeaderTableAdapter.Update(DsTestingHeader.TestingHeader)
 
-            strLocation = "UAIOFAS3.0"
+            strLocation = "FTM_UAIOFAS3.0"
             SetModeReg()
 
             Me.Cursor = Cursors.Default
@@ -126,10 +126,10 @@ Public Class frmTestingMain
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            strLocation = "ANR1.0"
+            strLocation = "FTM_ANR1.0"
             SetModeNew()
 
-            strLocation = "ANR2.0"
+            strLocation = "FTM_ANR2.0"
             ' Set default values and clear nulls for the rest of the fields
             grdTestingHeader.Columns("ScreenName").Value = ""
             grdTestingHeader.Columns("Tester").Value = ""
@@ -143,7 +143,7 @@ Public Class frmTestingMain
             grdTestingHeader.Columns("ReadyToTest").Value = 0
             grdTestingHeader.Columns("Status").Value = "Not Started"
 
-            strLocation = "ANR3.0"
+            strLocation = "FTM_ANR3.0"
             cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value.ToString.Trim
 
             Me.Cursor = Cursors.Default
@@ -161,99 +161,104 @@ Public Class frmTestingMain
 
     End Sub
 
-    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs) Handles txtScreenName.TextChanged, txtSubMenu2.TextChanged, txtSubMenu1.TextChanged, txtMenu.TextChanged
+    Private Sub grdTestingHeader_BeforeRowColChange(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeRowColChange
 
-        If blnNoClick = False Then
-            SetModeChange()
+        If grdTestingHeader.Row >= 0 And grdTestingHeader.DestinationRow >= 0 Then
+            If grdTestingHeader.Row <> grdTestingHeader.DestinationRow Then
+                If blnEdit = True Or blnNew = True Then
+                    Try
+                        Me.Cursor = Cursors.WaitCursor
+
+                        ' Validate fields
+                        strLocation = "FTM_GTHBRCC1.0"
+                        If grdTestingHeader.Columns("ScreenName").Value.ToString.Trim = "" Then
+                            MessageBox.Show("ScreenName - must have a value")
+                            e.Cancel = True
+                        End If
+
+                        strLocation = "FTM_GTHBRCC2.0"
+                        If grdTestingHeader.Columns("Tester").Value.ToString.Trim = "" Then
+                            MessageBox.Show("Tester - must have a value")
+                            e.Cancel = True
+                        End If
+
+                        strLocation = "FTM_GTHBRCC3.0"
+                        If grdTestingHeader.Columns("DisplayOrder").Value < 1 Then
+                            MessageBox.Show("DisplayOrder - must have a value")
+                            e.Cancel = True
+                        End If
+
+                        'strLocation = "FTM_GTHBCU4.0"
+                        'If grdTestingHeader.Columns("Menu").Value.ToString.Trim = "" Then
+                        '    MessageBox.Show("Menu - must have a value")
+                        '    e.Cancel = True
+                        'End If
+
+                        strLocation = "FTM_GTHBRCC5.0"
+                        If grdTestingHeader.Columns("Status").Value.ToString.Trim = "" Then
+                            MessageBox.Show("Status - must have a value")
+                            e.Cancel = True
+                        End If
+
+                        strLocation = "FTM_GTHBRCC6.0"
+                        If grdTestingHeader.Columns("EditSequence").Value < 0 Then
+                            grdTestingHeader.Columns("EditSequence").Value = 1
+                        Else
+                            grdTestingHeader.Columns("EditSequence").Value = grdTestingHeader.Columns("EditSequence").Value + 1
+                        End If
+
+                        strLocation = "FTM_GTHBRCC7.0"
+                        grdTestingHeader.Columns("LastModified").Value = Now()
+
+                        UpdateAllItemsOnFormAfterSave()
+
+                        Me.Cursor = Cursors.Default
+                    Catch ex As Exception
+                        Me.Cursor = Cursors.Default
+                        Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_BeforeRowColChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_BeforeRowColChange", vbOK)
+                        LogError(Me.Name, "grdTestingHeader_BeforeRowColChange", strLocation, ex.Message)
+                    End Try
+                End If
+
+                blnNoClick = True
+            End If
         End If
 
     End Sub
 
-    Private Sub chkReadyToTest_ValueChanged(sender As Object, e As EventArgs) Handles chkReadyToTest.ValueChanged
+    Private Sub grdTestingHeader_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdTestingHeader.RowColChange
 
-        If blnNoClick = False Then
-            SetModeChange()
-        End If
-
-    End Sub
-
-    Private Sub grdTestingHeader_BeforeColUpdate(sender As Object, e As BeforeColUpdateEventArgs) Handles grdTestingHeader.BeforeColUpdate
+        Dim intRow As Int16
 
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            ' Validate fields
-            Select Case e.Column.Name.Trim
-                Case "ScreenName"
-                    strLocation = "GTHBCU1.0"
-                    If grdTestingHeader.Columns("ScreenName").Value.ToString.Trim = "" Then
-                        MessageBox.Show(e.Column.Name & " - must have a value")
-                        e.Cancel = True
-                    End If
-                Case "Tester"
-                    strLocation = "GTHBCU2.0"
-                    If grdTestingHeader.Columns("Tester").Value.ToString.Trim = "" Then
-                        MessageBox.Show(e.Column.Name & " - must have a value")
-                        e.Cancel = True
-                    End If
-                Case "DisplayOrder"
-                    strLocation = "GTHBCU3.0"
-                    If grdTestingHeader.Columns("DisplayOrder").Value < 1 Then
-                        MessageBox.Show(e.Column.Name & " - must have a value")
-                        e.Cancel = True
-                    End If
-                Case "Menu"
-                    strLocation = "GTHBCU4.0"
-                    If grdTestingHeader.Columns("Menu").Value.ToString.Trim = "" Then
-                        MessageBox.Show(e.Column.Name & " - must have a value")
-                        e.Cancel = True
-                    End If
-                Case "Status"
-                    strLocation = "GTHBCU5.0"
-                    If grdTestingHeader.Columns("Status").Value.ToString.Trim = "" Then
-                        MessageBox.Show(e.Column.Name & " - must have a value")
-                        e.Cancel = True
-                    End If
-            End Select
+            If e.LastRow >= 0 Then
+                If grdTestingHeader.Row <> e.LastRow Then
+                    strLocation = "FTM_GTHRCC1.0"
+                    cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value
 
-            strLocation = "GTHBCU6.0"
-            If grdTestingHeader.Columns("EditSequence").Value < 0 Then
-                grdTestingHeader.Columns("EditSequence").Value = 1
-            Else
-                grdTestingHeader.Columns("EditSequence").Value = grdTestingHeader.Columns("EditSequence").Value + 1
+                    strLocation = "FTM_GTHRCC2.0"
+                    intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
+                    If intRow >= 0 Then
+                        lstTesters.SelectedIndex = intRow
+                    End If
+
+                    strLocation = "FTM_GTHRCC3.0"
+                    intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
+                    If intRow >= 0 Then
+                        lstStatus.SelectedIndex = intRow
+                    End If
+                End If
             End If
 
-            strLocation = "GTHBCU7.0"
-            grdTestingHeader.Columns("LastModified").Value = Now()
-
             Me.Cursor = Cursors.Default
         Catch ex As Exception
             Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_BeforeColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_BeforeColUpdate", vbOK)
-            LogError(Me.Name, "grdTestingHeader_BeforeColUpdate", strLocation, ex.Message)
-        End Try
-
-        ' Check to see if anyone else has changed the record since data was loaded
-        ' - Save original record
-
-    End Sub
-
-    Private Sub grdTestingHeader_AfterColUpdate(sender As Object, e As ColEventArgs) Handles grdTestingHeader.AfterColUpdate
-
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-            strLocation = "GTHACU1.0"
-            UpdateAllItemsOnFormAfterSave()
-
-            strLocation = "GTHACU2.0"
-            cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value.ToString.Trim
-
-            Me.Cursor = Cursors.Default
-        Catch ex As Exception
-            Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterColUpdate", vbOK)
-            LogError(Me.Name, "grdTestingHeader_AfterColUpdate", strLocation, ex.Message)
+            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_RowColChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_RowColChange", vbOK)
+            LogError(Me.Name, "grdTestingHeader_RowColChange", strLocation, ex.Message)
+        Finally
+            blnNoClick = False
         End Try
 
     End Sub
@@ -287,85 +292,10 @@ Public Class frmTestingMain
 
     End Sub
 
-    Private Sub grdTestingHeader_BeforeRowColChange(sender As Object, e As C1.Win.C1TrueDBGrid.CancelEventArgs) Handles grdTestingHeader.BeforeRowColChange
-
-        If blnEdit = True Or blnNew = True Then
-            UpdateAllItemsOnFormAfterSave()
-        End If
-        blnNoClick = True
-
-    End Sub
-
-    Private Sub grdTestingHeader_RowColChange(sender As Object, e As RowColChangeEventArgs) Handles grdTestingHeader.RowColChange
-
-        Dim intRow As Int16
-
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-            If e.LastRow >= 0 Then
-                If grdTestingHeader.Row <> e.LastRow Then
-                    strLocation = "GTHAD1.0"
-                    cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value
-
-                    strLocation = "GTHAD2.0"
-                    intRow = lstTesters.FindString(grdTestingHeader.Columns("Tester").Value.ToString.Trim)
-                    If intRow >= 0 Then
-                        lstTesters.SelectedIndex = intRow
-                    End If
-
-                    strLocation = "GTHAD3.0"
-                    intRow = lstStatus.FindString(grdTestingHeader.Columns("Status").Value.ToString.Trim)
-                    If intRow >= 0 Then
-                        lstStatus.SelectedIndex = intRow
-                    End If
-                End If
-            End If
-
-            Me.Cursor = Cursors.Default
-        Catch ex As Exception
-            Me.Cursor = Cursors.Default
-            Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterDelete (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterDelete", vbOK)
-            LogError(Me.Name, "grdTestingHeader_AfterDelete", strLocation, ex.Message)
-        Finally
-            blnNoClick = False
-        End Try
-
-    End Sub
-
-    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
-
-        TestingHeaderBindingSource.CancelEdit()
-        blnEdit = False
-        SetModeReg()
-
-    End Sub
-
-    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
-
-        UpdateAllItemsOnFormAfterSave()
-        blnEdit = False
-        SetModeReg()
-
-    End Sub
-
-    Private Sub cmdShowTasks_Click(sender As Object, e As EventArgs) Handles cmdShowTasks.Click
-
-        frmTestingTasks.lblCurTaskNumber.Text = grdTestingHeader.Columns("ID").Value
-        frmTestingTasks.Show()
-
-    End Sub
-
-    Private Sub cmdTest_Click(sender As Object, e As EventArgs)
-
-        Test.Show()
-
-    End Sub
-
     Private Sub lstTesters_RowChange(sender As Object, e As EventArgs) Handles lstTesters.RowChange
 
         Try
-            strLocation = "LTRC1.0"
+            strLocation = "FTM_LTRC1.0"
             If blnNoClick = False Then
                 blnEdit = True
                 SetModeChange()
@@ -381,7 +311,7 @@ Public Class frmTestingMain
     Private Sub lstStatus_RowChange(sender As Object, e As EventArgs) Handles lstStatus.RowChange
 
         Try
-            strLocation = "LSRC1.0"
+            strLocation = "FTM_LSRC1.0"
             If blnNoClick = False Then
                 blnEdit = True
                 SetModeChange()
@@ -391,6 +321,51 @@ Public Class frmTestingMain
             Result = MessageBox.Show(Me, "Error in routine lstStatus_RowChange (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "lstStatus_RowChange", vbOK)
             LogError(Me.Name, "lstStatus_RowChange", strLocation, ex.Message)
         End Try
+
+    End Sub
+
+    Private Sub grdTestingHeader_BeforeColEdit(sender As Object, e As BeforeColEditEventArgs) Handles grdTestingHeader.BeforeColEdit
+
+        If blnNoClick = False Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub txtScreenName_TextChanged(sender As Object, e As EventArgs) Handles txtScreenName.TextChanged, txtSubMenu2.TextChanged, txtSubMenu1.TextChanged, txtMenu.TextChanged, txtDisplayOrder.TextChanged
+
+        If blnNoClick = False Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub chkReadyToTest_ValueChanged(sender As Object, e As EventArgs) Handles chkReadyToTest.ValueChanged
+
+        If blnNoClick = False Then
+            SetModeChange()
+        End If
+
+    End Sub
+
+    Private Sub cmdReset_Click(sender As Object, e As EventArgs) Handles cmdReset.Click
+
+        TestingHeaderBindingSource.CancelEdit()
+        SetModeReg()
+
+    End Sub
+
+    Private Sub cmdUpdate_Click(sender As Object, e As EventArgs) Handles cmdUpdate.Click
+
+        UpdateAllItemsOnFormAfterSave()
+        SetModeReg()
+
+    End Sub
+
+    Private Sub cmdShowTasks_Click(sender As Object, e As EventArgs) Handles cmdShowTasks.Click
+
+        frmTestingTasks.lblCurTaskNumber.Text = grdTestingHeader.Columns("ID").Value
+        frmTestingTasks.Show()
 
     End Sub
 
@@ -616,4 +591,86 @@ Public Class frmTestingMain
     '    End Try
 
     'End Sub
+
+    'Private Sub grdTestingHeader_BeforeColUpdate(sender As Object, e As BeforeColUpdateEventArgs) Handles grdTestingHeader.BeforeColUpdate
+
+    '    Try
+    '        Me.Cursor = Cursors.WaitCursor
+
+    '        ' Validate fields
+    '        Select Case e.Column.Name.Trim
+    '            Case "ScreenName"
+    '                strLocation = "GTHBCU1.0"
+    '                If grdTestingHeader.Columns("ScreenName").Value.ToString.Trim = "" Then
+    '                    MessageBox.Show(e.Column.Name & " - must have a value")
+    '                    e.Cancel = True
+    '                End If
+    '            Case "Tester"
+    '                strLocation = "GTHBCU2.0"
+    '                If grdTestingHeader.Columns("Tester").Value.ToString.Trim = "" Then
+    '                    MessageBox.Show(e.Column.Name & " - must have a value")
+    '                    e.Cancel = True
+    '                End If
+    '            Case "DisplayOrder"
+    '                strLocation = "GTHBCU3.0"
+    '                If grdTestingHeader.Columns("DisplayOrder").Value < 1 Then
+    '                    MessageBox.Show(e.Column.Name & " - must have a value")
+    '                    e.Cancel = True
+    '                End If
+    '            Case "Menu"
+    '                strLocation = "GTHBCU4.0"
+    '                If grdTestingHeader.Columns("Menu").Value.ToString.Trim = "" Then
+    '                    MessageBox.Show(e.Column.Name & " - must have a value")
+    '                    e.Cancel = True
+    '                End If
+    '            Case "Status"
+    '                strLocation = "GTHBCU5.0"
+    '                If grdTestingHeader.Columns("Status").Value.ToString.Trim = "" Then
+    '                    MessageBox.Show(e.Column.Name & " - must have a value")
+    '                    e.Cancel = True
+    '                End If
+    '        End Select
+
+    '        strLocation = "GTHBCU6.0"
+    '        If grdTestingHeader.Columns("EditSequence").Value < 0 Then
+    '            grdTestingHeader.Columns("EditSequence").Value = 1
+    '        Else
+    '            grdTestingHeader.Columns("EditSequence").Value = grdTestingHeader.Columns("EditSequence").Value + 1
+    '        End If
+
+    '        strLocation = "GTHBCU7.0"
+    '        grdTestingHeader.Columns("LastModified").Value = Now()
+
+    '        Me.Cursor = Cursors.Default
+    '    Catch ex As Exception
+    '        Me.Cursor = Cursors.Default
+    '        Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_BeforeColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_BeforeColUpdate", vbOK)
+    '        LogError(Me.Name, "grdTestingHeader_BeforeColUpdate", strLocation, ex.Message)
+    '    End Try
+
+    '    ' Check to see if anyone else has changed the record since data was loaded
+    '    ' - Save original record
+
+    'End Sub
+
+    'Private Sub grdTestingHeader_AfterColUpdate(sender As Object, e As ColEventArgs) Handles grdTestingHeader.AfterColUpdate
+
+    '    Try
+    '        Me.Cursor = Cursors.WaitCursor
+
+    '        strLocation = "GTHACU1.0"
+    '        UpdateAllItemsOnFormAfterSave()
+
+    '        strLocation = "GTHACU2.0"
+    '        cmdShowTasks.Text = "Show tasks for screen " & grdTestingHeader.Columns("ScreenName").Value.ToString.Trim
+
+    '        Me.Cursor = Cursors.Default
+    '    Catch ex As Exception
+    '        Me.Cursor = Cursors.Default
+    '        Result = MessageBox.Show(Me, "Error in routine grdTestingHeader_AfterColUpdate (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "grdTestingHeader_AfterColUpdate", vbOK)
+    '        LogError(Me.Name, "grdTestingHeader_AfterColUpdate", strLocation, ex.Message)
+    '    End Try
+
+    'End Sub
+
 End Class

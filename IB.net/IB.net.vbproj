@@ -72,7 +72,6 @@
     <Reference Include="C1.C1Report.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
     <Reference Include="C1.C1Zip.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Data.2, Version=2.0.20141.273, Culture=neutral, PublicKeyToken=900b028620cd3a1b" />
-    <Reference Include="C1.Win.2, Version=2.0.20191.359, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.4, Version=4.0.20192.390, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
