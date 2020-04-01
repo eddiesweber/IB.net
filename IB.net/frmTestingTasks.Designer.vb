@@ -284,7 +284,6 @@ Partial Class frmTestingTasks
         Me.cmbStatus.AutoSize = False
         Me.cmbStatus.Caption = ""
         Me.cmbStatus.CaptionHeight = 0
-        Me.cmbStatus.CaptionVisible = False
         Me.cmbStatus.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbStatus.ColumnHeaders = False
         Me.cmbStatus.ColumnWidth = 100

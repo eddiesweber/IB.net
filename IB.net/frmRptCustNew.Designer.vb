@@ -44,6 +44,8 @@ Partial Class frmRptCustNew
         Me.cmdView3 = New C1.Win.C1Input.C1Button()
         Me.cmdView2 = New C1.Win.C1Input.C1Button()
         Me.cmdView1 = New C1.Win.C1Input.C1Button()
+        Me.cmdView7 = New C1.Win.C1Input.C1Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Frame1.SuspendLayout()
         CType(Me.datDate0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datDate1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +58,7 @@ Partial Class frmRptCustNew
         CType(Me.cmdView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmdView7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'chkRpt5
@@ -176,14 +179,14 @@ Partial Class frmRptCustNew
         'lblStatus1
         '
         Me.lblStatus1.ForeColor = System.Drawing.Color.Maroon
-        Me.lblStatus1.Location = New System.Drawing.Point(10, 320)
+        Me.lblStatus1.Location = New System.Drawing.Point(4, 372)
         Me.lblStatus1.Name = "lblStatus1"
         Me.lblStatus1.Size = New System.Drawing.Size(250, 15)
         Me.lblStatus1.TabIndex = 12
         '
         'cmdCancel
         '
-        Me.cmdCancel.Location = New System.Drawing.Point(137, 350)
+        Me.cmdCancel.Location = New System.Drawing.Point(131, 402)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(85, 25)
         Me.cmdCancel.TabIndex = 76
@@ -194,7 +197,7 @@ Partial Class frmRptCustNew
         '
         'cmdOK
         '
-        Me.cmdOK.Location = New System.Drawing.Point(46, 350)
+        Me.cmdOK.Location = New System.Drawing.Point(40, 402)
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(85, 25)
         Me.cmdOK.TabIndex = 77
@@ -280,11 +283,34 @@ Partial Class frmRptCustNew
         Me.cmdView1.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.cmdView1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
+        'cmdView7
+        '
+        Me.cmdView7.Location = New System.Drawing.Point(200, 315)
+        Me.cmdView7.Name = "cmdView7"
+        Me.cmdView7.Size = New System.Drawing.Size(50, 25)
+        Me.cmdView7.TabIndex = 86
+        Me.cmdView7.Text = "View"
+        Me.cmdView7.UseVisualStyleBackColor = True
+        Me.cmdView7.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.cmdView7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(19, 320)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(98, 17)
+        Me.CheckBox1.TabIndex = 85
+        Me.CheckBox1.Text = "Covid-19 Holds"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmRptCustNew
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(269, 386)
+        Me.ClientSize = New System.Drawing.Size(269, 439)
+        Me.Controls.Add(Me.cmdView7)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.cmdView1)
         Me.Controls.Add(Me.cmdView2)
         Me.Controls.Add(Me.cmdView3)
@@ -323,6 +349,7 @@ Partial Class frmRptCustNew
         CType(Me.cmdView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmdView7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -349,4 +376,6 @@ Partial Class frmRptCustNew
     Friend WithEvents cmdView1 As C1.Win.C1Input.C1Button
     Friend WithEvents datDate0 As C1.Win.Calendar.C1DateEdit
     Friend WithEvents datDate1 As C1.Win.Calendar.C1DateEdit
+    Friend WithEvents cmdView7 As C1.Win.C1Input.C1Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

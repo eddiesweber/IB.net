@@ -2,68 +2,119 @@
 
 Public Class frmDelQty
 
-    Dim buserchange As Boolean
-    Dim buserchange2 As Boolean
-    Dim bInit As Boolean
-    Dim bCancel As Boolean
-    Dim bTextChanged As Boolean
+    Dim blnEdit As Boolean
+    Dim blnNoClick As Boolean
+    Dim blnFormLoadStarted As Boolean = False
 
     Private Sub frmDelQty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Cursor = Cursors.WaitCursor
+        blnNoClick = True
+        blnFormLoadStarted = True
 
-        buserchange = False
-        bInit = True
-        bTextChanged = False
+        Try
+            Me.Cursor = Cursors.WaitCursor
 
-        GetWindowPos(Me, 166, 166)
+            strLocation = "FDQ_FDQL1.0"
+            'GetWindowPos(Me, 166, 166)
 
-        If Dir("frmDelQtygrdItems.xml") <> "" Then
-            grdItems.LoadLayout("frmDelQtygrdItems.xml")
-        End If
+            strLocation = "FDQ_FDQL1.0"
+            If Dir("frmDelQtygrdItems.xml") <> "" Then
+                'grdItems.LoadLayout("frmDelQtygrdItems.xml")
+            End If
 
-        'Line1(0).Y2 = Me.ScaleHeight
-        'Line1(1).Y2 = Me.ScaleHeight
+            strLocation = "FDQ_FDQL1.0"
+            If CurCust = 0 Then
+                frmFindCust.Show()
+                frmFindCust.BringToFront()
+            Else
+                lblCurCust.Text = CurCust
+            End If
 
-        SetModeReg()
-
-        If CurCust = 0 Then
-            frmFindCust.Show()
-            frmFindCust.BringToFront()
-        Else
-            lblCurCust.Text = CurCust
-        End If
-
-        buserchange = True
-
-        Me.Cursor = Cursors.Arrow
-
-    End Sub
-
-
-    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs) Handles lblCurCust.TextChanged
-
-        buserchange = False
-        If cmdReset.Enabled = False Then
-            GetData()
-        End If
-        buserchange = True
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine frmDelQty_Load (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "frmDelQty_Load", vbOK)
+            LogError(Me.Name, "frmDelQty_Load", strLocation, ex.Message)
+        Finally
+            blnNoClick = False
+            SetModeReg()
+        End Try
 
     End Sub
 
-    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs) Handles txtData0.TextChanged, txtdata1.TextChanged
+    Private Sub frmDelQty_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
 
-        bTextChanged = True
+        ' Keeps events from firing when closing
+        blnNoClick = True
 
-        If buserchange Then
-            SetModeChange()
-        Else
-            'Handle invisible boxes
-            Select Case sender.name
-                Case "txtData1"
-                    'lstDept.BoundText = txtData(1).Text
-            End Select
+        If blnEdit = True Then
+            Dim intYesNo As Int16
+
+            intYesNo = MessageBox.Show(Me, "Do you want to save your changes before exiting?", vbYesNo, "Save Record")
+            If intYesNo = vbYes Then
+                If UpdateAllItemsOnFormAfterSave() = False Then
+                    intYesNo = MessageBox.Show(Me, "There was an error saving changes, do you still want to exit?", vbYesNo, "Error saving data")
+                    If intYesNo <> vbYes Then
+                        e.Cancel = True
+                    End If
+                End If
+            End If
         End If
+
+        SaveWindowPos(Me)
+
+        grdItems.SaveLayout("frmDelQtygrdItems.xml")
+
+    End Sub
+
+    Private Sub lblCurCust_TextChanged(sender As Object, e As EventArgs)
+
+        GetData()
+
+    End Sub
+
+    Public Function UpdateAllItemsOnFormAfterSave() As Boolean
+
+        UpdateAllItemsOnFormAfterSave = False
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "FTM_UAIOFAS1.0"
+            grdItems.UpdateData()
+
+            strLocation = "FTM_UAIOFAS2.0"
+            'Me.SpGetCustDeptTableAdapter.EndEdit()
+            'Me.SpGetCustDeptTableAdapter.Update(dsTestingHeader.TestingHeader)
+
+            ' use this - eddie - 3/20/20
+            ' [SpUpdateCustomerDepartment]
+
+            strLocation = "FTM_UAIOFAS3.0"
+            SetModeReg()
+
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine UpdateAllItemsOnFormAfterSave (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "UpdateAllItemsOnFormAfterSave", vbOK)
+            LogError(Me.Name, "UpdateAllItemsOnFormAfterSave", strLocation, ex.Message)
+        End Try
+
+    End Function
+
+    Private Sub txtData0_TextChanged(sender As Object, e As EventArgs)
+
+        'bTextChanged = True
+
+        'If buserchange Then
+        '    SetModeChange()
+        'Else
+        '    'Handle invisible boxes
+        '    Select Case sender.name
+        '        Case "txtData1"
+        '            'lstDept.BoundText = txtData(1).Text
+        '    End Select
+        'End If
 
     End Sub
 
@@ -73,7 +124,7 @@ Public Class frmDelQty
             frmFindCust.Show()
             frmFindCust.BringToFront()
         Else
-            bTextChanged = False
+            'bTextChanged = False
 
             Me.SpGetCustDeptTableAdapter.Connection.ConnectionString = CS
             Me.SpGetCustDeptTableAdapter.Fill(Me.DsspGetCustDept.SpGetCustDept, CurCust)
@@ -145,6 +196,9 @@ Public Class frmDelQty
         '    rs.MoveFirst
         'End If
 
+        ' use this - eddie - 3/20/20
+        ' [SpUpdateCustomerDepartment]
+
     End Sub
     Sub SetOld2New()
 
@@ -181,37 +235,38 @@ Public Class frmDelQty
 
     End Sub
 
-    Private Sub lstDept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstDept.SelectedIndexChanged
+    Private Sub lstDept_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-        If buserchange Then
-            buserchange = False
+        'If buserchange Then
+        '    buserchange = False
 
-            If SpGetCustDeptBindingSource.Count > 0 Then
-                CurDept = CType(SpGetCustDeptBindingSource.Current, DataRowView).Item("Dept").ToString()
-            End If
+        '    If SpGetCustDeptBindingSource.Count > 0 Then
+        '        CurDept = CType(SpGetCustDeptBindingSource.Current, DataRowView).Item("Dept").ToString()
+        '    End If
 
-            GetData2()
+        '    GetData2()
 
-            buserchange = True
-        End If
+        '    buserchange = True
+        'End If
 
     End Sub
 
-    Private Sub cmdFindCust_Click(sender As Object, e As EventArgs) Handles cmdFindCust.Click
+    Private Sub cmdFindCust_Click(sender As Object, e As EventArgs)
+
+        If blnEdit = True Then
+            Dim intYesNo As Int16
+
+            intYesNo = MsgBox("Do you want to save your changes before changing customer?", vbYesNo, "Save Record")
+            If intYesNo = vbYes Then
+                If UpdateAllItemsOnFormAfterSave() = False Then
+                    MessageBox.Show(Me, "There was an error saving changes, your changes were not saved.", vbOKOnly, "Error saving data")
+                    Exit Sub
+                End If
+            End If
+        End If
 
         frmFindCust.Show()
         frmFindCust.BringToFront()
-
-    End Sub
-
-    Private Sub frmDelQty_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-        ' Keeps events from firing when closing
-        buserchange = False
-
-        SaveWindowPos(Me)
-
-        grdItems.SaveLayout("frmDelQtygrdItems.xml")
 
     End Sub
 

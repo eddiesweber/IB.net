@@ -22,11 +22,11 @@ Public Class frmTestingMain
             Me.Cursor = Cursors.WaitCursor
 
             strLocation = "FTM_FTML1.0"
-            'GetWindowPos(Me, 200, 22)
+            GetWindowPos(Me, 200, 22)
 
             strLocation = "FTM_FTML2.0"
             If Dir("frmTestingMaingrdTestingHeader.xml") <> "" Then
-                'grdTestingHeader.LoadLayout("frmTestingMaingrdTestingHeader.xml")
+                grdTestingHeader.LoadLayout("frmTestingMaingrdTestingHeader.xml")
             End If
 
             strLocation = "FTM_FTML3.0"
@@ -523,6 +523,13 @@ Public Class frmTestingMain
                         strSQL = "INSERT INTO TestingTasks "
                         strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
                         strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'TestBox max length', 'Not Started', '')"
+
+                        cmd.CommandText = strSQL
+                        cmd.ExecuteNonQuery()
+
+                        strSQL = "INSERT INTO TestingTasks "
+                        strSQL &= "(TestingHeaderID, Created, LastModified, EditSequence, ScreenName, Tester, Task, Status, Comments)  "
+                        strSQL &= "VALUES (" & grdTestingHeader.Columns("ID").Value & ", '" & Now() & "', '" & Now() & "', 1, '" & Trim(grdTestingHeader.Columns("ScreenName").Value) & "', 'Eddie', 'Anchoring', 'Not Started', '')"
 
                         cmd.CommandText = strSQL
                         cmd.ExecuteNonQuery()

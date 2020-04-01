@@ -276,7 +276,6 @@ Partial Class frmCust
         '
         Me.CustomerMasterTableAdapter.ClearBeforeFill = True
         '
-        '
         'cmdFind
         '
         Me.cmdFind.Location = New System.Drawing.Point(225, 10)

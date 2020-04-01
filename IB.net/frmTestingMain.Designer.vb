@@ -28,6 +28,7 @@ Partial Class frmTestingMain
         Dim SubMenu1Label As System.Windows.Forms.Label
         Dim MenuLabel As System.Windows.Forms.Label
         Dim ScreenNameLabel As System.Windows.Forms.Label
+        Dim Label1 As System.Windows.Forms.Label
         Dim Style1 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim Style2 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim Style3 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
@@ -49,7 +50,6 @@ Partial Class frmTestingMain
         Dim Style18 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim Style19 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim Style20 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
-        Dim Label1 As System.Windows.Forms.Label
         Me.tdrpTesters = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.TestersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTesters = New IB.net.dsTesters()
@@ -69,6 +69,7 @@ Partial Class frmTestingMain
         Me.cmdDelete = New C1.Win.C1Input.C1Button()
         Me.cmdNew = New C1.Win.C1Input.C1Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtDisplayOrder = New C1.Win.C1Input.C1TextBox()
         Me.cmdShowTasks = New C1.Win.C1Input.C1Button()
         Me.lstStatus = New C1.Win.C1List.C1List()
         Me.lstTesters = New C1.Win.C1List.C1List()
@@ -77,7 +78,6 @@ Partial Class frmTestingMain
         Me.txtSubMenu2 = New C1.Win.C1Input.C1TextBox()
         Me.txtSubMenu1 = New C1.Win.C1Input.C1TextBox()
         Me.txtMenu = New C1.Win.C1Input.C1TextBox()
-        Me.txtDisplayOrder = New C1.Win.C1Input.C1TextBox()
         ReadyToTestLabel = New System.Windows.Forms.Label()
         SubMenu2Label = New System.Windows.Forms.Label()
         SubMenu1Label = New System.Windows.Forms.Label()
@@ -100,6 +100,7 @@ Partial Class frmTestingMain
         CType(Me.cmdDelete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.txtDisplayOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmdShowTasks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,7 +109,6 @@ Partial Class frmTestingMain
         CType(Me.txtSubMenu2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSubMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMenu, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtDisplayOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ReadyToTestLabel
@@ -160,6 +160,16 @@ Partial Class frmTestingMain
         ScreenNameLabel.Size = New System.Drawing.Size(110, 20)
         ScreenNameLabel.TabIndex = 33
         ScreenNameLabel.Text = "Screen Name:"
+        '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label1.Location = New System.Drawing.Point(251, 123)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(53, 20)
+        Label1.TabIndex = 39
+        Label1.Text = "Order:"
         '
         'tdrpTesters
         '
@@ -288,6 +298,9 @@ Partial Class frmTestingMain
         Me.grdTestingHeader.AllowAddNew = True
         Me.grdTestingHeader.AllowDelete = True
         Me.grdTestingHeader.AlternatingRows = True
+        Me.grdTestingHeader.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdTestingHeader.CaptionHeight = 17
         Me.grdTestingHeader.DataSource = Me.TestingHeaderBindingSource
         Me.grdTestingHeader.FilterBar = True
@@ -312,6 +325,7 @@ Partial Class frmTestingMain
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cmdExit)
         Me.GroupBox1.Controls.Add(Me.cmdUpdate)
         Me.GroupBox1.Controls.Add(Me.cmdReset)
@@ -325,6 +339,7 @@ Partial Class frmTestingMain
         '
         'cmdExit
         '
+        Me.cmdExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdExit.Location = New System.Drawing.Point(15, 154)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(85, 25)
@@ -336,6 +351,7 @@ Partial Class frmTestingMain
         '
         'cmdUpdate
         '
+        Me.cmdUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdUpdate.Location = New System.Drawing.Point(15, 110)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(85, 25)
@@ -347,6 +363,7 @@ Partial Class frmTestingMain
         '
         'cmdReset
         '
+        Me.cmdReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdReset.Location = New System.Drawing.Point(15, 80)
         Me.cmdReset.Name = "cmdReset"
         Me.cmdReset.Size = New System.Drawing.Size(85, 25)
@@ -358,6 +375,7 @@ Partial Class frmTestingMain
         '
         'cmdDelete
         '
+        Me.cmdDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdDelete.Location = New System.Drawing.Point(15, 50)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(85, 25)
@@ -369,6 +387,7 @@ Partial Class frmTestingMain
         '
         'cmdNew
         '
+        Me.cmdNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdNew.Location = New System.Drawing.Point(15, 20)
         Me.cmdNew.Name = "cmdNew"
         Me.cmdNew.Size = New System.Drawing.Size(85, 25)
@@ -380,6 +399,8 @@ Partial Class frmTestingMain
         '
         'GroupBox2
         '
+        Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Label1)
         Me.GroupBox2.Controls.Add(Me.txtDisplayOrder)
         Me.GroupBox2.Controls.Add(Me.cmdShowTasks)
@@ -403,9 +424,24 @@ Partial Class frmTestingMain
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         '
+        'txtDisplayOrder
+        '
+        Me.txtDisplayOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDisplayOrder.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "DisplayOrder", True))
+        Me.txtDisplayOrder.DataType = GetType(Integer)
+        Me.txtDisplayOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDisplayOrder.Location = New System.Drawing.Point(310, 121)
+        Me.txtDisplayOrder.Name = "txtDisplayOrder"
+        Me.txtDisplayOrder.Size = New System.Drawing.Size(50, 24)
+        Me.txtDisplayOrder.TabIndex = 5
+        Me.txtDisplayOrder.Tag = Nothing
+        Me.txtDisplayOrder.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        Me.txtDisplayOrder.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
+        '
         'cmdShowTasks
         '
-        Me.cmdShowTasks.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdShowTasks.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdShowTasks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdShowTasks.Location = New System.Drawing.Point(15, 155)
         Me.cmdShowTasks.Name = "cmdShowTasks"
@@ -539,30 +575,6 @@ Partial Class frmTestingMain
         Me.txtMenu.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         Me.txtMenu.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
         '
-        'txtDisplayOrder
-        '
-        Me.txtDisplayOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtDisplayOrder.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.TestingHeaderBindingSource, "DisplayOrder", True))
-        Me.txtDisplayOrder.DataType = GetType(Integer)
-        Me.txtDisplayOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDisplayOrder.Location = New System.Drawing.Point(310, 121)
-        Me.txtDisplayOrder.Name = "txtDisplayOrder"
-        Me.txtDisplayOrder.Size = New System.Drawing.Size(50, 24)
-        Me.txtDisplayOrder.TabIndex = 5
-        Me.txtDisplayOrder.Tag = Nothing
-        Me.txtDisplayOrder.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        Me.txtDisplayOrder.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue
-        '
-        'Label1
-        '
-        Label1.AutoSize = True
-        Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Label1.Location = New System.Drawing.Point(251, 123)
-        Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(53, 20)
-        Label1.TabIndex = 39
-        Label1.Text = "Order:"
-        '
         'frmTestingMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -591,6 +603,7 @@ Partial Class frmTestingMain
         CType(Me.cmdNew, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.txtDisplayOrder, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmdShowTasks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lstTesters, System.ComponentModel.ISupportInitialize).EndInit()
@@ -599,7 +612,6 @@ Partial Class frmTestingMain
         CType(Me.txtSubMenu2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSubMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMenu, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtDisplayOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

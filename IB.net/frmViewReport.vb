@@ -101,11 +101,35 @@ Public Class frmViewReport
                 CommDet()
             Case "CommSum.rpt"
                 CommSum()
+            Case "CustInfoClosed.rpt"
+                CustInfoClosed()
             Case Else
                 MessageBox.Show("The report '" & lblReportName.Text & "' does not exist")
 
                 Me.Close()
         End Select
+
+    End Sub
+
+    Public Sub CustInfoClosed()
+
+        Try
+            strLocation = "CIC1.0"
+            RPT.Load(RptPath & "Custinfoclosed.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "CIC2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+
+            strLocation = "CIC3.0"
+            CrystalReportViewer1.ReportSource = RPT
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            Result = MessageBox.Show(Me, "Error in routine CustInfoClosed (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "CustInfoClosed", vbOK)
+            LogError(Me.Name, "CustInfoClosed", strLocation, ex.Message)
+        End Try
 
     End Sub
 

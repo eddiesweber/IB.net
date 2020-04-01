@@ -8,7 +8,7 @@ Public Class frmRptCustNew
 
     Private Sub frmRptCustNew_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        GetWindowPos(Me, 200, 200)
+        'GetWindowPos(Me, 200, 200)
 
         datDate0.Value = Now
         datDate1.Value = Now
@@ -445,7 +445,36 @@ OKDone:
 
     End Sub
 
-    Private Sub cmdView0_Click(sender As Object, e As EventArgs) Handles cmdView0.Click, cmdView6.Click, cmdView5.Click, cmdView4.Click, cmdView3.Click, cmdView2.Click, cmdView1.Click
+    Private Sub RunReport8()
+
+        lblStatus1.Text = "Printing Covid-19 Holds Report"
+        lblStatus1.Update()
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            strLocation = "RR7-1.0"
+            RPT.Load(RptPath & "Custinfoclosed.rpt", CrystalDecisions.Shared.OpenReportMethod.OpenReportByDefault)
+
+            setCrystalPrinter()
+            SetDbConnection()
+
+            strLocation = "RR7-2.0"
+            RPT.SetParameterValue("CompanyName", frmMain.Text)
+
+            strLocation = "RR7-3.0"
+            RPT.PrintToPrinter(1, True, 0, 0)
+
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            Me.Cursor = Cursors.Default
+            Result = MessageBox.Show(Me, "Error in routine RunReport7 (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "RunReport7", vbOK)
+            LogError(Me.Name, "RunReport7", strLocation, ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub cmdView0_Click(sender As Object, e As EventArgs) Handles cmdView0.Click, cmdView6.Click, cmdView5.Click, cmdView4.Click, cmdView3.Click, cmdView2.Click, cmdView1.Click, cmdView7.Click
 
         Select Case sender.name
             Case "cmdView0"
@@ -469,6 +498,9 @@ OKDone:
             Case "cmdView6"
                 frmViewReport.lblReportName.Text = "recollect.rpt"
                 frmViewReport.Show()
+            Case "cmdView7"
+                frmViewReport.lblReportName.Text = "CustInfoClosed.rpt"
+                frmViewReport.Show()
         End Select
 
     End Sub
@@ -478,4 +510,5 @@ OKDone:
         Me.Close()
 
     End Sub
+
 End Class

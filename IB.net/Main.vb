@@ -845,24 +845,30 @@ Module Main
         q = "SELECT BILL_NAME FROM CustomerMaster WHERE CUST_NUM=" & CurCust
         GetCustName = "Not Found"
 
-        Using Command As New SqlCommand(q, DB)
-            Try
-                strLocation = "GCN2.0"
-                Dim dataReader As SqlDataReader = Command.ExecuteReader()
-                dataReader.Read()
+        Try
+            strLocation = "GCN2.0"
+            Using connection As New SqlConnection(CS)
+                Dim cmd As SqlCommand = New SqlCommand(q, connection)
 
                 strLocation = "GCN3.0"
+                connection.Open()
+
+                strLocation = "GCN4.0"
+                Dim dataReader As SqlDataReader = cmd.ExecuteReader()
+                dataReader.Read()
+
+                strLocation = "GCN5.0"
                 If dataReader.HasRows Then
                     GetCustName = dataReader.Item("BILL_NAME")
                 End If
 
                 dataReader.Close()
-            Catch ex As Exception
-                GetCustName = ""
-                Result = MessageBox.Show("Error in routine GetCustName (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetCustName", MessageBoxButtons.OK)
-                LogError("Main.vb", "GetCustName", strLocation, ex.Message)
-            End Try
-        End Using
+            End Using
+        Catch ex As Exception
+            GetCustName = ""
+            Result = MessageBox.Show("Error in routine GetCustName (" & strLocation & ")" & vbNewLine & "Error : " & ex.Message, "GetCustName", MessageBoxButtons.OK)
+            LogError("Main.vb", "GetCustName", strLocation, ex.Message)
+        End Try
 
     End Function
 
